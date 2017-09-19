@@ -13,12 +13,19 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations
 under the License.
 %>
-<% language_tabs = current_page.data.language_tabs || [] %>
+<%
+language_tabs = current_page.data.language_tabs || [] %>
 <% page_content = yield %>
 <%
   if current_page.data.includes
     current_page.data.includes.each do |include|
-      page_content += partial("includes/#{include}")
+      if include.match(/^--/)
+        include_title = include.match(/^--(.*)/)[1]
+        include_id = include_title.delete(' ')
+        page_content += "<h1 id='#{include_id}'>#{include_title}</h1>".html_safe
+      else
+        page_content += partial("includes/#{include}")
+      end
     end
   end
 %>
