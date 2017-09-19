@@ -57,8 +57,10 @@ html, body {
   left: 0;
   bottom: 0;
   width: $nav-width;
+  padding: $nav-padding;
   background-color: $nav-bg;
-  font-size: 13px;
+  border-right: 1px solid #ccc;
+  font-size: 15px;
   font-weight: bold;
 
   // language selector for mobile devices
@@ -83,20 +85,34 @@ html, body {
       background: $nav-bg;
       border-width: 0 0 1px 0;
       border-color: $search-box-border-color;
-      padding: 6px 0 6px 20px;
+      padding: 6px 0 6px 30px;
       box-sizing: border-box;
-      margin: $nav-v-padding $nav-padding;
+      margin: 10px 0 40px;
       width: $nav-width - 30;
       outline: none;
-      color: $nav-text;
+      color: $search-color;
       border-radius: 0; /* ios has a default border radius */
+
+      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: $search-color;
+      }
+      &::-moz-placeholder { /* Firefox 19+ */
+        color: $search-color;
+      }
+      &:-ms-input-placeholder { /* IE 10+ */
+        color: $search-color;
+      }
+      &:-moz-placeholder { /* Firefox 18- */
+        color: $search-color;
+      }
     }
 
     &:before {
       position: absolute;
-      top: 17px;
-      left: $nav-padding;
-      color: $nav-text;
+      top: 15px;
+      left: 0;
+      color: $search-color;
+      font-size: 17px;
       @extend %icon-search;
     }
   }
@@ -114,9 +130,10 @@ html, body {
     transition-property: height, margin;
     transition-duration: 180ms;
     transition-timing-function: ease-in-out;
-    background: $nav-subitem-bg;
+    background: $nav-search-results-bg;
+
     &.visible {
-      height: 30%;
+      height: auto;
       margin-bottom: 1em;
     }
 
@@ -126,7 +143,7 @@ html, body {
     }
 
     a {
-      color: $nav-text;
+      color: $search-results-text;
       text-decoration: none;
 
       &:hover {
@@ -143,7 +160,7 @@ html, body {
     list-style: none;
     margin: 0;
     padding: 0;
-    line-height: 28px;
+    line-height: 37px;
   }
 
   li {
@@ -151,12 +168,15 @@ html, body {
     transition-property: background;
     transition-timing-function: linear;
     transition-duration: 200ms;
+    margin-bottom: 8px;
   }
 
   // This is the currently selected ToC entry
   .toc-link.active {
     background-color: $nav-active-bg;
     color: $nav-active-text;
+    font-weight: normal;
+    border-radius: 5px;
   }
 
   // this is parent links of the currently selected ToC entry
@@ -168,12 +188,11 @@ html, body {
   .toc-list-h2 {
     display: none;
     background-color: $nav-subitem-bg;
-    font-weight: 500;
   }
 
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
-    font-size: 12px;
+    font-size: 15px;
   }
 
   .toc-footer {
@@ -205,7 +224,7 @@ html, body {
   white-space: nowrap;
   text-overflow: ellipsis;
   text-decoration: none;
-  color: #fff;
+  color: #393434;
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms;
@@ -250,7 +269,7 @@ html, body {
 ////////////////////////////////////////////////////////////////////////////////
 
 .page-wrapper {
-  margin-left: $nav-width;
+  margin-left: $nav-width + $nav-padding*2;
   position: relative;
   z-index: 10;
   background-color: $main-bg;
@@ -275,21 +294,21 @@ html, body {
   .lang-selector {
     position: fixed;
     z-index: 50;
-    border-bottom: 5px solid $lang-select-active-bg;
+    border-bottom: 5px solid $examples-bg;
   }
 }
 
 .lang-selector {
   background-color: $lang-select-bg;
   width: 100%;
-  font-weight: bold;
+  font-weight: 300;
   a {
     display: block;
     float:left;
     color: $lang-select-text;
     text-decoration: none;
-    padding: 0 10px;
-    line-height: 30px;
+    padding: 0 30px;
+    line-height: 60px;
     outline: 0;
 
     &:active, &:focus {
@@ -330,7 +349,7 @@ html, body {
 
   &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
     margin-right: $examples-width;
-    padding: 0 $main-padding;
+    padding: 0 $content-padding;
     box-sizing: border-box;
     display: block;
 
@@ -348,19 +367,18 @@ html, body {
 
   h1 {
     @extend %header-font;
-    font-size: 25px;
+    font-size: 36px;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    background-color: #fdfdfd;
+    color: #666666;
   }
 
   h1:first-child, div:first-child + h1 {
     border-top-width: 0;
     margin-top: 0;
+    padding-top: 50px;
   }
 
   h2 {
