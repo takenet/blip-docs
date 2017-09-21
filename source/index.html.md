@@ -2,12 +2,13 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - json: JSON
-  - javascript: JavaScript
   - csharp: C#
+  - javascript: JavaScript
+  - json: JSON
+  - http: HTTP
 
 toc_footers:
-  - <a target="_blank" href='https://portal.blip.ai'>Sign Up for a BLiP Account</a>
+  - <a target="_blank" href="https://portal.blip.ai">Sign Up for a BLiP Account</a>
 
 includes:
   - --Core

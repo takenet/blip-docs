@@ -401,13 +401,15 @@ html, body {
 
   h3, h4, h5, h6 {
     @extend %header-font;
-    font-size: 15px;
+    font-size: 18px;
+    font-weight: 500;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
   }
 
   h4, h5, h6 {
-    font-size: 10px;
+    font-size: 15px;
+    font-weight: bold;
   }
 
   hr {
@@ -427,8 +429,9 @@ html, body {
 
     th {
       padding: 5px 10px;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 2px solid $nav-active-bg;
       vertical-align: bottom;
+      color: $nav-active-bg;
     }
 
     td {
@@ -436,7 +439,7 @@ html, body {
     }
 
     tr:last-child {
-      border-bottom: 1px solid #ccc;
+      border-bottom: 2px solid $nav-active-bg;
     }
 
     tr:nth-child(odd)>td {
