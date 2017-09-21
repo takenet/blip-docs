@@ -1,4 +1,4 @@
-### Redirect
+## Redirect
 | MIME type                          |  C#                                 |
 |------------------------------------|-------------------------------------|
 | application/vnd.lime.redirect+json | [Lime.Messaging.Contents.Redirect](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Messaging/Contents/Redirect.cs) |

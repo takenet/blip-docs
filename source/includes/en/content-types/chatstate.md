@@ -1,4 +1,4 @@
-### Chat state
+## Chat state
 | MIME type                                 | C#                                        |
 |-------------------------------------------|-------------------------------------------|
 | application/vnd.lime.chatstate+json | [Lime.Messaging.Contents.ChatState](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Messaging/Contents/ChatState.cs) |

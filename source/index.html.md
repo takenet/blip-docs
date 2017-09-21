@@ -26,6 +26,11 @@ includes:
   - en/programmable-conversations/notifications
   - en/programmable-conversations/commands
   ##
+  - --Conversation
+  - en/content-types/chatstate
+  - en/content-types/resource
+  - en/content-types/redirect
+  ##
   - --Integrations
   - en/channels/blip-chat
   - en/channels/mailgun
