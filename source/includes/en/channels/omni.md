@@ -1,4 +1,4 @@
-### BLiP Chat
+## BLiP Chat
 | FQDN                     | Identifier type             | 
 |--------------------------|-----------------------------|
 | @0mn.io                  | Internal Blip Chat value    |

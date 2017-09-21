@@ -15,6 +15,7 @@
 } 
 ```
 
+
 > In the case of a successful answer:
 
 ```json

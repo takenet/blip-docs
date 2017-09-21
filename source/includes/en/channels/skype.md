@@ -1,4 +1,4 @@
-### Skype
+## Skype
 | FQDN                     | Identifier type                  | 
 |--------------------------|----------------------------------------|
 | @skype.gw.msging.net     | Live ID                                |

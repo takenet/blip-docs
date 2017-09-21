@@ -1,4 +1,4 @@
-### Telegram
+## Telegram
 | FQDN                     | Identifier type                  | 
 |--------------------------|----------------------------------------|
 | @telegram.gw.msging.net  | Chat ID                                |

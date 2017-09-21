@@ -55,9 +55,8 @@ With C#, the process of send message is asynchronous and the status of sent mess
 
 ### Receiving messages
 
-> A `IMessageReceiver` can be defined as follow
-
 ```csharp
+//A `IMessageReceiver` can be defined as follow
 public class PlainTextMessageReceiver : IMessageReceiver
 {
     public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
@@ -67,6 +66,8 @@ public class PlainTextMessageReceiver : IMessageReceiver
     }
 }
 ```
+
+--
 
 ```javascript
 client.addMessageReceiver(true, (message) => {

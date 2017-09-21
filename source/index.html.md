@@ -25,6 +25,16 @@ includes:
   - en/programmable-conversations/messages
   - en/programmable-conversations/notifications
   - en/programmable-conversations/commands
+  ##
+  - --Integrations
+  - en/channels/blip-chat
+  - en/channels/mailgun
+  - en/channels/messenger
+  - en/channels/omni
+  - en/channels/skype
+  - en/channels/takeio
+  - en/channels/tangram
+  - en/channels/telegram
 
 search: true
 ---

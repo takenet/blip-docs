@@ -1,26 +1,9 @@
 ## Conversation commands
 
-#### Result codes for requests
-
-| Code                | Description                                                                               |
-|---------------------|-----------------------------------------------------------------------------------------  |
-| 202 (Accepted)      | Envelope was accepted by the server                                                       |
-| 400 (Bad Request)   | Alert to some problem with format or fields of sent envelope.                             |
-| 401 (Unauthorized)  | Alert to some problem or *Authorization* header missing                                   |
-
-
-#### Required Settings
-
-| Name                          | Description                                                                   |
-|-------------------------------|-------------------------------------------------------------------------------|
-| Url to receive messages       | Endpoint where BLiP will post the messages                                    |
-| Url to receive notification   | Endpoint where BLiP will post the notifications                               |
-
-### Sending commands
-
 ```csharp
 // For this case, the command response is received on a synchronous way.
 var command = new Command {
+    Id = 1,
     Method = CommandMethod.Get,
     Uri = new LimeUri("/account")
 };
@@ -71,18 +54,30 @@ messagingHubClient
         utils.logMessage('An error occurred: ' + err);
     });
 
-
-// Or using async/await
-try {
-    var commandResponse = await messagingHubClient.sendCommand(pingCommand);
-    utils.logLimeCommand(pingCommand, 'Ping sent');
-    utils.logLimeCommand(commandResponse, 'Ping response');
-}
-catch (e) {
-    utils.logMessage('An error occurred: ' + err);
-}
 ```
+
+#### Result codes for requests
+
+| Code                | Description                                                                               |
+|---------------------|-----------------------------------------------------------------------------------------  |
+| 202 (Accepted)      | Envelope was accepted by the server                                                       |
+| 400 (Bad Request)   | Alert to some problem with format or fields of sent envelope.                             |
+| 401 (Unauthorized)  | Alert to some problem or *Authorization* header missing                                   |
+
+
+#### Required Settings
+
+| Name                          | Description                                                                   |
+|-------------------------------|-------------------------------------------------------------------------------|
+| Url to receive messages       | Endpoint where BLiP will post the messages                                    |
+| Url to receive notification   | Endpoint where BLiP will post the notifications                               |
+
+### Sending commands
+
+#### C#     
+
+`ISender` interface also enable send commands to the server.
 
 #### Webhook
 
-In order to use the BLiP's extensions (like schedule and directory) is necessary send commands. To do this is necessary make a HTTP POST request on /commands URL
+In order to use the BLiP's extensions (like schedule and directory) is necessary send commands. To do this is necessary make a HTTP POST request on /commands URL;

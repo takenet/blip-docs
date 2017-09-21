@@ -1,4 +1,4 @@
-### Tangram (SMS)
+## Tangram (SMS)
 | FQDN                     | Identifier type                  | 
 |--------------------------|----------------------------------------|
 | @tangram.com.br          | MSISDN                                 |

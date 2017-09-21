@@ -1,5 +1,4 @@
-
-### Take.io (SMS)
+## Take.io (SMS)
 
 | FQDN         | Identifier type |
 |--------------|-----------------------|
