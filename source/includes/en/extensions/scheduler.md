@@ -1,14 +1,7 @@
 ### Scheduler
-| Address                         | Base URI     | C#               |
-|---------------------------------|--------------|------------------|
-| postmaster@scheduler.msging.net | /schedules   | [SchedulerExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/Scheduler/SchedulerExtension.cs) |
-
-The **scheduler** extensions allows the chatbot to schedule messages to be sent in specific date and time on its behalf. Any type of message to any destination can be scheduled, including **broadcast** messages (to a distribution list). The scheduling time must be done in the GMT timezone. Any received notification from a scheduled message is forwarded to the chatbot.
-
-#### Examples
-1 - Scheduling a message to the 2016-07-25 17:50 GMT 0 date:
 
 ```json
+Schheduler
 {  
   "id": "1",
   "to": "postmaster@scheduler.msging.net",
@@ -26,6 +19,17 @@ The **scheduler** extensions allows the chatbot to schedule messages to be sent 
   }
 }
 ```
+
+| Address                         | Base URI     | C#               |
+|---------------------------------|--------------|------------------|
+| postmaster@scheduler.msging.net | /schedules   | [SchedulerExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/Scheduler/SchedulerExtension.cs) |
+
+The **scheduler** extensions allows the chatbot to schedule messages to be sent in specific date and time on its behalf. Any type of message to any destination can be scheduled, including **broadcast** messages (to a distribution list). The scheduling time must be done in the GMT timezone. Any received notification from a scheduled message is forwarded to the chatbot.
+
+#### Examples
+1 - Scheduling a message to the 2016-07-25 17:50 GMT 0 date:
+
+
 
 Response on success:
 

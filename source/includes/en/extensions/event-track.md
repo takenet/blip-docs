@@ -1,23 +1,10 @@
 ### Event analysis
-| Address               | Base URI     |  C#                 |
-|-----------------------|--------------|---------------------|
-| postmaster@msging.net (default address - not required) | /event-track | [EventTrackExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/EventTrack/EventTrackExtension.cs) |
-
-The **event analysis** extension allows the registration of chatbot's events for creation of analytics reports in the portal. The events are agregated by category, action and day. The reports can be generated thought the [portal](https://portal.blip.ai), in the *Panel* -> *Data analysis* option.
-
-To register an event, the chatbot must provide the following properties:
-
-| Property     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **category** | Category to aggregate the related events.                          | billing |
-| **action**   | The action associated to the event. The event counting is made using the actions.  | payment |
-| **identity** | Optional contact associated to the event. If contact is a 'testers' group member the event will be ignored.  | 123456@messenger.gw.msging.net |
-| **extras**   | Optional extra informations to be stored within the event.         | {"customerId": "41231", "paymentId": "ca82jda"} |
 
 
-#### Exemples
-1 - Registering an event:
 ```json
+/*-----EXAMPLES-----*/
+
+/* 1 - Registering an event: */
 {  
   "id": "9494447a-2581-4597-be6a-a5dff33af156",
   "method": "set",
@@ -29,9 +16,10 @@ To register an event, the chatbot must provide the following properties:
   }
 }
 ```
-Response on success:
+
 ```json
 {
+  /*Response on success:*/
   "method": "set",
   "status": "success",
   "id": "9494447a-2581-4597-be6a-a5dff33af156",
@@ -39,8 +27,9 @@ Response on success:
   "to": "contact@msging.net/default"
 }
 ```
-2 - Registering an event passing identity:
+
 ```json
+/*2 - Registering an event passing identity:*/
 {  
   "id": "9494447a-2581-4597-be6a-a5dff33af156",
   "method": "set",
@@ -53,8 +42,9 @@ Response on success:
   }
 }
 ```
-Response on success:
+
 ```json
+/*Response on success:*/
 {
   "method": "set",
   "status": "success",
@@ -64,16 +54,18 @@ Response on success:
 }
 ```
 
-3 - Retrieving stored event categories:
+
 ```json
+/*3 - Retrieving stored event categories:*/
 {  
   "id": "3",
   "method": "get",
   "uri": "/event-track"
 }
 ```
-Response on success:
+
 ```json
+/*Response on success:*/
 {  
   "id": "3",
   "from": "postmaster@msging.net/#irismsging1",
@@ -92,6 +84,24 @@ Response on success:
   }
 }
 ```
+
+| Address               | Base URI     |  C#                 |
+|-----------------------|--------------|---------------------|
+| postmaster@msging.net (default address - not required) | /event-track | [EventTrackExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/EventTrack/EventTrackExtension.cs) |
+
+The **event analysis** extension allows the registration of chatbot's events for creation of analytics reports in the portal. The events are agregated by category, action and day. The reports can be generated thought the [portal](https://portal.blip.ai), in the *Panel* -> *Data analysis* option.
+
+To register an event, the chatbot must provide the following properties:
+
+| Property     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **category** | Category to aggregate the related events.                          | billing |
+| **action**   | The action associated to the event. The event counting is made using the actions.  | payment |
+| **identity** | Optional contact associated to the event. If contact is a 'testers' group member the event will be ignored.  | 123456@messenger.gw.msging.net |
+| **extras**   | Optional extra informations to be stored within the event.         | {"customerId": "41231", "paymentId": "ca82jda"} |
+
+
+
 
 
 4 - Retrieving event counters:
@@ -112,8 +122,9 @@ Available *querystring* filters:
 }
 ```
 
-Response on success:
+
 ```json
+/*Response on success:*/
 {
   "id": "4",
   "from": "postmaster@msging.net/#irismsging1",
@@ -159,8 +170,10 @@ Available *querystring* filters:
 }
 ```
 
-Response on success:
+
 ```json
+/*Response on success:*/
+
 {
   "id": "5",
   "from": "postmaster@msging.net/#irismsging1",

@@ -1,15 +1,31 @@
-## PagSeguro (payments)
+---
+title: API Reference
 
-| FQDN                     | Identifier type                  | 
+language_tabs: # must be one of https://git.io/vQNgJ
+  - shell
+  - ruby
+  - python
+  - javascript
+
+toc_footers:
+  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+
+includes:
+  - errors
+
+search: true
+---
+
+# PagSeguro (payments)
+
+<!-- | FQDN                     | Identifier type                  | 
 |--------------------------|----------------------------------------|
 | @pagseguro.gw.msging.net | Identity ([name and original channel domain]|(./#/docs/concepts/addressing)) on [URL encoded] format
-(http://www.w3schools.com/tags/ref_urlencode.asp) |                           |
+(http://www.w3schools.com/tags/ref_urlencode.asp) |                           | -->
 
 
 **PagSeguro** is the [UOL's payments channel](https://pagseguro.uol.com.br/) to receive and send payments with flexibility and safety.
-
-
-
 
 ###Payment Request
 

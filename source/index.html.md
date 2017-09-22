@@ -31,6 +31,23 @@ includes:
   - en/content-types/resource
   - en/content-types/redirect
   ##
+  - --Teste
+  - en/extensions/teste
+  ##
+  - --Extensions
+  - en/extensions/event-track
+  - en/extensions/scheduler
+  - en/extensions/broadcast
+  - en/extensions/bucket
+  - en/extensions/directory  
+  - en/extensions/resources
+  - en/extensions/contacts
+  - en/extensions/threads
+  - en/extensions/profile
+  - en/extensions/artificial-intelligence
+  - en/extensions/delegation
+  - en/extensions/tunnel
+  ##
   - --Integrations
   - en/channels/blip-chat
   - en/channels/mailgun
