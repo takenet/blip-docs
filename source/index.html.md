@@ -40,6 +40,7 @@ includes:
   - en/channels/takeio
   - en/channels/tangram
   - en/channels/telegram
+  - en/channels/payment
 
 search: true
 ---
