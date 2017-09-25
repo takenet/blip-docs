@@ -9,7 +9,7 @@ Allows sending and receiving simple text messages.
 
 Sending a message to a Messenger recipient:
 
-```json
+```http
 {
     "id": "1",
     "to": "128271320123982@messenger.gw.msging.net",

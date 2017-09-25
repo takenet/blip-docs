@@ -19,7 +19,7 @@ In general, there is no need to receive delivery notifications messages with thi
 
 Sending status *typing* to Telegram user:
 
-```json
+```http
 {
     "to":"104222@telegram.gw.msging.net",
     "type":"application/vnd.lime.chatstate+json",

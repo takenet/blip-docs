@@ -5,7 +5,7 @@
 
 The **chat history** extension allows the chatbot to retrieve the last threads and messages exchanged with the customers.
 
-```json
+```http
 //Examples
 //1 - Retrieving the most recent threads:
 

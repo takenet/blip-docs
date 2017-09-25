@@ -29,7 +29,7 @@ search: true
 
 ### Payment Request
 
-```json
+```http
 /*Payment Request Example*/
 {
     "id": "2",
@@ -56,7 +56,7 @@ Example of how to send a payment request to Facebook Messenger user using [PagSe
 
 ###Payment Status
 
-```json
+```http
 /*Payment Status Example*/
 {
     "id": "2",

@@ -1,8 +1,31 @@
 ## Messages
 
-> See below a sample JSON representation of a message:
+> See below the representation of a message:
 
-```json
+```csharp
+  var message = new Message
+  {
+      Id = "65603604-fe19-479c-c885-3195b196fe8e",
+      From = "551199991111@0mn.io/182310923192",
+      To = "mycontact@msging.net",
+      Content = new PlainText
+      {
+          Text = "Hello World"
+      }
+  };
+```
+
+```javascript
+var message = {
+  id: "65603604-fe19-479c-c885-3195b196fe8e",
+  from: "551199991111@0mn.io/182310923192",
+  to: "mycontact@msging.net",
+  type: "text/plain",
+  content: "Hello World"
+}
+```
+
+```http
 {
   "id": "65603604-fe19-479c-c885-3195b196fe8e",
   "from": "551199991111@0mn.io/182310923192",

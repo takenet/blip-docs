@@ -1,6 +1,6 @@
 ## Directory
 
-```json
+```http
 // Examples
 
 //1 - Getting information about the client `1042221589186385@messenger.gw.msging.net` on **Messenger**:

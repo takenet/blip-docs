@@ -1,6 +1,6 @@
 ## Artificial Intelligence
 
-```json
+```http
 //Examples
 
 //1 - Creating an entity:

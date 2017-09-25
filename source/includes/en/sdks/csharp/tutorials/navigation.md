@@ -16,7 +16,7 @@ An important and very useful detail is that you can register * receivers * by de
 
 Below is an example of the `application.json` file created in a new project:
 
-```json
+```http
 {
   "identifier": "",
   "accessKey": "",
@@ -44,7 +44,7 @@ Imagine that our chatbot should respond to the command with the `help` text with
 
 For ease of use, the SDK includes some *receivers* for common actions, such as static messages, and it is not necessary in this first use case to implement the *receiver* to send the response message. To do this, simply use the `response` property and include the response message to the client. In this case, the `messageReceivers` session would look like this:
 
-```json
+```http
   "messageReceivers": [
     {
       "mediaType": "text/plain",
@@ -58,7 +58,7 @@ For ease of use, the SDK includes some *receivers* for common actions, such as s
 ```
 In this way, if the client sends the word `help`, it will receive a message of type `text/plain` with content `Hello, welcome to the help service of the Messaging Hub.`. If we want to include other words for the activation of the command, simply change the `content` property and include other words in the regular filter expression, as follows:
 
-```json
+```http
   "messageReceivers": [
     {
       "mediaType": "text/plain",
@@ -72,7 +72,7 @@ In this way, if the client sends the word `help`, it will receive a message of t
 ```
 We can return, instead of a plain text, a complex message type such as a ** Select **, which shows a menu of options to the user. To do this, simply use the `jsonContent` property instead of` plainContent`, as below:
 
-```json
+```http
   "messageReceivers": [
     {
       "mediaType": "text/plain",
@@ -108,7 +108,7 @@ We can return, instead of a plain text, a complex message type such as a ** Sele
 ```
 For each of the `Select` options, we must include a *receiver* for the word set to` value`, which is the value expected as the customer's response. But it is also important to support sending the number and the text of the option, since in unstructured channels (such as SMS) there is no guarantee that the customer will respond with the expected option. A receiver for the first option (`text`) would be:
 
-```json
+```http
     {
       "mediaType": "text/plain",
       "content": "^(texto|um texto|1)$",
@@ -120,7 +120,7 @@ For each of the `Select` options, we must include a *receiver* for the word set 
 ```    
 In this case, we return a simple message but supporting several different commands to activate the receiver. For the second option, we have:
 
-```json
+```http
     {
       "mediaType": "text/plain",
       "content": "^(imagem|uma imagem|2)$",
@@ -168,7 +168,7 @@ Here we return a complex `MediaLink` type with an image. The third option (`data
 
 Our class receives by the constructor its **configurations** which include the response and culture text template, which are defined in the * receiver * record in the `application.json` file. It is always a good idea to use the `settings` property to set static values, which allows you to modify the behavior of your chatbot without the need to recompile the code. The record would look like this:
 
-```json
+```http
     {
       "mediaType": "text/plain",
       "content": "^(data|a data atual|3)$",
@@ -181,7 +181,7 @@ Our class receives by the constructor its **configurations** which include the r
 ```
 Finally, imagine that your chatbot should return a static error message in case the client sends some unknown command. For this, it is necessary to register a * receiver * without filters but with **priority** lower than the other *receivers* existing. By default, *receivers* are registered with the highest priority (**zero**) and simply include a *receiver* with a lower priority so that it receives messages not handled by others to respond to the user. It would look like this:
 
-```json
+```http
     {
       "priority": "100",
       "response": {

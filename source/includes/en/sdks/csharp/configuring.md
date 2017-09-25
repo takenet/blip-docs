@@ -4,7 +4,7 @@ The configuration of your chatbot is made on `application.json` file. Basically 
 
 Check a example of how to set your `application.json` file:
 
-```json
+```http
 {
   "identifier": "xpto",
   "accessKey": "cXkzT1Rp",

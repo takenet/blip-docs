@@ -9,7 +9,7 @@ Allows sending a link for a webpage to the client including metadata such link's
 
 Sending a message to a Messenger recipient:
 
-```json
+```http
 {
     "id": "1",
     "to": "1042225583186385@messenger.gw.msging.net",

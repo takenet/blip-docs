@@ -1,6 +1,6 @@
 ## Chatbot profile
 
-```json
+```http
 // Examples
 //1 - Setting the greeting message:
 

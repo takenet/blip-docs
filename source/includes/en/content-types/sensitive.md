@@ -10,7 +10,7 @@ Wraps a message content in order to signal that the information is confidential 
 
 #### Examples
 1 - Sending a password using text content for a Messenger user:
-```json
+```http
 {
   "id": "1",
   "to": "1334448251684655@messenger.gw.msging.net",
@@ -24,7 +24,7 @@ Wraps a message content in order to signal that the information is confidential 
 ```
 
 2 - Sending a weblink:
-```json
+```http
 {
   "id": "2",
   "to": "1334448251684655@messenger.gw.msging.net",

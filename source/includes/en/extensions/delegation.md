@@ -1,6 +1,6 @@
 ## Delegation
 
-```json
+```http
 // Examples
 //1 - Giving permissions to send messages to the identity **postmaster@broadcast.msging.net**:
 
