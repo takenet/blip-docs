@@ -1,8 +1,8 @@
 ## Schedule
 
-| Address                         | Base URI     | C#               |
-|---------------------------------|--------------|------------------|
-| postmaster@scheduler.msging.net | /schedules   | [SchedulerExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/Scheduler/SchedulerExtension.cs) |
+| Address                         | Base URI     |
+|---------------------------------|--------------|
+| postmaster@scheduler.msging.net | /schedules   |
 
 The **scheduler** extensions allows the chatbot to schedule messages to be sent in specific date and time on its behalf. Any type of message to any destination can be scheduled, including **broadcast** messages (to a distribution list). The scheduling time must be done in the GMT timezone. Any received notification from a scheduled message is forwarded to the chatbot.
 
@@ -15,6 +15,7 @@ Getting an existing scheduled message with id ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 
 {  
   "id": "75c1621e-350c-4e85-8854-3e2cf3abbc3a",
@@ -54,7 +55,7 @@ Content-Type: application/json
 | Name | Description |
 |---------------------------------|--------------|
 |  id    | Unique identifier of the command.   |
-| to    | The destination of the command.   |
+| to    | The destination address of the command.   |
 | method    | The command verb   |
 | uri    | The command uri   |
 
@@ -63,20 +64,21 @@ Content-Type: application/json
 | Name | Description |
 |---------------------------------|--------------|
 | id    | Unique identifier of the command.   |
-| from    | The node that is sending you the command.   |
-| to    | The destination of the command.   |
+| from    | The address that is sending the command.   |
+| to    | The destination address of the command.   |
 | method    | The command verb   |
 | status    | The current status of the command (success or failed).   |
 | type | The type of the resource. |
-| resource | The document scheduled. |
+| resource | The document schedule. |
 
-### Set
+### Create
 
 Scheduling a message text/plain with the content 'Scheduling test' to be sent to the user **destination@msging.net** in **2016-07-25T17:50:00.000Z**
 
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 
 {  
   "id": "1",
