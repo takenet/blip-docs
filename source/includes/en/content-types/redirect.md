@@ -12,7 +12,7 @@ It is possible to define a document that represents the **context** of the conve
 #### Examples
 1 - Redirecting to the **attendance** service
 
-```json
+```http
 {
     "id": "1",
     "to": "54f1dd2e-42d2-43f2-9100-68fbbabb9c83@tunnel.msging.net",
@@ -26,7 +26,7 @@ From this moment, the messages sent by the client will be forwarded to the chatb
 
 2 - Redirecting to the chatbot with identifier *mysdkbot , passing a document as the context of the conversation.
 
-```json
+```http
 {
     "id": "2",
     "to": "54f1dd2e-42d2-43f2-9100-68fbbabb9c83@tunnel.msging.net",
@@ -42,7 +42,7 @@ From this moment, the messages sent by the client will be forwarded to the chatb
 ```
 In this example, the chatbot with `mysdkbot` identifier will receive the messages sent by the client, in addition to receiving a message with the content defined in the context, as if it had been sent by the client:
 
-```json
+```http
 {
     "id": "3",
     "from": "2bdcd8d0-9e69-484f-a88a-d5a529708864@tunnel.msging.net",

@@ -7,7 +7,7 @@ Allows send structured information request to the user, where is possible to def
 
 #### Examples
 1 - Requesting user name:
-```json
+```http
 {
     "id": "1",
     "to": "553199991111@0mn.io",
@@ -25,7 +25,7 @@ Allows send structured information request to the user, where is possible to def
 ```
 
 2 - Requesting user location:
-```json
+```http
 {
     "id": "2",
     "to": "1334448323284655@messenger.gw.msging.net",

@@ -32,7 +32,7 @@ public class PlainTextMessageReceiver : IMessageReceiver
 
 Check this on below example:
 
-```json
+```http
 {
   "messageReceivers": [
     {

@@ -1,6 +1,6 @@
 ## Tunnel
 
-```json
+```http
 // Examples
 //1 - Imagine a scenario where there are two bots: **flow** and **operator**, where the first responsible for presenting an automatic navigation and the second receiving the handover of an eventual manual attendance. Only the **flow** bot is published in *Messenger* and it needs, at a certain point in its flow, to forward the messages to the **operator** bot that controls the manual attendance.
 

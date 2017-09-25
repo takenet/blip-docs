@@ -1,6 +1,6 @@
 ## Contacts
 
-```json
+```http
 // Examples
 //1 - Sending a message including the contact name:
 
@@ -35,7 +35,7 @@ The **contacts** extension allows the management of the chatbot's roster, which 
 
 For more information about the supported fields, please refer to the [Lime protocol](http://limeprotocol.org/resources.html#contact) documentation.
 
-```json
+```http
 // Examples
 //#1 - Adding a Messenger contact:
 

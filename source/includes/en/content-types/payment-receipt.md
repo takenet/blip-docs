@@ -8,7 +8,7 @@ Allows send a payment receipt to a customer
 #### Example
 Sending a payment receipt to a Messenger user:
 
-```json
+```http
 {
     "id": "1",
     "to": "1042221589186385@messenger.gw.msging.net",

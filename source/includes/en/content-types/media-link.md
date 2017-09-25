@@ -12,7 +12,7 @@ Some channel allows the definition of the display *aspect ratio* for some media 
 #### Examples
 1 - Sending the link of an image including title, descriptive text and metadata:
 
-```json
+```http
 {
     "id": "1",
     "to": "553199991111@0mn.io",
@@ -31,7 +31,7 @@ Some channel allows the definition of the display *aspect ratio* for some media 
 ```
 
 2 - Sending an audio link:
-```json
+```http
 {
     "id": "2",
     "to": "553199991111@0mn.io",

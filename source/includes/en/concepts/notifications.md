@@ -1,8 +1,27 @@
 ## Notifications
 
-> See bellow the JSON representation of a receipt notification from the destination:
+> See bellow the representation of a receipt notification from the destination:
 
-```json
+```csharp
+var notification = new Notification
+{
+    Id = "65603604-fe19-479c-c885-3195b196fe8e",
+    From = "551199991111@0mn.io/182310923192",
+    To = "mycontact@msging.net",
+    Event = Event.Received
+};
+```
+
+```javascript
+var notification = {
+  id: "65603604-fe19-479c-c885-3195b196fe8e",
+  from: "551199991111@0mn.io/182310923192",
+  to: "mycontact@msging.net",
+  event: "received"
+}
+```
+
+```http
 {
   "id": "65603604-fe19-479c-c885-3195b196fe8e",
   "from": "551199991111@0mn.io/182310923192",
@@ -13,7 +32,35 @@
 
 > And a notification of a failure in the server:
 
-```json
+```csharp
+var notification = new Notification
+{
+    Id = "65603604-fe19-479c-c885-3195b196fe8e",
+    From = "551199991111@0mn.io/182310923192",
+    To = "mycontact@msging.net",
+    Event = Event.Failed,
+    Reason = new Reason
+    {
+        Code = 42,
+        Description = "Destination not found"
+    }
+};
+```
+
+```javascript
+var notification = {
+  id: "65603604-fe19-479c-c885-3195b196fe8e",
+  from: "postmaster@msging.net/server1",
+  to: "mycontact@msging.net",
+  event: "failed",
+  reason: {
+    code: 42,
+    description: "Destination not found"
+  }
+}
+```
+
+```http
 {
   "id": "65603604-fe19-479c-c885-3195b196fe8e",
   "from": "postmaster@msging.net/server1",
@@ -24,6 +71,10 @@
     "description": "Destination not found"
   }
 }
+```
+
+```http
+
 ```
 
 A **notification** provides information about a sent message.

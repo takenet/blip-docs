@@ -8,7 +8,7 @@ Allows sending and receiving geographic information.
 #### Example
 
 Sending a location with latitude, longitude and altitude:
-```json
+```http
 {
     "id": "1",
     "to": "1042221589186385@messenger.gw.msging.net",

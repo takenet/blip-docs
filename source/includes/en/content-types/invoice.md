@@ -9,7 +9,7 @@ Allows sending a payment request to a payment channel.
 
 Sending a payment request to a Facebook Messenger user using [PagSeguro](./#/docs/payments/pagseguro):
 
-```json
+```http
 {
     "id": "1",
     "to": "1042221589186385%40messenger.gw.msging.net@pagseguro.gw.msging.net",

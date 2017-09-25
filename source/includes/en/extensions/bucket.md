@@ -1,6 +1,6 @@
 ## Bucket
 
-```json
+```http
 
 // Exemples
 //1 - Storing an generic JSON document with the **xyz1234** identifier:

@@ -10,7 +10,7 @@ Messages received from some channels may have unique **metadata** information co
 
 An example of a message received from Messenger:
 
-```json
+```http
 { 
   "id": "9dc08447-8b23-4bc2-8673-664dca202ee2",
   "from": "128271320123982@messenger.gw.msging.net",
@@ -26,7 +26,7 @@ An example of a message received from Messenger:
 
 The properties `messenger.mdi` and `messenger.seq` are specific to Messenger, but they are delivered together with incoming messages. In Messenger specifically, several different metadata properties can be delivered, being one of the most important the `messenger.ref` which is the referral generated when a client clicks on a` m.me/bot-name?ref=value` link from your chatbot or when it scans a [code](https://developers.facebook.com/docs/messenger-platform/messenger-code) for the bot.
 
-```json
+```http
 { 
   "id": "2dc05467-4b23-1bc2-8673-664dca202ee2",
   "from": "128271320123982@messenger.gw.msging.net",
