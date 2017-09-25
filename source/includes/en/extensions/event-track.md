@@ -1,9 +1,8 @@
-## Event analysis
+## Event Analysis
 
 ```http
-/*-----EXAMPLES-----*/
-
-/* 1 - Registering an event: */
+POST /commands HTTP/1.1
+Content-Type: application/json
 {  
   "id": "9494447a-2581-4597-be6a-a5dff33af156",
   "method": "set",
@@ -14,19 +13,34 @@
     "action": "payment"
   }
 }
+```
 
-
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
 {
-  /*Response on success:*/
   "method": "set",
   "status": "success",
   "id": "9494447a-2581-4597-be6a-a5dff33af156",
   "from": "postmaster@msging.net/#irismsging1",
   "to": "contact@msging.net/default"
 }
+```
+
+| Address               | Base URI     |
+|-----------------------|--------------|
+| postmaster@msging.net (default address - not required) | /event-track |
+
+The **event analysis** extension allows the registration of chatbot's events for creation of analytics reports in the portal. The events are agregated by category, action and day. The reports can be generated thought the [portal](https://portal.blip.ai), in the *Panel* -> *Data analysis* option.
+
+To register an event, the chatbot must provide the following properties:
+
+###Create an event
 
 
-/*2 - Registering an event passing identity:*/
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
 {  
   "id": "9494447a-2581-4597-be6a-a5dff33af156",
   "method": "set",
@@ -34,12 +48,14 @@
   "uri": "/event-track",
   "resource": {  
     "category": "billing",
-    "action": "payment",
-    "identity": "123456@messenger.gw.msging.net",
+    "action": "payment"
   }
 }
+```
 
-/*Response on success:*/
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
 {
   "method": "set",
   "status": "success",
@@ -47,18 +63,73 @@
   "from": "postmaster@msging.net/#irismsging1",
   "to": "contact@msging.net/default"
 }
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| method    | The command verb   |
+| type | The type of the resource. |
+| uri    | The command uri   |
+| resource | The event document. |
 
 
 
-/*3 - Retrieving stored event categories:*/
+
+### Create event with identity
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+  {  
+    "id": "9494447a-2581-4597-be6a-a5dff33af156",
+    "method": "set",
+    "type": "application/vnd.iris.eventTrack+json",
+    "uri": "/event-track",
+    "resource": {  
+      "category": "billing",
+      "action": "payment",
+      "identity": "123456@messenger.gw.msging.net",
+    }
+  }
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "method": "set",
+  "status": "success",
+  "id": "9494447a-2581-4597-be6a-a5dff33af156",
+  "from": "postmaster@msging.net/#irismsging1",
+  "to": "contact@msging.net/default"
+}
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| method    | The command verb   |
+| type | The type of the resource. |
+| uri    | The command uri   |
+| resource | The event document. |
+
+
+### Get Categories
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
 {  
   "id": "3",
   "method": "get",
   "uri": "/event-track"
 }
+```
 
-
-/*Response on success:*/
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
 {  
   "id": "3",
   "from": "postmaster@msging.net/#irismsging1",
@@ -79,37 +150,17 @@
 ```
 
 
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
 
-| Address               | Base URI     |
-|-----------------------|--------------|
-| postmaster@msging.net (default address - not required) | /event-track |
-
-The **event analysis** extension allows the registration of chatbot's events for creation of analytics reports in the portal. The events are agregated by category, action and day. The reports can be generated thought the [portal](https://portal.blip.ai), in the *Panel* -> *Data analysis* option.
-
-To register an event, the chatbot must provide the following properties:
-
-| Property     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **category** | Category to aggregate the related events.                          | billing |
-| **action**   | The action associated to the event. The event counting is made using the actions.  | payment |
-| **identity** | Optional contact associated to the event. If contact is a 'testers' group member the event will be ignored.  | 123456@messenger.gw.msging.net |
-| **extras**   | Optional extra informations to be stored within the event.         | {"customerId": "41231", "paymentId": "ca82jda"} |
-
-
-
-
-
-4 - Retrieving event counters:
-
-Available *querystring* filters:
-
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| $take        | Limit of total of items to be returned    |
-| startDate    | Initial date to seach for events          |
-| endDate      | Limit date to retrieve the events         |
+### Get Counters
 
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
 {  
   "id": "4",
   "method": "get",
@@ -117,9 +168,10 @@ Available *querystring* filters:
 }
 ```
 
-
 ```http
-/*Response on success:*/
+HTTP/1.1 200 OK
+Content-Type: application/json
+
 {
   "id": "4",
   "from": "postmaster@msging.net/#irismsging1",
@@ -144,20 +196,25 @@ Available *querystring* filters:
   }
 }
 ```
-
-5 - Retrieving the event details for a category and action:
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
 
 Available *querystring* filters:
 
 | QueryString  | Description                               |
-|--------------|-------------------------------------------| 
-| $skip        | Number of items to be skipped for paging  |
+|--------------|-------------------------------------------|
 | $take        | Limit of total of items to be returned    |
 | startDate    | Initial date to seach for events          |
 | endDate      | Limit date to retrieve the events         |
 
+### Get Details
 
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
 {  
   "id": "5",
   "method": "get",
@@ -165,10 +222,9 @@ Available *querystring* filters:
 }
 ```
 
-
 ```http
-/*Response on success:*/
-
+HTTP/1.1 200 OK
+Content-Type: application/json
 {
   "id": "5",
   "from": "postmaster@msging.net/#irismsging1",
@@ -199,3 +255,20 @@ Available *querystring* filters:
   }
 }
 ```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+
+
+Available *querystring* filters:
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------| 
+| $skip        | Number of items to be skipped for paging  |
+| $take        | Limit of total of items to be returned    |
+| startDate    | Initial date to seach for events          |
+| endDate      | Limit date to retrieve the events         |
+
