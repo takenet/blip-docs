@@ -1,7 +1,7 @@
 ### Native Content
-| MIME type                            | C#                                 |
-|--------------------------------------|------------------------------------|
-| application/json                     | [Lime.Protocol.JsonDocument](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Protocol/JsonDocument.cs) |
+| MIME type                            |
+|--------------------------------------|
+| application/json                     |
 
 Allows send a native content of some channel using JSON format. Is possible use any channel available resource even this content is yet not supported as a BLiP canonical type.
 

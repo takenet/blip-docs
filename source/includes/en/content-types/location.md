@@ -1,7 +1,7 @@
 ### Location
-| MIME type                            | C#                                   |
-|--------------------------------------|--------------------------------------|
-| application/vnd.lime.location+json | [Lime.Messaging.Contents.Location](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Messaging/Contents/Location.cs) |
+| MIME type                            |
+|--------------------------------------|
+| application/vnd.lime.location+json | 
 
 Allows sending and receiving geographic information.
 

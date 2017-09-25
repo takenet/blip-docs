@@ -1,7 +1,7 @@
 ### Payment Invoice Status
-| MIME type                            | C#                                   |
-|--------------------------------------|--------------------------------------|
-| application/vnd.lime.invoice-status+json | [Lime.Messaging.Contents.InvoiceStatus](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Messaging/Contents/InvoiceStatus.cs) |
+| MIME type                            |
+|--------------------------------------|
+| application/vnd.lime.invoice-status+json |
 
 Message received when there are changes in the payment status.
 

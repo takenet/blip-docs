@@ -1,7 +1,7 @@
 ### User input
-| MIME type                            | C#                                   |
-|--------------------------------------|--------------------------------------|
-| application/vnd.lime.input+json      | [Lime.Messaging.Contents.Input](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Messaging/Contents/Input.cs) |
+| MIME type                            |
+|--------------------------------------|
+| application/vnd.lime.input+json      |
 
 Allows send structured information request to the user, where is possible to define validations rules. This is useful to build questions forms or get specific user information like name, phone number or typed information like an image or location. The execution of validation rules depends of channel support.
 

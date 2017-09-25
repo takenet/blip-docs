@@ -1,7 +1,7 @@
 ## Chat state
-| MIME type                                 | C#                                        |
-|-------------------------------------------|-------------------------------------------|
-| application/vnd.lime.chatstate+json | [Lime.Messaging.Contents.ChatState](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Messaging/Contents/ChatState.cs) |
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.lime.chatstate+json |
 
 Allows sending and receiving the information about the conversation current status. Possible status are:
 

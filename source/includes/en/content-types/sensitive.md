@@ -1,8 +1,8 @@
 ### Sensitive information
 
-| MIME type                            | C#                                 |
-|--------------------------------------|------------------------------------|
-| application/vnd.lime.sensitive+json  | [Lime.Messaging.Contents.SensitiveContainer](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Messaging/Contents/SensitiveContainer.cs) |
+| MIME type                            |
+|--------------------------------------|
+| application/vnd.lime.sensitive+json  |
 
 Wraps a message content in order to signal that the information is confidential or sensitive. In this case, the server will not store the message content in any moment. The wrapped content can be of any available BLiP type.
 

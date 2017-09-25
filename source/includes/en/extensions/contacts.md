@@ -27,9 +27,9 @@
 }
 ```
 
-| Address               | Base URI     | C#              |
-|-----------------------|--------------|-----------------|
-| postmaster@msging.net (default address - not required)) | /contacts | [ContactExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/Contacts/ContactExtension.cs) |
+| Address               | Base URI     |
+|-----------------------|--------------|
+| postmaster@msging.net (default address - not required)) | /contacts |
 
 The **contacts** extension allows the management of the chatbot's roster, which can be used to store data of the chatbot clients. It is possible to save information like name, address, gender and other generic information, using the `extras` property. It is also possible to use the contacts fields as variables of the messages sent by the chatbot. This property only allows `string` values and does not allows complex objects. You can also set the `group` property for contacts organization. Events which the `identity` property is from a special group called 'testers' will be ignored on BLiP events dashboard.
 

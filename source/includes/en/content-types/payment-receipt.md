@@ -1,7 +1,7 @@
 ### Payment receipt
-| MIME type                            | C#                                   |
-|--------------------------------------|--------------------------------------|
-| application/vnd.lime.payment-receipt+json | [Lime.Messaging.Contents.PaymentReceipt](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Messaging/Contents/PaymentReceipt.cs) |
+| MIME type                            |
+|--------------------------------------|
+| application/vnd.lime.payment-receipt+json |
 
 Allows send a payment receipt to a customer
 

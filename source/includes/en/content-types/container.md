@@ -1,8 +1,8 @@
 ### Container
 
-| MIME type                            | C#                                 |
-|--------------------------------------|------------------------------------|
-| application/vnd.lime.container+json | [Lime.Protocol.DocumentContainer](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Protocol/DocumentContainer.cs) |
+| MIME type                            |
+|--------------------------------------|
+| application/vnd.lime.container+json | |
 
 Encapsulates a JSON content with its MIME type declaration, allowing sending different contents in composite types, such as **collection**. For this reason, there is no need to use this type individually.
 

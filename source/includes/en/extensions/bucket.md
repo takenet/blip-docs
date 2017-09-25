@@ -76,9 +76,9 @@
 }
 ```
 
-| Address               | Base URI     | C#              |
-|-----------------------|--------------|-----------------|
-| postmaster@msging.net (default address - not required) | /buckets | [BucketExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/Bucket/BucketExtension.cs) |
+| Address               | Base URI     |
+|-----------------------|--------------|
+| postmaster@msging.net (default address - not required) | /buckets |
 
 The **bucket** extension allows the storage of documents in the server on a isolated chatbot's container. This extensions is useful to store information about the clients that have interacted with the chatbot, like preferences and navigation state.
 

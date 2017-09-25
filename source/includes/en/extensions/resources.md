@@ -68,9 +68,9 @@
 ```
 
 
-| Endereço              | Base URI     | C#              |
-|-----------------------|--------------|------------------
-| postmaster@msging.net (default address - not required) | /resources | [ResourceExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/Resource/ResourceExtension.cs) |
+| Address              | Base URI     |
+|-----------------------|--------------|
+| postmaster@msging.net (default address - not required) | /resources |
 
 The **resources** extension allows the storage of documents in the server in an isolated space for each chatbot, similar to the **storage** extension. The main difference is that these documents can be mapped as **contents** for messages sent to the chatbot destinations, thought the resource **key**. This means that the chatbot developer can choose to **store the content of his messages in the server** instead of keeping they on the chatbot side.
 

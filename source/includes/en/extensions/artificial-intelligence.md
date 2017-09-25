@@ -423,9 +423,9 @@
 ```
 
 
-| Address                         | C#                                 |
-|---------------------------------|------------------------------------|
-| postmaster@ai.msging.net        | [ArtificialIntelligenceExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/ArtificialIntelligence/ArtificialIntelligenceExtension.cs) |
+| Address                         |
+|---------------------------------|
+| postmaster@ai.msging.net        |
 
 The  **Artificial Intelligence** extension allows the creation, training and publication of artificial intelligence models in the providers associated with chatbot, besides performing sentence analysis to identify intentions and entities. The configuration of the chatbot providers is done through the **Artificial Intelligence**  menu in the [BLiP portal] (https://portal.blip.ai).
 

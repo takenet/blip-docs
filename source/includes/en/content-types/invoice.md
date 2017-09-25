@@ -1,7 +1,7 @@
 ### Payment Invoice
-| MIME type                            | C#                                   |
-|--------------------------------------|--------------------------------------|
-| application/vnd.lime.invoice+json | [Lime.Messaging.Contents.Invoice](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Messaging/Contents/Invoice.cs) |
+| MIME type                            |
+|--------------------------------------|
+| application/vnd.lime.invoice+json |
 
 Allows sending a payment request to a payment channel.
 

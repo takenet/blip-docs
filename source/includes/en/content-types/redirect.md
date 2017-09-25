@@ -1,7 +1,7 @@
 ## Redirect
-| MIME type                          |  C#                                 |
-|------------------------------------|-------------------------------------|
-| application/vnd.lime.redirect+json | [Lime.Messaging.Contents.Redirect](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Messaging/Contents/Redirect.cs) |
+| MIME type                          |
+|------------------------------------|
+| application/vnd.lime.redirect+json |
 
 Allows the redirection of a particular chatbot conversation to a new address. In practice, makes possible the **handover** of a conversation between different chatbots, which can be of any template (FAQ, Human Operator) or SDK / Webhooks.
 

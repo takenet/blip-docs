@@ -197,9 +197,9 @@
 ```
 
 
-| Address               | Base URI     |  C#              |
-|-----------------------|--------------|------------------|
-| postmaster@msging.net (default address - not required) | /profile | [ProfileExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/Profile/ProfileExtension.cs) |
+| Address               | Base URI     |
+|-----------------------|--------------|
+| postmaster@msging.net (default address - not required) | /profile |
 
 The **profile** extension allows the configuration of chatbot profile properties, which can reflect to the clients in the published channel - if supported. Each property is a document of a type supported by the platform.
 

@@ -1,7 +1,7 @@
 ### Menu
-| MIME type                                 | C#                                        |
-|-------------------------------------------|-------------------------------------------|
-| application/vnd.lime.select+json | [Lime.Messaging.Contents.Select](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Messaging/Contents/Select.cs) |
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.lime.select+json |
 
 Allows sending an text menu to customers to make a choice. It is possible to define a document that may be delivered to the chatbot when the customer selects an option - depending on the channel support. The options can also be optionally numbered.
 

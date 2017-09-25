@@ -93,9 +93,9 @@
 }
 ```
 
-| Address                      | Base URI      |  C#             |
-|------------------------------|---------------|-----------------|
-| postmaster@tunnel.msging.net | N/A           | [TunnelExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/Tunnel/TunnelExtension.cs) |
+| Address                      | Base URI      |
+|------------------------------|---------------|
+| postmaster@tunnel.msging.net | N/A           |
 
 
 

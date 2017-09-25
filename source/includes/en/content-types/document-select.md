@@ -1,7 +1,7 @@
 ### Multimedia menu
-| MIME type                                 | C#                                        |
-|-------------------------------------------|-------------------------------------------|
-| application/vnd.lime.document-select+json | [Lime.Messaging.Contents.DocumentSelect](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Messaging/Contents/DocumentSelect.cs) |
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.lime.document-select+json |
 
 Allows sending an options menu to customers where the header and options can be of any content type such as **media link** or **web link** and not only **text** - like in the *Select* type. For each option, it is possible to define a document that is delivered to the contact when the customer performs a choice (depending on the channel support).
 

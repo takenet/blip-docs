@@ -54,9 +54,9 @@
 
 
 
-| Address                      | Base URI      |  C#                     |
-|------------------------------|---------------|-------------------------|
-| `postmaster@<FQDN do canal>` | `lime://<FQDN of the channel>/accounts/<Client identifier>` | [DirectoryExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/Directory/DirectoryExtension.cs) |
+| Address                      | Base URI      |
+|------------------------------|---------------|
+| `postmaster@<FQDN do canal>` | `lime://<FQDN of the channel>/accounts/<Client identifier>` |
 
 The **directory** extension allows quering information about the customers, like name, photo and other personal information. The query command should be sent directly to the client's channel `postmaster`, using an special **URI**.
 
