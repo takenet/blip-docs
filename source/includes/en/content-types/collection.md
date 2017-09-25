@@ -11,7 +11,7 @@ Allows sending **multiple contents** of the same type in a single message. Some 
 
 1 – A **text** collection
 
-```json
+```http
 {
 	"to": "553199990000@0mn.io",
 	"type": "application/vnd.lime.collection+json",
@@ -27,7 +27,7 @@ Allows sending **multiple contents** of the same type in a single message. Some 
 ```
 
 2 - A different types collection, using **container**
-```json
+```http
 {
 	"to": "553199990000@0mn.io",
 	"type": "application/vnd.lime.collection+json",
@@ -65,7 +65,7 @@ Allows sending **multiple contents** of the same type in a single message. Some 
 ```
 
 3 - A **multimedia menu** collection
-```json
+```http
 {
     "id": "5",
     "to": "1042221589186385@messenger.gw.msging.net",

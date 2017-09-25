@@ -11,7 +11,7 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 
 #### Example
 Menu with numbered options
-```json
+```http
 {
     "id":"311F87C0-F938-4FF3-991A-7C5AEF7771A5",
     "to":"1042221589186385@messenger.gw.msging.net",
@@ -48,7 +48,7 @@ When the user selects one option, a message returns according to the rule:
 Return example of the above mentioned menu:
 
 When selecting the first option:
-```json
+```http
 {
     "id": "f8cf7a7a-be4f-473a-8516-60d55534b5a6",
     "from": "1042221589186385@messenger.gw.msging.net",
@@ -58,7 +58,7 @@ When selecting the first option:
 }
 ```
 When selecting the second option:
-```json
+```http
 {
     "id": "76CB408D-39E6-4212-8AA1-7435B42A6993",
     "from": "1042221589186385@messenger.gw.msging.net",
@@ -68,7 +68,7 @@ When selecting the second option:
 }
 ```
 Least, when selecting the third option:
-```json
+```http
 {
     "id": "035E675C-D25B-437D-80BD-057AD6F70671",
     "from": "1042221589186385@messenger.gw.msging.net",

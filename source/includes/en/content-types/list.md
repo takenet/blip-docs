@@ -7,7 +7,7 @@ Allows send a list of different documents on a single message. Is also possible 
 
 #### Examples
 1 - Sending a list with a **weblink** header to a Messenger user:
-```json
+```http
 {  
   "id":"1",
   "to":"123129898129832@msging.gw.msging.net",

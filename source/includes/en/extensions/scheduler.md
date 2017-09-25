@@ -1,7 +1,7 @@
 
 ## Scheduler
 
-```json
+```http
 // Examples
 //1 - Scheduling a message to the 2016-07-25 17:50 GMT 0 date:
 

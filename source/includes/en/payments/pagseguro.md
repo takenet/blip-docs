@@ -11,7 +11,7 @@ The order recipient’s address shall be the recipient’s identifier.
 
 In order to provide permissions requested by extension, it is necessary to send a delegation command:
 
-```json
+```http
 {  
   "id": "1",
   "method": "set",
@@ -27,7 +27,7 @@ In order to provide permissions requested by extension, it is necessary to send 
 ```
 Answer on success case:
 
-```json
+```http
 {
   "id": "1",
   "from": "postmaster@msging.net/#irismsging1",
@@ -41,7 +41,7 @@ Answer on success case:
 
 Sending a payment request to a Facebook Messenger user, with [PagSeguro](./#/docs/payments/pagseguro):
 
-```json
+```http
 {
     "id": "2",
     "to": "1042221589186385%40messenger.gw.msging.net@pagseguro.gw.msging.net",
@@ -65,7 +65,7 @@ Sending a payment request to a Facebook Messenger user, with [PagSeguro](./#/doc
 
 PagSeguro will generate a transaction which will be automatically sent to user `1042221589186385@messenger.gw.msging.net` as a [web link](./#/docs/content-types/web-link), the message identifier will be the same as the payment request’s. 
 
-```json
+```http
 {
     "id": "2",
     "to": "1042221589186385@messenger.gw.msging.net",
@@ -80,7 +80,7 @@ PagSeguro will generate a transaction which will be automatically sent to user `
 
 When there is payment status change (for example: user has payed), a [payment status](./#/docs/content-types/invoice-status) message will be sent to the chatbot, the message identifier will be the same as the original payment request’s.
 
-```json
+```http
 {
     "id": "2",
     "from": "1042221589186385%40messenger.gw.msging.net@pagseguro.gw.msging.net",
@@ -97,7 +97,7 @@ When there is payment status change (for example: user has payed), a [payment st
 
 After receiving the payment, the chatbot may optionally send a [payment receipt](./#/docs/content-types/payment-receipt) to customer. 
 
-```json
+```http
 {
     "id": "3",
     "to": "1042221589186385@messenger.gw.msging.net",

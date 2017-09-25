@@ -1,6 +1,6 @@
 ## Resources
 
-```json
+```http
 //Examples
 //1 - Storing a resource of type **media link** with the key **xyz1234**:
 {  

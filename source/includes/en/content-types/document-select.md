@@ -8,7 +8,7 @@ Allows sending an options menu to customers where the header and options can be 
 #### Examples
 
 1 - Menu with image in the header and a link and text as options:
-```json
+```http
 {
     "id": "1",
     "to": "1042221589186385@messenger.gw.msging.net",
@@ -52,7 +52,7 @@ Allows sending an options menu to customers where the header and options can be 
 ```
 
 2 - Getting the location of a Messenger user:
-```json
+```http
 {
     "id": "2",
     "to": "1042221589186385@messenger.gw.msging.net",

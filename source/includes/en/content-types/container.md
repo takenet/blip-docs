@@ -9,7 +9,7 @@ Encapsulates a JSON content with its MIME type declaration, allowing sending dif
 #### Example
 
 A collection of different types, utilizing **container**
-```json
+```http
 {
 	"to": "553199990000@0mn.io",
 	"type": "application/vnd.lime.collection+json",

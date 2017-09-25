@@ -1,6 +1,6 @@
 ## Event analysis
 
-```json
+```http
 /*-----EXAMPLES-----*/
 
 /* 1 - Registering an event: */
@@ -109,7 +109,7 @@ Available *querystring* filters:
 | startDate    | Initial date to seach for events          |
 | endDate      | Limit date to retrieve the events         |
 
-```json
+```http
 {  
   "id": "4",
   "method": "get",
@@ -118,7 +118,7 @@ Available *querystring* filters:
 ```
 
 
-```json
+```http
 /*Response on success:*/
 {
   "id": "4",
@@ -157,7 +157,7 @@ Available *querystring* filters:
 | endDate      | Limit date to retrieve the events         |
 
 
-```json
+```http
 {  
   "id": "5",
   "method": "get",
@@ -166,7 +166,7 @@ Available *querystring* filters:
 ```
 
 
-```json
+```http
 /*Response on success:*/
 
 {

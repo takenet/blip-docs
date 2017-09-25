@@ -190,6 +190,12 @@ html, body {
     background-color: $nav-subitem-bg;
   }
 
+  .toc-list-h3 {
+    display: none;
+    background-color: $nav-subitem-bg;
+    margin-left: 30px;
+  }
+
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
     font-size: 15px;
@@ -361,7 +367,7 @@ html, body {
   }
 
   // the div is the tocify hidden div for placeholding stuff
-  &>h1, &>h2, &>div {
+  &>h1, &>h2, &>h3, &>div {
     clear:both;
   }
 

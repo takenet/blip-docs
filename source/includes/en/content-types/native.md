@@ -10,7 +10,7 @@ Note that for a **multi channel** chatbot the responsability of send the correct
 #### Examples
 
 1 - Sending a Messenger **[text](https://developers.facebook.com/docs/messenger-platform/send-api-reference/)** message:
-```json
+```http
 {  
   "id":"1",
   "to":"949839515125748@messenger.gw.msging.net",
@@ -21,7 +21,7 @@ Note that for a **multi channel** chatbot the responsability of send the correct
 }
 ```  
 2 - Sending an **[airline boardingpass template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/airline-boardingpass-template)** message type to Messenger:
-```json
+```http
 {  
   "id":"2",
   "to":"949839515125748@messenger.gw.msging.net",

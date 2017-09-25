@@ -1,6 +1,6 @@
 ## Broadcast
 
-```json
+```http
 //Examples
 //1 - Creating a distribution list
 {  

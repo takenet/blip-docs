@@ -2,7 +2,7 @@
 
 > Sending a resource message with the **welcome-message** identifier:
 
-```json
+```http
 {
     "id": "1",
     "to": "1042221589186385@messenger.gw.msging.net",
@@ -14,7 +14,7 @@
 ```
 > In case there is a resource with this key, the server replaces the content and forward to the destination. Imagining that the resource with **welcome-message** key is a `text/plain` document with value `Welcome to our service`, the final message would be like this:
 
-```json
+```http
 {
     "id": "1",
     "to": "1042221589186385@messenger.gw.msging.net",
@@ -37,7 +37,7 @@ For example, imagine that the resource in the `welcome-message` key has the valu
 
 > Request
 
-```json
+```http
 {
     "id": "1",
     "to": "1042221589186385@messenger.gw.msging.net",
@@ -55,7 +55,7 @@ The final message will be:
 
 > Response
 
-```json
+```http
 {
     "id": "1",
     "to": "1042221589186385@messenger.gw.msging.net",
