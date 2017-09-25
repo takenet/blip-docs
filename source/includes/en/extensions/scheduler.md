@@ -1,8 +1,7 @@
 ## Schedule
 
-| Address                         | Base URI     | C#               |
-|---------------------------------|--------------|------------------|
-| postmaster@scheduler.msging.net | /schedules   | [SchedulerExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/Scheduler/SchedulerExtension.cs) |
+| Address                         | Base URI     |
+|---------------------------------|--------------|
 
 The **scheduler** extensions allows the chatbot to schedule messages to be sent in specific date and time on its behalf. Any type of message to any destination can be scheduled, including **broadcast** messages (to a distribution list). The scheduling time must be done in the GMT timezone. Any received notification from a scheduled message is forwarded to the chatbot.
 
@@ -68,7 +67,7 @@ Content-Type: application/json
 | method    | The command verb   |
 | status    | The current status of the command (success or failed).   |
 | type | The type of the resource. |
-| resource | The document scheduled. |
+| resource | The document schedule. |
 
 ### Set
 
