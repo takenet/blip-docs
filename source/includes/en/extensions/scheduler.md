@@ -62,6 +62,10 @@ Content-Type: application/json
 
 | Name | Description |
 |---------------------------------|--------------|
+| id    | Unique identifier of the command.   |
+| from    | The node that is sending you the command.   |
+| to    | The destination of the command.   |
+| method    | The command verb   |
 | status    | The current status of the command (success or failed).   |
 | type | The type of the resource. |
 | resource | The document scheduled. |
