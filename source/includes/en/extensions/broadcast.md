@@ -112,9 +112,9 @@
 ```
 
 
-| Address                         | Base URI     | C#                     |
-|---------------------------------|--------------|------------------------|
-| postmaster@broadcast.msging.net | /lists       | [BroadcastExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/Broadcast/BroadcastExtension.cs) |
+| Address                         | Base URI     |
+|---------------------------------|--------------|
+| postmaster@broadcast.msging.net | /lists       |(https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/Broadcast/BroadcastExtension.cs) |
 
 The **broadcast** extension allows creation and management of distribution lists and their members for sending messages to multiple destinations simultaneously. 
 

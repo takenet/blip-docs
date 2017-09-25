@@ -1,4 +1,4 @@
-# Introduction
+
 
 Welcome to **Blip Messaging Hub**! We will introduce the basics of the platform to help you build your chatbot.
 
