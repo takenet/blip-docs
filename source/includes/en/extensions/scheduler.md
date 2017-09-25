@@ -15,6 +15,7 @@ Getting an existing scheduled message with id ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 
 {  
   "id": "75c1621e-350c-4e85-8854-3e2cf3abbc3a",
@@ -77,6 +78,7 @@ Scheduling a message text/plain with the content 'Scheduling test' to be sent to
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 
 {  
   "id": "1",
