@@ -17,17 +17,17 @@ includes:
 search: true
 ---
 
-# PagSeguro (payments)
+## PagSeguro (Payments)
 
-<!-- | FQDN                     | Identifier type                  | 
+| FQDN                     | Identifier type                  | 
 |--------------------------|----------------------------------------|
 | @pagseguro.gw.msging.net | Identity ([name and original channel domain]|(./#/docs/concepts/addressing)) on [URL encoded] format
-(http://www.w3schools.com/tags/ref_urlencode.asp) |                           | -->
+(http://www.w3schools.com/tags/ref_urlencode.asp) |                           |
 
 
 **PagSeguro** is the [UOL's payments channel](https://pagseguro.uol.com.br/) to receive and send payments with flexibility and safety.
 
-###Payment Request
+### Payment Request
 
 ```json
 /*Payment Request Example*/

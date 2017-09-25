@@ -1,23 +1,9 @@
-### Chatbot profile
-| Address               | Base URI     |  C#              |
-|-----------------------|--------------|------------------|
-| postmaster@msging.net (default address - not required) | /profile | [ProfileExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/Profile/ProfileExtension.cs) |
+## Chatbot profile
 
-The **profile** extension allows the configuration of chatbot profile properties, which can reflect to the clients in the published channel - if supported. Each property is a document of a type supported by the platform.
-
-The current supported profile properties are:
-
-| Name             | Identifier        | Document type     | Supported channels  |
-|------------------|-------------------|-------------------|---------------------|
-| Start button     | `get-started`     | Text              | Messenger           |
-| Greeting message | `greeting`        | Text              | Messenger           |
-| Persistent menu  | `persistent-menu` | Multimedia menu   | Messenger           |
-
-Note: In Messenger, the value of `get-started` must be defined before the value of `persistent-menu`.
-
-#### Examples
-1 - Setting the greeting message:
 ```json
+// Examples
+//1 - Setting the greeting message:
+
 {  
   "id": "1",
   "method": "set",
@@ -25,9 +11,8 @@ Note: In Messenger, the value of `get-started` must be defined before the value 
   "type": "text/plain",
   "resource": "Hello and welcome to our service!"
 }
-```
-Response on success:
-```json
+//Response on success:
+
 {
   "id": "1",
   "from": "postmaster@msging.net/#irismsging1",
@@ -35,10 +20,9 @@ Response on success:
   "method": "set",
   "status": "success"
 }
-```
 
-2 - Setting a persistent menu with three options:
-```json
+//2 - Setting a persistent menu with three options:
+
 {  
   "id": "2",
   "method": "set",
@@ -67,9 +51,8 @@ Response on success:
     ]
   }
 }
-```
-Response on success:
-```json
+//Response on success:
+
 {
   "id": "2",
   "from": "postmaster@msging.net/#irismsging1",
@@ -77,11 +60,10 @@ Response on success:
   "method": "set",
   "status": "success"
 }
-```
 
 
-3 - Setting a complex persistent menu, with submenus and web links:
-```json
+//3 - Setting a complex persistent menu, with submenus and web links:
+
 {  
   "id": "3",
   "method": "set",
@@ -166,9 +148,8 @@ Response on success:
     ]
   }
 }
-```
-Response on success:
-```json
+//Response on success:
+
 {
   "id": "3",
   "from": "postmaster@msging.net/#irismsging1",
@@ -176,9 +157,8 @@ Response on success:
   "method": "set",
   "status": "success"
 }
-```
-4 - Setting the start button:
-```json
+//4 - Setting the start button:
+
 {  
   "id": "4",
   "method": "set",
@@ -186,9 +166,8 @@ Response on success:
   "type": "text/plain",
   "resource": "Start now"
 }
-```
-Response on success:
-```json
+//Response on success:
+
 {
   "id": "4",
   "from": "postmaster@msging.net/#irismsging1",
@@ -196,18 +175,16 @@ Response on success:
   "method": "set",
   "status": "success"
 }
-```
 
-5 - Getting the current greeting message:
-```json
+//5 - Getting the current greeting message:
+
 {  
   "id": "5",
   "method": "get",
   "uri": "/profile/greeting"  
 }
-```
-Response on success:
-```json
+//Response on success:
+
 {
   "id": "5",
   "from": "postmaster@msging.net/#irismsging1",
@@ -218,4 +195,22 @@ Response on success:
   "resource": "Hello and welcome to our service!"
 }
 ```
+
+
+| Address               | Base URI     |  C#              |
+|-----------------------|--------------|------------------|
+| postmaster@msging.net (default address - not required) | /profile | [ProfileExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/Profile/ProfileExtension.cs) |
+
+The **profile** extension allows the configuration of chatbot profile properties, which can reflect to the clients in the published channel - if supported. Each property is a document of a type supported by the platform.
+
+The current supported profile properties are:
+
+| Name             | Identifier        | Document type     | Supported channels  |
+|------------------|-------------------|-------------------|---------------------|
+| Start button     | `get-started`     | Text              | Messenger           |
+| Greeting message | `greeting`        | Text              | Messenger           |
+| Persistent menu  | `persistent-menu` | Multimedia menu   | Messenger           |
+
+Note: In Messenger, the value of `get-started` must be defined before the value of `persistent-menu`.
+
 

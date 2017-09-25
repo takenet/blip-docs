@@ -1,4 +1,32 @@
-### Contacts
+## Contacts
+
+```json
+// Examples
+//1 - Sending a message including the contact name:
+
+{  
+  "id": "1",
+  "to": "11121023102013021@messenger.gw.msging.net",
+  "type": "text/plain",
+  "value": "Hello ${contact.name}, welcome to the ${contact.extras.plan} plan!",
+  "metadata": {
+    "#message.replaceVariables": "true"
+  }
+}
+
+//In this example, the final message which will be sent to the customer is:
+
+{  
+  "id": "1",
+  "to": "11121023102013021@messenger.gw.msging.net",
+  "type": "text/plain",
+  "value": "Hello John Doe, welcome to the Gold plan!",
+  "metadata": {
+    "#message.replaceVariables": "true"
+  }
+}
+```
+
 | Address               | Base URI     | C#              |
 |-----------------------|--------------|-----------------|
 | postmaster@msging.net (default address - not required)) | /contacts | [ContactExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/Contacts/ContactExtension.cs) |
@@ -7,9 +35,10 @@ The **contacts** extension allows the management of the chatbot's roster, which 
 
 For more information about the supported fields, please refer to the [Lime protocol](http://limeprotocol.org/resources.html#contact) documentation.
 
-#### Examples
-1 - Adding a Messenger contact:
 ```json
+// Examples
+//#1 - Adding a Messenger contact:
+
 {  
   "id": "1",
   "method": "set",
@@ -26,9 +55,8 @@ For more information about the supported fields, please refer to the [Lime proto
     }
   }
 }
-```
-Response on success:
-```json
+//Response on success:
+
 {
   "id": "1",
   "from": "postmaster@msging.net/#irismsging1",
@@ -36,19 +64,17 @@ Response on success:
   "method": "set",
   "status": "success"
 }
-```
 
-2 - Getting a contact:
-```json
+//2 - Getting a contact:
+
 {  
   "id": "2",
   "method": "get",
   "uri": "/contacts/11121023102013021@messenger.gw.msging.net"
 }
-```
 
-Response on success:
-```json
+//Response on success:
+
 {
   "id": "2",
   "from": "postmaster@msging.net/#irismsging1",
@@ -67,18 +93,16 @@ Response on success:
     }
   }  
 }
-```
 
-3 - Getting 3 contacts in the roster with paging:
-```json
+//3 - Getting 3 contacts in the roster with paging:
+
 {  
   "id": "3",
   "method": "get",
   "uri": "/contacts?$skip=0&$take=3"
 }
-```
-Response on success:
-```json
+//Response on success:
+
 {
   "id": "3",
   "from": "postmaster@msging.net/#irismsging1",
@@ -102,29 +126,4 @@ Response on success:
 
 The contacts fields can be used to replace variables on messages sent by the chatbot. To active the replacement in a message, the `metadata` key `#message.replaceVariables` should be present with the value `true` and the message text should have variables in the  `${contact.<propertyName>}` format, where `<propertyName>` is the contact property for replacement. It is possible to use all fields from the contact, including the keys in the `extras` property. In this case, is only required to use the `${contact.extras.<extraPropertyName>}` convention, where `<extraPropertyName>` is the value for replacement. If the value is not available, it is only removed from the message.
 
-#### Examples
 
-1 - Sending a message including the contact name:
-```json
-{  
-  "id": "1",
-  "to": "11121023102013021@messenger.gw.msging.net",
-  "type": "text/plain",
-  "value": "Hello ${contact.name}, welcome to the ${contact.extras.plan} plan!",
-  "metadata": {
-    "#message.replaceVariables": "true"
-  }
-}
-```
-In this example, the final message which will be sent to the customer is:
-```json
-{  
-  "id": "1",
-  "to": "11121023102013021@messenger.gw.msging.net",
-  "type": "text/plain",
-  "value": "Hello John Doe, welcome to the Gold plan!",
-  "metadata": {
-    "#message.replaceVariables": "true"
-  }
-}
-```

@@ -1,24 +1,22 @@
-### Chat history
+## Chat history
 | Address               | Base URI     | C#                 |
 |-----------------------|--------------|--------------------|
 | postmaster@msging.net (default address - not required) | /threads | [ThreadExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/Threads/ThreadExtension.cs) |
 
 The **chat history** extension allows the chatbot to retrieve the last threads and messages exchanged with the customers.
 
-#### Examples
-1 - Retrieving the most recent threads:
-
 ```json
+//Examples
+//1 - Retrieving the most recent threads:
+
 {  
   "id": "0094447a-2581-4597-be6a-a5dff33af156",
   "method": "get",
   "uri": "/threads"
 }
-```
 
-Response on success:
+//Response on success:
 
-```json
 {
   "method": "get",
   "status": "success",
@@ -57,21 +55,17 @@ Response on success:
     ]
   }
 }
-```
 
-2 - Retrieving the last messages of a thread:
+//2 - Retrieving the last messages of a thread:
 
-```json
 {  
   "id": "0094447a-2581-4597-be6a-a5dff33af156",
   "method": "get",
   "uri": "/threads/1180740631991418@messenger.gw.msging.net"
 }
-```
 
-Response on success:
+//Response on success:
 
-```json
 {
   "method": "get",
   "status": "success",

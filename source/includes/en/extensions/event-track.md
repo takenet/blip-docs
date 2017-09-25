@@ -1,5 +1,4 @@
-### Event analysis
-
+## Event analysis
 
 ```json
 /*-----EXAMPLES-----*/
@@ -15,9 +14,8 @@
     "action": "payment"
   }
 }
-```
 
-```json
+
 {
   /*Response on success:*/
   "method": "set",
@@ -26,9 +24,8 @@
   "from": "postmaster@msging.net/#irismsging1",
   "to": "contact@msging.net/default"
 }
-```
 
-```json
+
 /*2 - Registering an event passing identity:*/
 {  
   "id": "9494447a-2581-4597-be6a-a5dff33af156",
@@ -41,9 +38,7 @@
     "identity": "123456@messenger.gw.msging.net",
   }
 }
-```
 
-```json
 /*Response on success:*/
 {
   "method": "set",
@@ -52,19 +47,17 @@
   "from": "postmaster@msging.net/#irismsging1",
   "to": "contact@msging.net/default"
 }
-```
 
 
-```json
+
 /*3 - Retrieving stored event categories:*/
 {  
   "id": "3",
   "method": "get",
   "uri": "/event-track"
 }
-```
 
-```json
+
 /*Response on success:*/
 {  
   "id": "3",
@@ -84,6 +77,8 @@
   }
 }
 ```
+
+
 
 | Address               | Base URI     |  C#                 |
 |-----------------------|--------------|---------------------|

@@ -30,11 +30,10 @@ includes:
   - en/content-types/chatstate
   - en/content-types/resource
   - en/content-types/redirect
-  ##
-  - --Teste
-  - en/extensions/teste
+
   ##
   - --Extensions
+  - en/extensions
   - en/extensions/event-track
   - en/extensions/scheduler
   - en/extensions/broadcast
