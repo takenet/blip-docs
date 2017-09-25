@@ -71,7 +71,7 @@ Content-Type: application/json
 | type | The type of the resource. |
 | resource | The document schedule. |
 
-### Set
+### Create
 
 Scheduling a message text/plain with the content 'Scheduling test' to be sent to the user **destination@msging.net** in **2016-07-25T17:50:00.000Z**
 
