@@ -4,7 +4,6 @@ title: API Reference
 language_tabs: # must be one of https://git.io/vQNgJ
   - csharp: C#
   - javascript: JavaScript
-  - json: JSON
   - http: HTTP
 
 toc_footers:

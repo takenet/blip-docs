@@ -47,11 +47,21 @@ Content-Length: 131
 }
 ```
 
-In order to send messages and notifications use an instance of `ISender` (on C#), wich is automaticaly injected on constructors of registered `receivers` defined on project and on `Startup` class.
+O envio de mensagens é específico da **linguagem** que você pretende trabalhar. 
 
-With C#, the process of send message is asynchronous and the status of sent messages is delivered to application by **notifications**.
+Com o `SDK C#` o envio de mensagens é usado utilizando uma instância do **ISender**, que é injetada automaticamente
+nos construtores dos receivers registrados no projeto, alem da classe Startup.
 
-`ISender` interface also enable send **commands** to the server, as the follow sample:
+Com o `SDK Javascript` O envio de mensagens e notificações só é possível após o estabelecimento da sessão. o cliente é conectado com uma chave de acesso e após a realização da conexão é realizado o envio de uma mensagem através do método **sendMessage**
+
+No `Webhook` para enviar mensagens, a aplicação deverá fazer um HTTP **POST** na URL exibida nas configurações do chatbot. A requisição deve conter um cabeçalho de autorização 
+(Authorization) com o tipo Key, conforme exibido nas configurações do chatbot. 
+
+**Veja ao lado exemplos**
+
+
+
+
 
 ### Receiving messages
 
@@ -87,14 +97,11 @@ var removeJsonReceiver = client.addMessageReceiver("application/json", handleJso
 removeJsonReceiver();
 ```
 
-The receipt of messages and notifications is done using the interfaces `IMessageReceiver` and `INotificationReceiver` respectively.
+O recebimento de mensagens e notificações com o `SDK C#` é feito através das interfaces do **IMessageReceiver** e INotificationReceiver respectivamente. Ao lado
+veja as definições de ambos.
 
-Some important notes:
+Com o `SDK Javascript` o recebimento pelo cliente se dá através do registro de **receivers** para mensagens e notificações. É possível definir filtros para cada receiver no momento do registro.
 
-- Before the `ReceiveAsync` method be executed, a notification of `Event.Received` type is automatically sent to originator of message.
-- After `ReceiveAsync` method be executed, if no one exception occur, a notification of type `Event.Consumed` is automatically sent to originator of message.
-- If some exception occur on `ReceiveAsync` method, a notificação of type `Event.Failed` is automatically sent to originator of message.
+No `Webhook`, a URL de mensagens configurada receberá um HTTP **POST** com a mensagem enviada por um cliente no formato JSON, também no formato definido pelo protocolo LIME, conforme o exemplo ao lado
 
-The notifcations are *fire-and-forget* and if occur some exception on `ReceiveAsync`, this fail will be ignored.
-
-Note: Remember to register all implementations of `INotificationReceiver` and `IMessageReceiver` on `application.json` file. For more informations check the **Configuring** section.
+Confira alguns pontos adicionais no github.
