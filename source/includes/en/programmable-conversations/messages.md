@@ -1,19 +1,16 @@
 ## Conversation messages
 
+| Address               | Base URI     |
+|-----------------------|--------------|
+| https://msging.net    | /messages    |
+
 ### Sending messages
 
-> The following sample show how to send a message after connection has been stablished
-
-```javascript
-client.connect()
-    .then(function(session) {
-        // After connection is possible send messages
-        var msg = { type: 'text/plain', content: 'Hello, world', to: '553199990000@0mn.io' };
-        client.sendMessage(msg);
-    });
-```
+> The following sample show how to send a message
 
 ```csharp
+//In order to send messages and notifications use an instance of `ISender` (on C#), wich is automaticaly injected on constructors of registered `receivers` defined on project and on `Startup` class.
+
 public class PlainTextMessageReceiver : IMessageReceiver
 {
     private readonly ISender _sender;
@@ -33,7 +30,18 @@ public class PlainTextMessageReceiver : IMessageReceiver
 }
 ```
 
+```javascript
+client.connect()
+    .then(function(session) {
+        // After connection is possible send messages
+        var msg = { type: 'text/plain', content: 'Hello, world', to: '553199990000@0mn.io' };
+        client.sendMessage(msg);
+    });
+```
+
 ```http
+Note: For this sample bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ is a valid Key for blipmessaginghubapp chatbot.
+
 POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=
@@ -47,11 +55,19 @@ Content-Length: 131
 }
 ```
 
-In order to send messages and notifications use an instance of `ISender` (on C#), wich is automaticaly injected on constructors of registered `receivers` defined on project and on `Startup` class.
+The process of sending message is asynchronous and the status of sent messages is delivered to application by **notifications**.
 
-With C#, the process of send message is asynchronous and the status of sent messages is delivered to application by **notifications**.
+For more information about messages, check the Messages documentation page or the supported content types specification.
 
-`ISender` interface also enable send **commands** to the server, as the follow sample:
+REQUEST
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the message   |
+| from   | Originator’s address   |
+| to     | Recipient’s address  |
+| type   | Statement with content type, in the MIME format |
+| content  | Message content   |
 
 ### Receiving messages
 
@@ -66,8 +82,6 @@ public class PlainTextMessageReceiver : IMessageReceiver
     }
 }
 ```
-
---
 
 ```javascript
 client.addMessageReceiver(true, (message) => {
@@ -87,14 +101,18 @@ var removeJsonReceiver = client.addMessageReceiver("application/json", handleJso
 removeJsonReceiver();
 ```
 
-The receipt of messages and notifications is done using the interfaces `IMessageReceiver` and `INotificationReceiver` respectively.
+```http
+As the notifications, all messages will be delivered as a HTTP POST request on configured chatbot messages URL. A sample of received message is presented bellow.
 
-Some important notes:
+{
+  "id": "99cf454e-f25d-4ebd-831f-e48a1c612cd4",
+  "from": "551100001111@0mn.io/4ac58r6e3",
+  "to": "blipmessaginghubapp@msging.net",
+  "type": "text/plain",
+  "content": "Help"
+}
+```
 
-- Before the `ReceiveAsync` method be executed, a notification of `Event.Received` type is automatically sent to originator of message.
-- After `ReceiveAsync` method be executed, if no one exception occur, a notification of type `Event.Consumed` is automatically sent to originator of message.
-- If some exception occur on `ReceiveAsync` method, a notificação of type `Event.Failed` is automatically sent to originator of message.
+The process of receiving messages is asynchronous. The received messages will be on the format defined on LIME Protocol.
 
-The notifcations are *fire-and-forget* and if occur some exception on `ReceiveAsync`, this fail will be ignored.
 
-Note: Remember to register all implementations of `INotificationReceiver` and `IMessageReceiver` on `application.json` file. For more informations check the **Configuring** section.
