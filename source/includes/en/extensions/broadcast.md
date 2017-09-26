@@ -1,115 +1,5 @@
 ## Broadcast
 
-```http
-//Examples
-//1 - Creating a distribution list
-{  
-  "id": "1",
-  "to": "postmaster@broadcast.msging.net",
-  "method": "set",
-  "type": "application/vnd.iris.distribution-list+json",
-  "uri": "/lists",
-  "resource": {  
-    "identity": "news@broadcast.msging.net"
-  }
-}
-
-//Response on success:
-{
-  "id": "1",
-  "from": "postmaster@broadcast.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-
-//2 - Adding a member to the existing distribution list:
-
-{  
-  "id": "2",
-  "to": "postmaster@broadcast.msging.net",
-  "method": "set",
-  "uri": "/lists/news@broadcast.msging.net/recipients",
-  "type": "application/vnd.lime.identity",
-  "resource": "551100001111@0mn.io"
-}
-
-//Response on success:
-
-{
-  "id": "2",
-  "from": "postmaster@broadcast.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-
-
-//3 - Removing a member from the existing distribution list:
-
-{  
-  "id": "3",
-  "to": "postmaster@broadcast.msging.net",
-  "method": "delete",
-  "uri": "/lists/noticias@broadcast.msging.net/recipients/551100001111@0mn.io"
-}
-
-//Response on success:
-
-{
-  "id": "3",
-  "from": "postmaster@broadcast.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-
-
-//4 - Sending a message to the distribution list:
-
-{  
-  "id": "4",
-  "to": "news@broadcast.msging.net",
-  "type": "text/plain",
-  "content": "Hello participants of this list!"
-}
-
-//Notifications sent by extension **distribution list**:
-
-{
-  "id": "4",
-  "from": "postmaster@broadcast.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "event": "received"
-}
-
-
-{
-  "id": "4",
-  "from": "postmaster@broadcast.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "event": "consumed"
-}
-
-//Notifications sent by list members to the distribution list and forwarded to the list owner (the recipient address is encoded in the notification originator instance):
-
-
-{
-  "id": "4",
-  "from": "news@broadcast.msging.net/551100001111%400mn.io%2Fdefault",
-  "to": "contact@msging.net/default",
-  "event": "received"
-}
-
-//5 - Sending a message with a replacement variable:
-
-{  
-  "id": "5",
-  "to": "news@broadcast.msging.net",
-  "type": "text/plain",
-  "content": "Hello ${contact.name}, come to check out our prices!"
-}
-```
 
 
 | Address                         | Base URI     |
@@ -146,3 +36,178 @@ The Broadcast service is available in the following domains:
 |Skype      |x          |Needed initial user interaction with chatbot           |
 |SMS        |x          |Not necessary initial user interaction with chatbot    |
 |Telegram   |x          |Needed initial user interaction with chatbot           |
+
+
+###Create a List
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+{  
+  "id": "1",
+  "to": "postmaster@broadcast.msging.net",
+  "method": "set",
+  "type": "application/vnd.iris.distribution-list+json",
+  "uri": "/lists",
+  "resource": {  
+    "identity": "news@broadcast.msging.net"
+  }
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "id": "1",
+  "from": "postmaster@broadcast.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| method    | The command verb   |
+| type | The type of the resource. |
+| uri    | The command uri   |
+| resource | The broadcast document. |
+
+###Add to list
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+{  
+  "id": "2",
+  "to": "postmaster@broadcast.msging.net",
+  "method": "set",
+  "uri": "/lists/news@broadcast.msging.net/recipients",
+  "type": "application/vnd.lime.identity",
+  "resource": "551100001111@0mn.io"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "id": "2",
+  "from": "postmaster@broadcast.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| method    | The command verb   |
+| type | The type of the resource. |
+| uri    | The command uri   |
+| resource | The broadcast document. |
+
+###Remove element from list
+
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+{  
+  "id": "3",
+  "to": "postmaster@broadcast.msging.net",
+  "method": "delete",
+  "uri": "/lists/noticias@broadcast.msging.net/recipients/551100001111@0mn.io"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "id": "3",
+  "from": "postmaster@broadcast.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| method    | The command verb   |
+| type | The type of the resource. |
+| uri    | The command uri   |
+| resource | The broadcast document. |
+
+###Send message
+
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+{  
+  "id": "4",
+  "to": "news@broadcast.msging.net",
+  "type": "text/plain",
+  "content": "Hello participants of this list!"
+}
+```
+
+```http
+//Sent by extension
+POST /commands HTTP/1.1
+Content-Type: application/json
+{
+  "id": "4",
+  "from": "postmaster@broadcast.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "eve
+```
+
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "id": "4",
+  "from": "postmaster@broadcast.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "event": "consumed"
+}
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| type | The type of the resource. |
+| uri    | The command uri   |
+| content | Content of the message. |
+
+###Send message with variable
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+{  
+  "id": "5",
+  "to": "news@broadcast.msging.net",
+  "type": "text/plain",
+  "content": "Hello ${contact.name}, come to check out our prices!"
+}
+```
+
+
+
+
+
+
+
+
+
+
+

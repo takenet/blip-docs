@@ -1,8 +1,25 @@
 ## Resources
 
+| Address              | Base URI     |
+|-----------------------|--------------|
+| postmaster@msging.net (default address - not required) | /resources |
+
+The **resources** extension allows the storage of documents in the server in an isolated space for each chatbot, similar to the **storage** extension. The main difference is that these documents can be mapped as **contents** for messages sent to the chatbot destinations, thought the resource **key**. This means that the chatbot developer can choose to **store the content of his messages in the server** instead of keeping they on the chatbot side.
+
+In order to send a resource message, the developer must use the [**resource** content type](https://portal.blip.ai/#/docs/content-types/resource).
+
+The **BLiP** portal offers an resource management interface which helps in the case of editing these content, avoiding the need to update the code on the application side in case of changes in chatbot content.
+
+#### Replacement variables
+
+It is possible to use contact replacement variables in the created resources. For more information, please check the documentation of the [**Contacts** extension](https://portal.blip.ai/#/docs/extensions/contacts).
+
+###Store **media link**
+
+
 ```http
-//Examples
-//1 - Storing a resource of type **media link** with the key **xyz1234**:
+POST /commands HTTP/1.1
+Content-Type: application/json
 {  
   "id": "1",
   "method": "set",
@@ -18,8 +35,11 @@
     "previewType": "image/jpeg"
   }
 }
-//#Response on success:
+```
 
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
 {
   "id": "1",
   "from": "postmaster@msging.net/#irismsging1",
@@ -27,9 +47,27 @@
   "method": "set",
   "status": "success"
 }
+```
 
-//2 - Storing a resource of type **text/plain** with the key **help-message**:
 
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| method    | The command verb   |
+| type | The type of the resource. |
+| uri    | The command uri   |
+| resource | The event document. |
+
+
+
+
+###Store **text/plain**
+
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
 {  
   "id": "2",
   "method": "set",
@@ -37,7 +75,11 @@
   "type": "text/plain",
   "resource": "To use our services, please send a text message."
 }
-//Response on success:
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
 
 {
   "id": "2",
@@ -46,9 +88,25 @@
   "method": "set",
   "status": "success"
 }
+```
 
-//3 - Storing a resource of type **text/plain** with a replacement variable:
 
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| method    | The command verb   |
+| type | The type of the resource. |
+| uri    | The command uri   |
+| resource | The event document. |
+
+
+
+###Store **text/plain** with replacement variable
+
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
 {  
   "id": "3",
   "method": "set",
@@ -56,8 +114,11 @@
   "type": "text/plain",
   "resource": "Welcome to our service, ${contact.name}!"
 }
-//Response on success:
+```
 
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
 {
   "id": "3",
   "from": "postmaster@msging.net/#irismsging1",
@@ -67,18 +128,10 @@
 }
 ```
 
-
-| Address              | Base URI     |
-|-----------------------|--------------|
-| postmaster@msging.net (default address - not required) | /resources |
-
-The **resources** extension allows the storage of documents in the server in an isolated space for each chatbot, similar to the **storage** extension. The main difference is that these documents can be mapped as **contents** for messages sent to the chatbot destinations, thought the resource **key**. This means that the chatbot developer can choose to **store the content of his messages in the server** instead of keeping they on the chatbot side.
-
-In order to send a resource message, the developer must use the [**resource** content type](https://portal.blip.ai/#/docs/content-types/resource).
-
-The **BLiP** portal offers an resource management interface which helps in the case of editing these content, avoiding the need to update the code on the application side in case of changes in chatbot content.
-
-#### Replacement variables
-
-It is possible to use contact replacement variables in the created resources. For more information, please check the documentation of the [**Contacts** extension](https://portal.blip.ai/#/docs/extensions/contacts).
-
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| method    | The command verb   |
+| type | The type of the resource. |
+| uri    | The command uri   |
+| resource | The event document. |

@@ -59,7 +59,9 @@ language_tabs = current_page.data.language_tabs || [] %>
       </span>
     </a>
     <div class="toc-wrapper">
-      <%= image_tag "logo.png", class: 'logo' %>
+      <a href="http://blip.ai" target="_blank">
+        <%= image_tag "logo.png", class: 'logo' %>
+      </a>
       <% if language_tabs.any? %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>

@@ -1,17 +1,34 @@
 ## Directory
 
+
+| Address                      | Base URI      |
+|------------------------------|---------------|
+| `postmaster@<FQDN do canal>` | `lime://<FQDN of the channel>/accounts/<Client identifier>` |
+
+The **directory** extension allows quering information about the customers, like name, photo and other personal information. The query command should be sent directly to the client's channel `postmaster`, using an special **URI**.
+
+If the information is available, an [Account](http://limeprotocol.org/resources.html#account) document is returned. The availability and the detail level of the informations depents of the channel and the application should handle the differences appropriately.
+
+The result of directory queries are automatically stored in the **chatbot's roster**, except when there's already an entry with the same identifier in the contacts. For more information about the roster, please refer to the [extension documentation](https://portal.blip.ai/#/docs/extensions/contacts).
+
+
+###Get client info (**Messenger**)
+
+
 ```http
-// Examples
-
-//1 - Getting information about the client `1042221589186385@messenger.gw.msging.net` on **Messenger**:
-
+POST /commands HTTP/1.1
+Content-Type: application/json
 {  
   "id": "1",
   "to": "postmaster@messenger.gw.msging.net",
   "method": "get",
   "uri": "lime://messenger.gw.msging.net/accounts/1042221589186385"
 }
-//Response on success:
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
 
 {
   "id": "1",
@@ -28,16 +45,34 @@
     "timezone": -3
   }
 }
+```
 
-//2 - Getting information about the client `255600202@telegram.gw.msging.net` on **Telegram**:
 
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+
+
+
+###Get client info (**Telegram**)
+
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
 {  
   "id": "2",
   "to": "postmaster@telegram.gw.msging.net",
   "method": "get",
   "uri": "lime://telegram.gw.msging.net/accounts/255600202"
 }
-//Response on success:
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
 
 {
   "id": "2",
@@ -52,17 +87,8 @@
 }
 ```
 
-
-
-| Address                      | Base URI      |
-|------------------------------|---------------|
-| `postmaster@<FQDN do canal>` | `lime://<FQDN of the channel>/accounts/<Client identifier>` |
-
-The **directory** extension allows quering information about the customers, like name, photo and other personal information. The query command should be sent directly to the client's channel `postmaster`, using an special **URI**.
-
-If the information is available, an [Account](http://limeprotocol.org/resources.html#account) document is returned. The availability and the detail level of the informations depents of the channel and the application should handle the differences appropriately.
-
-The result of directory queries are automatically stored in the **chatbot's roster**, except when there's already an entry with the same identifier in the contacts. For more information about the roster, please refer to the [extension documentation](https://portal.blip.ai/#/docs/extensions/contacts).
-
-
-
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
