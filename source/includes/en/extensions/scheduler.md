@@ -1,17 +1,5 @@
 ## Schedule
 
-| Address                         | Base URI     |
-|---------------------------------|--------------|
-| postmaster@scheduler.msging.net | /schedules   |
-
-The **scheduler** extensions allows the chatbot to schedule messages to be sent in specific date and time on its behalf. Any type of message to any destination can be scheduled, including **broadcast** messages (to a distribution list). The scheduling time must be done in the GMT timezone. Any received notification from a scheduled message is forwarded to the chatbot.
-
-The possible `status` values are `scheduled`, `executed` and `canceled`. 
-
-### Get
-
-Getting an existing scheduled message with id ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67
-
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -50,6 +38,20 @@ Content-Type: application/json
   }
 }
 ```
+
+| Address                         | Base URI     |
+|---------------------------------|--------------|
+| postmaster@scheduler.msging.net | /schedules   |
+
+The **scheduler** extensions allows the chatbot to schedule messages to be sent in specific date and time on its behalf. Any type of message to any destination can be scheduled, including **broadcast** messages (to a distribution list). The scheduling time must be done in the GMT timezone. Any received notification from a scheduled message is forwarded to the chatbot.
+
+The possible `status` values are `scheduled`, `executed` and `canceled`. 
+
+### Get
+
+Getting an existing scheduled message with id ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67
+
+
 #### REQUEST
 
 | Name | Description |
@@ -72,8 +74,6 @@ Content-Type: application/json
 | resource | The document schedule. |
 
 ### Create
-
-Scheduling a message text/plain with the content 'Scheduling test' to be sent to the user **destination@msging.net** in **2016-07-25T17:50:00.000Z**
 
 ```http
 POST /commands HTTP/1.1
@@ -110,6 +110,10 @@ Content-Type: application/json
   "status": "success"
 }
 ```
+
+Scheduling a message text/plain with the content 'Scheduling test' to be sent to the user **destination@msging.net** in **2016-07-25T17:50:00.000Z**
+
+
 
 
 #### REQUEST

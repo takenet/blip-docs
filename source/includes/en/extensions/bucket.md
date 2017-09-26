@@ -1,10 +1,18 @@
 ## Bucket
 
+| Address               | Base URI     |
+|-----------------------|--------------|
+| postmaster@msging.net (default address - not required) | /buckets |
+
+The **bucket** extension allows the storage of documents in the server on a isolated chatbot's container. This extensions is useful to store information about the clients that have interacted with the chatbot, like preferences and navigation state.
+
+Each document have an **identifier** which is provided during the write operation and this identifier should be used for retrieving the value later. It is possible to set an optional **expiration date** for the document. Both the identifier and the expiration date are specified in the **URI** of the command which is sent to the extension.
+
+
+###Store a JSON Document
 ```http
-
-// Exemples
-//1 - Storing an generic JSON document with the **xyz1234** identifier:
-
+POST /commands HTTP/1.1
+Content-Type: application/json
 {  
   "id": "1",
   "method": "set",
@@ -18,18 +26,34 @@
     ]
   }
 }
-//Response on success:
+```
 
+```http
 {
+  HTTP/1.1 200 OK
+  Content-Type: application/json
   "id": "1",
   "from": "postmaster@msging.net/#irismsging1",
   "to": "contact@msging.net/default",
   "method": "set",
   "status": "success"
 }
+```
 
-//2 - Storing an custom document with type **application/x-my-type+json** and **abcd9876** identifier, setting the expiration to 30000 milisseconds (or 30 seconds):
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| method    | The command verb   |
+| type | The type of the resource. |
+| uri    | The command uri   |
+| resource | The document data. |
 
+
+###Store a custom document
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
 {  
   "id": "2",
   "method": "set",
@@ -40,26 +64,46 @@
     "myTypeKey2": 2
   }
 }
-//Response on success:
+```
 
+```http
 {
+    HTTP/1.1 200 OK
+  Content-Type: application/json
   "id": "2",
   "from": "postmaster@msging.net/#irismsging1",
   "to": "contact@msging.net/default",
   "method": "set",
   "status": "success"
 }
+```
 
-//3 - Retrieving an existing document with **xyz1234** identifier:
+Storing an custom document with type **application/x-my-type+json** and **abcd9876** identifier, setting the expiration to 30000 milisseconds (or 30 seconds):
 
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| method    | The command verb   |
+| type | The type of the resource. |
+| uri    | The command uri   |
+| resource | The document data. |
+### Get a document
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
 {  
   "id": "3",
   "method": "get",
   "uri": "/buckets/xyz1234"
 }
-//Response on success:
+```
 
+```http
 {
+HTTP/1.1 200 OK
+Content-Type: application/json
   "id": "3",
   "from": "postmaster@msging.net/#irismsging1",
   "to": "contact@msging.net/default",
@@ -76,12 +120,8 @@
 }
 ```
 
-| Address               | Base URI     |
-|-----------------------|--------------|
-| postmaster@msging.net (default address - not required) | /buckets |
-
-The **bucket** extension allows the storage of documents in the server on a isolated chatbot's container. This extensions is useful to store information about the clients that have interacted with the chatbot, like preferences and navigation state.
-
-Each document have an **identifier** which is provided during the write operation and this identifier should be used for retrieving the value later. It is possible to set an optional **expiration date** for the document. Both the identifier and the expiration date are specified in the **URI** of the command which is sent to the extension.
-
-
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| method    | The command verb   | 
+| uri    | The command uri   |
