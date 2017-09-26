@@ -22,6 +22,9 @@ var notification = {
 ```
 
 ```http
+POST https://your.endpoint/notifications HTTP/1.1
+Content-Type: application/json
+
 {
   "id": "65603604-fe19-479c-c885-3195b196fe8e",
   "from": "551199991111@0mn.io/182310923192",
@@ -61,6 +64,9 @@ var notification = {
 ```
 
 ```http
+POST https://your.endpoint/notifications HTTP/1.1
+Content-Type: application/json
+
 {
   "id": "65603604-fe19-479c-c885-3195b196fe8e",
   "from": "postmaster@msging.net/server1",

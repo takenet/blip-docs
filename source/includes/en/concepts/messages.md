@@ -26,6 +26,10 @@ var message = {
 ```
 
 ```http
+POST https://msging.net/messages HTTP/1.1
+Content-Type: application/json
+Authorization: Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=
+
 {
   "id": "65603604-fe19-479c-c885-3195b196fe8e",
   "from": "551199991111@0mn.io/182310923192",

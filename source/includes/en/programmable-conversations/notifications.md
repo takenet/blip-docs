@@ -123,6 +123,9 @@ public class ConsumedNotificationReceiver : INotificationReceiver
 ```http
 All notifications will be delivered as a HTTP POST request on configured chatbot notifications URL. A sample of received notification is presented bellow.
 
+POST https://your.endpoint/notifications HTTP/1.1
+Content-Type: application/json
+
 {
   "id": "123e4567-e89b-12d3-a456-426655440000",
   "from": "551100001111@0mn.io/4ac58r6e3",

@@ -104,6 +104,9 @@ removeJsonReceiver();
 ```http
 As the notifications, all messages will be delivered as a HTTP POST request on configured chatbot messages URL. A sample of received message is presented bellow.
 
+POST https://your.endpoint/messages HTTP/1.1
+Content-Type: application/json
+
 {
   "id": "99cf454e-f25d-4ebd-831f-e48a1c612cd4",
   "from": "551100001111@0mn.io/4ac58r6e3",

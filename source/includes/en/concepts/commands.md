@@ -30,6 +30,11 @@ var command = {
 ```
 
 ```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=
+Content-Length: 131
+
 {
   "id":  "1",
   "to": "postmaster@broadcast.msging.net",
@@ -42,9 +47,13 @@ var command = {
 } 
 ```
 
-> Reponse in the case of a successful answer:
 
-```json
+```http
+Reponse in the case of a successful answer:
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
 {
   "id": "1",
   "from": "postmaster@broadcast.msging.net/#hmgirismsging2",
@@ -54,9 +63,12 @@ var command = {
 } 
 ```
 
-> In the case of a failure:
+```http
+In the case of a failure:
 
-```json
+HTTP/1.1 200 OK
+Content-Type: application/json
+
 {
   "id": "1",
   "from": "postmaster@broadcast.msging.net/#hmgirismsging2",
