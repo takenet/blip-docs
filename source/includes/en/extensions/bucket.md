@@ -93,6 +93,7 @@ Storing an custom document with type **application/x-my-type+json** and **abcd98
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id": "3",
   "method": "get",
@@ -101,9 +102,9 @@ Content-Type: application/json
 ```
 
 ```http
-{
 HTTP/1.1 200 OK
 Content-Type: application/json
+{
   "id": "3",
   "from": "postmaster@msging.net/#irismsging1",
   "to": "contact@msging.net/default",

@@ -1,428 +1,5 @@
 ## Artificial Intelligence
 
-```http
-//Examples
-
-//1 - Creating an entity:
-
-{  
-  "id":"1",
-  "to":"postmaster@ai.msging.net",
-  "method":"set",
-  "uri":"/entities",
-  "type":"application/vnd.iris.ai.entity+json",
-  "resource":{  
-    "name":"Flavor",
-    "values":[  
-      {  
-        "name":"Pepperoni",
-        "synonymous":[  
-          "Peperoni",
-          "Pepperonee",
-          "Pepperouni",
-          "Peperony"
-        ]
-      },
-      {  
-        "name":"Mushrooms",
-        "synonymous":[  
-          "Mashrooms",
-          "Mushroom",
-          "Mshrooms"
-        ]
-      }
-    ]
-  }
-}
-//Response on success:
-
-{
-  "id": "1",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.iris.ai.entity+json",
-  "resource": {
-      "id": "flavor"
-  }
-}
-
-//2 - Creating an intention:
-
-{  
-  "id": "2",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/intentions",
-  "type": "application/vnd.iris.ai.intention+json",
-  "resource": {
-      "name": "Order pizza"
-  }  
-}
-//Response on success:
-
-{
-  "id": "2",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.iris.ai.intention+json",
-  "resource": {
-      "id": "order_pizza"
-  }  
-}
-
-//3 - Quering the first 10 intentions:
-
-{  
-  "id": "3",
-  "to": "postmaster@ai.msging.net",
-  "method": "get",
-  "uri": "/intentions?$skip=0&$take=10"
-}
-//Response on success:
-
-{
-  "id": "3",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "get",
-  "status": "success",
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-      "total": 2,
-      "itemType": "application/vnd.iris.ai.intention+json",
-      "items": [
-        {
-          "id": "order_pizza",
-          "name": "Order pizza"
-        },
-        {
-          "id": "choose_flavor",
-          "name": "Choose flavor"
-        }
-      ]
-  }
-}
-
-//4 - Associating questions to an intention:
-
-{  
-  "id": "4",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/intentions/order_pizza/questions",
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-    "itemType": "application/vnd.iris.ai.question+json",
-    "items":[
-      {
-        "text": "I want a pizza"
-      },
-      {
-        "text": "I wanna order a pizza"
-      },
-      {
-        "text": "Give me a pizza"
-      }
-    ]
-  }  
-}
-//Response on success:
-
-{
-  "id": "4",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-
-//5 - Associating answers to an intention:
-
-{  
-  "id": "5",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/intentions/order_pizza/answers",
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-    "itemType": "application/vnd.iris.ai.answer+json",
-    "items":[
-      {
-        "type":"text/plain",
-        "value":"Which flavor do you want?"
-      }
-    ]
-  }  
-}
-//Response on success:
-
-{
-  "id": "5",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-
-//6 - Training the mode in all registered providers:
-
-{  
-  "id": "6",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/models",
-  "type": "application/vnd.iris.ai.model-training+json",
-  "resource": {  
-  }  
-}
-//Response on success:
-
-{
-  "id": "6",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-
-//7 - Quering the trained models:
-
-{  
-  "id": "7",
-  "to": "postmaster@ai.msging.net",
-  "method": "get",
-  "uri": "/models"
-}
-//Response on success:
-
-{
-  "id": "7",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-      "total": 1,
-      "itemType": "application/vnd.iris.ai.model+json",
-      "items": [
-        {
-          "id":"d3190b46-c723-4831-b9e8-fe43c1816f80",
-          "provider":"Watson",
-          "externalId":"b518633d-26f6-454c-bd17-890b426f2d40",
-          "storageDate":"2017-07-07T18:13:00.000Z",
-          "trainingDate":"2017-07-07T18:13:00.000Z"
-        },
-        {
-          "id":"fa0aa23b-5c62-4b90-9c13-986148c0d171",
-          "provider":"Luis",
-          "externalId":"713331f2-0375-462d-aa58-ff9b8c5075be",
-          "storageDate":"2017-07-07T18:13:00.000Z",
-          "trainingDate":"2017-07-07T18:13:00.000Z"
-        }        
-      ]
-  }
-}
-
-//8 - Publishing a trained model:
-
-{  
-  "id": "8",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/models",
-  "type": "application/vnd.iris.ai.model-publishing+json",
-  "resource": {  
-    "id":"d3190b46-c723-4831-b9e8-fe43c1816f80"
-  }  
-}
-//Resposta em caso de sucesso:
-
-{
-  "id": "8",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-
-//9 - Analysing a sentence in the last published model in the default provider (defined in portal):
-
-{  
-  "id": "9",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/analysis",
-  "type": "application/vnd.iris.ai.analysis-request+json",
-  "uri": {
-    "text":"I want a pepperoni pizza"
-  }
-}
-//Response on success:
-
-{
-  "id": "9",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.iris.ai.analysis-response+json",
-  "resource": {
-    "text":"I want a pepperoni pizza",
-    "intentions":[
-      {
-        "id":"order_pizza",
-        "name":"Order pizza",
-        "score": 0.95
-      }
-    ],
-    "entities":[
-      {
-        "id":"flavor",
-        "name":"Flavor",
-        "value":"Pepperoni"
-      }
-    ]
-  }
-}
-
-//10 - Analysing a sentence with a specific model:
-
-{  
-  "id": "10",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/analysis",
-  "type": "application/vnd.iris.ai.analysis-request+json",
-  "uri": {
-    "text":"I want a pepperoni pizza",
-    "modelId":"fa0aa23b-5c62-4b90-9c13-986148c0d171"
-  }
-}
-//Response on success:
-
-{
-  "id": "10",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.iris.ai.analysis-response+json",
-  "resource": {
-    "text":"I want a pepperoni pizza",
-    "intentions":[
-      {
-        "id":"order_pizza",
-        "name":"Order pizza",
-        "score": 0.95
-      }
-    ],
-    "entities":[
-      {
-        "id":"flavor",
-        "name":"Flavor",
-        "value":"Pepperoni"
-      }
-    ]
-  }
-}
-
-//11 - Retrieving the last 10 performed analysis that doesn't have feedback:
-
-{  
-  "id": "11",
-  "to": "postmaster@ai.msging.net",
-  "method": "get",
-  "uri": "/analysis?$take=10&$filter=feedback%20eq%20none"
-}
-//Response on success:
-
-{
-  "id": "11",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "get",
-  "status": "success",
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-    "itemType":"application/vnd.iris.ai.analysis+json",
-    "items":[
-      {
-        "id": "7363369c-8c99-4293-883f-aaabac7dd822",
-        "requestDateTime": "2017-07-13T12:28:14.040Z",
-        "text": "quero uma pizza marguerita",
-        "intention": "I want a pepperoni pizza",
-        "score": 1.0,
-        "intentions": [
-          {
-            "id":"order_pizza",
-            "name":"Order pizza",
-            "score": 1.0
-          }
-        ],
-        "entities": [
-          {
-            "id":"flavor",
-            "name":"Flavor",
-            "value":"Pepperoni"
-          }
-        ],
-      }
-    ]
-  }
-}
-
-//12 - Sending an 'approved' feedback to a performed analysis:
-
-{  
-  "id":"12",
-  "to":"postmaster@ai.msging.net",
-  "method":"set",
-  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
-  "type":"application/vnd.iris.ai.analysis-feedback+json",
-  "resource":{
-    "feedback":"approved"
-  }  
-}
-//Response on success:
-
-{
-  "id": "12",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"  
-}
-
-//13 - Sending a 'rejected' feedback to a performed analysis, passing the correct intention:
-
-{  
-  "id":"13",
-  "to":"postmaster@ai.msging.net",
-  "method":"set",
-  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
-  "type":"application/vnd.iris.ai.analysis-feedback+json",
-  "resource":{
-    "feedback":"rejected",
-    "intentionId":"other_intention"
-  }  
-}
-//Resposta em caso de sucesso:
-
-{
-  "id": "13",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"  
-}
-```
-
-
 | Address                         |
 |---------------------------------|
 | postmaster@ai.msging.net        |
@@ -472,3 +49,644 @@ The resource types are:
 | Analisys          | `application/vnd.iris.ai.analysis+json`         | History information about a performed analysis.  |
 | Analisys feedback | `application/vnd.iris.ai.analysis-feedback+json`| Feedback information about a performed analysis. |
 
+
+###Create an entity
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+  "id":"1",
+  "to":"postmaster@ai.msging.net",
+  "method":"set",
+  "uri":"/entities",
+  "type":"application/vnd.iris.ai.entity+json",
+  "resource":{  
+    "name":"Flavor",
+    "values":[  
+      {  
+        "name":"Pepperoni",
+        "synonymous":[  
+          "Peperoni",
+          "Pepperonee",
+          "Pepperouni",
+          "Peperony"
+        ]
+      },
+      {  
+        "name":"Mushrooms",
+        "synonymous":[  
+          "Mashrooms",
+          "Mushroom",
+          "Mshrooms"
+        ]
+      }
+    ]
+  }
+}
+
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "id": "1",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.iris.ai.entity+json",
+  "resource": {
+      "id": "flavor"
+  }
+}
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| to    | The destination address of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+| resource | Button info |
+
+###Create an intention
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+  "id": "2",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/intentions",
+  "type": "application/vnd.iris.ai.intention+json",
+  "resource": {
+      "name": "Order pizza"
+  }  
+}
+
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "id": "2",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.iris.ai.intention+json",
+  "resource": {
+      "id": "order_pizza"
+  }  
+}
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| to    | The destination address of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+| resource | Button info |
+
+###Query the first 10 intentions
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+  "id": "3",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/intentions?$skip=0&$take=10"
+}
+
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "id": "3",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "get",
+  "status": "success",
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+      "total": 2,
+      "itemType": "application/vnd.iris.ai.intention+json",
+      "items": [
+        {
+          "id": "order_pizza",
+          "name": "Order pizza"
+        },
+        {
+          "id": "choose_flavor",
+          "name": "Choose flavor"
+        }
+      ]
+  }
+}
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| to    | The destination address of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+| resource | Button info |
+
+###Associate questions to an intention
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+  "id": "4",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/intentions/order_pizza/questions",
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+    "itemType": "application/vnd.iris.ai.question+json",
+    "items":[
+      {
+        "text": "I want a pizza"
+      },
+      {
+        "text": "I wanna order a pizza"
+      },
+      {
+        "text": "Give me a pizza"
+      }
+    ]
+  }  
+}
+
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "id": "4",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| to    | The destination address of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+| resource | Button info |
+
+###Associate answers to an intention
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+  "id": "5",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/intentions/order_pizza/answers",
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+    "itemType": "application/vnd.iris.ai.answer+json",
+    "items":[
+      {
+        "type":"text/plain",
+        "value":"Which flavor do you want?"
+      }
+    ]
+  }  
+}
+
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "id": "5",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| to    | The destination address of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+| resource | Button info |
+
+###Train model
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+  "id": "6",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/models",
+  "type": "application/vnd.iris.ai.model-training+json",
+  "resource": {  
+  }  
+}
+
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "id": "6",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| to    | The destination address of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+| resource | Button info |
+
+### Query the trained models
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+  "id": "7",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/models"
+}
+
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "id": "7",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+      "total": 1,
+      "itemType": "application/vnd.iris.ai.model+json",
+      "items": [
+        {
+          "id":"d3190b46-c723-4831-b9e8-fe43c1816f80",
+          "provider":"Watson",
+          "externalId":"b518633d-26f6-454c-bd17-890b426f2d40",
+          "storageDate":"2017-07-07T18:13:00.000Z",
+          "trainingDate":"2017-07-07T18:13:00.000Z"
+        },
+        {
+          "id":"fa0aa23b-5c62-4b90-9c13-986148c0d171",
+          "provider":"Luis",
+          "externalId":"713331f2-0375-462d-aa58-ff9b8c5075be",
+          "storageDate":"2017-07-07T18:13:00.000Z",
+          "trainingDate":"2017-07-07T18:13:00.000Z"
+        }        
+      ]
+  }
+}
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| to    | The destination address of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+| resource | Button info |
+### Publish model
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+  "id": "8",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/models",
+  "type": "application/vnd.iris.ai.model-publishing+json",
+  "resource": {  
+    "id":"d3190b46-c723-4831-b9e8-fe43c1816f80"
+  }  
+}
+
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "id": "8",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| to    | The destination address of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+| resource | Button info |
+
+###Analyze a sentence in the last published model
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+  "id": "9",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/analysis",
+  "type": "application/vnd.iris.ai.analysis-request+json",
+  "uri": {
+    "text":"I want a pepperoni pizza"
+  }
+}
+
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "id": "9",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.iris.ai.analysis-response+json",
+  "resource": {
+    "text":"I want a pepperoni pizza",
+    "intentions":[
+      {
+        "id":"order_pizza",
+        "name":"Order pizza",
+        "score": 0.95
+      }
+    ],
+    "entities":[
+      {
+        "id":"flavor",
+        "name":"Flavor",
+        "value":"Pepperoni"
+      }
+    ]
+  }
+}
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| to    | The destination address of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+| resource | Button info |
+
+###Analyze a sentence with a specific model
+
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/analysis",
+  "type": "application/vnd.iris.ai.analysis-request+json",
+  "uri": {
+    "text":"I want a pepperoni pizza",
+    "modelId":"fa0aa23b-5c62-4b90-9c13-986148c0d171"
+  }
+}
+
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "id": "10",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.iris.ai.analysis-response+json",
+  "resource": {
+    "text":"I want a pepperoni pizza",
+    "intentions":[
+      {
+        "id":"order_pizza",
+        "name":"Order pizza",
+        "score": 0.95
+      }
+    ],
+    "entities":[
+      {
+        "id":"flavor",
+        "name":"Flavor",
+        "value":"Pepperoni"
+      }
+    ]
+  }
+}
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| to    | The destination address of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+| resource | Button info |
+
+
+###Get the last 10 analysis
+
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+  "id": "11",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/analysis?$take=10&$filter=feedback%20eq%20none"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "id": "11",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "get",
+  "status": "success",
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+    "itemType":"application/vnd.iris.ai.analysis+json",
+    "items":[
+      {
+        "id": "7363369c-8c99-4293-883f-aaabac7dd822",
+        "requestDateTime": "2017-07-13T12:28:14.040Z",
+        "text": "quero uma pizza marguerita",
+        "intention": "I want a pepperoni pizza",
+        "score": 1.0,
+        "intentions": [
+          {
+            "id":"order_pizza",
+            "name":"Order pizza",
+            "score": 1.0
+          }
+        ],
+        "entities": [
+          {
+            "id":"flavor",
+            "name":"Flavor",
+            "value":"Pepperoni"
+          }
+        ],
+      }
+    ]
+  }
+}
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| to    | The destination address of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+| resource | Button info |
+
+###Send an 'approved' feedback
+
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+  "id":"12",
+  "to":"postmaster@ai.msging.net",
+  "method":"set",
+  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
+  "type":"application/vnd.iris.ai.analysis-feedback+json",
+  "resource":{
+    "feedback":"approved"
+  }  
+}
+
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "id": "12",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"  
+}
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| to    | The destination address of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+| resource | Button info |
+
+###Send an 'rejected' feedback
+
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+  "id":"13",
+  "to":"postmaster@ai.msging.net",
+  "method":"set",
+  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
+  "type":"application/vnd.iris.ai.analysis-feedback+json",
+  "resource":{
+    "feedback":"rejected",
+    "intentionId":"other_intention"
+  }  
+}
+
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "id": "13",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"  
+}
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| to    | The destination address of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+| resource | Button info |

@@ -1,8 +1,28 @@
 ## Chatbot profile
 
+
+| Address               | Base URI     |
+|-----------------------|--------------|
+| postmaster@msging.net (default address - not required) | /profile |
+
+The **profile** extension allows the configuration of chatbot profile properties, which can reflect to the clients in the published channel - if supported. Each property is a document of a type supported by the platform.
+
+The current supported profile properties are:
+
+| Name             | Identifier        | Document type     | Supported channels  |
+|------------------|-------------------|-------------------|---------------------|
+| Start button     | `get-started`     | Text              | Messenger           |
+| Greeting message | `greeting`        | Text              | Messenger           |
+| Persistent menu  | `persistent-menu` | Multimedia menu   | Messenger           |
+
+Note: In Messenger, the value of `get-started` must be defined before the value of `persistent-menu`.
+
+### Setting Greeting Message
+
 ```http
-// Examples
-//1 - Setting the greeting message:
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 
 {  
   "id": "1",
@@ -11,8 +31,11 @@
   "type": "text/plain",
   "resource": "Hello and welcome to our service!"
 }
-//Response on success:
+```
 
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
 {
   "id": "1",
   "from": "postmaster@msging.net/#irismsging1",
@@ -20,9 +43,23 @@
   "method": "set",
   "status": "success"
 }
+```
 
-//2 - Setting a persistent menu with three options:
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| to    | The destination address of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+| resource | greeting message |
 
+###Seting simple persistent menu
+
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id": "2",
   "method": "set",
@@ -51,8 +88,12 @@
     ]
   }
 }
-//Response on success:
 
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
 {
   "id": "2",
   "from": "postmaster@msging.net/#irismsging1",
@@ -60,10 +101,23 @@
   "method": "set",
   "status": "success"
 }
+```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| to    | The destination address of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+| resource | Menu info |
+
+###Seting complex persistent menu
 
 
-//3 - Setting a complex persistent menu, with submenus and web links:
-
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id": "3",
   "method": "set",
@@ -148,8 +202,12 @@
     ]
   }
 }
-//Response on success:
 
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
 {
   "id": "3",
   "from": "postmaster@msging.net/#irismsging1",
@@ -157,8 +215,22 @@
   "method": "set",
   "status": "success"
 }
-//4 - Setting the start button:
+```
 
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| to    | The destination address of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+| resource | Menu info |
+
+###Set start button
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id": "4",
   "method": "set",
@@ -166,8 +238,12 @@
   "type": "text/plain",
   "resource": "Start now"
 }
-//Response on success:
 
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
 {
   "id": "4",
   "from": "postmaster@msging.net/#irismsging1",
@@ -175,16 +251,33 @@
   "method": "set",
   "status": "success"
 }
+```
 
-//5 - Getting the current greeting message:
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| to    | The destination address of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+| resource | Button info |
 
+###Get greeting message
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id": "5",
   "method": "get",
   "uri": "/profile/greeting"  
 }
-//Response on success:
 
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
 {
   "id": "5",
   "from": "postmaster@msging.net/#irismsging1",
@@ -196,21 +289,10 @@
 }
 ```
 
-
-| Address               | Base URI     |
-|-----------------------|--------------|
-| postmaster@msging.net (default address - not required) | /profile |
-
-The **profile** extension allows the configuration of chatbot profile properties, which can reflect to the clients in the published channel - if supported. Each property is a document of a type supported by the platform.
-
-The current supported profile properties are:
-
-| Name             | Identifier        | Document type     | Supported channels  |
-|------------------|-------------------|-------------------|---------------------|
-| Start button     | `get-started`     | Text              | Messenger           |
-| Greeting message | `greeting`        | Text              | Messenger           |
-| Persistent menu  | `persistent-menu` | Multimedia menu   | Messenger           |
-
-Note: In Messenger, the value of `get-started` must be defined before the value of `persistent-menu`.
-
-
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| to    | The destination address of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+| resource | Button info |

@@ -38,10 +38,11 @@ The Broadcast service is available in the following domains:
 |Telegram   |x          |Needed initial user interaction with chatbot           |
 
 
-###Create a List
+###Create a list
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id": "1",
   "to": "postmaster@broadcast.msging.net",
@@ -79,6 +80,7 @@ Content-Type: application/json
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id": "2",
   "to": "postmaster@broadcast.msging.net",
@@ -92,6 +94,7 @@ Content-Type: application/json
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {
   "id": "2",
   "from": "postmaster@broadcast.msging.net/#irismsging1",
@@ -116,6 +119,7 @@ Content-Type: application/json
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id": "3",
   "to": "postmaster@broadcast.msging.net",
@@ -150,6 +154,7 @@ Content-Type: application/json
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id": "4",
   "to": "news@broadcast.msging.net",
@@ -162,11 +167,12 @@ Content-Type: application/json
 //Sent by extension
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {
   "id": "4",
   "from": "postmaster@broadcast.msging.net/#irismsging1",
   "to": "contact@msging.net/default",
-  "eve
+  event": "received"
 ```
 
 
@@ -188,11 +194,13 @@ Content-Type: application/json
 | uri    | The command uri   |
 | content | Content of the message. |
 
-###Send message with variable
+###Send message with replacement variable
 
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "5",
   "to": "news@broadcast.msging.net",
@@ -200,6 +208,13 @@ Content-Type: application/json
   "content": "Hello ${contact.name}, come to check out our prices!"
 }
 ```
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Unique identifier of the command.   |
+| type | The type of the resource. |
+| uri    | The command uri   |
+| content | Content of the message. |
 
 
 

@@ -5,17 +5,23 @@
 
 The **chat history** extension allows the chatbot to retrieve the last threads and messages exchanged with the customers.
 
+###Get most recent threads
+
 ```http
-//Examples
-//1 - Retrieving the most recent threads:
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 
 {  
   "id": "0094447a-2581-4597-be6a-a5dff33af156",
   "method": "get",
   "uri": "/threads"
 }
+```
 
-//Response on success:
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
 
 {
   "method": "get",
@@ -55,17 +61,33 @@ The **chat history** extension allows the chatbot to retrieve the last threads a
     ]
   }
 }
+```
 
-//2 - Retrieving the last messages of a thread:
+
+| Name | Description |
+|---------------------------------|--------------|
+| id    | Unique identifier of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |
+
+
+###Get last messages
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 
 {  
   "id": "0094447a-2581-4597-be6a-a5dff33af156",
   "method": "get",
   "uri": "/threads/1180740631991418@messenger.gw.msging.net"
 }
+```
 
-//Response on success:
-
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
 {
   "method": "get",
   "status": "success",
@@ -105,4 +127,8 @@ The **chat history** extension allows the chatbot to retrieve the last threads a
   }
 }
 ```
-
+| Name | Description |
+|---------------------------------|--------------|
+| id    | Unique identifier of the command.   |
+| method    | The command verb   |
+| uri    | The command uri   |

@@ -20,6 +20,7 @@ It is possible to use contact replacement variables in the created resources. Fo
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id": "1",
   "method": "set",
@@ -49,8 +50,6 @@ Content-Type: application/json
 }
 ```
 
-
-
 | Name | Description |
 |---------------------------------|--------------|
 |  id    | Unique identifier of the command.   |
@@ -68,6 +67,8 @@ Content-Type: application/json
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "2",
   "method": "set",
@@ -80,7 +81,6 @@ Content-Type: application/json
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
-
 {
   "id": "2",
   "from": "postmaster@msging.net/#irismsging1",
@@ -107,6 +107,7 @@ Content-Type: application/json
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id": "3",
   "method": "set",

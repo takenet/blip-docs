@@ -3,6 +3,7 @@
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id": "9494447a-2581-4597-be6a-a5dff33af156",
   "method": "set",
@@ -41,6 +42,7 @@ To register an event, the chatbot must provide the following properties:
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id": "9494447a-2581-4597-be6a-a5dff33af156",
   "method": "set",
@@ -81,6 +83,7 @@ Content-Type: application/json
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
   {  
     "id": "9494447a-2581-4597-be6a-a5dff33af156",
     "method": "set",
@@ -120,6 +123,7 @@ Content-Type: application/json
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id": "3",
   "method": "get",
@@ -161,6 +165,7 @@ Content-Type: application/json
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id": "4",
   "method": "get",
@@ -215,6 +220,7 @@ Available *querystring* filters:
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id": "5",
   "method": "get",

@@ -18,6 +18,7 @@ The result of directory queries are automatically stored in the **chatbot's rost
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id": "1",
   "to": "postmaster@messenger.gw.msging.net",
@@ -62,6 +63,7 @@ Content-Type: application/json
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id": "2",
   "to": "postmaster@telegram.gw.msging.net",
