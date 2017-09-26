@@ -1,5 +1,8 @@
 ## Client notifications
 
+| Address               | Base URI     |
+|-----------------------|--------------|
+| https://msging.net    | /notifications    |
 
 ### Sending notifications
 
@@ -71,15 +74,24 @@ Content-Length: 131
 }
 ```
 
-#### Webhook
 In order to correctly show the message history is important that the chatbots send notifications of messages processed to originator clients.
 
-For each message processed is important send a notification with the consumed event. In case of problems the chatbot must send a notification with the failed event. The request must contain a authorization header (Authorization) with Key type, as showed on chatbot settings.
+For each message processed is important send a notification with the consumed event. In case of problems the chatbot must send a notification with the failed event. 
+
+REQUEST
+
+| Name | Description |
+|---------------------------------|--------------|
+|  id    | Identifier of the related message   |
+| from   | Notification originator’s address   |
+| to     | Notification recipient’s address  |
+| event  | Event related to the message |
+| reason | In case of failed events, represents the reason of the message failure |
+
+
 
 For instance, imagine that the received message from example above (whit id `99cf454e-f25d-4ebd-831f-e48a1c612cd4`) was processed with success. The code bellow show a complete notification request including the headers and the body request.
 
-#### C\# and JavaScript
-It's possible send notifications and messages only after sessions has been stablished.
 
 
 ### Receiving notifications
@@ -108,26 +120,17 @@ public class ConsumedNotificationReceiver : INotificationReceiver
 }
 ```
 
-#### JavaScript
+```http
+All notifications will be delivered as a HTTP POST request on configured chatbot notifications URL. A sample of received notification is presented bellow.
 
-All messages sent to the chatbot are redirected to registered receivers of messages and notifications. You also can define filters to each receiver.
+POST https://your.endpoint/notifications HTTP/1.1
+Content-Type: application/json
 
-#### C#     
-
-The receipt of messages and notifications is done using the interaces IMessageReceiver and INotificationReceiver respectively.
-
-Some important notes:
-
-Before the ReceiveAsync method be executed, a notification of Event.Received type is automatically sent to originator of message.
-After ReceiveAsync method be executed, if no one exception occur, a notification of type Event.Consumed is automatically sent to originator of message.
-If some exception occur on ReceiveAsync method, a notificação of type Event.Failed is automatically sent to originator of message.
-
-The notifcations are fire-and-forget and if occur some exception on ReceiveAsync, this fail will be ignored.
-
-Note: Remember to register all implementations of INotificationReceiver and IMessageReceiver on application.json file. For more informations check the Configuring section.
-
-#### Webhook
-
-All notifications will be delivered on configured chatbot notification URL. Each notification contains the status of messages. Observe that the notifications are sent by the clients, informing if received or not some message.
-
-A sample of notification is presented bellow. This notification will be deliverd as a HTTP POST request on the chatbot notification URL.
+{
+  "id": "123e4567-e89b-12d3-a456-426655440000",
+  "from": "551100001111@0mn.io/4ac58r6e3",
+  "to": "blipmessaginghubapp@msging.net/7a8fr233x",
+  "event": "received"
+}
+```
+Each notification contains the status of messages. Observe that the notifications are sent by the clients, informing if received or not some message.
