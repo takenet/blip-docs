@@ -80,14 +80,16 @@ html, body {
 
   &>.search {
     position: relative;
+    padding: 10px 30px;
+    margin: 10px -30px 40px;
+    background: #f6f8f8;
 
     input {
-      background: $nav-bg;
+      background: transparent;
       border-width: 0 0 1px 0;
       border-color: $search-box-border-color;
       padding: 6px 0 6px 30px;
       box-sizing: border-box;
-      margin: 10px 0 40px;
       width: $nav-width - 30;
       outline: none;
       color: $search-color;
@@ -110,7 +112,7 @@ html, body {
     &:before {
       position: absolute;
       top: 15px;
-      left: 0;
+      left: 30px;
       color: $search-color;
       font-size: 17px;
       @extend %icon-search;
@@ -118,7 +120,7 @@ html, body {
   }
 
   .logo {
-    margin-bottom: $logo-margin;
+    margin: $logo-margin auto;
   }
 
   .search-results {
@@ -160,7 +162,7 @@ html, body {
     list-style: none;
     margin: 0;
     padding: 0;
-    line-height: 37px;
+    line-height: 30px;
   }
 
   li {
@@ -199,6 +201,7 @@ html, body {
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
     font-size: 15px;
+    color: #667;
   }
 
   .toc-footer {
@@ -314,7 +317,7 @@ html, body {
     color: $lang-select-text;
     text-decoration: none;
     padding: 0 30px;
-    line-height: 60px;
+    line-height: 48px;
     outline: 0;
 
     &:active, &:focus {
@@ -565,6 +568,8 @@ html, body {
     padding-top: 2em;
     padding-bottom: 2em;
     padding: 2em $main-padding;
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
 
   blockquote {
