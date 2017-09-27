@@ -1,14 +1,16 @@
-### Multimedia menu
+## Multimedia menu
 | MIME type                                 |
 |-------------------------------------------|
 | application/vnd.lime.document-select+json |
 
 Allows sending an options menu to customers where the header and options can be of any content type such as **media link** or **web link** and not only **text** - like in the *Select* type. For each option, it is possible to define a document that is delivered to the contact when the customer performs a choice (depending on the channel support).
 
-#### Examples
+### Example 1 - Menu with image in the header and a link and text as options:
 
-1 - Menu with image in the header and a link and text as options:
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {
     "id": "1",
     "to": "1042221589186385@messenger.gw.msging.net",
@@ -51,8 +53,12 @@ Allows sending an options menu to customers where the header and options can be 
 }
 ```
 
-2 - Getting the location of a Messenger user:
+### Example 2 - Getting the location of a Messenger user:
+
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {
     "id": "2",
     "to": "1042221589186385@messenger.gw.msging.net",
