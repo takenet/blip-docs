@@ -9,8 +9,9 @@ Some channels support the options scope limitation, which determines for how muc
 
 For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#select) specification.
 
-#### Example
+### Example
 Menu with numbered options
+
 ```http
 {
     "id":"311F87C0-F938-4FF3-991A-7C5AEF7771A5",
@@ -48,6 +49,7 @@ When the user selects one option, a message returns according to the rule:
 Return example of the above mentioned menu:
 
 When selecting the first option:
+
 ```http
 {
     "id": "f8cf7a7a-be4f-473a-8516-60d55534b5a6",
@@ -58,6 +60,7 @@ When selecting the first option:
 }
 ```
 When selecting the second option:
+
 ```http
 {
     "id": "76CB408D-39E6-4212-8AA1-7435B42A6993",
@@ -68,6 +71,7 @@ When selecting the second option:
 }
 ```
 Least, when selecting the third option:
+
 ```http
 {
     "id": "035E675C-D25B-437D-80BD-057AD6F70671",

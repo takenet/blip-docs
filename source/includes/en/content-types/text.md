@@ -1,15 +1,14 @@
-### Text
+## Text
 | MIME type                |
 |--------------------------|
 | text/plain               |
 
 Allows sending and receiving simple text messages.
 
-#### Example
-
-Sending a message to a Messenger recipient:
-
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {
     "id": "1",
     "to": "128271320123982@messenger.gw.msging.net",
@@ -17,6 +16,10 @@ Sending a message to a Messenger recipient:
     "content": "Welcome to our service! How can I help you?"
 }
 ```
+
+#### Example
+
+Sending a message to a Messenger recipient:
 
 For more details, check the especification of [LIME protocol](http://limeprotocol.org/content-types.html#text).
 

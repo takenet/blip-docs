@@ -1,4 +1,4 @@
-### Media link
+## Media link
 | MIME type                            |
 |--------------------------------------|
 | application/vnd.lime.media-link+json |
@@ -9,10 +9,12 @@ Allows sending and receiving links for multimedia contents. The link can be any 
 
 Some channel allows the definition of the display *aspect ratio* for some media types. For instance, in *Messenger*, you should set the `1:1` value for the `aspectRatio` property to send squared images.
 
-#### Examples
-1 - Sending the link of an image including title, descriptive text and metadata:
+### Example 1 - Sending the link of an image including title, descriptive text and metadata:
 
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {
     "id": "1",
     "to": "553199991111@0mn.io",
@@ -30,8 +32,13 @@ Some channel allows the definition of the display *aspect ratio* for some media 
 }
 ```
 
-2 - Sending an audio link:
+
+### Example 2 - Sending an audio link:
+
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {
     "id": "2",
     "to": "553199991111@0mn.io",

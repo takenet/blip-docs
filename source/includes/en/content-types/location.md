@@ -1,14 +1,14 @@
-### Location
+## Location
 | MIME type                            |
 |--------------------------------------|
 | application/vnd.lime.location+json | 
 
 Allows sending and receiving geographic information.
 
-#### Example
-
-Sending a location with latitude, longitude and altitude:
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {
     "id": "1",
     "to": "1042221589186385@messenger.gw.msging.net",
@@ -21,6 +21,9 @@ Sending a location with latitude, longitude and altitude:
     }
 }
 ```
+#### Example
+
+Sending a location with latitude, longitude and altitude:
 
 For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#location) specification.
 
@@ -33,4 +36,29 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 | SMS                | Text with link          |
 | Skype              | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1)|
 | Telegram           | [Location](https://core.telegram.org/bots/api#location)|
+
+###Request location
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{
+    "id": "2",
+    "to": "1334448323284655@messenger.gw.msging.net",
+    "type": "application/vnd.lime.input+json",
+    "content": {
+        "label": {
+          "type": "text/plain",
+          "value": "Send your location please!"
+        },
+        "validation": {
+          "rule": "type",
+          "type": "application/vnd.lime.location+json"
+        }
+    }
+}
+```
+
+Asks the user for location
 

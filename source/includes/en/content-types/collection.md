@@ -1,4 +1,4 @@
-### Collection
+## Collection
 | MIME type                            | C#                                 |
 |--------------------------------------|------------------------------------|
 | application/vnd.lime.collection+json | [Lime.Protocol.DocumentCollection](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Protocol/DocumentCollection.cs)|
