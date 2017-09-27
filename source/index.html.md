@@ -11,25 +11,23 @@ toc_footers:
   
 
 includes:
-  - --Core
   - en/introduction
   
   - en/concepts
   - en/concepts/addressing
   - en/concepts/messages
+  - en/concepts/handle-messages
   - en/concepts/notifications
+  - en/concepts/handle-notifications
   - en/concepts/commands
+  - en/concepts/handle-commands
 
   - en/sdks
+  - en/webhook
 
   - --Authentication
   - en/auth
   
-  - --Programable conversations
-  - en/programmable-conversations/messages
-  - en/programmable-conversations/notifications
-  - en/programmable-conversations/commands
-
   - --Conversation
   - en/content-types/chatstate
   - en/content-types/resource

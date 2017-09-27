@@ -1,4 +1,4 @@
-## Client notifications
+## Notifications
 
 | Address               | Base URI     |
 |-----------------------|--------------|

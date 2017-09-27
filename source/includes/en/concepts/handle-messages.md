@@ -1,4 +1,4 @@
-## Conversation messages
+## Messages
 
 | Address               | Base URI     |
 |-----------------------|--------------|
