@@ -2,16 +2,6 @@
 <p>Imagine that exist a chatbot with Authorization 'Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ='. To send a message from this bot to a BLiP user use:</p>
 </blockquote>
 
-<blockquote class="lang-specific csharp">
-<p>With `C#` the authentication of your chatbot is made on application.json file. Basically this file define all receivers and others control properties. check example on C# tab</p>
-<p>Check a example of how to set your application.json file:</p>
-</blockquote>
-
-
-<blockquote class="lang-specific javascript">
-<p>In order to instantiating the client use ClientBuilder class informing the identifier and access key:</p>
-</blockquote>
-
 ```http
 Note: For this sample bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ is a valid Key.
 
@@ -28,6 +18,11 @@ Content-Length: 131
 }
 ```
 
+<blockquote class="lang-specific csharp">
+<p>With `C#` the authentication of your chatbot is made on application.json file. Basically this file define all receivers and others control properties. check example on C# tab</p>
+<p>Check a example of how to set your application.json file:</p>
+</blockquote>
+
 ```csharp
 
 {
@@ -41,6 +36,9 @@ Content-Length: 131
   ]
 }
 ```
+<blockquote class="lang-specific javascript">
+<p>In order to instantiating the client use ClientBuilder class informing the identifier and access key:</p>
+</blockquote>
 
 ```javascript
 

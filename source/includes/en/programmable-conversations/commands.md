@@ -6,6 +6,10 @@
 
 ### Sending commands
 
+<blockquote class="lang-specific csharp">
+<p>ISender interface also enable send commands to the server, as the follow sample:</p>
+</blockquote>
+
 ```csharp
 // For this case, the command response is received on a synchronous way.
 var command = new Command {
