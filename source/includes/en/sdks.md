@@ -12,7 +12,3 @@ If you are a Javascript developer and want create a chatbot with **BLiP Messagin
 
 Go to [Github](https://github.com/takenet/messaginghub-client-js) to see the source code.
 
-
-### Teste menu 3
-
-asdasdsada

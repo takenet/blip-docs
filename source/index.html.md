@@ -8,9 +8,10 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a target="_blank" href="https://portal.blip.ai">Sign Up for a BLiP Account</a>
+  
 
 includes:
-  - --Introduction
+  - --Core
   - en/introduction
   
   - en/concepts
@@ -20,6 +21,9 @@ includes:
   - en/concepts/commands
 
   - en/sdks
+
+  - --Authentication
+  - en/auth
   
   - --Programable conversations
   - en/programmable-conversations/messages
