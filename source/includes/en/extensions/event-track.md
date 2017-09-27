@@ -1,20 +1,27 @@
 ## Event Analysis
 
-| Address               | Base URI     |
-|-----------------------|--------------|
-| postmaster@analytics.msging.net | /event-track |
-
 The **event analysis** extension allows the registration of chatbot's events for creation of analytics reports in the portal. The events are agregated by category, action and day. The reports can be generated thought the [portal](https://portal.blip.ai), in the *Panel* -> *Data analysis* option.
 
-To register an event, the chatbot must provide the following properties:
+In order to use any feature of **event analysis** extension you must send a command with the following properties:
 
 | Name | Description |
 |---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
+| id    | Unique identifier of the command.   |
 | method    | The command verb   |
-| type | The type of the resource. |
-| uri    | The command uri   |
 | resource | The event document. |
+| type | **"application/vnd.iris.eventTrack+json"** |
+| uri    | **/event-track**   |
+| to     | **postmaster@analytics.msging.net** |
+
+The `resource` 
+
+| Property     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **category** | Category to aggregate the related events.                          | billing |
+| **action**   | The action associated to the event. The event counting is made using the actions.  | payment |
+| **identity** | Optional contact associated to the event. If contact is a 'testers' group member the event will be ignored.  | 123456@messenger.gw.msging.net |
+| **extras**   | Optional extra informations to be stored within the event.         | {"customerId": "41231", "paymentId": "ca82jda"} |
+
 
 ### Create an event
 
