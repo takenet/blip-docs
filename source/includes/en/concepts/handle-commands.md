@@ -35,7 +35,6 @@ messagingHubClient
 ```
 
 ```http
-//For instance, send a command to schedule some message
 
 POST https://msging.net/commands HTTP/1.1
 Authorization: Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=
