@@ -1,9 +1,3 @@
-## Messages
-
-| Address               | Base URI     |
-|-----------------------|--------------|
-| https://msging.net    | /messages    |
-
 ### Sending messages
 
 <blockquote class="lang-specific csharp">

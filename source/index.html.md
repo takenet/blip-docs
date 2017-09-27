@@ -26,20 +26,18 @@ includes:
   - en/webhook
 
   - --Authentication
-  - en/auth
-  
-  - --Conversation
-  - en/content-types/chatstate
-  - en/content-types/resource
-  - en/content-types/redirect
+  - en/auth  
 
   - --Content Types
   - en/content-types/text
   - en/content-types/media-link
+  - en/content-types/chatstate
   - en/content-types/location
   - en/content-types/document-select
   - en/content-types/collection
 
+  - en/content-types/resource
+  - en/content-types/redirect
 
   - --Extensions
   - en/extensions

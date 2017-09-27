@@ -1,9 +1,3 @@
-## Conversation commands
-
-| Address               | Base URI     |
-|-----------------------|--------------|
-| https://msging.net    | /commands    |
-
 ### Sending commands
 
 <blockquote class="lang-specific csharp">

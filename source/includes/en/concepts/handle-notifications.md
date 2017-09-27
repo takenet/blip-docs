@@ -1,9 +1,3 @@
-## Notifications
-
-| Address               | Base URI     |
-|-----------------------|--------------|
-| https://msging.net    | /notifications    |
-
 ### Sending notifications
 
 <blockquote class="lang-specific javascript">
