@@ -1,6 +1,6 @@
 
 
-Welcome to **Blip Messaging Hub**! Here, we'll introduce you to the platform's basics in order to help you build your own chatbot.
+Welcome to **BLiP**! Here, we'll introduce you to the platform's basics in order to help you build your own chatbot.
 
 You can create your chatbot in three ways:
 

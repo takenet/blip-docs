@@ -1,6 +1,6 @@
 ### Instantiating the client
 
-You will need an `identifier` and a `access key` to connect a chatbot to **BLiP Messaging Hub**. To get thems:
+You will need an `identifier` and a `access key` to connect a chatbot to **BLiP**. To get thems:
 - Go to [Painel BLiP](http://portal.blip.ai/) and login.
 - Click in `Chatbots` and then click in `Create chatbot`.
 - Choice `SDK` template option

@@ -1,6 +1,6 @@
 ## Addressing
 
-All the [envelopes](http://limeprotocol.org/#envelope) (messages, notifications and commands) exchanged between **chatbots** and **customers** in **Blip Messaging Hub** have *from* and *to* addresses.
+All the [envelopes](http://limeprotocol.org/#envelope) (messages, notifications and commands) exchanged between **chatbots** and **customers** in **BLiP** have *from* and *to* addresses.
 
 The address is presented in the format `name@domain/instance`, where:
 

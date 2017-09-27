@@ -1,4 +1,4 @@
-This document intends to help the usage of the Messaging Hub for sending and receiving messages, commands and notifications.
+This document intends to help the usage of the BLiP for sending and receiving messages, commands and notifications.
 
 ## Application
 
@@ -10,7 +10,7 @@ You need to register the application in the [Console](http://messaginghub.io/hom
 
 ## Domain
 
-Still in the [Console](http://messaginghub.io/home/console), you need to publish your application on a domain. These domains represents apps or messaging services already integrated with Messaging Hub.
+Still in the [Console](http://messaginghub.io/home/console), you need to publish your application on a domain. These domains represents apps or messaging services already integrated with BLiP.
 
 To do so, follow these steps:
 - Click the [List](http://messaginghub.io/application/list)  in `Applications` tab
