@@ -40,7 +40,7 @@ client.connect()
 ```
 
 <blockquote class="lang-specific http">
-<p>Note: For this sample bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ is a valid Key for blipmessaginghubapp chatbot.</p>
+<p>For this sample bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ is a valid Key for blipmessaginghubapp chatbot.</p>
 </blockquote>
 
 ```http
@@ -73,8 +73,9 @@ REQUEST
 | content  | Message content   |
 
 ### Receiving messages
+
 <blockquote class="lang-specific csharp">
-<p>The receipt of messages and notifications is done using the interaces IMessageReceiver and INotificationReceiver respectively.</p>
+<p>The receipt of messages is done using the interface IMessageReceiver.</p>
 </blockquote>
 
 ```csharp
@@ -87,17 +88,9 @@ public class PlainTextMessageReceiver : IMessageReceiver
         Console.WriteLine(message.Content.ToString());
     }
 }
-// SOME IMPORTANT NOTES:
-//
-//  1)Before the ReceiveAsync method be executed, a notification of Event.
-//  Received type is automatically sent to originator of message.
-//  2)After ReceiveAsync method be executed, if no one exception occur, a 
-//  notification of type Event.Consumed is automatically sent to originator of message.
-//  3)If some exception occur on ReceiveAsync method, a notificação of type 
-//  Event.Failed is automatically sent to originator of message.
 ```
 <blockquote class="lang-specific javascript">
-<p>All messages sent to the chatbot are redirected to registered receivers of messages and notifications. You also can define filters to each receiver.</p>
+<p>All messages sent to the chatbot are redirected to registered receivers of messages. You also can define filters to each receiver.</p>
 </blockquote>
 
 ```javascript
@@ -119,7 +112,7 @@ var removeJsonReceiver = client.addMessageReceiver("application/json", handleJso
 removeJsonReceiver();
 ```
 <blockquote class="lang-specific http">
-<p>As the notifications, all messages will be delivered as a HTTP POST request on configured chatbot messages URL. A sample of received message is presented bellow.</p>
+<p>All messages will be delivered as a HTTP POST request on configured chatbot messages URL. A sample of received message is presented bellow.</p>
 </blockquote>
 
 ```http
@@ -135,6 +128,6 @@ Content-Type: application/json
 }
 ```
 
-The process of receiving messages is asynchronous. The received messages will be on the format defined on LIME Protocol.
+The process of receiving messages is asynchronous. The received messages will be on the format defined on [LIME Protocol](http://limeprotocol.org/index.html#message).
 
 

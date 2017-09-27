@@ -47,9 +47,12 @@ Content-Length: 131
 } 
 ```
 
+<blockquote class="lang-specific csharp">
+<p>Reponse in the case of a successful answer:</p>
+</blockquote>
+
 
 ```http
-Reponse in the case of a successful answer:
 
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -62,9 +65,11 @@ Content-Type: application/json
   "status": "success"
 } 
 ```
+<blockquote class="lang-specific csharp">
+<p>In the case of a failure:</p>
+</blockquote>
 
 ```http
-In the case of a failure:
 
 HTTP/1.1 200 OK
 Content-Type: application/json

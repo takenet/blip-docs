@@ -69,23 +69,10 @@ client.connect() // This method return a 'promise'.
 
 ```
 
- In order to authenticate your chatbot you need to follow this steps for each platform:
+ In order to authenticate your chatbot you need to follow this steps:
 
- On `Webhook` whatever request(messages/notifications/commands) must contain a authorization header (Authorization) with Key type, as showed on chatbot settings.
+ On `Webhook` whatever request (messages/notifications/commands) must contain a authorization header (Authorization) with Key type, as showed on [BLiP Portal](https://portal.blip.ai/#/application) chatbot configurations.
 
- On both `C# and Javascript` you will need to check credentials inside configurations menu and find your identifier and access key. Then you need to put they in a specific place.
+ On both `C# and Javascript` you will need to check credentials on [BLiP Portal](https://portal.blip.ai/#/application) inside chatbot configurations menu and find your identifier and access key. Then you need to put they in a specific place.
 
- See `examples` at code sidebar
-
-<!-- ## C\# 
-
-The C# SDK makes easier to build chatbots with BLiP platform. It is based on [.NET Core](https://dot.net/core), which allows the creation of multiplatform chatbots.
-
-You can check the SDK source code in [Github](https://github.com/takenet/blip-sdk-csharp/).
-
-## Javascript
-
-If you are a Javascript developer and want create a chatbot with **BLiP** so you must use the BLiP SDK Javascript. It was developed to make easy to send and receive BLiP messages using Javascript for browsers or [node.js](https://nodejs.org/) through of persistent WebSocket connections.
-
-Go to [Github](https://github.com/takenet/messaginghub-client-js) to see the source code. -->
-
+ See `examples` at code sidebar.
