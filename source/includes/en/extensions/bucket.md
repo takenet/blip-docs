@@ -8,8 +8,8 @@ The **bucket** extension allows the storage of documents in the server on a isol
 
 Each document have an **identifier** which is provided during the write operation and this identifier should be used for retrieving the value later. It is possible to set an optional **expiration date** for the document. Both the identifier and the expiration date are specified in the **URI** of the command which is sent to the extension.
 
+### Store a JSON Document
 
-###Store a JSON Document
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -40,16 +40,7 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| method    | The command verb   |
-| type | The type of the resource. |
-| uri    | The command uri   |
-| resource | The document data. |
-
-
-###Store a custom document
+### Store a custom document
 
 ```http
 POST /commands HTTP/1.1
@@ -80,14 +71,6 @@ Content-Type: application/json
 
 Storing an custom document with type **application/x-my-type+json** and **abcd9876** identifier, setting the expiration to 30000 milisseconds (or 30 seconds):
 
-
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| method    | The command verb   |
-| type | The type of the resource. |
-| uri    | The command uri   |
-| resource | The document data. |
 ### Get a document
 
 ```http
@@ -120,9 +103,3 @@ Content-Type: application/json
   }  
 }
 ```
-
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| method    | The command verb   | 
-| uri    | The command uri   |

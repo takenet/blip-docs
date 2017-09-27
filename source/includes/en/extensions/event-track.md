@@ -1,71 +1,12 @@
 ## Event Analysis
 
-```http
-POST /commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-{  
-  "id": "9494447a-2581-4597-be6a-a5dff33af156",
-  "method": "set",
-  "type": "application/vnd.iris.eventTrack+json",
-  "uri": "/event-track",
-  "resource": {  
-    "category": "billing",
-    "action": "payment"
-  }
-}
-```
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-{
-  "method": "set",
-  "status": "success",
-  "id": "9494447a-2581-4597-be6a-a5dff33af156",
-  "from": "postmaster@msging.net/#irismsging1",
-  "to": "contact@msging.net/default"
-}
-```
-
 | Address               | Base URI     |
 |-----------------------|--------------|
-| postmaster@msging.net (default address - not required) | /event-track |
+| postmaster@analytics.msging.net | /event-track |
 
 The **event analysis** extension allows the registration of chatbot's events for creation of analytics reports in the portal. The events are agregated by category, action and day. The reports can be generated thought the [portal](https://portal.blip.ai), in the *Panel* -> *Data analysis* option.
 
 To register an event, the chatbot must provide the following properties:
-
-###Create an event
-
-
-```http
-POST /commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-{  
-  "id": "9494447a-2581-4597-be6a-a5dff33af156",
-  "method": "set",
-  "type": "application/vnd.iris.eventTrack+json",
-  "uri": "/event-track",
-  "resource": {  
-    "category": "billing",
-    "action": "payment"
-  }
-}
-```
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-{
-  "method": "set",
-  "status": "success",
-  "id": "9494447a-2581-4597-be6a-a5dff33af156",
-  "from": "postmaster@msging.net/#irismsging1",
-  "to": "contact@msging.net/default"
-}
-```
 
 | Name | Description |
 |---------------------------------|--------------|
@@ -75,8 +16,36 @@ Content-Type: application/json
 | uri    | The command uri   |
 | resource | The event document. |
 
+### Create an event
 
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+  "id": "9494447a-2581-4597-be6a-a5dff33af156",
+  "to": "postmaster@analytics.msging.net",
+  "method": "set",
+  "type": "application/vnd.iris.eventTrack+json",
+  "uri": "/event-track",
+  "resource": {  
+    "category": "billing",
+    "action": "payment"
+  }
+}
+```
 
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "method": "set",
+  "status": "success",
+  "id": "9494447a-2581-4597-be6a-a5dff33af156",
+  "from": "postmaster@analytics.msging.net/#irismsging1",
+  "to": "contact@msging.net/default"
+}
+```
 
 ### Create event with identity
 
@@ -86,6 +55,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
   {  
     "id": "9494447a-2581-4597-be6a-a5dff33af156",
+    "to": "postmaster@analytics.msging.net",
     "method": "set",
     "type": "application/vnd.iris.eventTrack+json",
     "uri": "/event-track",
@@ -104,19 +74,10 @@ Content-Type: application/json
   "method": "set",
   "status": "success",
   "id": "9494447a-2581-4597-be6a-a5dff33af156",
-  "from": "postmaster@msging.net/#irismsging1",
+  "from": "postmaster@analytics.msging.net/#irismsging1",
   "to": "contact@msging.net/default"
 }
 ```
-
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| method    | The command verb   |
-| type | The type of the resource. |
-| uri    | The command uri   |
-| resource | The event document. |
-
 
 ### Get Categories
 
@@ -126,6 +87,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
   "id": "3",
+  "to": "postmaster@analytics.msging.net",
   "method": "get",
   "uri": "/event-track"
 }
@@ -136,7 +98,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 {  
   "id": "3",
-  "from": "postmaster@msging.net/#irismsging1",
+  "from": "postmaster@analytics.msging.net/#irismsging1",
   "to": "contact@msging.net/default",
   "method": "get",
   "status": "success",
@@ -153,13 +115,6 @@ Content-Type: application/json
 }
 ```
 
-
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-
 ### Get Counters
 
 ```http
@@ -168,6 +123,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
   "id": "4",
+  "to": "postmaster@analytics.msging.net",
   "method": "get",
   "uri": "/event-track/billing?startDate=2016-01-01&$take=10"
 }
@@ -179,7 +135,7 @@ Content-Type: application/json
 
 {
   "id": "4",
-  "from": "postmaster@msging.net/#irismsging1",
+  "from": "postmaster@analytics.msging.net/#irismsging1",
   "to": "contact@msging.net/default",
   "method": "get",
   "status": "success",  
@@ -201,11 +157,6 @@ Content-Type: application/json
   }
 }
 ```
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
 
 Available *querystring* filters:
 
@@ -223,6 +174,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
   "id": "5",
+  "to": "postmaster@analytics.msging.net",
   "method": "get",
   "uri": "/event-track/billing/payment?startDate=2016-01-01&$take=10"
 }
@@ -233,7 +185,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "id": "5",
-  "from": "postmaster@msging.net/#irismsging1",
+  "from": "postmaster@analytics.msging.net/#irismsging1",
   "to": "contact@msging.net/default",
   "method": "get",
   "status": "success",
@@ -261,14 +213,6 @@ Content-Type: application/json
   }
 }
 ```
-
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-
-
 Available *querystring* filters:
 
 | QueryString  | Description                               |

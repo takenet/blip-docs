@@ -27,14 +27,13 @@ The **tunnel** extension allows routing and exchange of messages and notificatio
 
 This feature is useful for **isolating different parts of navigation in independent bots** with 
 
-###Examples
+* Examples
 
 1 - Imagine a scenario where there are two bots: **flow** and **operator**, where the first responsible for presenting an automatic navigation and the second receiving the handover of an eventual manual attendance. Only the **flow** bot is published in *Messenger* and it needs, at a certain point in its flow, to forward the messages to the **operator** bot that controls the manual attendance.
 
 The complete path of a message from this external channel to the service bot is:
 
-
-###Bot receive a message from Mesengnger
+**Bot receive a message from Mesengnger**
 
 The main bot receives a message from a Messenger user.
 
@@ -51,9 +50,7 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-
-
-###Flow bot fowards the message to another bot
+### Flow bot fowards the message to another bot
 
 According to its internal rules, the flow bot decides to forward this message to the operator bot. To do this, it changes the recipient of the message and sends it as bellow:
 
