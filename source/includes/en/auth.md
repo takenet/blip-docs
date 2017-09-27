@@ -1,3 +1,17 @@
+<blockquote class="lang-specific http">
+<p>Imagine that exist a chatbot with Authorization 'Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ='. To send a message from this bot to a BLiP user use:</p>
+</blockquote>
+
+<blockquote class="lang-specific csharp">
+<p>With `C#` the authentication of your chatbot is made on application.json file. Basically this file define all receivers and others control properties. check example on C# tab</p>
+<p>Check a example of how to set your application.json file:</p>
+</blockquote>
+
+
+<blockquote class="lang-specific javascript">
+<p>In order to instantiating the client use ClientBuilder class informing the identifier and access key:</p>
+</blockquote>
+
 ```http
 Note: For this sample bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ is a valid Key.
 
@@ -15,7 +29,6 @@ Content-Length: 131
 ```
 
 ```csharp
-Check a example of how to set your application.json:
 
 {
   "identifier": "xpto",
@@ -30,7 +43,6 @@ Check a example of how to set your application.json:
 ```
 
 ```javascript
-instantiating the client using:
 
 // Create a client instance passing the identifier and accessKey of your chatbot 
 var client = new ClientBuilder()
@@ -63,11 +75,7 @@ client.connect() // This method return a 'promise'.
 
  On `Webhook` whatever request(messages/notifications/commands) must contain a authorization header (Authorization) with Key type, as showed on chatbot settings.
 
- On both `C# and Javascript` you will need to find your identifier and access key and put in a specific place
- 
- With `C#` the authentication of your chatbot is made on application.json file. Basically this file define all receivers and others control properties. check example on C# tab
-
- With `Javascript` in order to instantiating the client use ClientBuilder class informing the identifier and access key. each client instance represent a server connection and can be reused.
+ On both `C# and Javascript` you will need to check credentials inside configurations menu and find your identifier and access key. Then you need to put they in a specific place.
 
  See `examples` at code sidebar
 

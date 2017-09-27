@@ -55,6 +55,10 @@ Content-Length: 131
 }
 ```
 
+<blockquote class="lang-specific csharp">
+<p>only show for ruby and shell languages</p>
+</blockquote>
+
 The process of sending message is asynchronous and the status of sent messages is delivered to application by **notifications**.
 
 For more information about messages, check the Messages documentation page or the supported content types specification.
