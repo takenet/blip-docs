@@ -1,4 +1,4 @@
-### User input
+## User input
 | MIME type                            |
 |--------------------------------------|
 | application/vnd.lime.input+json      |

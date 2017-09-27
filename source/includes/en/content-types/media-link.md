@@ -9,7 +9,7 @@ Allows sending and receiving links for multimedia contents. The link can be any 
 
 Some channel allows the definition of the display *aspect ratio* for some media types. For instance, in *Messenger*, you should set the `1:1` value for the `aspectRatio` property to send squared images.
 
-### Example 1 - Sending the link of an image including title, descriptive text and metadata:
+### Sending the link of an image including title, descriptive text and metadata:
 
 ```http
 POST /commands HTTP/1.1
@@ -33,7 +33,7 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 
-### Example 2 - Sending an audio link:
+### Sending an audio link:
 
 ```http
 POST /commands HTTP/1.1

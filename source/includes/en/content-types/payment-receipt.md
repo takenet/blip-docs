@@ -1,14 +1,9 @@
-### Payment receipt
-| MIME type                            |
-|--------------------------------------|
-| application/vnd.lime.payment-receipt+json |
-
-Allows send a payment receipt to a customer
-
-#### Example
-Sending a payment receipt to a Messenger user:
+## Payment receipt
 
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {
     "id": "1",
     "to": "1042221589186385@messenger.gw.msging.net",
@@ -32,6 +27,17 @@ Sending a payment receipt to a Messenger user:
     }
 }
 ```
+
+| MIME type                            |
+|--------------------------------------|
+| application/vnd.lime.payment-receipt+json |
+
+Allows send a payment receipt to a customer
+
+#### Example
+Sending a payment receipt to a Messenger user:
+
+
 
 #### Channel mapping
 
