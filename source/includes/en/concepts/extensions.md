@@ -1,10 +1,10 @@
 ### Extensions
 
-**Extensions** are services connected to the **BLiP Messaging Hub** in order to enable usefull features needed to build relevant **chatbots**. Each extension has a identifier, which is usually a [FQDN](https://pt.wikipedia.org/wiki/FQDN).
+**Extensions** are services connected to the **BLiP** in order to enable usefull features needed to build relevant **chatbots**. Each extension has a identifier, which is usually a [FQDN](https://pt.wikipedia.org/wiki/FQDN).
 
 ### Broadcast
 
-**Broadcast** is a sample of **BLiP Messaging Hub** extensions. It's enabled through the address `postmaster@broadcast.msging.net` in order to provide managed distribution lists and send broadcast messages to these lists.
+**Broadcast** is a sample of **BLiP** extensions. It's enabled through the address `postmaster@broadcast.msging.net` in order to provide managed distribution lists and send broadcast messages to these lists.
 
 #### Availability
 

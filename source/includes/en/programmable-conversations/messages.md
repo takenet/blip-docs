@@ -6,11 +6,12 @@
 
 ### Sending messages
 
-> The following sample show how to send a message
+<blockquote class="lang-specific csharp">
+<p>In order to send messages and notifications use an instance of `ISender` (on C#), wich is automaticaly injected on constructors of registered `receivers` defined on project and on `Startup` class.</p>
+</blockquote>
 
 ```csharp
-//In order to send messages and notifications use an instance of `ISender` (on C#), wich is automaticaly injected on constructors of registered `receivers` defined on project and on `Startup` class.
-
+//reply a received message sample
 public class PlainTextMessageReceiver : IMessageReceiver
 {
     private readonly ISender _sender;
@@ -28,9 +29,14 @@ public class PlainTextMessageReceiver : IMessageReceiver
         _sender.SendMessageAsync("Hi. I just received your message!", message.From, cancellationToken);
     }
 }
+
 ```
+<blockquote class="lang-specific javascript">
+<p>It's possible send notifications and messages only after sessions has been stablished.</p>
+</blockquote>
 
 ```javascript
+//send a message after connection has been stablished sample
 client.connect()
     .then(function(session) {
         // After connection is possible send messages
@@ -39,8 +45,11 @@ client.connect()
     });
 ```
 
+<blockquote class="lang-specific http">
+<p>Note: For this sample bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ is a valid Key for blipmessaginghubapp chatbot.</p>
+</blockquote>
+
 ```http
-Note: For this sample bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ is a valid Key for blipmessaginghubapp chatbot.
 
 POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
@@ -70,6 +79,9 @@ REQUEST
 | content  | Message content   |
 
 ### Receiving messages
+<blockquote class="lang-specific csharp">
+<p>The receipt of messages and notifications is done using the interaces IMessageReceiver and INotificationReceiver respectively.</p>
+</blockquote>
 
 ```csharp
 //A `IMessageReceiver` can be defined as follow
@@ -81,9 +93,21 @@ public class PlainTextMessageReceiver : IMessageReceiver
         Console.WriteLine(message.Content.ToString());
     }
 }
+// SOME IMPORTANT NOTES:
+//
+//  1)Before the ReceiveAsync method be executed, a notification of Event.
+//  Received type is automatically sent to originator of message.
+//  2)After ReceiveAsync method be executed, if no one exception occur, a 
+//  notification of type Event.Consumed is automatically sent to originator of message.
+//  3)If some exception occur on ReceiveAsync method, a notificação of type 
+//  Event.Failed is automatically sent to originator of message.
 ```
+<blockquote class="lang-specific javascript">
+<p>All messages sent to the chatbot are redirected to registered receivers of messages and notifications. You also can define filters to each receiver.</p>
+</blockquote>
 
 ```javascript
+//add simple message receiver example
 client.addMessageReceiver(true, (message) => {
   // Process received message
 
@@ -100,10 +124,11 @@ var removeJsonReceiver = client.addMessageReceiver("application/json", handleJso
 // ...
 removeJsonReceiver();
 ```
+<blockquote class="lang-specific http">
+<p>As the notifications, all messages will be delivered as a HTTP POST request on configured chatbot messages URL. A sample of received message is presented bellow.</p>
+</blockquote>
 
 ```http
-As the notifications, all messages will be delivered as a HTTP POST request on configured chatbot messages URL. A sample of received message is presented bellow.
-
 POST https://your.endpoint/messages HTTP/1.1
 Content-Type: application/json
 
