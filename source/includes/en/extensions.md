@@ -1,3 +1,4 @@
+# Extensions
 
 Extensions are **BLiP** connected services to make easy for any developer build chatbots. The extensions can receive *commands* and *messages* from the chatbots and execute special tasks, e.g. schedule or send a message broadcast.
 

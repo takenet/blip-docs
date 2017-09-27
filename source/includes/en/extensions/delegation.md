@@ -11,7 +11,7 @@ The **delegation** extension allows the chatbot to give permissions to other **B
 For more details, check the **delegation** resource on [LIME protocol](http://limeprotocol.org/resources.html#delegation) specification.
 
 
-###Give permissions
+### Give permissions
 
 ```http
 POST /commands HTTP/1.1
@@ -51,7 +51,7 @@ Content-Type: application/json
 | uri    | The command uri   |
 | resource | Info about the target and the permission |
 
-###Revoke permissions
+### Revoke permissions
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -74,10 +74,3 @@ Content-Type: application/json
   "to": "contact@msging.net/default"
 }
 ```
-
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |

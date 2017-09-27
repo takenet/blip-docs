@@ -50,17 +50,6 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| method    | The command verb   |
-| type | The type of the resource. |
-| uri    | The command uri   |
-| resource | The event document. |
-
-
-
-
 ###Store **text/plain**
 
 
@@ -90,17 +79,6 @@ Content-Type: application/json
 }
 ```
 
-
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| method    | The command verb   |
-| type | The type of the resource. |
-| uri    | The command uri   |
-| resource | The event document. |
-
-
-
 ###Store **text/plain** with replacement variable
 
 
@@ -128,11 +106,3 @@ Content-Type: application/json
   "status": "success"
 }
 ```
-
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| method    | The command verb   |
-| type | The type of the resource. |
-| uri    | The command uri   |
-| resource | The event document. |
