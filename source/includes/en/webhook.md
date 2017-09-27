@@ -1,14 +1,14 @@
-### Webhook
+# Webhook
 
 **Webhook's** *chatbot* enable an integration via **HTTP endpoints** to exchange messages, notifications and commands.
 
-#### Sending messages
+**Send messages**
 
 To send messages is necessary make a `HTTP POST` request to URL provided on portal (chatbot settings section). The request must contain a authorization header (`Authorization`) with `Key` type, as showed on chatbot settings.
 
 The message data must be send on request `body`. The message must be a *JSON* on LIME protocol format. For more details go to [protocol documentation](http://limeprotocol.org/#message).
 
-### Example
+Example
 
 Imagine that exist a chatbot with **blipmessaginghubapp** identifier. To send a message from this bot to a BLiP user use:
 
@@ -30,7 +30,8 @@ Note: For this sample `bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ` is a valid `
 
 For more information about messages, check the [**Messages** documentation page](.#/docs/concepts/messages) or the [supported content types specification](.#/docs/content-types).
 
-##### Receiving notification
+2. Receiving notification
+
 All notifications will be delivered on configured chatbot notification URL. Each notification contains the _status_ of messages. Observe that the notifications are sent by the *clients*, informing if received or not some message.
 
 A sample of notification is presented bellow. This notification will be deliverd as a `HTTP POST` request on the chatbot notification URL.
@@ -48,7 +49,7 @@ For more information, check the [**Notification** documentation page](.#/docs/co
 
 ---
 
-#### Receiving messages
+3. Receiving messages
 
 As the notifications, all messages will be delivered as a `HTTP POST` request on configured chatbot messages URL. The messages have a JSON format as defined on [LIME PROTOCOL](http://limeprotocol.org/#message). A sample of received message is presented bellow.
 
@@ -62,7 +63,7 @@ As the notifications, all messages will be delivered as a `HTTP POST` request on
 }
 ```
 
-##### Sending notifications
+4. Sending notifications
 
 In order to correctly show the message history is important that the chatbots send notifications of messages processed to originator clients.
 
@@ -84,7 +85,7 @@ Content-Length: 131
 
 ---
 
-#### Sending commands
+5. Sending commands
 
 In order to use the BLiP's [extensions]() (like schedule and directory) is necessary send commands. To do this is necessary make a `HTTP POST` request on `/commands` URL:
 
@@ -133,7 +134,8 @@ Content-Length: 131
 }
 
 ```
-#### Result codes for requests
+
+* Result codes for requests
 
 | Code                | Description                                                                               |
 |---------------------|-----------------------------------------------------------------------------------------  |
@@ -143,7 +145,7 @@ Content-Length: 131
 
 ---
 
-#### Required Settings
+* Required Settings
 
 | Name                          | Description                                                                   |
 |-------------------------------|-------------------------------------------------------------------------------|
