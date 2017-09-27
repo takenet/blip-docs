@@ -1,4 +1,4 @@
-### Sensitive information
+## Sensitive information
 
 | MIME type                            |
 |--------------------------------------|

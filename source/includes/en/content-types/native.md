@@ -1,4 +1,4 @@
-### Native Content
+## Native Content
 | MIME type                            |
 |--------------------------------------|
 | application/json                     |

@@ -1,15 +1,9 @@
-### Web link
-| MIME type                |
-|--------------------------|
-| application/vnd.lime.web-link+json|
-
-Allows sending a link for a webpage to the client including metadata such link's title, description and a miniature image. 
-
-#### Example
-
-Sending a message to a Messenger recipient:
+## Web link
 
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {
     "id": "1",
     "to": "1042225583186385@messenger.gw.msging.net",
@@ -21,6 +15,16 @@ Sending a message to a Messenger recipient:
     }
 }
 ```
+
+| MIME type                |
+|--------------------------|
+| application/vnd.lime.web-link+json|
+
+Allows sending a link for a webpage to the client including metadata such link's title, description and a miniature image. 
+
+### Sending a message to a Messenger recipient:
+
+
 
 In some channels is possible to define how the webpage will be diplayed (on the same window, openning a new window or occuping part of device window) through the `target` property. For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#web-link) specification.
 

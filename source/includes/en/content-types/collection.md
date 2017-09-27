@@ -7,11 +7,12 @@ Allows sending **multiple contents** of the same type in a single message. Some 
 
 **Note:** It is possible to send different content types using a collection of the **container** type.
 
-#### Examples
-
-1 – A **text** collection
+### A text Collection
 
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {
 	"to": "553199990000@0mn.io",
 	"type": "application/vnd.lime.collection+json",
@@ -26,8 +27,12 @@ Allows sending **multiple contents** of the same type in a single message. Some 
 }
 ```
 
-2 - A different types collection, using **container**
+### A different types collection, using **container**
+
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {
 	"to": "553199990000@0mn.io",
 	"type": "application/vnd.lime.collection+json",
@@ -64,8 +69,12 @@ Allows sending **multiple contents** of the same type in a single message. Some 
 
 ```
 
-3 - A **multimedia menu** collection
+### A **multimedia menu** collection
+
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {
     "id": "5",
     "to": "1042221589186385@messenger.gw.msging.net",

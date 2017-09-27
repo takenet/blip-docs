@@ -1,4 +1,4 @@
-### Payment Invoice Status
+## Payment Invoice Status
 | MIME type                            |
 |--------------------------------------|
 | application/vnd.lime.invoice-status+json |
