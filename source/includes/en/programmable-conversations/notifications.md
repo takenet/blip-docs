@@ -6,7 +6,9 @@
 
 ### Sending notifications
 
-> The following sample show how to send a notification after connection has been stablished:
+<blockquote class="lang-specific javascript">
+<p>As message we send a notification using client object with method sendNotification</p>
+</blockquote>
 
 ```javascript
 client.connect()
@@ -32,36 +34,14 @@ client.sendNotification(notification);
 ```
 
 ```csharp
-
-public class PlainTextMessageReceiver : IMessageReceiver
-{
-    private readonly ISender _sender;
-
-    public PlainTextMessageReceiver(IMessagingHubSender sender)
-    {
-        _sender = sender;
-    }
-
-    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
-    {
-        // Write the received message to the console
-        Console.WriteLine(message.Content.ToString());
-        // Responds to the received message
-        _sender.SendMessageAsync("Hi. I just received your message!", message.From, cancellationToken);
-
-        var notification = new Notification
-        {
-            Id = message.Id,
-            To = message.From,
-            Event = Event.Consumed
-        };
-
-        await _sender.SendNotificationAsync(notification, cancellationToken);
-    }
-}
+PRECISAMOS DE UM EXEMPLO AQUI GUYS
 ```
+<blockquote class="lang-specific http">
+<p>For instance, imagine that the received message from example above (whit id 99cf454e-f25d-4ebd-831f-e48a1c612cd4</p>
+</blockquote>
 
 ```http
+//The code bellow show a complete notification request including the headers and the body request.
 POST https://msging.net/notifications HTTP/1.1
 Content-Type: application/json
 Authorization: Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=
