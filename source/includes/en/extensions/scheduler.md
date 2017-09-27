@@ -1,5 +1,15 @@
 ## Schedule
 
+| Address                         | Base URI     |
+|---------------------------------|--------------|
+| postmaster@scheduler.msging.net | /schedules   |
+
+The **scheduler** extensions allows the chatbot to schedule messages to be sent in specific date and time on its behalf. Any type of message to any destination can be scheduled, including **broadcast** messages (to a distribution list). The scheduling time must be done in the GMT timezone. Any received notification from a scheduled message is forwarded to the chatbot.
+
+The possible `status` values are `scheduled`, `executed` and `canceled`. 
+
+### Get
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -39,39 +49,7 @@ Content-Type: application/json
 }
 ```
 
-| Address                         | Base URI     |
-|---------------------------------|--------------|
-| postmaster@scheduler.msging.net | /schedules   |
-
-The **scheduler** extensions allows the chatbot to schedule messages to be sent in specific date and time on its behalf. Any type of message to any destination can be scheduled, including **broadcast** messages (to a distribution list). The scheduling time must be done in the GMT timezone. Any received notification from a scheduled message is forwarded to the chatbot.
-
-The possible `status` values are `scheduled`, `executed` and `canceled`. 
-
-### Get
-
 Getting an existing scheduled message with id ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67
-
-
-#### REQUEST
-
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-
-#### RESPONSE
-
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| from    | The address that is sending the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| status    | The current status of the command (success or failed).   |
-| type | The type of the resource. |
-| resource | The document schedule. |
 
 ### Create
 
@@ -112,28 +90,4 @@ Content-Type: application/json
 ```
 
 Scheduling a message text/plain with the content 'Scheduling test' to be sent to the user **destination@msging.net** in **2016-07-25T17:50:00.000Z**
-
-
-
-
-#### REQUEST
-
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| to    | The destination of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| type | The type of the resource. |
-| resource | The schedule document. |
-
-#### RESPONSE
-
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| from    | The node that is sending you the command.   |
-| to    | The destination of the command.   |
-| method    | The command verb   |
-| status    | The current status of the command (success or failed). |
 

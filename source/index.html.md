@@ -48,7 +48,6 @@ includes:
   - en/content-types/resource
   - en/content-types/redirect
 
-  - --Extensions
   - en/extensions
   - en/extensions/event-track
   - en/extensions/scheduler

@@ -8,7 +8,7 @@ The **contacts** extension allows the management of the chatbot's roster, which 
 
 For more information about the supported fields, please refer to the [Lime protocol](http://limeprotocol.org/resources.html#contact) documentation.
 
-###Add Messenger contact
+### Add Messenger contact
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -43,18 +43,8 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| method    | The command verb   |
-| type | The type of the resource. |
-| uri    | The command uri   |
-| resource | The contact details. |
+### Get contact
 
-
-
-
-###Get contact
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -89,14 +79,7 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-
-
-###Get contacts with paging
+### Get contacts with paging
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -130,18 +113,11 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-
-
 ### Message variable replacement
 
 The contacts fields can be used to replace variables on messages sent by the chatbot. To active the replacement in a message, the `metadata` key `#message.replaceVariables` should be present with the value `true` and the message text should have variables in the  `${contact.<propertyName>}` format, where `<propertyName>` is the contact property for replacement. It is possible to use all fields from the contact, including the keys in the `extras` property. In this case, is only required to use the `${contact.extras.<extraPropertyName>}` convention, where `<extraPropertyName>` is the value for replacement. If the value is not available, it is only removed from the message.
 
-###Send message with contact name
+### Send message with contact name
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -170,10 +146,3 @@ Content-Type: application/json
   }
 }
 ```
-
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| to | Message destiny |
-| type | The type of the resource. |
-| value    | Value of message  |
