@@ -19,12 +19,11 @@ Content-Length: 131
 ```
 
 <blockquote class="lang-specific csharp">
-<p>With `C#` the authentication of your chatbot is made on application.json file. Basically this file define all receivers and others control properties. check example on C# tab</p>
-<p>Check a example of how to set your application.json file:</p>
+<p>With `C#` the authentication of your chatbot is made on application.json file. Basically this file define all receivers and others control properties</p>
 </blockquote>
 
 ```csharp
-
+//Check a example of how to set your application.json file:
 {
   "identifier": "xpto",
   "accessKey": "cXkzT1Rp",

@@ -47,7 +47,7 @@ A sample of notification is presented bellow. This notification will be deliverd
 
 For more information, check the [**Notification** documentation page](.#/docs/concepts/notifications)
 
----
+
 
 3. Receiving messages
 
@@ -83,7 +83,6 @@ Content-Length: 131
 }
 ```
 
----
 
 5. Sending commands
 

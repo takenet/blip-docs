@@ -1,4 +1,4 @@
-# Channels
+### Channels
 
 **Channels** are message nets connected to **BLiP** in which the chatbots are able to send and receive messages to these nets' customers. Each channel has an identifier used for addressing which is normally a [FQDN](https://pt.wikipedia.org/wiki/FQDN). This identifier appears after the `@` in the nodes address.
 

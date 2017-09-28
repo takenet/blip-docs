@@ -2,6 +2,9 @@
 
 > See below the representation of a command for the distribution list creation.
 
+<blockquote class="lang-specific csharp">
+<p>As messages/notifications use ISender interface to send commands to the server, as the follow sample</p>
+</blockquote>
 ```csharp
 var command = new Command()
 {
@@ -13,6 +16,8 @@ var command = new Command()
     {
         {"identity", "list@broadcast.msging.net"}
     }
+
+    var response = await _sender.ProcessCommandAsync(command, cancellationToken);
 };
 ```
 
