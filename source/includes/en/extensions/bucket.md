@@ -1,14 +1,26 @@
 ## Bucket
 
-| Address               | Base URI     |
-|-----------------------|--------------|
-| postmaster@msging.net (default address - not required) | /buckets |
-
 The **bucket** extension allows the storage of documents in the server on a isolated chatbot's container. This extensions is useful to store information about the clients that have interacted with the chatbot, like preferences and navigation state.
 
 Each document have an **identifier** which is provided during the write operation and this identifier should be used for retrieving the value later. It is possible to set an optional **expiration date** for the document. Both the identifier and the expiration date are specified in the **URI** of the command which is sent to the extension.
 
-### Store a JSON Document
+**Note: If expiration date is not provided the document will never expires.**
+
+To use the **bucket** extension send a command with the following properties:
+
+| Name | Description |
+|---------------------------------|--------------|
+| id    | Unique identifier of the command.   |
+| method    | The command verb  |
+| resource | The document to be stored. |
+| type | The document type |
+| uri    | **/buckets**   |
+| to     | **postmaster@msging.net** (not required) |
+
+The command's properties `resource` and `method` can change according of the feature.
+The document to be stored must be passed on `resource` property
+
+### Store a JSON document
 
 ```http
 POST /commands HTTP/1.1
@@ -40,6 +52,40 @@ Content-Type: application/json
 }
 ```
 
+```csharp
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.Bucket;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private readonly IBucketExtension _bucketExtension;
+
+        public SampleMessageReceiver(IBucketExtension bucketExtension)
+        {
+            _bucketExtension = bucketExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var jsonDocument = new JsonDocument();
+            jsonDocument.Add("key1", "value1");
+            jsonDocument.Add("key2", 2);
+            jsonDocument.Add("key3", new string[] { "3a", "3b", "3c"} );
+
+            await _bucketExtension.SetAsync("xyz1234", jsonDocument);
+        }
+    }
+}
+```
+
+Storing a JSON object `{"key1": "value1", "key2": 2, "key3": ["3a", "3b", "3c"]}` identified by `xyz1234` key.
+
 ### Store a custom document
 
 ```http
@@ -69,7 +115,62 @@ Content-Type: application/json
 }
 ```
 
-Storing an custom document with type **application/x-my-type+json** and **abcd9876** identifier, setting the expiration to 30000 milisseconds (or 30 seconds):
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.Bucket;
+using System.Runtime.Serialization;
+
+namespace Extensions
+{
+    [DataContract]
+    public class MyType : Document
+    {
+        public const string MIME_TYPE = "application/x-my-type+json";
+
+        public static readonly MediaType MediaType = MediaType.Parse(MIME_TYPE);
+
+        public MyType()
+            : base(MediaType)
+        {
+        }
+
+        [DataMember]
+        public string MyTypeKey1 { get; set; }
+
+        [DataMember]
+        public int MyTypeKey2 { get; set; }
+    }
+
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private readonly IBucketExtension _bucketExtension;
+
+        public SampleMessageReceiver(IBucketExtension bucketExtension)
+        {
+            _bucketExtension = bucketExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var myTypeDocument = new MyType();
+            myTypeDocument.MyTypeKey1 = "value1";
+            myTypeDocument.MyTypeKey2 = 2;
+
+            await _bucketExtension.SetAsync("abcd9876", jsonDocument);
+        }
+    }
+}
+```
+
+Storing an custom document with type `application/x-my-type+json` and `abcd9876` identifier, setting the expiration to 30000 milisseconds (or 30 seconds):
+
+<aside class="notice">
+Note: If you create a custom document <b>you must</b> register this type on <i>StartAsync</i> method of <i>Startup.cs</i> class. To do this add this line <code> TypeUtil.RegisterDocument&lt;MyType&gt;();</code> 
+</aside>
+
 
 ### Get a document
 
@@ -103,3 +204,31 @@ Content-Type: application/json
   }  
 }
 ```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.Bucket;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private readonly IBucketExtension _bucketExtension;
+
+        public SampleMessageReceiver(IBucketExtension bucketExtension)
+        {
+            _bucketExtension = bucketExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var document = await _bucketExtension.GetAsync<JsonDocument>("xyz1234", cancellationToken);
+        }
+    }
+}
+```
+
+Retrieving a JSON document identified by `xyz1234` key.
