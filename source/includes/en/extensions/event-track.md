@@ -27,6 +27,21 @@ An event track object passed as a document `resource` has the following properti
 
 Imagine that your chatbot must track the number of payment orders realized and show this data on a real time report. To make this possible you can register every single *success order* as an **action** of the *payments* **category**.
 
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        'id': '9494447a-2581-4597-be6a-a5dff33af156',
+        'method': 'set',
+        'type': 'application/vnd.iris.eventTrack+json',
+        'uri': '/event-track',
+        'resource': {  
+            'category': 'billing',
+            'action': 'payment'
+        }
+    });
+});
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -83,6 +98,22 @@ namespace Extensions
 ```
 
 ### Create event with identity
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        'id': '9494447a-2581-4597-be6a-a5dff33af156',
+        'method': 'set',
+        'type': 'application/vnd.iris.eventTrack+json',
+        'uri': '/event-track',
+        'resource': {  
+          'category': 'billing',
+          'action': 'payment',
+          'identity': '123456@messenger.gw.msging.net',
+        }
+    });
+});
+```
 
 ```http
 POST /commands HTTP/1.1
@@ -144,6 +175,16 @@ Is also possible associate a specific contact in an event. You can use this to i
 If your bot has a `123456@messenger.gw.msging.net` contact identity as a tester user you can ignore all of your tracks events adding this identity on event resource object.
 
 ### Get Categories
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        'id': '3',
+        'method': 'get',
+        'uri': '/event-track'
+    });
+});
+```
 
 ```http
 POST /commands HTTP/1.1
@@ -208,6 +249,16 @@ namespace Extensions
 Retrieves all tracked categories.
 
 ### Get Counters
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        'id': '4',
+        'method': 'get',
+        'uri': '/event-track/billing?startDate=2016-01-01&$take=10'
+    });
+});
+```
 
 ```http
 POST /commands HTTP/1.1
@@ -291,6 +342,16 @@ To retrieve all counters of a category add the category name on command uri (for
 | endDate      | Limit date to retrieve the events         |
 
 ### Get Details
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({
+        'id': '5',
+        'method': 'get',
+        'uri': '/event-track/billing/payment?startDate=2016-01-01&$take=10'
+    });
+});
+```
 
 ```http
 POST /commands HTTP/1.1

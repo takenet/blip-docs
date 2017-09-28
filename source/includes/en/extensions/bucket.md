@@ -10,6 +10,24 @@ Each document have an **identifier** which is provided during the write operatio
 
 ### Store a JSON Document
 
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({
+        'id': '1',
+        'method': 'set',
+        'uri': '/buckets/xyz1234',
+        'type': 'application/json',
+        'resource': {  
+            'key1': 'value1',
+            'key2': 2,
+            'key3': [  
+                '3a', '3b', '3c'
+            ]
+        }
+    });
+});
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -29,9 +47,9 @@ Content-Type: application/json
 ```
 
 ```http
+HTTP/1.1 200 OK
+Content-Type: application/json
 {
-  HTTP/1.1 200 OK
-  Content-Type: application/json
   "id": "1",
   "from": "postmaster@msging.net/#irismsging1",
   "to": "contact@msging.net/default",
@@ -41,6 +59,21 @@ Content-Type: application/json
 ```
 
 ### Store a custom document
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({
+        "id": "2",
+        "method": "set",
+        "uri": "/buckets/abcd9876?expiration=30000",
+        "type": "application/x-my-type+json",
+        "resource": {  
+            "myTypeKey1": "value1",
+            "myTypeKey2": 2
+        }
+    });
+});
+```
 
 ```http
 POST /commands HTTP/1.1
@@ -58,9 +91,9 @@ Content-Type: application/json
 ```
 
 ```http
+HTTP/1.1 200 OK
+Content-Type: application/json
 {
-    HTTP/1.1 200 OK
-  Content-Type: application/json
   "id": "2",
   "from": "postmaster@msging.net/#irismsging1",
   "to": "contact@msging.net/default",
@@ -72,6 +105,16 @@ Content-Type: application/json
 Storing an custom document with type **application/x-my-type+json** and **abcd9876** identifier, setting the expiration to 30000 milisseconds (or 30 seconds):
 
 ### Get a document
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        'id': '3',
+        'method': 'get',
+        'uri': '/buckets/xyz1234'
+    });
+});
+```
 
 ```http
 POST /commands HTTP/1.1
