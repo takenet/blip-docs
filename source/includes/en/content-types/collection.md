@@ -1,13 +1,6 @@
 ## Collection
-| MIME type                            | C#                                 |
-|--------------------------------------|------------------------------------|
-| application/vnd.lime.collection+json | [Lime.Protocol.DocumentCollection](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Protocol/DocumentCollection.cs)|
 
-Allows sending **multiple contents** of the same type in a single message. Some channels support this type of aggregation with special layouts (for example, in Facebook Messenger a **multimedia menu** collection is displayed as a *carousel*). In other channels, multiple messages are sent.
-
-**Note:** It is possible to send different content types using a collection of the **container** type.
-
-### A text Collection
+> A text Collection
 
 ```http
 POST /commands HTTP/1.1
@@ -27,7 +20,7 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-### A different types collection, using **container**
+> A different types collection, using **container**
 
 ```http
 POST /commands HTTP/1.1
@@ -69,7 +62,7 @@ Authorization: Key {YOUR_TOKEN}
 
 ```
 
-### A **multimedia menu** collection
+> A **multimedia menu** collection
 
 ```http
 POST /commands HTTP/1.1
@@ -170,6 +163,14 @@ Authorization: Key {YOUR_TOKEN}
     }
 }
 ```
+
+| MIME type                            | C#                                 |
+|--------------------------------------|------------------------------------|
+| application/vnd.lime.collection+json | [Lime.Protocol.DocumentCollection](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Protocol/DocumentCollection.cs)|
+
+Allows sending **multiple contents** of the same type in a single message. Some channels support this type of aggregation with special layouts (for example, in Facebook Messenger a **multimedia menu** collection is displayed as a *carousel*). In other channels, multiple messages are sent.
+
+**Note:** It is possible to send different content types using a collection of the **container** type.
 
 For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#collection) specification.
 

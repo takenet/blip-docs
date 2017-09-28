@@ -1,12 +1,6 @@
 ## List
-| MIME type                            |
-|--------------------------------------|
-| application/vnd.lime.list+json       |
 
-Allows send a list of different documents on a single message. Is also possible define a document as a list header.
-
-
-### Sending a list with a **weblink** header to a Messenger user:
+> Sending a list with a **weblink** header to a Messenger user:
 
  ```http
 POST /commands HTTP/1.1
@@ -63,6 +57,12 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+
+| MIME type                            |
+|--------------------------------------|
+| application/vnd.lime.list+json       |
+
+Allows send a list of different documents on a single message. Is also possible define a document as a list header.
 
 #### Channel support
 

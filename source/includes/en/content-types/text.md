@@ -5,6 +5,9 @@
 
 Allows sending and receiving simple text messages.
 
+>Sending a message to a Messenger recipient:
+>For more details, check the especification of [LIME protocol](http://limeprotocol.org/content-types.html#text).
+
 ```csharp
 //The sample follow show how to reply a received message with a simple text message.
 public class PlainTextMessageReceiver : IMessageReceiver
@@ -41,11 +44,7 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-#### Example
 
-Sending a message to a Messenger recipient:
-
-For more details, check the especification of [LIME protocol](http://limeprotocol.org/content-types.html#text).
 
 #### Channel mapping
 

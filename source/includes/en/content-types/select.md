@@ -107,9 +107,9 @@ Tangram SMS: The Value field will be ignored. Only the Order field will be sent 
 //If is nedded to send more than 3 options is necessary send multiple messages.
 //Tangram SMS: The Value field will be ignored. Only the Order field will be sent if the option be selected.
 ```
+> JSON 1
 
 ```http
-/*---------JSON 1---------*/
 POST /commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
@@ -122,9 +122,9 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+>JSON 2
 
 ```http
-/*---------JSON 2---------*/
 POST /commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
@@ -137,8 +137,9 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+>JSON 3
+
 ```http
-/*---------JSON 3---------*/
 POST /commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}

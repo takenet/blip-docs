@@ -1,17 +1,12 @@
 ## Native Content
-| MIME type                            |
-|--------------------------------------|
-| application/json                     |
 
-Allows send a native content of some channel using JSON format. Is possible use any channel available resource even this content is yet not supported as a BLiP canonical type.
+>Sending a Messenger **[text](https://developers.facebook.com/docs/messenger-platform/send-api-reference/)** message:
 
-Note that for a **multi channel** chatbot the responsability of send the correct content type to each channel is of chatbot developer.
-
-#### Examples
-
-1 - Sending a Messenger **[text](https://developers.facebook.com/docs/messenger-platform/send-api-reference/)** message:
 
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id":"1",
   "to":"949839515125748@messenger.gw.msging.net",
@@ -21,9 +16,15 @@ Note that for a **multi channel** chatbot the responsability of send the correct
   }
 }
 ```  
-2 - Sending an **[airline boardingpass template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/airline-boardingpass-template)** message type to Messenger:
+
+
+>2 - Sending an **[airline boardingpass template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/airline-boardingpass-template)** message type to Messenger:
+
 
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id":"2",
   "to":"949839515125748@messenger.gw.msging.net",
@@ -152,6 +153,15 @@ Note that for a **multi channel** chatbot the responsability of send the correct
   }
 }
 ```
+
+
+| MIME type                            |
+|--------------------------------------|
+| application/json                     |
+
+Allows send a native content of some channel using JSON format. Is possible use any channel available resource even this content is yet not supported as a BLiP canonical type.
+
+Note that for a **multi channel** chatbot the responsability of send the correct content type to each channel is of chatbot developer.
 
 #### Channel mapping
 
