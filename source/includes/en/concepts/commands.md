@@ -105,6 +105,8 @@ Each command has:
 - **type**: Declaration of the **resource** value type, in MIME format.
 - **resource**: JSON resource representation. Must be present in requests of **set** and **observe** methods and success answers of **get** method.
 
+> Note: Some extensions can not accept all of available methods.
+
 Besides the properties previously mentioned, a response command may have:
 
 - **status**: Indicates the command's processing result, and it's mandatory in the answers. Valid values are:
