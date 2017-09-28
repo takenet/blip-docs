@@ -14,7 +14,7 @@ To use any feature of **event analysis** extension send a command with the follo
 | to     | **postmaster@analytics.msging.net** |
 
 The command's properties `resource` and `method` can change according of the feature.
-An event track document passed as a document `resource` has the following properties:
+An event track object passed as a document `resource` has the following properties:
 
 | Property     | Description                                                        | Example |
 |--------------|--------------------------------------------------------------------|---------|
