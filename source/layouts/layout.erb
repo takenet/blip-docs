@@ -35,25 +35,22 @@ language_tabs = current_page.data.language_tabs || [] %>
 
   <script>
   //This is Googles default GA code
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-79317370-6', 'auto');
-  ga('send', 'pageview');
-  //This does hash-click tracking (inspired by http://stackoverflow.com/a/4813223)
-  window.onload = function() {
-
-  var nodeList = document.getElementsByClassName("toc-link");
-  [].forEach.call(nodeList, function(e) { e.addEventListener('click', function() {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-79317370-6', 'auto');
     ga('send', 'pageview');
-    console.log("ga");
-  },false) } );
+    //This does hash-click tracking (inspired by http://stackoverflow.com/a/4813223)
+    window.onload = function() {
 
-};
- 
+      var nodeList = document.getElementsByClassName("toc-link");
+      [].forEach.call(nodeList, function(e) { e.addEventListener('click', function() {
+        ga('send', 'pageview', {'page': location.pathname + location.hash});
+      },false) } );
 
-
+    };
+  
   </script>
 
   <head>
