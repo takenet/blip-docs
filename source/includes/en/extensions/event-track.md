@@ -56,6 +56,32 @@ Content-Type: application/json
 }
 ```
 
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.EventTracker;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private readonly IEventTrackExtension _eventTrackExtension;
+
+        public SampleMessageReceiver(IEventTrackExtension eventTrackExtension)
+        {
+            _eventTrackExtension = eventTrackExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            await _eventTrackExtension.AddAsync("payments", "success-order");
+        }
+    }
+}
+```
+
 ### Create event with identity
 
 ```http
@@ -85,6 +111,32 @@ Content-Type: application/json
   "id": "9494447a-2581-4597-be6a-a5dff33af156",
   "from": "postmaster@analytics.msging.net/#irismsging1",
   "to": "contact@msging.net/default"
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.EventTracker;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private readonly IEventTrackExtension _eventTrackExtension;
+
+        public SampleMessageReceiver(IEventTrackExtension eventTrackExtension)
+        {
+            _eventTrackExtension = eventTrackExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            await _eventTrackExtension.AddAsync("payments", "success-order", identity: new Identity("123456", "messenger.gw.msging.net"));
+        }
+    }
 }
 ```
 
@@ -124,6 +176,32 @@ Content-Type: application/json
         "category": "accounts"
     }]
   }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.EventTracker;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private readonly IEventTrackExtension _eventTrackExtension;
+
+        public SampleMessageReceiver(IEventTrackExtension eventTrackExtension)
+        {
+            _eventTrackExtension = eventTrackExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var categories = await _eventTrackExtension.GetCategoriesAsync();
+        }
+    }
 }
 ```
 
@@ -169,6 +247,37 @@ Content-Type: application/json
         "count": 20
     }]
   }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.EventTracker;
+using System;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private readonly IEventTrackExtension _eventTrackExtension;
+
+        public SampleMessageReceiver(IEventTrackExtension eventTrackExtension)
+        {
+            _eventTrackExtension = eventTrackExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var startDate = new DateTimeOffset(2016, 1, 1, 0, 0, 0, default(TimeSpan));
+            var endDate = new DateTimeOffset(2017, 1, 1, 0, 0, 0, default(TimeSpan));
+            var take = 10;
+
+            var categories = await _eventTrackExtension.GetCategoryActionsCounterAsync(startDate, endDate, "payments", take);
+        }
+    }
 }
 ```
 
@@ -225,6 +334,37 @@ Content-Type: application/json
         }  
     }]
   }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.EventTracker;
+using System;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private readonly IEventTrackExtension _eventTrackExtension;
+
+        public SampleMessageReceiver(IEventTrackExtension eventTrackExtension)
+        {
+            _eventTrackExtension = eventTrackExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var startDate = new DateTimeOffset(2016, 1, 1, 0, 0, 0, default(TimeSpan));
+            var endDate = new DateTimeOffset(2017, 1, 1, 0, 0, 0, default(TimeSpan));
+            var take = 10;
+
+            var categories = await _eventTrackExtension.GetAllAsync(startDate, endDate, "payments", "success-order", take: take);
+        }
+    }
 }
 ```
 
