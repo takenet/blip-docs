@@ -2,7 +2,7 @@
 
 The **event analysis** extension allows chatbot's events registration in order to create analytics reports in the BLiP portal. The events are agregated by category, action and day. The reports and graphs can be generated thought the [portal](https://portal.blip.ai), in the *Panel* -> *Data analysis* option.
 
-To use any feature of **event analysis** extension you must send a command with the following properties:
+To use any feature of **event analysis** extension send a command with the following properties:
 
 | Name | Description |
 |---------------------------------|--------------|
