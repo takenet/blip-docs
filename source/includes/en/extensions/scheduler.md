@@ -59,6 +59,45 @@ Content-Type: application/json
 }
 ```
 
+```csharp
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.Scheduler;
+using Lime.Messaging.Contents;
+
+namespace Extensions
+{
+    public class SampleExtensionMessageReceiver : IMessageReceiver
+    {
+        private readonly ISchedulerExtension _schedulerExtension;
+
+        public SampleExtensionMessageReceiver(ISchedulerExtension schedulerExtension)
+        {
+            _schedulerExtension = schedulerExtension;
+        }
+
+        public async Task ReceiveAsync(Message receivedMessage, CancellationToken cancellationToken)
+        {
+            var schedullingDate = DateTimeOffset.Now.AddMinutes(10);
+            var messageContent = "Scheduling test";
+
+            var message = new Message
+            {
+                Id = Guid.NewGuid().ToString(),
+                To = Node.Parse("destination@0mn.io"),
+                Content = new PlainText { Text = messageContent }
+            };
+
+            //Schedule a message to next 10 minutes
+            await _schedulerExtension.ScheduleMessageAsync(message, schedullingDate);
+        }
+    }
+}
+```
+
 Scheduling a message text/plain with the content 'Scheduling test' to be sent to the user **destination@0mn.io** in **2016-07-25T17:50:00.000Z**
 
 ### Get a scheduled message
@@ -102,5 +141,31 @@ Content-Type: application/json
 }
 ```
 
-Getting an existing scheduled message with id ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67. Each scheduled message has tree possible `status` values: `scheduled`, `executed` and `canceled`. This values are returned when you search for a specific message scheduled.
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.Scheduler;
+
+namespace Extensions
+{
+    public class SampleExtensionMessageReceiver : IMessageReceiver
+    {
+        private readonly ISchedulerExtension _schedulerExtension;
+
+        public SampleExtensionMessageReceiver(ISchedulerExtension schedulerExtension)
+        {
+            _schedulerExtension = schedulerExtension;
+        }
+
+        public async Task ReceiveAsync(Message receivedMessage, CancellationToken cancellationToken)
+        {
+            var scheduledMessage = await _schedulerExtension.GetScheduledMessageAsync("ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67", cancellationToken);
+        }
+    }
+}
+```
+
+Getting an existing scheduled message with id `ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67`. Each scheduled message has tree possible `status` values: `scheduled`, `executed` and `canceled`. This values are returned when you search for a specific message scheduled.
 

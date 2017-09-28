@@ -275,7 +275,8 @@ namespace Extensions
             var endDate = new DateTimeOffset(2017, 1, 1, 0, 0, 0, default(TimeSpan));
             var take = 10;
 
-            var categories = await _eventTrackExtension.GetCategoryActionsCounterAsync(startDate, endDate, "payments", take);
+            var categories = 
+              await _eventTrackExtension.GetCategoryActionsCounterAsync(startDate, endDate, "payments", take);
         }
     }
 }
@@ -362,7 +363,8 @@ namespace Extensions
             var endDate = new DateTimeOffset(2017, 1, 1, 0, 0, 0, default(TimeSpan));
             var take = 10;
 
-            var categories = await _eventTrackExtension.GetAllAsync(startDate, endDate, "payments", "success-order", take: take);
+            var categories = 
+              await _eventTrackExtension.GetAllAsync(startDate, endDate, "payments", "success-order", take: take);
         }
     }
 }
