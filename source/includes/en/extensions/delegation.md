@@ -1,15 +1,27 @@
 ## Delegation
 
-
-| Address              | Base URI     | Required Permissions   |
-|-----------------------|--------------|-------------------------|
-| postmaster@msging.net (default address - not required) | /delegations | None |
-
-
 The **delegation** extension allows the chatbot to give permissions to other **BLiP** identities - like another chatbots - to execute action *on its behalf* like sending messages. The delegation can be required by some extensions. It is required to be execute only once for each delegated identity.
 
-For more details, check the **delegation** resource on [LIME protocol](http://limeprotocol.org/resources.html#delegation) specification.
+To use the **delegation** extension send a command with the following properties:
 
+| Name | Description |
+|---------------------------------|--------------|
+| id    | Unique identifier of the command.   |
+| method    | The command verb  |
+| resource | The delegation document |
+| type | The document type |
+| uri    | **/delegations**   |
+| to     | **postmaster@msging.net** (not required) |
+
+The command's properties `resource` and `method` can change according of the feature.
+A delegation object passed as a `resource` document has the following properties:
+
+| Property     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **target** | Identity that will receive permission to make request as the caller. | postmaster@broadcast.msging.net |
+| **envelopeTypes**   | Envelope types that the target you receive permission to send behalf of the caller  | ["message", "notification"] |
+
+For more details, check the **delegation** resource on [LIME protocol](http://limeprotocol.org/resources.html#delegation) specification.
 
 ### Give permissions
 
@@ -43,13 +55,10 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | Info about the target and the permission |
+```csharp
+```
+
+Giving permission to another identity send message as the caller (the bot).
 
 ### Revoke permissions
 ```http
@@ -74,3 +83,8 @@ Content-Type: application/json
   "to": "contact@msging.net/default"
 }
 ```
+
+```csharp
+```
+
+Revoking granted permission.
