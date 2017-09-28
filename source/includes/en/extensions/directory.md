@@ -61,11 +61,11 @@ using Takenet.MessagingHub.Client.Listener;
 
 namespace Extensions
 {
-    public class DirectoryMessageReceiver : IMessageReceiver
+    public class SampleMessageReceiver : IMessageReceiver
     {
         private IDirectoryExtension _directoryExtension;
 
-        public DirectoryMessageReceiver(IDirectoryExtension directoryExtension)
+        public SampleMessageReceiver(IDirectoryExtension directoryExtension)
         {
             _directoryExtension = directoryExtension;
         }
@@ -124,11 +124,11 @@ using Takenet.MessagingHub.Client.Listener;
 
 namespace Extensions
 {
-    public class DirectoryMessageReceiver : IMessageReceiver
+    public class SampleMessageReceiver : IMessageReceiver
     {
         private IDirectoryExtension _directoryExtension;
 
-        public DirectoryMessageReceiver(IDirectoryExtension directoryExtension)
+        public SampleMessageReceiver(IDirectoryExtension directoryExtension)
         {
             _directoryExtension = directoryExtension;
         }
