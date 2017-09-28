@@ -5,6 +5,34 @@
 
 Allows sending and receiving geographic information.
 
+```csharp
+//A chatbot can send and receive a location entity. For this cases use Location type:
+public class PlainTextMessageReceiver : IMessageReceiver
+{
+    private readonly ISender _sender;
+    private readonly Settings _settings;
+
+    public PlainTextMessageReceiver(ISender sender, Settings settings)
+    {
+        _sender = sender;
+        _settings = settings;
+    }
+
+    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+    {
+        var document = new Location
+        {
+            Latitude = -22.121944,
+            Longitude = -45.128889,
+            Altitude = 1143
+        };
+
+        await _sender.SendMessageAsync(document, message.From, cancellationToken);
+    }
+
+}
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json

@@ -9,10 +9,12 @@
 public class PlainTextMessageReceiver : IMessageReceiver
 {
     private readonly ISender _sender;
+    private readonly Settings _settings;
 
-    public PlainTextMessageReceiver(IMessagingHubSender sender)
+    public PlainTextMessageReceiver(ISender sender, Settings settings)
     {
         _sender = sender;
+        _settings = settings;
     }
 
     public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
@@ -22,8 +24,8 @@ public class PlainTextMessageReceiver : IMessageReceiver
         // Responds to the received message
         _sender.SendMessageAsync("Hi. I just received your message!", message.From, cancellationToken);
     }
-}
 
+}
 ```
 <blockquote class="lang-specific javascript">
 <p>It's possible send notifications and messages only after sessions has been stablished.</p>
@@ -82,11 +84,21 @@ REQUEST
 //A `IMessageReceiver` can be defined as follow
 public class PlainTextMessageReceiver : IMessageReceiver
 {
+    private readonly ISender _sender;
+    private readonly Settings _settings;
+
+    public PlainTextMessageReceiver(ISender sender, Settings settings)
+    {
+        _sender = sender;
+        _settings = settings;
+    }
+
     public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
     {
         // Write the received message to the console
         Console.WriteLine(message.Content.ToString());
     }
+
 }
 ```
 <blockquote class="lang-specific javascript">

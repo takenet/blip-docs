@@ -6,13 +6,29 @@
 
 ```csharp
 // For this case, the command response is received on a synchronous way.
-var command = new Command {
-    Id = 1,
-    Method = CommandMethod.Get,
-    Uri = new LimeUri("/account")
-};
 
-var response = await _sender.ProcessCommandAsync(command, cancellationToken);
+public class PlainTextMessageReceiver : IMessageReceiver
+{
+    private readonly ISender _sender;
+    private readonly Settings _settings;
+
+    public PlainTextMessageReceiver(ISender sender, Settings settings)
+    {
+        _sender = sender;
+        _settings = settings;
+    }
+
+    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+    {
+        var command = new Command {
+            Id = 1,
+            Method = CommandMethod.Get,
+            Uri = new LimeUri("/account")
+        };
+        
+        var response = await _sender.ProcessCommandAsync(command, cancellationToken);
+    }
+}
 ```
 
 ```javascript
