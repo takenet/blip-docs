@@ -5,6 +5,30 @@
 
 Allows sending and receiving simple text messages.
 
+```csharp
+//The sample follow show how to reply a received message with a simple text message.
+public class PlainTextMessageReceiver : IMessageReceiver
+{
+    private readonly ISender _sender;
+    private readonly Settings _settings;
+
+    public PlainTextMessageReceiver(ISender sender, Settings settings)
+    {
+        _sender = sender;
+        _settings = settings;
+    }
+
+    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+    {
+        var document = new PlainText {Text = "... Inspiration, and a cup of coffe! It's enough!"};
+        await _sender.SendMessageAsync(document, message.From, cancellationToken);
+    }
+    //Limitations:Facebook Messenger: Max size of 320 characters. If your chatbot send messages 
+    //with more than 320 characters, on this channel, your message will not be delivered.
+
+}
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json

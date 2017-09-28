@@ -41,7 +41,6 @@ includes:
   - en/content-types/payment-receipt
   - en/content-types/web-link
   - en/content-types/invoice
-  - en/content-types/redirect
   - en/content-types/native
   - en/content-types/sensitive
   - en/content-types/input
