@@ -48,7 +48,7 @@ The Broadcast service is available in the following domains:
 |Workplace  |x          |Needed initial user interaction with chatbot           |
 
 
-###Create a list
+### Create a list
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
@@ -90,6 +90,34 @@ Content-Type: application/json
   "to": "contact@msging.net/default",
   "method": "set",
   "status": "success"
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.Broadcast;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private readonly IBroadcastExtension _broadcastExtension;
+
+        public SampleMessageReceiver(IBroadcastExtension broadcastExtension)
+        {
+            _broadcastExtension = broadcastExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var listName = "your_distributionList";
+
+            await _broadcastExtension.CreateDistributionListAsync(listName);
+        }
+    }
 }
 ```
 
@@ -137,9 +165,37 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.Broadcast;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private readonly IBroadcastExtension _broadcastExtension;
+
+        public SampleMessageReceiver(IBroadcastExtension broadcastExtension)
+        {
+            _broadcastExtension = broadcastExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var listName = "your_distributionList";
+
+            await _broadcastExtension.AddRecipientAsync(listName, Identity.Parse("551100001111@0mn.io"));
+        }
+    }
+}
+```
+
 After to create a distribution list you must add some members to receive your broadcasts. To add a member with `551100001111@0mn.io` identity to a list with `your_distributionList` identifier you must send command with `SET` method and a `resource` document equals to a member identity (`551100001111@0mn.io`). Note that the command URI also must contains the list identifier (`/lists/your_distributionList@broadcast.msging.net/recipients`)
 
-###Remove element from list
+### Remove members from list
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
@@ -173,6 +229,34 @@ Content-Type: application/json
   "to": "contact@msging.net/default",
   "method": "set",
   "status": "success"
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.Broadcast;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private readonly IBroadcastExtension _broadcastExtension;
+
+        public SampleMessageReceiver(IBroadcastExtension broadcastExtension)
+        {
+            _broadcastExtension = broadcastExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var listName = "your_distributionList";
+
+            await _broadcastExtension.DeleteRecipientAsync(listName, Identity.Parse("551100001111@0mn.io"));
+        }
+    }
 }
 ```
 
@@ -224,6 +308,35 @@ Content-Type: application/json
 }
 ```
 
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.Broadcast;
+using Lime.Messaging.Contents;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private readonly IBroadcastExtension _broadcastExtension;
+
+        public SampleMessageReceiver(IBroadcastExtension broadcastExtension)
+        {
+            _broadcastExtension = broadcastExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var listName = "your_distributionList";
+
+            await _broadcastExtension.SendMessageAsync(listName, new PlainText { Text = "Hello participants of this list!" });
+        }
+    }
+}
+```
+
 If you already have a distribution list with some members you can send messages to this list. Any message sent to a specific list you be received to all of your members.
 
 ###Send message with replacement variable
@@ -252,10 +365,40 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.Broadcast;
+using Lime.Messaging.Contents;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private readonly IBroadcastExtension _broadcastExtension;
+
+        public SampleMessageReceiver(IBroadcastExtension broadcastExtension)
+        {
+            _broadcastExtension = broadcastExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var listName = "your_distributionList";
+
+            await _broadcastExtension.SendMessageAsync(listName, new PlainText { Text = "Hello ${contact.name}, come to check out our prices!" });
+        }
+    }
+}
+```
+
 <aside class="notice">
-Note: You can also replace contact variables in messages sent to a distribution list. For more information, please check the documentation of the [**Contacts** extension](#contacts).
+Note: To make your broadcast more personal you can also replace contact variables in messages sent to a distribution list. 
 </aside>
 
+For more information, please check the documentation of the [**Contacts** extension](#contacts).
 
 
 
