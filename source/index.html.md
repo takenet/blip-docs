@@ -15,6 +15,7 @@ includes:
   
   - en/concepts
   - en/concepts/addressing
+  - en/concepts/channels
   - en/concepts/messages
   - en/concepts/handle-messages
   - en/concepts/notifications
