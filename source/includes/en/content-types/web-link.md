@@ -22,7 +22,7 @@ Authorization: Key {YOUR_TOKEN}
 
 Allows sending a link for a webpage to the client including metadata such link's title, description and a miniature image. 
 
-### Sending a message to a Messenger recipient:
+#### Sending a message to a Messenger recipient:
 
 
 

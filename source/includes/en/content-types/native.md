@@ -7,10 +7,14 @@ Allows send a native content of some channel using JSON format. Is possible use 
 
 Note that for a **multi channel** chatbot the responsability of send the correct content type to each channel is of chatbot developer.
 
-#### Examples
+###  Sending a Messenger message
 
-1 - Sending a Messenger **[text](https://developers.facebook.com/docs/messenger-platform/send-api-reference/)** message:
+Sending a Messenger **[text](https://developers.facebook.com/docs/messenger-platform/send-api-reference/)** message:
+
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id":"1",
   "to":"949839515125748@messenger.gw.msging.net",
@@ -20,8 +24,15 @@ Note that for a **multi channel** chatbot the responsability of send the correct
   }
 }
 ```  
-2 - Sending an **[airline boardingpass template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/airline-boardingpass-template)** message type to Messenger:
+###  Sending a bording pass template
+
+
+Sending an **[airline boardingpass template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/airline-boardingpass-template)** message type to Messenger:
+
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {  
   "id":"2",
   "to":"949839515125748@messenger.gw.msging.net",
