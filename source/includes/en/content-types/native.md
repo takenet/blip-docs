@@ -1,15 +1,7 @@
 ## Native Content
-| MIME type                            |
-|--------------------------------------|
-| application/json                     |
 
-Allows send a native content of some channel using JSON format. Is possible use any channel available resource even this content is yet not supported as a BLiP canonical type.
+>Sending a Messenger **[text](https://developers.facebook.com/docs/messenger-platform/send-api-reference/)** message:
 
-Note that for a **multi channel** chatbot the responsability of send the correct content type to each channel is of chatbot developer.
-
-###  Sending a Messenger message
-
-Sending a Messenger **[text](https://developers.facebook.com/docs/messenger-platform/send-api-reference/)** message:
 
 ```http
 POST /commands HTTP/1.1
@@ -24,10 +16,10 @@ Authorization: Key {YOUR_TOKEN}
   }
 }
 ```  
-###  Sending a bording pass template
 
 
-Sending an **[airline boardingpass template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/airline-boardingpass-template)** message type to Messenger:
+>2 - Sending an **[airline boardingpass template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/airline-boardingpass-template)** message type to Messenger:
+
 
 ```http
 POST /commands HTTP/1.1
@@ -161,6 +153,15 @@ Authorization: Key {YOUR_TOKEN}
   }
 }
 ```
+
+
+| MIME type                            |
+|--------------------------------------|
+| application/json                     |
+
+Allows send a native content of some channel using JSON format. Is possible use any channel available resource even this content is yet not supported as a BLiP canonical type.
+
+Note that for a **multi channel** chatbot the responsability of send the correct content type to each channel is of chatbot developer.
 
 #### Channel mapping
 

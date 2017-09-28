@@ -47,9 +47,12 @@ Content-Length: 131
 } 
 ```
 
+<blockquote class="lang-specific http">
+<p>Reponse in the case of a successful answer:</p>
+</blockquote>
+
 
 ```http
-Reponse in the case of a successful answer:
 
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -62,9 +65,11 @@ Content-Type: application/json
   "status": "success"
 } 
 ```
+<blockquote class="lang-specific http">
+<p>In the case of a failure:</p>
+</blockquote>
 
 ```http
-In the case of a failure:
 
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -99,6 +104,8 @@ Each command has:
   * **observe**: Notify about a resource's value change. They are usually sent by the server or an extension. Commands sent with this method are unidirectional and the recipient should not send an answer. For this reason, they do not have **id**.
 - **type**: Declaration of the **resource** value type, in MIME format.
 - **resource**: JSON resource representation. Must be present in requests of **set** and **observe** methods and success answers of **get** method.
+
+> Note: Some extensions can not accept all of available methods.
 
 Besides the properties previously mentioned, a response command may have:
 

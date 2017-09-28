@@ -1,16 +1,5 @@
 ## Menu
-| MIME type                                 |
-|-------------------------------------------|
-| application/vnd.lime.select+json |
 
-Allows sending an text menu to customers to make a choice. It is possible to define a document that may be delivered to the chatbot when the customer selects an option - depending on the channel support. The options can also be optionally numbered.
-
-Some channels support the options scope limitation, which determines for how much time they are valid for the user selection. For example, in some cases, the sent options can only be selected by the customer at that time and must disappear after the choice. In this case, the scope is **immediate**. In others, the options are valid for the selection at any time, and the scope is **persistent**.
-
-For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#select) specification.
-
-
-### Menu with numbered options
 
 ```http
 POST /commands HTTP/1.1
@@ -43,15 +32,84 @@ Authorization: Key {YOUR_TOKEN}
     }
 }
 ```
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.lime.select+json |
 
-When the user selects one option, a message returns according to the rule:
+Allows sending an text menu to customers to make a choice. It is possible to define a document that may be delivered to the chatbot when the customer selects an option - depending on the channel support. The options can also be optionally numbered.
 
-- If the option contains the field 'value' should be returned
-- If not, the 'order' filed value should be returned, if present
-- If not, field 'text' should be returned
+Some channels support the options scope limitation, which determines for how much time they are valid for the user selection. For example, in some cases, the sent options can only be selected by the customer at that time and must disappear after the choice. In this case, the scope is **immediate**. In others, the options are valid for the selection at any time, and the scope is **persistent**.
+
+For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#select) specification.
+
+
+### Menu with numbered options
+
+```csharp
+//Send an options list to give your client the choice between multiple answers using Select type:
+public class PlainTextMessageReceiver : IMessageReceiver
+{
+    private readonly ISender _sender;
+    private readonly Settings _settings;
+
+    public PlainTextMessageReceiver(ISender sender, Settings settings)
+    {
+        _sender = sender;
+        _settings = settings;
+    }
+
+    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+    {
+        var document = new Select
+        {
+            Text = "Choice an option:",
+            Options = new []
+            {
+                new SelectOption
+                {   
+                    Order = 1,
+                    Text = "An inspire text!",
+                    Value = new PlainText { Text = "1" }
+                },
+                new SelectOption
+                {
+                    Order = 2,
+                    Text = "A motivational image!",
+                    Value = new PlainText { Text = "2" }
+                },
+                new SelectOption
+                {
+                    Order = 3,
+                    Text = "An interesting link!",
+                    Value = new PlainText { Text = "3" }
+                }
+            }
+        };
+
+        await _sender.SendMessageAsync(document, message.From, cancellationToken);
+    }
+
+}
+Note:
+
+Value field is optional, if informed your value will be sent to the chatbot when the user choice the option.
+If Value field is not provided, will must provide one of the fields: Order or Text. The Order field will be used only if Value and Text is not provided.
+Limitations:
+
+Facebook Messenger: Limite of 3 options, in other case your message will not be delivered. If is nedded to send more than 3 options is necessary send multiple messages.
+Tangram SMS: The Value field will be ignored. Only the Order field will be sent if the option be selected.
+//NOTE:
+//Value field is optional, if informed your value will be sent to the chatbot when the user choice the option.
+//If Value field is not provided, will must provide one of the fields: Order or Text. The Order field will be used only if Value and Text is not provided.
+//
+//Limitations:
+//Facebook Messenger: Limite of 3 options, in other case your message will not be delivered. 
+//If is nedded to send more than 3 options is necessary send multiple messages.
+//Tangram SMS: The Value field will be ignored. Only the Order field will be sent if the option be selected.
+```
+> JSON 1
 
 ```http
-/*---------JSON 1---------*/
 POST /commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
@@ -64,9 +122,9 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+>JSON 2
 
 ```http
-/*---------JSON 2---------*/
 POST /commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
@@ -75,12 +133,13 @@ Authorization: Key {YOUR_TOKEN}
     "from": "1042221589186385@messenger.gw.msging.net",
     "to": "blipcontact@msging.net",
     "type": "text/plain",
-    "content": "2"
+    "content": "Second option"
 }
 ```
 
+>JSON 3
+
 ```http
-/*---------JSON 3---------*/
 POST /commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
@@ -95,6 +154,12 @@ Authorization: Key {YOUR_TOKEN}
     }
 }
 ```
+When the user selects one option, a message returns according to the rule:
+
+- If the option contains the field 'value' should be returned
+- If not, the 'order' filed value should be returned, if present
+- If not, field 'text' should be returned
+
 
 Return example of the above mentioned menu:
 

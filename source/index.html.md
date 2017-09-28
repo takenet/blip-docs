@@ -11,33 +11,28 @@ toc_footers:
   
 
 includes:
-  - --Core
   - en/introduction
   
   - en/concepts
   - en/concepts/addressing
+  - en/concepts/channels
   - en/concepts/messages
+  - en/concepts/handle-messages
   - en/concepts/notifications
+  - en/concepts/handle-notifications
   - en/concepts/commands
+  - en/concepts/handle-commands
 
   - en/sdks
+  - en/webhook
 
   - --Authentication
-  - en/auth
-  
-  - --Programable conversations
-  - en/programmable-conversations/messages
-  - en/programmable-conversations/notifications
-  - en/programmable-conversations/commands
-
-  - --Conversation
-  - en/content-types/chatstate
-  - en/content-types/resource
-  - en/content-types/redirect
+  - en/auth  
 
   - --Content Types
   - en/content-types/text
   - en/content-types/media-link
+  - en/content-types/chatstate
   - en/content-types/location
   - en/content-types/document-select
   - en/content-types/collection
@@ -46,13 +41,13 @@ includes:
   - en/content-types/payment-receipt
   - en/content-types/web-link
   - en/content-types/invoice
-  - en/content-types/redirect
   - en/content-types/native
   - en/content-types/sensitive
   - en/content-types/input
 
+  - en/content-types/resource
+  - en/content-types/redirect
 
-  - --Extensions
   - en/extensions
   - en/extensions/event-track
   - en/extensions/scheduler

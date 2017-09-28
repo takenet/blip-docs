@@ -1,13 +1,7 @@
-## Client notifications
-
-| Address               | Base URI     |
-|-----------------------|--------------|
-| https://msging.net    | /notifications    |
-
 ### Sending notifications
 
 <blockquote class="lang-specific javascript">
-<p>As message we send a notification using client object with method sendNotification</p>
+<p>We send a notification using a client object with method <em>sendNotification</em></p>
 </blockquote>
 
 ```javascript
@@ -34,14 +28,36 @@ client.sendNotification(notification);
 ```
 
 ```csharp
-PRECISAMOS DE UM EXEMPLO AQUI GUYS
+public class PlainTextMessageReceiver : IMessageReceiver
+{
+    private readonly ISender _sender;
+    private readonly Settings _settings;
+
+    public PlainTextMessageReceiver(ISender sender, Settings settings)
+    {
+        _sender = sender;
+        _settings = settings;
+    }
+
+    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+    {
+         var notification = new Notification
+            {
+                Id = message.Id,
+                To = message.From,
+                Event = Event.Consumed
+            };
+
+        await _sender.SendNotificationAsync(notification, cancellationToken);
+    }
+}
 ```
+
 <blockquote class="lang-specific http">
-<p>For instance, imagine that the received message from example above (whit id 99cf454e-f25d-4ebd-831f-e48a1c612cd4</p>
+<p>For instance, imagine that the received a message from example above (whit id 99cf454e-f25d-4ebd-831f-e48a1c612cd4</p>
 </blockquote>
 
 ```http
-//The code bellow show a complete notification request including the headers and the body request.
 POST https://msging.net/notifications HTTP/1.1
 Content-Type: application/json
 Authorization: Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=
@@ -69,14 +85,11 @@ REQUEST
 | reason | In case of failed events, represents the reason of the message failure |
 
 
-
-For instance, imagine that the received message from example above (whit id `99cf454e-f25d-4ebd-831f-e48a1c612cd4`) was processed with success. The code bellow show a complete notification request including the headers and the body request.
-
-
-
 ### Receiving notifications
 
-> The next sample show how to add notification receiver with filter to `received` event type:
+<blockquote class="lang-specific javascript">
+<p>The next sample show how to add notification receiver with filter to `received` event type:</p>
+</blockquote>
 
 ```javascript
 client.addNotificationReceiver("received", function(notification) {
@@ -89,6 +102,10 @@ client.addNotificationReceiver(() => true, function(message) {
 });
 ```
 
+<blockquote class="lang-specific csharp">
+<p>The receipt of notifications is done using the interface INotificationReceiver.</p>
+</blockquote>
+
 ```csharp
 public class ConsumedNotificationReceiver : INotificationReceiver
 {
@@ -100,9 +117,11 @@ public class ConsumedNotificationReceiver : INotificationReceiver
 }
 ```
 
-```http
-All notifications will be delivered as a HTTP POST request on configured chatbot notifications URL. A sample of received notification is presented bellow.
+<blockquote class="lang-specific http">
+<p>All notifications will be delivered as a HTTP POST request on configured chatbot notifications URL.</p>
+</blockquote>
 
+```http
 POST https://your.endpoint/notifications HTTP/1.1
 Content-Type: application/json
 

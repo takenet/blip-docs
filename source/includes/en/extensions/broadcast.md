@@ -1,7 +1,5 @@
 ## Broadcast
 
-
-
 | Address                         | Base URI     |
 |---------------------------------|--------------|
 | postmaster@broadcast.msging.net | /lists       |
@@ -39,6 +37,21 @@ The Broadcast service is available in the following domains:
 
 
 ###Create a list
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    "id": "1",
+    "to": "postmaster@broadcast.msging.net",
+    "method": "set",
+    "type": "application/vnd.iris.distribution-list+json",
+    "uri": "/lists",
+    "resource": {
+        "identity": "your_distributionList@broadcast.msging.net"
+    }
+  });
+});
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -50,7 +63,7 @@ Authorization: Key {YOUR_TOKEN}
   "type": "application/vnd.iris.distribution-list+json",
   "uri": "/lists",
   "resource": {  
-    "identity": "news@broadcast.msging.net"
+    "identity": "your_distributionList@broadcast.msging.net"
   }
 }
 ```
@@ -77,6 +90,19 @@ Content-Type: application/json
 
 ###Add to list
 
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({  
+      "id": "2",
+      "to": "postmaster@broadcast.msging.net",
+      "method": "set",
+      "uri": "/lists/your_distributionList@broadcast.msging.net/recipients",
+      "type": "application/vnd.lime.identity",
+      "resource": message.from //user identity
+    });
+});
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -85,7 +111,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "2",
   "to": "postmaster@broadcast.msging.net",
   "method": "set",
-  "uri": "/lists/news@broadcast.msging.net/recipients",
+  "uri": "/lists/your_distributionList@broadcast.msging.net/recipients",
   "type": "application/vnd.lime.identity",
   "resource": "551100001111@0mn.io"
 }
@@ -115,6 +141,16 @@ Authorization: Key {YOUR_TOKEN}
 
 ###Remove element from list
 
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({  
+    "id": "3",
+    "to": "postmaster@broadcast.msging.net",
+    "method": "delete",
+    "uri": "/lists/your_distributionList@broadcast.msging.net/recipients/user_identity@0mn.io"
+  });
+});
+```
 
 ```http
 POST /commands HTTP/1.1
@@ -150,6 +186,16 @@ Content-Type: application/json
 
 ###Send message
 
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    'id': '4',
+    'to': 'your_distributionList@broadcast.msging.net',
+    'type': 'text/plain',
+    'content': 'Hello participants of this list!'
+  });
+});
+```
 
 ```http
 POST /commands HTTP/1.1
@@ -157,7 +203,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
   "id": "4",
-  "to": "news@broadcast.msging.net",
+  "to": "your_distributionList@broadcast.msging.net",
   "type": "text/plain",
   "content": "Hello participants of this list!"
 }
@@ -174,7 +220,6 @@ Authorization: Key {YOUR_TOKEN}
   "to": "contact@msging.net/default",
   event": "received"
 ```
-
 
 ```http
 HTTP/1.1 200 OK
@@ -196,6 +241,17 @@ Content-Type: application/json
 
 ###Send message with replacement variable
 
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({  
+    "id": "5",
+    "to": "your_distributionList@broadcast.msging.net",
+    "type": "text/plain",
+    "content": "Hello ${contact.name}, come to check out our prices!"
+  });
+});
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -203,7 +259,7 @@ Authorization: Key {YOUR_TOKEN}
 
 {  
   "id": "5",
-  "to": "news@broadcast.msging.net",
+  "to": "your_distributionList@broadcast.msging.net",
   "type": "text/plain",
   "content": "Hello ${contact.name}, come to check out our prices!"
 }

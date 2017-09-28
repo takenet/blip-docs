@@ -32,8 +32,26 @@ language_tabs = current_page.data.language_tabs || [] %>
 
 <!doctype html>
 <html>
+
+  <script>
+  //This is Googles default GA code
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-YOURKEY', 'auto');
+  ga('send', 'pageview');
+  //This does hash-click tracking (inspired by http://stackoverflow.com/a/4813223)
+  $(document).ready(function() {
+    $('.tocify-item a').on('click', function(){
+      ga('send', 'pageview', {'page': location.pathname + location.search  + location.hash});
+    });
+  });
+  </script>
+
   <head>
     <meta charset="utf-8">
+    <link href="images/favicon.ico" rel="icon" type="image/ico">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title><%= current_page.data.title || "API Documentation" %></title>

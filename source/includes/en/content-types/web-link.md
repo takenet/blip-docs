@@ -1,5 +1,39 @@
 ## Web link
 
+> Sending a message to a Messenger recipient:
+
+```csharp
+//To send a web page link use the WebLink type:
+public class PlainTextMessageReceiver : IMessageReceiver
+{
+    private readonly ISender _sender;
+    private readonly Settings _settings;
+
+    public PlainTextMessageReceiver(ISender sender, Settings settings)
+    {
+        _sender = sender;
+        _settings = settings;
+    }
+
+    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+    {
+        var url = new Uri("https://pt.wikipedia.org/wiki/Caf%C3%A9");
+        var previewUri =
+            new Uri("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Roasted_coffee_beans.jpg/200px-Roasted_coffee_beans.jpg");
+
+        var document = new WebLink
+        {
+            Text = "Coffe, the god's drink!",
+            PreviewUri = previewUri,
+            Uri = url
+        };
+
+        await _sender.SendMessageAsync(document, message.From, cancellationToken);
+    }
+
+}
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -16,15 +50,16 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+
 | MIME type                |
 |--------------------------|
 | application/vnd.lime.web-link+json|
 
 Allows sending a link for a webpage to the client including metadata such link's title, description and a miniature image. 
 
+
+
 #### Sending a message to a Messenger recipient:
-
-
 
 In some channels is possible to define how the webpage will be diplayed (on the same window, openning a new window or occuping part of device window) through the `target` property. For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#web-link) specification.
 

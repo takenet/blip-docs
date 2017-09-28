@@ -5,7 +5,7 @@
 
 The **chat history** extension allows the chatbot to retrieve the last threads and messages exchanged with the customers.
 
-###Get most recent threads
+### Get most recent threads
 
 ```http
 POST /commands HTTP/1.1
@@ -63,14 +63,6 @@ Content-Type: application/json
 }
 ```
 
-
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-
-
 ###Get last messages
 
 ```http
@@ -127,8 +119,3 @@ Content-Type: application/json
   }
 }
 ```
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |

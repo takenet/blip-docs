@@ -1,19 +1,23 @@
 ## Directory
 
-
-| Address                      | Base URI      |
-|------------------------------|---------------|
-| `postmaster@<FQDN do canal>` | `lime://<FQDN of the channel>/accounts/<Client identifier>` |
-
-The **directory** extension allows quering information about the customers, like name, photo and other personal information. The query command should be sent directly to the client's channel `postmaster`, using an special **URI**.
+The **directory** extension allows quering information about the customers of your bot, like name, photo and other personal information. BLiP will get this informations on the client's channel. Because of this the command should be sent directly to the server node responsable for the channel (`postmaster@<FQDN of the channel>`), using an special **URI** (`lime://<FQDN of the channel>/accounts/<Client identity>`).
 
 If the information is available, an [Account](http://limeprotocol.org/resources.html#account) document is returned. The availability and the detail level of the informations depents of the channel and the application should handle the differences appropriately.
 
 The result of directory queries are automatically stored in the **chatbot's roster**, except when there's already an entry with the same identifier in the contacts. For more information about the roster, please refer to the [extension documentation](https://portal.blip.ai/#/docs/extensions/contacts).
 
+To get informations about the customer send a command with the following properties:
 
-###Get client info (**Messenger**)
+| Name | Description |
+|---------------------------------|--------------|
+| id    | Unique identifier of the command.   |
+| method    | **GET**  |
+| uri    | **/lime://<FQDN of the channel>/accounts/<Client identity>**   |
+| to     | **postmaster@<FQDN of the channel>** |
 
+### Get client info (on **Messenger**)
+
+* Messenger FQDN: `messenger.gw.msging.net`
 
 ```http
 POST /commands HTTP/1.1
@@ -49,16 +53,9 @@ Content-Type: application/json
 ```
 
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-
-
-
 ###Get client info (**Telegram**)
 
+* Telegram FQDN: `telegram.gw.msging.net`
 
 ```http
 POST /commands HTTP/1.1
@@ -88,9 +85,3 @@ Content-Type: application/json
   }
 }
 ```
-
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |

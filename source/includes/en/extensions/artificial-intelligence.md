@@ -50,7 +50,8 @@ The resource types are:
 | Analisys feedback | `application/vnd.iris.ai.analysis-feedback+json`| Feedback information about a performed analysis. |
 
 
-###Create an entity
+### Create an entity
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -102,16 +103,7 @@ Content-Type: application/json
   }
 }
 ```
-
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | Button info |
-
-###Create an intention
+### Create an intention
 
 ```http
 POST /commands HTTP/1.1
@@ -146,15 +138,7 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | Button info |
-
-###Query the first 10 intentions
+### Query the first 10 intentions
 
 ```http
 POST /commands HTTP/1.1
@@ -196,15 +180,7 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | Button info |
-
-###Associate questions to an intention
+### Associate questions to an intention
 
 ```http
 POST /commands HTTP/1.1
@@ -246,15 +222,7 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | Button info |
-
-###Associate answers to an intention
+### Associate answers to an intention
 
 ```http
 POST /commands HTTP/1.1
@@ -291,15 +259,7 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | Button info |
-
-###Train model
+### Train model
 
 ```http
 POST /commands HTTP/1.1
@@ -328,15 +288,6 @@ Content-Type: application/json
   "status": "success"
 }
 ```
-
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | Button info |
-
 ### Query the trained models
 
 ```http
@@ -385,13 +336,6 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | Button info |
 ### Publish model
 
 ```http
@@ -423,15 +367,7 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | Button info |
-
-###Analyze a sentence in the last published model
+### Analyze a sentence in the last published model
 
 ```http
 POST /commands HTTP/1.1
@@ -480,15 +416,7 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | Button info |
-
-###Analyze a sentence with a specific model
+### Analyze a sentence with a specific model
 
 
 ```http
@@ -538,15 +466,6 @@ Content-Type: application/json
   }
 }
 ```
-
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | Button info |
-
 
 ###Get the last 10 analysis
 
@@ -602,15 +521,7 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | Button info |
-
-###Send an 'approved' feedback
+### Send an 'approved' feedback
 
 
 ```http
@@ -642,15 +553,7 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | Button info |
-
-###Send an 'rejected' feedback
+### Send an 'rejected' feedback
 
 
 ```http
@@ -682,11 +585,3 @@ Content-Type: application/json
   "status": "success"  
 }
 ```
-
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | Button info |

@@ -15,6 +15,9 @@ Message received when there are changes in the payment status.
 
 Receiving a change in a payment status from an [invoice](./#/docs/content-types/invoice) in [PagSeguro](./#/docs/payments/pagseguro):
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {
     "id": "1",
     "from": "1042221589186385%40messenger.gw.msging.net@pagseguro.gw.msging.net",

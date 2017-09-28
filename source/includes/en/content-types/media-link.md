@@ -1,15 +1,41 @@
 ## Media link
-| MIME type                            |
-|--------------------------------------|
-| application/vnd.lime.media-link+json |
-
-Allows sending and receiving links for multimedia contents. The link can be any valid **URI**, but most part of the channels support only contents served by **HTTP/HTTPS** protocol. It is possible to include a title and a text, besides image *metadada* such as MIME type, size and *preview*.
 
 > Note: The metadata support varies per channel, it may be ignored if not supported.
 
-Some channel allows the definition of the display *aspect ratio* for some media types. For instance, in *Messenger*, you should set the `1:1` value for the `aspectRatio` property to send squared images.
+> Sending the link of an image including title, descriptive text and metadata:
 
-### Sending the link of an image including title, descriptive text and metadata:
+
+```csharp
+//To send media links, the message sent must have a MediaLink document as follow:
+public class PlainTextMessageReceiver : IMessageReceiver
+{
+    private readonly ISender _sender;
+    private readonly Settings _settings;
+
+    public PlainTextMessageReceiver(ISender sender, Settings settings)
+    {
+        _sender = sender;
+        _settings = settings;
+    }
+
+    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+    {
+        var imageUri = new Uri("https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/200px-A_small_cup_of_coffee.JPG", UriKind.Absolute);
+
+        var document = new MediaLink
+        {
+            Text = "Coffe, what else ?",
+            Size = 6679,
+            Type = MediaType.Parse("image/jpeg"),
+            PreviewUri = imageUri,
+            Uri = imageUri
+        };
+
+        await _sender.SendMessageAsync(document, message.From, cancellationToken);
+    }
+
+}
+```
 
 ```http
 POST /commands HTTP/1.1
@@ -33,7 +59,7 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 
-### Sending an audio link:
+> Sending an audio link: (For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#media-link) specification)
 
 ```http
 POST /commands HTTP/1.1
@@ -51,7 +77,17 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#media-link) specification.
+| MIME type                            |
+|--------------------------------------|
+| application/vnd.lime.media-link+json |
+
+Allows sending and receiving links for multimedia contents. The link can be any valid **URI**, but most part of the channels support only contents served by **HTTP/HTTPS** protocol. It is possible to include a title and a text, besides image *metadada* such as MIME type, size and *preview*.
+
+
+Some channel allows the definition of the display *aspect ratio* for some media types. For instance, in *Messenger*, you should set the `1:1` value for the `aspectRatio` property to send squared images.
+
+
+
 
 #### Channel mapping
 
