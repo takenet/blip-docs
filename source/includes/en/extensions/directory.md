@@ -19,6 +19,16 @@ To get informations about the customer send a command with the following propert
 
 * Messenger FQDN: `messenger.gw.msging.net`
 
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        'id': '3',
+        'method': 'get',
+        'uri': '/buckets/xyz1234'
+    });
+});
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -85,6 +95,17 @@ namespace Extensions
 ###Get client info (**Telegram**)
 
 * Telegram FQDN: `telegram.gw.msging.net`
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        'id': '2',
+        'to': 'postmaster@telegram.gw.msging.net',
+        'method': 'get',
+        'uri': 'lime://telegram.gw.msging.net/accounts/255600202'
+    });
+});
+```
 
 ```http
 POST /commands HTTP/1.1

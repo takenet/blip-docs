@@ -1,16 +1,11 @@
 ## Sensitive information
 
-| MIME type                            |
-|--------------------------------------|
-| application/vnd.lime.sensitive+json  |
+> Sending a password using text content for a Messenger user:
 
-Wraps a message content in order to signal that the information is confidential or sensitive. In this case, the server will not store the message content in any moment. The wrapped content can be of any available BLiP type.
-
-**Important note**: This is restricted to the BLiP servers and the external channels (Messenger, Telegram, etc.) still **can store your information** in some way. Pay attention on particular security polices of each channel.
-
-#### Examples
-1 - Sending a password using text content for a Messenger user:
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {
   "id": "1",
   "to": "1334448251684655@messenger.gw.msging.net",
@@ -23,8 +18,12 @@ Wraps a message content in order to signal that the information is confidential 
 
 ```
 
-2 - Sending a weblink:
+> Sending a weblink:
+
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {
   "id": "2",
   "to": "1334448251684655@messenger.gw.msging.net",
@@ -39,3 +38,12 @@ Wraps a message content in order to signal that the information is confidential 
 }
 
 ```
+
+
+| MIME type                            |
+|--------------------------------------|
+| application/vnd.lime.sensitive+json  |
+
+Wraps a message content in order to signal that the information is confidential or sensitive. In this case, the server will not store the message content in any moment. The wrapped content can be of any available BLiP type.
+
+**Important note**: This is restricted to the BLiP servers and the external channels (Messenger, Telegram, etc.) still **can store your information** in some way. Pay attention on particular security polices of each channel.

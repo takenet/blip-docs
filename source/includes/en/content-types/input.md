@@ -1,13 +1,11 @@
 ## User input
-| MIME type                            |
-|--------------------------------------|
-| application/vnd.lime.input+json      |
 
-Allows send structured information request to the user, where is possible to define validations rules. This is useful to build questions forms or get specific user information like name, phone number or typed information like an image or location. The execution of validation rules depends of channel support.
+> Requesting user name:
 
-#### Examples
-1 - Requesting user name:
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {
     "id": "1",
     "to": "553199991111@0mn.io",
@@ -24,8 +22,12 @@ Allows send structured information request to the user, where is possible to def
 }
 ```
 
-2 - Requesting user location:
+> Requesting user location:
+
 ```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 {
     "id": "2",
     "to": "1334448323284655@messenger.gw.msging.net",
@@ -42,6 +44,12 @@ Allows send structured information request to the user, where is possible to def
     }
 }
 ```
+
+| MIME type                            |
+|--------------------------------------|
+| application/vnd.lime.input+json      |
+
+Allows send structured information request to the user, where is possible to define validations rules. This is useful to build questions forms or get specific user information like name, phone number or typed information like an image or location. The execution of validation rules depends of channel support.
 
 For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#input) specification.
 

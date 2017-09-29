@@ -1,4 +1,51 @@
 ## Chat state
+
+>Sending status *typing* to bot user:
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+namespace MessageTypes
+{
+    public class OptionChatStateMessageReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public OptionChatStateMessageReceiver(ISender sender)
+        {
+            _sender = sender;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var chatState = new ChatState
+            {
+                State = ChatStateEvent.Composing
+            };
+            await _sender.SendMessageAsync(chatState, message.From, cancellationToken);
+        }
+
+    }
+}
+```
+
+```http
+POST /commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{
+    "to":"104222@telegram.gw.msging.net",
+    "type":"application/vnd.lime.chatstate+json",
+    "content": {
+        "state": "composing"
+    }
+}
+```
+
 | MIME type                                 |
 |-------------------------------------------|
 | application/vnd.lime.chatstate+json |
@@ -15,19 +62,7 @@ Allows sending and receiving the information about the conversation current stat
 
 In general, there is no need to receive delivery notifications messages with this content, thus it is recommended to omit the *Id* in these messages. For more details,check the [LIME protocol](http://limeprotocol.org/content-types.html#chatstate) specification.
 
-#### Example
 
-Sending status *typing* to Telegram user:
-
-```http
-{
-    "to":"104222@telegram.gw.msging.net",
-    "type":"application/vnd.lime.chatstate+json",
-    "content": {
-        "state": "composing"
-    }
-}
-```
 
 #### Channel mapping
 

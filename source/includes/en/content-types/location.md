@@ -1,9 +1,6 @@
 ## Location
-| MIME type                            |
-|--------------------------------------|
-| application/vnd.lime.location+json | 
 
-Allows sending and receiving geographic information.
+> Sending a location with latitude, longitude and altitude:
 
 ```csharp
 //A chatbot can send and receive a location entity. For this cases use Location type:
@@ -49,23 +46,8 @@ Authorization: Key {YOUR_TOKEN}
     }
 }
 ```
-#### Example
 
-Sending a location with latitude, longitude and altitude:
-
-For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#location) specification.
-
-#### Channel mapping
-
-| Channel              | Type                    |  
-|--------------------|-------------------------|
-| BLiP Chat          | Location             |
-| Messenger          | [Generic template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/generic-template)|
-| SMS                | Text with link          |
-| Skype              | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1)|
-| Telegram           | [Location](https://core.telegram.org/bots/api#location)|
-
-###Request location
+>Request location
 
 ```http
 POST /commands HTTP/1.1
@@ -87,6 +69,27 @@ Authorization: Key {YOUR_TOKEN}
     }
 }
 ```
+
+| MIME type                            |
+|--------------------------------------|
+| application/vnd.lime.location+json | 
+
+Allows sending and receiving geographic information.
+
+
+For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#location) specification.
+
+#### Channel mapping
+
+| Channel              | Type                    |  
+|--------------------|-------------------------|
+| BLiP Chat          | Location             |
+| Messenger          | [Generic template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/generic-template)|
+| SMS                | Text with link          |
+| Skype              | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1)|
+| Telegram           | [Location](https://core.telegram.org/bots/api#location)|
+
+
 
 Asks the user for location
 
