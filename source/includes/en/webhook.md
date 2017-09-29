@@ -2,7 +2,7 @@
 
 **Webhook's** *chatbot* enable an integration via **HTTP endpoints** to exchange messages, notifications and commands.
 
-**Send messages**
+1. Send messages
 
 To send messages is necessary make a `HTTP POST` request to URL provided on portal (chatbot settings section). The request must contain a authorization header (`Authorization`) with `Key` type, as showed on chatbot settings.
 
@@ -141,8 +141,6 @@ Content-Length: 131
 | 202 (Accepted)      | Envelope was accepted by the server                                                       |
 | 400 (Bad Request)   | Alert to some problem with format or fields of sent envelope.                             |
 | 401 (Unauthorized)  | Alert to some problem or *Authorization* header missing                                   |
-
----
 
 * Required Settings
 
