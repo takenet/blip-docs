@@ -1,9 +1,6 @@
 ## Media link
 
-> Note: The metadata support varies per channel, it may be ignored if not supported.
-
 > Sending the link of an image including title, descriptive text and metadata:
-
 
 ```csharp
 //To send media links, the message sent must have a MediaLink document as follow:
@@ -83,10 +80,11 @@ Authorization: Key {YOUR_TOKEN}
 
 Allows sending and receiving links for multimedia contents. The link can be any valid **URI**, but most part of the channels support only contents served by **HTTP/HTTPS** protocol. It is possible to include a title and a text, besides image *metadada* such as MIME type, size and *preview*.
 
-
 Some channel allows the definition of the display *aspect ratio* for some media types. For instance, in *Messenger*, you should set the `1:1` value for the `aspectRatio` property to send squared images.
 
-
+<aside class="notice">
+Note: The metadata support varies per channel, it may be ignored if not supported.
+</aside>
 
 
 #### Channel mapping

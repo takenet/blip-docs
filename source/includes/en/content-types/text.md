@@ -5,8 +5,7 @@
 
 Allows sending and receiving simple text messages.
 
->Sending a message to a Messenger recipient:
->For more details, check the especification of [LIME protocol](http://limeprotocol.org/content-types.html#text).
+> Sending a message to a Messenger recipient:
 
 ```csharp
 //The sample follow show how to reply a received message with a simple text message.
@@ -44,7 +43,7 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-
+For more details, check the especification of [LIME protocol](http://limeprotocol.org/content-types.html#text).
 
 #### Channel mapping
 
