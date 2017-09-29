@@ -23,6 +23,21 @@ An schedule object passed as a document `resource` has the following properties:
 
 ### Create a scheduling
 
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({
+        'id': '1',
+        'to': 'postmaster@broadcast.msging.net',
+        'method': 'set',
+        'type': 'application/vnd.iris.distribution-list+json',
+        'uri': '/lists',
+        'resource': {
+            'identity': 'your_distributionList@broadcast.msging.net'
+        }
+    });
+});
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -101,6 +116,17 @@ namespace Extensions
 Scheduling a message text/plain with the content 'Scheduling test' to be sent to the user **destination@0mn.io** in **2016-07-25T17:50:00.000Z**
 
 ### Get a scheduled message
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    let scheduledMessage = await client.sendCommand({
+        'id': '1',
+        'to': 'postmaster@scheduler.msging.net',
+        'method': 'get',
+        'uri': '/schedules/ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67'
+    });
+});
+```
 
 ```http
 POST /commands HTTP/1.1

@@ -60,7 +60,7 @@ html, body {
   padding: $nav-padding;
   background-color: $nav-bg;
   border-right: 1px solid #ccc;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: bold;
 
   // language selector for mobile devices
@@ -162,7 +162,7 @@ html, body {
     list-style: none;
     margin: 0;
     padding: 0;
-    line-height: 30px;
+    line-height: 22px;
   }
 
   li {
@@ -190,6 +190,7 @@ html, body {
   .toc-list-h2 {
     display: none;
     background-color: $nav-subitem-bg;
+    margin-top: 8px;
   }
 
   .toc-list-h3 {
@@ -200,7 +201,7 @@ html, body {
 
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
-    font-size: 15px;
+    font-size: 13px;
     color: #667;
   }
 
