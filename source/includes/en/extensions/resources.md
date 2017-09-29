@@ -1,21 +1,23 @@
 ## Resources
 
-| Address              | Base URI     |
-|-----------------------|--------------|
-| postmaster@msging.net (default address - not required) | /resources |
+The **resources** extension allows the storage of documents in the server in an isolated space for each chatbot, similar to the **bucket** extension. The main difference is that these documents can be mapped as **contents** for messages sent to the chatbot destinations, thought the resource **key**. This means that the chatbot developer can choose to **store the content of his messages in the server** instead of keeping they on the chatbot code side.
 
-The **resources** extension allows the storage of documents in the server in an isolated space for each chatbot, similar to the **storage** extension. The main difference is that these documents can be mapped as **contents** for messages sent to the chatbot destinations, thought the resource **key**. This means that the chatbot developer can choose to **store the content of his messages in the server** instead of keeping they on the chatbot side.
+To manage all resources programmatically use **resources** extension sending a command with the following properties:
 
-In order to send a resource message, the developer must use the [**resource** content type](https://portal.blip.ai/#/docs/content-types/resource).
+| Name | Description |
+|---------------------------------|--------------|
+| id    | Unique identifier of the command.   |
+| method    | The command verb  |
+| resource | The resource document. |
+| type | The type of the resource document |
+| uri    | **/resources**   |
+| to     | **postmaster@msging.net** (not required) |
 
 The **BLiP** portal offers an resource management interface which helps in the case of editing these content, avoiding the need to update the code on the application side in case of changes in chatbot content.
 
-#### Replacement variables
+In order to send a resource message, the developer must use the [**resource** content type](#resource).
 
-It is possible to use contact replacement variables in the created resources. For more information, please check the documentation of the [**Contacts** extension](https://portal.blip.ai/#/docs/extensions/contacts).
-
-###Store **media link**
-
+### Store a **media link** resource
 
 ```http
 POST /commands HTTP/1.1
@@ -50,7 +52,47 @@ Content-Type: application/json
 }
 ```
 
-###Store **text/plain**
+```csharp
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.Resource;
+using Lime.Messaging.Contents;
+
+namespace Extensions
+{
+    public class ResourceMessageReceiver : IMessageReceiver
+    {
+        private IResourceExtension _resourceExtension;
+
+        public ResourceMessageReceiver(IResourceExtension resourceExtension)
+        {
+            _resourceExtension = resourceExtension;
+        }
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var mediaLink = new MediaLink
+            {
+                Title = "Cat",
+                Text = "Here is a cat image for you!",
+                Uri = new Uri("http://2.bp.blogspot.com/-pATX0YgNSFs/VP-82AQKcuI/AAAAAAAALSU/Vet9e7Qsjjw/s1600/Cat-hd-wallpapers.jpg"),
+                Size = 227791,
+                Type = MediaType.Parse("image/jpeg"),
+                PreviewType = MediaType.Parse("image/jpeg"),
+                PreviewUri = new Uri("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8qkelB28RstsNxLi7gbrwCLsBVmobPjb5IrwKJSuqSnGX4IzX")
+            };
+
+            await _resourceExtension.SetAsync("xyz1234", mediaLink);
+        }
+    }
+}
+```
+
+Storing a `media link` document with `xyz1234` key.
+
+### Store a **text/plain** resource
 
 
 ```http
@@ -79,7 +121,45 @@ Content-Type: application/json
 }
 ```
 
-###Store **text/plain** with replacement variable
+```csharp
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.Resource;
+using Lime.Messaging.Contents;
+
+namespace Extensions
+{
+    public class ResourceMessageReceiver : IMessageReceiver
+    {
+        private IResourceExtension _resourceExtension;
+
+        public ResourceMessageReceiver(IResourceExtension resourceExtension)
+        {
+            _resourceExtension = resourceExtension;
+        }
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var plainText = new PlainText
+            {
+                Text = "To use our services, please send a text message."
+            };
+
+            await _resourceExtension.SetAsync("help-message", plainText);   
+        }
+    }
+}
+```
+
+Storing a `text plain` document with `help-message` key.
+
+#### Replacement variables
+
+It is possible to use contact replacement variables in the created resources. For more information, please check the documentation of the [**Contacts** extension](#contacts).
+
+### Store a **text/plain** resource with replacement variable
 
 
 ```http
@@ -106,3 +186,41 @@ Content-Type: application/json
   "status": "success"
 }
 ```
+
+```csharp
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.Resource;
+using Lime.Messaging.Contents;
+
+namespace Extensions
+{
+    public class ResourceMessageReceiver : IMessageReceiver
+    {
+        private IResourceExtension _resourceExtension;
+
+        public ResourceMessageReceiver(IResourceExtension resourceExtension)
+        {
+            _resourceExtension = resourceExtension;
+        }
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var plainText = new PlainText
+            {
+                Text = "Welcome to our service, ${contact.name}!"
+            };
+
+            await _resourceExtension.SetAsync("welcome-message", plainText);            
+        }
+    }
+}
+```
+
+Storing a `text plain` document with `welcome-message` key using replacement variables.
+
+#### Sending a resource message
+
+[Click here](#resource) to see how can you send a resource message.

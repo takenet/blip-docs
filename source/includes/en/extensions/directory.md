@@ -1,6 +1,6 @@
 ## Directory
 
-The **directory** extension allows quering information about the customers of your bot, like name, photo and other personal information. BLiP will get this informations on the client's channel. Because of this the command should be sent directly to the server node responsable for the channel (`postmaster@<FQDN of the channel>`), using an special **URI** (`lime://<FQDN of the channel>/accounts/<Client identity>`).
+The **directory** extension allows quering information about the customers of your bot, like name, photo and other personal information. BLiP will get this informations on the client's channel. Because of this the command should be sent directly to the server node responsable for the channel (`postmaster@<FQDN of the channel>`), using an special **URI** (`lime://<FQDN of the channel>/accounts/<Client identity>`). [Click here](#channels) to see all channels identifiers.
 
 If the information is available, an [Account](http://limeprotocol.org/resources.html#account) document is returned. The availability and the detail level of the informations depents of the channel and the application should handle the differences appropriately.
 
@@ -12,10 +12,10 @@ To get informations about the customer send a command with the following propert
 |---------------------------------|--------------|
 | id    | Unique identifier of the command.   |
 | method    | **GET**  |
-| uri    | **/lime://<FQDN of the channel>/accounts/<Client identity>**   |
-| to     | **postmaster@<FQDN of the channel>** |
+| uri    | **/lime://&lt;FQDN of the channel&gt;/accounts/&lt;Client identity&gt;**   |
+| to     | **postmaster@&lt;FQDN of the channel&gt;** |
 
-### Get client info (on **Messenger**)
+### Get client info (on Messenger)
 
 * Messenger FQDN: `messenger.gw.msging.net`
 
@@ -62,6 +62,35 @@ Content-Type: application/json
 }
 ```
 
+```csharp
+using Lime.Protocol;
+using System.Threading;
+using System.Threading.Tasks;
+using Takenet.MessagingHub.Client.Extensions.Directory;
+using Takenet.MessagingHub.Client.Listener;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private IDirectoryExtension _directoryExtension;
+
+        public SampleMessageReceiver(IDirectoryExtension directoryExtension)
+        {
+            _directoryExtension = directoryExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var identity = Identity.Parse("1042221589186385@messenger.gw.msging.net");
+            var account =
+                await _directoryExtension
+                        .GetDirectoryAccountAsync(identity, cancellationToken);
+        }
+    }
+}
+```
+
 
 ###Get client info (**Telegram**)
 
@@ -104,5 +133,34 @@ Content-Type: application/json
   "resource": {
     "fullName": "João da Silva Sauro"
   }
+}
+```
+
+```csharp
+using Lime.Protocol;
+using System.Threading;
+using System.Threading.Tasks;
+using Takenet.MessagingHub.Client.Extensions.Directory;
+using Takenet.MessagingHub.Client.Listener;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private IDirectoryExtension _directoryExtension;
+
+        public SampleMessageReceiver(IDirectoryExtension directoryExtension)
+        {
+            _directoryExtension = directoryExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var identity = Identity.Parse("255600202@telegram.gw.msging.net");
+            var account =
+                await _directoryExtension
+                        .GetDirectoryAccountAsync(identity, cancellationToken);
+        }
+    }
 }
 ```
