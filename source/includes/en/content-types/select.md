@@ -1,6 +1,33 @@
 ## Menu
 
-
+```javascript
+client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.select+json",
+      to: "1042221589186385@messenger.gw.msging.net",
+      content: {
+        text: "Choose an option",
+        options: [
+            {
+                text: "First option"
+            },
+            {
+                order: 2,
+                text: "Second option"
+            },
+            {
+                order: 3,
+                text: "Third option",
+                type: "application/json",
+                value: {
+                    key1: "value1",
+                    key2: 2
+                }
+            }
+        ]
+      }
+    });
+```
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -109,6 +136,15 @@ Tangram SMS: The Value field will be ignored. Only the Order field will be sent 
 ```
 > JSON 1
 
+```javascript
+    client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.select+json",
+      to: "blipcontact@msging.net",
+      content: "First option"
+    });
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -124,6 +160,15 @@ Authorization: Key {YOUR_TOKEN}
 
 >JSON 2
 
+```javascript
+client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.select+json",
+      to: "blipcontact@msging.net",
+      content: "Second option"
+    });
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -138,6 +183,18 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 >JSON 3
+
+```javascript
+client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.select+json",
+      to: "blipcontact@msging.net",
+      content: {
+            key1: "value1",
+            key2: 2
+        }
+    });
+```
 
 ```http
 POST /commands HTTP/1.1

@@ -30,6 +30,20 @@ public class PlainTextMessageReceiver : IMessageReceiver
 }
 ```
 
+```javascript
+    client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.location+json",
+      to: "128271320123982@messenger.gw.msging.net",
+      content: {
+        latitude: -19.918899,
+        longitude: -43.959275,
+        altitude: 853,
+        text: "Take's place"
+      }
+    });
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -47,7 +61,24 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
->Request location
+> Request location
+
+```javascript
+    client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.input+json",
+      to: "128271320123982@messenger.gw.msging.net",
+      content: {
+        label: {
+          type: "text/plain",
+          value: "Send your location please!"
+        },
+        validation: {
+          rule: "type",
+          type: "application/vnd.lime.location+json"
+        }
+    });
+```
 
 ```http
 POST /commands HTTP/1.1
@@ -91,5 +122,5 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 
 
 
-Asks the user for location
+Asks the user for her location
 

@@ -2,6 +2,23 @@
 
 > Requesting user name:
 
+```javascript
+client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.input+json",
+      to: "1042225583186385@messenger.gw.msging.net",
+      content: {
+          label: {
+            type: "text/plain",
+            value: "What is your name?"
+          },
+          validation: {
+            rule: "text"          
+          }
+      }
+    });
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -23,6 +40,24 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 > Requesting user location:
+
+```javascript
+client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.input+json",
+      to: "1042225583186385@messenger.gw.msging.net",
+      content: {
+          label: {
+            type: "text/plain",
+            value: "Send your location please!"
+          },
+          validation: {
+            rule: "type",
+            type: "application/vnd.lime.location+json"
+          }
+      }
+    });
+```
 
 ```http
 POST /commands HTTP/1.1

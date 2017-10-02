@@ -26,10 +26,6 @@ var message = {
 ```
 
 ```http
-POST https://msging.net/messages HTTP/1.1
-Content-Type: application/json
-Authorization: Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=
-
 {
   "id": "65603604-fe19-479c-c885-3195b196fe8e",
   "from": "551199991111@0mn.io/182310923192",
@@ -44,7 +40,7 @@ A **message** allows the content exchange between clients and chatbots.
 Each message has:
 
 - **id**: Message's unique identifier. The *id* is used as reference for notifications, thus **avoid reusing the same id**. One way to guarantee its uniqueness is using a new [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) for each message. This value may be omitted by the originator if it's not interested on notifications, even in case of a failure.
-- **from**: Originator’s address. This value its not required by the originator.
+- **from**: Originator’s address. This value is not required by the originator.
 - **to**: Recipient’s address. This value is mandatory.
 - **type**: Statement with content type, in MIME format. It can be of **plain** type (for example, `text/plain` ) or **JSON** (for example, `application/vnd.lime.media-link+json`). Check the **Content Types** section for more information.
 - **content**: Message's content.

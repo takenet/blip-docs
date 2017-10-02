@@ -33,6 +33,18 @@ namespace MessageTypes
 }
 ```
 
+```javascript
+client.sendMessage({
+        id: Lime.Guid(),
+        to:"104222@telegram.gw.msging.net",
+        type:"application/vnd.lime.chatstate+json",
+        content: {
+            "state": "composing"
+        }
+    }
+);
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -61,8 +73,6 @@ Allows sending and receiving the information about the conversation current stat
 | *gone*        | Exit/Conversation finished  |
 
 In general, there is no need to receive delivery notifications messages with this content, thus it is recommended to omit the *Id* in these messages. For more details,check the [LIME protocol](http://limeprotocol.org/content-types.html#chatstate) specification.
-
-
 
 #### Channel mapping
 

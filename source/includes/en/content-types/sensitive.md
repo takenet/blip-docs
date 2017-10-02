@@ -2,6 +2,18 @@
 
 > Sending a password using text content for a Messenger user:
 
+```javascript
+client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.sensitive+json",
+      to: "1042225583186385@messenger.gw.msging.net",
+      content: {
+        type: "text/plain",
+        value: "Your password is 123456"
+      }
+    });
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -19,6 +31,21 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 > Sending a weblink:
+
+```javascript
+client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.sensitive+json",
+      to: "1042225583186385@messenger.gw.msging.net",
+      content: {
+        type: "application/vnd.lime.web-link+json",
+        value: {
+          text: "Please follow this link for the checkout",
+          uri: "https://mystore.com/checkout?ID=A8DJS1JFV98AJKS9"
+        }
+      }
+    });
+```
 
 ```http
 POST /commands HTTP/1.1

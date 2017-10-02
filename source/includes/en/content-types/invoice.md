@@ -42,6 +42,30 @@ public class PlainTextMessageReceiver : IMessageReceiver
     }
 }
 ```
+
+```javascript
+    client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.invoice+json",
+      to: "128271320123982@messenger.gw.msging.net",
+      content: {
+        created: "2016-08-26T19:03:37.024Z",
+        dueTo: "2016-08-27T19:03:37.024Z",
+        currency: "BRL",
+        total: 10.85,
+        items: [
+            {
+                quantity: 1.0,
+                unit: 10.85,
+                currency: "BRL",
+                total: 10.85,
+                description:"Subscription for product: Hit"
+            }
+        ]
+    }
+    });
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json

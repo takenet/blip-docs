@@ -34,6 +34,19 @@ public class PlainTextMessageReceiver : IMessageReceiver
 }
 ```
 
+```javascript
+client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.web-link+json",
+      to: "1042225583186385@messenger.gw.msging.net",
+      content: { 
+        uri: "http://limeprotocol.org/content-types.html#web-link",
+        target: "self",
+        text: "Here is a documentation weblink"    
+      }
+    });
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json

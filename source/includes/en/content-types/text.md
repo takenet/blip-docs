@@ -7,6 +7,15 @@ Allows sending and receiving simple text messages.
 
 > Sending a message to a Messenger recipient:
 
+```javascript
+    client.sendMessage({
+        id: Lime.Guid(),
+        type: "text/plain",
+        to: "128271320123982@messenger.gw.msging.net",
+        content: "Welcome to our service! How can I help you?"
+        });
+```
+
 ```csharp
 //The sample follow show how to reply a received message with a simple text message.
 public class PlainTextMessageReceiver : IMessageReceiver

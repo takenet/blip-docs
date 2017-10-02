@@ -2,6 +2,22 @@
 
 > A text Collection
 
+```javascript
+    client.sendMessage({
+        id: Lime.Guid(),
+        type: "application/vnd.lime.collection+json",
+        to: "128271320123982@messenger.gw.msging.net",
+        content: {
+            itemType: "text/plain",
+            items: [
+                "Text 1",
+                "Text 2",
+                "Text 3"
+            ]
+        }
+    });
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -21,6 +37,43 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 > A different types collection, using **container**
+
+```javascript
+    client.sendMessage({
+        id: Lime.Guid(),
+        type: "application/vnd.lime.collection+json",
+        to: "128271320123982@messenger.gw.msging.net",
+        content: {
+            itemType: "application/vnd.lime.container+json",
+            items: [
+                {
+                    type: "application/vnd.lime.media-link+json",
+                    value: {
+                        text: "Welcome to our store!",
+                        type: "image/jpeg",
+                        uri: "http://petersapparel.parseapp.com/img/item100-thumb.png"
+                    }
+                },
+                {
+                    type: "application/vnd.lime.select+json",
+                    value: {
+                        text: "Choose what you need",
+                        options: [
+                            {
+                                order: 1,
+                                text: "See our stock"
+                            },
+                            {
+                                order: 2,
+                                text: "Follow an order"
+                            }
+                        ]
+                    }
+                }			
+            ]
+        } 
+    });
+```
 
 ```http
 POST /commands HTTP/1.1
@@ -63,6 +116,103 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 > A **multimedia menu** collection
+
+```javascript
+    client.sendMessage({
+        id: Lime.Guid(),
+        type: "application/vnd.lime.collection+json",
+        to: "128271320123982@messenger.gw.msging.net",
+        content: {
+            itemType: "application/vnd.lime.document-select+json",
+            items: [
+                {
+                    header: {
+                        type: "application/vnd.lime.media-link+json",
+                        value: {
+                            title: "Title",
+                            text: "This is a first item",
+                            type: "image/jpeg",
+                            uri: "http://www.isharearena.com/wp-content/uploads/2012/12/wallpaper-281049.jpg"
+                        }
+                    },
+                    options: [
+                        {
+                            label: {
+                                type: "application/vnd.lime.web-link+json",
+                                value: {
+                                    title: "Link",
+                                    uri: "https://server.com/first/link1"
+                                }
+                            }
+                        },
+                        {
+                            label: {
+                                type: "text/plain",
+                                value: "Text 1"
+                            },
+                            value: {
+                                type: "application/json",
+                                value: {
+                                    key1: "value1",
+                                    key2: 2
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    header: {
+                        type: "application/vnd.lime.media-link+json",
+                        value: {
+                            title: "Title 2",
+                            text: "This is another item",
+                            type: "image/jpeg",
+                            uri: "http://www.freedigitalphotos.net/images/img/homepage/87357.jpg"
+                        }
+                    },
+                    options: [
+                        {
+                            label: {
+                                type: "application/vnd.lime.web-link+json",
+                                value: {
+                                    title: "Second link",
+                                    text: "Weblink",
+                                    uri: "https://server.com/second/link2"
+                                }
+                            }
+                        },
+                        {
+                            label: {
+                                type: "text/plain",
+                                value: "Second text"
+                            },
+                            value: {
+                                type: "application/json",
+                                value: {
+                                    key3: "value3",
+                                    key4: 4
+                                }
+                            }
+                        },
+                        {
+                            label: {
+                                type: "text/plain",
+                                value: "More one text"
+                            },
+                            value: {
+                                type: "application/json",
+                                value: {
+                                    key5: "value5",
+                                    key6: 6
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+```
 
 ```http
 POST /commands HTTP/1.1
