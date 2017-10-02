@@ -5,7 +5,7 @@ Welcome to **BLiP**! Here, we'll introduce you to the platform's basics in order
 
 You can create your chatbot in three ways:
 
-- Through a SDK (C# or javascript)
+- Through a SDK (C# or JavaScript)
 - Through webhooks (for any language)
 - Through a template (without any code)
 

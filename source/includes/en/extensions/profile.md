@@ -1,13 +1,8 @@
 ## Chatbot profile
 
-
-| Address               | Base URI     |
-|-----------------------|--------------|
-| postmaster@msging.net (default address - not required) | /profile |
-
 The **profile** extension allows the configuration of chatbot profile properties, which can reflect to the clients in the published channel - if supported. Each property is a document of a type supported by the platform.
 
-To manage chatbot's profile informations send a command with the following properties:
+To manage chatbot's profile informations send commands with the following properties:
 
 | Name | Description |
 |---------------------------------|--------------|
