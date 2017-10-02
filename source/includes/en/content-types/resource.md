@@ -15,6 +15,18 @@ Authorization: Key {YOUR_TOKEN}
     }
 }
 ```
+
+```javascript
+client.sendMessage({
+    id: Lime.Guid(),
+    type: "application/vnd.iris.resource+json",
+    to: "1042221589186385@messenger.gw.msging.net",
+    content: {
+        key: "welcome-message"
+    }
+});
+```
+
 > In case there is a resource with this key, the server replaces the content and forward to the destination. Imagining that the resource with **welcome-message** key is a `text/plain` document with value `Welcome to our service`, the final message would be like this:
 
 ```http
@@ -58,6 +70,20 @@ Authorization: Key {YOUR_TOKEN}
         }
     }
 }
+```
+
+```javascript
+client.sendMessage({
+    id: Lime.Guid(),
+    to: "1042221589186385@messenger.gw.msging.net",
+    type: "application/vnd.iris.resource+json",
+    content: {
+        key: "welcome-message",
+        variables: {
+            name: "John Doe"
+        }
+    }
+});
 ```
 
 The final message will be:

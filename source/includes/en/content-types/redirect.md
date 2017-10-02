@@ -9,12 +9,24 @@ Authorization: Key {YOUR_TOKEN}
 {
     "id": "1",
     "to": "54f1dd2e-42d2-43f2-9100-68fbbabb9c83@tunnel.msging.net",
-    "type": "application/vnd.iris.redirect+json",
+    "type": "application/vnd.lime.redirect+json",
     "content": {
         "address": "attendance"
     }
 }
 ```
+
+```javascript
+client.sendMessage({
+    id: Lime.Guid(),
+    to: "54f1dd2e-42d2-43f2-9100-68fbbabb9c83@tunnel.msging.net",
+    type: "application/vnd.lime.redirect+json",
+    content: {
+        address: "attendance",
+    }
+});
+```
+
 >From this moment, the messages sent by the client will be forwarded to the chatbot configured as a service *attendance* in the master model settings tab. Note: The customer identifier is **not the same** for the other bot.
 
 > 2 - Redirecting to the chatbot with identifier *mysdkbot , passing a document as the context of the conversation.
@@ -26,7 +38,7 @@ Authorization: Key {YOUR_TOKEN}
 {
     "id": "2",
     "to": "54f1dd2e-42d2-43f2-9100-68fbbabb9c83@tunnel.msging.net",
-    "type": "application/vnd.iris.redirect+json",
+    "type": "application/vnd.lime.redirect+json",
     "content": {
         "address": "mysdkbot@msging.net",
         "context": {
@@ -36,6 +48,22 @@ Authorization: Key {YOUR_TOKEN}
     }
 }
 ```
+
+```javascript
+client.sendMessage({
+    id: Lime.Guid(),
+    to: "54f1dd2e-42d2-43f2-9100-68fbbabb9c83@tunnel.msging.net",
+    type: "application/vnd.lime.redirect+json",
+    content: {
+        address: "mysdkbot@msging.net",
+        context: {
+            type: "text/plain",
+            value: "Get started"
+        }
+    }
+});
+```
+
 >In this example, the chatbot with `mysdkbot` identifier will receive the messages sent by the client, in addition to receiving a message with the content defined in the context, as if it had been sent by the client:
 
 ```http
@@ -50,6 +78,7 @@ Authorization: Key {YOUR_TOKEN}
     "content": "Get started"
 }
 ```
+
 
 | MIME type                          |
 |------------------------------------|
