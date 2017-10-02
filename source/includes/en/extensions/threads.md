@@ -75,7 +75,7 @@ Content-Type: application/json
 
 Getting the last chatbot's threads. By default BLiP will return the 50 last threads.
 
-The following filters are available to get chatbot's thread:
+The following uri filters are available to get chatbot's thread:
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|
@@ -141,7 +141,7 @@ Content-Type: application/json
 
 Getting the last chatbot's messages in a specific thread. The thread is identified with a client identity (for example: `1180740631991418@messenger.gw.msging.net`). By default BLiP will return the 20 last thread messages.
 
-The following filters are available to get chatbot's thread:
+The following uri filters are available to get chatbot's thread:
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|
