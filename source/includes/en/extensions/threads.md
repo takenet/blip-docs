@@ -3,9 +3,19 @@
 |-----------------------|--------------|
 | postmaster@msging.net (default address - not required) | /threads |
 
-The **chat history** extension allows the chatbot to retrieve the last threads and messages exchanged with the customers.
+The **threads** (or **chat history**) extension allows the chatbot to retrieve the last threads and messages exchanged with the customers.
 
-### Get most recent threads
+To get client's **threads** or **messages** exchanged with your some bot send a command with the following properties:
+
+| Name | Description |
+|---------------------------------|--------------|
+| id    | Unique identifier of the command.   |
+| method    | **get**  |
+| uri    | **/threads**   |
+| to     | **postmaster@msging.net** (not required) |
+
+
+### Get last threads
 
 ```http
 POST /commands HTTP/1.1
@@ -63,7 +73,16 @@ Content-Type: application/json
 }
 ```
 
-###Get last messages
+Getting the last chatbot's threads. By default BLiP will return the 50 last threads.
+
+The following filters are available to get chatbot's thread:
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------|
+| $take        | Limit of total of items to be returned    |
+| messageDate  | Initial date on the threads query         |
+
+### Get last messages
 
 ```http
 POST /commands HTTP/1.1
@@ -119,3 +138,13 @@ Content-Type: application/json
   }
 }
 ```
+
+Getting the last chatbot's messages in a specific thread. The thread is identified with a client identity (for example: `1180740631991418@messenger.gw.msging.net`). By default BLiP will return the 20 last thread messages.
+
+The following filters are available to get chatbot's thread:
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------|
+| $take        | Limit of total of items to be returned    |
+| messageId  | Initial message id for the thread messages query        |
+| direction  | Possible values: `asc` and `desc`. Define if will be returned de messages after or before respectively |
