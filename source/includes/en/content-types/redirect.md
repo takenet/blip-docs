@@ -79,6 +79,15 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```javascript
+{
+    id: "3",
+    from: "2bdcd8d0-9e69-484f-a88a-d5a529708864@tunnel.msging.net",
+    to: "mysdkbot@msging.net",
+    type: "text/plain",
+    content: "Get started"
+}
+```
 
 | MIME type                          |
 |------------------------------------|

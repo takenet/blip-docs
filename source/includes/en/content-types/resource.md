@@ -41,6 +41,15 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```javascript
+{
+    id: "1",
+    to: "1042221589186385@messenger.gw.msging.net",
+    type: "text/plain",
+    content: "Welcome to our service"
+}
+```
+
 | MIME type                            | 
 |--------------------------------------|
 | application/vnd.iris.resource+json   |
@@ -102,6 +111,14 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```javascript
+{
+    id: "1",
+    to: "1042221589186385@messenger.gw.msging.net",
+    type: "text/plain",
+    content: "Welcome to our service, John Doe!"
+}
+```
 #### Channel mapping
 
 This content type is supported on all channels.
