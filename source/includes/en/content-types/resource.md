@@ -2,6 +2,36 @@
 
 > Sending a resource message with the **welcome-message** identifier:
 
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+ public class OptionResourceMessageReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public OptionResourceMessageReceiver(ISender sender)
+        {
+            _sender = sender;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var document = new Resource
+            {
+                Key = "welcome-message" //recurso previamente adicionado com extensão 'recursos' ou através do portal
+            };
+
+            await _sender.SendMessageAsync(document, message.From, cancellationToken);
+        }
+    }
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -42,6 +72,41 @@ You can enter substitution variables for the resource using the `variables` prop
 For example, imagine that the resource in the `welcome-message` key has the value `Welcome to our service, ${name}!'`. If you send the following:
 
 > Request
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+public class ResourceMessageReplace : IMessageReceiver
+{
+    private readonly ISender _sender;
+
+    public ResourceMessageReplace(ISender sender)
+    {
+        _sender = sender;
+    }
+
+    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+    {
+        var openWith = new Dictionary<string, string>();//using System.Collections.Generic
+        openWith.Add("name",message.From.Name);//checar mais tarde <<
+
+        var document = new Resource
+        {
+            Key = "welcome-message",
+            Variables = openWith
+        
+        };
+
+        await _sender.SendMessageAsync(document, message.From, cancellationToken);
+    }
+}
+```
 
 ```http
 POST /commands HTTP/1.1

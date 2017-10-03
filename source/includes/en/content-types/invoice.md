@@ -3,6 +3,13 @@
 > Example - Sending a payment request to a Facebook Messenger user using [PagSeguro](./#/docs/payments/pagseguro):
 
 ```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
 
 public class PlainTextMessageReceiver : IMessageReceiver
 {

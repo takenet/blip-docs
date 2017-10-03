@@ -3,30 +3,37 @@
 > Sending a location with latitude, longitude and altitude:
 
 ```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+
 //A chatbot can send and receive a location entity. For this cases use Location type:
 public class PlainTextMessageReceiver : IMessageReceiver
 {
-    private readonly ISender _sender;
-    private readonly Settings _settings;
+private readonly ISender _sender;
+private readonly Settings _settings;
 
-    public PlainTextMessageReceiver(ISender sender, Settings settings)
+public PlainTextMessageReceiver(ISender sender, Settings settings)
+{
+    _sender = sender;
+    _settings = settings;
+}
+
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    var document = new Location
     {
-        _sender = sender;
-        _settings = settings;
-    }
+        Latitude = -22.121944,
+        Longitude = -45.128889,
+        Altitude = 1143
+    };
 
-    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
-    {
-        var document = new Location
-        {
-            Latitude = -22.121944,
-            Longitude = -45.128889,
-            Altitude = 1143
-        };
-
-        await _sender.SendMessageAsync(document, message.From, cancellationToken);
-    }
-
+    await _sender.SendMessageAsync(document, message.From, cancellationToken);
+}
 }
 ```
 
@@ -48,6 +55,44 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 >Request location
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+public class RequestLocation : IMessageReceiver
+{
+private readonly ISender _sender;
+
+public RequestLocation(ISender sender)
+{
+    _sender = sender;
+}
+
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    var location = new Input
+    {
+        Label = {
+            Value = new PlainText {
+                Text = "Send your location please!"
+            }
+        },
+        Validation = {
+            Rule = InputValidationRule.Type,
+            Type = "application/vnd.lime.location+json" //checar se é necessário
+        }
+    };
+
+    await _sender.SendMessageAsync(location, message.From, cancellationToken);
+}
+}
+```
 
 ```http
 POST /commands HTTP/1.1

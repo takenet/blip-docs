@@ -3,6 +3,13 @@
 > Sending the link of an image including title, descriptive text and metadata:
 
 ```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
 //To send media links, the message sent must have a MediaLink document as follow:
 public class PlainTextMessageReceiver : IMessageReceiver
 {
@@ -57,6 +64,19 @@ Authorization: Key {YOUR_TOKEN}
 
 
 > Sending an audio link: (For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#media-link) specification)
+
+```csharp
+var audioMediaLink = new MediaLink
+{
+    Title = "Audio",
+    Type = MediaType.Parse("audio/mp3"),
+    Uri = new Uri("http://blaamandagjazzband.dk/jazz/mp3/basin_street_blues.mp3"),
+    Size = 3124123,
+    AspectRatio = "1:1"
+};
+
+await _sender.SendMessageAsync(audioMediaLink, message.From, cancellationToken);
+```
 
 ```http
 POST /commands HTTP/1.1

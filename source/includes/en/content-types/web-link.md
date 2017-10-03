@@ -3,33 +3,40 @@
 > Sending a message to a Messenger recipient:
 
 ```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
 //To send a web page link use the WebLink type:
 public class PlainTextMessageReceiver : IMessageReceiver
 {
-    private readonly ISender _sender;
-    private readonly Settings _settings;
+private readonly ISender _sender;
+private readonly Settings _settings;
 
-    public PlainTextMessageReceiver(ISender sender, Settings settings)
+public PlainTextMessageReceiver(ISender sender, Settings settings)
+{
+    _sender = sender;
+    _settings = settings;
+}
+
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    var url = new Uri("https://pt.wikipedia.org/wiki/Caf%C3%A9");
+    var previewUri =
+        new Uri("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Roasted_coffee_beans.jpg/200px-Roasted_coffee_beans.jpg");
+
+    var document = new WebLink
     {
-        _sender = sender;
-        _settings = settings;
-    }
+        Text = "Coffe, the god's drink!",
+        PreviewUri = previewUri,
+        Uri = url
+    };
 
-    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
-    {
-        var url = new Uri("https://pt.wikipedia.org/wiki/Caf%C3%A9");
-        var previewUri =
-            new Uri("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Roasted_coffee_beans.jpg/200px-Roasted_coffee_beans.jpg");
-
-        var document = new WebLink
-        {
-            Text = "Coffe, the god's drink!",
-            PreviewUri = previewUri,
-            Uri = url
-        };
-
-        await _sender.SendMessageAsync(document, message.From, cancellationToken);
-    }
+    await _sender.SendMessageAsync(document, message.From, cancellationToken);
+}
 
 }
 ```

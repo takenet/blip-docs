@@ -46,6 +46,13 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 ### Menu with numbered options
 
 ```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
 //Send an options list to give your client the choice between multiple answers using Select type:
 public class PlainTextMessageReceiver : IMessageReceiver
 {
@@ -92,12 +99,6 @@ public class PlainTextMessageReceiver : IMessageReceiver
 }
 Note:
 
-Value field is optional, if informed your value will be sent to the chatbot when the user choice the option.
-If Value field is not provided, will must provide one of the fields: Order or Text. The Order field will be used only if Value and Text is not provided.
-Limitations:
-
-Facebook Messenger: Limite of 3 options, in other case your message will not be delivered. If is nedded to send more than 3 options is necessary send multiple messages.
-Tangram SMS: The Value field will be ignored. Only the Order field will be sent if the option be selected.
 //NOTE:
 //Value field is optional, if informed your value will be sent to the chatbot when the user choice the option.
 //If Value field is not provided, will must provide one of the fields: Order or Text. The Order field will be used only if Value and Text is not provided.

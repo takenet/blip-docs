@@ -2,6 +2,38 @@
 
 >Sending a Messenger **[text](https://developers.facebook.com/docs/messenger-platform/send-api-reference/)** message:
 
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+public class OptionNativeContentReceiver : IMessageReceiver
+{
+    private readonly ISender _sender;
+    private  readonly Dictionary<string,object> dictionary;
+
+    public OptionNativeContentReceiver(ISender sender)
+    {
+        _sender = sender;
+    }
+    
+    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+    {
+        dictionary.Add("text", "hello world!");
+
+
+        var mediatype = new MediaType("application","json");
+        var document = new JsonDocument( dictionary ,mediatype);
+    
+
+        await _sender.SendMessageAsync(document, message.From, cancellationToken);
+    }
+}
+```
 
 ```http
 POST /commands HTTP/1.1

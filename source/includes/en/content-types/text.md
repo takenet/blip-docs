@@ -8,26 +8,31 @@ Allows sending and receiving simple text messages.
 > Sending a message to a Messenger recipient:
 
 ```csharp
-//The sample follow show how to reply a received message with a simple text message.
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+//Replying a received message with a simple text message.
 public class PlainTextMessageReceiver : IMessageReceiver
 {
-    private readonly ISender _sender;
-    private readonly Settings _settings;
+private readonly ISender _sender;
+private readonly Settings _settings;
 
-    public PlainTextMessageReceiver(ISender sender, Settings settings)
-    {
-        _sender = sender;
-        _settings = settings;
-    }
+public PlainTextMessageReceiver(ISender sender, Settings settings)
+{
+    _sender = sender;
+    _settings = settings;
+}
 
-    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
-    {
-        var document = new PlainText {Text = "... Inspiration, and a cup of coffe! It's enough!"};
-        await _sender.SendMessageAsync(document, message.From, cancellationToken);
-    }
-    //Limitations:Facebook Messenger: Max size of 320 characters. If your chatbot send messages 
-    //with more than 320 characters, on this channel, your message will not be delivered.
-
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    var document = new PlainText {Text = "... Inspiration, and a cup of coffe! It's enough!"};
+    await _sender.SendMessageAsync(document, message.From, cancellationToken);
+}
 }
 ```
 
@@ -44,6 +49,10 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 For more details, check the especification of [LIME protocol](http://limeprotocol.org/content-types.html#text).
+
+<aside class="notice">
+Note: Some channels may have limit of characters
+</aside>
 
 #### Channel mapping
 

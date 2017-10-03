@@ -1,6 +1,14 @@
 ## Payment receipt
 
 ```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+
 public class InvoiceStatusReceiver : IMessageReceiver
 {
     private readonly IMessagingHubSender _sender;
