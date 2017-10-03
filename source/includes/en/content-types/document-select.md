@@ -117,6 +117,49 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```javascript
+    client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.document-select+json",
+      to: "1042221589186385@messenger.gw.msging.net",
+      content: {
+            header: {
+                type: "application/vnd.lime.media-link+json",
+                value: {
+                    title: "Welcome to mad hatter",
+                    text: "Here we have the best hats for your head.",
+                    type: "image/jpeg",
+                    uri: "http://petersapparel.parseapp.com/img/item100-thumb.png",
+                    aspectRatio: "1:1"
+                }
+            },
+            options: [
+                {
+                    label: {
+                        type: "application/vnd.lime.web-link+json",
+                        value: {
+                            text: "Go to our site",
+                            uri: "https://petersapparel.parseapp.com/view_item?item_id=100"
+                        }
+                    }
+                },
+                {
+                    label: {
+                        type: "text/plain",
+                        value: "Show stock"
+                    },
+                    value: {
+                        type: "application/json",
+                        value: {
+                            action: "show-items"
+                        }
+                    }
+                }
+            ]
+        }
+    });
+```
+
 >  Getting the location of a Messenger user:
 
 ```csharp
@@ -197,6 +240,33 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```javascript
+client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.document-select+json",
+      to: "1042221589186385@messenger.gw.msging.net",
+      content: {
+            scope: "immediate",
+            header: {
+                type: "text/plain",
+                value: "Please, share your location"
+            },
+            options: [
+                {
+                    label: {
+                        type: "application/vnd.lime.input+json",
+                        value: {                      
+                            validation: {
+                                rule: "type",
+                                type: "application/vnd.lime.location+json"
+                            } 
+                        }
+                    }
+                }
+            ]
+        }
+    });
+```
 
 | MIME type                                 |
 |-------------------------------------------|

@@ -45,6 +45,18 @@ Authorization: Key {YOUR_TOKEN}
     }
 }
 ```
+
+```javascript
+client.sendMessage({
+    id: Lime.Guid(),
+    type: "application/vnd.iris.resource+json",
+    to: "1042221589186385@messenger.gw.msging.net",
+    content: {
+        key: "welcome-message"
+    }
+});
+```
+
 > In case there is a resource with this key, the server replaces the content and forward to the destination. Imagining that the resource with **welcome-message** key is a `text/plain` document with value `Welcome to our service`, the final message would be like this:
 
 ```http
@@ -56,6 +68,15 @@ Authorization: Key {YOUR_TOKEN}
     "to": "1042221589186385@messenger.gw.msging.net",
     "type": "text/plain",
     "content": "Welcome to our service"
+}
+```
+
+```javascript
+{
+    id: "1",
+    to: "1042221589186385@messenger.gw.msging.net",
+    type: "text/plain",
+    content: "Welcome to our service"
 }
 ```
 
@@ -125,6 +146,20 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```javascript
+client.sendMessage({
+    id: Lime.Guid(),
+    to: "1042221589186385@messenger.gw.msging.net",
+    type: "application/vnd.iris.resource+json",
+    content: {
+        key: "welcome-message",
+        variables: {
+            name: "John Doe"
+        }
+    }
+});
+```
+
 The final message will be:
 
 > Response
@@ -141,6 +176,14 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```javascript
+{
+    id: "1",
+    to: "1042221589186385@messenger.gw.msging.net",
+    type: "text/plain",
+    content: "Welcome to our service, John Doe!"
+}
+```
 #### Channel mapping
 
 This content type is supported on all channels.

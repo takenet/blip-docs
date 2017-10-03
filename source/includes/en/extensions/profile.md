@@ -1,18 +1,26 @@
 ## Chatbot profile
 
-
-| Address               | Base URI     |
-|-----------------------|--------------|
-| postmaster@msging.net (default address - not required) | /profile |
-
 The **profile** extension allows the configuration of chatbot profile properties, which can reflect to the clients in the published channel - if supported. Each property is a document of a type supported by the platform.
+
+To manage chatbot's profile informations send commands with the following properties:
+
+| Name | Description |
+|---------------------------------|--------------|
+| id    | Unique identifier of the command.   |
+| method    | The command verb  |
+| resource | The profile property document. |
+| type | The resource document type  |
+| uri    | **/profile**   |
+| to     | **postmaster@msging.net** (not required) |
+
+The command's properties `resource` and `method` can change according of the feature.
 
 The current supported profile properties are:
 
 | Name             | Identifier        | Document type     | Supported channels  |
 |------------------|-------------------|-------------------|---------------------|
-| Start button     | `get-started`     | Text              | Messenger           |
-| Greeting message | `greeting`        | Text              | Messenger           |
+| Start button     | `get-started`     | Text              | Messenger, BLiP Chat           |
+| Greeting message | `greeting`        | Text              | Messenger, BLiP Chat           |
 | Persistent menu  | `persistent-menu` | Multimedia menu   | Messenger           |
 
 Note: In Messenger, the value of `get-started` must be defined before the value of `persistent-menu`.
@@ -45,15 +53,9 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | greeting message |
+In order to set a text greeting message for your chatbot use a `set` command on `/profile/greeting` URI. This sample show how can you add greeting message with `"Hello and welcome to our service!"` content.
 
-###Seting simple persistent menu
+### Seting simple persistent menu
 
 
 ```http
@@ -103,15 +105,9 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | Menu info |
+In order to set a Messenger persistent menu for your chatbot use a `set` command on `/profile/persistent-menu` URI. This sample show how can you add a simple persistent menu (only on Facebook Messenger channel) with 3 options `Option 1`, `Option 2` e `Option 3`.
 
-###Seting complex persistent menu
+### Seting complex persistent menu
 
 
 ```http
@@ -217,15 +213,9 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | Menu info |
+As the last sample you can also add a complex persistent menu (with links and submenus) using a `SET` command on `/profile/persistent-menu` URI. This sample show how can you add a complex persistent menu (only on Facebook Messenger channel) with 3 options `SubMenu 1`, `Option 2` e `Option 3 as a web link`.
 
-###Set start button
+### Set start button
 
 ```http
 POST /commands HTTP/1.1
@@ -253,15 +243,9 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | Button info |
+In order to set a get started button for your chatbot use a `set` command on `/profile/get-started` URI. This sample show how can you add a button that sends `Start now` text to your chatbot during the first client interaction.
 
-###Get greeting message
+### Get greeting message
 
 ```http
 POST /commands HTTP/1.1
@@ -289,10 +273,4 @@ Content-Type: application/json
 }
 ```
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Unique identifier of the command.   |
-| to    | The destination address of the command.   |
-| method    | The command verb   |
-| uri    | The command uri   |
-| resource | Button info |
+Retrieve a saved chatbot's greeting message using a `get` command on `/profile/greeting` URI.
