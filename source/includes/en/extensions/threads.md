@@ -1,7 +1,4 @@
 ## Chat history
-| Address               | Base URI     |
-|-----------------------|--------------|
-| postmaster@msging.net (default address - not required) | /threads |
 
 The **threads** (or **chat history**) extension allows the chatbot to retrieve the last threads and messages exchanged with the customers.
 
