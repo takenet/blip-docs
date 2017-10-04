@@ -73,6 +73,50 @@ Content-Type: application/json
 }
 ```
 
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Sender;
+using Takenet.MessagingHub.Client.Extensions.Contacts;
+using Lime.Messaging.Resources;
+using System.Collections.Generic;
+
+namespace Extensions
+{
+    public class ContactMessageReceiver : IMessageReceiver
+    {
+        private readonly IMessagingHubSender _sender;
+        private readonly IContactExtension _contactExtension;
+
+        public ContactMessageReceiver(IMessagingHubSender sender, IContactExtension contactExtension)
+        {
+            _sender = sender;
+            _contactExtension = contactExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var identity = new Identity("11121023102013021", "messenger.gw.msging.net");
+            var contact = new Contact
+            {
+                Name = "John Doe",
+                Gender = Gender.Male,
+                Group = "friends",
+                Extras = new Dictionary<string, string>
+                {
+                    {"plan", "gold" },
+                    {"code", "1111" },
+                }
+            };
+
+            await _contactExtension.SetAsync(identity, contact, cancellationToken);
+        }
+    }
+}
+```
+
 In order to store informations about a chatbot client is possible save and update data using **contacts extention**. This sample show how can you add a Messenger customer with `11121023102013021@messenger.gw.msging.net` identity on the chatbot's roster. 
 
 ### Get contact
@@ -108,6 +152,37 @@ Content-Type: application/json
       "code":"1111"      
     }
   }  
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Sender;
+using Takenet.MessagingHub.Client.Extensions.Contacts;
+
+namespace Extensions
+{
+    public class ContactMessageReceiver : IMessageReceiver
+    {
+        private readonly IMessagingHubSender _sender;
+        private readonly IContactExtension _contactExtension;
+
+        public ContactMessageReceiver(IMessagingHubSender sender, IContactExtension contactExtension)
+        {
+            _sender = sender;
+            _contactExtension = contactExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var identity = new Identity("11121023102013021", "messenger.gw.msging.net");
+
+            var contact = await _contactExtension.GetAsync(identity, cancellationToken);
+        }
+    }
 }
 ```
 
@@ -148,6 +223,37 @@ Content-Type: application/json
 }
 ```
 
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Sender;
+using Takenet.MessagingHub.Client.Extensions.Contacts;
+
+namespace Extensions
+{
+    public class ContactMessageReceiver : IMessageReceiver
+    {
+        private readonly IMessagingHubSender _sender;
+        private readonly IContactExtension _contactExtension;
+
+        public ContactMessageReceiver(IMessagingHubSender sender, IContactExtension contactExtension)
+        {
+            _sender = sender;
+            _contactExtension = contactExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var identity = new Identity("11121023102013021", "messenger.gw.msging.net");
+
+            var contact = await _contactExtension.GetAsync(identity, cancellationToken);
+        }
+    }
+}
+```
+
 If you need get more than one chatbot's contacts you can use a query pagination. This sample show how to take the **three first roaster's contacts**.
 
 ### Send message with contact name
@@ -178,6 +284,49 @@ Content-Type: application/json
   "metadata": {
     "#message.replaceVariables": "true"
   }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Sender;
+using System;
+using Lime.Messaging.Contents;
+using System.Collections.Generic;
+
+namespace Extensions
+{
+    public class PlainTextMessageReceiver : IMessageReceiver
+    {
+        private readonly IMessagingHubSender _sender;
+
+        public PlainTextMessageReceiver(IMessagingHubSender sender)
+        {
+            _sender = sender;
+        }
+
+        public async Task ReceiveAsync(Message m, CancellationToken cancellationToken)
+        {
+            var message = new Message
+            {
+                To = Node.Parse("11121023102013021@messenger.gw.msging.net"),
+                Id = Guid.NewGuid().ToString(),
+                Content = new PlainText
+                {
+                    Text = "Hello ${contact.name}, welcome to the ${contact.extras.plan} plan!"
+                },
+                Metadata = new Dictionary<string, string>
+                {
+                    {"#message.replaceVariables", "true" }
+                }
+            };
+
+            await _sender.SendMessageAsync(message, cancellationToken);
+        }
+    }
 }
 ```
 
