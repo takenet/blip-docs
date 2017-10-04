@@ -2,6 +2,36 @@
 
 > Sending a resource message with the **welcome-message** identifier:
 
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+ public class OptionResourceMessageReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public OptionResourceMessageReceiver(ISender sender)
+        {
+            _sender = sender;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var document = new Resource
+            {
+                Key = "welcome-message" //recurso previamente adicionado com extensão 'recursos' ou através do portal
+            };
+
+            await _sender.SendMessageAsync(document, message.From, cancellationToken);
+        }
+    }
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -15,6 +45,18 @@ Authorization: Key {YOUR_TOKEN}
     }
 }
 ```
+
+```javascript
+client.sendMessage({
+    id: Lime.Guid(),
+    type: "application/vnd.iris.resource+json",
+    to: "1042221589186385@messenger.gw.msging.net",
+    content: {
+        key: "welcome-message"
+    }
+});
+```
+
 > In case there is a resource with this key, the server replaces the content and forward to the destination. Imagining that the resource with **welcome-message** key is a `text/plain` document with value `Welcome to our service`, the final message would be like this:
 
 ```http
@@ -26,6 +68,15 @@ Authorization: Key {YOUR_TOKEN}
     "to": "1042221589186385@messenger.gw.msging.net",
     "type": "text/plain",
     "content": "Welcome to our service"
+}
+```
+
+```javascript
+{
+    id: "1",
+    to: "1042221589186385@messenger.gw.msging.net",
+    type: "text/plain",
+    content: "Welcome to our service"
 }
 ```
 
@@ -42,6 +93,41 @@ You can enter substitution variables for the resource using the `variables` prop
 For example, imagine that the resource in the `welcome-message` key has the value `Welcome to our service, ${name}!'`. If you send the following:
 
 > Request
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+public class ResourceMessageReplace : IMessageReceiver
+{
+    private readonly ISender _sender;
+
+    public ResourceMessageReplace(ISender sender)
+    {
+        _sender = sender;
+    }
+
+    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+    {
+        var openWith = new Dictionary<string, string>();//using System.Collections.Generic
+        openWith.Add("name",message.From.Name);//checar mais tarde <<
+
+        var document = new Resource
+        {
+            Key = "welcome-message",
+            Variables = openWith
+        
+        };
+
+        await _sender.SendMessageAsync(document, message.From, cancellationToken);
+    }
+}
+```
 
 ```http
 POST /commands HTTP/1.1
@@ -60,6 +146,20 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```javascript
+client.sendMessage({
+    id: Lime.Guid(),
+    to: "1042221589186385@messenger.gw.msging.net",
+    type: "application/vnd.iris.resource+json",
+    content: {
+        key: "welcome-message",
+        variables: {
+            name: "John Doe"
+        }
+    }
+});
+```
+
 The final message will be:
 
 > Response
@@ -76,6 +176,14 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```javascript
+{
+    id: "1",
+    to: "1042221589186385@messenger.gw.msging.net",
+    type: "text/plain",
+    content: "Welcome to our service, John Doe!"
+}
+```
 #### Channel mapping
 
 This content type is supported on all channels.

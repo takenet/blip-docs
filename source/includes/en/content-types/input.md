@@ -2,6 +2,58 @@
 
 > Requesting user name:
 
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+public class OptionUserInputMessaReceiver : IMessageReceiver
+{
+    private readonly ISender _sender;
+
+    public OptionUserInputMessaReceiver(ISender sender)
+    {
+        _sender = sender;
+    }
+
+    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+    {
+        var document = new Input
+        {
+            Label = {
+                Value = "What is your name?"
+            },
+            Validation = {
+                Rule = InputValidationRule.Text
+            } 
+        };
+
+        await _sender.SendMessageAsync(document, message.From, cancellationToken);
+    }
+}
+```
+
+```javascript
+client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.input+json",
+      to: "1042225583186385@messenger.gw.msging.net",
+      content: {
+          label: {
+            type: "text/plain",
+            value: "What is your name?"
+          },
+          validation: {
+            rule: "text"          
+          }
+      }
+    });
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -23,6 +75,60 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 > Requesting user location:
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+public class UserInputLocationReceiver : IMessageReceiver
+{
+    private readonly ISender _sender;
+
+    public UserInputLocationReceiver(ISender sender)
+    {
+        _sender = sender;
+    }
+
+    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+    {
+        var document = new Input
+        {
+            Label = {
+                Value = "Send your location please!"
+            },
+            Validation = {
+                Rule = InputValidationRule.Type,
+                Type = "application/vnd.lime.location+json"//confirmar se esse type é necessario <<
+            } 
+        };
+
+        await _sender.SendMessageAsync(document, message.From, cancellationToken);
+    }
+}
+```
+
+```javascript
+client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.input+json",
+      to: "1042225583186385@messenger.gw.msging.net",
+      content: {
+          label: {
+            type: "text/plain",
+            value: "Send your location please!"
+          },
+          validation: {
+            rule: "type",
+            type: "application/vnd.lime.location+json"
+          }
+      }
+    });
+```
 
 ```http
 POST /commands HTTP/1.1

@@ -3,31 +3,52 @@
 > Sending a location with latitude, longitude and altitude:
 
 ```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+
 //A chatbot can send and receive a location entity. For this cases use Location type:
 public class PlainTextMessageReceiver : IMessageReceiver
 {
-    private readonly ISender _sender;
-    private readonly Settings _settings;
+private readonly ISender _sender;
+private readonly Settings _settings;
 
-    public PlainTextMessageReceiver(ISender sender, Settings settings)
-    {
-        _sender = sender;
-        _settings = settings;
-    }
-
-    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
-    {
-        var document = new Location
-        {
-            Latitude = -22.121944,
-            Longitude = -45.128889,
-            Altitude = 1143
-        };
-
-        await _sender.SendMessageAsync(document, message.From, cancellationToken);
-    }
-
+public PlainTextMessageReceiver(ISender sender, Settings settings)
+{
+    _sender = sender;
+    _settings = settings;
 }
+
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    var document = new Location
+    {
+        Latitude = -22.121944,
+        Longitude = -45.128889,
+        Altitude = 1143
+    };
+
+    await _sender.SendMessageAsync(document, message.From, cancellationToken);
+}
+}
+```
+
+```javascript
+    client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.location+json",
+      to: "128271320123982@messenger.gw.msging.net",
+      content: {
+        latitude: -19.918899,
+        longitude: -43.959275,
+        altitude: 853,
+        text: "Take's place"
+      }
+    });
 ```
 
 ```http
@@ -47,7 +68,62 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
->Request location
+> Request location
+
+```javascript
+    client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.input+json",
+      to: "128271320123982@messenger.gw.msging.net",
+      content: {
+        label: {
+          type: "text/plain",
+          value: "Send your location please!"
+        },
+        validation: {
+          rule: "type",
+          type: "application/vnd.lime.location+json"
+        }
+    });
+```
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+public class RequestLocation : IMessageReceiver
+{
+private readonly ISender _sender;
+
+public RequestLocation(ISender sender)
+{
+    _sender = sender;
+}
+
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    var location = new Input
+    {
+        Label = {
+            Value = new PlainText {
+                Text = "Send your location please!"
+            }
+        },
+        Validation = {
+            Rule = InputValidationRule.Type,
+            Type = "application/vnd.lime.location+json" //checar se é necessário
+        }
+    };
+
+    await _sender.SendMessageAsync(location, message.From, cancellationToken);
+}
+}
+```
 
 ```http
 POST /commands HTTP/1.1
@@ -91,5 +167,5 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 
 
 
-Asks the user for location
+Asks the user for her location
 

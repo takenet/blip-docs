@@ -1,6 +1,14 @@
 ## Payment receipt
 
 ```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+
 public class InvoiceStatusReceiver : IMessageReceiver
 {
     private readonly IMessagingHubSender _sender;
@@ -45,6 +53,31 @@ public class InvoiceStatusReceiver : IMessageReceiver
         }
     }
 }
+```
+
+```javascript
+    client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.payment-receipt+json",
+      to: "128271320123982@messenger.gw.msging.net",
+      content: {
+        paidOn: "2016-08-26T19:03:37.024Z",
+        code: "215BF6B5-01EF-4F9A-A944-0BC05FD0F228",
+        method: {
+                name: "Credit Card"
+        },
+        currency: "BRL",
+        total: 10.85,
+        items: [{
+                quantity: 1.0,
+                unit: 10.85,
+                currency: "BRL",
+                total: 10.85,
+                description: "Item 1"
+            }
+        ]
+    }
+    });
 ```
 
 ```http

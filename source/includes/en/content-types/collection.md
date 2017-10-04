@@ -2,6 +2,67 @@
 
 > A text Collection
 
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+public class OptionDocumentCollectionMessageReceiver : IMessageReceiver
+{
+    private readonly ISender _sender;
+
+    public OptionDocumentCollectionMessageReceiver(ISender sender)
+    {
+        _sender = sender;
+    }
+
+    PlainText[] documents = new PlainText[] 
+    {
+        new PlainText 
+        {
+            Text = "Text 1"
+        },
+        new PlainText
+        {
+            Text = "Text 2"
+        },
+        new PlainText 
+        {
+            Text = "Text 3"
+        }
+    };
+
+    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+    {
+        var document = new DocumentCollection
+        {
+            Items = documents
+        };
+        await _sender.SendMessageAsync(document, message.From, cancellationToken);
+    }
+}
+```
+
+```javascript
+    client.sendMessage({
+        id: Lime.Guid(),
+        type: "application/vnd.lime.collection+json",
+        to: "128271320123982@messenger.gw.msging.net",
+        content: {
+            itemType: "text/plain",
+            items: [
+                "Text 1",
+                "Text 2",
+                "Text 3"
+            ]
+        }
+    });
+```
+
 ```http
 POST /commands HTTP/1.1
 Content-Type: application/json
@@ -21,6 +82,100 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 > A different types collection, using **container**
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+public class CollectionWithDiferentTypes : IMessageReceiver
+{
+    private readonly ISender _sender;
+
+    public CollectionWithDiferentTypes(ISender sender)
+    {
+        _sender = sender;
+    }
+
+    Document[] documents = new Document[] 
+    {
+        new MediaLink
+        {
+            Uri = new Uri("http://petersapparel.parseapp.com/img/item100-thumb.png"),
+            Text = "Welcome to our store!",
+            Type = "image/jpeg"
+        },
+        new Select
+        {
+            Text = "Choice what you need",
+            Options = new SelectOption[] 
+            {
+                new SelectOption 
+                {
+                    Order = 1,
+                    Text = "See our stock"
+                },
+                new SelectOption
+                {
+                    Order = 2,
+                    Text = "Follow an order"
+                }
+            }
+            
+        }
+    };
+
+    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+    {
+        var document = new DocumentCollection
+        {
+            Items = documents
+        };
+        await _sender.SendMessageAsync(document, message.From, cancellationToken);
+    }
+}
+```
+
+```javascript
+    client.sendMessage({
+        id: Lime.Guid(),
+        type: "application/vnd.lime.collection+json",
+        to: "128271320123982@messenger.gw.msging.net",
+        content: {
+            itemType: "application/vnd.lime.container+json",
+            items: [
+                {
+                    type: "application/vnd.lime.media-link+json",
+                    value: {
+                        text: "Welcome to our store!",
+                        type: "image/jpeg",
+                        uri: "http://petersapparel.parseapp.com/img/item100-thumb.png"
+                    }
+                },
+                {
+                    type: "application/vnd.lime.select+json",
+                    value: {
+                        text: "Choose what you need",
+                        options: [
+                            {
+                                order: 1,
+                                text: "See our stock"
+                            },
+                            {
+                                order: 2,
+                                text: "Follow an order"
+                            }
+                        ]
+                    }
+                }			
+            ]
+        } 
+    });
+```
 
 ```http
 POST /commands HTTP/1.1
@@ -63,6 +218,220 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 > A **multimedia menu** collection
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+public class CollectionMultimidiaMenu : IMessageReceiver
+{
+private readonly ISender _sender;
+
+Document[] documents;
+JsonDocument JsonDocuments; 
+
+public CollectionMultimidiaMenu(ISender sender)
+{
+    _sender = sender;   
+    initDocument();
+}
+
+private void initDocument(){
+    JsonDocument JsonDocuments = new JsonDocument();
+    JsonDocuments.Add("Key1", "value1");
+    JsonDocuments.Add("Key2", 2);
+
+
+    DocumentSelect[] documents = new DocumentSelect[] 
+    {
+        new DocumentSelect
+        {
+            Header = 
+            {
+                Value = new MediaLink
+                {
+                    Title = "Title",
+                    Text = "This is a first item",
+                    Type = "image/jpeg",
+                    Uri = new Uri("http://www.isharearena.com/wp-content/uploads/2012/12/wallpaper-281049.jpg"),
+                }
+            },
+            Options = new DocumentSelectOption[]
+            {
+                new DocumentSelectOption
+                {
+                    Label = 
+                    {
+                        Value = new WebLink
+                        {
+                            Title = "Link",
+                            Uri = new Uri("https://server.com/first/link1")
+                        }
+                    }
+                },
+                new DocumentSelectOption
+                {
+                    Label =
+                    {
+                        Value = new PlainText
+                        {
+                            Text = "Text 1"
+                        }
+                    },
+                    Value = 
+                    {
+                        Value = JsonDocuments
+                    }
+                }   
+            }
+        },
+        new DocumentSelect
+        {
+            Header = 
+            {
+                Value = new MediaLink
+                {
+                    Title = "Title 2",
+                    Text = "This is another item",
+                    Type = "image/jpeg",
+                    Uri = new Uri("http://www.freedigitalphotos.net/images/img/homepage/87357.jpg")
+                }
+            },
+            Options = new DocumentSelectOption[] 
+            {
+                new DocumentSelectOption
+                {
+                    Label = 
+                    {
+                        Value = new WebLink 
+                        {
+                            Title = "Second link",
+                            Text = "Weblink",
+                            Uri = new Uri("https://server.com/second/link2")
+                        }
+                    }
+                },
+                new DocumentSelectOption
+                {
+                    Label =
+                    {
+                        Value = new PlainText {
+                            Text = "Second text"
+                        }
+                    },
+                    Value = 
+                    {
+                        Value = JsonDocuments
+                    }
+                }
+            }
+        }
+        
+    };
+}
+```
+
+```javascript
+    client.sendMessage({
+        id: Lime.Guid(),
+        type: "application/vnd.lime.collection+json",
+        to: "128271320123982@messenger.gw.msging.net",
+        content: {
+            itemType: "application/vnd.lime.document-select+json",
+            items: [
+                {
+                    header: {
+                        type: "application/vnd.lime.media-link+json",
+                        value: {
+                            title: "Title",
+                            text: "This is a first item",
+                            type: "image/jpeg",
+                            uri: "http://www.isharearena.com/wp-content/uploads/2012/12/wallpaper-281049.jpg"
+                        }
+                    },
+                    options: [
+                        {
+                            label: {
+                                type: "application/vnd.lime.web-link+json",
+                                value: {
+                                    title: "Link",
+                                    uri: "https://server.com/first/link1"
+                                }
+                            }
+                        },
+                        {
+                            label: {
+                                type: "text/plain",
+                                value: "Text 1"
+                            },
+                            value: {
+                                type: "application/json",
+                                value: {
+                                    key1: "value1",
+                                    key2: 2
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    header: {
+                        type: "application/vnd.lime.media-link+json",
+                        value: {
+                            title: "Title 2",
+                            text: "This is another item",
+                            type: "image/jpeg",
+                            uri: "http://www.freedigitalphotos.net/images/img/homepage/87357.jpg"
+                        }
+                    },
+                    options: [
+                        {
+                            label: {
+                                type: "application/vnd.lime.web-link+json",
+                                value: {
+                                    title: "Second link",
+                                    text: "Weblink",
+                                    uri: "https://server.com/second/link2"
+                                }
+                            }
+                        },
+                        {
+                            label: {
+                                type: "text/plain",
+                                value: "Second text"
+                            },
+                            value: {
+                                type: "application/json",
+                                value: {
+                                    key3: "value3",
+                                    key4: 4
+                                }
+                            }
+                        },
+                        {
+                            label: {
+                                type: "text/plain",
+                                value: "More one text"
+                            },
+                            value: {
+                                type: "application/json",
+                                value: {
+                                    key5: "value5",
+                                    key6: 6
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+```
 
 ```http
 POST /commands HTTP/1.1
