@@ -34,7 +34,7 @@ In order to receive or send payments to a channel, contact shall be configured o
 ### Payment Request
 
 ```http
-POST /messages HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
@@ -63,7 +63,7 @@ Example of how to send a payment request to Facebook Messenger user using [PagSe
 ###Payment Status
 
 ```http
-POST /messages HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
