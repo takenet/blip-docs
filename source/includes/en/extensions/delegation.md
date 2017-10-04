@@ -56,6 +56,37 @@ Content-Type: application/json
 ```
 
 ```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Sender;
+using Takenet.MessagingHub.Client.Extensions.Delegation;
+
+namespace Extensions
+{
+    public class DelegationMessageReceiver : IMessageReceiver
+    {
+        private readonly IMessagingHubSender _sender;
+        private readonly IDelegationExtension _delegationExtension;
+
+        public DelegationMessageReceiver(IMessagingHubSender sender, IDelegationExtension delegationExtension)
+        {
+            _sender = sender;
+            _delegationExtension = delegationExtension;
+        }
+
+        public async Task ReceiveAsync(Message m, CancellationToken cancellationToken)
+        {
+            var envelopeTypes = new EnvelopeType[]
+            {
+                EnvelopeType.Message
+            };
+
+            await _delegationExtension.DelegateAsync(Identity.Parse("postmaster@broadcast.msging.net"), envelopeTypes, cancellationToken);
+        }
+    }
+}
 ```
 
 Giving permission to another identity send message as the caller (the bot).
@@ -85,6 +116,37 @@ Content-Type: application/json
 ```
 
 ```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Sender;
+using Takenet.MessagingHub.Client.Extensions.Delegation;
+
+namespace Extensions
+{
+    public class DelegationMessageReceiver : IMessageReceiver
+    {
+        private readonly IMessagingHubSender _sender;
+        private readonly IDelegationExtension _delegationExtension;
+
+        public DelegationMessageReceiver(IMessagingHubSender sender, IDelegationExtension delegationExtension)
+        {
+            _sender = sender;
+            _delegationExtension = delegationExtension;
+        }
+
+        public async Task ReceiveAsync(Message m, CancellationToken cancellationToken)
+        {
+            var envelopeTypes = new EnvelopeType[]
+            {
+                EnvelopeType.Message
+            };
+
+            await _delegationExtension.UndelegateAsync(Identity.Parse("postmaster@broadcast.msging.net"), envelopeTypes, cancellationToken);
+        }
+    }
+}
 ```
 
 Revoking granted permission.
