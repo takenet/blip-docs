@@ -49,6 +49,7 @@ client.sendMessage({
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "to":"104222@telegram.gw.msging.net",
     "type":"application/vnd.lime.chatstate+json",

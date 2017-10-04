@@ -67,6 +67,7 @@ public class OptionDocumentCollectionMessageReceiver : IMessageReceiver
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
 	"to": "553199990000@0mn.io",
 	"type": "application/vnd.lime.collection+json",
@@ -181,6 +182,7 @@ public class CollectionWithDiferentTypes : IMessageReceiver
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
 	"to": "553199990000@0mn.io",
 	"type": "application/vnd.lime.collection+json",
@@ -437,6 +439,7 @@ private void initDocument(){
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "5",
     "to": "1042221589186385@messenger.gw.msging.net",

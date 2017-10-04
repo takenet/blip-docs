@@ -43,6 +43,7 @@ The contacts fields can be used to replace variables on messages sent by the cha
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "1",
   "method": "set",
@@ -64,6 +65,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "1",
   "from": "postmaster@msging.net/#irismsging1",
@@ -125,6 +127,7 @@ In order to store informations about a chatbot client is possible save and updat
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "2",
   "method": "get",
@@ -135,6 +138,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "2",
   "from": "postmaster@msging.net/#irismsging1",
@@ -194,6 +198,7 @@ For the same contact `11121023102013021@messenger.gw.msging.net` is possible get
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "3",
   "method": "get",
@@ -204,6 +209,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "3",
   "from": "postmaster@msging.net/#irismsging1",
@@ -262,6 +268,7 @@ If you need get more than one chatbot's contacts you can use a query pagination.
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "1",
   "to": "11121023102013021@messenger.gw.msging.net",
@@ -276,6 +283,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {  
   "id": "1",
   "to": "11121023102013021@messenger.gw.msging.net",

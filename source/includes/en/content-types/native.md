@@ -39,6 +39,7 @@ public class OptionNativeContentReceiver : IMessageReceiver
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id":"1",
   "to":"949839515125748@messenger.gw.msging.net",
@@ -196,6 +197,7 @@ Authorization: Key {YOUR_TOKEN}
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id":"2",
   "to":"949839515125748@messenger.gw.msging.net",

@@ -23,6 +23,7 @@ In order to send a resource message, the developer must use the [**resource** co
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "1",
   "method": "set",
@@ -43,6 +44,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "1",
   "from": "postmaster@msging.net/#irismsging1",
@@ -112,6 +114,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "2",
   "from": "postmaster@msging.net/#irismsging1",
@@ -166,6 +169,7 @@ It is possible to use contact replacement variables in the created resources. Fo
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "3",
   "method": "set",
@@ -178,6 +182,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "3",
   "from": "postmaster@msging.net/#irismsging1",

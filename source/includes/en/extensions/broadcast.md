@@ -69,6 +69,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "1",
   "to": "postmaster@broadcast.msging.net",
@@ -84,6 +85,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "1",
   "from": "postmaster@broadcast.msging.net/#irismsging1",
@@ -142,6 +144,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "2",
   "to": "postmaster@broadcast.msging.net",
@@ -156,6 +159,7 @@ Authorization: Key {YOUR_TOKEN}
 HTTP/1.1 200 OK
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
   "id": "2",
   "from": "postmaster@broadcast.msging.net/#irismsging1",
@@ -212,6 +216,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "3",
   "to": "postmaster@broadcast.msging.net",
@@ -223,6 +228,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "3",
   "from": "postmaster@broadcast.msging.net/#irismsging1",
@@ -279,6 +285,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "4",
   "to": "your_distributionList@broadcast.msging.net",
@@ -290,6 +297,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "4",
   "from": "postmaster@broadcast.msging.net/#irismsging1",
@@ -300,6 +308,7 @@ Content-Type: application/json
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "4",
   "from": "postmaster@broadcast.msging.net/#irismsging1",

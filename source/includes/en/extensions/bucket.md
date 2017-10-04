@@ -43,6 +43,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
+
 {  
   "id": "1",
   "method": "set",
@@ -61,6 +62,7 @@ Content-Type: application/json
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "1",
   "from": "postmaster@msging.net/#irismsging1",
@@ -124,6 +126,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
+
 {  
   "id": "2",
   "method": "set",
@@ -139,6 +142,7 @@ Content-Type: application/json
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "2",
   "from": "postmaster@msging.net/#irismsging1",
@@ -221,6 +225,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "3",
   "method": "get",
@@ -231,6 +236,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "3",
   "from": "postmaster@msging.net/#irismsging1",

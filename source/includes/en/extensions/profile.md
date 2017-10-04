@@ -44,6 +44,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "1",
   "from": "postmaster@msging.net/#irismsging1",
@@ -92,6 +93,7 @@ In order to set a text greeting message for your chatbot use a `set` command on 
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "2",
   "method": "set",
@@ -126,6 +128,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "2",
   "from": "postmaster@msging.net/#irismsging1",
@@ -211,6 +214,7 @@ In order to set a Messenger persistent menu for your chatbot use a `set` command
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "3",
   "method": "set",
@@ -301,6 +305,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "3",
   "from": "postmaster@msging.net/#irismsging1",
@@ -460,6 +465,7 @@ As the last sample you can also add a complex persistent menu (with links and su
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "4",
   "method": "set",
@@ -473,6 +479,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "4",
   "from": "postmaster@msging.net/#irismsging1",
@@ -520,6 +527,7 @@ In order to set a get started button for your chatbot use a `set` command on `/p
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "5",
   "method": "get",
@@ -531,6 +539,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "5",
   "from": "postmaster@msging.net/#irismsging1",

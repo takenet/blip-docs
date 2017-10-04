@@ -36,6 +36,7 @@ using Take.Blip.Client;
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "1",
     "to": "1042221589186385@messenger.gw.msging.net",
@@ -63,6 +64,7 @@ client.sendMessage({
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "1",
     "to": "1042221589186385@messenger.gw.msging.net",
@@ -133,6 +135,7 @@ public class ResourceMessageReplace : IMessageReceiver
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "1",
     "to": "1042221589186385@messenger.gw.msging.net",
@@ -168,6 +171,7 @@ The final message will be:
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "1",
     "to": "1042221589186385@messenger.gw.msging.net",

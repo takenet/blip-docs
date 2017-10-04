@@ -62,6 +62,7 @@ According to its internal rules, the flow bot decides to forward this message to
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "1",
     "from": "flow@msging.net/instance",
@@ -79,6 +80,7 @@ Internally, the server creates an **id** for the tunnel and forwards the message
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "1",
     "from": "ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net",
@@ -100,6 +102,7 @@ The operator bot generates a reply to the message and forwards it to the source 
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "2",
     "from": "operator@msging.net/instance",
@@ -117,6 +120,7 @@ The server uses the tunnel **id** to change the address of the response message 
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "2",
     "from": "operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net",
@@ -134,6 +138,7 @@ The bot flow identifies the message received from a **receiver**, decodes the or
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "2",
     "from": "flow@msging.net/instance",
@@ -149,6 +154,7 @@ Authorization: Key {YOUR_TOKEN}
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "3",
     "from": "operator@msging.net/instance",
@@ -163,6 +169,7 @@ The server identifies that the query is for a tunnel user and performs the query
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "3",
     "from": "postmaster@tunnel.msging.net",    

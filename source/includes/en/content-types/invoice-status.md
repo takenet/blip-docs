@@ -18,6 +18,7 @@ Receiving a change in a payment status from an [invoice](./#/docs/content-types/
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "1",
     "from": "1042221589186385%40messenger.gw.msging.net@pagseguro.gw.msging.net",

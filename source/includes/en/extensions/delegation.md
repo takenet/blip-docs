@@ -46,6 +46,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "method": "set",
   "status": "success",
@@ -96,6 +97,7 @@ Giving permission to another identity send message as the caller (the bot).
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "2",
   "method": "delete",
@@ -106,6 +108,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "method": "delete",
   "status": "success",

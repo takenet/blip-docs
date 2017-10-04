@@ -56,6 +56,7 @@ The resource types are:
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id":"1",
   "to":"postmaster@ai.msging.net",
@@ -91,6 +92,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "1",
   "from": "postmaster@ai.msging.net/#irismsging1",
@@ -109,6 +111,7 @@ Content-Type: application/json
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "2",
   "to": "postmaster@ai.msging.net",
@@ -125,6 +128,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "2",
   "from": "postmaster@ai.msging.net/#irismsging1",
@@ -144,6 +148,7 @@ Content-Type: application/json
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "3",
   "to": "postmaster@ai.msging.net",
@@ -156,6 +161,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "3",
   "from": "postmaster@ai.msging.net/#irismsging1",
@@ -186,6 +192,7 @@ Content-Type: application/json
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "4",
   "to": "postmaster@ai.msging.net",
@@ -213,6 +220,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "4",
   "from": "postmaster@ai.msging.net/#irismsging1",
@@ -228,6 +236,7 @@ Content-Type: application/json
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "5",
   "to": "postmaster@ai.msging.net",
@@ -250,6 +259,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "5",
   "from": "postmaster@ai.msging.net/#irismsging1",
@@ -265,6 +275,7 @@ Content-Type: application/json
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "6",
   "to": "postmaster@ai.msging.net",
@@ -280,6 +291,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "6",
   "from": "postmaster@ai.msging.net/#irismsging1",
@@ -294,6 +306,7 @@ Content-Type: application/json
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "7",
   "to": "postmaster@ai.msging.net",
@@ -306,6 +319,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "7",
   "from": "postmaster@ai.msging.net/#irismsging1",
@@ -342,6 +356,7 @@ Content-Type: application/json
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "8",
   "to": "postmaster@ai.msging.net",
@@ -358,6 +373,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "8",
   "from": "postmaster@ai.msging.net/#irismsging1",
@@ -373,6 +389,7 @@ Content-Type: application/json
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "9",
   "to": "postmaster@ai.msging.net",
@@ -389,6 +406,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "9",
   "from": "postmaster@ai.msging.net/#irismsging1",
@@ -423,6 +441,7 @@ Content-Type: application/json
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "10",
   "to": "postmaster@ai.msging.net",
@@ -440,6 +459,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "10",
   "from": "postmaster@ai.msging.net/#irismsging1",
@@ -474,6 +494,7 @@ Content-Type: application/json
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "11",
   "to": "postmaster@ai.msging.net",
@@ -485,6 +506,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "11",
   "from": "postmaster@ai.msging.net/#irismsging1",
@@ -528,6 +550,7 @@ Content-Type: application/json
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id":"12",
   "to":"postmaster@ai.msging.net",
@@ -544,6 +567,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "12",
   "from": "postmaster@ai.msging.net/#irismsging1",
@@ -560,6 +584,7 @@ Content-Type: application/json
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id":"13",
   "to":"postmaster@ai.msging.net",
@@ -577,6 +602,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "13",
   "from": "postmaster@ai.msging.net/#irismsging1",

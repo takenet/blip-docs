@@ -37,6 +37,7 @@ In order to receive or send payments to a channel, contact shall be configured o
 POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "2",
     "to": "1042221589186385%40messenger.gw.msging.net@pagseguro.gw.msging.net",
@@ -66,6 +67,7 @@ Example of how to send a payment request to Facebook Messenger user using [PagSe
 POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "2",
     "from": "1042221589186385%40messenger.gw.msging.net@pagseguro.gw.msging.net",
