@@ -13,15 +13,15 @@ toc_footers:
 includes:
   - en/introduction
   
-  - en/concepts
-  - en/concepts/addressing
-  - en/concepts/channels
-  - en/concepts/messages
-  - en/concepts/handle-messages
-  - en/concepts/notifications
-  - en/concepts/handle-notifications
-  - en/concepts/commands
-  - en/concepts/handle-commands
+  - en/concept
+  - en/concepts2/addressing
+  - en/concepts2/channels
+  - en/concepts2/messages
+  - en/concepts2/handle-messages
+  - en/concepts2/notifications
+  - en/concepts2/handle-notifications
+  - en/concepts2/commands
+  - en/concepts2/handle-commands
 
   - en/sdks
   - en/webhook
