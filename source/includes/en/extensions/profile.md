@@ -53,6 +53,36 @@ Content-Type: application/json
 }
 ```
 
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Sender;
+using Lime.Messaging.Contents;
+using Takenet.MessagingHub.Client.Extensions.Profile;
+
+namespace Extensions
+{
+    public class ProfileMessageReceiver : IMessageReceiver
+    {
+        private readonly IMessagingHubSender _sender;
+        private readonly IProfileExtension _profileExtension;
+
+        public ProfileMessageReceiver(IMessagingHubSender sender, IProfileExtension profileExtension)
+        {
+            _sender = sender;
+            _profileExtension = profileExtension;
+        }
+
+        public async Task ReceiveAsync(Message m, CancellationToken cancellationToken)
+        {
+            await _profileExtension.SetGreetingAsync(new PlainText { Text = "Hello and welcome to our service!" }, cancellationToken);
+        }
+    }
+}
+```
+
 In order to set a text greeting message for your chatbot use a `set` command on `/profile/greeting` URI. This sample show how can you add greeting message with `"Hello and welcome to our service!"` content.
 
 ### Seting simple persistent menu
@@ -102,6 +132,73 @@ Content-Type: application/json
   "to": "contact@msging.net/default",
   "method": "set",
   "status": "success"
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Sender;
+using Lime.Messaging.Contents;
+using Takenet.MessagingHub.Client.Extensions.Profile;
+
+namespace Extensions
+{
+    public class ProfileMessageReceiver : IMessageReceiver
+    {
+        private readonly IMessagingHubSender _sender;
+        private readonly IProfileExtension _profileExtension;
+
+        public ProfileMessageReceiver(IMessagingHubSender sender, IProfileExtension profileExtension)
+        {
+            _sender = sender;
+            _profileExtension = profileExtension;
+        }
+
+        public async Task ReceiveAsync(Message m, CancellationToken cancellationToken)
+        {
+            var menu = new DocumentSelect
+            {
+                Options = new DocumentSelectOption[]
+                {
+                    new DocumentSelectOption
+                    {
+                        Label = new DocumentContainer
+                        {
+                            Value = new PlainText
+                            {
+                                Text = "Option 1"
+                            }
+                        }
+                    },
+                    new DocumentSelectOption
+                    {
+                        Label = new DocumentContainer
+                        {
+                            Value = new PlainText
+                            {
+                                Text = "Option 2"
+                            }
+                        }
+                    },
+                    new DocumentSelectOption
+                    {
+                        Label = new DocumentContainer
+                        {
+                            Value = new PlainText
+                            {
+                                Text = "Option 3"
+                            }
+                        }
+                    }
+                }
+            };
+
+            await _profileExtension.SetPersistentMenuAsync(menu, cancellationToken);
+        }
+    }
 }
 ```
 
@@ -213,6 +310,148 @@ Content-Type: application/json
 }
 ```
 
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Sender;
+using Lime.Messaging.Contents;
+using Takenet.MessagingHub.Client.Extensions.Profile;
+using System;
+
+namespace Extensions
+{
+    public class ProfileMessageReceiver : IMessageReceiver
+    {
+        private readonly IMessagingHubSender _sender;
+        private readonly IProfileExtension _profileExtension;
+
+        public ProfileMessageReceiver(IMessagingHubSender sender, IProfileExtension profileExtension)
+        {
+            _sender = sender;
+            _profileExtension = profileExtension;
+        }
+
+        public async Task ReceiveAsync(Message m, CancellationToken cancellationToken)
+        {
+            var complexMenu = new DocumentSelect
+            {
+                Options = new DocumentSelectOption[]
+                {
+                    new DocumentSelectOption
+                    {
+                        Label = new DocumentContainer
+                        {
+                            Value = new DocumentSelect
+                            {
+                                Header = new DocumentContainer{
+                                    Value = new PlainText
+                                    {
+                                        Text = "Option 1"
+                                    }
+                                },
+                                Options = new DocumentSelectOption[]
+                                {
+                                    new DocumentSelectOption
+                                    {
+                                        Label = new DocumentContainer
+                                        {
+                                            Value = new PlainText
+                                            {
+                                                Text = "Option 1.1"
+                                            }
+                                        }
+                                    },
+                                    new DocumentSelectOption
+                                    {
+                                        Label = new DocumentContainer
+                                        {
+                                            Value = new WebLink
+                                            {
+                                                Text = "Option 1.2",
+                                                Uri = new Uri("https://address.com/option1.2")
+                                            }
+                                        }
+                                    },
+                                    new DocumentSelectOption
+                                    {
+                                        Label = new DocumentContainer
+                                        {
+                                            Value = new DocumentSelect
+                                            {
+                                                Header = new DocumentContainer{
+                                                    Value = new PlainText
+                                                    {
+                                                        Text = "Option 1.3"
+                                                    }
+                                                },
+                                                Options = new DocumentSelectOption[]
+                                                {
+                                                    new DocumentSelectOption
+                                                    {
+                                                        Label = new DocumentContainer{
+                                                            Value = new PlainText
+                                                            {
+                                                                Text = "Option 1.3.1"
+                                                            }
+                                                        },
+                                                    },
+                                                    new DocumentSelectOption
+                                                    {
+                                                        Label = new DocumentContainer{
+                                                            Value = new PlainText
+                                                            {
+                                                                Text = "Option 1.3.2"
+                                                            }
+                                                        },
+                                                    },
+                                                    new DocumentSelectOption
+                                                    {
+                                                        Label = new DocumentContainer{
+                                                            Value = new PlainText
+                                                            {
+                                                                Text = "Option 1.3.3"
+                                                            }
+                                                        },
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    new DocumentSelectOption
+                    {
+                        Label = new DocumentContainer
+                        {
+                            Value = new PlainText
+                            {
+                                Text = "Option 2"
+                            }
+                        }
+                    },
+                    new DocumentSelectOption
+                    {
+                        Label = new DocumentContainer
+                        {
+                            Value = new PlainText
+                            {
+                                Text = "Option 3"
+                            }
+                        }
+                    }
+                }
+            };
+
+            await _profileExtension.SetPersistentMenuAsync(complexMenu, cancellationToken);
+        }
+    }
+}
+```
+
 As the last sample you can also add a complex persistent menu (with links and submenus) using a `SET` command on `/profile/persistent-menu` URI. This sample show how can you add a complex persistent menu (only on Facebook Messenger channel) with 3 options `SubMenu 1`, `Option 2` e `Option 3 as a web link`.
 
 ### Set start button
@@ -240,6 +479,36 @@ Content-Type: application/json
   "to": "contact@msging.net/default",
   "method": "set",
   "status": "success"
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Sender;
+using Lime.Messaging.Contents;
+using Takenet.MessagingHub.Client.Extensions.Profile;
+
+namespace Extensions
+{
+    public class ProfileMessageReceiver : IMessageReceiver
+    {
+        private readonly IMessagingHubSender _sender;
+        private readonly IProfileExtension _profileExtension;
+
+        public ProfileMessageReceiver(IMessagingHubSender sender, IProfileExtension profileExtension)
+        {
+            _sender = sender;
+            _profileExtension = profileExtension;
+        }
+
+        public async Task ReceiveAsync(Message m, CancellationToken cancellationToken)
+        {
+            await _profileExtension.SetGetStartedAsync(new PlainText { Text = "Start now" }, cancellationToken);
+        }
+    }
 }
 ```
 
@@ -273,4 +542,32 @@ Content-Type: application/json
 }
 ```
 
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Sender;
+using Takenet.MessagingHub.Client.Extensions.Profile;
+
+namespace Extensions
+{
+    public class ProfileMessageReceiver : IMessageReceiver
+    {
+        private readonly IMessagingHubSender _sender;
+        private readonly IProfileExtension _profileExtension;
+
+        public ProfileMessageReceiver(IMessagingHubSender sender, IProfileExtension profileExtension)
+        {
+            _sender = sender;
+            _profileExtension = profileExtension;
+        }
+
+        public async Task ReceiveAsync(Message m, CancellationToken cancellationToken)
+        {
+            var greetingMessage = await _profileExtension.GetGreetingAsync(cancellationToken);
+        }
+    }
+}
+```
 Retrieve a saved chatbot's greeting message using a `get` command on `/profile/greeting` URI.
