@@ -26,7 +26,7 @@ For more details, check the **delegation** resource on [LIME protocol](http://li
 ### Give permissions
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -93,7 +93,7 @@ Giving permission to another identity send message as the caller (the bot).
 
 ### Revoke permissions
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  

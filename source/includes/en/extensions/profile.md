@@ -28,7 +28,7 @@ Note: In Messenger, the value of `get-started` must be defined before the value 
 ### Setting Greeting Message
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -89,7 +89,7 @@ In order to set a text greeting message for your chatbot use a `set` command on 
 
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -208,7 +208,7 @@ In order to set a Messenger persistent menu for your chatbot use a `set` command
 
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -457,7 +457,7 @@ As the last sample you can also add a complex persistent menu (with links and su
 ### Set start button
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -517,7 +517,7 @@ In order to set a get started button for your chatbot use a `set` command on `/p
 ### Get greeting message
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  

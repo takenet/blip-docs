@@ -33,7 +33,7 @@ public class OptionRedirectMessageReceiver : IMessageReceiver
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
@@ -95,7 +95,7 @@ public class SpecificRedirectPassingContext : IMessageReceiver
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
@@ -130,7 +130,7 @@ client.sendMessage({
 >In this example, the chatbot with `mysdkbot` identifier will receive the messages sent by the client, in addition to receiving a message with the content defined in the context, as if it had been sent by the client:
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {

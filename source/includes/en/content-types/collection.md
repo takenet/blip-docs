@@ -64,7 +64,7 @@ public class OptionDocumentCollectionMessageReceiver : IMessageReceiver
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
@@ -178,7 +178,7 @@ public class CollectionWithDiferentTypes : IMessageReceiver
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
@@ -434,7 +434,7 @@ private void initDocument(){
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {

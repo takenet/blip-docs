@@ -53,7 +53,7 @@ The resource types are:
 ### Create an entity
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -106,7 +106,7 @@ Content-Type: application/json
 ### Create an intention
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -141,7 +141,7 @@ Content-Type: application/json
 ### Query the first 10 intentions
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -183,7 +183,7 @@ Content-Type: application/json
 ### Associate questions to an intention
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -225,7 +225,7 @@ Content-Type: application/json
 ### Associate answers to an intention
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -262,7 +262,7 @@ Content-Type: application/json
 ### Train model
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -291,7 +291,7 @@ Content-Type: application/json
 ### Query the trained models
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -339,7 +339,7 @@ Content-Type: application/json
 ### Publish model
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -370,7 +370,7 @@ Content-Type: application/json
 ### Analyze a sentence in the last published model
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -420,7 +420,7 @@ Content-Type: application/json
 
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -471,7 +471,7 @@ Content-Type: application/json
 
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -525,7 +525,7 @@ Content-Type: application/json
 
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -557,7 +557,7 @@ Content-Type: application/json
 
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  

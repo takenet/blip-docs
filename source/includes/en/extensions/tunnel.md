@@ -59,7 +59,7 @@ The main bot receives a message from a Messenger user.
 According to its internal rules, the flow bot decides to forward this message to the operator bot. To do this, it changes the recipient of the message and sends it as bellow:
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
@@ -76,7 +76,7 @@ Authorization: Key {YOUR_TOKEN}
 Internally, the server creates an **id** for the tunnel and forwards the message to the **operator** bot, which receives it as follows:
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
@@ -97,7 +97,7 @@ Authorization: Key {YOUR_TOKEN}
 The operator bot generates a reply to the message and forwards it to the source address, **without differentiating a message received directly from a channel** (the same goes for received/consumed notifications):
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
@@ -114,7 +114,7 @@ Authorization: Key {YOUR_TOKEN}
 The server uses the tunnel **id** to change the address of the response message and forwards it to the **flow** bot:
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
@@ -131,7 +131,7 @@ Authorization: Key {YOUR_TOKEN}
 The bot flow identifies the message received from a **receiver**, decodes the original address that is in **instance** and sends the message to the final recipient:
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
@@ -146,7 +146,7 @@ Authorization: Key {YOUR_TOKEN}
 ### Example 2 
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
@@ -160,7 +160,7 @@ Authorization: Key {YOUR_TOKEN}
 The server identifies that the query is for a tunnel user and performs the query **on behalf of the sender** directly in its contacts roster and returns the information:
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {

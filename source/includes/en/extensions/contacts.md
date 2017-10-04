@@ -40,7 +40,7 @@ The contacts fields can be used to replace variables on messages sent by the cha
 ### Add (or update) a contact
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -122,7 +122,7 @@ In order to store informations about a chatbot client is possible save and updat
 ### Get contact
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -191,7 +191,7 @@ For the same contact `11121023102013021@messenger.gw.msging.net` is possible get
 ### Get contacts with paging
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -259,7 +259,7 @@ If you need get more than one chatbot's contacts you can use a query pagination.
 ### Send message with contact name
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  

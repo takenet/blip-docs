@@ -20,7 +20,7 @@ In order to send a resource message, the developer must use the [**resource** co
 ### Store a **media link** resource
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -96,7 +96,7 @@ Storing a `media link` document with `xyz1234` key.
 
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -163,7 +163,7 @@ It is possible to use contact replacement variables in the created resources. Fo
 
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
