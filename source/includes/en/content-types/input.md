@@ -18,6 +18,7 @@ public class OptionUserInputMessaReceiver : IMessageReceiver
     public OptionUserInputMessaReceiver(ISender sender)
     {
         _sender = sender;
+        _settings = settings;
     }
 
     public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
@@ -95,6 +96,7 @@ private readonly ISender _sender;
 public UserInputLocationReceiver(ISender sender)
 {
     _sender = sender;
+    _settings = settings;
 }
 
 public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)

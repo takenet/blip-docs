@@ -11,13 +11,15 @@ using Lime.Messaging.Contents;
 using Lime.Protocol;
 using Take.Blip.Client;
 
- public class OptionResourceMessageReceiver : IMessageReceiver
+public class OptionResourceMessageReceiver : IMessageReceiver
 {
 private readonly ISender _sender;
+private readonly Settings _settings;
 
 public OptionResourceMessageReceiver(ISender sender)
 {
     _sender = sender;
+    _settings = settings;
 }
 
 public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
@@ -108,10 +110,12 @@ using Take.Blip.Client;
 public class ResourceMessageReplace : IMessageReceiver
 {
 private readonly ISender _sender;
+private readonly Settings _settings;
 
 public ResourceMessageReplace(ISender sender)
 {
     _sender = sender;
+    _settings = settings;
 }
 
 public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)

@@ -73,6 +73,7 @@ namespace Extensions
         public ProfileMessageReceiver(IMessagingHubSender sender, IProfileExtension profileExtension)
         {
             _sender = sender;
+            _settings = settings;
             _profileExtension = profileExtension;
         }
 
@@ -157,6 +158,7 @@ namespace Extensions
         public ProfileMessageReceiver(IMessagingHubSender sender, IProfileExtension profileExtension)
         {
             _sender = sender;
+            _settings = settings;
             _profileExtension = profileExtension;
         }
 
@@ -335,6 +337,7 @@ namespace Extensions
         public ProfileMessageReceiver(IMessagingHubSender sender, IProfileExtension profileExtension)
         {
             _sender = sender;
+            _settings = settings;
             _profileExtension = profileExtension;
         }
 
@@ -508,6 +511,7 @@ namespace Extensions
         public ProfileMessageReceiver(IMessagingHubSender sender, IProfileExtension profileExtension)
         {
             _sender = sender;
+            _settings = settings;
             _profileExtension = profileExtension;
         }
 
@@ -569,6 +573,7 @@ namespace Extensions
         public ProfileMessageReceiver(IMessagingHubSender sender, IProfileExtension profileExtension)
         {
             _sender = sender;
+            _settings = settings;
             _profileExtension = profileExtension;
         }
 

@@ -16,6 +16,7 @@ private readonly IMessagingHubSender _sender;
 public InvoiceStatusReceiver(IMessagingHubSender sender)
 {
     _sender = sender;
+    _settings = settings;
 }
 
 public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)

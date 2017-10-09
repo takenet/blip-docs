@@ -15,10 +15,12 @@ namespace MessageTypes
 public class OptionListMessageReceiver : IMessageReceiver
 {
 private readonly ISender _sender;
+private readonly Settings _settings;
 
 public OptionListMessageReceiver(ISender sender)
 {
     _sender = sender;
+    _settings = settings;
 }
 
 

@@ -175,6 +175,7 @@ public class InvoiceStatusReceiver : IMessageReceiver
     public InvoiceStatusReceiver(IMessagingHubSender sender)
     {
         _sender = sender;
+        _settings = settings;
     }
 
     public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)

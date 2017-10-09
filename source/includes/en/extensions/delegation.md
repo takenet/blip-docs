@@ -74,6 +74,7 @@ namespace Extensions
         public DelegationMessageReceiver(IMessagingHubSender sender, IDelegationExtension delegationExtension)
         {
             _sender = sender;
+            _settings = settings;
             _delegationExtension = delegationExtension;
         }
 
@@ -136,6 +137,7 @@ namespace Extensions
         public DelegationMessageReceiver(IMessagingHubSender sender, IDelegationExtension delegationExtension)
         {
             _sender = sender;
+            _settings = settings;
             _delegationExtension = delegationExtension;
         }
 

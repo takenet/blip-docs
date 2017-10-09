@@ -14,10 +14,12 @@ using Take.Blip.Client;
 public class OptionMultimidiaMenuMessageReceiver : IMessageReceiver
 {
 private readonly ISender _sender;
+private readonly Settings _settings;
 
 public OptionMultimidiaMenuMessageReceiver(ISender sender)
 {
     _sender = sender;
+    _settings = settings;
 }
 
 DocumentSelectOption[] options = new DocumentSelectOption[]
@@ -179,10 +181,12 @@ using Take.Blip.Client;
 public class MenuMultimidiaGetLocation : IMessageReceiver
 {
 private readonly ISender _sender;
+private readonly Settings _settings;
 
 public MenuMultimidiaGetLocation(ISender sender)
 {
     _sender = sender;
+    _settings = settings;
 }
 
 public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)

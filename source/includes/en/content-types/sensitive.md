@@ -14,10 +14,12 @@ using Take.Blip.Client;
 public class OptionSensitiveMessageReceiver : IMessageReceiver
 {
 private readonly ISender _sender;
+private readonly Settings _settings;
 
 public OptionSensitiveMessageReceiver(ISender sender)
 {
     _sender = sender;
+    _settings = settings;
 }
 
 public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
@@ -76,10 +78,12 @@ using Take.Blip.Client;
 public class SensitiveWeblinkMessage : IMessageReceiver
 {
 private readonly ISender _sender;
+private readonly Settings _settings;
 
 public SensitiveWeblinkMessage(ISender sender)
 {
     _sender = sender;
+    _settings = settings;
 }
 
 public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)

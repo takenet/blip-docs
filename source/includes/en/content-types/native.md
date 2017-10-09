@@ -16,11 +16,13 @@ namespace MessageTypes
   public class OptionNativeContentReceiver : IMessageReceiver
   {
       private readonly ISender _sender;
+      private readonly Settings _settings;
       private  readonly JsonDocument JsonDocuments;
 
       public OptionNativeContentReceiver(ISender sender)
       {
-          _sender = sender;         
+          _sender = sender;  
+          _settings = settings;       
       }
       
       public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)

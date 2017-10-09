@@ -147,6 +147,7 @@ Here we return a complex `MediaLink` type with an image. The third option (`data
         public DateMessageReceiver(ISender sender, IDictionary<string, object> settings)
         {
             _sender = sender;
+            _settings = settings;
             if (settings.ContainsKey("culture"))
             {            
                 _cultureInfo = new CultureInfo((string)settings["culture"]);

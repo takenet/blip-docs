@@ -14,10 +14,12 @@ using Take.Blip.Client;
 public class OptionRedirectMessageReceiver : IMessageReceiver
 {
 private readonly ISender _sender;
+private readonly Settings _settings;
 
 public OptionRedirectMessageReceiver(ISender sender)
 {
     _sender = sender;
+    _settings = settings;
 }
 
 public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
@@ -74,10 +76,12 @@ using Take.Blip.Client;
 public class SpecificRedirectPassingContext : IMessageReceiver
 {
     private readonly ISender _sender;
+    private readonly Settings _settings;
 
     public SpecificRedirectPassingContext(ISender sender)
     {
         _sender = sender;
+        _settings = settings;
     }
 
     public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)

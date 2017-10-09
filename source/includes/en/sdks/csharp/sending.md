@@ -12,6 +12,7 @@ public class PlainTextMessageReceiver : IMessageReceiver
     public PlainTextMessageReceiver(IMessagingHubSender sender)
     {
         _sender = sender;
+        _settings = settings;
     }
 
     public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)

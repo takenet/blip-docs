@@ -14,10 +14,12 @@ using Take.Blip.Client;
 public class OptionDocumentCollectionMessageReceiver : IMessageReceiver
 {
 private readonly ISender _sender;
+private readonly Settings _settings;
 
 public OptionDocumentCollectionMessageReceiver(ISender sender)
 {
     _sender = sender;
+    _settings = settings;
 }
 
 PlainText[] documents = new PlainText[]
@@ -97,10 +99,12 @@ using Take.Blip.Client;
 public class CollectionWithDiferentTypes : IMessageReceiver
 {
 private readonly ISender _sender;
+private readonly Settings _settings;
 
 public CollectionWithDiferentTypes(ISender sender)
 {
     _sender = sender;
+    _settings = settings;
 }
 
 DocumentContainer[] documents = new DocumentContainer[]
@@ -239,6 +243,7 @@ using Take.Blip.Client;
 public class CollectionMultimidiaMenu : IMessageReceiver
 {
 private readonly ISender _sender;
+private readonly Settings _settings;
 
 Document[] documents;
 JsonDocument JsonDocuments; 

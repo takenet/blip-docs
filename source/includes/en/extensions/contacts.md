@@ -95,6 +95,7 @@ namespace Extensions
         public ContactMessageReceiver(IMessagingHubSender sender, IContactExtension contactExtension)
         {
             _sender = sender;
+            _settings = settings;
             _contactExtension = contactExtension;
         }
 
@@ -177,6 +178,7 @@ namespace Extensions
         public ContactMessageReceiver(IMessagingHubSender sender, IContactExtension contactExtension)
         {
             _sender = sender;
+            _settings = settings;
             _contactExtension = contactExtension;
         }
 
@@ -247,6 +249,7 @@ namespace Extensions
         public ContactMessageReceiver(IMessagingHubSender sender, IContactExtension contactExtension)
         {
             _sender = sender;
+            _settings = settings;
             _contactExtension = contactExtension;
         }
 
@@ -314,6 +317,7 @@ namespace Extensions
         public PlainTextMessageReceiver(IMessagingHubSender sender)
         {
             _sender = sender;
+            _settings = settings;
         }
 
         public async Task ReceiveAsync(Message m, CancellationToken cancellationToken)
