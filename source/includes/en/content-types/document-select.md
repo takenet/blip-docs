@@ -20,50 +20,54 @@ public class OptionMultimidiaMenuMessageReceiver : IMessageReceiver
         _sender = sender;
     }
 
-    DocumentSelectOption[] options = new DocumentSelectOption[]{
-        new DocumentSelectOption 
+    DocumentSelectOption[] options = new DocumentSelectOption[]
+    {
+        new DocumentSelectOption
         {
-            Label = 
+            Label = new DocumentContainer
             {
-                Value = new WebLink 
+                Value = new WebLink
                 {
                     Text = "Go to your site",
-                    Uri = new Uri("https://petersapparel.parseapp.com/view_item?item_id=100")
+                    Uri = new Uri("https://meusanimais.com.br/14-nomes-criativos-para-o-seu-gato/")
                 }
             }
         },
-        new DocumentSelectOption 
+        new DocumentSelectOption
         {
-            Label = 
+            Label = new DocumentContainer
             {
-                Value = new PlainText 
+                Value = new PlainText
                 {
-                    Text = "Show stock"
+                    Text = "Show stock here!"
                 }
             },
-            Value = 
+            Value = new DocumentContainer
             {
                 Value = new JsonDocument()
             }
         }
-        
-        
     };
+
+
     public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
     {
         var document = new DocumentSelect
-        {
-            Header = {
-                Value = new MediaLink{
-                    Title = "Welcome to mad hatter",
-                    Text = "Here we have the best hats for your head.",
-                    Type = "image/jpeg",
-                    Uri = new Uri("http://petersapparel.parseapp.com/img/item100-thumb.png"),
-                    AspectRatio = "1.1"
-                }
-            },
-            Options = options
-        };
+            {
+                Header = new DocumentContainer
+                {
+                    Value = new MediaLink
+                    {
+                        Title = "Welcome to mad hatter",
+                        Text = "Here we have the best hats for your head.",
+                        Type = "image/jpeg",
+                        Uri = new Uri("http://petersapparel.parseapp.com/img/item100-thumb.png"),
+                        AspectRatio = "1.1"
+                    }
+                },
+                Options = options
+            };
+
 
         await _sender.SendMessageAsync(document, message.From, cancellationToken);
     }
@@ -183,26 +187,33 @@ public class MenuMultimidiaGetLocation : IMessageReceiver
     public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
     {
         var document = new DocumentSelect
-        {
-            Header = {
-                Value = new PlainText{
-                    Text = "Please, share your location"
-                }
-            },
-            Options = new DocumentSelectOption[]{
-                new DocumentSelectOption {
-                    Label = {
-                        Value = new Input {
-                            Validation = {
-                                Rule = InputValidationRule.Type,
-                                Type = "application/vnd.lime.location+json"
+            {
+                Header = new DocumentContainer
+                {
+                    Value = new PlainText
+                    {
+                        Text = "Please, share your location"
+                    }
+                },
+                Options = new DocumentSelectOption[]{
+                    new DocumentSelectOption {
+                        Label = new DocumentContainer{
+                            Value = new Input {
+                                Label = new DocumentContainer {
+                                    Value = new PlainText {
+                                        Text = "Teste"
+                                    }
+                                },
+                                Validation = new InputValidation
+                                {
+                                    Type = Location.MediaType,
+                                    Rule = InputValidationRule.Type
+                                }
                             }
                         }
                     }
                 }
-            }
-            
-        };
+            };
 
         await _sender.SendMessageAsync(document, message.From, cancellationToken);
     }

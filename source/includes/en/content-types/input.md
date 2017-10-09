@@ -24,10 +24,12 @@ public class OptionUserInputMessaReceiver : IMessageReceiver
     {
         var document = new Input
         {
-            Label = {
-                Value = "What is your name?"
+            Label = new DocumentContainer{
+                Value = new PlainText {
+                    Text = "What is your name?"
+                } 
             },
-            Validation = {
+            Validation = new InputValidation{
                 Rule = InputValidationRule.Text
             } 
         };
@@ -98,12 +100,12 @@ public class UserInputLocationReceiver : IMessageReceiver
     {
         var document = new Input
         {
-            Label = {
+            Label = new DocumentContainer{
                 Value = "Send your location please!"
             },
-            Validation = {
+            Validation = new InputValidation{
                 Rule = InputValidationRule.Type,
-                Type = "application/vnd.lime.location+json"//confirmar se esse type é necessario <<
+                Type = "application/vnd.lime.location+json"
             } 
         };
 

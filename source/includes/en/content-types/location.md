@@ -103,6 +103,7 @@ private readonly ISender _sender;
 public RequestLocation(ISender sender)
 {
     _sender = sender;
+    _settings = settings;
 }
 
 public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
@@ -110,7 +111,8 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
     var location = new Input
     {
         Label = {
-            Value = new PlainText {
+            Value = new PlainText 
+            {
                 Text = "Send your location please!"
             }
         },

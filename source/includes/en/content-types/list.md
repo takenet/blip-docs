@@ -4,78 +4,83 @@
 
 ```csharp
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Messaging.Contents;
 using Lime.Protocol;
 using Take.Blip.Client;
 
-public class OptionListMessageReceiver : IMessageReceiver
+namespace MessageTypes
 {
-    private readonly ISender _sender;
-
-    public OptionListMessageReceiver(ISender sender)
+    public class OptionListMessageReceiver : IMessageReceiver
     {
-        _sender = sender;
-    }
+        private readonly ISender _sender;
 
-    
-
-    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
-    {
-        var document = new DocumentList
+        public OptionListMessageReceiver(ISender sender)
         {
-            Header = {
-                Value = new WebLink {
-                    Title = "Classic T-Shirt Collection",
-                    Text = "See all our colors",
-                    PreviewUri = new Uri("https://peterssendreceiveapp.ngrok.io/img/collection.png"),
-                    Uri = new Uri("https://peterssendreceiveapp.ngrok.io/shop_collection?messengerExtensions=true"),
-                    Target = WebLinkTarget.SelfTall
-                }
-            },
-            Items = new DocumentContainer[]{
-                new DocumentContainer 
-                {
-                    Value = new WebLink
-                    {
-                        Title = "Classic White T-Shirt",
-                        Text = "100% Cotton, 200% Comfortable",
-                        PreviewUri = new Uri("https://peterssendreceiveapp.ngrok.io/img/white-t-shirt.png"),
-                        Uri = new Uri("https://peterssendreceiveapp.ngrok.io/view?item=100&messengerExtensions=true"),
-                        Target = WebLinkTarget.SelfTall
-                    }
-                },
-                new DocumentContainer
-                {
-                    Value = new WebLink
-                    {
-                        Title = "Classic Blue T-Shirt",
-                        Text = "100% Cotton, 200% Comfortable",
-                        PreviewUri = new Uri("https://peterssendreceiveapp.ngrok.io/img/blue-t-shirt.png"),
-                        Uri = new Uri("https://peterssendreceiveapp.ngrok.io/view?item=101&messengerExtensions=true"),
-                        Target = WebLinkTarget.SelfTall
+            _sender = sender;
+        }
 
-                    }
-                },
-                new DocumentContainer
+
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var document = new DocumentList
+            {
+                Header = new DocumentContainer
                 {
                     Value = new WebLink
                     {
-                        Title = "Classic Black T-Shirt",
-                        Text = "100% Cotton, 200% Comfortable",
-                        PreviewUri = new Uri("https://peterssendreceiveapp.ngrok.io/img/black-t-shirt.png"),
-                        Uri = new Uri("https://peterssendreceiveapp.ngrok.io/view?item=102&messengerExtensions=true"),
+                        Title = "Classic T-Shirt Collection",
+                        Text = "See all our colors",
+                        PreviewUri = new Uri("http://streetwearvilla.com/image/cache/data/Products/Supreme/T-shirt/supreme-box-logo-t-shirt-collection-600x600.png"),
+                        Uri = new Uri("http://streetwearvilla.com/supreme-box-logo-t-shirt-white"),
                         Target = WebLinkTarget.SelfTall
                     }
+                },
+                Items = new DocumentContainer[]{
+                    new DocumentContainer
+                    {
+                        Value = new WebLink
+                        {
+                            Title = "Classic White T-Shirt",
+                            Text = "100% Cotton, 200% Comfortable",
+                            PreviewUri = new Uri("http://www.plainwhitetshirt.co.uk/image/cache/catalog/images/GD010vwhiteteegildan-750x750.jpg"),
+                            Uri = new Uri("http://www.plainwhitetshirt.co.uk/gildan-soft-style-white-vneck-tshirt"),
+                            Target = WebLinkTarget.SelfTall
+                        }
+                    },
+                    new DocumentContainer
+                    {
+                        Value = new WebLink
+                        {
+                            Title = "Classic Blue T-Shirt",
+                            Text = "100% Cotton, 200% Comfortable",
+                            PreviewUri = new Uri("https://cdn.shopify.com/s/files/1/1475/5420/products/Classic_Blue_Front_12068_1024x1024.jpg?"),
+                            Uri = new Uri("https://www.theringboxingclubshop.com/products/ring-classic-blue-t-shirt"),
+                            Target = WebLinkTarget.SelfTall
+
+                        }
+                    },
+                    new DocumentContainer
+                    {
+                        Value = new WebLink
+                        {
+                            Title = "Classic Black T-Shirt",
+                            Text = "100% Cotton, 200% Comfortable",
+                            PreviewUri = new Uri("http://www.lvnlifestyle.com/wp-content/uploads/2014/08/mens.black_.tshirt.jpg"),
+                            Uri = new Uri("http://www.lvnlifestyle.com/product/black-mens-bamboo-organic-cotton-classic-t-shirt/"),
+                            Target = WebLinkTarget.SelfTall
+                        }
+                    }
                 }
-            }
-        };
-        await _sender.SendMessageAsync(document, message.From, cancellationToken);
+            };
+            await _sender.SendMessageAsync(document, message.From, cancellationToken);
+        }
+
     }
-
 }
+
 ```
 
 ```javascript

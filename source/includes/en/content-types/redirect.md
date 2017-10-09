@@ -24,7 +24,7 @@ public class OptionRedirectMessageReceiver : IMessageReceiver
     {
         var document = new Redirect
         {
-            Address = "attendance"
+            Address = new Node("1545282125497371", "@messenger.gw.msging.net", null)
         };
 
         await _sender.SendMessageAsync(document, message.From, cancellationToken);
@@ -81,11 +81,13 @@ public class SpecificRedirectPassingContext : IMessageReceiver
 
     public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
     {
-        var document = new Redirect
+       var document = new Redirect
         {
-            Address = "attendance",
-            Context = {
-                Value = "Get started"
+            Address = new Node("1545282125497371", "@messenger.gw.msging.net", null),
+            Context = new DocumentContainer {
+                Value = new PlainText {
+                    Text = "Get Started"
+                }
             }
         };
 

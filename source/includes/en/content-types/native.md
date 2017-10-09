@@ -11,28 +11,29 @@ using Lime.Messaging.Contents;
 using Lime.Protocol;
 using Take.Blip.Client;
 
-public class OptionNativeContentReceiver : IMessageReceiver
+namespace MessageTypes
 {
-    private readonly ISender _sender;
-    private  readonly Dictionary<string,object> dictionary;
-
-    public OptionNativeContentReceiver(ISender sender)
+    public class OptionNativeContentReceiver : IMessageReceiver
     {
-        _sender = sender;
+        private readonly ISender _sender;
+        private  readonly JsonDocument JsonDocuments;
+
+        public OptionNativeContentReceiver(ISender sender)
+        {
+            _sender = sender;         
+        }
+        
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            JsonDocument jsonDocuments = new JsonDocument();
+            JsonDocuments.Add("text", "hello, world!");
+
+            await _sender.SendMessageAsync(JsonDocuments, message.From, cancellationToken);
+        }
     }
-    
-    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
-    {
-        dictionary.Add("text", "hello world!");
 
-
-        var mediatype = new MediaType("application","json");
-        var document = new JsonDocument( dictionary ,mediatype);
-    
-
-        await _sender.SendMessageAsync(document, message.From, cancellationToken);
-    }
 }
+
 ```
 
 ```http
