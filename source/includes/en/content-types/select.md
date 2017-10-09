@@ -29,9 +29,10 @@ client.sendMessage({
     });
 ```
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id":"311F87C0-F938-4FF3-991A-7C5AEF7771A5",
     "to":"1042221589186385@messenger.gw.msging.net",
@@ -147,9 +148,10 @@ Note:
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "f8cf7a7a-be4f-473a-8516-60d55534b5a6",
     "from": "1042221589186385@messenger.gw.msging.net",
@@ -171,9 +173,10 @@ client.sendMessage({
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "76CB408D-39E6-4212-8AA1-7435B42A6993",
     "from": "1042221589186385@messenger.gw.msging.net",
@@ -198,9 +201,10 @@ client.sendMessage({
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "035E675C-D25B-437D-80BD-057AD6F70671",
     "from": "1042221589186385@messenger.gw.msging.net",

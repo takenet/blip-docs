@@ -43,9 +43,10 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "9494447a-2581-4597-be6a-a5dff33af156",
   "to": "postmaster@analytics.msging.net",
@@ -62,6 +63,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "method": "set",
   "status": "success",
@@ -116,26 +118,28 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
-  {  
+
+{  
     "id": "9494447a-2581-4597-be6a-a5dff33af156",
     "to": "postmaster@analytics.msging.net",
     "method": "set",
     "type": "application/vnd.iris.eventTrack+json",
     "uri": "/event-track",
     "resource": {  
-      "category": "payments",
-      "action": "success-order"
-      "identity": "123456@messenger.gw.msging.net",
-    }
-  }
+        "category": "payments",
+        "action": "success-order"
+        "identity": "123456@messenger.gw.msging.net",
+}
+}
 ```
 
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "method": "set",
   "status": "success",
@@ -187,9 +191,10 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "3",
   "to": "postmaster@analytics.msging.net",
@@ -201,6 +206,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {  
   "id": "3",
   "from": "postmaster@analytics.msging.net/#irismsging1",
@@ -261,9 +267,10 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "4",
   "to": "postmaster@analytics.msging.net",
@@ -354,9 +361,10 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "5",
   "to": "postmaster@analytics.msging.net",
@@ -368,6 +376,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "id": "5",
   "from": "postmaster@analytics.msging.net/#irismsging1",

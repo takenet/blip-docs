@@ -42,9 +42,10 @@ public class PlainTextMessageReceiver : IMessageReceiver
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "1",
     "to": "553199991111@0mn.io",
@@ -96,9 +97,10 @@ await _sender.SendMessageAsync(audioMediaLink, message.From, cancellationToken);
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "2",
     "to": "553199991111@0mn.io",

@@ -33,9 +33,10 @@ using Take.Blip.Client;
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "1",
     "to": "1042221589186385@messenger.gw.msging.net",
@@ -60,9 +61,10 @@ client.sendMessage({
 > In case there is a resource with this key, the server replaces the content and forward to the destination. Imagining that the resource with **welcome-message** key is a `text/plain` document with value `Welcome to our service`, the final message would be like this:
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "1",
     "to": "1042221589186385@messenger.gw.msging.net",
@@ -130,9 +132,10 @@ public class ResourceMessageReplace : IMessageReceiver
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "1",
     "to": "1042221589186385@messenger.gw.msging.net",
@@ -165,9 +168,10 @@ The final message will be:
 > Response
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "1",
     "to": "1042221589186385@messenger.gw.msging.net",

@@ -26,7 +26,7 @@ For more details, check the **delegation** resource on [LIME protocol](http://li
 ### Give permissions
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -46,6 +46,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "method": "set",
   "status": "success",
@@ -56,15 +57,47 @@ Content-Type: application/json
 ```
 
 ```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Sender;
+using Takenet.MessagingHub.Client.Extensions.Delegation;
+
+namespace Extensions
+{
+    public class DelegationMessageReceiver : IMessageReceiver
+    {
+        private readonly IMessagingHubSender _sender;
+        private readonly IDelegationExtension _delegationExtension;
+
+        public DelegationMessageReceiver(IMessagingHubSender sender, IDelegationExtension delegationExtension)
+        {
+            _sender = sender;
+            _delegationExtension = delegationExtension;
+        }
+
+        public async Task ReceiveAsync(Message m, CancellationToken cancellationToken)
+        {
+            var envelopeTypes = new EnvelopeType[]
+            {
+                EnvelopeType.Message
+            };
+
+            await _delegationExtension.DelegateAsync(Identity.Parse("postmaster@broadcast.msging.net"), envelopeTypes, cancellationToken);
+        }
+    }
+}
 ```
 
 Giving permission to another identity send message as the caller (the bot).
 
 ### Revoke permissions
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "2",
   "method": "delete",
@@ -75,6 +108,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "method": "delete",
   "status": "success",
@@ -85,6 +119,37 @@ Content-Type: application/json
 ```
 
 ```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Sender;
+using Takenet.MessagingHub.Client.Extensions.Delegation;
+
+namespace Extensions
+{
+    public class DelegationMessageReceiver : IMessageReceiver
+    {
+        private readonly IMessagingHubSender _sender;
+        private readonly IDelegationExtension _delegationExtension;
+
+        public DelegationMessageReceiver(IMessagingHubSender sender, IDelegationExtension delegationExtension)
+        {
+            _sender = sender;
+            _delegationExtension = delegationExtension;
+        }
+
+        public async Task ReceiveAsync(Message m, CancellationToken cancellationToken)
+        {
+            var envelopeTypes = new EnvelopeType[]
+            {
+                EnvelopeType.Message
+            };
+
+            await _delegationExtension.UndelegateAsync(Identity.Parse("postmaster@broadcast.msging.net"), envelopeTypes, cancellationToken);
+        }
+    }
+}
 ```
 
 Revoking granted permission.

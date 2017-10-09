@@ -15,7 +15,7 @@ To get client's **threads** or **messages** exchanged with your some bot send a 
 ### Get last threads
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -82,7 +82,7 @@ The following uri filters are available to get chatbot's thread:
 ### Get last messages
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -96,6 +96,7 @@ Authorization: Key {YOUR_TOKEN}
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "method": "get",
   "status": "success",

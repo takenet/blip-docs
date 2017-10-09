@@ -57,9 +57,10 @@ client.sendMessage({
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "1",
     "to": "553199991111@0mn.io",
@@ -133,9 +134,10 @@ client.sendMessage({
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "2",
     "to": "1334448323284655@messenger.gw.msging.net",

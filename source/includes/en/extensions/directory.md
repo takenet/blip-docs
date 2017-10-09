@@ -30,9 +30,10 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "1",
   "to": "postmaster@messenger.gw.msging.net",
@@ -108,9 +109,10 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {  
   "id": "2",
   "to": "postmaster@telegram.gw.msging.net",

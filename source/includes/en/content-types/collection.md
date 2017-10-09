@@ -65,9 +65,10 @@ public class OptionDocumentCollectionMessageReceiver : IMessageReceiver
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
 	"to": "553199990000@0mn.io",
 	"type": "application/vnd.lime.collection+json",
@@ -184,9 +185,10 @@ public class CollectionWithDiferentTypes : IMessageReceiver
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
 	"to": "553199990000@0mn.io",
 	"type": "application/vnd.lime.collection+json",
@@ -446,9 +448,10 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 ```
 
 ```http
-POST /commands HTTP/1.1
+POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
 {
     "id": "5",
     "to": "1042221589186385@messenger.gw.msging.net",
