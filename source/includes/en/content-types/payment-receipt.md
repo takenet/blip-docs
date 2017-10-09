@@ -11,47 +11,47 @@ using Take.Blip.Client;
 
 public class InvoiceStatusReceiver : IMessageReceiver
 {
-    private readonly IMessagingHubSender _sender;
+private readonly IMessagingHubSender _sender;
 
-    public InvoiceStatusReceiver(IMessagingHubSender sender)
-    {
-        _sender = sender;
-    }
+public InvoiceStatusReceiver(IMessagingHubSender sender)
+{
+    _sender = sender;
+}
 
-    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    var invoiceStatus = message.Content as InvoiceStatus;
+    switch (invoiceStatus?.Status)
     {
-        var invoiceStatus = message.Content as InvoiceStatus;
-        switch (invoiceStatus?.Status)
-        {
-            case InvoiceStatusStatus.Cancelled:
-                await _sender.SendMessageAsync("Ok, you don't need pay anything.", message.From, cancellationToken);
-                break;
-            case InvoiceStatusStatus.Completed:
-                await _sender.SendMessageAsync("Thank you for your payment, this is only a test", message.From, cancellationToken);
-                var paymentReceipt = new PaymentReceipt
-                {
-                    Currency = "BLR",
-                    Items =
-                        new[]
+        case InvoiceStatusStatus.Cancelled:
+            await _sender.SendMessageAsync("Ok, you don't need pay anything.", message.From, cancellationToken);
+            break;
+        case InvoiceStatusStatus.Completed:
+            await _sender.SendMessageAsync("Thank you for your payment, this is only a test", message.From, cancellationToken);
+            var paymentReceipt = new PaymentReceipt
+            {
+                Currency = "BLR",
+                Items =
+                    new[]
+                    {
+                        new InvoiceItem
                         {
-                            new InvoiceItem
-                            {
-                                Currency = "BRL",
-                                Unit = 1,
-                                Description = "Some product",
-                                Quantity = 1,
-                                Total = 1
-                            }
-                        },
-                    Total = 1
-                };
-                await _sender.SendMessageAsync(paymentReceipt, message.From, cancellationToken);
-                break;
-            case InvoiceStatusStatus.Refunded:
-                await _sender.SendMessageAsync("Ok, your payment was refunded by PagSeguro!", message.From, cancellationToken);
-                break;
-        }
+                            Currency = "BRL",
+                            Unit = 1,
+                            Description = "Some product",
+                            Quantity = 1,
+                            Total = 1
+                        }
+                    },
+                Total = 1
+            };
+            await _sender.SendMessageAsync(paymentReceipt, message.From, cancellationToken);
+            break;
+        case InvoiceStatusStatus.Refunded:
+            await _sender.SendMessageAsync("Ok, your payment was refunded by PagSeguro!", message.From, cancellationToken);
+            break;
     }
+}
 }
 ```
 

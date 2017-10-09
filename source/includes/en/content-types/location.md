@@ -100,6 +100,7 @@ using Take.Blip.Client;
 public class RequestLocation : IMessageReceiver
 {
 private readonly ISender _sender;
+private readonly Settings _settings;
 
 public RequestLocation(ISender sender)
 {
@@ -111,19 +112,18 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 {
     var location = new Input
     {
-        Label = {
+        Label = new DocumentContainer{
             Value = new PlainText 
             {
                 Text = "Send your location please!"
             }
         },
-        Validation = {
-            Rule = InputValidationRule.Type,
-            Type = "application/vnd.lime.location+json" //checar se é necessário
+        Validation = new InputValidation{
+            Rule = InputValidationRule.Type
         }
     };
 
-    await _sender.SendMessageAsync(location, message.From, cancellationToken);
+await _sender.SendMessageAsync(location, message.From, cancellationToken);
 }
 }
 ```

@@ -90,28 +90,28 @@ using Take.Blip.Client;
 
 public class UserInputLocationReceiver : IMessageReceiver
 {
-    private readonly ISender _sender;
+private readonly ISender _sender;
 
-    public UserInputLocationReceiver(ISender sender)
+public UserInputLocationReceiver(ISender sender)
+{
+    _sender = sender;
+}
+
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    var document = new Input
     {
-        _sender = sender;
-    }
+        Label = new DocumentContainer{
+            Value = "Send your location please!"
+        },
+        Validation = new InputValidation{
+            Rule = InputValidationRule.Type,
+            Type = "application/vnd.lime.location+json"
+        } 
+    };
 
-    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
-    {
-        var document = new Input
-        {
-            Label = new DocumentContainer{
-                Value = "Send your location please!"
-            },
-            Validation = new InputValidation{
-                Rule = InputValidationRule.Type,
-                Type = "application/vnd.lime.location+json"
-            } 
-        };
-
-        await _sender.SendMessageAsync(document, message.From, cancellationToken);
-    }
+    await _sender.SendMessageAsync(document, message.From, cancellationToken);
+}
 }
 ```
 

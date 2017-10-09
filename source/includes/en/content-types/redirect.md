@@ -13,22 +13,22 @@ using Take.Blip.Client;
 
 public class OptionRedirectMessageReceiver : IMessageReceiver
 {
-    private readonly ISender _sender;
+private readonly ISender _sender;
 
-    public OptionRedirectMessageReceiver(ISender sender)
+public OptionRedirectMessageReceiver(ISender sender)
+{
+    _sender = sender;
+}
+
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    var document = new Redirect
     {
-        _sender = sender;
-    }
+        Address = new Node("1545282125497371", "@messenger.gw.msging.net", null)
+    };
 
-    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
-    {
-        var document = new Redirect
-        {
-            Address = new Node("1545282125497371", "@messenger.gw.msging.net", null)
-        };
-
-        await _sender.SendMessageAsync(document, message.From, cancellationToken);
-    }
+    await _sender.SendMessageAsync(document, message.From, cancellationToken);
+}
 }
 ```
 

@@ -84,45 +84,45 @@ using Take.Blip.Client;
 //Send an options list to give your client the choice between multiple answers using Select type:
 public class PlainTextMessageReceiver : IMessageReceiver
 {
-    private readonly ISender _sender;
-    private readonly Settings _settings;
+private readonly ISender _sender;
+private readonly Settings _settings;
 
-    public PlainTextMessageReceiver(ISender sender, Settings settings)
-    {
-        _sender = sender;
-        _settings = settings;
-    }
+public PlainTextMessageReceiver(ISender sender, Settings settings)
+{
+    _sender = sender;
+    _settings = settings;
+}
 
-    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    var document = new Select
     {
-        var document = new Select
+        Text = "Choice an option:",
+        Options = new []
         {
-            Text = "Choice an option:",
-            Options = new []
+            new SelectOption
+            {   
+                Order = 1,
+                Text = "An inspire text!",
+                Value = new PlainText { Text = "1" }
+            },
+            new SelectOption
             {
-                new SelectOption
-                {   
-                    Order = 1,
-                    Text = "An inspire text!",
-                    Value = new PlainText { Text = "1" }
-                },
-                new SelectOption
-                {
-                    Order = 2,
-                    Text = "A motivational image!",
-                    Value = new PlainText { Text = "2" }
-                },
-                new SelectOption
-                {
-                    Order = 3,
-                    Text = "An interesting link!",
-                    Value = new PlainText { Text = "3" }
-                }
+                Order = 2,
+                Text = "A motivational image!",
+                Value = new PlainText { Text = "2" }
+            },
+            new SelectOption
+            {
+                Order = 3,
+                Text = "An interesting link!",
+                Value = new PlainText { Text = "3" }
             }
-        };
+        }
+    };
 
-        await _sender.SendMessageAsync(document, message.From, cancellationToken);
-    }
+    await _sender.SendMessageAsync(document, message.From, cancellationToken);
+}
 
 }
 Note:

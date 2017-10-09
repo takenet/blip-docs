@@ -12,24 +12,24 @@ using Lime.Protocol;
 using Take.Blip.Client;
 
  public class OptionResourceMessageReceiver : IMessageReceiver
+{
+private readonly ISender _sender;
+
+public OptionResourceMessageReceiver(ISender sender)
+{
+    _sender = sender;
+}
+
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    var document = new Resource
     {
-        private readonly ISender _sender;
+        Key = "welcome-message" //recurso previamente adicionado com extensão 'recursos' ou através do portal
+    };
 
-        public OptionResourceMessageReceiver(ISender sender)
-        {
-            _sender = sender;
-        }
-
-        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
-        {
-            var document = new Resource
-            {
-                Key = "welcome-message" //recurso previamente adicionado com extensão 'recursos' ou através do portal
-            };
-
-            await _sender.SendMessageAsync(document, message.From, cancellationToken);
-        }
-    }
+    await _sender.SendMessageAsync(document, message.From, cancellationToken);
+}
+}
 ```
 
 ```http
@@ -107,27 +107,27 @@ using Take.Blip.Client;
 
 public class ResourceMessageReplace : IMessageReceiver
 {
-    private readonly ISender _sender;
+private readonly ISender _sender;
 
-    public ResourceMessageReplace(ISender sender)
+public ResourceMessageReplace(ISender sender)
+{
+    _sender = sender;
+}
+
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    var openWith = new Dictionary<string, string>();
+    openWith.Add("name",message.From.Name);
+
+    var document = new Resource
     {
-        _sender = sender;
-    }
+        Key = "welcome-message",
+        Variables = openWith
+    
+    };
 
-    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
-    {
-        var openWith = new Dictionary<string, string>();//using System.Collections.Generic
-        openWith.Add("name",message.From.Name);//checar mais tarde <<
-
-        var document = new Resource
-        {
-            Key = "welcome-message",
-            Variables = openWith
-        
-        };
-
-        await _sender.SendMessageAsync(document, message.From, cancellationToken);
-    }
+    await _sender.SendMessageAsync(document, message.From, cancellationToken);
+}
 }
 ```
 

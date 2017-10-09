@@ -13,40 +13,40 @@ using Take.Blip.Client;
 
 public class PlainTextMessageReceiver : IMessageReceiver
 {
-    private readonly ISender _sender;
-    private readonly Settings _settings;
+private readonly ISender _sender;
+private readonly Settings _settings;
 
-    public PlainTextMessageReceiver(ISender sender, Settings settings)
-    {
-        _sender = sender;
-        _settings = settings;
-    }
+public PlainTextMessageReceiver(ISender sender, Settings settings)
+{
+    _sender = sender;
+    _settings = settings;
+}
 
-    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    var document = new Invoice
     {
-        var document = new Invoice
-        {
-            Currency = "BLR",
-            DueTo = DateTime.Now.AddDays(1),
-            Items =
-                new[]
+        Currency = "BLR",
+        DueTo = DateTime.Now.AddDays(1),
+        Items =
+            new[]
+            {
+                new InvoiceItem
                 {
-                    new InvoiceItem
-                    {
-                        Currency = "BRL",
-                        Unit = 1,
-                        Description = "Some product",
-                        Quantity = 1,
-                        Total = 1
-                    }
-                },
-            Total = 1
-        };
+                    Currency = "BRL",
+                    Unit = 1,
+                    Description = "Some product",
+                    Quantity = 1,
+                    Total = 1
+                }
+            },
+        Total = 1
+    };
 
-        var toPagseguro = $"{Uri.EscapeDataString(message.From.ToIdentity().ToString())}@pagseguro.gw.msging.net";
+    var toPagseguro = $"{Uri.EscapeDataString(message.From.ToIdentity().ToString())}@pagseguro.gw.msging.net";
 
-        await _sender.SendMessageAsync(document, toPagseguro, cancellationToken);
-    }
+    await _sender.SendMessageAsync(document, toPagseguro, cancellationToken);
+}
 }
 ```
 

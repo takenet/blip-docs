@@ -13,64 +13,64 @@ using Take.Blip.Client;
 
 public class OptionMultimidiaMenuMessageReceiver : IMessageReceiver
 {
-    private readonly ISender _sender;
+private readonly ISender _sender;
 
-    public OptionMultimidiaMenuMessageReceiver(ISender sender)
-    {
-        _sender = sender;
-    }
+public OptionMultimidiaMenuMessageReceiver(ISender sender)
+{
+    _sender = sender;
+}
 
-    DocumentSelectOption[] options = new DocumentSelectOption[]
+DocumentSelectOption[] options = new DocumentSelectOption[]
+{
+    new DocumentSelectOption
     {
-        new DocumentSelectOption
+        Label = new DocumentContainer
         {
-            Label = new DocumentContainer
+            Value = new WebLink
             {
-                Value = new WebLink
-                {
-                    Text = "Go to your site",
-                    Uri = new Uri("https://meusanimais.com.br/14-nomes-criativos-para-o-seu-gato/")
-                }
-            }
-        },
-        new DocumentSelectOption
-        {
-            Label = new DocumentContainer
-            {
-                Value = new PlainText
-                {
-                    Text = "Show stock here!"
-                }
-            },
-            Value = new DocumentContainer
-            {
-                Value = new JsonDocument()
+                Text = "Go to your site",
+                Uri = new Uri("https://meusanimais.com.br/14-nomes-criativos-para-o-seu-gato/")
             }
         }
-    };
-
-
-    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+    },
+    new DocumentSelectOption
     {
-        var document = new DocumentSelect
+        Label = new DocumentContainer
+        {
+            Value = new PlainText
             {
-                Header = new DocumentContainer
-                {
-                    Value = new MediaLink
-                    {
-                        Title = "Welcome to mad hatter",
-                        Text = "Here we have the best hats for your head.",
-                        Type = "image/jpeg",
-                        Uri = new Uri("http://petersapparel.parseapp.com/img/item100-thumb.png"),
-                        AspectRatio = "1.1"
-                    }
-                },
-                Options = options
-            };
-
-
-        await _sender.SendMessageAsync(document, message.From, cancellationToken);
+                Text = "Show stock here!"
+            }
+        },
+        Value = new DocumentContainer
+        {
+            Value = new JsonDocument()
+        }
     }
+};
+
+
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    var document = new DocumentSelect
+        {
+            Header = new DocumentContainer
+            {
+                Value = new MediaLink
+                {
+                    Title = "Welcome to mad hatter",
+                    Text = "Here we have the best hats for your head.",
+                    Type = "image/jpeg",
+                    Uri = new Uri("http://petersapparel.parseapp.com/img/item100-thumb.png"),
+                    AspectRatio = "1.1"
+                }
+            },
+            Options = options
+        };
+
+
+    await _sender.SendMessageAsync(document, message.From, cancellationToken);
+}
 }
 
 ```
@@ -178,46 +178,46 @@ using Take.Blip.Client;
 
 public class MenuMultimidiaGetLocation : IMessageReceiver
 {
-    private readonly ISender _sender;
+private readonly ISender _sender;
 
-    public MenuMultimidiaGetLocation(ISender sender)
-    {
-        _sender = sender;
-    }
+public MenuMultimidiaGetLocation(ISender sender)
+{
+    _sender = sender;
+}
 
-    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
-    {
-        var document = new DocumentSelect
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    var document = new DocumentSelect
+        {
+            Header = new DocumentContainer
             {
-                Header = new DocumentContainer
+                Value = new PlainText
                 {
-                    Value = new PlainText
-                    {
-                        Text = "Please, share your location"
-                    }
-                },
-                Options = new DocumentSelectOption[]{
-                    new DocumentSelectOption {
-                        Label = new DocumentContainer{
-                            Value = new Input {
-                                Label = new DocumentContainer {
-                                    Value = new PlainText {
-                                        Text = "Teste"
-                                    }
-                                },
-                                Validation = new InputValidation
-                                {
-                                    Type = Location.MediaType,
-                                    Rule = InputValidationRule.Type
+                    Text = "Please, share your location"
+                }
+            },
+            Options = new DocumentSelectOption[]{
+                new DocumentSelectOption {
+                    Label = new DocumentContainer{
+                        Value = new Input {
+                            Label = new DocumentContainer {
+                                Value = new PlainText {
+                                    Text = "Teste"
                                 }
+                            },
+                            Validation = new InputValidation
+                            {
+                                Type = Location.MediaType,
+                                Rule = InputValidationRule.Type
                             }
                         }
                     }
                 }
-            };
+            }
+        };
 
-        await _sender.SendMessageAsync(document, message.From, cancellationToken);
-    }
+    await _sender.SendMessageAsync(document, message.From, cancellationToken);
+}
 }
 ```
 

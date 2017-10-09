@@ -13,31 +13,30 @@ using Take.Blip.Client;
 //To send media links, the message sent must have a MediaLink document as follow:
 public class PlainTextMessageReceiver : IMessageReceiver
 {
-    private readonly ISender _sender;
-    private readonly Settings _settings;
+private readonly ISender _sender;
+private readonly Settings _settings;
 
-    public PlainTextMessageReceiver(ISender sender, Settings settings)
+public PlainTextMessageReceiver(ISender sender, Settings settings)
+{
+    _sender = sender;
+    _settings = settings;
+}
+
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    var imageUri = new Uri("https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/200px-A_small_cup_of_coffee.JPG", UriKind.Absolute);
+
+    var document = new MediaLink
     {
-        _sender = sender;
-        _settings = settings;
-    }
+        Text = "Coffe, what else ?",
+        Size = 6679,
+        Type = MediaType.Parse("image/jpeg"),
+        PreviewUri = imageUri,
+        Uri = imageUri
+    };
 
-    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
-    {
-        var imageUri = new Uri("https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/200px-A_small_cup_of_coffee.JPG", UriKind.Absolute);
-
-        var document = new MediaLink
-        {
-            Text = "Coffe, what else ?",
-            Size = 6679,
-            Type = MediaType.Parse("image/jpeg"),
-            PreviewUri = imageUri,
-            Uri = imageUri
-        };
-
-        await _sender.SendMessageAsync(document, message.From, cancellationToken);
-    }
-
+    await _sender.SendMessageAsync(document, message.From, cancellationToken);
+}
 }
 ```
 

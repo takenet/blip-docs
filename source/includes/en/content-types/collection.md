@@ -13,38 +13,38 @@ using Take.Blip.Client;
 
 public class OptionDocumentCollectionMessageReceiver : IMessageReceiver
 {
-    private readonly ISender _sender;
+private readonly ISender _sender;
 
-    public OptionDocumentCollectionMessageReceiver(ISender sender)
+public OptionDocumentCollectionMessageReceiver(ISender sender)
+{
+    _sender = sender;
+}
+
+PlainText[] documents = new PlainText[]
+{
+    new PlainText
     {
-        _sender = sender;
+        Text = "Text 1"
+    },
+    new PlainText
+    {
+        Text = "Text 2"
+    },
+    new PlainText
+    {
+        Text = "Text 3"
     }
+};
 
-    PlainText[] documents = new PlainText[]
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    var document = new DocumentCollection
     {
-        new PlainText
-        {
-            Text = "Text 1"
-        },
-        new PlainText
-        {
-            Text = "Text 2"
-        },
-        new PlainText
-        {
-            Text = "Text 3"
-        }
+        ItemType = "text/plain",
+        Items = documents
     };
-
-    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
-    {
-        var document = new DocumentCollection
-        {
-            ItemType = "text/plain",
-            Items = documents
-        };
-        await _sender.SendMessageAsync(document, message.From, cancellationToken);
-    }
+    await _sender.SendMessageAsync(document, message.From, cancellationToken);
+}
 }
 ```
 
@@ -96,92 +96,92 @@ using Take.Blip.Client;
 
 public class CollectionWithDiferentTypes : IMessageReceiver
 {
-    private readonly ISender _sender;
+private readonly ISender _sender;
 
-    public CollectionWithDiferentTypes(ISender sender)
-    {
-        _sender = sender;
-    }
+public CollectionWithDiferentTypes(ISender sender)
+{
+    _sender = sender;
+}
 
-   DocumentContainer[] documents = new DocumentContainer[]
-    {
-        new DocumentContainer{
-            Value = new MediaLink
-            {
-                Uri = new Uri("http://www.petshoplovers.com/wp-content/uploads/2014/03/CUIDADOS-B%C3%81SICOS-PARA-CRIAR-COELHOS.jpg"),
-                Text = "Welcome to our store!",
-                Type = "image/jpeg"
-            }
-        },
-        new DocumentContainer{
-            Value = new Select
-            {
-                Text = "Choice what you need",
-                Options = new SelectOption[]
-                {
-                    new SelectOption
-                    {
-                        Order = 1,
-                        Text = "See our stock"
-                    },
-                    new SelectOption
-                    {
-                        Order = 2,
-                        Text = "Follow an order"
-                    }
-                }
-
-            }
-        }
-    };
-
-    public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
-    {
-       var document = new DocumentCollection
+DocumentContainer[] documents = new DocumentContainer[]
+{
+    new DocumentContainer{
+        Value = new MediaLink
         {
-            ItemType = "application/vnd.lime.container+json",
-            Items = documents
-        };
-        await _sender.SendMessageAsync(document, message.From, cancellationToken);
+            Uri = new Uri("http://www.petshoplovers.com/wp-content/uploads/2014/03/CUIDADOS-B%C3%81SICOS-PARA-CRIAR-COELHOS.jpg"),
+            Text = "Welcome to our store!",
+            Type = "image/jpeg"
+        }
+    },
+    new DocumentContainer{
+        Value = new Select
+        {
+            Text = "Choice what you need",
+            Options = new SelectOption[]
+            {
+                new SelectOption
+                {
+                    Order = 1,
+                    Text = "See our stock"
+                },
+                new SelectOption
+                {
+                    Order = 2,
+                    Text = "Follow an order"
+                }
+            }
+
+        }
     }
+};
+
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    var document = new DocumentCollection
+    {
+        ItemType = "application/vnd.lime.container+json",
+        Items = documents
+    };
+    await _sender.SendMessageAsync(document, message.From, cancellationToken);
+}
 }
 ```
 
 ```javascript
-    client.sendMessage({
-        id: Lime.Guid(),
-        type: "application/vnd.lime.collection+json",
-        to: "128271320123982@messenger.gw.msging.net",
-        content: {
-            itemType: "application/vnd.lime.container+json",
-            items: [
-                {
-                    type: "application/vnd.lime.media-link+json",
-                    value: {
-                        text: "Welcome to our store!",
-                        type: "image/jpeg",
-                        uri: "http://petersapparel.parseapp.com/img/item100-thumb.png"
-                    }
-                },
-                {
-                    type: "application/vnd.lime.select+json",
-                    value: {
-                        text: "Choose what you need",
-                        options: [
-                            {
-                                order: 1,
-                                text: "See our stock"
-                            },
-                            {
-                                order: 2,
-                                text: "Follow an order"
-                            }
-                        ]
-                    }
-                }			
-            ]
-        } 
-    });
+client.sendMessage({
+    id: Lime.Guid(),
+    type: "application/vnd.lime.collection+json",
+    to: "128271320123982@messenger.gw.msging.net",
+    content: {
+        itemType: "application/vnd.lime.container+json",
+        items: [
+            {
+                type: "application/vnd.lime.media-link+json",
+                value: {
+                    text: "Welcome to our store!",
+                    type: "image/jpeg",
+                    uri: "http://petersapparel.parseapp.com/img/item100-thumb.png"
+                }
+            },
+            {
+                type: "application/vnd.lime.select+json",
+                value: {
+                    text: "Choose what you need",
+                    options: [
+                        {
+                            order: 1,
+                            text: "See our stock"
+                        },
+                        {
+                            order: 2,
+                            text: "Follow an order"
+                        }
+                    ]
+                }
+            }			
+        ]
+    } 
+});
 ```
 
 ```http
@@ -245,7 +245,7 @@ JsonDocument JsonDocuments;
 
 public CollectionMultimidiaMenu(ISender sender)
 {
-    _sender = sender;   
+_sender = sender;   
 }
 
 JsonDocument JsonDocuments = new JsonDocument();
@@ -253,88 +253,88 @@ JsonDocuments.Add("Key1", "value1");
 JsonDocuments.Add("Key2", "2");
 DocumentSelect[] documents = new DocumentSelect[]
 {
-    new DocumentSelect
+new DocumentSelect
+{
+    Header = new DocumentContainer
     {
-        Header = new DocumentContainer
+        Value = new MediaLink
         {
-            Value = new MediaLink
-            {
-                Title = "Title",
-                Text = "This is a first item",
-                Type = "image/jpeg",
-                Uri = new Uri("http://www.isharearena.com/wp-content/uploads/2012/12/wallpaper-281049.jpg"),
-            }
-        },
-        Options = new DocumentSelectOption[]
-        {
-            new DocumentSelectOption
-            {
-                Label = new DocumentContainer
-                {
-                    Value = new WebLink
-                    {
-                        Title = "Link",
-                        Uri = new Uri("https://server.com/first/link1")
-                    }
-                }
-            },
-            new DocumentSelectOption
-            {
-                Label = new DocumentContainer
-                {
-                    Value = new PlainText
-                    {
-                        Text = "Text 1"
-                    }
-                },
-                Value = new DocumentContainer
-                {
-                    Value = JsonDocuments
-                }
-            }
+            Title = "Title",
+            Text = "This is a first item",
+            Type = "image/jpeg",
+            Uri = new Uri("http://www.isharearena.com/wp-content/uploads/2012/12/wallpaper-281049.jpg"),
         }
     },
-    new DocumentSelect
+    Options = new DocumentSelectOption[]
     {
-        Header = new DocumentContainer
+        new DocumentSelectOption
         {
-            Value = new MediaLink
+            Label = new DocumentContainer
             {
-                Title = "Title 2",
-                Text = "This is another item",
-                Type = "image/jpeg",
-                Uri = new Uri("http://www.freedigitalphotos.net/images/img/homepage/87357.jpg")
+                Value = new WebLink
+                {
+                    Title = "Link",
+                    Uri = new Uri("https://server.com/first/link1")
+                }
             }
         },
-        Options = new DocumentSelectOption[]
+        new DocumentSelectOption
         {
-            new DocumentSelectOption
+            Label = new DocumentContainer
             {
-                Label = new DocumentContainer
+                Value = new PlainText
                 {
-                    Value = new WebLink
-                    {
-                        Title = "Second link",
-                        Text = "Weblink",
-                        Uri = new Uri("https://server.com/second/link2")
-                    }
+                    Text = "Text 1"
                 }
             },
-            new DocumentSelectOption
+            Value = new DocumentContainer
             {
-                Label = new DocumentContainer
-                {
-                    Value = new PlainText {
-                        Text = "Second text"
-                    }
-                },
-                Value = new DocumentContainer
-                {
-                    Value = JsonDocuments
-                }
+                Value = JsonDocuments
             }
         }
     }
+},
+new DocumentSelect
+{
+    Header = new DocumentContainer
+    {
+        Value = new MediaLink
+        {
+            Title = "Title 2",
+            Text = "This is another item",
+            Type = "image/jpeg",
+            Uri = new Uri("http://www.freedigitalphotos.net/images/img/homepage/87357.jpg")
+        }
+    },
+    Options = new DocumentSelectOption[]
+    {
+        new DocumentSelectOption
+        {
+            Label = new DocumentContainer
+            {
+                Value = new WebLink
+                {
+                    Title = "Second link",
+                    Text = "Weblink",
+                    Uri = new Uri("https://server.com/second/link2")
+                }
+            }
+        },
+        new DocumentSelectOption
+        {
+            Label = new DocumentContainer
+            {
+                Value = new PlainText {
+                    Text = "Second text"
+                }
+            },
+            Value = new DocumentContainer
+            {
+                Value = JsonDocuments
+            }
+        }
+    }
+}
 
 };
 
