@@ -71,7 +71,7 @@ jQuery.extend({
 jQuery.fn.unhighlight = function (options) {
     var settings = { className: 'highlight', element: 'span' };
     jQuery.extend(settings, options);
-
+    console.log(settings);
     return this.find(settings.element + "." + settings.className).each(function () {
         var parent = this.parentNode;
         parent.replaceChild(this.firstChild, this);
