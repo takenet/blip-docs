@@ -37,9 +37,13 @@ end
 activate :relative_assets
 set :relative_links, true
 
-
+# Middleman Server Configuration
 configure :development do
-
+  # if ENV['THEME'] == "hmg"
+  #   config[:prod] = 'UA-79317370-6'
+  # else 
+  #   config[:prod] = 'UA-79317370-1'
+  # end
 end
 
 
@@ -51,11 +55,11 @@ configure :build do
   activate :minify_css
   activate :minify_javascript
 
-  if ENV['THEME'] == "hmg"
-    config[:prod] = 'UA-79317370-6'
-  else 
-    config[:prod] = 'UA-79317370-1'
-  end
+   if ENV['THEME'] == "hmg"
+     config[:prod] = 'UA-79317370-6'
+   else 
+     config[:prod] = 'UA-79317370-1'
+   end
 
   # config[:hmg] = "UA-79317370-8"
   # config[:server] =   ENV['THEME'] || ':prod'
