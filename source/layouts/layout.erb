@@ -39,7 +39,7 @@ language_tabs = current_page.data.language_tabs || [] %>
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', '<%= config[:prod] %>', 'auto');
+    ga('create', '#{AnalyticsKey}', 'auto');
     ga('send', 'pageview');
     //This does hash-click tracking (inspired by http://stackoverflow.com/a/4813223)
     window.onload = function() {

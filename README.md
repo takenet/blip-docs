@@ -52,13 +52,6 @@ You're going to need:
 bundle install
 bundle exec middleman server
 
-# switching analytics environments
-
-(hmg) 
-set THEME=hmg ENV['THEME'] == "hmg"& bundle exec middleman server
-(prod) 
-bundle exec middleman server
-
 # OR run this to run with vagrant
 vagrant up
 ```

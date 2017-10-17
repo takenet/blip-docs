@@ -54,15 +54,6 @@ configure :build do
 
   activate :minify_css
   activate :minify_javascript
-
-   if ENV['THEME'] == "hmg"
-     config[:prod] = 'UA-79317370-6'
-   else 
-     config[:prod] = 'UA-79317370-1'
-   end
-
-  # config[:hmg] = "UA-79317370-8"
-  # config[:server] =   ENV['THEME'] || ':prod'
   
   # activate :asset_hash
   # activate :gzip
