@@ -52,6 +52,78 @@ The resource types are:
 
 ### Create an entity
 
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id":"1",
+  "to":"postmaster@ai.msging.net",
+  "method":"set",
+  "uri":"/entities",
+  "type":"application/vnd.iris.ai.entity+json",
+  "resource":{  
+    "name":"Flavor",
+    "values":[  
+      {  
+        "name":"Pepperoni",
+        "synonymous":[  
+          "Peperoni",
+          "Pepperonee",
+          "Pepperouni",
+          "Peperony"
+        ]
+      },
+      {  
+        "name":"Mushrooms",
+        "synonymous":[  
+          "Mashrooms",
+          "Mushroom",
+          "Mshrooms"
+        ]
+      }
+    ]
+  }
+}
+```
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id":"1",
+  "to":"postmaster@ai.msging.net",
+  "method":"set",
+  "uri":"/entities",
+  "type":"application/vnd.iris.ai.entity+json",
+  "resource":{  
+    "name":"Flavor",
+    "values":[  
+      {  
+        "name":"Pepperoni",
+        "synonymous":[  
+          "Peperoni",
+          "Pepperonee",
+          "Pepperouni",
+          "Peperony"
+        ]
+      },
+      {  
+        "name":"Mushrooms",
+        "synonymous":[  
+          "Mashrooms",
+          "Mushroom",
+          "Mshrooms"
+        ]
+      }
+    ]
+  }
+}
+```
+
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -89,6 +161,42 @@ Authorization: Key {YOUR_TOKEN}
 
 ```
 
+
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "1",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.iris.ai.entity+json",
+  "resource": {
+      "id": "flavor"
+  }
+}
+```
+
+
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "1",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.iris.ai.entity+json",
+  "resource": {
+      "id": "flavor"
+  }
+}
+```
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -107,6 +215,43 @@ Content-Type: application/json
 ```
 ### Create an intention
 
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "2",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/intentions",
+  "type": "application/vnd.iris.ai.intention+json",
+  "resource": {
+      "name": "Order pizza"
+  }  
+}
+
+```
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "2",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/intentions",
+  "type": "application/vnd.iris.ai.intention+json",
+  "resource": {
+      "name": "Order pizza"
+  }  
+}
+
+```
+
+
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -124,6 +269,43 @@ Authorization: Key {YOUR_TOKEN}
 }
 
 ```
+
+
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "2",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.iris.ai.intention+json",
+  "resource": {
+      "id": "order_pizza"
+  }  
+}
+```
+
+
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "2",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.iris.ai.intention+json",
+  "resource": {
+      "id": "order_pizza"
+  }  
+}
+```
+
 
 ```http
 HTTP/1.1 200 OK
@@ -144,6 +326,36 @@ Content-Type: application/json
 
 ### Query the first 10 intentions
 
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "3",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/intentions?$skip=0&$take=10"
+}
+
+```
+
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "3",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/intentions?$skip=0&$take=10"
+}
+
+```
+
+
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -157,6 +369,62 @@ Authorization: Key {YOUR_TOKEN}
 }
 
 ```
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "3",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "get",
+  "status": "success",
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+      "total": 2,
+      "itemType": "application/vnd.iris.ai.intention+json",
+      "items": [
+        {
+          "id": "order_pizza",
+          "name": "Order pizza"
+        },
+        {
+          "id": "choose_flavor",
+          "name": "Choose flavor"
+        }
+      ]
+  }
+}
+```
+
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "3",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "get",
+  "status": "success",
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+      "total": 2,
+      "itemType": "application/vnd.iris.ai.intention+json",
+      "items": [
+        {
+          "id": "order_pizza",
+          "name": "Order pizza"
+        },
+        {
+          "id": "choose_flavor",
+          "name": "Choose flavor"
+        }
+      ]
+  }
+}
+```
+
 
 ```http
 HTTP/1.1 200 OK
@@ -188,6 +456,66 @@ Content-Type: application/json
 
 ### Associate questions to an intention
 
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "4",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/intentions/order_pizza/questions",
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+    "itemType": "application/vnd.iris.ai.question+json",
+    "items":[
+      {
+        "text": "I want a pizza"
+      },
+      {
+        "text": "I wanna order a pizza"
+      },
+      {
+        "text": "Give me a pizza"
+      }
+    ]
+  }  
+}
+
+```
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "4",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/intentions/order_pizza/questions",
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+    "itemType": "application/vnd.iris.ai.question+json",
+    "items":[
+      {
+        "text": "I want a pizza"
+      },
+      {
+        "text": "I wanna order a pizza"
+      },
+      {
+        "text": "Give me a pizza"
+      }
+    ]
+  }  
+}
+
+```
+
+
+
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -217,6 +545,33 @@ Authorization: Key {YOUR_TOKEN}
 
 ```
 
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "4",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "4",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -231,6 +586,55 @@ Content-Type: application/json
 ```
 
 ### Associate answers to an intention
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "5",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/intentions/order_pizza/answers",
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+    "itemType": "application/vnd.iris.ai.answer+json",
+    "items":[
+      {
+        "type":"text/plain",
+        "value":"Which flavor do you want?"
+      }
+    ]
+  }  
+}
+
+```
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "5",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/intentions/order_pizza/answers",
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+    "itemType": "application/vnd.iris.ai.answer+json",
+    "items":[
+      {
+        "type":"text/plain",
+        "value":"Which flavor do you want?"
+      }
+    ]
+  }  
+}
+
+```
+
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -256,6 +660,109 @@ Authorization: Key {YOUR_TOKEN}
 
 ```
 
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "5",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "5",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+
+
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "5",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "5",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "5",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "5",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "5",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "5",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -270,6 +777,41 @@ Content-Type: application/json
 ```
 
 ### Train model
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "6",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/models",
+  "type": "application/vnd.iris.ai.model-training+json",
+  "resource": {  
+  }  
+}
+
+```
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "6",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/models",
+  "type": "application/vnd.iris.ai.model-training+json",
+  "resource": {  
+  }  
+}
+
+```
+
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -288,6 +830,33 @@ Authorization: Key {YOUR_TOKEN}
 
 ```
 
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "6",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "6",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -300,7 +869,36 @@ Content-Type: application/json
   "status": "success"
 }
 ```
-### Query the trained models
+### Query the trained 
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "7",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/models"
+}
+
+```
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "7",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/models"
+}
+
+```
+
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -315,6 +913,74 @@ Authorization: Key {YOUR_TOKEN}
 }
 
 ```
+
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "7",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+      "total": 1,
+      "itemType": "application/vnd.iris.ai.model+json",
+      "items": [
+        {
+          "id":"d3190b46-c723-4831-b9e8-fe43c1816f80",
+          "provider":"Watson",
+          "externalId":"b518633d-26f6-454c-bd17-890b426f2d40",
+          "storageDate":"2017-07-07T18:13:00.000Z",
+          "trainingDate":"2017-07-07T18:13:00.000Z"
+        },
+        {
+          "id":"fa0aa23b-5c62-4b90-9c13-986148c0d171",
+          "provider":"Luis",
+          "externalId":"713331f2-0375-462d-aa58-ff9b8c5075be",
+          "storageDate":"2017-07-07T18:13:00.000Z",
+          "trainingDate":"2017-07-07T18:13:00.000Z"
+        }        
+      ]
+  }
+}
+```
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "7",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+      "total": 1,
+      "itemType": "application/vnd.iris.ai.model+json",
+      "items": [
+        {
+          "id":"d3190b46-c723-4831-b9e8-fe43c1816f80",
+          "provider":"Watson",
+          "externalId":"b518633d-26f6-454c-bd17-890b426f2d40",
+          "storageDate":"2017-07-07T18:13:00.000Z",
+          "trainingDate":"2017-07-07T18:13:00.000Z"
+        },
+        {
+          "id":"fa0aa23b-5c62-4b90-9c13-986148c0d171",
+          "provider":"Luis",
+          "externalId":"713331f2-0375-462d-aa58-ff9b8c5075be",
+          "storageDate":"2017-07-07T18:13:00.000Z",
+          "trainingDate":"2017-07-07T18:13:00.000Z"
+        }        
+      ]
+  }
+}
+```
+
 
 ```http
 HTTP/1.1 200 OK
@@ -351,6 +1017,41 @@ Content-Type: application/json
 ```
 
 ### Publish model
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "8",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/models",
+  "type": "application/vnd.iris.ai.model-publishing+json",
+  "resource": {  
+    "id":"d3190b46-c723-4831-b9e8-fe43c1816f80"
+  }  
+}
+
+```
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "8",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/models",
+  "type": "application/vnd.iris.ai.model-publishing+json",
+  "resource": {  
+    "id":"d3190b46-c723-4831-b9e8-fe43c1816f80"
+  }  
+}
+
+```
+
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -370,6 +1071,33 @@ Authorization: Key {YOUR_TOKEN}
 
 ```
 
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "8",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "8",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -384,6 +1112,43 @@ Content-Type: application/json
 ```
 
 ### Analyze a sentence in the last published model
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "9",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/analysis",
+  "type": "application/vnd.iris.ai.analysis-request+json",
+  "uri": {
+    "text":"I want a pepperoni pizza"
+  }
+}
+
+```
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "9",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/analysis",
+  "type": "application/vnd.iris.ai.analysis-request+json",
+  "uri": {
+    "text":"I want a pepperoni pizza"
+  }
+}
+
+```
+
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -402,6 +1167,70 @@ Authorization: Key {YOUR_TOKEN}
 }
 
 ```
+
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "9",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.iris.ai.analysis-response+json",
+  "resource": {
+    "text":"I want a pepperoni pizza",
+    "intentions":[
+      {
+        "id":"order_pizza",
+        "name":"Order pizza",
+        "score": 0.95
+      }
+    ],
+    "entities":[
+      {
+        "id":"flavor",
+        "name":"Flavor",
+        "value":"Pepperoni"
+      }
+    ]
+  }
+}
+```
+
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "9",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.iris.ai.analysis-response+json",
+  "resource": {
+    "text":"I want a pepperoni pizza",
+    "intentions":[
+      {
+        "id":"order_pizza",
+        "name":"Order pizza",
+        "score": 0.95
+      }
+    ],
+    "entities":[
+      {
+        "id":"flavor",
+        "name":"Flavor",
+        "value":"Pepperoni"
+      }
+    ]
+  }
+}
+```
+
+
 
 ```http
 HTTP/1.1 200 OK
@@ -436,6 +1265,43 @@ Content-Type: application/json
 
 ### Analyze a sentence with a specific model
 
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/analysis",
+  "type": "application/vnd.iris.ai.analysis-request+json",
+  "uri": {
+    "text":"I want a pepperoni pizza",
+    "modelId":"fa0aa23b-5c62-4b90-9c13-986148c0d171"
+  }
+}
+
+```
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/analysis",
+  "type": "application/vnd.iris.ai.analysis-request+json",
+  "uri": {
+    "text":"I want a pepperoni pizza",
+    "modelId":"fa0aa23b-5c62-4b90-9c13-986148c0d171"
+  }
+}
+
+```
+
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -454,6 +1320,68 @@ Authorization: Key {YOUR_TOKEN}
   }
 }
 
+```
+
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "10",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.iris.ai.analysis-response+json",
+  "resource": {
+    "text":"I want a pepperoni pizza",
+    "intentions":[
+      {
+        "id":"order_pizza",
+        "name":"Order pizza",
+        "score": 0.95
+      }
+    ],
+    "entities":[
+      {
+        "id":"flavor",
+        "name":"Flavor",
+        "value":"Pepperoni"
+      }
+    ]
+  }
+}
+```
+
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "10",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.iris.ai.analysis-response+json",
+  "resource": {
+    "text":"I want a pepperoni pizza",
+    "intentions":[
+      {
+        "id":"order_pizza",
+        "name":"Order pizza",
+        "score": 0.95
+      }
+    ],
+    "entities":[
+      {
+        "id":"flavor",
+        "name":"Flavor",
+        "value":"Pepperoni"
+      }
+    ]
+  }
+}
 ```
 
 ```http
@@ -489,6 +1417,30 @@ Content-Type: application/json
 
 ###Get the last 10 analysis
 
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "11",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/analysis?$take=10&$filter=feedback%20eq%20none"
+}
+```
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "11",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/analysis?$take=10&$filter=feedback%20eq%20none"
+}
+```
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -502,6 +1454,88 @@ Authorization: Key {YOUR_TOKEN}
   "uri": "/analysis?$take=10&$filter=feedback%20eq%20none"
 }
 ```
+
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "11",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "get",
+  "status": "success",
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+    "itemType":"application/vnd.iris.ai.analysis+json",
+    "items":[
+      {
+        "id": "7363369c-8c99-4293-883f-aaabac7dd822",
+        "requestDateTime": "2017-07-13T12:28:14.040Z",
+        "text": "quero uma pizza marguerita",
+        "intention": "I want a pepperoni pizza",
+        "score": 1.0,
+        "intentions": [
+          {
+            "id":"order_pizza",
+            "name":"Order pizza",
+            "score": 1.0
+          }
+        ],
+        "entities": [
+          {
+            "id":"flavor",
+            "name":"Flavor",
+            "value":"Pepperoni"
+          }
+        ],
+      }
+    ]
+  }
+}
+```
+
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "11",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "get",
+  "status": "success",
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+    "itemType":"application/vnd.iris.ai.analysis+json",
+    "items":[
+      {
+        "id": "7363369c-8c99-4293-883f-aaabac7dd822",
+        "requestDateTime": "2017-07-13T12:28:14.040Z",
+        "text": "quero uma pizza marguerita",
+        "intention": "I want a pepperoni pizza",
+        "score": 1.0,
+        "intentions": [
+          {
+            "id":"order_pizza",
+            "name":"Order pizza",
+            "score": 1.0
+          }
+        ],
+        "entities": [
+          {
+            "id":"flavor",
+            "name":"Flavor",
+            "value":"Pepperoni"
+          }
+        ],
+      }
+    ]
+  }
+}
+```
+
+
 
 ```http
 HTTP/1.1 200 OK
@@ -545,6 +1579,41 @@ Content-Type: application/json
 
 ### Send an 'approved' feedback
 
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id":"12",
+  "to":"postmaster@ai.msging.net",
+  "method":"set",
+  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
+  "type":"application/vnd.iris.ai.analysis-feedback+json",
+  "resource":{
+    "feedback":"approved"
+  }  
+}
+
+```
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id":"12",
+  "to":"postmaster@ai.msging.net",
+  "method":"set",
+  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
+  "type":"application/vnd.iris.ai.analysis-feedback+json",
+  "resource":{
+    "feedback":"approved"
+  }  
+}
+
+```
+
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -564,6 +1633,143 @@ Authorization: Key {YOUR_TOKEN}
 
 ```
 
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id":"12",
+  "to":"postmaster@ai.msging.net",
+  "method":"set",
+  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
+  "type":"application/vnd.iris.ai.analysis-feedback+json",
+  "resource":{
+    "feedback":"approved"
+  }  
+}
+
+```
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id":"12",
+  "to":"postmaster@ai.msging.net",
+  "method":"set",
+  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
+  "type":"application/vnd.iris.ai.analysis-feedback+json",
+  "resource":{
+    "feedback":"approved"
+  }  
+}
+
+```
+
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id":"12",
+  "to":"postmaster@ai.msging.net",
+  "method":"set",
+  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
+  "type":"application/vnd.iris.ai.analysis-feedback+json",
+  "resource":{
+    "feedback":"approved"
+  }  
+}
+
+```
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id":"12",
+  "to":"postmaster@ai.msging.net",
+  "method":"set",
+  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
+  "type":"application/vnd.iris.ai.analysis-feedback+json",
+  "resource":{
+    "feedback":"approved"
+  }  
+}
+
+```
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id":"12",
+  "to":"postmaster@ai.msging.net",
+  "method":"set",
+  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
+  "type":"application/vnd.iris.ai.analysis-feedback+json",
+  "resource":{
+    "feedback":"approved"
+  }  
+}
+
+```
+
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id":"12",
+  "to":"postmaster@ai.msging.net",
+  "method":"set",
+  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
+  "type":"application/vnd.iris.ai.analysis-feedback+json",
+  "resource":{
+    "feedback":"approved"
+  }  
+}
+
+```
+
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "12",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"  
+}
+```
+
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "12",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"  
+}
+```
+
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -578,6 +1784,43 @@ Content-Type: application/json
 ```
 
 ### Send an 'rejected' feedback
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id":"13",
+  "to":"postmaster@ai.msging.net",
+  "method":"set",
+  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
+  "type":"application/vnd.iris.ai.analysis-feedback+json",
+  "resource":{
+    "feedback":"rejected",
+    "intentionId":"other_intention"
+  }  
+}
+
+```
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id":"13",
+  "to":"postmaster@ai.msging.net",
+  "method":"set",
+  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
+  "type":"application/vnd.iris.ai.analysis-feedback+json",
+  "resource":{
+    "feedback":"rejected",
+    "intentionId":"other_intention"
+  }  
+}
+
+```
 
 
 ```http
@@ -597,6 +1840,31 @@ Authorization: Key {YOUR_TOKEN}
   }  
 }
 
+```
+
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "13",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"  
+}
+```
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "13",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"  
+}
 ```
 
 ```http

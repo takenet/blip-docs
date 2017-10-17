@@ -34,15 +34,13 @@ The **tunnel** extension allows routing and exchange of messages and notificatio
 
 This feature is useful for **isolating different parts of navigation in independent bots** with 
 
-#### Examples
+###Creating Flow Bot(5 steps)
 
-1 - Imagine a scenario where there are two bots: **flow** and **operator**, where the first responsible for presenting an automatic navigation and the second receiving the handover of an eventual manual attendance. Only the **flow** bot is published in *Messenger* and it needs, at a certain point in its flow, to forward the messages to the **operator** bot that controls the manual attendance.
+>Imagine a scenario where there are two bots: **flow** and **operator**, where the first responsible for presenting an automatic navigation and the second receiving the handover of an eventual manual attendance. Only the **flow** bot is published in *Messenger* and it needs, at a certain point in its flow, to forward the messages to the **operator** bot that controls the manual attendance.
 
 The complete path of a message from this external channel to the service bot is:
 
-**Bot receive a message from Mesengnger**
-
-The main bot receives a message from a Messenger user.
+>The main bot receives a message from a Messenger user.
 
 ```
 {
@@ -54,9 +52,7 @@ The main bot receives a message from a Messenger user.
 }
 ```
 
-### Flow bot fowards the message to another bot
-
-According to its internal rules, the flow bot decides to forward this message to the operator bot. To do this, it changes the recipient of the message and sends it as bellow:
+>According to its internal rules, the flow bot decides to forward this message to the operator bot. To do this, it changes the recipient of the message and sends it as bellow:
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -72,9 +68,7 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-### Receive message from the server
-
-Internally, the server creates an **id** for the tunnel and forwards the message to the **operator** bot, which receives it as follows:
+>Internally, the server creates an **id** for the tunnel and forwards the message to the **operator** bot, which receives it as follows:
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -91,12 +85,7 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 
-
-
-
-### Operator bot fowards message to source address
-
-The operator bot generates a reply to the message and forwards it to the source address, **without differentiating a message received directly from a channel** (the same goes for received/consumed notifications):
+>The operator bot generates a reply to the message and forwards it to the source address, **without differentiating a message received directly from a channel** (the same goes for received/consumed notifications):
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -112,9 +101,7 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-### Server changes the address
-
-The server uses the tunnel **id** to change the address of the response message and forwards it to the **flow** bot:
+>The server uses the tunnel **id** to change the address of the response message and forwards it to the **flow** bot:
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -130,9 +117,7 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-### Bot redirect message to final destiny
-
-The bot flow identifies the message received from a **receiver**, decodes the original address that is in **instance** and sends the message to the final recipient:
+>The bot flow identifies the message received from a **receiver**, decodes the original address that is in **instance** and sends the message to the final recipient:
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -148,7 +133,11 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-### Example 2 
+###Querying information
+
+The **tunnel** extension also allows querying information from the message originator in the **directory**, as long as the information is stored in the contact roster of the **sender** bot. To use this feature, the bot just need to send a common directory request:
+
+>Sending a command to the query in the directory using the the tunnel **id**:
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -163,7 +152,7 @@ Authorization: Key {YOUR_TOKEN}
     "uri": "lime://tunnel.msging.net/accounts/ecb99cf5-fb5c-4376-8acd-4b478091de15"
 }
 ```
-The server identifies that the query is for a tunnel user and performs the query **on behalf of the sender** directly in its contacts roster and returns the information:
+>The server identifies that the query is for a tunnel user and performs the query **on behalf of the sender** directly in its contacts roster and returns the information:
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -184,8 +173,5 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-The **tunnel** extension also allows querying information from the message originator in the **directory**, as long as the information is stored in the contact roster of the **sender** bot. To use this feature, the bot just need to send a common directory request:
-
-Sending a command to the query in the directory using the the tunnel **id**:
 
 For more information about the contacts extension, please refer to the [extension documentation](https://portal.blip.ai/#/docs/extensions/contacts).
