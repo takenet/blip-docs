@@ -245,7 +245,6 @@ public class CollectionMultimidiaMenu : IMessageReceiver
 private readonly ISender _sender;
 private readonly Settings _settings;
 
-Document[] documents;
 JsonDocument jsonDocuments;
 JsonDocument jsonDocuments2;
 JsonDocument jsonDocuments3;

@@ -17,7 +17,6 @@ namespace MessageTypes
   {
       private readonly ISender _sender;
       private readonly Settings _settings;
-      private  readonly JsonDocument JsonDocuments;
 
       public OptionNativeContentReceiver(ISender sender)
       {
@@ -65,6 +64,14 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 >2 - Sending an **[airline boardingpass template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/airline-boardingpass-template)** message type to Messenger:
+
+```csharp
+/*
+No examples for C# here
+still possible but is too huge for this doc
+*/
+```
+
 
 ```javascript
     client.sendMessage({

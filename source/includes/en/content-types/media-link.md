@@ -29,12 +29,13 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 
     var document = new MediaLink
     {
-     
+        Title = "Cat",
         Text = "Here is a cat image for you!",
-        Size = 227791,
         Type = MediaType.Parse("image/jpeg"),
-        PreviewUri = previewUri,
-        Uri = imageUri
+        AspectRatio = "1:1",
+        Size = 227791,
+        Uri = imageUri,
+        PreviewUri = previewUri
     };
 
     await _sender.SendMessageAsync(document, message.From, cancellationToken);

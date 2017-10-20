@@ -36,7 +36,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
                 {
                     Currency = "BRL",
                     Unit = 10,
-                    Description = "Item 1",
+                    Description = "Subscription for product: Hit",
                     Quantity = 1,
                     Total = 10
                 }

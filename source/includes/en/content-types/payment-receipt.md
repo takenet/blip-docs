@@ -29,24 +29,24 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
             break;
         case InvoiceStatusStatus.Completed:
             await _sender.SendMessageAsync("Thank you for your payment, this is only a test", message.From, cancellationToken);
-            var paymentReceipt = new PaymentReceipt
+            var document = new PaymentReceipt
             {
                 Currency = "BLR",
+                Total = 10
                 Items =
                     new[]
                     {
                         new InvoiceItem
                         {
                             Currency = "BRL",
-                            Unit = 1,
-                            Description = "Some product",
-                            Quantity = 1,
-                            Total = 1
+                            Unit = 10,
+                            Description = "Item 1",
+                            Quantity = 10,
+                            Total = 10
                         }
                     },
-                Total = 1
             };
-            await _sender.SendMessageAsync(paymentReceipt, message.From, cancellationToken);
+            await _sender.SendMessageAsync(document, message.From, cancellationToken);
             break;
         case InvoiceStatusStatus.Refunded:
             await _sender.SendMessageAsync("Ok, your payment was refunded by PagSeguro!", message.From, cancellationToken);
