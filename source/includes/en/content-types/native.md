@@ -27,10 +27,10 @@ namespace MessageTypes
       
       public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
       {
-          JsonDocument jsonDocuments = new JsonDocument();
-          JsonDocuments.Add("text", "hello, world!");
+          JsonDocument document = new JsonDocument();
++         document.Add("text", "hello, world!"); //exemplo funcional no messenger
 
-          await _sender.SendMessageAsync(JsonDocuments, message.From, cancellationToken);
+          await _sender.SendMessageAsync(document, message.From, cancellationToken);
       }
   }
 

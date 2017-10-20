@@ -1,4 +1,72 @@
-## Menu
+## Select
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+//Send an options list to give your client the choice between multiple answers using Select type:
+public class PlainTextMessageReceiver : IMessageReceiver
+{
+private readonly ISender _sender;
+private readonly Settings _settings;
+
+public PlainTextMessageReceiver(ISender sender, Settings settings)
+{
+    _sender = sender;
+    _settings = settings;
+}
+
+public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+{
+    jsonDocuments = new JsonDocument();
+    jsonDocuments.Add("Key1", "value1");
+    jsonDocuments.Add("Key2", "2");
+
+    var document = new Select
+    {
+        Text = "Choice an option:",
+        Options = new SelectOption[]
+        {
+            new SelectOption
+            {
+                Order = 1,
+                Text = "First option!",
+                Value = new PlainText { Text = "1" }
+            },
+            new SelectOption
+            {
+                Order = 2,
+                Text = "Second option",
+                Value = new PlainText { Text = "2" }
+            },
+            new SelectOption
+            {
+                Order = 3,
+                Text = "Third option",
+                Value = jsonDocuments
+            }
+        }
+    };
+
+    await _sender.SendMessageAsync(document, message.From, cancellationToken);
+}
+
+}
+Note:
+
+//NOTE:
+//Value field is optional, if informed your value will be sent to the chatbot when the user choice the option.
+//If Value field is not provided, will must provide one of the fields: Order or Text. The Order field will be used only if Value and Text is not provided.
+//
+//Limitations:
+//Facebook Messenger: Limite of 3 options, in other case your message will not be delivered. 
+//If is nedded to send more than 3 options is necessary send multiple messages.
+//Tangram SMS: The Value field will be ignored. Only the Order field will be sent if the option be selected.
+```
 
 ```javascript
 client.sendMessage({
@@ -73,70 +141,22 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 
 ### Menu with numbered options
 
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Lime.Messaging.Contents;
-using Lime.Protocol;
-using Take.Blip.Client;
-//Send an options list to give your client the choice between multiple answers using Select type:
-public class PlainTextMessageReceiver : IMessageReceiver
-{
-private readonly ISender _sender;
-private readonly Settings _settings;
 
-public PlainTextMessageReceiver(ISender sender, Settings settings)
-{
-    _sender = sender;
-    _settings = settings;
-}
-
-public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
-{
-    var document = new Select
-    {
-        Text = "Choice an option:",
-        Options = new []
-        {
-            new SelectOption
-            {   
-                Order = 1,
-                Text = "An inspire text!",
-                Value = new PlainText { Text = "1" }
-            },
-            new SelectOption
-            {
-                Order = 2,
-                Text = "A motivational image!",
-                Value = new PlainText { Text = "2" }
-            },
-            new SelectOption
-            {
-                Order = 3,
-                Text = "An interesting link!",
-                Value = new PlainText { Text = "3" }
-            }
-        }
-    };
-
-    await _sender.SendMessageAsync(document, message.From, cancellationToken);
-}
-
-}
-Note:
-
-//NOTE:
-//Value field is optional, if informed your value will be sent to the chatbot when the user choice the option.
-//If Value field is not provided, will must provide one of the fields: Order or Text. The Order field will be used only if Value and Text is not provided.
-//
-//Limitations:
-//Facebook Messenger: Limite of 3 options, in other case your message will not be delivered. 
-//If is nedded to send more than 3 options is necessary send multiple messages.
-//Tangram SMS: The Value field will be ignored. Only the Order field will be sent if the option be selected.
-```
 > JSON 1
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "f8cf7a7a-be4f-473a-8516-60d55534b5a6",
+    "from": "1042221589186385@messenger.gw.msging.net",
+    "to": "blipcontact@msging.net",
+    "type": "text/plain",
+    "content": "First option"
+}
+```
 
 ```javascript
     client.sendMessage({
@@ -163,6 +183,20 @@ Authorization: Key {YOUR_TOKEN}
 
 >JSON 2
 
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "76CB408D-39E6-4212-8AA1-7435B42A6993",
+    "from": "1042221589186385@messenger.gw.msging.net",
+    "to": "blipcontact@msging.net",
+    "type": "text/plain",
+    "content": "Second option"
+}
+```
+
 ```javascript
 client.sendMessage({
       id: Lime.Guid(),
@@ -187,6 +221,23 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 >JSON 3
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "035E675C-D25B-437D-80BD-057AD6F70671",
+    "from": "1042221589186385@messenger.gw.msging.net",
+    "to": "blipcontact@msging.net",
+    "type": "application/json",
+    "content": {
+        "key1":"value1",
+        "key2":2
+    }
+}
+```
 
 ```javascript
 client.sendMessage({

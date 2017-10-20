@@ -164,7 +164,7 @@ client.sendMessage({
                 value: {
                     text: "Welcome to our store!",
                     type: "image/jpeg",
-                    uri: "http://petersapparel.parseapp.com/img/item100-thumb.png"
+                    uri: "http://www.petshoplovers.com/wp-content/uploads/2014/03/CUIDADOS-B%C3%81SICOS-PARA-CRIAR-COELHOS.jpg"
                 }
             },
             {
@@ -204,7 +204,7 @@ Authorization: Key {YOUR_TOKEN}
 				"value": {
 					"text": "Welcome to our store!",
 					"type": "image/jpeg",
-					"uri": "http://petersapparel.parseapp.com/img/item100-thumb.png"
+					"uri": "http://www.petshoplovers.com/wp-content/uploads/2014/03/CUIDADOS-B%C3%81SICOS-PARA-CRIAR-COELHOS.jpg"
 				}
 			},
 			{
@@ -246,102 +246,128 @@ private readonly ISender _sender;
 private readonly Settings _settings;
 
 Document[] documents;
-JsonDocument JsonDocuments; 
+JsonDocument jsonDocuments;
+JsonDocument jsonDocuments2;
+JsonDocument jsonDocuments3;
 
 public CollectionMultimidiaMenu(ISender sender)
 {
-_sender = sender;   
+    _sender = sender;   
 }
 
-JsonDocument JsonDocuments = new JsonDocument();
-JsonDocuments.Add("Key1", "value1");
-JsonDocuments.Add("Key2", "2");
 DocumentSelect[] documents = new DocumentSelect[]
 {
-new DocumentSelect
-{
-    Header = new DocumentContainer
-    {
-        Value = new MediaLink
-        {
-            Title = "Title",
-            Text = "This is a first item",
-            Type = "image/jpeg",
-            Uri = new Uri("http://www.isharearena.com/wp-content/uploads/2012/12/wallpaper-281049.jpg"),
-        }
-    },
-    Options = new DocumentSelectOption[]
-    {
-        new DocumentSelectOption
-        {
-            Label = new DocumentContainer
-            {
-                Value = new WebLink
-                {
-                    Title = "Link",
-                    Uri = new Uri("https://server.com/first/link1")
-                }
-            }
-        },
-        new DocumentSelectOption
-        {
-            Label = new DocumentContainer
-            {
-                Value = new PlainText
-                {
-                    Text = "Text 1"
-                }
-            },
-            Value = new DocumentContainer
-            {
-                Value = JsonDocuments
-            }
-        }
-    }
-},
-new DocumentSelect
-{
-    Header = new DocumentContainer
-    {
-        Value = new MediaLink
-        {
-            Title = "Title 2",
-            Text = "This is another item",
-            Type = "image/jpeg",
-            Uri = new Uri("http://www.freedigitalphotos.net/images/img/homepage/87357.jpg")
-        }
-    },
-    Options = new DocumentSelectOption[]
-    {
-        new DocumentSelectOption
-        {
-            Label = new DocumentContainer
-            {
-                Value = new WebLink
-                {
-                    Title = "Second link",
-                    Text = "Weblink",
-                    Uri = new Uri("https://server.com/second/link2")
-                }
-            }
-        },
-        new DocumentSelectOption
-        {
-            Label = new DocumentContainer
-            {
-                Value = new PlainText {
-                    Text = "Second text"
-                }
-            },
-            Value = new DocumentContainer
-            {
-                Value = JsonDocuments
-            }
-        }
-    }
-}
+    jsonDocuments = new JsonDocument();
+    jsonDocuments2 = new JsonDocument();    
+    jsonDocuments3 = new JsonDocument();
 
-};
+    jsonDocuments.Add("Key1", "value1");
+    jsonDocuments.Add("Key2", "2");
+
+    jsonDocuments2.Add("Key3", "value3");
+    jsonDocuments2.Add("Key4", "4");
+
+    jsonDocuments3.Add("Key5", "value5");
+    jsonDocuments3.Add("Key6", "6");
+
+    DocumentSelect[] documents = new DocumentSelect[]
+    {
+        new DocumentSelect
+        {
+            Header = new DocumentContainer
+            {
+                Value = new MediaLink
+                {
+                    Title = "Title",
+                    Text = "This is a first item",
+                    Type = "image/jpeg",
+                    Uri = new Uri("http://www.isharearena.com/wp-content/uploads/2012/12/wallpaper-281049.jpg"),
+                }
+            },
+            Options = new DocumentSelectOption[]
+            {
+                new DocumentSelectOption
+                {
+                    Label = new DocumentContainer
+                    {
+                        Value = new WebLink
+                        {
+                            Title = "Link",
+                            Uri = new Uri("http://www.adoteumgatinho.org.br/")
+                        }
+                    }
+                },
+                new DocumentSelectOption
+                {
+                    Label = new DocumentContainer
+                    {
+                        Value = new PlainText
+                        {
+                            Text = "Text 1"
+                        }
+                    },
+                    Value = new DocumentContainer
+                    {
+                        Value = jsonDocuments
+                    }
+                }
+            }
+        },
+        new DocumentSelect
+        {
+            Header = new DocumentContainer
+            {
+                Value = new MediaLink
+                {
+                    Title = "Title 2",
+                    Text = "This is another item",
+                    Type = "image/jpeg",
+                    Uri = new Uri("http://www.freedigitalphotos.net/images/img/homepage/87357.jpg")
+                }
+            },
+            Options = new DocumentSelectOption[]
+            {
+                new DocumentSelectOption
+                {
+                    Label = new DocumentContainer
+                    {
+                        Value = new WebLink
+                        {
+                            Title = "Second link",
+                            Text = "Weblink",
+                            Uri = new Uri("https://pt.dreamstime.com/foto-de-stock-brinquedo-pl%C3%A1stico-amarelo-do-pato-image44982058")
+                        }
+                    }
+                },
+                new DocumentSelectOption
+                {
+                    Label = new DocumentContainer
+                    {
+                        Value = new PlainText {
+                            Text = "Second text"
+                        }
+                    },
+                    Value = new DocumentContainer
+                    {
+                        Value = jsonDocuments2
+                    }
+                },
+                new DocumentSelectOption
+                {
+                    Label = new DocumentContainer
+                    {
+                        Value = new PlainText {
+                            Text = "More one text"
+                        }
+                    },
+                    Value = new DocumentContainer
+                    {
+                        Value = jsonDocuments3
+                    }
+                }
+            }
+        }
+    };
 
 public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
 {
@@ -379,7 +405,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
                                 type: "application/vnd.lime.web-link+json",
                                 value: {
                                     title: "Link",
-                                    uri: "https://server.com/first/link1"
+                                    uri: "http://www.adoteumgatinho.org.br/"
                                 }
                             }
                         },
@@ -415,7 +441,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
                                 value: {
                                     title: "Second link",
                                     text: "Weblink",
-                                    uri: "https://server.com/second/link2"
+                                    uri: "https://pt.dreamstime.com/foto-de-stock-brinquedo-pl%C3%A1stico-amarelo-do-pato-image44982058"
                                 }
                             }
                         },
@@ -480,7 +506,7 @@ Authorization: Key {YOUR_TOKEN}
                             "type": "application/vnd.lime.web-link+json",
                             "value": {
                                 "title": "Link",
-                                "uri": "https://server.com/first/link1"
+                                "uri": "http://www.adoteumgatinho.org.br"
                             }
                         }
                     },
@@ -516,7 +542,7 @@ Authorization: Key {YOUR_TOKEN}
                             "value": {
                                 "title": "Second link",
                                 "text": "Weblink",
-                                "uri": "https://server.com/second/link2"
+                                "uri": "https://pt.dreamstime.com/foto-de-stock-brinquedo-pl%C3%A1stico-amarelo-do-pato-image44982058"
                             }
                         }
                     },

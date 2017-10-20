@@ -96,8 +96,8 @@ client.sendMessage({
           value: {  
               title: "Classic T-Shirt Collection",
               text: "See all our colors",
-              previewUri: "https://peterssendreceiveapp.ngrok.io/img/collection.png",
-              uri: "https://peterssendreceiveapp.ngrok.io/shop_collection?",
+              previewUri: "http://streetwearvilla.com/image/cache/data/Products/Supreme/T-shirt/supreme-box-logo-t-shirt-collection-600x600.png",
+              uri: "http://streetwearvilla.com/supreme-box-logo-t-shirt-white",
               target: "selfTall"
           }
       },
@@ -107,8 +107,8 @@ client.sendMessage({
               value:{  
                   title: "Classic White T-Shirt",
                   text: "100% Cotton, 200% Comfortable",
-                  previewUri: "https://peterssendreceiveapp.ngrok.io/img/white-t-shirt.png",
-                  uri: "https://peterssendreceiveapp.ngrok.io/view?item=100",
+                  previewUri: "http://www.plainwhitetshirt.co.uk/image/cache/catalog/images/GD010vwhiteteegildan-750x750.jpg",
+                  uri: "http://www.plainwhitetshirt.co.uk/gildan-soft-style-white-vneck-tshirt",
                   target: "selfTall"
               }
           },
@@ -117,8 +117,8 @@ client.sendMessage({
               value:{  
                   title: "Classic Blue T-Shirt",
                   text: "100% Cotton, 200% Comfortable",
-                  previewUri: "https://peterssendreceiveapp.ngrok.io/img/blue-t-shirt.png",
-                  uri: "https://peterssendreceiveapp.ngrok.io/view?item=101",
+                  previewUri: "https://cdn.shopify.com/s/files/1/1475/5420/products/Classic_Blue_Front_12068_1024x1024.jpg?",
+                  uri: "https://www.theringboxingclubshop.com/products/ring-classic-blue-t-shirt",
                   target: "selfTall"
               }
           },
@@ -127,8 +127,8 @@ client.sendMessage({
               value:{  
                   title: "Classic Black T-Shirt",
                   text: "100% Cotton, 200% Comfortable",
-                  previewUri: "https://peterssendreceiveapp.ngrok.io/img/black-t-shirt.png",
-                  uri: "https://peterssendreceiveapp.ngrok.io/view?item=102",
+                  previewUri: "http://www.lvnlifestyle.com/wp-content/uploads/2014/08/mens.black_.tshirt.jpg",
+                  uri: "http://www.lvnlifestyle.com/product/black-mens-bamboo-organic-cotton-classic-t-shirt/",
                   target: "selfTall"
               }
           }
@@ -152,8 +152,8 @@ Authorization: Key {YOUR_TOKEN}
       "value":{  
         "title":"Classic T-Shirt Collection",
         "text":"See all our colors",
-        "previewUri":"https://peterssendreceiveapp.ngrok.io/img/collection.png",
-        "uri":"https://peterssendreceiveapp.ngrok.io/shop_collection?messengerExtensions=true",
+        "previewUri":"http://streetwearvilla.com/image/cache/data/Products/Supreme/T-shirt/supreme-box-logo-t-shirt-collection-600x600.png",
+        "uri":"http://streetwearvilla.com/supreme-box-logo-t-shirt-whitemessengerExtensions=true",
         "target":"selfTall"
       }
     },
@@ -163,8 +163,8 @@ Authorization: Key {YOUR_TOKEN}
         "value":{  
           "title":"Classic White T-Shirt",
           "text":"100% Cotton, 200% Comfortable",
-          "previewUri":"https://peterssendreceiveapp.ngrok.io/img/white-t-shirt.png",
-          "uri":"https://peterssendreceiveapp.ngrok.io/view?item=100&messengerExtensions=true",
+          "previewUri":"http://www.plainwhitetshirt.co.uk/image/cache/catalog/images/GD010vwhiteteegildan-750x750.jpg",
+          "uri":"http://www.plainwhitetshirt.co.uk/gildan-soft-style-white-vneck-tshirt&messengerExtensions=true",
           "target":"selfTall"
         }
       },
@@ -173,8 +173,8 @@ Authorization: Key {YOUR_TOKEN}
         "value":{  
           "title":"Classic Blue T-Shirt",
           "text":"100% Cotton, 200% Comfortable",
-          "previewUri":"https://peterssendreceiveapp.ngrok.io/img/blue-t-shirt.png",
-          "uri":"https://peterssendreceiveapp.ngrok.io/view?item=101&messengerExtensions=true",
+          "previewUri":"https://cdn.shopify.com/s/files/1/1475/5420/products/Classic_Blue_Front_12068_1024x1024.jpg?",
+          "uri":"https://www.theringboxingclubshop.com/products/ring-classic-blue-t-shirt&messengerExtensions=true",
           "target":"selfTall"
         }
       },
@@ -183,8 +183,8 @@ Authorization: Key {YOUR_TOKEN}
         "value":{  
           "title":"Classic Black T-Shirt",
           "text":"100% Cotton, 200% Comfortable",
-          "previewUri":"https://peterssendreceiveapp.ngrok.io/img/black-t-shirt.png",
-          "uri":"https://peterssendreceiveapp.ngrok.io/view?item=102&messengerExtensions=true",
+          "previewUri":"http://www.lvnlifestyle.com/wp-content/uploads/2014/08/mens.black_.tshirt.jpg",
+          "uri":"http://www.lvnlifestyle.com/product/black-mens-bamboo-organic-cotton-classic-t-shirt/&messengerExtensions=true",
           "target":"selfTall"
         }
       }

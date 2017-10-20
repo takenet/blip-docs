@@ -88,7 +88,7 @@ public class SpecificRedirectPassingContext : IMessageReceiver
     {
        var document = new Redirect
         {
-            Address = "atendimento",
+            Address = "mysdkbot@msging.net",
             Context = new DocumentContainer {
                 Value = new PlainText {
                     Text = "Get Started"

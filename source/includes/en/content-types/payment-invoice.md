@@ -28,19 +28,19 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
     {
         Currency = "BLR",
         DueTo = DateTime.Now.AddDays(1),
+        Total = 10,
         Items =
-            new[]
+            new InvoiceItem[]
             {
                 new InvoiceItem
                 {
                     Currency = "BRL",
-                    Unit = 1,
-                    Description = "Some product",
+                    Unit = 10,
+                    Description = "Item 1",
                     Quantity = 1,
-                    Total = 1
+                    Total = 10
                 }
             },
-        Total = 1
     };
 
     var toPagseguro = $"{Uri.EscapeDataString(message.From.ToIdentity().ToString())}@pagseguro.gw.msging.net";
