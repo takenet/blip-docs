@@ -24,15 +24,18 @@ public PlainTextMessageReceiver(ISender sender, Settings settings)
 
 public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
 {
-    var imageUri = new Uri("https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/200px-A_small_cup_of_coffee.JPG", UriKind.Absolute);
+    var imageUri = new Uri("http://2.bp.blogspot.com/-pATX0YgNSFs/VP-82AQKcuI/AAAAAAAALSU/Vet9e7Qsjjw/s1600/Cat-hd-wallpapers.jpg", UriKind.Absolute);
+    var previewUri = new Uri("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8qkelB28RstsNxLi7gbrwCLsBVmobPjb5IrwKJSuqSnGX4IzX", UriKind.Absolute);
 
     var document = new MediaLink
     {
-        Text = "Coffe, what else ?",
-        Size = 6679,
+        Title = "Cat",
+        Text = "Here is a cat image for you!",
         Type = MediaType.Parse("image/jpeg"),
-        PreviewUri = imageUri,
-        Uri = imageUri
+        AspectRatio = "1:1",
+        Size = 227791,
+        Uri = imageUri,
+        PreviewUri = previewUri
     };
 
     await _sender.SendMessageAsync(document, message.From, cancellationToken);

@@ -63,7 +63,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
                     Title = "Welcome to mad hatter",
                     Text = "Here we have the best hats for your head.",
                     Type = "image/jpeg",
-                    Uri = new Uri("http://petersapparel.parseapp.com/img/item100-thumb.png"),
+                    Uri = new Uri("http://i.overboard.com.br/imagens/produtos/0741720126/Ampliada/chapeu-new-era-bucket-print-vibe.jpg"),
                     AspectRatio = "1.1"
                 }
             },
@@ -206,7 +206,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
                         Value = new Input {
                             Label = new DocumentContainer {
                                 Value = new PlainText {
-                                    Text = "Teste"
+                                    Text = "Press Button"
                                 }
                             },
                             Validation = new InputValidation

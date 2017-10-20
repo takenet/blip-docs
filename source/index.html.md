@@ -40,7 +40,7 @@ includes:
   - en/content-types/select
   - en/content-types/payment-receipt
   - en/content-types/web-link
-  - en/content-types/invoice
+  - en/content-types/payment-invoice
   - en/content-types/native
   - en/content-types/sensitive
   - en/content-types/input
