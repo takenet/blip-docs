@@ -193,7 +193,7 @@ namespace Extensions
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
-            await _broadcastExtension.GetAllDistributionListAsync(cancellationToken);
+            await _broadcastExtension.GetAllDistributionListsAsync(cancellationToken);
         }
     }
 }
