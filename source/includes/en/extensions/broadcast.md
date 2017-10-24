@@ -125,6 +125,82 @@ namespace Extensions
 
 Before to make a broadcast is necessary create a distribution list and add some members. To create a distribution list with `your_distributionList` identifier you must send command with `SET` method and a `resource` document with identity equals to `your_distributionList@broadcast.msging.net`.
 
+### Get all lists
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    "id": "1",
+    "to": "postmaster@broadcast.msging.net",
+    "method": "get",
+    "uri": "/lists"
+  });
+});
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "6",
+  "to": "postmaster@broadcast.msging.net",
+  "method": "get",
+  "uri": "/lists"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "6",
+  "from": "postmaster@broadcast.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "get",
+  "status": "success",
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+    "total": 2,
+    "itemType": "application/vnd.lime.identity",
+    "items": [
+      "list1@msging.net",
+      "contact+senders@msging.net"
+    ]
+  }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Extensions.Broadcast;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private readonly IBroadcastExtension _broadcastExtension;
+
+        public SampleMessageReceiver(IBroadcastExtension broadcastExtension)
+        {
+            _broadcastExtension = broadcastExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            await _broadcastExtension.GetAllDistributionListsAsync(cancellationToken);
+        }
+    }
+}
+```
+
+To get all distribution lists associated with you chatbot you must send a command with `GET` method.
+
 ### Add a member to list
 
 ```javascript
