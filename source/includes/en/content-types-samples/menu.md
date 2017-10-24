@@ -9,5 +9,21 @@ The persistent menu can be set for your bot to help people discover and more eas
 
 You can send menu by using [Select](http://boyce.local:4567/#select)
 
-<img src="https://scontent.fplu11-1.fna.fbcdn.net/v/t39.2365-6/16686128_804279846389859_443648268883197952_n.png?oh=6b7525a63b840156924fcb6e5eff948e&oe=5A7337D6"></img>
-
+<div style="margin-left:0;">
+<div style="display: inline-block; width:30%">
+<figure style="margin-right: 25px;">
+    <span>
+        <img src="//i.imgur.com/kUKDlyb.png"></img>
+    </span>
+    <figcaption style="font-size:0.6em">Messenger</figcaption>
+</figure>
+</div>
+<div style="display: inline-block">
+<figure style="margin: 0">
+    <span>
+        <img src="https://uploaddeimagens.com.br/images/001/147/188/original/MenuBlipChat.png?1508858013" width="65%"></img>
+    </span>
+    <figcaption style="font-size:0.6em">BLiP Chat</figcaption>
+</figure>
+</div>
+</div>
