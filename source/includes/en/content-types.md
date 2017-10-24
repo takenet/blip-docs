@@ -1,7 +1,7 @@
 # Content Types
 
 ```csharp
-If you want to see all content-types working clone our SDK C# sample project on github:
+If you want to see all content-types working clone our SDK sample project:
 github.com/takenet/blip-sdk-csharp/tree/master/src/Samples/MessageTypes
 ```
 
