@@ -28,6 +28,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 
     var document = new Select
     {
+        //Scope = SelectScope.Immediate, (create a quickreply instead menu)
         Text = "Choice an option:",
         Options = new SelectOption[]
         {

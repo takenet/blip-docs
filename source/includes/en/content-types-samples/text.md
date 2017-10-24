@@ -1,24 +1,8 @@
-## Text
+## Texto
 | MIME type                |
 |--------------------------|
 | text/plain               |
 
-Allows sending and receiving simple text messages.
+You can send text by using the [Plain Text](http://boyce.local:4567/#text) content type
 
-
-For more details, check the especification of [LIME protocol](http://limeprotocol.org/content-types.html#text).
-
-<aside class="notice">
-Note: Some channels may have limit of characters
-</aside>
-
-#### Channel mapping
-
-| Channel              | Type                    | 
-|----------------------|-------------------------|
-| BLiP Chat            | Text                   |
-| Messenger            | [Text message](https://developers.facebook.com/docs/messenger-platform/send-api-reference/text-message)|
-| SMS                  | Text                   |
-| Skype                | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1)|
-| Telegram             | [Message](https://core.telegram.org/bots/api#message)|
-
+<img src="https://uploaddeimagens.com.br/images/001/145/313/original/PlainText%28Pt%29.png" width="50%"></img>

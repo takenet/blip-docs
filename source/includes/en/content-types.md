@@ -1,4 +1,9 @@
-### Content Types
+# Content Types
+
+```csharp
+If you want to see all content-types working clone our SDK C# sample project on github:
+github.com/takenet/blip-sdk-csharp/tree/master/src/Samples/MessageTypes
+```
 
 The **BLiP** uses message content types defined by LIME protocol and performs the conversion of these types to the most adequate format on each destination channel. For more details, check the [LIME protocol content types](http://limeprotocol.org/content-types.html) specification.
 

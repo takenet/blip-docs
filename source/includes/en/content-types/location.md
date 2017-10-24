@@ -120,7 +120,8 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
             }
         },
         Validation = new InputValidation{
-            Rule = InputValidationRule.Type
+            Rule = InputValidationRule.Type,
+            Type = Location.MediaType
         }
     };
 

@@ -29,7 +29,7 @@ includes:
   - --Authentication
   - en/auth  
 
-  - --Content Types
+  - en/content-types
   - en/content-types/text
   - en/content-types/media-link
   - en/content-types/chatstate
@@ -44,9 +44,21 @@ includes:
   - en/content-types/native
   - en/content-types/sensitive
   - en/content-types/input
-
   - en/content-types/resource
   - en/content-types/redirect
+
+  - --Content Types Samples
+  - en/content-types-samples/text
+  - en/content-types-samples/images
+  - en/content-types-samples/gif
+  - en/content-types-samples/audio
+  - en/content-types-samples/video
+  - en/content-types-samples/documents
+  - en/content-types-samples/carousel
+  - en/content-types-samples/quickreply
+  - en/content-types-samples/menu
+  - en/content-types-samples/send-location
+  - en/content-types-samples/receive-location
 
   - en/extensions
   - en/extensions/event-track
@@ -61,7 +73,7 @@ includes:
   - en/extensions/artificial-intelligence
   - en/extensions/delegation
   - en/extensions/tunnel
-  
+
   - --Integrations
   - en/channels/blip-chat
   - en/channels/mailgun
