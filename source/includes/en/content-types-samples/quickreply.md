@@ -19,12 +19,12 @@ You can send quick replies by using [Select](http://boyce.local:4567/#select)
     <figcaption style="font-size:0.6em">Messenger</figcaption>
 </figure>
 </div>
-<div style="display: inline-block">
+<!-- <div style="display: inline-block">
 <figure style="margin: 0">
     <span>
         <img src="https://uploaddeimagens.com.br/images/001/147/197/original/QuickReplyBlipChat.png?1508858636" width="65%"></img>
     </span>
     <figcaption style="font-size:0.6em">BLiP Chat</figcaption>
 </figure>
-</div>
+</div> -->
 </div>
