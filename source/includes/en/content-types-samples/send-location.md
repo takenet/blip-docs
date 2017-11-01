@@ -9,23 +9,13 @@ You can send location by using [location](http://boyce.local:4567/#location)
 
 Sending a location with latitude, longitude and altitude:
 
-<div style="margin-left:10px;">
-
-<div style="display: inline-block;">
-<figure style="margin-right: 15px;width:60%">
-    <span>
+<div class="container six columns" style="padding:0 58px">
+    <div  class="six columns" style="padding-right:10px;">
         <img src="images/input_location_mssngr.png"></img>
-    </span>
-    <figcaption style="font-size:0.6em">Messenger</figcaption>
-</figure>
-</div>
-
-<div style="display: inline-block;">
-<figure style="margin: 0;width:60%">
-    <span>
+        <span style="font-size:0.65em">Messenger</span>
+    </div>
+    <div class="six columns">
         <img src="https://uploaddeimagens.com.br/images/001/147/271/original/locationBlipChat.png?1508862375"></img>
-    </span>
-    <figcaption style="font-size:0.6em">BLiP Chat</figcaption>
-</figure>
-</div>
+        <span style="font-size:0.65em">BLiP Chat</span>
+    </div>
 </div>

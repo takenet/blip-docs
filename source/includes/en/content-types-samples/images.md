@@ -7,23 +7,13 @@
 
 You can send images by uploading them or sharing a URL using the [Media Link](http://boyce.local:4567/#media-link) content type. Supported formats are jpg, png and gif.
 
-<div style="margin-left:10px;">
-
-<div style="display: inline-block;">
-<figure style="margin-right: 15px;width:60%">
-    <span>
+<div class="container six columns" style="padding:0 58px">
+    <div  class="six columns" style="padding-right:10px;">
         <img src="images/img_mssngr.png"></img>
-    </span>
-    <figcaption style="font-size:0.6em">Messenger</figcaption>
-</figure>
-</div>
-
-<div style="display: inline-block;">
-<figure style="margin: 0;width:60%">
-    <span>
+        <span style="font-size:0.65em">Messenger</span>
+    </div>
+    <div class="six columns">
         <img src="https://uploaddeimagens.com.br/images/001/147/174/original/ImageBlipChat.png?1508857785"></img>
-    </span>
-    <figcaption style="font-size:0.6em">BLiP Chat</figcaption>
-</figure>
-</div>
+        <span style="font-size:0.65em">BLiP Chat</span>
+    </div>
 </div>

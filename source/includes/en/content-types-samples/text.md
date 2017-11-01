@@ -5,24 +5,14 @@
 
 You can send text by using the [Plain Text](http://boyce.local:4567/#text) content type
 
-<div style="margin-left:10px;">
 
-<div style="display: inline-block;">
-<figure style="margin-right: 15px;width:60%">
-    <span>
+<div class="container six columns" style="padding:0 58px">
+    <div  class="six columns" style="padding-right:10px;">
         <img src="images/text_mssngr.png"></img>
-    </span>
-    <figcaption style="font-size:0.6em">Messenger</figcaption>
-</figure>
-</div>
-
-<div style="display: inline-block;">
-<figure style="margin: 0;width:60%">
-    <span>
+        <span style="font-size:0.65em">Messenger</span>
+    </div>
+    <div class="six columns">
         <img src="//i.imgur.com/2v65Nbk.png"></img>
-    </span>
-    <figcaption style="font-size:0.6em">BLiP Chat</figcaption>
-</figure>
+        <span style="font-size:0.65em">BLiP Chat</span>
+    </div>
 </div>
-</div>
-
