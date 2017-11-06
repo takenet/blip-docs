@@ -1,19 +1,14 @@
 ## Gif
 
-
-| MIME type                            |
-|--------------------------------------|
-| application/vnd.lime.media-link+json |
-
-You can send gifs by uploading them or sharing a URL using the [Media Link](http://boyce.local:4567/#media-link) content type.
+You can send gifs by uploading them or sharing a URL using the [Media Link](https://hmg-docs.blip.ai/#media-link) content type.
 
 <div class="container six columns" style="padding:0 58px">
-    <div  class="six columns">
+    <div  class="six columns" style="margin-right:10px;">
         <img src="images/gif_mssngr.png"></img>
-        <span style="font-size:0.65em">Messenger</span>
+        <span style="font-size:0.8em">Messenger</span>
     </div>
     <div class="six columns">
-        <img src="https://uploaddeimagens.com.br/images/001/147/177/original/gifBlipChat.png?1508857817"></img>
-        <span style="font-size:0.65em">BLiP Chat</span>
+        <img src="images/gifBlipChat.png"></img>
+        <span style="font-size:0.8em">BLiP Chat</span>
     </div>
 </div>

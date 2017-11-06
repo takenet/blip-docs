@@ -1,22 +1,17 @@
 ## Quick Replies
 
-
-| MIME type                            |
-|--------------------------------------|
-| application/vnd.lime.select+json |
-
 Quick replies provide a way to present a set of up to 11 buttons in-conversation that contain a title and optional image, and appear prominently above the composer. You can also use quick replies to request a person's location.
 
-You can send quick replies by using [Select](http://boyce.local:4567/#select)
+You can send quick replies by using [Select](https://hmg-docs.blip.ai/#select)
 
 
 <div class="container six columns" style="padding:0 58px">
-    <div  class="six columns" style="padding-right:10px;">
-        <img src="https://uploaddeimagens.com.br/images/001/145/459/original/b316b3f7-62ef-4a3b-8fa8-b7bcad0c83c0.jpg?1508762205"></img>
-        <span style="font-size:0.65em">Messenger</span>
+    <div  class="six columns" style="margin-right:10px;">
+        <img src="images/quickreply_mssgnr.png"></img>
+        <span style="font-size:0.8em">Messenger</span>
     </div>
     <div class="six columns">
-        <img src="https://uploaddeimagens.com.br/images/001/147/197/original/QuickReplyBlipChat.png?1508858636"></img>
-        <span style="font-size:0.65em">BLiP Chat</span>
+        <img src="images/quickReplyBlipChat.png"></img>
+        <span style="font-size:0.8em">BLiP Chat</span>
     </div>
 </div>

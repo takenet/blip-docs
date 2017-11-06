@@ -48,7 +48,7 @@ includes:
   - en/content-types/redirect
 
   - --Content Types Samples
-  - en/content-types-samples/text
+  - en/content-types-samples/texto
   - en/content-types-samples/images
   - en/content-types-samples/gif
   - en/content-types-samples/audio
