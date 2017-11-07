@@ -57,6 +57,35 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 }
 ```
 
+```javascript
+client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.select+json",
+      to: "1042221589186385@messenger.gw.msging.net",
+      content: {
+        text: "Choose an option",
+        options: [
+            {
+                text: "First option"
+            },
+            {
+                order: 2,
+                text: "Second option"
+            },
+            {
+                order: 3,
+                text: "Third option",
+                type: "application/json",
+                value: {
+                    key1: "value1",
+                    key2: 2
+                }
+            }
+        ]
+      }
+    });
+```
+
 The persistent menu can be set for your bot to help people discover and more easily access your functionality throughout the conversation.
 
 You can send menu by using [Select](/#select)

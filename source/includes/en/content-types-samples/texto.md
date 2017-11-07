@@ -32,6 +32,14 @@ namespace MessageTypes
     }
 }
 ```
+```javascript
+ client.sendMessage({
+        id: Lime.Guid(),
+        type: "text/plain",
+        to: "128271320123982@messenger.gw.msging.net",
+        content: "Welcome to our service! How can I help you?"
+        });
+```
 
 You can send text by using the [Plain Text](#plain-text) content type
 

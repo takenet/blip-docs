@@ -58,6 +58,36 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 }
 ```
 
+```javascript
+client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.select+json",
+      to: "1042221589186385@messenger.gw.msging.net",
+      content: {
+        scope:"immediate", // (create a quickreply instead menu)
+        text: "Choose an option",
+        options: [
+            {
+                text: "First option"
+            },
+            {
+                order: 2,
+                text: "Second option"
+            },
+            {
+                order: 3,
+                text: "Third option",
+                type: "application/json",
+                value: {
+                    key1: "value1",
+                    key2: 2
+                }
+            }
+        ]
+      }
+    });
+```
+
 Quick replies provide a way to present a set of up to 11 buttons in-conversation that contain a title and optional image, and appear prominently above the composer. You can also use quick replies to request a person's location.
 
 You can send quick replies by using [Select](/#select).

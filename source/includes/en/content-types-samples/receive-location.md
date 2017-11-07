@@ -33,8 +33,21 @@ namespace MessageTypes
         }
     }
 }
-
 ```
+```javascript 
+client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.location+json",
+      to: "128271320123982@messenger.gw.msging.net",
+      content: {
+        latitude: -19.919715,
+        longitude: -43.959753,
+        altitude: 853,
+        text: "Take's place"
+      }
+    });
+```
+
 
 You can send location request by using [input](/#user-input) content-type
 

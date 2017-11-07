@@ -33,6 +33,19 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 }
 ```
 
+```javascript
+client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.media-link+json",
+      to: "128271320123982@messenger.gw.msging.net",
+      content: {
+        type: "audio/mp3",
+        uri: "http://blaamandagjazzband.dk/jazz/mp3/basin_street_blues.mp3",
+        size: 3124123
+      };
+    });
+```
+
 You can send sounds by uploading them or sharing a URL using the [Media Link](/#media-link) content type.
 
 <!-- ![imagem](images/audio_mssngr.png) -->

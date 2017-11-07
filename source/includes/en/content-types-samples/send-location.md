@@ -37,7 +37,22 @@ namespace MessageTypes
         }
     }
 }
-
+```
+```javascript
+client.sendMessage({
+      id: Lime.Guid(),
+      type: "application/vnd.lime.input+json",
+      to: "128271320123982@messenger.gw.msging.net",
+      content: {
+        label: {
+          type: "text/plain",
+          value: "Send your location please!"
+        },
+        validation: {
+          rule: "type",
+          type: "application/vnd.lime.location+json"
+        }
+    });
 ```
 
 You can send location by using [location](/#location)
