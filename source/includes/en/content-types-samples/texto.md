@@ -1,15 +1,40 @@
 ## Text
 
-You can send text by using the [Plain Text](https://hmg-docs.blip.ai/#text) content type
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
 
+namespace MessageTypes
+{
+    public class OptionPlainTextMessageReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
 
-<div class="container six columns" style="padding:0 58px">
-    <div  class="six columns" style="margin-right:10px;">
-        <img src="images/text_mssngr.png"></img>
-        <span style="font-size:0.8em">Messenger</span>
-    </div>
-    <div class="six columns">
-        <img src="images/textBlipChat.png"></img>
-        <span style="font-size:0.8em">BLiP Chat</span>
-    </div>
-</div>
+        public OptionPlainTextMessageReceiver(ISender sender)
+        {
+            _sender = sender;
+        }
+
+        
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            Document document = new PlainText
+            {
+                Text = "Welcome to our service! How can I help you?"
+            };
+            await _sender.SendMessageAsync(document, message.From, cancellationToken);
+        }
+
+    }
+}
+```
+
+You can send text by using the [Plain Text](#plain-text) content type
+
+| Messenger                         | BLiPChat                              |
+|-----------------------------------|---------------------------------------|
+| ![imagem](images/text_mssngr.png) | ![imagem](images/textBlipChat.png)    |

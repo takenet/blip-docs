@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Lime.Messaging.Contents;
 using Lime.Protocol;
 using Take.Blip.Client;
-//To send media links, the message sent must have a MediaLink document as follow:
+
 public class PlainTextMessageReceiver : IMessageReceiver
 {
 private readonly ISender _sender;

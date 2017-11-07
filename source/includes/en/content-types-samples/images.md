@@ -1,7 +1,5 @@
 ## Images
 
->test
-
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -10,7 +8,7 @@ using System.Threading.Tasks;
 using Lime.Messaging.Contents;
 using Lime.Protocol;
 using Take.Blip.Client;
-//To send media links, the message sent must have a MediaLink document as follow:
+
 public class PlainTextMessageReceiver : IMessageReceiver
 {
 private readonly ISender _sender;
@@ -27,7 +25,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
     var imageUri = new Uri("http://2.bp.blogspot.com/-pATX0YgNSFs/VP-82AQKcuI/AAAAAAAALSU/Vet9e7Qsjjw/s1600/Cat-hd-wallpapers.jpg", UriKind.Absolute);
     var previewUri = new Uri("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8qkelB28RstsNxLi7gbrwCLsBVmobPjb5IrwKJSuqSnGX4IzX", UriKind.Absolute);
 
-    var document = new MediaLink
+    Document document = new MediaLink
     {
         Title = "Cat",
         Text = "Here is a cat image for you!",
@@ -43,11 +41,8 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 }
 ```
 
-You can send images by uploading them or sharing a URL using the [Media Link](https://hmg-docs.blip.ai/#media-link) content type. Supported formats are jpg, png and gif.
+You can send images by uploading them or sharing a URL using the [Media Link](/#media-link) content type. Supported formats are jpg, png and gif.
 
-![imagem](images/img_mssngr.png)
-
-<!-- 
-<img src="images/img_mssngr.png"></img>
-
-<img src="images/imageBlipChat.png"></img> -->
+| Messenger                         | BLiPChat                                   |
+|-----------------------------------|--------------------------------------------|
+| ![imagem](img_mssngr.png) | ![imagem](imageBlipChat.png)                       |

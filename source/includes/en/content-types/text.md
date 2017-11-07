@@ -1,4 +1,4 @@
-## Text
+## Plain Text
 | MIME type                |
 |--------------------------|
 | text/plain               |
