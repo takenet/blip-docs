@@ -1,5 +1,7 @@
 ## Select
 
+>Creating a menu with 3 options
+
 ```csharp
 using System;
 using System.Collections.Generic;

@@ -52,7 +52,30 @@ client.sendMessage({
           rule: "type",
           type: "application/vnd.lime.location+json"
         }
+      }
     });
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "2",
+    "to": "1334448323284655@messenger.gw.msging.net",
+    "type": "application/vnd.lime.input+json",
+    "content": {
+        "label": {
+          "type": "text/plain",
+          "value": "Send your location please!"
+        },
+        "validation": {
+          "rule": "type",
+          "type": "application/vnd.lime.location+json"
+        }
+    }
+}
 ```
 
 You can send location by using [location](/#location)

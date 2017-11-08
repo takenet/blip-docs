@@ -35,6 +35,36 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 }
 ```
 
+```javascript
+client.sendMessage({
+      id: Lime.Guid(),
+      to: "128271320123982@messenger.gw.msging.net",
+      type: "application/vnd.lime.media-link+json",
+      content: {
+        type: "image/gif",
+        uri: "http://i.giphy.com/14aUO0Mf7dWDXW.gif"
+      }
+    });
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "1",
+    "to": "553199991111@0mn.io",
+    "type": "application/vnd.lime.media-link+json",
+    "content": {
+        "uri": "http://i.giphy.com/14aUO0Mf7dWDXW.gif",
+        "type": "image/gif"
+    }
+}
+```
+
+
+
 You can send gifs by uploading them or sharing a URL using the [Media Link](/#media-link) content type.
 
 | Messenger                         | BLiPChat                                   |

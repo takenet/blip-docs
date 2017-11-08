@@ -33,8 +33,38 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 }
 ```
 
+```javascript
+client.sendMessage({
+      id: Lime.Guid(),
+      to: "128271320123982@messenger.gw.msging.net",
+      type: "application/vnd.lime.media-link+json",
+      content: {
+        type: "video/mp4",
+        uri: "http://techslides.com/demos/sample-videos/small.mp4"
+      }
+    });
+```
+
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "1",
+    "to": "553199991111@0mn.io",
+    "type": "application/vnd.lime.media-link+json",
+    "content": {
+        "uri": "http://techslides.com/demos/sample-videos/small.mp4",
+        "type": "video/mp4",
+    }
+}
+```
+
+
 You can send videos by uploading them or sharing a URL using the [Media Link](/#media-link) content type.
 
 | Messenger                         | BLiPChat                              |
 |-----------------------------------|---------------------------------------|
-|![imagem](images/mp4_mssngr.png)   |![imagem](images/audio_ms2sngr.png)    |
+|![imagem](images/mp4_mssngr.png)   |![imagem](images/isComingVideo.png)    |

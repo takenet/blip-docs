@@ -43,8 +43,7 @@ client.sendMessage({
         content: {
             "state": "composing"
         }
-    }
-);
+    });
 ```
 
 ```http

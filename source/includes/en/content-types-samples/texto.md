@@ -38,7 +38,20 @@ namespace MessageTypes
         type: "text/plain",
         to: "128271320123982@messenger.gw.msging.net",
         content: "Welcome to our service! How can I help you?"
-        });
+        })
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "1",
+    "to": "128271320123982@messenger.gw.msging.net",
+    "type": "text/plain",
+    "content": "Welcome to our service! How can I help you?"
+}
 ```
 
 You can send text by using the [Plain Text](#plain-text) content type

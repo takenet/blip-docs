@@ -42,8 +42,25 @@ client.sendMessage({
         type: "audio/mp3",
         uri: "http://blaamandagjazzband.dk/jazz/mp3/basin_street_blues.mp3",
         size: 3124123
-      };
+      }
     });
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "2",
+    "to": "553199991111@0mn.io",
+    "type": "application/vnd.lime.media-link+json",
+    "content": {
+        "type": "audio/mp3",
+        "uri": "http://blaamandagjazzband.dk/jazz/mp3/basin_street_blues.mp3",
+        "size": 3124123
+    }
+}
 ```
 
 You can send sounds by uploading them or sharing a URL using the [Media Link](/#media-link) content type.
@@ -52,4 +69,4 @@ You can send sounds by uploading them or sharing a URL using the [Media Link](/#
 
 | Messenger                         | BLiPChat                              |
 |-----------------------------------|---------------------------------------|
-| ![imagem](images/audio_mssngr.png)|![imagem](images/audio_ms2sngr.png)    |
+| ![imagem](images/audio_mssngr.png)|![imagem](images/isComing.png)    |

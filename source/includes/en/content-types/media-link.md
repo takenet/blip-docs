@@ -79,7 +79,7 @@ Authorization: Key {YOUR_TOKEN}
         size: 227791,
         previewUri: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8qkelB28RstsNxLi7gbrwCLsBVmobPjb5IrwKJSuqSnGX4IzX",
         previewType: "image/jpeg"
-      };
+      }
     });
 ```
 
@@ -136,7 +136,7 @@ Note: The metadata support varies per channel, it may be ignored if not supporte
         type: "audio/mp3",
         uri: "http://blaamandagjazzband.dk/jazz/mp3/basin_street_blues.mp3",
         size: 3124123
-      };
+      }
     });
 ```
 

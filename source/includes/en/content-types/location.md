@@ -86,6 +86,7 @@ Authorization: Key {YOUR_TOKEN}
           rule: "type",
           type: "application/vnd.lime.location+json"
         }
+      }
     });
 ```
 

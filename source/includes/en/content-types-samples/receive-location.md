@@ -48,6 +48,24 @@ client.sendMessage({
     });
 ```
 
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "1",
+    "to": "1042221589186385@messenger.gw.msging.net",
+    "type": "application/vnd.lime.location+json",
+    "content": {
+        "latitude": -19.918899,
+        "longitude": -43.959275,
+        "altitude": 853,
+        "text": "Take's place"
+    }
+}
+```
+
 
 You can send location request by using [input](/#user-input) content-type
 
