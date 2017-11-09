@@ -71,7 +71,8 @@ You can send location request by using [input](/#user-input) content-type
 
 Sending a location request:
 
+| Messenger                         | BLiPChat                                          |
+|-----------------------------------|---------------------------------------------------|
+| ![imagem](images/input_location_mssngr.png) | ![imagem](inputLocationBlipCHat.png)    |
 
-| Messenger                         | BLiPChat                                           |
-|-----------------------------------|----------------------------------------------------|
-| ![imagem](images/location_request_mssngr.png) | ![imagem](sendLocationBLipChat.png)    |
+

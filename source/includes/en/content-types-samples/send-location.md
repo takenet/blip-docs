@@ -78,10 +78,10 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-You can send location by using [location](/#location)
+ You can send location by using [location](/#location)
 
 Sending a location with latitude, longitude and altitude:
 
-| Messenger                         | BLiPChat                                          |
-|-----------------------------------|---------------------------------------------------|
-| ![imagem](images/input_location_mssngr.png) | ![imagem](inputLocationBlipCHat.png)    |
+| Messenger                         | BLiPChat                                           |
+|-----------------------------------|----------------------------------------------------|
+| ![imagem](images/location_request_mssngr.png) | ![imagem](sendLocationBLipChat.png)    |
