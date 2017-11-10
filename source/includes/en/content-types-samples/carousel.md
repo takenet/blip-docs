@@ -361,8 +361,8 @@ You can send carousel by using [Document Collection](/#collection) content type 
 
 | Messenger                         |                                              |
 |-----------------------------------|----------------------------------------------|
-| ![imagem](images/carrousel_mssngr.png)  | ![imagem](images/carrousel2_mssngr.png)|
+| ![imagem](images/carrosel_mssngr.png)  | ![imagem](images/carrosel2_mssngr.png)|
 
 | BLiPChat                          |                                                  |
 |-----------------------------------|--------------------------------------------------|
-| ![imagem](images/collectionBlipChat.png)  | ![imagem](images/collectionBlipChat2.png)|
+| ![imagem](images/carrossel_blipchat2.png)  | ![imagem](images/carrossel_blipchat.png)|

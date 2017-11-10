@@ -10,48 +10,40 @@ using Take.Blip.Client;
 
 namespace MessageTypes
 {
-    public class OptionUserInputMessageReceiver : IMessageReceiver
+    public class OptionLocationMessageReceiver : IMessageReceiver
     {
         private readonly ISender _sender;
 
-        public OptionUserInputMessageReceiver(ISender sender)
+        public OptionLocationMessageReceiver(ISender sender)
         {
             _sender = sender;
         }
+
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
-            Document document = new Input
+            Document document = new Location
             {
-                Label = new DocumentContainer
-                {
-                    Value = "Send your location please!"
-                },
-                Validation = new InputValidation
-                {
-                    Rule = InputValidationRule.Type,
-                    Type = "application/vnd.lime.location+json"
-                } 
-            };
+                Latitude = -19.919715,
+                Longitude = -43.959753,
+                Altitude = 853,
+                Text = "Take's place"
+            };;
 
             await _sender.SendMessageAsync(document, message.From, cancellationToken);
         }
     }
 }
 ```
-```javascript
+```javascript 
 client.sendMessage({
       id: Lime.Guid(),
-      type: "application/vnd.lime.input+json",
+      type: "application/vnd.lime.location+json",
       to: "128271320123982@messenger.gw.msging.net",
       content: {
-        label: {
-          type: "text/plain",
-          value: "Send your location please!"
-        },
-        validation: {
-          rule: "type",
-          type: "application/vnd.lime.location+json"
-        }
+        latitude: -19.919715,
+        longitude: -43.959753,
+        altitude: 853,
+        text: "Take's place"
       }
     });
 ```
@@ -62,23 +54,19 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-    "id": "2",
-    "to": "1334448323284655@messenger.gw.msging.net",
-    "type": "application/vnd.lime.input+json",
+    "id": "1",
+    "to": "1042221589186385@messenger.gw.msging.net",
+    "type": "application/vnd.lime.location+json",
     "content": {
-        "label": {
-          "type": "text/plain",
-          "value": "Send your location please!"
-        },
-        "validation": {
-          "rule": "type",
-          "type": "application/vnd.lime.location+json"
-        }
+        "latitude": -19.918899,
+        "longitude": -43.959275,
+        "altitude": 853,
+        "text": "Take's place"
     }
 }
 ```
 
- You can send location by using [location](/#location)
+You can send location by using [location](/#location)
 
 Sending a location with latitude, longitude and altitude:
 
