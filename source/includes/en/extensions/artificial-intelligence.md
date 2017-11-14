@@ -57,27 +57,27 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id":"1",
   "to":"postmaster@ai.msging.net",
   "method":"set",
   "uri":"/entities",
   "type":"application/vnd.iris.ai.entity+json",
-  "resource":{  
+  "resource":{
     "name":"Flavor",
-    "values":[  
-      {  
+    "values":[
+      {
         "name":"Pepperoni",
-        "synonymous":[  
+        "synonymous":[
           "Peperoni",
           "Pepperonee",
           "Pepperouni",
           "Peperony"
         ]
       },
-      {  
+      {
         "name":"Mushrooms",
-        "synonymous":[  
+        "synonymous":[
           "Mashrooms",
           "Mushroom",
           "Mshrooms"
@@ -93,27 +93,27 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id":"1",
   "to":"postmaster@ai.msging.net",
   "method":"set",
   "uri":"/entities",
   "type":"application/vnd.iris.ai.entity+json",
-  "resource":{  
+  "resource":{
     "name":"Flavor",
-    "values":[  
-      {  
+    "values":[
+      {
         "name":"Pepperoni",
-        "synonymous":[  
+        "synonymous":[
           "Peperoni",
           "Pepperonee",
           "Pepperouni",
           "Peperony"
         ]
       },
-      {  
+      {
         "name":"Mushrooms",
-        "synonymous":[  
+        "synonymous":[
           "Mashrooms",
           "Mushroom",
           "Mshrooms"
@@ -129,27 +129,27 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id":"1",
   "to":"postmaster@ai.msging.net",
   "method":"set",
   "uri":"/entities",
   "type":"application/vnd.iris.ai.entity+json",
-  "resource":{  
+  "resource":{
     "name":"Flavor",
-    "values":[  
-      {  
+    "values":[
+      {
         "name":"Pepperoni",
-        "synonymous":[  
+        "synonymous":[
           "Peperoni",
           "Pepperonee",
           "Pepperouni",
           "Peperony"
         ]
       },
-      {  
+      {
         "name":"Mushrooms",
-        "synonymous":[  
+        "synonymous":[
           "Mashrooms",
           "Mushroom",
           "Mshrooms"
@@ -220,7 +220,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "2",
   "to": "postmaster@ai.msging.net",
   "method": "set",
@@ -228,7 +228,7 @@ Authorization: Key {YOUR_TOKEN}
   "type": "application/vnd.iris.ai.intention+json",
   "resource": {
       "name": "Order pizza"
-  }  
+  }
 }
 
 ```
@@ -238,7 +238,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "2",
   "to": "postmaster@ai.msging.net",
   "method": "set",
@@ -246,7 +246,7 @@ Authorization: Key {YOUR_TOKEN}
   "type": "application/vnd.iris.ai.intention+json",
   "resource": {
       "name": "Order pizza"
-  }  
+  }
 }
 
 ```
@@ -257,7 +257,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "2",
   "to": "postmaster@ai.msging.net",
   "method": "set",
@@ -265,7 +265,7 @@ Authorization: Key {YOUR_TOKEN}
   "type": "application/vnd.iris.ai.intention+json",
   "resource": {
       "name": "Order pizza"
-  }  
+  }
 }
 
 ```
@@ -284,7 +284,7 @@ Content-Type: application/json
   "type": "application/vnd.iris.ai.intention+json",
   "resource": {
       "id": "order_pizza"
-  }  
+  }
 }
 ```
 
@@ -302,7 +302,7 @@ Content-Type: application/json
   "type": "application/vnd.iris.ai.intention+json",
   "resource": {
       "id": "order_pizza"
-  }  
+  }
 }
 ```
 
@@ -320,7 +320,7 @@ Content-Type: application/json
   "type": "application/vnd.iris.ai.intention+json",
   "resource": {
       "id": "order_pizza"
-  }  
+  }
 }
 ```
 
@@ -331,7 +331,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "3",
   "to": "postmaster@ai.msging.net",
   "method": "get",
@@ -346,7 +346,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "3",
   "to": "postmaster@ai.msging.net",
   "method": "get",
@@ -361,7 +361,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "3",
   "to": "postmaster@ai.msging.net",
   "method": "get",
@@ -461,7 +461,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "4",
   "to": "postmaster@ai.msging.net",
   "method": "set",
@@ -480,7 +480,7 @@ Authorization: Key {YOUR_TOKEN}
         "text": "Give me a pizza"
       }
     ]
-  }  
+  }
 }
 
 ```
@@ -490,7 +490,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "4",
   "to": "postmaster@ai.msging.net",
   "method": "set",
@@ -509,7 +509,7 @@ Authorization: Key {YOUR_TOKEN}
         "text": "Give me a pizza"
       }
     ]
-  }  
+  }
 }
 
 ```
@@ -521,7 +521,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "4",
   "to": "postmaster@ai.msging.net",
   "method": "set",
@@ -540,7 +540,7 @@ Authorization: Key {YOUR_TOKEN}
         "text": "Give me a pizza"
       }
     ]
-  }  
+  }
 }
 
 ```
@@ -592,7 +592,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "5",
   "to": "postmaster@ai.msging.net",
   "method": "set",
@@ -606,7 +606,7 @@ Authorization: Key {YOUR_TOKEN}
         "value":"Which flavor do you want?"
       }
     ]
-  }  
+  }
 }
 
 ```
@@ -616,7 +616,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "5",
   "to": "postmaster@ai.msging.net",
   "method": "set",
@@ -630,7 +630,7 @@ Authorization: Key {YOUR_TOKEN}
         "value":"Which flavor do you want?"
       }
     ]
-  }  
+  }
 }
 
 ```
@@ -641,7 +641,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "5",
   "to": "postmaster@ai.msging.net",
   "method": "set",
@@ -655,7 +655,7 @@ Authorization: Key {YOUR_TOKEN}
         "value":"Which flavor do you want?"
       }
     ]
-  }  
+  }
 }
 
 ```
@@ -783,14 +783,14 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "6",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/models",
   "type": "application/vnd.iris.ai.model-training+json",
-  "resource": {  
-  }  
+  "resource": {
+  }
 }
 
 ```
@@ -800,14 +800,14 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "6",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/models",
   "type": "application/vnd.iris.ai.model-training+json",
-  "resource": {  
-  }  
+  "resource": {
+  }
 }
 
 ```
@@ -818,14 +818,14 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "6",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/models",
   "type": "application/vnd.iris.ai.model-training+json",
-  "resource": {  
-  }  
+  "resource": {
+  }
 }
 
 ```
@@ -869,14 +869,14 @@ Content-Type: application/json
   "status": "success"
 }
 ```
-### Query the trained 
+### Query the trained
 
 ```csharp
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "7",
   "to": "postmaster@ai.msging.net",
   "method": "get",
@@ -890,7 +890,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "7",
   "to": "postmaster@ai.msging.net",
   "method": "get",
@@ -905,7 +905,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "7",
   "to": "postmaster@ai.msging.net",
   "method": "get",
@@ -942,7 +942,7 @@ Content-Type: application/json
           "externalId":"713331f2-0375-462d-aa58-ff9b8c5075be",
           "storageDate":"2017-07-07T18:13:00.000Z",
           "trainingDate":"2017-07-07T18:13:00.000Z"
-        }        
+        }
       ]
   }
 }
@@ -975,7 +975,7 @@ Content-Type: application/json
           "externalId":"713331f2-0375-462d-aa58-ff9b8c5075be",
           "storageDate":"2017-07-07T18:13:00.000Z",
           "trainingDate":"2017-07-07T18:13:00.000Z"
-        }        
+        }
       ]
   }
 }
@@ -1010,7 +1010,7 @@ Content-Type: application/json
           "externalId":"713331f2-0375-462d-aa58-ff9b8c5075be",
           "storageDate":"2017-07-07T18:13:00.000Z",
           "trainingDate":"2017-07-07T18:13:00.000Z"
-        }        
+        }
       ]
   }
 }
@@ -1022,15 +1022,15 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "8",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/models",
   "type": "application/vnd.iris.ai.model-publishing+json",
-  "resource": {  
+  "resource": {
     "id":"d3190b46-c723-4831-b9e8-fe43c1816f80"
-  }  
+  }
 }
 
 ```
@@ -1039,15 +1039,15 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "8",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/models",
   "type": "application/vnd.iris.ai.model-publishing+json",
-  "resource": {  
+  "resource": {
     "id":"d3190b46-c723-4831-b9e8-fe43c1816f80"
-  }  
+  }
 }
 
 ```
@@ -1058,15 +1058,15 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "8",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/models",
   "type": "application/vnd.iris.ai.model-publishing+json",
-  "resource": {  
+  "resource": {
     "id":"d3190b46-c723-4831-b9e8-fe43c1816f80"
-  }  
+  }
 }
 
 ```
@@ -1118,13 +1118,13 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "9",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/analysis",
   "type": "application/vnd.iris.ai.analysis-request+json",
-  "uri": {
+  "resource": {
     "text":"I want a pepperoni pizza"
   }
 }
@@ -1136,13 +1136,13 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "9",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/analysis",
   "type": "application/vnd.iris.ai.analysis-request+json",
-  "uri": {
+  "resource": {
     "text":"I want a pepperoni pizza"
   }
 }
@@ -1155,13 +1155,13 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "9",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/analysis",
   "type": "application/vnd.iris.ai.analysis-request+json",
-  "uri": {
+  "resource": {
     "text":"I want a pepperoni pizza"
   }
 }
@@ -1270,13 +1270,13 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "10",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/analysis",
   "type": "application/vnd.iris.ai.analysis-request+json",
-  "uri": {
+  "resource": {
     "text":"I want a pepperoni pizza",
     "modelId":"fa0aa23b-5c62-4b90-9c13-986148c0d171"
   }
@@ -1288,13 +1288,13 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "10",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/analysis",
   "type": "application/vnd.iris.ai.analysis-request+json",
-  "uri": {
+  "resource": {
     "text":"I want a pepperoni pizza",
     "modelId":"fa0aa23b-5c62-4b90-9c13-986148c0d171"
   }
@@ -1308,13 +1308,13 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "10",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/analysis",
   "type": "application/vnd.iris.ai.analysis-request+json",
-  "uri": {
+  "resource": {
     "text":"I want a pepperoni pizza",
     "modelId":"fa0aa23b-5c62-4b90-9c13-986148c0d171"
   }
@@ -1422,7 +1422,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "11",
   "to": "postmaster@ai.msging.net",
   "method": "get",
@@ -1434,7 +1434,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "11",
   "to": "postmaster@ai.msging.net",
   "method": "get",
@@ -1447,7 +1447,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "11",
   "to": "postmaster@ai.msging.net",
   "method": "get",
@@ -1584,7 +1584,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id":"12",
   "to":"postmaster@ai.msging.net",
   "method":"set",
@@ -1592,7 +1592,7 @@ Authorization: Key {YOUR_TOKEN}
   "type":"application/vnd.iris.ai.analysis-feedback+json",
   "resource":{
     "feedback":"approved"
-  }  
+  }
 }
 
 ```
@@ -1601,7 +1601,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id":"12",
   "to":"postmaster@ai.msging.net",
   "method":"set",
@@ -1609,7 +1609,7 @@ Authorization: Key {YOUR_TOKEN}
   "type":"application/vnd.iris.ai.analysis-feedback+json",
   "resource":{
     "feedback":"approved"
-  }  
+  }
 }
 
 ```
@@ -1620,7 +1620,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id":"12",
   "to":"postmaster@ai.msging.net",
   "method":"set",
@@ -1628,7 +1628,7 @@ Authorization: Key {YOUR_TOKEN}
   "type":"application/vnd.iris.ai.analysis-feedback+json",
   "resource":{
     "feedback":"approved"
-  }  
+  }
 }
 
 ```
@@ -1638,7 +1638,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id":"12",
   "to":"postmaster@ai.msging.net",
   "method":"set",
@@ -1646,7 +1646,7 @@ Authorization: Key {YOUR_TOKEN}
   "type":"application/vnd.iris.ai.analysis-feedback+json",
   "resource":{
     "feedback":"approved"
-  }  
+  }
 }
 
 ```
@@ -1656,7 +1656,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id":"12",
   "to":"postmaster@ai.msging.net",
   "method":"set",
@@ -1664,7 +1664,7 @@ Authorization: Key {YOUR_TOKEN}
   "type":"application/vnd.iris.ai.analysis-feedback+json",
   "resource":{
     "feedback":"approved"
-  }  
+  }
 }
 
 ```
@@ -1675,7 +1675,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id":"12",
   "to":"postmaster@ai.msging.net",
   "method":"set",
@@ -1683,7 +1683,7 @@ Authorization: Key {YOUR_TOKEN}
   "type":"application/vnd.iris.ai.analysis-feedback+json",
   "resource":{
     "feedback":"approved"
-  }  
+  }
 }
 
 ```
@@ -1693,7 +1693,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id":"12",
   "to":"postmaster@ai.msging.net",
   "method":"set",
@@ -1701,7 +1701,7 @@ Authorization: Key {YOUR_TOKEN}
   "type":"application/vnd.iris.ai.analysis-feedback+json",
   "resource":{
     "feedback":"approved"
-  }  
+  }
 }
 
 ```
@@ -1711,7 +1711,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id":"12",
   "to":"postmaster@ai.msging.net",
   "method":"set",
@@ -1719,7 +1719,7 @@ Authorization: Key {YOUR_TOKEN}
   "type":"application/vnd.iris.ai.analysis-feedback+json",
   "resource":{
     "feedback":"approved"
-  }  
+  }
 }
 
 ```
@@ -1730,7 +1730,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id":"12",
   "to":"postmaster@ai.msging.net",
   "method":"set",
@@ -1738,7 +1738,7 @@ Authorization: Key {YOUR_TOKEN}
   "type":"application/vnd.iris.ai.analysis-feedback+json",
   "resource":{
     "feedback":"approved"
-  }  
+  }
 }
 
 ```
@@ -1752,7 +1752,7 @@ Content-Type: application/json
   "from": "postmaster@ai.msging.net/#irismsging1",
   "to": "contact@msging.net/default",
   "method": "set",
-  "status": "success"  
+  "status": "success"
 }
 ```
 
@@ -1765,7 +1765,7 @@ Content-Type: application/json
   "from": "postmaster@ai.msging.net/#irismsging1",
   "to": "contact@msging.net/default",
   "method": "set",
-  "status": "success"  
+  "status": "success"
 }
 ```
 
@@ -1779,7 +1779,7 @@ Content-Type: application/json
   "from": "postmaster@ai.msging.net/#irismsging1",
   "to": "contact@msging.net/default",
   "method": "set",
-  "status": "success"  
+  "status": "success"
 }
 ```
 
@@ -1790,7 +1790,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id":"13",
   "to":"postmaster@ai.msging.net",
   "method":"set",
@@ -1799,7 +1799,7 @@ Authorization: Key {YOUR_TOKEN}
   "resource":{
     "feedback":"rejected",
     "intentionId":"other_intention"
-  }  
+  }
 }
 
 ```
@@ -1808,7 +1808,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id":"13",
   "to":"postmaster@ai.msging.net",
   "method":"set",
@@ -1817,7 +1817,7 @@ Authorization: Key {YOUR_TOKEN}
   "resource":{
     "feedback":"rejected",
     "intentionId":"other_intention"
-  }  
+  }
 }
 
 ```
@@ -1828,7 +1828,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id":"13",
   "to":"postmaster@ai.msging.net",
   "method":"set",
@@ -1837,7 +1837,7 @@ Authorization: Key {YOUR_TOKEN}
   "resource":{
     "feedback":"rejected",
     "intentionId":"other_intention"
-  }  
+  }
 }
 
 ```
@@ -1851,7 +1851,7 @@ Content-Type: application/json
   "from": "postmaster@ai.msging.net/#irismsging1",
   "to": "contact@msging.net/default",
   "method": "set",
-  "status": "success"  
+  "status": "success"
 }
 ```
 ```javascript
@@ -1863,7 +1863,7 @@ Content-Type: application/json
   "from": "postmaster@ai.msging.net/#irismsging1",
   "to": "contact@msging.net/default",
   "method": "set",
-  "status": "success"  
+  "status": "success"
 }
 ```
 
@@ -1876,6 +1876,6 @@ Content-Type: application/json
   "from": "postmaster@ai.msging.net/#irismsging1",
   "to": "contact@msging.net/default",
   "method": "set",
-  "status": "success"  
+  "status": "success"
 }
 ```
