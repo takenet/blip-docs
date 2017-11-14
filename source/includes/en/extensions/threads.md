@@ -146,3 +146,81 @@ The following uri filters are available to get chatbot's thread:
 | $take        | Limit of total of items to be returned    |
 | messageId  | Initial message id for the thread messages query        |
 | direction  | Possible values: `asc` and `desc`. Define if will be returned de messages after or before respectively |
+
+### Transcription
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "0094447a-2581-4597-be6a-a5dff33af156",
+    "method": "get",
+    "uri": "/threads/1180740631991418@messenger.gw.msging.net/transcription?accessKey=<ACCESS_KEY>"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.web-link+json",
+    "resource": {
+        "target": "blank",
+        "uri": "https://goo.gl/iT3oAW",
+        "text": "Transcription"
+    },
+    "method": "get",
+    "status": "success",
+    "id": "achkadgfaoscj",
+    "from": "postmaster@msging.net/#hmgirismsging2",
+    "to": "botbot2@msging.net"
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Takenet.MessagingHub.Client.Listener;
+using Takenet.MessagingHub.Client.Sender;
+using System;
+using Lime.Messaging.Contents;
+using System.Collections.Generic;
+using Take.Blip.Client.Extensions.Threads;
+
+namespace Extensions
+{
+    public class PlainTextMessageReceiver : IMessageReceiver
+    {
+        private readonly IMessagingHubSender _sender;
+		    private readonly string ACCESS_KEY = "your_access_key";
+
+        public PlainTextMessageReceiver(IMessagingHubSender sender)
+        {
+            _sender = sender;
+            _settings = settings;
+        }
+
+        public async Task ReceiveAsync(Message m, CancellationToken cancellationToken)
+        {
+            
+			      Document transcript = await new ThreadExtension(client).GetTranscriptionAsync(Uri.EscapeDataString(m.From.ToIdentity()), ACCESS_KEY, cancellationToken);
+			      await client.SendMessageAsync(transcript, m.From, cancellationToken);
+            await _sender.SendMessageAsync(message, cancellationToken);
+        }
+    }
+}
+```
+
+Returns a link to show a past conversation between the bot and one of its contacts.
+
+The `ACCESS_KEY` parameter is mandatory for this extension to work.
+
+Also, remember to pass the thread identifier without the instance; refer to the [Addressing section](#addressing)
+for more information about instances.
+
+*NOTE*: When the user requests a transcript from an email channel, you must escape the thread's identity,
+as in the method call from the C# example code.
