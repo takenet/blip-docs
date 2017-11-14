@@ -359,9 +359,9 @@ Authorization: Key {YOUR_TOKEN}
 
 You can send carousel by using [Document Collection](/#collection) content type and passing an array of [Select](/#select) type as Items atribute. 
 
-| Messenger                         |                                              |
-|-----------------------------------|----------------------------------------------|
-| ![imagem](images/carrosel_mssngr.png)  | ![imagem](images/carrosel2_mssngr.png)|
+| Messenger                              |                                              |
+|-----------------------------------     |----------------------------------------------|
+| ![imagem](images/carrosel_mssngr.png)  | ![imagem](images/carrosel2_mssngr.png)       |
 
 | BLiPChat                          |                                                  |
 |-----------------------------------|--------------------------------------------------|

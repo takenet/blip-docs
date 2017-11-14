@@ -57,7 +57,7 @@ Authorization: Key {YOUR_TOKEN}
     "type": "application/vnd.lime.media-link+json",
     "content": {
         "uri": "http://techslides.com/demos/sample-videos/small.mp4",
-        "type": "video/mp4",
+        "type": "video/mp4"
     }
 }
 ```
