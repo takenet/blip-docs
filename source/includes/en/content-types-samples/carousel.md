@@ -257,7 +257,7 @@ namespace MessageTypes
     });   
 ```
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -297,7 +297,7 @@ Authorization: Key {YOUR_TOKEN}
                             "type": "application/json",
                             "value": {
                                 "key1": "value1",
-                                "key2": 2
+                                "key2": "2"
                             }
                         }
                     }
@@ -333,7 +333,7 @@ Authorization: Key {YOUR_TOKEN}
                             "type": "application/json",
                             "value": {
                                 "key3": "value3",
-                                "key4": 4
+                                "key4": "4"
                             }
                         }
                     },
@@ -346,7 +346,7 @@ Authorization: Key {YOUR_TOKEN}
                             "type": "application/json",
                             "value": {
                                 "key5": "value5",
-                                "key6": 6
+                                "key6": "6"
                             }
                         }
                     }
