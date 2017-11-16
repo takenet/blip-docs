@@ -47,7 +47,7 @@ client.sendMessage({
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -58,7 +58,7 @@ Authorization: Key {YOUR_TOKEN}
     "content": {
         "type": "audio/mp3",
         "uri": "http://blaamandagjazzband.dk/jazz/mp3/basin_street_blues.mp3",
-        "size": 3124123
+        "size": "3124123"
     }
 }
 ```
