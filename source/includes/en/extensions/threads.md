@@ -220,4 +220,4 @@ The `ACCESS_KEY` parameter is mandatory for this extension to work.
 
 Also, remember to remove the instance from the thread identifier (if any) when requesting for a transcription; please refer to the [Addressing section](#addressing) for more information about instances.
 
-**NOTE**: When the user requests a transcript from an email channel or a Skype channel, you must escape the thread's identity, as shown in the C# example code's ReceiveAsync() method for instance. This also holds when sending commands through HTTP/other SDKs as well.
+**NOTE**: When the user requests a transcript from an email channel or a Skype channel, you must escape the thread's identity, as shown in the C# example code's ReceiveAsync() method for instance. This also holds for requesting the transcript through HTTP/other SDKs as well.
