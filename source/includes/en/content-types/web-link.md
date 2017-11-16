@@ -43,20 +43,20 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 ```
 
 ```javascript
-client.sendMessage({
+client.sendMessage({s
       id: Lime.Guid(),
       type: "application/vnd.lime.web-link+json",
       to: "1042225583186385@messenger.gw.msging.net",
-      content: { 
+      content: {
         uri: "http://limeprotocol.org/content-types.html#web-link",
         target: "self",
-        text: "Here is a documentation weblink"    
+        text: "Here is a documentation weblink"
       }
     });
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -64,10 +64,10 @@ Authorization: Key {YOUR_TOKEN}
     "id": "1",
     "to": "1042225583186385@messenger.gw.msging.net",
     "type": "application/vnd.lime.web-link+json",
-    "content": { 
+    "content": {
         "uri": "http://limeprotocol.org/content-types.html#web-link",
         "target": "self",
-        "text": "Here is a documentation weblink"        
+        "text": "Here is a documentation weblink"
     }
 }
 ```
@@ -77,7 +77,7 @@ Authorization: Key {YOUR_TOKEN}
 |--------------------------|
 | application/vnd.lime.web-link+json|
 
-Allows sending a link for a webpage to the client including metadata such link's title, description and a miniature image. 
+Allows sending a link for a webpage to the client including metadata such link's title, description and a miniature image.
 
 
 
@@ -87,7 +87,7 @@ In some channels is possible to define how the webpage will be diplayed (on the 
 
 #### Channel mapping
 
-| Channel            | Type                    | 
+| Channel            | Type                    |
 |--------------------|-------------------------|
 | BLiP Chat          | Web Link                |
 | Messenger          | [Generic template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/generic-template) or [Button](https://developers.facebook.com/docs/messenger-platform/send-api-reference/buttons) (if used with the [Multimedia Menu](https://blip.ai/portal/#/docs/content-types/document-select)). |

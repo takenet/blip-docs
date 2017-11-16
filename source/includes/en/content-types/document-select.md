@@ -78,7 +78,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -226,7 +226,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -244,11 +244,11 @@ Authorization: Key {YOUR_TOKEN}
             {
                 "label": {
                     "type": "application/vnd.lime.input+json",
-                    "value": {                      
+                    "value": {
                         "validation": {
                           "rule": "type",
                           "type": "application/vnd.lime.location+json"
-                        } 
+                        }
                     }
                 }
             }
@@ -272,11 +272,11 @@ client.sendMessage({
                 {
                     label: {
                         type: "application/vnd.lime.input+json",
-                        value: {                      
+                        value: {
                             validation: {
                                 rule: "type",
                                 type: "application/vnd.lime.location+json"
-                            } 
+                            }
                         }
                     }
                 }
@@ -295,7 +295,7 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 
 #### Channel mapping
 
-| Channel            | Type                    | 
+| Channel            | Type                    |
 |--------------------|-------------------------|
 | BLiP Chat          | Document select         |
 | Messenger          | [Generic template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/generic-template)|

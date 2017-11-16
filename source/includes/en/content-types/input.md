@@ -28,11 +28,11 @@ public class OptionUserInputMessaReceiver : IMessageReceiver
             Label = new DocumentContainer{
                 Value = new PlainText {
                     Text = "What is your name?"
-                } 
+                }
             },
             Validation = new InputValidation{
                 Rule = InputValidationRule.Text
-            } 
+            }
         };
 
         await _sender.SendMessageAsync(document, message.From, cancellationToken);
@@ -51,14 +51,14 @@ client.sendMessage({
             value: "What is your name?"
           },
           validation: {
-            rule: "text"          
+            rule: "text"
           }
       }
     });
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -72,7 +72,7 @@ Authorization: Key {YOUR_TOKEN}
           "value": "What is your name?"
         },
         "validation": {
-          "rule": "text"          
+          "rule": "text"
         }
     }
 }
@@ -109,7 +109,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
         Validation = new InputValidation{
             Rule = InputValidationRule.Type,
             Type = "application/vnd.lime.location+json"
-        } 
+        }
     };
 
     await _sender.SendMessageAsync(document, message.From, cancellationToken);
@@ -136,7 +136,7 @@ client.sendMessage({
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -167,7 +167,7 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 
 #### Channel mapping
 
-| Channel              | Type                         | 
+| Channel              | Type                         |
 |--------------------|--------------------------------|
 | BLiP Chat          | Uer input (for Location type only) |
 | Messenger          | [Location](https://developers.facebook.com/docs/messenger-platform/send-api-reference/quick-replies) |

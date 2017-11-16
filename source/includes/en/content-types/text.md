@@ -46,7 +46,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -66,7 +66,7 @@ Note: Some channels may have limit of characters
 
 #### Channel mapping
 
-| Channel              | Type                    | 
+| Channel              | Type                    |
 |----------------------|-------------------------|
 | BLiP Chat            | Text                   |
 | Messenger            | [Text message](https://developers.facebook.com/docs/messenger-platform/send-api-reference/text-message)|

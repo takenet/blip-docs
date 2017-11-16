@@ -20,10 +20,10 @@ namespace MessageTypes
 
       public OptionNativeContentReceiver(ISender sender)
       {
-          _sender = sender;  
-          _settings = settings;       
+          _sender = sender;
+          _settings = settings;
       }
-      
+
       public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
       {
           JsonDocument document = new JsonDocument();
@@ -38,26 +38,26 @@ namespace MessageTypes
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id":"1",
   "to":"949839515125748@messenger.gw.msging.net",
   "type":"application/json",
-  "content":{  
+  "content":{
     "text": "hello, world!"
   }
 }
-```  
+```
 
 ```javascript
     client.sendMessage({
       id: Lime.Guid(),
       type: "application/vnd.lime.payment-receipt+json",
       to: "128271320123982@messenger.gw.msging.net",
-      content: {  
+      content: {
           text: "hello, world!"
       }
     });
@@ -78,43 +78,43 @@ still possible but is too huge for this doc
       id: Lime.Guid(),
       type: "application/vnd.lime.payment-receipt+json",
       to: "128271320123982@messenger.gw.msging.net",
-      content: {  
-        attachment:{  
+      content: {
+        attachment:{
           type: "template",
-          payload:{  
+          payload:{
             template_type: "airline_boardingpass",
             intro_message: "You are checked in.",
             locale: "en_US",
-            boarding_pass:[  
-              {  
+            boarding_pass:[
+              {
                 passenger_name: "SMITH\/NICOLAS",
                 pnr_number: "CG4X7U",
                 travel_class: "business",
                 seat: "74J",
-                auxiliary_fields:[  
-                  {  
+                auxiliary_fields:[
+                  {
                     label: "Terminal",
                     value: "T1"
                   },
-                  {  
+                  {
                     label: "Departure",
                     value: "30OCT 19:05"
                   }
                 ],
-                secondary_fields:[  
-                  {  
+                secondary_fields:[
+                  {
                     label: "Boarding",
                     value: "18:30"
                   },
-                  {  
+                  {
                     label: "Gate",
                     value: "D57"
                   },
-                  {  
+                  {
                     label: "Seat",
                     value: "74J"
                   },
-                  {  
+                  {
                     label: "Sec.Nr.",
                     value: "003"
                   }
@@ -123,53 +123,53 @@ still possible but is too huge for this doc
                 header_image_url: "https://www.example.com/en/fb/header.png",
                 qr_code: "M1SMITH/NICOLAS  CG4X7U nawouehgawgnapwi3jfa0wfh",
                 above_bar_code_image_url: "https://www.example.com/en/PLAT.png",
-                flight_info:{  
+                flight_info:{
                   flight_number: "KL0642",
-                  departure_airport:{  
+                  departure_airport:{
                     airport_code: "JFK",
                     city: "New York",
                     terminal: "T1",
                     gate: "D57"
                   },
-                  arrival_airport:{  
+                  arrival_airport:{
                     airport_code: "AMS",
                     city: "Amsterdam"
                   },
-                  flight_schedule:{  
+                  flight_schedule:{
                     departure_time: "2016-01-02T19:05",
                     arrival_time: "2016-01-05T17:30"
                   }
                 }
               },
-              {  
+              {
                 passenger_name: "JONES/FARBOUND",
                 pnr_number: "CG4X7U",
                 travel_class: "business",
                 seat: "74K",
-                auxiliary_fields:[  
-                  {  
+                auxiliary_fields:[
+                  {
                     label: "Terminal",
                     value: "T1"
                   },
-                  {  
+                  {
                     label: "Departure",
                     value: "30OCT 19:05"
                   }
                 ],
-                secondary_fields:[  
-                  {  
+                secondary_fields:[
+                  {
                     label: "Boarding",
                     value: "18:30"
                   },
-                  {  
+                  {
                     label: "Gate",
                     value: "D57"
                   },
-                  {  
+                  {
                     label: "Seat",
                     value: "74K"
                   },
-                  {  
+                  {
                     label: "Sec.Nr.",
                     value: "004"
                   }
@@ -178,19 +178,19 @@ still possible but is too huge for this doc
                 header_image_url: "https://www.example.com/en/fb/header.png",
                 qr_code: "M1JONES/FARBOUND  CG4X7U nawouehgawgnapwi3jfa0wfh",
                 above_bar_code_image_url: "https://www.example.com/en/PLAT.png",
-                flight_info:{  
+                flight_info:{
                   flight_number: "KL0642",
-                  departure_airport:{  
+                  departure_airport:{
                     airport_code: "JFK",
                     city: "New York",
                     terminal: "T1",
                     gate: "D57"
                   },
-                  arrival_airport:{  
+                  arrival_airport:{
                     airport_code: "AMS",
                     city: "Amsterdam"
                   },
-                  flight_schedule:{  
+                  flight_schedule:{
                     departure_time: "2016-01-02T19:05",
                     arrival_time: "2016-01-05T17:30"
                   }
@@ -204,51 +204,51 @@ still possible but is too huge for this doc
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id":"2",
   "to":"949839515125748@messenger.gw.msging.net",
   "type":"application/json",
-  "content":{  
-    "attachment":{  
+  "content":{
+    "attachment":{
       "type":"template",
-      "payload":{  
+      "payload":{
         "template_type":"airline_boardingpass",
         "intro_message":"You are checked in.",
         "locale":"en_US",
-        "boarding_pass":[  
-          {  
+        "boarding_pass":[
+          {
             "passenger_name":"SMITH\/NICOLAS",
             "pnr_number":"CG4X7U",
             "travel_class":"business",
             "seat":"74J",
-            "auxiliary_fields":[  
-              {  
+            "auxiliary_fields":[
+              {
                 "label":"Terminal",
                 "value":"T1"
               },
-              {  
+              {
                 "label":"Departure",
                 "value":"30OCT 19:05"
               }
             ],
-            "secondary_fields":[  
-              {  
+            "secondary_fields":[
+              {
                 "label":"Boarding",
                 "value":"18:30"
               },
-              {  
+              {
                 "label":"Gate",
                 "value":"D57"
               },
-              {  
+              {
                 "label":"Seat",
                 "value":"74J"
               },
-              {  
+              {
                 "label":"Sec.Nr.",
                 "value":"003"
               }
@@ -257,53 +257,53 @@ Authorization: Key {YOUR_TOKEN}
             "header_image_url":"https://www.example.com/en/fb/header.png",
             "qr_code":"M1SMITH/NICOLAS  CG4X7U nawouehgawgnapwi3jfa0wfh",
             "above_bar_code_image_url":"https://www.example.com/en/PLAT.png",
-            "flight_info":{  
+            "flight_info":{
               "flight_number":"KL0642",
-              "departure_airport":{  
+              "departure_airport":{
                 "airport_code":"JFK",
                 "city":"New York",
                 "terminal":"T1",
                 "gate":"D57"
               },
-              "arrival_airport":{  
+              "arrival_airport":{
                 "airport_code":"AMS",
                 "city":"Amsterdam"
               },
-              "flight_schedule":{  
+              "flight_schedule":{
                 "departure_time":"2016-01-02T19:05",
                 "arrival_time":"2016-01-05T17:30"
               }
             }
           },
-          {  
+          {
             "passenger_name":"JONES/FARBOUND",
             "pnr_number":"CG4X7U",
             "travel_class":"business",
             "seat":"74K",
-            "auxiliary_fields":[  
-              {  
+            "auxiliary_fields":[
+              {
                 "label":"Terminal",
                 "value":"T1"
               },
-              {  
+              {
                 "label":"Departure",
                 "value":"30OCT 19:05"
               }
             ],
-            "secondary_fields":[  
-              {  
+            "secondary_fields":[
+              {
                 "label":"Boarding",
                 "value":"18:30"
               },
-              {  
+              {
                 "label":"Gate",
                 "value":"D57"
               },
-              {  
+              {
                 "label":"Seat",
                 "value":"74K"
               },
-              {  
+              {
                 "label":"Sec.Nr.",
                 "value":"004"
               }
@@ -312,19 +312,19 @@ Authorization: Key {YOUR_TOKEN}
             "header_image_url":"https://www.example.com/en/fb/header.png",
             "qr_code":"M1JONES/FARBOUND  CG4X7U nawouehgawgnapwi3jfa0wfh",
             "above_bar_code_image_url":"https://www.example.com/en/PLAT.png",
-            "flight_info":{  
+            "flight_info":{
               "flight_number":"KL0642",
-              "departure_airport":{  
+              "departure_airport":{
                 "airport_code":"JFK",
                 "city":"New York",
                 "terminal":"T1",
                 "gate":"D57"
               },
-              "arrival_airport":{  
+              "arrival_airport":{
                 "airport_code":"AMS",
                 "city":"Amsterdam"
               },
-              "flight_schedule":{  
+              "flight_schedule":{
                 "departure_time":"2016-01-02T19:05",
                 "arrival_time":"2016-01-05T17:30"
               }
@@ -348,7 +348,7 @@ Note that for a **multi channel** chatbot the responsability of send the correct
 
 #### Channel mapping
 
-| Channel              | Type                    | 
+| Channel              | Type                    |
 |--------------------|-------------------------|
 | BLiP App           | Does not support           |
 | Messenger          | Supported (the property `content` refers to `message` element of Messenger [Send API](https://developers.facebook.com/docs/messenger-platform/send-api-reference/)  |

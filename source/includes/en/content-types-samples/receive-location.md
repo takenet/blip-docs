@@ -30,7 +30,7 @@ namespace MessageTypes
                 {
                     Rule = InputValidationRule.Type,
                     Type = "application/vnd.lime.location+json"
-                } 
+                }
             };
 
             await _sender.SendMessageAsync(document, message.From, cancellationToken);
@@ -57,7 +57,7 @@ client.sendMessage({
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

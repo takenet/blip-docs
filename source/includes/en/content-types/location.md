@@ -53,7 +53,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -115,7 +115,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
     var location = new Input
     {
         Label = new DocumentContainer{
-            Value = new PlainText 
+            Value = new PlainText
             {
                 Text = "Send your location please!"
             }
@@ -132,7 +132,7 @@ await _sender.SendMessageAsync(location, message.From, cancellationToken);
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -155,7 +155,7 @@ Authorization: Key {YOUR_TOKEN}
 
 | MIME type                            |
 |--------------------------------------|
-| application/vnd.lime.location+json | 
+| application/vnd.lime.location+json |
 
 Allows sending and receiving geographic information.
 
@@ -164,7 +164,7 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 
 #### Channel mapping
 
-| Channel              | Type                    |  
+| Channel              | Type                    |
 |--------------------|-------------------------|
 | BLiP Chat          | Location             |
 | Messenger          | [Generic template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/generic-template)|

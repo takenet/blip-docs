@@ -66,7 +66,7 @@ Note:
 //If Value field is not provided, will must provide one of the fields: Order or Text. The Order field will be used only if Value and Text is not provided.
 //
 //Limitations:
-//Facebook Messenger: Limite of 3 options, in other case your message will not be delivered. 
+//Facebook Messenger: Limite of 3 options, in other case your message will not be delivered.
 //If is nedded to send more than 3 options is necessary send multiple messages.
 //Tangram SMS: The Value field will be ignored. Only the Order field will be sent if the option be selected.
 ```
@@ -100,7 +100,7 @@ client.sendMessage({
     });
 ```
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -148,7 +148,7 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 > JSON 1
 
 ```csharp
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -171,7 +171,7 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -187,7 +187,7 @@ Authorization: Key {YOUR_TOKEN}
 >JSON 2
 
 ```csharp
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -210,7 +210,7 @@ client.sendMessage({
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -226,7 +226,7 @@ Authorization: Key {YOUR_TOKEN}
 >JSON 3
 
 ```csharp
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -255,7 +255,7 @@ client.sendMessage({
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -280,7 +280,7 @@ When the user selects one option, a message returns according to the rule:
 Return example of the above mentioned menu:
 
 When selecting the first option: **(JSON 1)**:
- 
+
 When selecting the second option **(JSON 2)**:
 
 Least, when selecting the third option **(JSON 3)**:
@@ -291,7 +291,7 @@ The return message *type* will always be the same of the chosen option. When a v
 
 #### Channel mapping
 
-| Channel              | Type                    | 
+| Channel              | Type                    |
 |--------------------|-------------------------|
 | BLiP Chat           | Select  |
 | Messenger          | [Button template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/button-template) (on default scope) e [Quick replies](https://developers.facebook.com/docs/messenger-platform/send-api-reference/quick-replies) (on *immediate* scope)|

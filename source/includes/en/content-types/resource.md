@@ -35,7 +35,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -63,7 +63,7 @@ client.sendMessage({
 > In case there is a resource with this key, the server replaces the content and forward to the destination. Imagining that the resource with **welcome-message** key is a `text/plain` document with value `Welcome to our service`, the final message would be like this:
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -84,7 +84,7 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-| MIME type                            | 
+| MIME type                            |
 |--------------------------------------|
 | application/vnd.iris.resource+json   |
 
@@ -127,7 +127,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
     {
         Key = "welcome-message",
         Variables = openWith
-    
+
     };
 
     await _sender.SendMessageAsync(document, message.From, cancellationToken);
@@ -136,7 +136,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -172,7 +172,7 @@ The final message will be:
 > Response
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

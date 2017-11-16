@@ -82,7 +82,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -125,7 +125,7 @@ Sending a payment receipt to a Messenger user:
 
 #### Channel mapping
 
-| Channel              | Type                    |  
+| Channel              | Type                    |
 |--------------------|-------------------------|
 | BLiP Chat          | Not supported yet       |
 | Messenger          | [Receipt template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/receipt-template)|

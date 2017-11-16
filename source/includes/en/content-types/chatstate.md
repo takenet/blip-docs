@@ -47,7 +47,7 @@ client.sendMessage({
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -78,7 +78,7 @@ In general, there is no need to receive delivery notifications messages with thi
 
 #### Channel mapping
 
-| Channel              | Type      | Supported states      | 
+| Channel              | Type      | Supported states      |
 |----------------------|-----------|-------------------------|
 | BLiP Chat            | Chat State | All |
 | Messenger            | [Sender Actions](https://developers.facebook.com/docs/messenger-platform/send-api-reference/sender-actions) and [Referral](https://developers.facebook.com/docs/messenger-platform/webhook-reference/referral) | *composing* and *paused* (sending only)  and *starting* (referral of an existing thread)|

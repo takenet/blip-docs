@@ -34,7 +34,7 @@ namespace MessageTypes
     }
 }
 ```
-```javascript 
+```javascript
 client.sendMessage({
       id: Lime.Guid(),
       type: "application/vnd.lime.location+json",
@@ -49,7 +49,7 @@ client.sendMessage({
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

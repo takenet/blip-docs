@@ -35,7 +35,7 @@ namespace MessageTypes
         public DocumentCollection getDocumentCollectionMenuMultimidia()
         {
             jsonDocuments = new JsonDocument();
-            jsonDocuments2 = new JsonDocument();    
+            jsonDocuments2 = new JsonDocument();
             jsonDocuments3 = new JsonDocument();
 
             jsonDocuments.Add("Key1", "value1");
@@ -254,7 +254,7 @@ namespace MessageTypes
                 }
             ]
         }
-    });   
+    });
 ```
 ```http
 POST https://msging.net/messages HTTP/1.1
@@ -357,12 +357,12 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-You can send carousel by using [Document Collection](/#collection) content type and passing an array of [Select](/#select) type as Items atribute. 
+You can send carousel by using [Document Collection](/#collection) content type and passing an array of [Select](/#select) type as Items atribute.
 
 | Messenger                              |                                              |
-|-----------------------------------     |----------------------------------------------|
+|----------------------------------------|----------------------------------------------|
 | ![imagem](images/carrosel_mssngr.png)  | ![imagem](images/carrosel2_mssngr.png)       |
 
-| BLiPChat                          |                                                  |
-|-----------------------------------|--------------------------------------------------|
-| ![imagem](images/carrossel_blipchat2.png)  | ![imagem](images/carrossel_blipchat.png)|
+| BLiPChat                                  |                                           |
+|-------------------------------------------|-------------------------------------------|
+| ![imagem](images/carrossel_blipchat2.png) | ![imagem](images/carrossel_blipchat.png)  |

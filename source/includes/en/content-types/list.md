@@ -90,10 +90,10 @@ client.sendMessage({
     id: Lime.Guid(),
     type: "application/vnd.lime.list+json",
     to: "123129898129832@msging.gw.msging.net",
-    content: {  
-      header:{  
+    content: {
+      header:{
           type: "application/vnd.lime.web-link+json",
-          value: {  
+          value: {
               title: "Classic T-Shirt Collection",
               text: "See all our colors",
               previewUri: "http://streetwearvilla.com/image/cache/data/Products/Supreme/T-shirt/supreme-box-logo-t-shirt-collection-600x600.png",
@@ -101,10 +101,10 @@ client.sendMessage({
               target: "selfTall"
           }
       },
-      items:[  
-          {  
+      items:[
+          {
               type: "application/vnd.lime.web-link+json",
-              value:{  
+              value:{
                   title: "Classic White T-Shirt",
                   text: "100% Cotton, 200% Comfortable",
                   previewUri: "http://www.plainwhitetshirt.co.uk/image/cache/catalog/images/GD010vwhiteteegildan-750x750.jpg",
@@ -112,9 +112,9 @@ client.sendMessage({
                   target: "selfTall"
               }
           },
-          {  
+          {
               type: "application/vnd.lime.web-link+json",
-              value:{  
+              value:{
                   title: "Classic Blue T-Shirt",
                   text: "100% Cotton, 200% Comfortable",
                   previewUri: "https://cdn.shopify.com/s/files/1/1475/5420/products/Classic_Blue_Front_12068_1024x1024.jpg?",
@@ -122,9 +122,9 @@ client.sendMessage({
                   target: "selfTall"
               }
           },
-          {  
+          {
               type: "application/vnd.lime.web-link+json",
-              value:{  
+              value:{
                   title: "Classic Black T-Shirt",
                   text: "100% Cotton, 200% Comfortable",
                   previewUri: "http://www.lvnlifestyle.com/wp-content/uploads/2014/08/mens.black_.tshirt.jpg",
@@ -138,18 +138,18 @@ client.sendMessage({
 ```
 
  ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id":"1",
   "to":"123129898129832@msging.gw.msging.net",
   "type":"application/vnd.lime.list+json",
-  "content":{  
-    "header":{  
+  "content":{
+    "header":{
       "type":"application/vnd.lime.web-link+json",
-      "value":{  
+      "value":{
         "title":"Classic T-Shirt Collection",
         "text":"See all our colors",
         "previewUri":"http://streetwearvilla.com/image/cache/data/Products/Supreme/T-shirt/supreme-box-logo-t-shirt-collection-600x600.png",
@@ -157,10 +157,10 @@ Authorization: Key {YOUR_TOKEN}
         "target":"selfTall"
       }
     },
-    "items":[  
-      {  
+    "items":[
+      {
         "type":"application/vnd.lime.web-link+json",
-        "value":{  
+        "value":{
           "title":"Classic White T-Shirt",
           "text":"100% Cotton, 200% Comfortable",
           "previewUri":"http://www.plainwhitetshirt.co.uk/image/cache/catalog/images/GD010vwhiteteegildan-750x750.jpg",
@@ -168,9 +168,9 @@ Authorization: Key {YOUR_TOKEN}
           "target":"selfTall"
         }
       },
-      {  
+      {
         "type":"application/vnd.lime.web-link+json",
-        "value":{  
+        "value":{
           "title":"Classic Blue T-Shirt",
           "text":"100% Cotton, 200% Comfortable",
           "previewUri":"https://cdn.shopify.com/s/files/1/1475/5420/products/Classic_Blue_Front_12068_1024x1024.jpg?",
@@ -178,9 +178,9 @@ Authorization: Key {YOUR_TOKEN}
           "target":"selfTall"
         }
       },
-      {  
+      {
         "type":"application/vnd.lime.web-link+json",
-        "value":{  
+        "value":{
           "title":"Classic Black T-Shirt",
           "text":"100% Cotton, 200% Comfortable",
           "previewUri":"http://www.lvnlifestyle.com/wp-content/uploads/2014/08/mens.black_.tshirt.jpg",
@@ -202,7 +202,7 @@ Allows sending of a list of different documents on a single message. It's also p
 
 #### Channel support
 
-| Channel              | Type                    | 
+| Channel              | Type                    |
 |--------------------|---------------------------|
 | BLiP Chat          | Not supported yet         |
 | Messenger          | [List template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/list-template)|

@@ -67,7 +67,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -182,14 +182,14 @@ client.sendMessage({
                         }
                     ]
                 }
-            }			
+            }
         ]
-    } 
+    }
 });
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -222,7 +222,7 @@ Authorization: Key {YOUR_TOKEN}
 					    }
 					]
 				}
-			}			
+			}
 		]
 	}
 }
@@ -251,13 +251,13 @@ JsonDocument jsonDocuments3;
 
 public CollectionMultimidiaMenu(ISender sender)
 {
-    _sender = sender;   
+    _sender = sender;
 }
 
 DocumentSelect[] documents = new DocumentSelect[]
 {
     jsonDocuments = new JsonDocument();
-    jsonDocuments2 = new JsonDocument();    
+    jsonDocuments2 = new JsonDocument();
     jsonDocuments3 = new JsonDocument();
 
     jsonDocuments.Add("Key1", "value1");
@@ -474,11 +474,11 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
                 }
             ]
         }
-    });   
+    });
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -590,7 +590,7 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 
 #### Channel mapping
 
-| Channel              | Type                    | 
+| Channel              | Type                    |
 |--------------------|---------------------------|
 | BLiP Chat           | Collection               |
 | Messenger          | Multiple messages / [Generic template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/generic-template) (if is a **multimedia menu** collection)|
