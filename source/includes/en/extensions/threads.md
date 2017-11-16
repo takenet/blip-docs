@@ -174,9 +174,9 @@ Content-Type: application/json
     },
     "method": "get",
     "status": "success",
-    "id": "achkadgfaoscj",
+    "id": "534f447a-2531-4897-fade-a5dffabcd56",
     "from": "postmaster@msging.net/#hmgirismsging2",
-    "to": "botbot2@msging.net"
+    "to": "someawesomebot@msging.net"
 }
 ```
 
@@ -215,12 +215,10 @@ namespace Extensions
 }
 ```
 
-Returns a link to show a past conversation between the bot and one of its contacts.
+Returns a link to show a past conversation between the bot and one of its existing contacts.
 
 The `ACCESS_KEY` parameter is mandatory for this extension to work.
 
-Also, remember to pass the thread identifier without the instance; refer to the [Addressing section](#addressing)
-for more information about instances.
+Also, remember to remove the instance from the thread identifier (if any) when requesting for a transcription; please refer to the [Addressing section](#addressing) for more information about instances.
 
-*NOTE*: When the user requests a transcript from an email channel, you must escape the thread's identity,
-as in the method call from the C# example code.
+**NOTE**: When the user requests a transcript from an email channel or a Skype channel, you must escape the thread's identity, as shown in the C# example code's ReceiveAsync() method for instance. This also holds when sending commands through HTTP/other SDKs as well.
