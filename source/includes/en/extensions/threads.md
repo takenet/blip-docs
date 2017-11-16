@@ -207,9 +207,8 @@ namespace Extensions
         public async Task ReceiveAsync(Message m, CancellationToken cancellationToken)
         {
             
-			      Document transcript = await new ThreadExtension(client).GetTranscriptionAsync(Uri.EscapeDataString(m.From.ToIdentity()), ACCESS_KEY, cancellationToken);
-			      await client.SendMessageAsync(transcript, m.From, cancellationToken);
-            await _sender.SendMessageAsync(message, cancellationToken);
+			      Document transcript = await new ThreadExtension(_sender).GetTranscriptionAsync(Uri.EscapeDataString(m.From.ToIdentity()), ACCESS_KEY, cancellationToken);
+			      await _sender.SendMessageAsync(transcript, m.From, cancellationToken);
         }
     }
 }
