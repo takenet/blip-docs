@@ -29,12 +29,12 @@ Imagine that your chatbot must track the number of payment orders realized and s
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-    await client.sendCommand({  
+    await client.sendCommand({
         'id': '9494447a-2581-4597-be6a-a5dff33af156',
         'method': 'set',
         'type': 'application/vnd.iris.eventTrack+json',
         'uri': '/event-track',
-        'resource': {  
+        'resource': {
             'category': 'billing',
             'action': 'payment'
         }
@@ -47,13 +47,13 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "9494447a-2581-4597-be6a-a5dff33af156",
   "to": "postmaster@analytics.msging.net",
   "method": "set",
   "type": "application/vnd.iris.eventTrack+json",
   "uri": "/event-track",
-  "resource": {  
+  "resource": {
     "category": "payments",
     "action": "success-order"
   }
@@ -103,12 +103,12 @@ namespace Extensions
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-    await client.sendCommand({  
+    await client.sendCommand({
         'id': '9494447a-2581-4597-be6a-a5dff33af156',
         'method': 'set',
         'type': 'application/vnd.iris.eventTrack+json',
         'uri': '/event-track',
-        'resource': {  
+        'resource': {
           'category': 'billing',
           'action': 'payment',
           'identity': '123456@messenger.gw.msging.net',
@@ -122,17 +122,17 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
     "id": "9494447a-2581-4597-be6a-a5dff33af156",
     "to": "postmaster@analytics.msging.net",
     "method": "set",
     "type": "application/vnd.iris.eventTrack+json",
     "uri": "/event-track",
-    "resource": {  
+    "resource": {
         "category": "payments",
-        "action": "success-order"
+        "action": "success-order",
         "identity": "123456@messenger.gw.msging.net",
-}
+    }
 }
 ```
 
@@ -182,7 +182,7 @@ If your bot has a `123456@messenger.gw.msging.net` contact identity as a tester 
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-    await client.sendCommand({  
+    await client.sendCommand({
         'id': '3',
         'method': 'get',
         'uri': '/event-track'
@@ -195,7 +195,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "3",
   "to": "postmaster@analytics.msging.net",
   "method": "get",
@@ -207,7 +207,7 @@ Authorization: Key {YOUR_TOKEN}
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-{  
+{
   "id": "3",
   "from": "postmaster@analytics.msging.net/#irismsging1",
   "to": "contact@msging.net/default",
@@ -258,7 +258,7 @@ Retrieves all tracked categories.
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-    await client.sendCommand({  
+    await client.sendCommand({
         'id': '4',
         'method': 'get',
         'uri': '/event-track/billing?startDate=2016-01-01&$take=10'
@@ -271,7 +271,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "4",
   "to": "postmaster@analytics.msging.net",
   "method": "get",
@@ -288,7 +288,7 @@ Content-Type: application/json
   "from": "postmaster@analytics.msging.net/#irismsging1",
   "to": "contact@msging.net/default",
   "method": "get",
-  "status": "success",  
+  "status": "success",
   "type": "application/vnd.lime.collection+json",
   "resource": {
     "itemType": "application/vnd.iris.eventTrack+json",
@@ -333,7 +333,7 @@ namespace Extensions
             var endDate = new DateTimeOffset(2017, 1, 1, 0, 0, 0, default(TimeSpan));
             var take = 10;
 
-            var categories = 
+            var categories =
               await _eventTrackExtension.GetCategoryActionsCounterAsync(startDate, endDate, "payments", take);
         }
     }
@@ -365,7 +365,7 @@ POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "5",
   "to": "postmaster@analytics.msging.net",
   "method": "get",
@@ -393,7 +393,7 @@ Content-Type: application/json
         "extras": {
           "expiration": "2015-12-30",
           "customerId": "199213"
-        }      
+        }
     },
     {
         "category": "payments",
@@ -402,7 +402,7 @@ Content-Type: application/json
         "extras": {
           "expiration": "2016-01-01",
           "customerId": "4123123"
-        }  
+        }
     }]
   }
 }
@@ -433,7 +433,7 @@ namespace Extensions
             var endDate = new DateTimeOffset(2017, 1, 1, 0, 0, 0, default(TimeSpan));
             var take = 10;
 
-            var categories = 
+            var categories =
               await _eventTrackExtension.GetAllAsync(startDate, endDate, "payments", "success-order", take: take);
         }
     }
@@ -443,7 +443,7 @@ namespace Extensions
 Retrieves all events tracked with a specific pair of action and categories. The following filters are available as possible *query strings*:
 
 | QueryString  | Description                               |
-|--------------|-------------------------------------------| 
+|--------------|-------------------------------------------|
 | $skip        | Number of items to be skipped for paging  |
 | $take        | Limit of total of items to be returned    |
 | startDate    | Initial date to seach for events          |
