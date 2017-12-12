@@ -324,6 +324,94 @@ Content-Type: application/json
 }
 ```
 
+### Delete an intention
+
+Where `{intention_id}` is the intention identifier of some already created intention.
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "delete",
+  "uri": "/intentions/{intention_id}/questions",
+}
+```
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "delete",
+  "uri": "/intentions/{intention_id}/questions",
+}
+
+```
+
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "delete",
+  "uri": "/intentions/{intention_id}/questions",
+}
+
+```
+
+
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "10",
+  "from": "postmaster@ai.msging.net",
+  "to": "contact@msging.net/default",
+  "method": "delete",
+  "status": "success"
+}
+```
+
+
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "10",
+  "from": "postmaster@ai.msging.net",
+  "to": "contact@msging.net/default",
+  "method": "delete",
+  "status": "success"
+}
+```
+
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "10",
+  "from": "postmaster@ai.msging.net",
+  "to": "contact@msging.net/default",
+  "method": "delete",
+  "status": "success"
+}
+```
+
 ### Query the first 10 intentions
 
 ```csharp
