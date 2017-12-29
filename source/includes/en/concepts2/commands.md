@@ -98,6 +98,7 @@ Each command has:
 - **method**: Method for resource manipulation defined at **uri**. This value is mandatory. Possible values are:
   * **get**: Acquires an existent value.
   * **set**: Creates or updates a value.
+  * **merge**: Merges the resource document with an existing one. If the resource doesn't exists, it is created.
   * **delete**: Removes an existing value.
   * **subscribe**: Subscribes a resource to receive change notifications of the defined value at the **uri**.
   * **unsubscribe**: Removes a subscription of a resource. 
