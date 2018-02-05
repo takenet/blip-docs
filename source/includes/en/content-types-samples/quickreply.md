@@ -29,7 +29,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
     Document document = new Select
     {
         Scope = SelectScope.Immediate,// (create a quickreply instead menu)
-        Text = "Choice an option:",
+        Text = "Choose an option:",
         Options = new SelectOption[]
         {
             new SelectOption
@@ -99,7 +99,7 @@ Authorization: Key {YOUR_TOKEN}
     "type":"application/vnd.lime.select+json",
     "content":{
         "scope":"immediate",
-        "text":"Choice an option",
+        "text":"Choose an option",
         "options":[
             {
                 "text":"First option"

@@ -120,7 +120,7 @@ DocumentContainer[] documents = new DocumentContainer[]
     new DocumentContainer{
         Value = new Select
         {
-            Text = "Choice what you need",
+            Text = "Choose what you need",
             Options = new SelectOption[]
             {
                 new SelectOption
@@ -210,7 +210,7 @@ Authorization: Key {YOUR_TOKEN}
 			{
 				"type": "application/vnd.lime.select+json",
 				"value": {
-					"text": "Choice what you need",
+					"text": "Choose what you need",
 					"options": [
 					    {
 					        "order": 1,

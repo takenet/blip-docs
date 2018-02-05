@@ -28,7 +28,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 
     Document document = new Select
     {
-        Text = "Choice an option:",
+        Text = "Choose an option:",
         Options = new SelectOption[]
         {
             new SelectOption
@@ -96,7 +96,7 @@ Authorization: Key {YOUR_TOKEN}
     "to":"1042221589186385@messenger.gw.msging.net",
     "type":"application/vnd.lime.select+json",
     "content":{
-        "text":"Choice an option",
+        "text":"Choose an option",
         "options":[
             {
                 "text":"First option"

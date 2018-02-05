@@ -66,7 +66,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 {
     var document = new Select
     {
-        Text = "Choice an option:",
+        Text = "Choose an option:",
         Options = new []
         {
             new SelectOption
@@ -94,7 +94,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 }
 ```
 **Note:**
-- `Value` field is optional, if informed your value will be sent to the chatbot when the user choice the option.
+- `Value` field is optional, if informed your value will be sent to the chatbot when the user chooses the option.
 - If `Value` field is not provided, will must provide one of the fields: `Order` or `Text`. The `Order` field will be used only if `Value` and `Text` is not provided.
 
 **Limitations:**
