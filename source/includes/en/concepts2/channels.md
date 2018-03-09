@@ -24,4 +24,4 @@ The following channels are available in **BLiP** plataform:
 All BLiP chatbots are running inside of a specific channel with <code>msging.net</code> identifier.
 </aside>
 
-For more information about any channel, check the [Integrations](#integrations) section.
+For more information about any channel, check the [Integrations](#Integrations) section.
