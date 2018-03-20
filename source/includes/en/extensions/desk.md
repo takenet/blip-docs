@@ -1,18 +1,18 @@
 ## Desk
 
-The **desk** extension allows routing and exchange of messages and notifications between bot users and human agents. The human agents can reply the messages using any BLiP supported help desk application (BLiP Desk for instance). In this way, a bot can forward received messages from users to a **human agent** on the chosen help desk application and vice versa, in a transparent way.
+The **desk** extension allows routing and exchange of messages and notifications between bot users and human agents. The human agents can reply the messages using any BLiP supported help desk application (BLiP Desk for instance). Hence, a bot can forward received messages from users to a **human agent** on the chosen help desk application and vice versa, in a transparent way.
 
-This feature is useful for **enable humans to help the bot to be able to reply** about not handled or very complex subjects. For example, imagine that you want to have a chatbot that know a lot about soccer teams but for some reason don't know exactly the tickets price of some matchs. In this scenario you can use a human to help the bot answer only when users talks about ticket prices.
+This feature is useful to **enable humans reply some complex or unhandled messages as the bot**. For example, imagine that you want a chatbot that knows a lot about soccer teams but for some reason doesn't know exactly the tickets prices for some matchs. In this scenario you can use a human to help the bot answer only when users talks about ticket prices.
 
-*Note: The BLiP offers the [BLiP Desk](https://desk.blip.ai), a free and powerfull desk application to enable humans to reply messages sent by a bot.*
+*Note: The BLiP offers the [BLiP Desk](https://desk.blip.ai), a free and powerful desk application to enable humans to reply messages sent by a bot.*
 
-Before use this extension check if you already properly setted a custumer service tool (help desk application) on Portal and if you already has at least one available human agent to receive and reply messages.
+Before using this extension check if you have already properly setted a custumer service tool (help desk application) on Portal and if you already have at least one available human agent to receive and reply messages.
 
 ###Fowarding received messages to a human agent
 
->Imagine a scenario where an user on Messenger channel ask by human attendance. Because of this, for now until the attendance be closed any message received by the bot must be sended to a **human agent**.
+>Imagine a scenario where an user on Messenger channel ask by human help service. Therefore, while the ticket has not been closed any message received by the bot should be sended to a **human agent**.
 
-At the first the bot receive a message and decide if must route the user to a human agent. Imagine for instance that the message **"Hello, I would like to talk to an attendant."** is enought to send the user to an agent.
+At first, the bot receives a message and decides if must route the user to a human agent. Imagine for instance that the message **"Hello, I would like to talk to an attendant."** is enought to send the user to an agent.
 
 ```
 {
@@ -44,7 +44,7 @@ Where
 
 >Imagine a scenario where a human agent is replying some message to an user on Messenger channel. The message received by bot from human agent must be foward to the final user.
 
-First bot receive a message as above:
+First, the bot receives a message as above:
 
 ```
 {
