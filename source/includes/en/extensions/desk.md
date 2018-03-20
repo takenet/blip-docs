@@ -10,7 +10,7 @@ Before using this extension, check if you have already properly set a custumer s
 
 ### Forwarding received messages to a human agent
 
->Imagine a scenario where an user on Messenger channel asks for human help service. Therefore, while the ticket is still open, any message received by the bot should be sent to a **human agent**.
+>Imagine a scenario where a user on Messenger channel asks for human help service. Therefore, while the ticket is still open, any message received by the bot should be sent to a **human agent**.
 
 At first, the bot receives a message and decides if must route the user to a human agent. Imagine for instance that the message **"Hello, I would like to talk to an attendant."** is enough to send the user to an agent.
 
@@ -40,7 +40,7 @@ To foward a received message to an agent send the message to **{encoded-user-nod
 
 ### Forwarding received messages from a human agent to a final user
 
->Imagine a scenario where a human agent is replying to some message to an user on Messenger channel. The message received by bot from human agent must be foward to the final user.
+>Imagine a scenario where a human agent is replying to some message to a user on Messenger channel. The message received by bot from human agent must be foward to the final user.
 
 First, the bot receives a message as above:
 
