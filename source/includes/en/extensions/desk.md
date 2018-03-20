@@ -4,15 +4,15 @@ The **desk** extension allows routing and exchange of messages and notifications
 
 This feature is useful to **enable humans reply some complex or unhandled messages as the bot**. For example, imagine that you want a chatbot that knows a lot about soccer teams but for some reason doesn't know exactly the tickets prices for some matchs. In this scenario you can use a human to help the bot answer only when users talks about ticket prices.
 
-*Note: The BLiP offers the [BLiP Desk](https://desk.blip.ai), a free and powerful desk application to enable humans to reply messages sent by a bot.*
+*Note: BLiP offers [BLiP Desk](https://desk.blip.ai), a free and powerful desk application to enable humans to reply messages sent by a bot.*
 
-Before using this extension check if you have already properly setted a custumer service tool (help desk application) on Portal and if you already have at least one available human agent to receive and reply messages.
+Before using this extension, check if you have already properly set a custumer service tool (help desk application) on the Portal and if you already have at least one available human agent to receive and reply to messages.
 
-###Fowarding received messages to a human agent
+### Forwarding received messages to a human agent
 
->Imagine a scenario where an user on Messenger channel ask by human help service. Therefore, while the ticket has not been closed any message received by the bot should be sended to a **human agent**.
+>Imagine a scenario where an user on Messenger channel asks for human help service. Therefore, while the ticket is still open, any message received by the bot should be sent to a **human agent**.
 
-At first, the bot receives a message and decides if must route the user to a human agent. Imagine for instance that the message **"Hello, I would like to talk to an attendant."** is enought to send the user to an agent.
+At first, the bot receives a message and decides if must route the user to a human agent. Imagine for instance that the message **"Hello, I would like to talk to an attendant."** is enough to send the user to an agent.
 
 ```
 {
@@ -24,11 +24,9 @@ At first, the bot receives a message and decides if must route the user to a hum
 }
 ```
 
-To foward a received message to an agent send the message to **{encoded-user-node}@desk.msging.net**:
+To foward a received message to an agent send the message to **{encoded-user-node}@desk.msging.net**, where
 
-Where
-
-**{encoded-user-node}** is the message emmiter node encoded as ASCII Encoding.
+**{encoded-user-node}** is the ASCII-encoded messages' emmiter node.
 
 ```
 {
@@ -40,9 +38,9 @@ Where
 }
 ```
 
-###Fowarding received messages from a human agent to a final user
+### Forwarding received messages from a human agent to a final user
 
->Imagine a scenario where a human agent is replying some message to an user on Messenger channel. The message received by bot from human agent must be foward to the final user.
+>Imagine a scenario where a human agent is replying to some message to an user on Messenger channel. The message received by bot from human agent must be foward to the final user.
 
 First, the bot receives a message as above:
 
@@ -52,11 +50,11 @@ First, the bot receives a message as above:
     "from": "1654804277843415%40messenger.gw.msging.net@desk.msging.net",
     "to": "bot@msging.net/instance",
     "type": "text/plain",
-    "content": "Hello, here is a human been ;)"
+    "content": "Hello, here is a human being ;)"
 }
 ```
 
-To foward a received message to the specific final user the bot must decode the received message node to know what is the correct user node **{encoded-user-node}@desk.msging.net**:
+To forward a received message to the specific final user the bot must decode the received message node so it knows where to respond **{encoded-user-node}@desk.msging.net**:
 
 ```
 {
@@ -64,13 +62,13 @@ To foward a received message to the specific final user the bot must decode the 
     "from": "bot@msging.net/instance",
     "to": "1654804277843415@messenger.gw.msging.net",
     "type": "text/plain",
-    "content": "Hello, here is a human been ;)"
+    "content": "Hello, here is a human being ;)"
 }
 ```
 
-###Handling the end of an attendance
+### Handling the end of an attendance
 
->When the human agent close some attendance the bot receives a message with a *Redirect* content type. The Redirect's context property has a *Ticket* with informations about the attendance. In order to get attendance closed informations add a receiver to **application/vnd.lime.redirect+json** content type.
+>When the human agent closes some attendance the bot receives a message with a *Redirect* content type. The Redirect's context property has a *Ticket* with informations about the attendance. In order to get attendance closed informations add a receiver to **application/vnd.lime.redirect+json** content type.
 
 ```
 {
@@ -98,8 +96,8 @@ To foward a received message to the specific final user the bot must decode the 
 }
 ```
 
-After receive the Redirect message the bot can for example change the user state and start to handle next messages automaticaly.
+After receiving the Redirect message, the bot can change the user state and start to handle next messages automatically.
 
-###Closing an attendance actively
+### Closing an attendance actively
 
 TBD
