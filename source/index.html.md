@@ -65,6 +65,7 @@ includes:
   - en/extensions/scheduler
   - en/extensions/broadcast
   - en/extensions/bucket
+  - en/extensions/desk
   - en/extensions/directory  
   - en/extensions/resources
   - en/extensions/contacts
