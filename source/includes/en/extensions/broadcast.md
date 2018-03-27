@@ -99,8 +99,9 @@ Content-Type: application/json
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Extensions.Broadcast;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Broadcast;
 
 namespace Extensions
 {
@@ -177,8 +178,9 @@ Content-Type: application/json
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Extensions.Broadcast;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Broadcast;
 
 namespace Extensions
 {
@@ -249,8 +251,9 @@ Authorization: Key {YOUR_TOKEN}
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Extensions.Broadcast;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Broadcast;
 
 namespace Extensions
 {
@@ -318,8 +321,9 @@ Content-Type: application/json
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Extensions.Broadcast;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Broadcast;
 
 namespace Extensions
 {
@@ -397,8 +401,9 @@ Content-Type: application/json
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Extensions.Broadcast;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Broadcast;
 using Lime.Messaging.Contents;
 
 namespace Extensions
@@ -454,8 +459,9 @@ Authorization: Key {YOUR_TOKEN}
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Extensions.Broadcast;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Broadcast;
 using Lime.Messaging.Contents;
 
 namespace Extensions

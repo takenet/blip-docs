@@ -67,8 +67,9 @@ Content-Type: application/json
 using Lime.Protocol;
 using System.Threading;
 using System.Threading.Tasks;
-using Takenet.MessagingHub.Client.Extensions.Directory;
-using Takenet.MessagingHub.Client.Listener;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Directory;
 
 namespace Extensions
 {
@@ -142,8 +143,9 @@ Content-Type: application/json
 using Lime.Protocol;
 using System.Threading;
 using System.Threading.Tasks;
-using Takenet.MessagingHub.Client.Extensions.Directory;
-using Takenet.MessagingHub.Client.Listener;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Directory;
 
 namespace Extensions
 {

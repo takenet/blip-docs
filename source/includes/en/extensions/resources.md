@@ -59,8 +59,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Extensions.Resource;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Resource;
 using Lime.Messaging.Contents;
 
 namespace Extensions
@@ -129,8 +130,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Extensions.Resource;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Resource;
 using Lime.Messaging.Contents;
 
 namespace Extensions
@@ -197,8 +199,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Extensions.Resource;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Resource;
 using Lime.Messaging.Contents;
 
 namespace Extensions

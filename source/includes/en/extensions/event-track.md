@@ -77,8 +77,9 @@ Content-Type: application/json
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Extensions.EventTracker;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.EventTracker;
 
 namespace Extensions
 {
@@ -153,8 +154,9 @@ Content-Type: application/json
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Extensions.EventTracker;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.EventTracker;
 
 namespace Extensions
 {
@@ -230,8 +232,9 @@ Content-Type: application/json
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Extensions.EventTracker;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.EventTracker;
 
 namespace Extensions
 {
@@ -312,8 +315,9 @@ Content-Type: application/json
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Extensions.EventTracker;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.EventTracker;
 using System;
 
 namespace Extensions
@@ -412,8 +416,9 @@ Content-Type: application/json
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Extensions.EventTracker;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.EventTracker;
 using System;
 
 namespace Extensions

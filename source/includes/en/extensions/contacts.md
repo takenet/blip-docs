@@ -79,9 +79,9 @@ Content-Type: application/json
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Sender;
-using Takenet.MessagingHub.Client.Extensions.Contacts;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Contacts;
 using Lime.Messaging.Resources;
 using System.Collections.Generic;
 
@@ -164,9 +164,9 @@ Content-Type: application/json
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Sender;
-using Takenet.MessagingHub.Client.Extensions.Contacts;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Contacts;
 
 namespace Extensions
 {
@@ -235,9 +235,9 @@ Content-Type: application/json
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Sender;
-using Takenet.MessagingHub.Client.Extensions.Contacts;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Contacts;
 
 namespace Extensions
 {
@@ -299,14 +299,14 @@ Content-Type: application/json
 ```
 
 ```csharp
+using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Sender;
-using System;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
 using Lime.Messaging.Contents;
-using System.Collections.Generic;
 
 namespace Extensions
 {

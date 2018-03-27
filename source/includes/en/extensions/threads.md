@@ -184,8 +184,8 @@ Content-Type: application/json
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
-using Takenet.MessagingHub.Client.Listener;
-using Takenet.MessagingHub.Client.Sender;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
 using System;
 using Lime.Messaging.Contents;
 using System.Collections.Generic;
