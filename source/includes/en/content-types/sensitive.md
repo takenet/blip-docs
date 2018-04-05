@@ -145,4 +145,4 @@ Authorization: Key {YOUR_TOKEN}
 
 Wraps a message content in order to signal that the information is confidential or sensitive. In this case, the server will not store the message content in any moment. The wrapped content can be of any available BLiP type.
 
-**Important note**: This is restricted to the BLiP servers and the external channels (Messenger, Telegram, etc.) still **can store your information** in some way. Pay attention on particular security polices of each channel.
+**Important note**: This is restricted to the BLiP servers. External channels (Messenger, Telegram, etc.) still **can store your information** in some way. Pay attention on particular security polices for each channel.

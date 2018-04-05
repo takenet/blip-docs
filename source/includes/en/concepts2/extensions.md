@@ -1,6 +1,6 @@
 ### Extensions
 
-**Extensions** are services connected to the **BLiP** in order to enable usefull features needed to build relevant **chatbots**. Each extension has a identifier, which is usually a [FQDN](https://pt.wikipedia.org/wiki/FQDN).
+**Extensions** are services connected to **BLiP** in order to enable usefull features needed to build relevant **chatbots**. Each extension has an identifier, which is usually a [FQDN](https://pt.wikipedia.org/wiki/FQDN).
 
 ### Broadcast
 

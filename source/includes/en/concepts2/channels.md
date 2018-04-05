@@ -6,9 +6,9 @@ In order to send or receive messages to a channel, the chatbot must be published
 
 Each channel has different capabilities, such as supported message formats or notification events.
 
-The following channels are available in **BLiP** plataform:
+The following channels are available in **BLiP** platform:
 
-| Nome               | FQDN                    |
+| Name               | FQDN                    |
 |--------------------|-------------------------|
 | BLiP Chat          | 0mn.io                  |
 | Tangram (SMS)      | tangram.com.br          |
@@ -18,7 +18,7 @@ The following channels are available in **BLiP** plataform:
 | Telegram           | telegram.gw.msging.net  |
 | Workplace          | workplace.gw.msging.net |
 | Email              | mailgun.gw.msging.net   |
-| Pagseguro          | pagseguro.gw.msging.net |
+| PagSeguro          | pagseguro.gw.msging.net |
 
 <aside class="notice">
 All BLiP chatbots are running inside of a specific channel with <code>msging.net</code> identifier.

@@ -70,9 +70,9 @@ Content-Length: 131
 }
 ```
 
-In order to correctly show the message history is important that the chatbots send notifications of messages processed to originator clients.
+In order to correctly show the message history, it is important that the chatbots send notifications of messages processed to originator clients.
 
-For each message processed is important send a notification with the consumed event. In case of problems the chatbot must send a notification with the failed event. 
+For each message processed, a notification must be sent with the consumed event. In case of problems, the chatbot must send a notification with the failed event. 
 
 REQUEST
 
@@ -88,7 +88,7 @@ REQUEST
 ### Receiving notifications
 
 <blockquote class="lang-specific javascript">
-<p>The next sample show how to add notification receiver with filter to `received` event type:</p>
+<p>The next sample shows how to add a notification receiver with filter to the `received` event type:</p>
 </blockquote>
 
 ```javascript
@@ -118,7 +118,7 @@ public class ConsumedNotificationReceiver : INotificationReceiver
 ```
 
 <blockquote class="lang-specific http">
-<p>All notifications will be delivered as a HTTP POST request on configured chatbot notifications URL.</p>
+<p>All notifications will be delivered as a HTTP POST request on the configured URL for chatbot notifications.</p>
 </blockquote>
 
 ```http
@@ -132,4 +132,4 @@ Content-Type: application/json
   "event": "received"
 }
 ```
-Each notification contains the status of messages. Observe that the notifications are sent by the clients, informing if received or not some message.
+Each notification contains the status of messages. Observe that the notifications are sent by the clients, informing if they received some message or not.

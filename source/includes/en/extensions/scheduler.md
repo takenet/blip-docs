@@ -1,8 +1,8 @@
 ## Schedule
 
-The **scheduler** extensions allows the chatbot to schedule messages to be sent in specific date and time on its behalf. Any type of message to any destination can be scheduled, including **broadcast** messages (to a distribution list). The scheduling time must be done in the GMT timezone. Any received notification from a scheduled message is forwarded to the chatbot.
+The **scheduler** extension allows the chatbot to schedule messages to be sent in specific date and time on its behalf. Any type of message to any destination can be scheduled, including **broadcast** messages (to a distribution list). The scheduling time must be done in the GMT timezone. Any received notification from a scheduled message is forwarded to the chatbot.
 
-To use **scheduler** extension features send a command with the following properties:
+To use **scheduler** extension features, send a command with the following properties:
 
 | Name | Description |
 |---------------------------------|--------------|
@@ -13,13 +13,13 @@ To use **scheduler** extension features send a command with the following proper
 | uri    | **/schedules**   |
 | to     | **postmaster@scheduler.msging.net** |
 
-The command's properties `resource` and `method` can change according of the feature.
-An schedule object passed as a document `resource` has the following properties:
+The command's properties `resource` and `method` can change according to the feature.
+A schedule object passed as a document `resource` has the following properties:
 
 | Property     | Description                                                        | Example |
 |--------------|--------------------------------------------------------------------|---------|
 | **message** | A complete message object to be scheduled.                          | { "id": "1", "to": "destination@0mn.io", "type": "text/plain", "content": "Hi" } |
-| **when**   | The scheduling time (in the GMT timezone)  | "2017-07-25T17:50:00.000Z" |
+| **when**   | The scheduled time (in the GMT timezone)  | "2017-07-25T17:50:00.000Z" |
 
 ### Create a scheduling
 
@@ -195,5 +195,5 @@ namespace Extensions
 }
 ```
 
-Getting an existing scheduled message with id `ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67`. Each scheduled message has tree possible `status` values: `scheduled`, `executed` and `canceled`. This values are returned when you search for a specific message scheduled.
+Getting an existing scheduled message with id `ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67`. Each scheduled message has tree possible `status` values: `scheduled`, `executed` and `canceled`. This values are returned when you search for a specific scheduled message.
 

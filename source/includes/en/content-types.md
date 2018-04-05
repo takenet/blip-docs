@@ -1,13 +1,13 @@
 # Content Types
 
 ```csharp
-If you want to see all content-types working clone our SDK sample project:
+If you want to see all content-types working, clone our SDK sample project:
 github.com/takenet/blip-sdk-csharp/tree/master/src/Samples/MessageTypes
 ```
 
-The **BLiP** uses message content types defined by LIME protocol and performs the conversion of these types to the most adequate format on each destination channel. For more details, check the [LIME protocol content types](http://limeprotocol.org/content-types.html) specification.
+**BLiP** uses message content types defined by LIME protocol and performs the conversion of these types to the most adequate format for each destination channel. For more details, check the [LIME protocol content types](http://limeprotocol.org/content-types.html) specification.
 
-Besides that, its possible send **native contents** to some channels - like Messenger - which allows the usage of the channel capabilities without restrictions. See more details on **Native contents** item on left menu.
+Besides that, it's possible to send **native contents** to some channels - like Messenger -, which allows the usage of the channel capabilities without restrictions. See more details on **Native contents** item on the left menu.
 
 #### Metadata
 
@@ -32,7 +32,7 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-The properties `messenger.mdi` and `messenger.seq` are specific to Messenger, but they are delivered together with incoming messages. In Messenger specifically, several different metadata properties can be delivered, being one of the most important the `messenger.ref` which is the referral generated when a client clicks on a` m.me/bot-name?ref=value` link from your chatbot or when it scans a [code](https://developers.facebook.com/docs/messenger-platform/messenger-code) for the bot.
+The properties `messenger.mdi` and `messenger.seq` are specific to Messenger, but they are delivered together with incoming messages. In Messenger specifically, several different metadata properties can be delivered, one of the most important being the `messenger.ref`, which is the referral generated when a client clicks on a `m.me/bot-name?ref=value` link from your chatbot or when it scans a [code](https://developers.facebook.com/docs/messenger-platform/messenger-code) for the bot.
 
 ```http
 HTTP/1.1 200 OK

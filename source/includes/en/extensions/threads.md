@@ -2,7 +2,7 @@
 
 The **threads** (or **chat history**) extension allows the chatbot to retrieve the last threads and messages exchanged with the customers.
 
-To get client's **threads** or **messages** exchanged with your some bot send a command with the following properties:
+To get client's **threads** or **messages** exchanged with a bot, send a command with the following properties:
 
 | Name | Description |
 |---------------------------------|--------------|
@@ -70,9 +70,9 @@ Content-Type: application/json
 }
 ```
 
-Getting the last chatbot's threads. By default BLiP will return the 50 last threads.
+Getting the last chatbot's threads. By default, BLiP returns the last 50 threads.
 
-The following uri filters are available to get chatbot's thread:
+The following uri filters are available to get chatbot's threads:
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|
@@ -137,9 +137,9 @@ Content-Type: application/json
 }
 ```
 
-Getting the last chatbot's messages in a specific thread. The thread is identified with a client identity (for example: `1180740631991418@messenger.gw.msging.net`). By default BLiP will return the 20 last thread messages.
+Getting the last chatbot's messages in a specific thread. The thread is identified by a client identity (for example: `1180740631991418@messenger.gw.msging.net`). By default, BLiP will return the last 20 thread messages.
 
-The following uri filters are available to get chatbot's thread:
+The following uri filters are available to get a chatbot's thread:
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|

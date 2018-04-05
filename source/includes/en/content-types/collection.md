@@ -85,7 +85,7 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-> A different types collection, using **container**
+> A different type of collection, using **container**
 
 ```csharp
 using System;
@@ -582,7 +582,7 @@ Authorization: Key {YOUR_TOKEN}
 |--------------------------------------|------------------------------------|
 | application/vnd.lime.collection+json | [Lime.Protocol.DocumentCollection](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Protocol/DocumentCollection.cs)|
 
-Allows sending **multiple contents** of the same type in a single message. Some channels support this type of aggregation with special layouts (for example, in Facebook Messenger a **multimedia menu** collection is displayed as a *carousel*). In other channels, multiple messages are sent.
+Allows sending **multiple contents** of the same type in a single message. Some channels support this type of aggregation with special layouts (for example, in Facebook Messenger a **multimedia menu** collection is displayed as a *carousel*). In other channels, multiple messages are sent instead.
 
 **Note:** It is possible to send different content types using a collection of the **container** type.
 

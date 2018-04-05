@@ -357,7 +357,7 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-You can send carousel by using [Document Collection](/#collection) content type and passing an array of [Select](/#select) type as Items atribute.
+You can send carousels by using [Document Collection](/#collection) content type and passing an array of [Select](/#select) type as the Items atribute.
 
 | Messenger                              |                                              |
 |----------------------------------------|----------------------------------------------|

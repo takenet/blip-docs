@@ -289,7 +289,7 @@ client.sendMessage({
 |-------------------------------------------|
 | application/vnd.lime.document-select+json |
 
-Allows sending an options menu to customers where the header and options can be of any content type such as **media link** or **web link** and not only **text** - like in the *Select* type. For each option, it is possible to define a document that is delivered to the contact when the customer performs a choice (depending on the channel support).
+Allows sending an options menu to customers where the header and options can be of any content type, such as **media link** or **web link**, and not only **text** - like in the *Select* type. For each option, it is possible to define a document that is delivered to the contact when the customer performs a choice (depending on the channel support).
 
 For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#document-select) specification.
 

@@ -79,7 +79,7 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 
-You can send location request by using [input](/#user-input) content-type
+You can send a location request by using [input](/#user-input) content-type
 
 Sending a location request:
 

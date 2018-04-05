@@ -2,11 +2,11 @@
 
 The **broadcast** extension allows creation and management of distribution lists and their members for sending messages to multiple destinations simultaneously. 
 
-Each distribution list has a unique address in the format `list-name@broadcast.msging.net` in addition to the members, who are the recipients of messages sent to this list. Only the chatbot that created a remote list has permissions to send messages to it.
+Each distribution list has a unique address in the format `list-name@broadcast.msging.net` in addition to the members, who are the recipients of messages sent to this list. Only the chatbot that created a remote list has permission to send messages to it.
 
 Notifications are forwarded to the chatbot when received by the extension.
 
-In order to use **broadcast** extension features you must send commands with the following properties:
+In order to use **broadcast** extension features, you must send commands with the following properties:
 
 | Name | Description |
 |---------------------------------|--------------|
@@ -17,7 +17,7 @@ In order to use **broadcast** extension features you must send commands with the
 | uri    | **/lists**   |
 | to     | **postmaster@broadcast.msging.net** |
 
-The command's properties `resource` and `method` can change according of the feature.
+The command's properties `resource` and `method` can change according to the feature.
 An schedule object passed as a document `resource` has the following properties:
 
 | Property     | Description                                                        | Example |
@@ -124,7 +124,7 @@ namespace Extensions
 }
 ```
 
-Before to make a broadcast is necessary create a distribution list and add some members. To create a distribution list with `your_distributionList` identifier you must send command with `SET` method and a `resource` document with identity equals to `your_distributionList@broadcast.msging.net`.
+Before making a broadcast, it is necessary to create a distribution list and add some members to it. To create a distribution list with `your_distributionList` identifier you must send command with `SET` method and a `resource` document with identity equal to `your_distributionList@broadcast.msging.net`.
 
 ### Get all lists
 
@@ -201,7 +201,7 @@ namespace Extensions
 }
 ```
 
-To get all distribution lists associated with you chatbot you must send a command with `GET` method.
+To get all distribution lists associated with your chatbot, you must send a command with `GET` method.
 
 ### Add a member to list
 
@@ -276,7 +276,7 @@ namespace Extensions
 }
 ```
 
-After to create a distribution list you must add some members to receive your broadcasts. To add a member with `551100001111@0mn.io` identity to a list with `your_distributionList` identifier you must send command with `SET` method and a `resource` document equals to a member identity (`551100001111@0mn.io`). Note that the command URI also must contains the list identifier (`/lists/your_distributionList@broadcast.msging.net/recipients`)
+After creating a distribution list, you must add some members to receive your broadcasts. To add a member with `551100001111@0mn.io` identity to a list with `your_distributionList` identifier, you must send a command with `SET` method and `resource` document equal to a member identity (`551100001111@0mn.io`). Note that the command URI also must contains the list identifier (`/lists/your_distributionList@broadcast.msging.net/recipients`)
 
 ### Remove members from list
 
@@ -346,7 +346,7 @@ namespace Extensions
 }
 ```
 
-As the same way you add some members into a distribution list is possible remove the members. To remove a member with `551100001111@0mn.io` identity to a list with `your_distributionList` identifier you must send command with `DELETE` method and command URI with the list and memeber identifier (`/lists/your_distributionList@broadcast.msging.net/recipients/551100001111@0mn.io`)
+As the same way you add some members into a distribution list, it is possible to remove its members. To remove a member with `551100001111@0mn.io` identity from a list with `your_distributionList` identifier, you must send a command with `DELETE` method and command URI with the list and memeber identifier (`/lists/your_distributionList@broadcast.msging.net/recipients/551100001111@0mn.io`)
 
 ###Send message
 
@@ -427,7 +427,7 @@ namespace Extensions
 }
 ```
 
-If you already have a distribution list with some members you can send messages to this list. Any message sent to a specific list you be received to all of your members.
+If you already have a distribution list with some members, you can send messages to this list. Any message sent to a specific list will be received by all of its members.
 
 ###Send message with replacement variable
 
@@ -486,7 +486,7 @@ namespace Extensions
 ```
 
 <aside class="notice">
-Note: To make your broadcast more personal you can also replace contact variables in messages sent to a distribution list. 
+Note: To make your broadcast more personal, you can also replace contact variables in messages sent to a distribution list. 
 </aside>
 
 For more information, please check the documentation of the [**Contacts** extension](#contacts).

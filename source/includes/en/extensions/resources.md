@@ -1,8 +1,8 @@
 ## Resources
 
-The **resources** extension allows the storage of documents in the server in an isolated space for each chatbot, similar to the **bucket** extension. The main difference is that these documents can be mapped as **contents** for messages sent to the chatbot destinations, thought the resource **key**. This means that the chatbot developer can choose to **store the content of his messages in the server** instead of keeping they on the chatbot code side.
+The **resources** extension allows the storage of documents in the server in an isolated space for each chatbot, similar to the **bucket** extension. The main difference is that these documents can be mapped as **contents** for messages sent to the chatbot destinations, through the resource **key**. This means that the chatbot developer can choose to **store the content of its messages in the server** instead of keeping them on the chatbot code side.
 
-To manage all resources programmatically use **resources** extension sending a command with the following properties:
+To manage all resources programmatically, use **resources** extension sending a command with the following properties:
 
 | Name | Description |
 |---------------------------------|--------------|
@@ -13,7 +13,7 @@ To manage all resources programmatically use **resources** extension sending a c
 | uri    | **/resources**   |
 | to     | **postmaster@msging.net** (not required) |
 
-The **BLiP** portal offers an resource management interface which helps in the case of editing these content, avoiding the need to update the code on the application side in case of changes in chatbot content.
+The **BLiP** portal offers a resource management interface which helps with the edition of content, avoiding the need to update the code on the application side in case of changes in the chatbot.
 
 In order to send a resource message, the developer must use the [**resource** content type](#resource).
 

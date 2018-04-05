@@ -11,7 +11,7 @@ using Lime.Messaging.Contents;
 using Lime.Protocol;
 using Take.Blip.Client;
 
-//A chatbot can send and receive a location entity. For this cases use Location type:
+//A chatbot can send and receive a location entity. For those cases, use Location type:
 public class PlainTextMessageReceiver : IMessageReceiver
 {
 private readonly ISender _sender;
@@ -157,7 +157,7 @@ Authorization: Key {YOUR_TOKEN}
 |--------------------------------------|
 | application/vnd.lime.location+json |
 
-Allows sending and receiving geographic information.
+Allows sending and receiving of geographic information.
 
 
 For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#location) specification.

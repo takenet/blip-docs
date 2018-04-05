@@ -58,10 +58,10 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-For more details, check the especification of [LIME protocol](http://limeprotocol.org/content-types.html#text).
+For more details, check the specification of [LIME protocol](http://limeprotocol.org/content-types.html#text).
 
 <aside class="notice">
-Note: Some channels may have limit of characters
+Note: Some channels may have a character limit per message.
 </aside>
 
 #### Channel mapping

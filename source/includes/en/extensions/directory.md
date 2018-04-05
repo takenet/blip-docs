@@ -1,12 +1,12 @@
 ## Directory
 
-The **directory** extension allows quering information about the customers of your bot, like name, photo and other personal information. BLiP will get this informations on the client's channel. Because of this the command should be sent directly to the server node responsable for the channel (`postmaster@<FQDN of the channel>`), using an special **URI** (`lime://<FQDN of the channel>/accounts/<Client identity>`). [Click here](#channels) to see all channels identifiers.
+The **directory** extension allows querying information about customers of your bot, like name, photo and other personal information. BLiP will get this information on the client's channel. Because of this, the command should be sent directly to the server node responsable for the channel (`postmaster@<FQDN of the channel>`), using a special **URI** (`lime://<FQDN of the channel>/accounts/<Client identity>`). [Click here](#channels) to see all channels identifiers.
 
-If the information is available, an [Account](http://limeprotocol.org/resources.html#account) document is returned. The availability and the detail level of the informations depents of the channel and the application should handle the differences appropriately.
+If the information is available, an [Account](http://limeprotocol.org/resources.html#account) document is returned. The availability and detail level of the information depend on the channel, and the application should handle differences appropriately.
 
 The result of directory queries are automatically stored in the **chatbot's roster**, except when there's already an entry with the same identifier in the contacts. For more information about the roster, please refer to the [extension documentation](https://portal.blip.ai/#/docs/extensions/contacts).
 
-To get informations about the customer send a command with the following properties:
+To get information about a customer, send a command with the following properties:
 
 | Name | Description |
 |---------------------------------|--------------|

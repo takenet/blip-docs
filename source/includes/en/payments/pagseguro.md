@@ -1,7 +1,7 @@
 ### PagSeguro
-| FQDN                     | Tipo de identificador                                         | 
+| FQDN                     | Type of identifier                                         | 
 |--------------------------|---------------------------------------------------------------|
-| @pagseguro.gw.msging.net | Identidade ([nome e domínio do canal original](./#/docs/concepts/addressing)) no formato [URL encoded](http://www.w3schools.com/tags/ref_urlencode.asp) | 
+| @pagseguro.gw.msging.net | Identity ([originator channel's name and domain](./#/docs/concepts/addressing)) in [URL encoded](http://www.w3schools.com/tags/ref_urlencode.asp) format | 
 
 **PagSeguro** channel is [UOL's](https://pagseguro.uol.com.br/) payment channel to receive and send payments with flexibility and security. 
 
@@ -39,7 +39,7 @@ Answer on success case:
 
 #### Example
 
-Sending a payment request to a Facebook Messenger user, with [PagSeguro](./#/docs/payments/pagseguro):
+Sending a payment request to a Facebook Messenger user with [PagSeguro](./#/docs/payments/pagseguro):
 
 ```http
 {
@@ -63,7 +63,7 @@ Sending a payment request to a Facebook Messenger user, with [PagSeguro](./#/doc
 }
 ```
 
-PagSeguro will generate a transaction which will be automatically sent to user `1042221589186385@messenger.gw.msging.net` as a [web link](./#/docs/content-types/web-link), the message identifier will be the same as the payment request’s. 
+PagSeguro will generate a transaction which will be automatically sent to user `1042221589186385@messenger.gw.msging.net` as a [web link](./#/docs/content-types/web-link). The message identifier will be the same as the payment request’s. 
 
 ```http
 {
@@ -95,7 +95,7 @@ When there is payment status change (for example: user has payed), a [payment st
 }
 ```
 
-After receiving the payment, the chatbot may optionally send a [payment receipt](./#/docs/content-types/payment-receipt) to customer. 
+After receiving the payment, the chatbot may optionally send a [payment receipt](./#/docs/content-types/payment-receipt) to the customer. 
 
 ```http
 {

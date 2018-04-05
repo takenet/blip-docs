@@ -105,7 +105,7 @@ Authorization: Key {YOUR_TOKEN}
 |--------------------------------------|
 | application/vnd.lime.invoice+json |
 
-Allows sending a payment request to a payment channel.
+Allows sending of a payment request to a payment channel.
 
 
-**Note:** Payment invoices are not mapped to channel's cards. The propose of this messages is only to control payment life cycle.
+**Note:** Payment invoices are not mapped to channel's cards. The purpose of such messages is only to control the payment's life cycle.

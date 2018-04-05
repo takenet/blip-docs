@@ -62,12 +62,12 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 Note:
 
 //NOTE:
-//Value field is optional, if informed your value will be sent to the chatbot when the user choice the option.
-//If Value field is not provided, will must provide one of the fields: Order or Text. The Order field will be used only if Value and Text is not provided.
+//Value field is optional. If informed, your value will be sent to the chatbot when the user chooses the option.
+//If Value field is not provided, one of the following fields must be provided: Order or Text. The Order field will be used only if Value and Text is not provided.
 //
 //Limitations:
-//Facebook Messenger: Limite of 3 options, in other case your message will not be delivered.
-//If is nedded to send more than 3 options is necessary send multiple messages.
+//Facebook Messenger: Limit of 3 options. Otherwise, your message will not be delivered.
+//If sending more than 3 options is necessary, divide them into multiple messages.
 //Tangram SMS: The Value field will be ignored. Only the Order field will be sent if the option be selected.
 ```
 
@@ -135,9 +135,9 @@ Authorization: Key {YOUR_TOKEN}
 |-------------------------------------------|
 | application/vnd.lime.select+json |
 
-Allows sending an text menu to customers to make a choice. It is possible to define a document that may be delivered to the chatbot when the customer selects an option - depending on the channel support. The options can also be optionally numbered.
+Allows sending of a text menu to customers to make a choice. It is possible to define a document that may be delivered to the chatbot when the customer selects an option - depending on the channel support. The options can also be numbered, if needed.
 
-Some channels support the options scope limitation, which determines for how much time they are valid for the user selection. For example, in some cases, the sent options can only be selected by the customer at that time and must disappear after the choice. In this case, the scope is **immediate**. In others, the options are valid for the selection at any time, and the scope is **persistent**.
+Some channels support the options scope limitation, which determines for how much time they are valid for the user selection. For example, in some cases, sent options can only be selected by the customer at that time and must disappear after the choice. In this case, the scope is **immediate**. In others, the options are valid for the selection at any time, and the scope is **persistent**.
 
 For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#select) specification.
 
@@ -272,8 +272,8 @@ Authorization: Key {YOUR_TOKEN}
 ```
 When the user selects one option, a message returns according to the rule:
 
-- If the option contains the field 'value' should be returned
-- If not, the 'order' filed value should be returned, if present
+- If the option contains the field 'value', it should be returned
+- If not, the 'order' filled value should be returned, if present
 - If not, field 'text' should be returned
 
 
@@ -283,11 +283,11 @@ When selecting the first option: **(JSON 1)**:
 
 When selecting the second option **(JSON 2)**:
 
-Least, when selecting the third option **(JSON 3)**:
+At last, when selecting the third option **(JSON 3)**:
 
 
 
-The return message *type* will always be the same of the chosen option. When a value for the field *value* is not defined, the type will be `text/plain`.
+The return message *type* will always be the same as the chosen option. When a value for the field *value* is not defined, the type will be `text/plain`.
 
 #### Channel mapping
 

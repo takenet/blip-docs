@@ -60,9 +60,9 @@ client.sendMessage({
 });
 ```
 
->From this moment, the messages sent by the client will be forwarded to the chatbot configured as a service *attendance* in the master model settings tab. Note: The customer identifier is **not the same** for the other bot.
+>From this moment, the messages sent by the client will be forwarded to the chatbot configured as service *attendance* in the master model settings tab. Note: The customer identifier is **not the same** for the other bot.
 
-> 2 - Redirecting to the chatbot with identifier *mysdkbot , passing a document as the context of the conversation.
+> 2 - Redirecting to the chatbot with identifier *mysdkbot* , passing a document as the context of the conversation.
 
 ```csharp
 using System;
@@ -165,7 +165,7 @@ Authorization: Key {YOUR_TOKEN}
 |------------------------------------|
 | application/vnd.lime.redirect+json |
 
-Allows the redirection of a particular chatbot conversation to a new address. In practice, makes possible the **handover** of a conversation between different chatbots, which can be of any template (FAQ, Human Operator) or SDK / Webhooks.
+Allows the redirection of a particular chatbot conversation to a new address. In practice, it makes the **handover** of a conversation between different chatbots possible, which can be of any template (FAQ, Human Operator) or SDK / Webhooks.
 
 Currently, redirection is only supported on chatbots configured as services in [**master template**](https://portal.blip.ai/#/docs/templates/master). This can be done using the chatbot (identifier) address or the service name defined in the master model settings in the portal.
 
