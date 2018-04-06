@@ -77,13 +77,13 @@ Authorization: Key {YOUR_TOKEN}
 |--------------------------|
 | application/vnd.lime.web-link+json|
 
-Allows sending a link for a webpage to the client including metadata such link's title, description and a miniature image.
+Allows sending of a link for a webpage to the client including metadata, such as link's title, description and a miniature image.
 
 
 
 #### Sending a message to a Messenger recipient:
 
-In some channels is possible to define how the webpage will be diplayed (on the same window, openning a new window or occuping part of device window) through the `target` property. For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#web-link) specification.
+In some channels, it is possible to define how the webpage will be displayed (on the same window, openning a new window or occupying part of the device window) through the `target` property. For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#web-link) specification.
 
 #### Channel mapping
 
@@ -96,7 +96,7 @@ In some channels is possible to define how the webpage will be diplayed (on the 
 | Telegram           | [Message](https://core.telegram.org/bots/api#message)|
 
 
-It is also possible in some channels to use special [URI schemes](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) to create links with specific behaviors as bellow:
+It is also possible in some channels to use special [URI schemes](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) to create links with specific behaviors as below:
 
 | Channel     | URI Scheme | Description                                                           | Example              |
 |-----------|------------|---------------------------------------------------------------------|----------------------|
@@ -104,6 +104,6 @@ It is also possible in some channels to use special [URI schemes](https://en.wik
 | Messenger | `share`    | Defines a link to share current message. Mapped to a [Share button](https://developers.facebook.com/docs/messenger-platform/send-api-reference/share-button).  | `share:`             |
 
 - On Messenger, these **URI schemes** are valid only if used within a [Multimedia Menu](https://blip.ai/portal/#/docs/content-types/document-select).
-- To enable the use of [Messenger extensions](https://developers.facebook.com/docs/messenger-platform/messenger-extension) on link webpage, you must add to the URL *query string* a `messengerExtensions` parameter with value `true`. For the example above, the `uri` value would be: `http://limeprotocol.org/content-types.html#web-link?messengerExtensions=true`
+- To enable the use of [Messenger extensions](https://developers.facebook.com/docs/messenger-platform/messenger-extension) on link's webpage, you must add to the URL *query string* a `messengerExtensions` parameter with value `true`. For the example above, the `uri` value would be: `http://limeprotocol.org/content-types.html#web-link?messengerExtensions=true`
 
 

@@ -1,16 +1,16 @@
 # Webhook
 
-**Webhook's** *chatbot* enable an integration via **HTTP endpoints** to exchange messages, notifications and commands.
+**Webhook's** *chatbot* enables integration via **HTTP endpoints** to exchange messages, notifications and commands.
 
 1. Send messages
 
-To send messages is necessary make a `HTTP POST` request to URL provided on portal (chatbot settings section). The request must contain a authorization header (`Authorization`) with `Key` type, as showed on chatbot settings.
+To send messages, it is necessary to make a `HTTP POST` request to URL provided on portal (chatbot settings section). The request must contain an authorization header (`Authorization`) with `Key` type, as showed on chatbot settings.
 
-The message data must be send on request `body`. The message must be a *JSON* on LIME protocol format. For more details go to [protocol documentation](http://limeprotocol.org/#message).
+The message data must be sent on the request `body`. The message must be a *JSON* on LIME protocol format. For more details go to [protocol documentation](http://limeprotocol.org/#message).
 
 Example
 
-Imagine that exist a chatbot with **blipmessaginghubapp** identifier. To send a message from this bot to a BLiP user use:
+Imagine a chatbot with a **blipmessaginghubapp** identifier. To send a message from this bot to a BLiP user, use:
 
 ```
 POST https://msging.net/messages HTTP/1.1
@@ -26,15 +26,15 @@ Content-Length: 131
 }
 ```
 
-Note: For this sample `bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ` is a valid `Key` for **blipmessaginghubapp** chatbot.
+Note: For this sample, `bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ` is a valid `Key` for **blipmessaginghubapp** chatbot.
 
 For more information about messages, check the [**Messages** documentation page](.#/docs/concepts/messages) or the [supported content types specification](.#/docs/content-types).
 
 2. Receiving notification
 
-All notifications will be delivered on configured chatbot notification URL. Each notification contains the _status_ of messages. Observe that the notifications are sent by the *clients*, informing if received or not some message.
+All notifications will be delivered on the configured chatbot's notification URL. Each notification contains the _status_ of messages. Observe that notifications are sent by *clients*, informing if received or not some message.
 
-A sample of notification is presented bellow. This notification will be deliverd as a `HTTP POST` request on the chatbot notification URL.
+A sample of notification is presented below. This notification will be deliverd as a `HTTP POST` request on the chatbot notification URL.
 
 ```
 {
@@ -51,7 +51,7 @@ For more information, check the [**Notification** documentation page](.#/docs/co
 
 3. Receiving messages
 
-As the notifications, all messages will be delivered as a `HTTP POST` request on configured chatbot messages URL. The messages have a JSON format as defined on [LIME PROTOCOL](http://limeprotocol.org/#message). A sample of received message is presented bellow.
+Similar to notifications, all messages will be delivered as a `HTTP POST` request on the configured chatbot's messages URL. These messages have a JSON format as defined on [LIME PROTOCOL](http://limeprotocol.org/#message). A sample of a received message is presented below.
 
 ```
 {
@@ -65,11 +65,11 @@ As the notifications, all messages will be delivered as a `HTTP POST` request on
 
 4. Sending notifications
 
-In order to correctly show the message history is important that the chatbots send notifications of messages processed to originator clients.
+In order to correctly show the message history, it is important that the chatbots send notifications of messages processed to originator clients.
 
-For each message processed is important send a notification with the `consumed` event. In case of problems the chatbot must send a notification with the `failed` event. The request must contain a authorization header (`Authorization`) with `Key` type, as showed on chatbot settings.
+For each message processed, it is important to send a notification with the `consumed` event. In case of problems, the chatbot must send a notification with the `failed` event. The request must contain an authorization header (`Authorization`) with `Key` type, as showed on chatbot settings.
 
-For instance, imagine that the received message from example above (whit id **99cf454e-f25d-4ebd-831f-e48a1c612cd4**) was processed with success. The code bellow show a complete notification request including the headers and the body request.
+For instance, imagine that the received message from the example above (whit id **99cf454e-f25d-4ebd-831f-e48a1c612cd4**) was processed with success. The code bellow shows a complete notification request including the headers and the body request.
 ```
 POST https://msging.net/notifications HTTP/1.1
 Content-Type: application/json
@@ -86,7 +86,7 @@ Content-Length: 131
 
 5. Sending commands
 
-In order to use the BLiP's [extensions]() (like schedule and directory) is necessary send commands. To do this is necessary make a `HTTP POST` request on `/commands` URL:
+In order to use BLiP's [extensions]() (like schedule and directory), it is necessary to send commands. To do that, a `HTTP POST` request on `/commands` URL must be made.
 
 For instance, send a command to schedule some message:
 
@@ -114,7 +114,7 @@ Content-Length: 393
 }
 ```
 
-The command response is immediately delivered on HTTP response, as bellow:
+The command response is immediately delivered on HTTP response, as below:
 
 ```
 HTTP/1.1 200 OK

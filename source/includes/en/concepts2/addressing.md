@@ -6,7 +6,7 @@ The address is presented in the format `name@domain/instance`, where:
 
 - **name**: Customer channel identifier. The name format changes according to the channel, it can be the telephone number in some channels (such as SMS) or internal identifiers of each platform (such as in Messenger). This value is mandatory.
 - **domain**: Customer origin channel. The format is always a [FQDN](https://pt.wikipedia.org/wiki/FQDN), and each channel has a unique identifier. This value is mandatory.
-- **instance**: *Optional* identifier of the connection between the customer and the channel. It is used in channels where the customer may have more than one active connection (for example, to mobile device and to the computer).
+- **instance**: *Optional* identifier of the connection between the customer and the channel. It is used in channels where the customer may have more than one active connection (for example, to mobile devices or computers).
 
 Usually, the interaction between a chatbot and a customer starts after the message, which has a from address, is received. In this case, it is only necessary to answer to this address - in an unchanged way, in order to guarantee the message's delivery.
 

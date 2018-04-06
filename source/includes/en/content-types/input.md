@@ -1,6 +1,6 @@
 ## User input
 
-> Requesting user name:
+> Requesting a user's name:
 
 ```csharp
 using System;
@@ -78,7 +78,7 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-> Requesting user location:
+> Requesting a user's location:
 
 ```csharp
 using System;
@@ -161,7 +161,7 @@ Authorization: Key {YOUR_TOKEN}
 |--------------------------------------|
 | application/vnd.lime.input+json      |
 
-Allows send structured information request to the user, where is possible to define validations rules. This is useful to build questions forms or get specific user information like name, phone number or typed information like an image or location. The execution of validation rules depends of channel support.
+Allows sending of structured information requests to the user, where it is possible to define validations rules. This is useful for building question forms and getting specific user information - like name or phone number - or typed information - like an image or location. The execution of validation rules depends of channel's support.
 
 For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#input) specification.
 

@@ -4,7 +4,7 @@
 |---------------------------------|
 | postmaster@ai.msging.net        |
 
-The  **Artificial Intelligence** extension allows the creation, training and publication of artificial intelligence models in the providers associated with chatbot, besides performing sentence analysis to identify intentions and entities. The configuration of the chatbot providers is done through the **Artificial Intelligence**  menu in the [BLiP portal] (https://portal.blip.ai).
+The  **Artificial Intelligence** extension allows the creation, training and publication of artificial intelligence models in the providers associated with the chatbot, besides performing sentence analysis to identify intentions and entities. The configuration of the chatbot providers is done through the **Artificial Intelligence**  menu in the [BLiP portal] (https://portal.blip.ai).
 
 You can associate **response documents** with the model that should be submitted when an intent is matched in a sentence. In addition, the extension can be used to improve the model by associating questions with intentions.
 
@@ -32,7 +32,7 @@ All manipulation of the model can be done through the portal of the BLiP, and th
 | `/models`                         | `get`    | Search in all trained and/or published models. |
 | `/analysis`                       | `set`    | Analyzes an user sentence using a published model. |
 | `/analysis`                       | `get`    | Retrieves the history of performed analysis. It is possible to paginate the request using using `$skip` and `$take` arguments and filter with `$filter`, using the [OData syntax](http://www.odata.org/documentation/odata-version-2-0/uri-conventions/#FilterSystemQueryOption). |
-| `/analysis/{id}/feedback`         | `set`    | Allows provide a feedback to a performed analysis and suggest an intention to improve the model. |
+| `/analysis/{id}/feedback`         | `set`    | Provides feedback to a performed analysis and suggest an intention to improve the model. |
 
 The resource types are:
 
@@ -326,7 +326,7 @@ Content-Type: application/json
 
 ### Delete an intention
 
-Where `{intention_id}` is the intention identifier of some already created intention.
+Where `{intention_id}` is the intention identifier of an already created intention.
 
 ```csharp
 POST https://msging.net/commands HTTP/1.1
@@ -1871,7 +1871,7 @@ Content-Type: application/json
 }
 ```
 
-### Send an 'rejected' feedback
+### Send a 'rejected' feedback
 
 ```csharp
 POST https://msging.net/commands HTTP/1.1

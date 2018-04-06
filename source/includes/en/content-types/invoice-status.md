@@ -32,4 +32,4 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-**Note:** Payment invoices status are not mapped to channel's cards. The propose of this messages is only to control payment life cycle.
+**Note:** Payment invoices status are not mapped to channel's cards. The purpose of such messages is only to control the payment's life cycle.

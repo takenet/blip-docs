@@ -1,8 +1,8 @@
 ## Delegation
 
-The **delegation** extension allows the chatbot to give permissions to other **BLiP** identities - like another chatbots - to execute action *on its behalf* like sending messages. The delegation can be required by some extensions. It is required to be execute only once for each delegated identity.
+The **delegation** extension allows the chatbot to give permissions to other **BLiP** identities - like another chatbots - to execute actions *on its behalf*, like sending messages. The delegation can be required by some extensions. It is required to be executed only once for each delegated identity.
 
-To use the **delegation** extension send a command with the following properties:
+To use the **delegation** extension, send a command with the following properties:
 
 | Name | Description |
 |---------------------------------|--------------|
@@ -13,13 +13,13 @@ To use the **delegation** extension send a command with the following properties
 | uri    | **/delegations**   |
 | to     | **postmaster@msging.net** (not required) |
 
-The command's properties `resource` and `method` can change according of the feature.
+The command's properties `resource` and `method` can change according to the feature.
 A delegation object passed as a `resource` document has the following properties:
 
 | Property     | Description                                                        | Example |
 |--------------|--------------------------------------------------------------------|---------|
 | **target** | Identity that will receive permission to make request as the caller. | postmaster@broadcast.msging.net |
-| **envelopeTypes**   | Envelope types that the target you receive permission to send behalf of the caller  | ["message", "notification"] |
+| **envelopeTypes**   | Envelope types for the target which receives permission to send on behalf of the caller  | ["message", "notification"] |
 
 For more details, check the **delegation** resource on [LIME protocol](http://limeprotocol.org/resources.html#delegation) specification.
 

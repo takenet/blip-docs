@@ -119,9 +119,9 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-The persistent menu can be set for your bot to help people discover and more easily access your functionality throughout the conversation.
+The persistent menu can be set for your bot to help people discover and access functionalities throughout the conversation.
 
-You can send menu by using [Select](/#select) as well as quick replies
+You can send a menu by using [Select](/#select) as well as quick replies.
 
 | Messenger                         | BLiPChat                                   |
 |-----------------------------------|--------------------------------------------|

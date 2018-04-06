@@ -4,4 +4,4 @@
 | @tangram.com.br          | MSISDN                                 |
 
 
-**Tangram** channel alllows sending SMS messages through the Take’s platform with the same name.
+**Tangram** channel allows sending SMS messages through the Take’s platform with the same name.

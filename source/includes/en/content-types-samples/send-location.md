@@ -66,7 +66,7 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-You can send location by using [location](/#location)
+You can send a location by using [location](/#location).
 
 Sending a location with latitude, longitude and altitude:
 

@@ -68,7 +68,7 @@ Authorization: Key {YOUR_TOKEN}
 ```csharp
 /*
 No examples for C# here
-still possible but is too huge for this doc
+still possible but is too big for this doc
 */
 ```
 
@@ -342,9 +342,9 @@ Authorization: Key {YOUR_TOKEN}
 |--------------------------------------|
 | application/json                     |
 
-Allows send a native content of some channel using JSON format. Is possible use any channel available resource even this content is yet not supported as a BLiP canonical type.
+Allows sending of a native content of some channel using JSON format. It is possible to use any channel's available resource, even if this content is not yet supported as a BLiP canonical type.
 
-Note that for a **multi channel** chatbot the responsability of send the correct content type to each channel is of chatbot developer.
+Note that, for a **multi channel** chatbot, it is the chatbot developer's responsibility to send the correct content type to each channel.
 
 #### Channel mapping
 

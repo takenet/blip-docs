@@ -60,7 +60,7 @@ client.sendMessage({
 });
 ```
 
-> In case there is a resource with this key, the server replaces the content and forward to the destination. Imagining that the resource with **welcome-message** key is a `text/plain` document with value `Welcome to our service`, the final message would be like this:
+> In case there is a resource with this key, the server replaces the content and forwards it to the destination. Imagining that the resource with **welcome-message** key is a `text/plain` document with value `Welcome to our service`, the final message would be like this:
 
 ```http
 POST https://msging.net/messages HTTP/1.1
@@ -88,9 +88,9 @@ Authorization: Key {YOUR_TOKEN}
 |--------------------------------------|
 | application/vnd.iris.resource+json   |
 
-Allows sending a message where the content is a **resource** stored in the server. The resource should be stored thought the [**resources** extension](https://portal.blip.ai/#/docs/extensions/resources). The server automatically replaces the content with the stored resource, in the case the resource **key** exists for the caller chatbot.
+Allows sending of a message where the content is a **resource** stored in the server. The resource should be stored through the [**resources** extension](https://portal.blip.ai/#/docs/extensions/resources). The server automatically replaces the content with the stored resource, in case the resource **key** already exists for the caller chatbot.
 
-The resource may contains variables which can be replaced by values specified in the sending time, through the `variables` property.
+The resource may contain variables which can be replaced by values specified during sending time, through the `variables` property.
 
 You can enter substitution variables for the resource using the `variables` property. In this case, the variables present in the resource with the `${variableName}` format are replaced by the specified values.
 

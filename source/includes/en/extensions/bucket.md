@@ -1,12 +1,12 @@
 ## Bucket
 
-The **bucket** extension allows the storage of documents in the server on a isolated chatbot's container. This extensions is useful to store information about the clients that have interacted with the chatbot, like preferences and navigation state.
+The **bucket** extension allows the storage of documents in the server on an isolated chatbot's container. This extension is useful to store information about clients that have interacted with the chatbot, like preferences and navigation state.
 
-Each document have an **identifier** which is provided during the write operation and this identifier should be used for retrieving the value later. It is possible to set an optional **expiration date** for the document. Both the identifier and the expiration date are specified in the **URI** of the command which is sent to the extension.
+Each document has an **identifier** which is provided during the write operation and this identifier should be used for retrieving the value later. It is possible to set an optional **expiration date** for the document. Both the identifier and the expiration date are specified in the **URI** of the command which is sent to the extension.
 
-**Note: If expiration date is not provided the document will never expires.**
+**Note: If expiration date is not provided, the document will never expire.**
 
-To use the **bucket** extension send a command with the following properties:
+To use the **bucket** extension, send a command with the following properties:
 
 | Name | Description |
 |---------------------------------|--------------|
@@ -17,8 +17,8 @@ To use the **bucket** extension send a command with the following properties:
 | uri    | **/buckets**   |
 | to     | **postmaster@msging.net** (not required) |
 
-The command's properties `resource` and `method` can change according of the feature.
-The document to be stored must be passed on `resource` property
+The command's properties `resource` and `method` can change according to the feature.
+The document to be stored must be passed on the `resource` property.
 
 ### Store a JSON document
 
@@ -204,10 +204,10 @@ namespace Extensions
 }
 ```
 
-Storing an custom document with type `application/x-my-type+json` and `abcd9876` identifier, setting the expiration to 30000 milisseconds (or 30 seconds):
+Storing a custom document with type `application/x-my-type+json` and `abcd9876` identifier, setting the expiration to 30000 milisseconds (or 30 seconds):
 
 <aside class="notice">
-Note: If you create a custom document <b>you must</b> register this type on <i>StartAsync</i> method of <i>Startup.cs</i> class. To do this add this line <code> TypeUtil.RegisterDocument&lt;MyType&gt;();</code> 
+Note: If you create a custom document, <b>you must</b> register this type on <i>StartAsync</i> method of <i>Startup.cs</i> class. To do that, add this line: <code> TypeUtil.RegisterDocument&lt;MyType&gt;();</code> 
 </aside>
 
 

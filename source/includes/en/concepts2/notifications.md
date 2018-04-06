@@ -1,6 +1,6 @@
 ## Notifications
 
-> See below the representation of a receipt notification from the destination:
+> See below the representation of a received notification from the destination:
 
 ```csharp
 var notification = new Notification

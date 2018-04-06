@@ -1,8 +1,8 @@
 ## Chatbot profile
 
-The **profile** extension allows the configuration of chatbot profile properties, which can reflect to the clients in the published channel - if supported. Each property is a document of a type supported by the platform.
+The **profile** extension allows the configuration of chatbot profile properties, which can reflect on the clients in the published channel - if supported. Each property is a document of a type supported by the platform.
 
-To manage chatbot's profile informations send commands with the following properties:
+To manage chatbot's profile information, send commands with the following properties:
 
 | Name | Description |
 |---------------------------------|--------------|
@@ -13,7 +13,7 @@ To manage chatbot's profile informations send commands with the following proper
 | uri    | **/profile**   |
 | to     | **postmaster@msging.net** (not required) |
 
-The command's properties `resource` and `method` can change according of the feature.
+The command's properties `resource` and `method` can change according to the feature.
 
 The current supported profile properties are:
 
@@ -85,9 +85,9 @@ namespace Extensions
 }
 ```
 
-In order to set a text greeting message for your chatbot use a `set` command on `/profile/greeting` URI. This sample show how can you add greeting message with `"Hello and welcome to our service!"` content.
+In order to set a text greeting message for your chatbot, use a `set` command on `/profile/greeting` URI. This sample shows how to add a greeting message with the content `"Hello and welcome to our service!"`.
 
-### Seting simple persistent menu
+### Setting simple persistent menu
 
 
 ```http
@@ -207,9 +207,9 @@ namespace Extensions
 }
 ```
 
-In order to set a Messenger persistent menu for your chatbot use a `set` command on `/profile/persistent-menu` URI. This sample show how can you add a simple persistent menu (only on Facebook Messenger channel) with 3 options `Option 1`, `Option 2` e `Option 3`.
+In order to set a Messenger persistent menu for your chatbot, use a `set` command on `/profile/persistent-menu` URI. This sample shows how to add a simple persistent menu (only on Facebook Messenger channel) with 3 options `Option 1`, `Option 2` and `Option 3`.
 
-### Seting complex persistent menu
+### Setting complex persistent menu
 
 
 ```http
@@ -460,7 +460,7 @@ namespace Extensions
 }
 ```
 
-As the last sample you can also add a complex persistent menu (with links and submenus) using a `SET` command on `/profile/persistent-menu` URI. This sample show how can you add a complex persistent menu (only on Facebook Messenger channel) with 3 options `SubMenu 1`, `Option 2` e `Option 3 as a web link`.
+Last but not least, you can also add a complex persistent menu (with links and submenus) using a `SET` command on `/profile/persistent-menu` URI. This sample shows how to add a complex persistent menu (only on Facebook Messenger channel) with 3 options `SubMenu 1`, `Option 2` and `Option 3 as a web link`.
 
 ### Set start button
 
@@ -523,7 +523,7 @@ namespace Extensions
 }
 ```
 
-In order to set a get started button for your chatbot use a `set` command on `/profile/get-started` URI. This sample show how can you add a button that sends `Start now` text to your chatbot during the first client interaction.
+In order to set a get started button for your chatbot, use a `set` command on `/profile/get-started` URI. This sample shows how to add a button that sends the text `Start now` to your chatbot during the first client interaction.
 
 ### Get greeting message
 

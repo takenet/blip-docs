@@ -114,9 +114,9 @@ Authorization: Key {YOUR_TOKEN}
 |--------------------------------------|
 | application/vnd.lime.payment-receipt+json |
 
-Allows send a payment receipt to a customer.
+Allows sending of a payment receipt to a customer.
 
-In order to realize a payment on your chatbot is necessary use the payment channel. For now, only the PagSeguro channel is supported and to request a payment the chatbot must send a message of type Invoice to the payment channel informing the user address using the format at right bar.
+In order to realize a payment on your chatbot, it is necessary to use the payment channel. For now, only the PagSeguro channel is supported. To request a payment, the chatbot must send a message of type Invoice to the payment channel informing the user address using the format at right bar.
 
 #### Example
 Sending a payment receipt to a Messenger user:

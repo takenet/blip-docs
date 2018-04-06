@@ -1,8 +1,8 @@
 ## Event Analysis
 
-The **event analysis** extension allows chatbot's events registration in order to create analytics reports in the BLiP portal. The events are agregated by category, action and day. The reports and graphs can be generated thought the [portal](https://portal.blip.ai), in the *Panel* -> *Data analysis* option.
+The **event analysis** extension allows chatbot's events registration in order to create analytics reports in the BLiP portal. The events are agregated by category, action and day. The reports and graphs can be generated through the [portal](https://portal.blip.ai), in the *Panel* -> *Data analysis* option.
 
-To use any feature of **event analysis** extension send a command with the following properties:
+To use any feature of **event analysis** extension, send a command with the following properties:
 
 | Name | Description |
 |---------------------------------|--------------|
@@ -20,8 +20,8 @@ An event track object passed as a document `resource` has the following properti
 |--------------|--------------------------------------------------------------------|---------|
 | **category** | Category to aggregate the related events.                          | billing |
 | **action**   | The action associated to the event. The event counting is made using the actions.  | payment |
-| **identity** | **Optional** contact associated to the event. If contact is a 'testers' group member the event will be ignored.  | 123456@messenger.gw.msging.net |
-| **extras**   | **Optional** extra informations to be stored within the event.         | {"customerId": "41231", "paymentId": "ca82jda"} |
+| **identity** | **Optional** contact associated to the event. If contact is a 'testers' group member, the event will be ignored.  | 123456@messenger.gw.msging.net |
+| **extras**   | **Optional** extra information to be stored within the event.         | {"customerId": "41231", "paymentId": "ca82jda"} |
 
 ### Create an event
 
@@ -177,8 +177,8 @@ namespace Extensions
 }
 ```
 
-Is also possible associate a specific contact in an event. You can use this to ignore events of a tester user for example.
-If your bot has a `123456@messenger.gw.msging.net` contact identity as a tester user you can ignore all of your tracks events adding this identity on event resource object.
+It is also possible to associate a specific contact in an event. You can use this to ignore events of a tester user for example.
+If your bot has a `123456@messenger.gw.msging.net` contact identity as a tester user, you can ignore all of its tracked events by adding this identity to the event resource object.
 
 ### Get Categories
 
@@ -344,12 +344,12 @@ namespace Extensions
 }
 ```
 
-To retrieve all counters of a category add the category name on command uri (for instance **/event-track/payments**). This counters represents the number of events track in a specific pair of action and categories grouped by days. There is also possible add *query strings* parameters as request filters. The following filters are available:
+To retrieve all counters of a category, add the category name to the command uri (for instance **/event-track/payments**). Those counters represent the number of events tracked in a specific pair of action and categories grouped by days. It is also possible to add *query strings* parameters as request filters. The following filters are available:
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|
 | $take        | Limit of total of items to be returned    |
-| startDate    | Initial date to seach for events          |
+| startDate    | Initial date to search for events          |
 | endDate      | Limit date to retrieve the events         |
 
 ### Get Details
@@ -451,6 +451,6 @@ Retrieves all events tracked with a specific pair of action and categories. The 
 |--------------|-------------------------------------------|
 | $skip        | Number of items to be skipped for paging  |
 | $take        | Limit of total of items to be returned    |
-| startDate    | Initial date to seach for events          |
+| startDate    | Initial date to search for events          |
 | endDate      | Limit date to retrieve the events         |
 

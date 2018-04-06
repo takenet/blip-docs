@@ -8,7 +8,7 @@ You can check the SDK source code in [Github](https://github.com/takenet/blip-sd
 
 ## Javascript
 
-If you are a Javascript developer and want create a chatbot with **BLiP** so you must use the BLiP SDK Javascript. It was developed to make easy to send and receive BLiP messages using Javascript for browsers or [node.js](https://nodejs.org/) through of persistent WebSocket connections.
+If you are a Javascript developer and want to create a chatbot with **BLiP**, you must use the BLiP Javascript SDK. It was developed to help sending and receiving of BLiP messages using Javascript for browsers or [node.js](https://nodejs.org/) through persistent WebSocket connections.
 
 Go to [Github](https://github.com/takenet/blip-sdk-js) to see the source code and documentation.
 

@@ -54,7 +54,7 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-You can send text by using the [Plain Text](#plain-text) content type
+You can send text by using the [Plain Text](#plain-text) content type.
 
 | Messenger                         | BLiPChat                              |
 |-----------------------------------|---------------------------------------|

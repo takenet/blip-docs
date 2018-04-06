@@ -119,12 +119,12 @@ Authorization: Key {YOUR_TOKEN}
 |--------------------------------------|
 | application/vnd.lime.media-link+json |
 
-Allows sending and receiving links for multimedia contents. The link can be any valid **URI**, but most part of the channels support only contents served by **HTTP/HTTPS** protocol. It is possible to include a title and a text, besides image *metadada* such as MIME type, size and *preview*.
+Allows sending and receiving of links for multimedia content. The link can be any valid **URI**, but most part of the channels only support content served by **HTTP/HTTPS** protocol. It is possible to include a title and a text, besides image *metadada* such as MIME type, size and *preview*.
 
-Some channel allows the definition of the display *aspect ratio* for some media types. For instance, in *Messenger*, you should set the `1:1` value for the `aspectRatio` property to send squared images.
+Some channels allow defining the display's *aspect ratio* for certain media types. For instance, in *Messenger*, you should set the `1:1` value for the `aspectRatio` property to send squared images.
 
 <aside class="notice">
-Note: The metadata support varies per channel, it may be ignored if not supported.
+Note: metadata support varies per channel. It may be ignored if not supported.
 </aside>
 
 ```javascript

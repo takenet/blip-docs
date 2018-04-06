@@ -1,7 +1,7 @@
 ### Sending messages
 
 <blockquote class="lang-specific csharp">
-<p>In order to send messages and notifications use an instance of `ISender` (on C#), wich is automaticaly injected on constructors of registered `receivers` defined on project and on `Startup` class.</p>
+<p>In order to send messages and notifications use an instance of `ISender` (on C#), which is automatically injected on constructors of registered `receivers` defined on project and on the `Startup` class.</p>
 </blockquote>
 
 ```csharp
@@ -81,7 +81,7 @@ REQUEST
 </blockquote>
 
 ```csharp
-//A `IMessageReceiver` can be defined as follow
+//A `IMessageReceiver` can be defined as follows
 public class PlainTextMessageReceiver : IMessageReceiver
 {
     private readonly ISender _sender;

@@ -1,9 +1,9 @@
 <blockquote class="lang-specific http">
-<p>Imagine that exist a chatbot with Authorization 'Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ='. To send a message from this bot to a BLiP user use:</p>
+<p>Imagine a chatbot with an Authorization 'Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ='. To send a message from this bot to a BLiP user, use:</p>
 </blockquote>
 
 ```http
-Note: For this sample bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ is a valid Key.
+Note: For this sample, bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ is a valid Key.
 
 POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
@@ -19,11 +19,11 @@ Content-Length: 131
 ```
 
 <blockquote class="lang-specific csharp">
-<p>With `C#` the authentication of your chatbot is made on application.json file. Basically this file define all receivers and others control properties</p>
+<p>With `C#`, the authentication of your chatbot is made on application.json file. Basically, this file defines all receivers and other control properties.</p>
 </blockquote>
 
 ```csharp
-//Check a example of how to set your application.json file:
+//Check an example of how to set your application.json file:
 {
   "identifier": "xpto",
   "accessKey": "cXkzT1Rp",
@@ -36,7 +36,7 @@ Content-Length: 131
 }
 ```
 <blockquote class="lang-specific javascript">
-<p>In order to instantiating the client use ClientBuilder class informing the identifier and access key:</p>
+<p>In order to instantiate the client, use ClientBuilder class informing the identifier and access key:</p>
 </blockquote>
 
 ```javascript
@@ -68,10 +68,10 @@ client.connect() // This method return a 'promise'.
 
 ```
 
- In order to authenticate your chatbot you need to follow this steps:
+ In order to authenticate your chatbot, you need to follow these steps:
 
- On `Webhook` whatever request (messages/notifications/commands) must contain a authorization header (Authorization) with Key type, as showed on [BLiP Portal](https://portal.blip.ai/#/application) chatbot configurations.
+ On `Webhook`, whatever request made (messages/notifications/commands) must contain an authorization header (Authorization) with a Key type, as showed on [BLiP Portal](https://portal.blip.ai/#/application) chatbot configurations.
 
- On both `C# and Javascript` you will need to check credentials on [BLiP Portal](https://portal.blip.ai/#/application) inside chatbot configurations menu and find your identifier and access key. Then you need to put they in a specific place.
+ On both `C# and Javascript`, you will need to check credentials on [BLiP Portal](https://portal.blip.ai/#/application), inside chatbot configuration menu, and find your identifier and access key. Then, you need to insert them in a specific place.
 
- See `examples` at code sidebar.
+ See the `examples` at code sidebar.
