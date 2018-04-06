@@ -344,7 +344,7 @@ Authorization: Key {YOUR_TOKEN}
 
 Allows sending of a native content of some channel using JSON format. It is possible to use any channel's available resource, even if this content is not yet supported as a BLiP canonical type.
 
-Note that, for a **multi channel** chatbot, it is the chatbot developer's responsability to send the correct content type to each channel.
+Note that, for a **multi channel** chatbot, it is the chatbot developer's responsibility to send the correct content type to each channel.
 
 #### Channel mapping
 
