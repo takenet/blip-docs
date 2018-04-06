@@ -126,7 +126,7 @@ Authorization: Key {YOUR_TOKEN}
 
 Quick replies provide a way to present a set of up to 11 buttons in-conversation that contain a title and an optional image, and appear prominently above the composer. You can also use quick replies to request a person's location.
 
-You can send quick replies by using [Select](/#select). To switch between menu and quick reply you only need to change the **scope** attribute. Quick replies riquires scope to be **'immediate'**.
+You can send quick replies by using [Select](/#select). To switch between menu and quick reply you only need to change the **scope** attribute. Quick replies requires scope to be **'immediate'**.
 
 
 | Messenger                         | BLiPChat                                   |
