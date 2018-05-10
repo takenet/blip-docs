@@ -69,7 +69,7 @@ In order to correctly show the message history, it is important that the chatbot
 
 For each message processed, it is important to send a notification with the `consumed` event. In case of problems, the chatbot must send a notification with the `failed` event. The request must contain an authorization header (`Authorization`) with `Key` type, as showed on chatbot settings.
 
-For instance, imagine that the received message from the example above (whit id **99cf454e-f25d-4ebd-831f-e48a1c612cd4**) was processed with success. The code bellow shows a complete notification request including the headers and the body request.
+For instance, imagine that the received message from the example above (whit id **99cf454e-f25d-4ebd-831f-e48a1c612cd4**) was processed with success. The code below shows a complete notification request including the headers and the body request.
 ```
 POST https://msging.net/notifications HTTP/1.1
 Content-Type: application/json
