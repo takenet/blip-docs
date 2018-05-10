@@ -48,7 +48,7 @@ The complete path of a message from this external channel to the service bot is:
 }
 ```
 
->According to its internal rules, the flow bot decides to forward this message to the operator bot. To do this, it changes the recipient of the message and sends it as bellow:
+>According to its internal rules, the flow bot decides to forward this message to the operator bot. To do this, it changes the recipient of the message and sends it as below:
 
 ```http
 POST https://msging.net/messages HTTP/1.1
