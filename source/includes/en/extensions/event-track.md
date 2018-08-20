@@ -20,7 +20,7 @@ An event track object passed as a document `resource` has the following properti
 |--------------|--------------------------------------------------------------------|---------|
 | **category** | Category to aggregate the related events.                          | billing |
 | **action**   | The action associated to the event. The event counting is made using the actions.  | payment |
-| **identity** | **Optional** contact associated to the event. If contact is a 'testers' group member, the event will be ignored.  | 123456@messenger.gw.msging.net |
+| **contact**  | **Optional** contact associated to the event. If contact is a 'testers' group member, the event will be ignored.  | {"contact": {"identity": "123456@messenger.gw.msging.net"}} |
 | **extras**   | **Optional** extra information to be stored within the event.         | {"customerId": "41231", "paymentId": "ca82jda"} |
 
 ### Create an event
@@ -100,7 +100,7 @@ namespace Extensions
 }
 ```
 
-### Create event with identity
+### Create event with contact
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
@@ -112,7 +112,9 @@ client.addMessageReceiver('text/plain', async (message) => {
         'resource': {
           'category': 'billing',
           'action': 'payment',
-          'identity': '123456@messenger.gw.msging.net',
+          'contact': {
+              'identity': '123456@messenger.gw.msging.net'
+          }
         }
     });
 });
@@ -132,7 +134,7 @@ Authorization: Key {YOUR_TOKEN}
     "resource": {
         "category": "payments",
         "action": "success-order",
-        "identity": "123456@messenger.gw.msging.net",
+        "contact": { "identity": "123456@messenger.gw.msging.net"}
     }
 }
 ```
