@@ -171,6 +171,7 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 |--------------------|--------------------------------|
 | BLiP Chat          | Uer input (for Location type only) |
 | Messenger          | [Location](https://developers.facebook.com/docs/messenger-platform/send-api-reference/quick-replies) |
+| Whatsapp           | Text                   |
 | SMS                | Text                   |
 | Skype              | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1)|
 | Telegram           | [Message](https://core.telegram.org/bots/api#message)|

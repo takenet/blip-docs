@@ -206,6 +206,7 @@ Allows sending of a list of different documents on a single message. It's also p
 |--------------------|---------------------------|
 | BLiP Chat          | Not supported yet         |
 | Messenger          | [List template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/list-template)|
+| Whatsapp           | Text                   |
 | SMS                | Text                   |
 | Skype              | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1)|
 | Telegram           | [Message](https://core.telegram.org/bots/api#message)|

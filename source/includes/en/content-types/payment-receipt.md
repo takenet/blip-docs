@@ -129,6 +129,7 @@ Sending a payment receipt to a Messenger user:
 |--------------------|-------------------------|
 | BLiP Chat          | Not supported yet       |
 | Messenger          | [Receipt template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/receipt-template)|
+| Whatsapp           | Text         |
 | SMS                | Text         |
 | Skype              | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1)|
 | Telegram           | [Message](https://core.telegram.org/bots/api#message)|

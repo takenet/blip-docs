@@ -168,6 +168,7 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 |--------------------|-------------------------|
 | BLiP Chat          | Location             |
 | Messenger          | [Generic template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/generic-template)|
+| Whatsapp           | Text with link          |
 | SMS                | Text with link          |
 | Skype              | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1)|
 | Telegram           | [Location](https://core.telegram.org/bots/api#location)|

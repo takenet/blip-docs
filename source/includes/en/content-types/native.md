@@ -352,6 +352,7 @@ Note that, for a **multi channel** chatbot, it is the chatbot developer's respon
 |--------------------|-------------------------|
 | BLiP App           | Does not support           |
 | Messenger          | Supported (the property `content` refers to `message` element of Messenger [Send API](https://developers.facebook.com/docs/messenger-platform/send-api-reference/)  |
+| Whatsapp           | Does not support           |
 | SMS                | Does not support           |
 | Skype              | Does not support           |
 | Telegram           | Does not support           |
