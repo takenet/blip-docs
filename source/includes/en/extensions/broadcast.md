@@ -131,7 +131,7 @@ Before making a broadcast, it is necessary to create a distribution list and add
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
-    "id": "1",
+    "id": "2",
     "to": "postmaster@broadcast.msging.net",
     "method": "get",
     "uri": "/lists"
@@ -145,7 +145,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "6",
+  "id": "2",
   "to": "postmaster@broadcast.msging.net",
   "method": "get",
   "uri": "/lists"
@@ -157,7 +157,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "6",
+  "id": "2",
   "from": "postmaster@broadcast.msging.net/#irismsging1",
   "to": "contact@msging.net/default",
   "method": "get",
@@ -208,7 +208,7 @@ To get all distribution lists associated with your chatbot, you must send a comm
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({  
-      "id": "2",
+      "id": "3",
       "to": "postmaster@broadcast.msging.net",
       "method": "set",
       "uri": "/lists/your_distributionList@broadcast.msging.net/recipients",
@@ -224,7 +224,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "2",
+  "id": "3",
   "to": "postmaster@broadcast.msging.net",
   "method": "set",
   "uri": "/lists/your_distributionList@broadcast.msging.net/recipients",
@@ -239,7 +239,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "2",
+  "id": "3",
   "from": "postmaster@broadcast.msging.net/#irismsging1",
   "to": "contact@msging.net/default",
   "method": "set",
@@ -283,7 +283,7 @@ After creating a distribution list, you must add some members to receive your br
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({  
-    "id": "3",
+    "id": "4",
     "to": "postmaster@broadcast.msging.net",
     "method": "delete",
     "uri": "/lists/your_distributionList@broadcast.msging.net/recipients/user_identity@0mn.io"
@@ -297,7 +297,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "3",
+  "id": "4",
   "to": "postmaster@broadcast.msging.net",
   "method": "delete",
   "uri": "/lists/noticias@broadcast.msging.net/recipients/551100001111@0mn.io"
@@ -309,7 +309,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "3",
+  "id": "4",
   "from": "postmaster@broadcast.msging.net/#irismsging1",
   "to": "contact@msging.net/default",
   "method": "set",
@@ -348,12 +348,94 @@ namespace Extensions
 
 As the same way you add some members into a distribution list, it is possible to remove its members. To remove a member with `551100001111@0mn.io` identity from a list with `your_distributionList` identifier, you must send a command with `DELETE` method and command URI with the list and memeber identifier (`/lists/your_distributionList@broadcast.msging.net/recipients/551100001111@0mn.io`)
 
+### Get all members of a list
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    "id": "5",
+    "to": "postmaster@broadcast.msging.net",
+    "method": "get",
+    "uri": "/lists/your_distributionList@broadcast.msging.net/recipients?$skip=0&$take=5"
+  });
+});
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "5",
+  "to": "postmaster@broadcast.msging.net",
+  "method": "get",
+  "uri": "/lists/your_distributionList@broadcast.msging.net/recipients?$skip=0&$take=5"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "5",
+  "from": "postmaster@broadcast.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "get",
+  "status": "success",
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+    "total": 30,
+    "itemType": "application/vnd.lime.identity",
+    "items": [
+      "contact+senders@msging.net",
+      "list1@msging.net",
+      "list2@msging.net",
+      "list3@msging.net",
+      "list4@msging.net"
+    ]
+  }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Broadcast;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private readonly IBroadcastExtension _broadcastExtension;
+
+        public SampleMessageReceiver(IBroadcastExtension broadcastExtension)
+        {
+            _broadcastExtension = broadcastExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var listName = "your_distributionList";
+
+            await _broadcastExtension.GetRecipientsAsync(listName, 0, 5, cancellationToken);
+        }
+    }
+}
+```
+
+To get all members of a distribution list, you must send a command with `GET` method and command URI with the list identifier (`/lists/your_distributionList@broadcast.msging.net/recipients`)
+
 ###Send message
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
-    'id': '4',
+    'id': '6',
     'to': 'your_distributionList@broadcast.msging.net',
     'type': 'text/plain',
     'content': 'Hello participants of this list!'
@@ -367,7 +449,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "4",
+  "id": "6",
   "to": "your_distributionList@broadcast.msging.net",
   "type": "text/plain",
   "content": "Hello participants of this list!"
@@ -379,7 +461,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "4",
+  "id": "6",
   "from": "postmaster@broadcast.msging.net/#irismsging1",
   "to": "contact@msging.net/default",
   event": "received"
@@ -390,7 +472,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "4",
+  "id": "6",
   "from": "postmaster@broadcast.msging.net/#irismsging1",
   "to": "contact@msging.net/default",
   "event": "consumed"
@@ -434,7 +516,7 @@ If you already have a distribution list with some members, you can send messages
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({  
-    "id": "5",
+    "id": "7",
     "to": "your_distributionList@broadcast.msging.net",
     "type": "text/plain",
     "content": "Hello ${contact.name}, come to check out our prices!"
@@ -448,7 +530,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "5",
+  "id": "7",
   "to": "your_distributionList@broadcast.msging.net",
   "type": "text/plain",
   "content": "Hello ${contact.name}, come to check out our prices!"
