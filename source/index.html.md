@@ -22,9 +22,11 @@ includes:
   - en/concepts2/handle-notifications
   - en/concepts2/commands
   - en/concepts2/handle-commands
-
-  - en/sdks
-  - en/webhook
+  
+  - en/getting-started/builder/getting-started-builder
+  - en/getting-started/csharp/getting-started-csharp
+  - en/getting-started/js/getting-started-js
+  - en/getting-started/webhook/getting-started-webhook
 
   - --Authentication
   - en/auth  

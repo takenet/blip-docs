@@ -9,34 +9,27 @@ The main goal of this documentation is to provide development knowledge about BL
 
 For each subject, you'll find code samples on the **right side**. The samples are presented in C\#, JavaScript and as a generic HTTP request that you can use in your favorite programming language. In the **left side menu**, you will find a step-by-step guide for each big subject on BLiP.
 
-**Essential information**
+**Essential informations**
 
-- [Important concepts about BLiP]
-
+- [Important concepts about BLiP](#concepts)  
 Description of basic and advanced concepts used by BLiP.
 
-- [Getting started - Builder]
-
+- [Getting started - Builder](#using-builder)  
 How to create a chatbot with no code
 
-- [Getting started - SDK C\#]
-
+- [Getting started - SDK C\#](#using-sdk-csharp)  
 How to create a chatbot using BLiP's SDK C\#
 
-- [Getting started - SDK Javascript]
-
+- [Getting started - SDK Javascript](#using-sdk-js)  
 How to create a chatbot using BLiP's SDK Javascript
 
-- [Getting started - Webhook HTTP]
-
+- [Getting started - Webhook HTTP](using-webhook)  
 How to create a chatbot using BLiP's HTTP API (for any language)
 
-- [Forum to report issues, questions and suggestions](http://forum.blip.ai/)
-
+- [Forum to report issues, questions and suggestions](http://forum.blip.ai/)  
 Please use the forum if you need any help 😉.
 
-- [Help Center](https://help.blip.ai)
-
+- [Help Center](https://help.blip.ai)  
 Use BLiP's Help Center to discover all [BLiP's Portal](https://portal.blip.ai) and not technical features.
 
 

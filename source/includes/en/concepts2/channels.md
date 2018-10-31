@@ -25,7 +25,7 @@ The following channels are available in **BLiP** platform:
 | Skype for Business | abs.gw.msging.net  (**soon**)     |
 | Business Chat | businesschat.gw.msging.net  (**soon**)     |
 | Infobip (SMS) | infobip.gw.msging.net  (**soon**)     |
-| Zendesk Conversational Chat | infobip.gw.msging.net  (**soon**)     |-->
+| Zendesk Chat Conversations | chatconversations.gw.msging.net  (**soon**)     |-->
 
 <aside class="notice">
 All BLiP's chatbots are running inside of a specific channel with <code>msging.net</code> identifier.

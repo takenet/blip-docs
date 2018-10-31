@@ -6,11 +6,11 @@ There are basically 3 differents ways to create a chatbot using BLiP.
 
 - Using Builder (without any code)
 
-You can use the visual component **Builder** to build any type of bot. There is also a possibility to choice one of the available pre built bot **templates** and just make some quick customization. To know how to create a bot using Builder [click here](#getting-started-builder).
+You can use the visual component **Builder** to build any type of bot. There is also a possibility to choice one of the available pre built bot **templates** and just make some quick customization. To know how to create a bot using Builder [click here](#using-builder).
 
 - Using a SDK (C\# or JavaScript)
 
-For developers, it's possible to choose one of the available **SDKs** that enable them to build bots in a flexible and scalable way.
+For developers, it's possible to choose one of the available **SDKs** that enable them to build bots in a flexible and scalable way. There are 2 official SDKs available in C\# and Javascript language, [click here](#using-sdk-csharp) to see more informations about how to create a bot using one of these SDKs.
 
 - Using HTTP Webhooks (for any language)
 

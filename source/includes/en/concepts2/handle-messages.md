@@ -42,7 +42,7 @@ client.connect()
 ```
 
 <blockquote class="lang-specific http">
-<p>For this sample bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ is a valid Key for blipmessaginghubapp chatbot.</p>
+<p>For this sample bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ is a valid Key. You must to change this key</p>
 </blockquote>
 
 ```http
@@ -62,13 +62,11 @@ Content-Length: 131
 
 The process of sending message is asynchronous and the status of sent messages is delivered to application by **notifications**.
 
-For more information about messages, check the Messages documentation page or the supported content types specification.
-
-REQUEST
+For more information about messages, check the [messages section](#messages) or the [supported content types specification](#content-types).
 
 | Name | Description |
 |---------------------------------|--------------|
-|  id    | Unique identifier of the message   |
+| id    | Unique identifier of the message   |
 | from   | Originator’s address   |
 | to     | Recipient’s address  |
 | type   | Statement with content type, in the MIME format |
