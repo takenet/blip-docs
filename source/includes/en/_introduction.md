@@ -20,7 +20,7 @@ How to create a chatbot with no code
 - [Getting started - SDK C\#](#using-sdk-csharp)  
 How to create a chatbot using BLiP's SDK C\#
 
-- [Getting started - SDK Javascript](#using-sdk-js)  
+- [Getting started - SDK Javascript](#using-sdk-javascript)  
 How to create a chatbot using BLiP's SDK Javascript
 
 - [Getting started - Webhook HTTP](using-webhook)  

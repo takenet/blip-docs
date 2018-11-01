@@ -186,7 +186,7 @@ There are two possibilities to send commands. Using the method **SendCommand** o
 Try aways as possible use the `IExtension` interfaces insted of `ISender`.
 </aside>
 
-One of the most common extension is **Event Analysis** that allows to register chatbot's events to create analytics reports in portal.
+One of the most common extension is **[Event Analysis](#event-analysis)** that allows to register chatbot's events to create analytics reports in portal.
 
 Let see some samples of how to send commands:
 
