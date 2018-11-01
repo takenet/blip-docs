@@ -77,7 +77,7 @@ includes:
   - en/extensions/delegation
   - en/extensions/tunnel
 
-  - --Integrations
+  - --integrations
   - en/channels/blip-chat
   - en/channels/mailgun
   - en/channels/messenger
