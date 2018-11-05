@@ -14,6 +14,9 @@ For each subject, you'll find code samples on the **right side**. The samples ar
 - [Important concepts about BLiP](#concepts)  
 Description of basic and advanced concepts used by BLiP.
 
+- [BLiP Authentication](#authentication)  
+How to make requests and receive messages in a safe way.
+
 - [Getting started - Builder](#using-builder)  
 How to create a chatbot with no code
 

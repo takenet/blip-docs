@@ -23,13 +23,12 @@ includes:
   - en/concepts2/commands
   - en/concepts2/handle-commands
   
+  - en/authentication
+
   - en/getting-started/builder/getting-started-builder
   - en/getting-started/csharp/getting-started-csharp
   - en/getting-started/js/getting-started-js
-  - en/getting-started/http/getting-started-http
-
-  - --Authentication
-  - en/auth  
+  - en/getting-started/http/getting-started-http  
 
   - en/content-types
   - en/content-types/text

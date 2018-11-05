@@ -1,3 +1,30 @@
+# Authentication
+
+If you need to build your chatbot using one of the SDKs or using HTTP or if you need to access any BLiP internal API (for extensions and integrations) you will need to be authenticated. In order to authenticate your chatbot, you need to follow these steps:
+
+### SDKs
+
+On both `C# and Javascript`, you will need an `identifier` and an `access key` to be able to connect to the BLiP. To get them:
+
+![imagem](images/csharp1.png)
+
+* Access the [BLiP Portal](https://portal.blip.ai).
+* Click in **Create chatbot** button and choose **Create from scratch** mode. *If you already have your bot created just access them*.
+* After your chatbot has been created click in **Configurations** and choose **Conection information** option in left side menu.
+* Enable the SDK connection and get the `identifier` and `access key` informations.
+
+### HTTP
+
+On `HTTP`, whatever request made (messages/notifications/commands) must contain an authorization header (`Authorization`) with a Key type, as showed on [BLiP Portal](https://portal.blip.ai/#/application) chatbot configurations.
+
+![imagem](images/http-token.png)
+
+### Auth Samples
+
+<aside class="notice">
+Use the code sidebar at right to see samples for C#, Javascript and HTTP.
+</aside>
+
 <blockquote class="lang-specific http">
 <p>Imagine a chatbot with an Authorization 'Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ='. To send a message from this bot to a BLiP user, use:</p>
 </blockquote>
@@ -19,7 +46,7 @@ Content-Length: 131
 ```
 
 <blockquote class="lang-specific csharp">
-<p>With `C#`, the authentication of your chatbot is made on application.json file. Basically, this file defines all receivers and other control properties.</p>
+<p>With <b>C#</b>, the authentication of your chatbot is made on <i>application.json</i> file. Basically, this file defines all receivers and other control properties.</p>
 </blockquote>
 
 ```csharp
@@ -67,11 +94,3 @@ client.connect() // This method return a 'promise'.
     .catch(function(err) { /* Connection failed. */ }); 
 
 ```
-
- In order to authenticate your chatbot, you need to follow these steps:
-
- On `Webhook`, whatever request made (messages/notifications/commands) must contain an authorization header (Authorization) with a Key type, as showed on [BLiP Portal](https://portal.blip.ai/#/application) chatbot configurations.
-
- On both `C# and Javascript`, you will need to check credentials on [BLiP Portal](https://portal.blip.ai/#/application), inside chatbot configuration menu, and find your identifier and access key. Then, you need to insert them in a specific place.
-
- See the `examples` at code sidebar.

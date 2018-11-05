@@ -184,3 +184,6 @@ Let see some samples of how to send commands:
 
 Go to [Extensions](#extensions) or [Integrations](#integrations) sections to see all commands available to be used.
 
+### 5. Samples using Javascript
+
+[Click here](https://github.com/takenet/blip-sdk-js/tree/master/examples) to see same bots sample created using SDK Javascript.

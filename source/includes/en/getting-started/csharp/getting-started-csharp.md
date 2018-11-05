@@ -254,3 +254,7 @@ public class PlainTextMessageReceiver : IMessageReceiver
 ```
 
 Go to [Extensions](#extensions) or [Integrations](#integrations) sections to see all commands available to be used.
+
+### 5. Samples using CSharp
+
+[Click here](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Samples) to see same bots sample created using SDK C#.
