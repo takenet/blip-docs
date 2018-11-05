@@ -163,10 +163,6 @@ If you need to send any other message content type [click here](#content-types)
 
 A **command** allows querying and manipulation of server resources and the consumption of **BLiP** extensions and integrations. To see more details about what are the commands [click here](#commands).
 
-One of the most common extension is **[Event Analysis](#event-analysis)** that allows to register chatbot's events to create analytics reports in portal.
-
-Let see some samples of how to send commands:
-
 > Using `sendCommand` method
 
 ```javascript
@@ -181,6 +177,10 @@ client.sendCommand({
     resource: resource
 })
 ```
+
+One of the most common extension is **[Event Analysis](#event-analysis)** that allows to register chatbot's events to create analytics reports in portal.
+
+Let see some samples of how to send commands:
 
 Go to [Extensions](#extensions) or [Integrations](#integrations) sections to see all commands available to be used.
 

@@ -23,7 +23,7 @@ How to create a chatbot using BLiP's SDK C\#
 - [Getting started - SDK Javascript](#using-sdk-javascript)  
 How to create a chatbot using BLiP's SDK Javascript
 
-- [Getting started - Webhook HTTP](using-webhook)  
+- [Getting started - HTTP](#using-http)  
 How to create a chatbot using BLiP's HTTP API (for any language)
 
 - [Forum to report issues, questions and suggestions](http://forum.blip.ai/)  
