@@ -31,7 +31,7 @@ You will need an `identifier` and an `access key` to be able to connect to the B
 ![imagem](images/csharp1.png)
 
 * Access the [BLiP Portal](https://portal.blip.ai).
-* Click in **Create chatbot** button and choose **Create from scratch** mode.
+* Click in **Create chatbot** button and choose **Create from scratch** mode. *If you already have your bot created just access them*.
 * After your chatbot has been created click in **Configurations** and choose **Conection information** option in left side menu.
 * Enable the SDK connection and get the `identifier` and `access key` informations.
 

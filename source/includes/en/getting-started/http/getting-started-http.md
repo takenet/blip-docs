@@ -3,17 +3,50 @@
 **Webhook** enables an integration between your bot and BLiP via **HTTP endpoints** to exchange messages, notifications and commands.
 If you are not able to create your chatbot using C\# or Javascript languages you must use BLiP's HTTP API agnostic for any language.
 
-The diagram bellow shows how is  
+The diagram bellow shows the messages flow between BLiP and your endpoint (API).
 
-1. Send messages
+<!--![Diagram HTTP message flow](images/http.png)-->
 
-To send messages, it is necessary to make a `HTTP POST` request to URL provided on portal (chatbot settings section). The request must contain an authorization header (`Authorization`) with `Key` type, as showed on chatbot settings.
+**Requirements**
 
-The message data must be sent on the request `body`. The message must be a *JSON* on LIME protocol format. For more details go to [protocol documentation](http://limeprotocol.org/#message).
+* You **must have some available and public enpoint** in order to receive any BLiP's request. Is necessary at least one endpoint to receive messages and notifications but you can choice different endpoint for each one.
+Please use [RequestBin](https://requestbin.fullcontact.com/) or [Ngrok](https://ngrok.com/) tools if you want just test the integration.
 
-Example
+**Before start**
 
-Imagine a chatbot with a **blipmessaginghubapp** identifier. To send a message from this bot to a BLiP user, use:
+Get the `Authorization` token of your bot to be able to connect to the BLiP. To get them:
+
+![imagem](images/http-token.png)
+
+* Access the [BLiP Portal](https://portal.blip.ai).
+* Click in **Create chatbot** button and choose **Create from scratch** mode. *If you already have your bot created just access them*.
+* After your chatbot has been created click in **Configurations** and choose **Conection information** option in left side menu.
+* Go to **Enpoints HTTP** and get the `Authorization` token.
+* Enable the HTTP connection and set the `message` and `notification` **URLs** as discussed before on **Requirements** section.
+
+### 1. Receiving messages
+
+Any message will be delivered as a `HTTP POST` request on the configured chatbot's message URL. These messages have a JSON format as defined on [Content Types](#content-types) section. A sample of a received text message is presented below.
+
+```
+{
+  "id": "99cf454e-f25d-4ebd-831f-e48a1c612cd4",
+  "from": "551100001111@0mn.io/4ac58r6e3",
+  "to": "blipmessaginghubapp@msging.net",
+  "type": "text/plain",
+  "content": "Help"
+}
+```
+
+### 2. Sending messages
+
+To send messages, it is necessary to make a `HTTP POST` request to BLiP using the URL `https://msging.net/messages`.
+The request must contain an authorization header (`Authorization`) with `Key` type, as showed on chatbot settings. To know more about BLiP authentication process [click here](#authentication).
+
+The message data must be sent on the request `body` as a *JSON* following the LIME protocol format. 
+For more details go to [Content Types](#content-types) section.
+
+Imagine a chatbot with an Authorization token `Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=`. To send a message from this bot to a BLiP user, use:
 
 ```
 POST https://msging.net/messages HTTP/1.1
@@ -29,11 +62,9 @@ Content-Length: 131
 }
 ```
 
-Note: For this sample, `bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ` is a valid `Key` for **blipmessaginghubapp** chatbot.
-
 For more information about messages, check the [**Messages** documentation page](.#/docs/concepts/messages) or the [supported content types specification](.#/docs/content-types).
 
-2. Receiving notification
+### 3. Receiving notification
 
 All notifications will be delivered on the configured chatbot's notification URL. Each notification contains the _status_ of messages. Observe that notifications are sent by *clients*, informing if received or not some message.
 
@@ -50,29 +81,14 @@ A sample of notification is presented below. This notification will be deliverd 
 
 For more information, check the [**Notification** documentation page](.#/docs/concepts/notifications)
 
-
-
-3. Receiving messages
-
-Similar to notifications, all messages will be delivered as a `HTTP POST` request on the configured chatbot's messages URL. These messages have a JSON format as defined on [LIME PROTOCOL](http://limeprotocol.org/#message). A sample of a received message is presented below.
-
-```
-{
-  "id": "99cf454e-f25d-4ebd-831f-e48a1c612cd4",
-  "from": "551100001111@0mn.io/4ac58r6e3",
-  "to": "blipmessaginghubapp@msging.net",
-  "type": "text/plain",
-  "content": "Help"
-}
-```
-
-4. Sending notifications
+### 4. Sending notifications
 
 In order to correctly show the message history, it is important that the chatbots send notifications of messages processed to originator clients.
 
-For each message processed, it is important to send a notification with the `consumed` event. In case of problems, the chatbot must send a notification with the `failed` event. The request must contain an authorization header (`Authorization`) with `Key` type, as showed on chatbot settings.
+For each message processed, it is important to send a notification with the `consumed` event. In case of problems, the chatbot must send a notification with the `failed` event. The request must use the URL `https://msging.net/notifications` and contain an authorization header (`Authorization`) with `Key` type, as showed on chatbot settings.
 
 For instance, imagine that the received message from the example above (whit id **99cf454e-f25d-4ebd-831f-e48a1c612cd4**) was processed with success. The code below shows a complete notification request including the headers and the body request.
+
 ```
 POST https://msging.net/notifications HTTP/1.1
 Content-Type: application/json
@@ -86,10 +102,9 @@ Content-Length: 131
 }
 ```
 
+### 5. Sending commands
 
-5. Sending commands
-
-In order to use BLiP's [extensions]() (like schedule and directory), it is necessary to send commands. To do that, a `HTTP POST` request on `/commands` URL must be made.
+In order to use BLiP's [extensions](#extensions) (like schedule and directory), it is necessary to send commands. To do that, a `HTTP POST` request on `/commands` URL must be made.
 
 For instance, send a command to schedule some message:
 
@@ -136,6 +151,8 @@ Content-Length: 131
 }
 
 ```
+
+### Aditional informations
 
 * Result codes for requests
 
