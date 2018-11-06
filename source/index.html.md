@@ -61,30 +61,34 @@ includes:
   - en/content-types-samples/send-location
   - en/content-types-samples/receive-location
 
+# Add an extension keeping the order
+
   - en/extensions
-  - en/extensions/event-track
-  - en/extensions/scheduler
+  - en/extensions/artificial-intelligence
   - en/extensions/broadcast
   - en/extensions/bucket
+  - en/extensions/chatbot-profile
+  - en/extensions/chat-history
+  - en/extensions/contacts
+  - en/extensions/delegation
   - en/extensions/desk
   - en/extensions/directory  
+  - en/extensions/event-track
   - en/extensions/resources
-  - en/extensions/contacts
-  - en/extensions/threads
-  - en/extensions/profile
-  - en/extensions/artificial-intelligence
-  - en/extensions/delegation
+  - en/extensions/scheduler
   - en/extensions/tunnel
+
+# Add an integration keeping the order
 
   - --integrations
   - en/channels/blip-chat
   - en/channels/mailgun
   - en/channels/messenger
+  - en/channels/payment
   - en/channels/skype
   - en/channels/takeio
   - en/channels/tangram
   - en/channels/telegram
-  - en/channels/payment
 
 search: true
 ---

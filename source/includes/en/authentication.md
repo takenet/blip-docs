@@ -1,6 +1,6 @@
 # Authentication
 
-If you need to build your chatbot using one of the SDKs or using HTTP or if you need to access any BLiP internal API (for extensions and integrations) you will need to be authenticated. In order to authenticate your chatbot, you need to follow these steps:
+If you need to build your chatbot using one of the SDKs or using HTTP or if you need to access any BLiP internal API (for extensions and integrations) **you must to be authenticated**. This section explain how to authenticate your chatbot in order to use BLiP.
 
 ### SDKs
 
