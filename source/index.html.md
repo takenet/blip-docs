@@ -80,15 +80,15 @@ includes:
 
 # Add an integration keeping the order
 
-  - --integrations
-  - en/channels/blip-chat
-  - en/channels/mailgun
-  - en/channels/messenger
-  - en/channels/payment
-  - en/channels/skype
-  - en/channels/takeio
-  - en/channels/tangram
-  - en/channels/telegram
+  - en/integrations
+  - en/integrations/blip-chat
+  - en/integrations/mailgun
+  - en/integrations/messenger
+  - en/integrations/payment
+  - en/integrations/skype
+  - en/integrations/takeio
+  - en/integrations/tangram
+  - en/integrations/telegram
 
 search: true
 ---
