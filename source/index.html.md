@@ -25,6 +25,7 @@ includes:
   
   - en/authentication
 
+  - en/getting-started
   - en/getting-started/builder/getting-started-builder
   - en/getting-started/csharp/getting-started-csharp
   - en/getting-started/js/getting-started-js
