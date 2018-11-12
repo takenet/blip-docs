@@ -1,4 +1,4 @@
-## User input
+## Input
 
 > Requesting a user's name:
 

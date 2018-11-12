@@ -31,36 +31,40 @@ includes:
   - en/getting-started/js/getting-started-js
   - en/getting-started/http/getting-started-http  
 
+# Add a content type keeping the order
+
   - en/content-types
-  - en/content-types/text
-  - en/content-types/media-link
   - en/content-types/chatstate
-  - en/content-types/location
-  - en/content-types/document-select
   - en/content-types/collection
-  - en/content-types/list
-  - en/content-types/select
-  - en/content-types/payment-receipt
-  - en/content-types/web-link
-  - en/content-types/payment-invoice
-  - en/content-types/native
-  - en/content-types/sensitive
   - en/content-types/input
+  - en/content-types/list
+  - en/content-types/location
+  - en/content-types/media-link
+  - en/content-types/multimedia-menu
+  - en/content-types/native
+  - en/content-types/payment-invoice
+  - en/content-types/payment-receipt
+  - en/content-types/text
+  - en/content-types/redirect  
   - en/content-types/resource
-  - en/content-types/redirect
+  - en/content-types/select
+  - en/content-types/sensitive
+  - en/content-types/web-link
+
+# Add a content type sample keeping the order
 
   - --Content Types Samples
-  - en/content-types-samples/texto
-  - en/content-types-samples/images
-  - en/content-types-samples/gif
   - en/content-types-samples/audio
-  - en/content-types-samples/video
-  - en/content-types-samples/documents
   - en/content-types-samples/carousel
-  - en/content-types-samples/quickreply
+  - en/content-types-samples/documents
+  - en/content-types-samples/gif
+  - en/content-types-samples/images
   - en/content-types-samples/menu
-  - en/content-types-samples/send-location
+  - en/content-types-samples/quickreply
   - en/content-types-samples/receive-location
+  - en/content-types-samples/send-location
+  - en/content-types-samples/texto
+  - en/content-types-samples/video  
 
 # Add an extension keeping the order
 
