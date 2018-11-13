@@ -1,6 +1,6 @@
-## Directory
+## User info
 
-The **directory** extension allows querying information about customers of your bot, like name, photo and other personal information. BLiP will get this information on the client's channel. Because of this, the command should be sent directly to the server node responsable for the channel (`postmaster@<FQDN of the channel>`), using a special **URI** (`lime://<FQDN of the channel>/accounts/<Client identity>`). [Click here](#channels) to see all channels identifiers.
+The **directory** (or **User info**) extension allows querying information about customers of your bot, like name, photo and other personal information. BLiP will get this information on the client's channel. Because of this, the command should be sent directly to the server node responsable for the channel (`postmaster@<FQDN of the channel>`), using a special **URI** (`lime://<FQDN of the channel>/accounts/<Client identity>`). [Click here](#channels) to see all channels identifiers.
 
 If the information is available, an [Account](http://limeprotocol.org/resources.html#account) document is returned. The availability and detail level of the information depend on the channel, and the application should handle differences appropriately.
 

@@ -337,7 +337,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "10",
   "to": "postmaster@ai.msging.net",
   "method": "delete",
-  "uri": "/intentions/{intention_id}/questions",
+  "uri": "/intentions/{intention_id}",
 }
 ```
 
@@ -350,7 +350,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "10",
   "to": "postmaster@ai.msging.net",
   "method": "delete",
-  "uri": "/intentions/{intention_id}/questions",
+  "uri": "/intentions/{intention_id}",
 }
 
 ```
@@ -365,7 +365,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "10",
   "to": "postmaster@ai.msging.net",
   "method": "delete",
-  "uri": "/intentions/{intention_id}/questions",
+  "uri": "/intentions/{intention_id}",
 }
 
 ```

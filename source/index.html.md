@@ -30,6 +30,7 @@ includes:
   - en/getting-started/csharp/getting-started-csharp
   - en/getting-started/js/getting-started-js
   - en/getting-started/http/getting-started-http  
+  - en/getting-started/postman-collection  
 
 # Add a content type keeping the order
 
@@ -77,11 +78,11 @@ includes:
   - en/extensions/contacts
   - en/extensions/delegation
   - en/extensions/desk
-  - en/extensions/directory  
   - en/extensions/event-track
   - en/extensions/resources
   - en/extensions/scheduler
   - en/extensions/tunnel
+  - en/extensions/user-info  
 
 # Add an integration keeping the order
 
