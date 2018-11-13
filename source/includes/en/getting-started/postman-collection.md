@@ -10,8 +10,30 @@
 
 To get started, [download](https://www.getpostman.com/apps) and install Postman.
 
-After installed click on the `Run in Postman` button and import the collection.
+After installed click on the `Run in Postman` button download and import the collection into your app.
 
-[![Run BLiP samples in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/c2399aec336b7606fc55)
+[![Run BLiP samples in Postman](https://run.pstmn.io/button.svg)](https://github.com/takenet/blip-docs/tree/master/source/includes/en/getting-started/BLiP.postman_collection.json)
 
-*Optionally you may download ([clicking here](https://github.com/takenet/blip-docs/tree/master/source/includes/en/getting-started/BLiP.postman_collection.json)) the Postman Collection and import in your app*
+<!--*Optionally you may download ([clicking here](https://github.com/takenet/blip-docs/tree/master/source/includes/en/getting-started/BLiP.postman_collection.json)) the Postman Collection and import in your app*-->
+
+### Configure
+
+Postman offers a configurable variable map which is essentially a set of key-value pairs. It allows you to create commonly used variables that can be reference across multiple requests. You can read more about it [here](https://www.getpostman.com/docs/v5/postman/environments_and_globals/variables). Before to start using BLiP's Postman Collection you need to add the `Authorization` variable.
+
+* Go to **Edit** menu option and access the collection's variables.
+
+![imagem](images/configure-postman1.png)  
+
+* Update the `Authorization` variable value with your chatbot API key (for instance `Key xa123sad123`).
+
+![imagem](images/configure-postman2.png)
+
+### Testing
+
+In order to test the collection access the `Resource` folder click in `Store a resource` request and than click in `Send` button. This request add a sample resource in your bot. Go to BLiP portal access `Resources` module and check the content.
+
+![imagem](images/configure-postman3.png)
+
+<aside class="notice">
+<b>Note:</b> In some requests you may need to add some not static values.
+</aside>
