@@ -35,4 +35,4 @@ Please use the forum if you need any help 😉.
 - [Help Center](https://help.blip.ai)  
 Use BLiP's Help Center to discover all [BLiP's Portal](https://portal.blip.ai) and not technical features.
 
-
+- [Postman Collection for BLiP APIs](#postman-collection)

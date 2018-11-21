@@ -17,7 +17,7 @@ The **BLiP** portal offers a resource management interface which helps with the 
 
 In order to send a resource message, the developer must use the [**resource** content type](#resource).
 
-### Store a **media link** resource
+### Add a **media link** resource
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -95,7 +95,7 @@ namespace Extensions
 
 Storing a `media link` document with `xyz1234` key.
 
-### Store a **text/plain** resource
+### Add a **text/plain** resource
 
 
 ```http
@@ -159,6 +159,158 @@ namespace Extensions
 ```
 
 Storing a `text plain` document with `help-message` key.
+
+### Get all Resources
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "3cbdd83c-d7ad-4d1e-886a-a0dffb96fd37",
+  "method": "get",
+  "uri": "/resources"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "id": "3cbdd83c-d7ad-4d1e-886a-a0dffb96fd37",
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 1,
+        "itemType": "text/plain",
+        "items": [
+            "xyz1234"
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "from": "postmaster@msging.net/#az-iris1",
+    "to": "docstest@msging.net",
+    "metadata": {
+        "#command.uri": "lime://docstest@msging.net/resources"
+    }
+}
+```
+
+Getting all bot resources.
+
+### Get a specific resource
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "78981a10-d7a9-4fbb-84cf-1916a8ed93b8",
+  "method": "get",
+  "uri": "/resources/xyz1234"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "id": "78981a10-d7a9-4fbb-84cf-1916a8ed93b8",
+    "type": "application/vnd.lime.media-link+json",
+    "resource": {
+        "type": "image/jpeg",
+        "size": 227791,
+        "uri": "http://2.bp.blogspot.com/-pATX0YgNSFs/VP-82AQKcuI/AAAAAAAALSU/Vet9e7Qsjjw/s1600/Cat-hd-wallpapers.jpg",
+        "previewUri": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8qkelB28RstsNxLi7gbrwCLsBVmobPjb5IrwKJSuqSnGX4IzX",
+        "previewType": "image/jpeg",
+        "title": "Cat",
+        "text": "Here is a cat image for you!"
+    },
+    "method": "get",
+    "status": "success",
+    "from": "postmaster@msging.net/#az-iris1",
+    "to": "docstest@msging.net",
+    "metadata": {
+        "#command.uri": "lime://docstest@msging.net/resources/xyz1234"
+    }
+}
+```
+
+Getting a specific resource by id.
+
+### Delete a specific resource
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "a07258fa-0137-4596-a67e-859a5c2ce38f",
+  "method": "delete",
+  "uri": "/resources/xyz1234"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "id": "a07258fa-0137-4596-a67e-859a5c2ce38f",
+    "method": "delete",
+    "status": "success",
+    "from": "postmaster@msging.net/#az-iris1",
+    "to": "docstest@msging.net",
+    "metadata": {
+        "#command.uri": "lime://docstest@msging.net/resources/xyz1234"
+    }
+}
+```
+
+### Getting a specific resource by id.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "a07258fa-0137-4596-a67e-859a5c2ce38g",
+  "method": "get",
+  "uri": "/resources/xyz1234"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "id": "a07258fa-0137-4596-a67e-859a5c2ce38g",
+    "type": "application/vnd.lime.media-link+json",
+    "resource": {
+        "type": "image/jpeg",
+        "size": 227791,
+        "uri": "http://2.bp.blogspot.com/-pATX0YgNSFs/VP-82AQKcuI/AAAAAAAALSU/Vet9e7Qsjjw/s1600/Cat-hd-wallpapers.jpg",
+        "previewUri": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8qkelB28RstsNxLi7gbrwCLsBVmobPjb5IrwKJSuqSnGX4IzX",
+        "previewType": "image/jpeg",
+        "title": "Cat",
+        "text": "Here is a cat image for you!"
+    },
+    "method": "get",
+    "status": "success",
+    "from": "postmaster@msging.net/#az-iris1",
+    "to": "docstest@msging.net",
+    "metadata": {
+        "#command.uri": "lime://docstest@msging.net/resources/xyz1234"
+    }
+}
+```
 
 #### Replacement variables
 

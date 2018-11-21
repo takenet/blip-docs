@@ -2,7 +2,7 @@
 
 **Builder** is one of the BLiP portal components. It was designed to make the create chatbot process more quick, simple, visual and without code. Through Builder is possible define all conversational flow and contents integrated with any other platform resource. 
 
-Even tough be a visual component you can use Builder to create any type of bots, from really simple until very complex cases.
+Even though be a visual component you can use Builder to create any type of bots, from really simple until very complex cases.
 
 ![imagem](images/builder.png)
 
