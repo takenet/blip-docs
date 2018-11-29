@@ -64,6 +64,8 @@ html, body {
   font-size: 13px;
   font-weight: bold;
 
+  @include scrollbar($bp-color-breeze);
+
   // language selector for mobile devices
   .lang-selector {
     display: none;
@@ -430,12 +432,12 @@ html, body {
   }
 
   table {
-    margin-top: 1.6*$m;
-    margin-bottom: 1.6*$m;
+    padding-top: 1.2*$m;
+    padding-bottom: 1.2*$m;
+    margin-top: 1*$m;
+    margin-bottom: 1*$m;
     overflow: auto;
     color: $bp-color-desk;
-
-    @include box-shadow(0, 2px, 12px, 0, #e1e7ee);
 
     thead {
       border-bottom: 2px solid $table-head-bc;
@@ -443,6 +445,14 @@ html, body {
 
     thead, tbody {
       background-color: $table-bg;
+    }
+
+    thead {
+      @include box-shadow(0, -2px, 12px, 0, #e1e7ee);
+    }
+
+    tbody {
+      @include box-shadow(0, 2px, 12px, 0, #e1e7ee);
     }
 
     th, td {
@@ -463,7 +473,7 @@ html, body {
       padding: 1.6*$m 1*$m;
       vertical-align: bottom;
       color: $bp-color-desk;
-      font-weight: $bp-fw-bold;
+      font-weight: $bp-fw-extra-bold;
     }
 
 
@@ -504,10 +514,14 @@ html, body {
   code {
     background-color: $aside-code-bg;
     color: $aside-code-text;
-    padding: 3px;
+    padding: 0.3*$m 0.6*$m;
     border-radius: 3px;
     @extend %break-words;
     @extend %code-font;
+  }
+
+  p>code {
+    word-break: normal;
   }
 
   pre>code {
