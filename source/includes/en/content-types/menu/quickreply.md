@@ -1,4 +1,4 @@
-## Menu
+### Quick Replies
 
 ```csharp
 using System;
@@ -28,6 +28,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 
     Document document = new Select
     {
+        Scope = SelectScope.Immediate,// (create a quickreply instead menu)
         Text = "Choose an option:",
         Options = new SelectOption[]
         {
@@ -63,6 +64,7 @@ client.sendMessage({
       type: "application/vnd.lime.select+json",
       to: "1042221589186385@messenger.gw.msging.net",
       content: {
+        scope:"immediate", // (create a quickreply instead menu)
         text: "Choose an option",
         options: [
             {
@@ -96,6 +98,7 @@ Authorization: Key {YOUR_TOKEN}
     "to":"1042221589186385@messenger.gw.msging.net",
     "type":"application/vnd.lime.select+json",
     "content":{
+        "scope":"immediate",
         "text":"Choose an option",
         "options":[
             {
@@ -119,10 +122,13 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-The persistent menu can be set for your bot to help people discover and access functionalities throughout the conversation.
 
-You can send a menu by using [Select](/#select) as well as quick replies.
+
+Quick replies provide a way to present a set of up to 11 buttons in-conversation that contain a title and an optional image, and appear prominently above the composer. You can also use quick replies to request a person's location.
+
+You can send quick replies by using [Select](/#select). To switch between menu and quick reply you only need to change the **scope** attribute. Quick replies requires scope to be **'immediate'**.
+
 
 | Messenger                         | BLiPChat                                   |
 |-----------------------------------|--------------------------------------------|
-| ![imagem](images/menu_mssngr.png) | ![imagem](images/selectBlipChat.png)       |
+| ![imagem](images/quickreply_mssgnr.png) | ![imagem](quickReplyBlipChat.png)    |

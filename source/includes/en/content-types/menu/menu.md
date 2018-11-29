@@ -1,4 +1,4 @@
-## Select
+## Menu
 
 >Creating a menu with 3 options
 
@@ -139,11 +139,14 @@ Allows sending of a text menu to customers to make a choice. It is possible to d
 
 Some channels support the options scope limitation, which determines for how much time they are valid for the user selection. For example, in some cases, sent options can only be selected by the customer at that time and must disappear after the choice. In this case, the scope is **immediate**. In others, the options are valid for the selection at any time, and the scope is **persistent**.
 
+BLiP uses `Select` content type to send **persistent** or **immediate** menus.
 For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#select) specification.
 
+| Messenger                         | BLiPChat                                   |
+|-----------------------------------|--------------------------------------------|
+| ![imagem](images/menu_mssngr.png) | ![imagem](images/selectBlipChat.png)       |
 
 ### Menu with numbered options
-
 
 > JSON 1
 
@@ -276,16 +279,11 @@ When the user selects one option, a message returns according to the rule:
 - If not, the 'order' filled value should be returned, if present
 - If not, field 'text' should be returned
 
-
 Return example of the above mentioned menu:
 
-When selecting the first option: **(JSON 1)**:
-
-When selecting the second option **(JSON 2)**:
-
-At last, when selecting the third option **(JSON 3)**:
-
-
+- When selecting the first option: **(JSON 1)**:
+- When selecting the second option **(JSON 2)**:
+- At last, when selecting the third option **(JSON 3)**:
 
 The return message *type* will always be the same as the chosen option. When a value for the field *value* is not defined, the type will be `text/plain`.
 

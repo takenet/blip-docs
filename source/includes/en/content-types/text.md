@@ -64,6 +64,10 @@ For more details, check the specification of [LIME protocol](http://limeprotocol
 Note: Some channels may have a character limit per message.
 </aside>
 
+| Messenger                         | BLiPChat                              |
+|-----------------------------------|---------------------------------------|
+| ![imagem](images/text_mssngr.png) | ![imagem](images/textBlipChat.png)    |
+
 #### Channel mapping
 
 | Channel              | Type                    |

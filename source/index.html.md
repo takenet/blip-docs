@@ -39,8 +39,16 @@ includes:
   - en/content-types/collection
   - en/content-types/input
   - en/content-types/list
-  - en/content-types/location
-  - en/content-types/media-link
+  - en/content-types/location/location
+  - en/content-types/location/receive-location
+  - en/content-types/location/send-location
+  - en/content-types/media-link/media-link
+  - en/content-types/media-link/audio
+  - en/content-types/media-link/documents
+  - en/content-types/media-link/gif
+  - en/content-types/media-link/images
+  - en/content-types/media-link/video
+  - en/content-types/menu/menu
   - en/content-types/multimedia-menu
   - en/content-types/native
   - en/content-types/payment-invoice
@@ -48,24 +56,9 @@ includes:
   - en/content-types/text
   - en/content-types/redirect  
   - en/content-types/resource
-  - en/content-types/select
+  - en/content-types/menu/quickreply
   - en/content-types/sensitive
   - en/content-types/web-link
-
-# Add a content type sample keeping the order
-
-  - --Content Types Samples
-  - en/content-types-samples/audio
-  - en/content-types-samples/carousel
-  - en/content-types-samples/documents
-  - en/content-types-samples/gif
-  - en/content-types-samples/images
-  - en/content-types-samples/menu
-  - en/content-types-samples/quickreply
-  - en/content-types-samples/receive-location
-  - en/content-types-samples/send-location
-  - en/content-types-samples/texto
-  - en/content-types-samples/video  
 
 # Add an extension keeping the order
 

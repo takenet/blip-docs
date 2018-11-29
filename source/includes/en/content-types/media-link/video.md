@@ -1,4 +1,4 @@
-## Audio
+### Video
 
 ```csharp
 using System;
@@ -24,8 +24,8 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 {
     Document document = new MediaLink
     {
-        Type = MediaType.Parse("audio/mp3"),
-        Uri = new Uri("http://blaamandagjazzband.dk/jazz/mp3/basin_street_blues.mp3"),
+        Type = MediaType.Parse("video/mp4"),
+        Uri = new Uri("http://techslides.com/demos/sample-videos/small.mp4"),
     };
 
     await _sender.SendMessageAsync(document, message.From, cancellationToken);
@@ -36,15 +36,15 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 ```javascript
 client.sendMessage({
       id: Lime.Guid(),
-      type: "application/vnd.lime.media-link+json",
       to: "128271320123982@messenger.gw.msging.net",
+      type: "application/vnd.lime.media-link+json",
       content: {
-        type: "audio/mp3",
-        uri: "http://blaamandagjazzband.dk/jazz/mp3/basin_street_blues.mp3",
-        size: 3124123
+        type: "video/mp4",
+        uri: "http://techslides.com/demos/sample-videos/small.mp4"
       }
     });
 ```
+
 
 ```http
 POST https://msging.net/messages HTTP/1.1
@@ -52,21 +52,19 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-    "id": "2",
+    "id": "1",
     "to": "553199991111@0mn.io",
     "type": "application/vnd.lime.media-link+json",
     "content": {
-        "type": "audio/mp3",
-        "uri": "http://blaamandagjazzband.dk/jazz/mp3/basin_street_blues.mp3",
-        "size": "3124123"
+        "uri": "http://techslides.com/demos/sample-videos/small.mp4",
+        "type": "video/mp4"
     }
 }
 ```
 
-You can send sounds by uploading them or sharing a URL using the [Media Link](/#media-link) content type.
 
-<!-- ![imagem](images/audio_mssngr.png) -->
+You can send videos by uploading them or sharing a URL using the [Media Link](/#media-link) content type.
 
 | Messenger                         | BLiPChat                              |
 |-----------------------------------|---------------------------------------|
-| ![imagem](images/audio_mssngr.png)|![imagem](images/isComing.png)    |
+|![imagem](images/mp4_mssngr.png)   |![imagem](images/isComingVideo.png)    |
