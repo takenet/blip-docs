@@ -199,9 +199,20 @@ Authorization: Key {YOUR_TOKEN}
   "id": "123219310318",
   "to": "postmaster@desk.msging.net",
   "method": "set",
-  "uri": "/tickets/{ticketId}/close"
+  "uri": "/tickets/{ticketId}/close",
+  "resource": {
+	"customerIdentity": "{customerIdentity}",
+	"id": "dfd6a0e4-b109-41f1-8513-01673b93a669",
+	"ownerIdentity": "{botIdentifier}@msging.net",
+	"status": "ClosedClient",
+	"tags": ["AtendimentoTeste"]
+  }
 }
 ```
+
+<aside class="notice">
+Note: The `tags` property can be hide if you didn't set the Tags configurations in Portal.
+</aside>
 
 Server responds with all tickets found.
 
