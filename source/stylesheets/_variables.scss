@@ -20,27 +20,28 @@ under the License.
 ////////////////////////////////////////////////////////////////////////////////
 // Use these settings to help adjust the appearance of Slate
 
+@import 'variables/module';
 
 // BACKGROUND COLORS
 ////////////////////
-$nav-bg: #fff !default;
-$examples-bg: #263238 !default;
+$nav-bg: $bp-color-white !default;
+$examples-bg: $bp-color-suit !default;
 //$code-bg: #1E2224 !default;
-$code-bg: darken($examples-bg, 5%) !default;
-$code-annotation-bg: #191D1F !default;
-$nav-subitem-bg: #fff !default;
-$nav-search-results-bg: #f1f1f1 !default;
-$nav-active-bg: #00bcd4 !default;
-$nav-active-parent-bg: #fff !default; // parent links of the current section
-$lang-select-border: #000 !default;
-$lang-select-bg: #101315 !default;
-$lang-select-active-bg: #3a4d57 !default; // feel free to change this to blue or something
-$lang-select-pressed-bg: #111 !default; // color of language tab bg when mouse is pressed
-$main-bg: #fff !default;
-$aside-notice-bg: #8fbcd4 !default;
-$aside-warning-bg: #c97a7e !default;
-$aside-success-bg: #6ac174 !default;
-$search-notice-bg: #c97a7e !default;
+$code-bg: $bp-color-onix !default;
+$code-annotation-bg: darken($bp-color-onix, 10%) !default;
+$nav-subitem-bg: $bp-color-white !default;
+$nav-search-results-bg: $bp-color-offwhite !default;
+$nav-active-bg: $bp-color-blip-light !default;
+$nav-active-parent-bg: $bp-color-white !default; // parent links of the current section
+$lang-select-border: darken($bp-color-onix, 10%) !default;
+$lang-select-bg: darken($bp-color-onix, 10%) !default;
+$lang-select-active-bg: lighten($bp-color-suit, 10%) !default; // feel free to change this to blue or something
+$lang-select-pressed-bg: $bp-color-onix !default; // color of language tab bg when mouse is pressed
+$main-bg: $bp-color-white !default;
+$aside-notice-bg: $bp-color-sky !default;
+$aside-warning-bg: $bp-color-warning !default;
+$aside-success-bg: $bp-color-true !default;
+$search-notice-bg: $bp-color-warning !default;
 
 
 // TEXT COLORS
