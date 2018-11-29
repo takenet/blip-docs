@@ -20,7 +20,7 @@ under the License.
 ////////////////////////////////////////////////////////////////////////////////
 // Use these settings to help adjust the appearance of Slate
 
-@import 'variables/module';
+@import 'blip-toolkit-variables/module';
 
 // BACKGROUND COLORS
 ////////////////////
@@ -42,59 +42,62 @@ $aside-notice-bg: $bp-color-sky !default;
 $aside-warning-bg: $bp-color-warning !default;
 $aside-success-bg: $bp-color-true !default;
 $search-notice-bg: $bp-color-warning !default;
+$aside-code-bg: $bp-color-onix !default;
 
 
 // TEXT COLORS
 ////////////////////
-$main-text: #333 !default; // main content text color
-$nav-text: #393434 !default;
-$search-results-text: #456975 !default;
-$search-color: #BBBBBB !default;
-$nav-active-text: #fff !default;
-$nav-active-parent-text: #393434 !default; // parent links of the current section
-$lang-select-text: #fff !default; // color of unselected language tab text
-$lang-select-active-text: #fff !default; // color of selected language tab text
-$lang-select-pressed-text: #fff !default; // color of language tab text when mouse is pressed
-
+$main-text: $bp-color-city !default; // main content text color
+$nav-text: $bp-color-rooftop !default;
+$search-results-text: $bp-color-rooftop !default;
+$search-color: $bp-color-time !default;
+$nav-active-text: $bp-color-white !default;
+$nav-active-parent-text: $bp-color-onix !default; // parent links of the current section
+$lang-select-text: $bp-color-white !default; // color of unselected language tab text
+$lang-select-active-text: $bp-color-white !default; // color of selected language tab text
+$lang-select-pressed-text: $bp-color-white !default; // color of language tab text when mouse is pressed
+$aside-code-text: $bp-color-white !default;
+$link-normal-text: $bp-color-blip-light !default;
+$link-visited-text: $bp-color-blip-dark !default;
 
 // SIZES
 ////////////////////
-$nav-width: 220px !default; // width of the navbar
-$nav-padding: 10px;
+$nav-width: 22*$m !default; // width of the navbar
+$nav-padding: 1*$m;
 $examples-width: 50% !default; // portion of the screen taken up by code examples
 $logo-margin: 0px !default; // margin below logo
-$main-padding: 28px !default; // padding to left and right of content & examples
-$content-padding: 58px !default;
-$nav-padding: 15px !default; // padding to left and right of navbar
-$nav-v-padding: 10px !default; // padding used vertically around search boxes and results
-$nav-indent: 10px !default; // extra padding for ToC subitems
-$code-annotation-padding: 13px !default; // padding inside code annotations
-$h1-margin-bottom: 21px !default; // padding under the largest header tags
-$tablet-width: 930px !default; // min width before reverting to tablet size
+$main-padding: 2*$m !default; // padding to left and right of content & examples
+$content-padding: 3*$m !default;
+$nav-padding: 1*$m !default; // padding to left and right of navbar
+$nav-v-padding: 1*$m !default; // padding used vertically around search boxes and results
+$nav-indent: 1*$m !default; // extra padding for ToC subitems
+$code-annotation-padding: 1*$m !default; // padding inside code annotations
+$h1-margin-bottom: 2*$m !default; // padding under the largest header tags
+$tablet-width: 9.3*$m !default; // min width before reverting to tablet size
 $phone-width: $tablet-width - $nav-width !default; // min width before reverting to mobile size
 
 // FONTS
 ////////////////////
 %default-font {
-  font-family: "Roboto", sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 15px;
+  font-family: $bp-ff;
+  font-size: $bp-fs-base;
 }
 
 %header-font {
   @extend %default-font;
-  font-weight: 300;
+  font-weight: $bp-fw-regular;
 }
 
 %code-font {
   font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: $bp-fs-6;
+  line-height: $bp-lh-plus;
 }
 
 
 // OTHER
 ////////////////////
-$nav-footer-border-color: #666 !default;
+$nav-footer-border-color: $bp-color-rooftop !default;
 $search-box-border-color: transparent !default;
 
 
@@ -104,6 +107,23 @@ $search-box-border-color: transparent !default;
 // These settings are probably best left alone.
 
 %break-words {
-    word-break: break-all;
-    hyphens: auto;
+  word-break: break-all;
+  hyphens: auto;
+}
+
+%link {
+  text-decoration: none;
+  font-weight: $bp-fw-bold;
+
+  &:link, &:visited, &:active {
+    color: $bp-color-blip-light;
+  }
+
+  &:visited {
+    font-weight: $bp-fw-regular;
+  }
+
+  &:hover {
+    color: $bp-color-blip-dark;
+  }
 }

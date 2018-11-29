@@ -244,7 +244,7 @@ html, body {
 #nav-button {
   span {
     display: block;
-    $side-pad: $main-padding / 2 - 8px;
+    $side-pad: $main-padding / 2 - 0.8*$m;
     padding: $side-pad $side-pad $side-pad;
     background-color: rgba($main-bg, 0.7);
     transform-origin: 0 0;
@@ -367,7 +367,7 @@ html, body {
   }
 
   &>ul, &>ol {
-    padding-left: $content-padding + 42px;
+    padding-left: $content-padding + 4.2*$m;
   }
 
   // the div is the tocify hidden div for placeholding stuff
@@ -426,6 +426,10 @@ html, body {
     margin: 2em 0;
     border-top: 2px solid $examples-bg;
     border-bottom: 2px solid $main-bg;
+  }
+
+  a {
+    @extend %link;
   }
 
   table {
@@ -491,13 +495,18 @@ html, body {
     padding: 0;
   }
 
+  aside>code {
+    background-color: $aside-code-bg;
+    color: $aside-code-text;
+  }
+
   aside {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
+    padding-top: 1.6*$m;
+    padding-bottom: 1.6*$m;
+    margin-top: 2.4*$m;
+    margin-bottom: 2.4*$m;
     background: $aside-notice-bg;
-    line-height: 1.6;
+    line-height: $bp-lh-plus;
 
     &.warning {
       background-color: $aside-warning-bg;
