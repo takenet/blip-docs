@@ -1,0 +1,52 @@
+/*
+  BLiP Toolkit
+  Color Variables
+*/
+
+$lighten-amount: 10%;
+$darken-amount: 10%;
+
+@function bp-lighten($color) {
+  @return lighten($color, $lighten-amount);
+}
+
+@function bp-darken($color) {
+  @return darken($color, $darken-amount);
+}
+
+$bp-color-bot: #2cc3d5;
+$bp-color-blip-light: #0cc8cc;
+$bp-color-blip-dark: #15afb2;
+
+$bp-color-warning: #f76556;
+$bp-color-warning-light: #fbeaea;
+$bp-color-warning-yellow: #ffcf33;
+$bp-color-delete: #fb7a6d;
+
+$bp-color-true: #4dcb7b;
+
+//colors
+$bp-color-onix: #242B36;
+$bp-color-suit: #3d4554;
+$bp-color-city: #52636c;
+$bp-color-desk: #607B99;
+$bp-color-rooftop: #738192;
+$bp-color-cloud: #8ca0b3;
+$bp-color-silver: #94a3ab;
+$bp-color-time: #a8bfc4;
+$bp-color-breeze: #c9dfe4;
+$bp-color-sky: #daf2f4;
+$bp-color-offwhite: #eaeeee;
+
+$bp-color-disabled: $bp-color-offwhite;
+
+$bp-color-white: #ffffff;
+$bp-color-black: #000000;
+
+$bp-gradient-shine: linear-gradient(180deg, #f9fbfc 0%, #ecf1f3 100%);
+$bp-gradient-bot: linear-gradient(90deg, #51DBE3 0%, #28B4C3 100%);
+$bp-gradient-blip: linear-gradient(137.45deg, #1BD6E7 0%, #0FC3F8 56.17%, #0ABCFF 100%);
+$bp-gradient-suit: linear-gradient(90deg,#3d4554,#2f3747);
+
+//3rd parties
+$bp-color-facebook: #3c5a99;

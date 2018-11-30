@@ -1,0 +1,39 @@
+/*
+  BLiP Toolkit
+
+  Font Variables
+
+*/
+
+/*
+
+  Font family is Nunito. Its fallback is Helvetica
+
+*/
+
+$bp-ff: 'Nunito', 'Helvetica', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+/*
+
+  Font sizes have been converted to rem considering a base size of 16px.
+  For more information, check the calculator at https://offroadcode.com/rem-calculator/
+
+*/
+
+$bp-fs-base: 1.6*$m;
+
+//4 small fonts (for normal text, minor titles and subtitles)
+$bp-fs-8: 1.0*$m; //10px
+$bp-fs-7: 1.2*$m; //12px
+$bp-fs-6: 1.4*$m; //14px
+$bp-fs-5: 1.6*$m; //16px (base)
+
+//2 medium fonts (for headline text, major titles and subtitles)
+$bp-fs-4: 2*$m; //20px
+$bp-fs-3: 2.4*$m; //24px
+
+//2 large fonts (for major numbers or things with really high emphasis)
+$bp-fs-2: 3.2*$m; //32px
+$bp-fs-1: 4.8*$m; //48px
+
+

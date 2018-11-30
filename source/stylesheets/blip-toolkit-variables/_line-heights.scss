@@ -1,0 +1,27 @@
+/*
+  BLiP Toolkit
+
+  Line Height Variables
+
+*/
+
+
+//Line heights based on the font-size. Plus and double are more ACCESSIBLE
+//According to https://www.w3.org/TR/WCAG20-TECHS/C21.html
+$bp-lh-simple: 100%;
+$bp-lh-plus: 150%;
+$bp-lh-double: 200%;
+
+//Line-heights based on font-size multiplied by 1.5
+$bp-lh-base: 24px;
+
+$bp-lh-8: 1.5*$m; //15px
+$bp-lh-7: 1.8*$m; //18px
+$bp-lh-6: 2.1*$m; //21px
+$bp-lh-5: 2.4*$m; //24px (base)
+
+$bp-lh-4: 3*$m; //30px
+$bp-lh-3: 3.6*$m; //36px
+
+$bp-lh-2: 4.8*$m; //48px
+$bp-lh-1: 7.2*$m; //72px

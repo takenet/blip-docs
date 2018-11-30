@@ -2,6 +2,7 @@
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
+@import 'mixins/module';
 
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
@@ -62,6 +63,8 @@ html, body {
   border-right: 1px solid #ccc;
   font-size: 13px;
   font-weight: bold;
+
+  @include scrollbar($bp-color-breeze);
 
   // language selector for mobile devices
   .lang-selector {
@@ -190,13 +193,13 @@ html, body {
   .toc-list-h2 {
     display: none;
     background-color: $nav-subitem-bg;
-    margin-top: 8px;
+    margin-top: 0.8*$m;
   }
 
   .toc-list-h3 {
     display: none;
     background-color: $nav-subitem-bg;
-    margin-left: 30px;
+    margin-left: 3*$m;
   }
 
   .toc-h2 {
@@ -206,8 +209,8 @@ html, body {
   }
 
   .toc-footer {
-    padding: 1em 0;
-    margin-top: 1em;
+    padding: 1.6*$m 0;
+    margin-top: 1.6*$m;
     border-top: 1px dashed $nav-footer-border-color;
 
     li,a {
@@ -244,7 +247,7 @@ html, body {
 #nav-button {
   span {
     display: block;
-    $side-pad: $main-padding / 2 - 8px;
+    $side-pad: $main-padding / 2 - 0.8*$m;
     padding: $side-pad $side-pad $side-pad;
     background-color: rgba($main-bg, 0.7);
     transform-origin: 0 0;
@@ -367,7 +370,7 @@ html, body {
   }
 
   &>ul, &>ol {
-    padding-left: $content-padding + 42px;
+    padding-left: $content-padding + 4.2*$m;
   }
 
   // the div is the tocify hidden div for placeholding stuff
@@ -377,11 +380,11 @@ html, body {
 
   h1 {
     @extend %header-font;
-    font-size: 36px;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    font-size: $bp-fs-1;
+    padding-top: 1*$m;
+    padding-bottom: 1*$m;
     margin-bottom: $h1-margin-bottom;
-    margin-top: 2em;
+    margin-top: 6*$m;
     color: #666666;
   }
 
@@ -393,12 +396,12 @@ html, body {
 
   h2 {
     @extend %header-font;
-    font-size: 24px;
-    margin-top: 4em;
-    margin-bottom: 0;
+    font-size: $bp-fs-2;
+    margin-top: 4.8*$m;
+    margin-bottom: 1.2*$m;
     // border-top: 1px solid #ccc;
-    padding-top: 1.2em;
-    padding-bottom: 1.2em;
+    padding-top: 1*$m;
+    padding-bottom: 1*$m;
     background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
   }
 
@@ -429,35 +432,61 @@ html, body {
   }
 
   table {
-    margin-bottom: 1em;
+    padding-top: 1.2*$m;
+    padding-bottom: 1.2*$m;
+    margin-top: 1*$m;
+    margin-bottom: 1*$m;
     overflow: auto;
-    th,td {
+    color: $bp-color-desk;
+
+    thead {
+      border-bottom: 2px solid $table-head-bc;
+    }
+
+    thead, tbody {
+      background-color: $table-bg;
+    }
+
+    thead {
+      @include box-shadow(0, -2px, 12px, 0, #e1e7ee);
+    }
+
+    tbody {
+      @include box-shadow(0, 2px, 12px, 0, #e1e7ee);
+    }
+
+    th, td {
       text-align: left;
-      vertical-align: top;
-      line-height: 1.6;
+      vertical-align: inherit;
+      line-height: $bp-lh-plus;
+
+      &:first-child {
+        padding-left: 3*$m;
+      }
+
+      &:last-child {
+        padding-right: 3*$m;
+      }
     }
 
     th {
-      padding: 5px 10px;
-      border-bottom: 2px solid $nav-active-bg;
+      padding: 1.6*$m 1*$m;
       vertical-align: bottom;
-      color: $nav-active-bg;
+      color: $bp-color-desk;
+      font-weight: $bp-fw-extra-bold;
     }
+
 
     td {
-      padding: 10px;
-    }
-
-    tr:last-child {
-      border-bottom: 2px solid $nav-active-bg;
+      padding: 1*$m 1*$m;
     }
 
     tr:nth-child(odd)>td {
-      background-color: lighten($main-bg,4.2%);
+      background-color: $table-row-odd-bg;
     }
 
     tr:nth-child(even)>td {
-      background-color: lighten($main-bg,2.4%);
+      background-color: $table-row-even-bg;
     }
   }
 
@@ -478,12 +507,21 @@ html, body {
     max-width: 100%;
   }
 
+  a {
+    @extend %link;
+  }
+
   code {
-    background-color: rgba(0,0,0,0.05);
-    padding: 3px;
+    background-color: $aside-code-bg;
+    color: $aside-code-text;
+    padding: 0.3*$m 0.6*$m;
     border-radius: 3px;
     @extend %break-words;
     @extend %code-font;
+  }
+
+  p>code {
+    word-break: normal;
   }
 
   pre>code {
@@ -492,12 +530,12 @@ html, body {
   }
 
   aside {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
+    padding-top: 1.6*$m;
+    padding-bottom: 1.6*$m;
+    margin-top: 2.4*$m;
+    margin-bottom: 2.4*$m;
     background: $aside-notice-bg;
-    line-height: 1.6;
+    line-height: $bp-lh-plus;
 
     &.warning {
       background-color: $aside-warning-bg;
