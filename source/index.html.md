@@ -49,6 +49,7 @@ includes:
   - en/content-types/media-link/images
   - en/content-types/media-link/video
   - en/content-types/menu/menu
+  - en/content-types/menu/quickreply
   - en/content-types/multimedia-menu
   - en/content-types/native
   - en/content-types/payment-invoice
