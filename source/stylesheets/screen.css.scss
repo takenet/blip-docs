@@ -225,7 +225,7 @@ html, body {
 
     li {
       font-size: 0.8em;
-      line-height: 1.7;
+      line-height: $bp-lh-plus;
       text-decoration: none;
     }
   }
@@ -502,8 +502,12 @@ html, body {
   }
 
   p, li, dt, dd {
-    line-height: 1.6;
+    line-height: $bp-lh-plus;
     margin-top: 0;
+  }
+
+  li p > br {
+    line-height: $bp-lh-double;
   }
 
   img {
@@ -612,6 +616,10 @@ html, body {
     padding: 2em $main-padding;
     white-space: pre-wrap;
     word-wrap: break-word;
+  }
+
+  pre + pre {
+    padding-top: 0;
   }
 
   blockquote {
