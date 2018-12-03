@@ -2,7 +2,7 @@
 
 In order to send messages and notifications use an instance of `ISender`, wich is automaticaly injected on constructors of registered `receivers` defined on project and on `Startup` class.
 
-The sample bellow show how to reply a received message:
+The sample below show how to reply a received message:
 
 ```csharp
 public class PlainTextMessageReceiver : IMessageReceiver

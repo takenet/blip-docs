@@ -120,7 +120,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 
 ### Processing Payments (Invoice, InvoiceStatus and PaymentReceipt)
 
-In order to realize a payment on your chatbot is necessary use the payment channel. For now, only the PagSeguro channel is supported and to request a payment the chatbot must send a message of type Invoice to the payment channel informing the user address using the format bellow:
+In order to realize a payment on your chatbot is necessary use the payment channel. For now, only the PagSeguro channel is supported and to request a payment the chatbot must send a message of type Invoice to the payment channel informing the user address using the format below:
 ```csharp
 var toPagseguro = $"{Uri.EscapeDataString(message.From.ToIdentity().ToString())}@pagseguro.gw.msging.net"; // Ex: 5531988887777%400mn.io@pagseguro.gw.msging.net
 ```

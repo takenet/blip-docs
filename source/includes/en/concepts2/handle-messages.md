@@ -122,7 +122,7 @@ var removeJsonReceiver = client.addMessageReceiver("application/json", handleJso
 removeJsonReceiver();
 ```
 <blockquote class="lang-specific http">
-<p>All messages will be delivered as a HTTP POST request on configured chatbot messages URL. A sample of received message is presented bellow.</p>
+<p>All messages will be delivered as a HTTP POST request on configured chatbot messages URL. A sample of received message is presented below.</p>
 </blockquote>
 
 ```http

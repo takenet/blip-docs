@@ -65,6 +65,7 @@ html, body {
   font-weight: bold;
 
   @include scrollbar($bp-color-breeze);
+  @include box-shadow(0, 0, 12px, 0, #e1e7ee);
 
   // language selector for mobile devices
   .lang-selector {
@@ -296,6 +297,7 @@ html, body {
   // I know, it's hackish, but it's the simplist way to make the left
   // half of the content always this background color.
   .dark-box {
+    @include box-shadow(0px, 0, 12px, 0, #e1e7ee);
     width: $examples-width;
     background-color: $examples-bg;
     position: absolute;
@@ -437,6 +439,7 @@ html, body {
     margin-top: 1*$m;
     margin-bottom: 1*$m;
     overflow: auto;
+    @include scrollbar($bp-color-breeze);
     color: $bp-color-desk;
 
     thead {
@@ -520,8 +523,8 @@ html, body {
     @extend %code-font;
   }
 
-  p>code {
-    word-break: normal;
+  code {
+    word-break: break-word;
   }
 
   pre>code {

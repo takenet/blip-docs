@@ -37,13 +37,13 @@ All possible properties of the `application.json` file:
 | serviceProviderType | A type to be used as a service provider for dependency injection. This type must implements the `IServiceProvider` interface. | ServiceProvider | null |
 | settings    | General settings of application with key-value format. This value is injected on created types (like **receivers** or **startupType**). To receive the values the constructor of the types must have a instance of `IDictionary<string, object>` type. | { "myApiKey": "abcd1234" }   | null |
 | settingsType | The name of .NET type that must be used to deserialize the settings. If the type is located on a different **assembly** of `application.json` file please provide a qualify name with **assembly**.    | ApplicationSettings (or MyAssemblyName.ApplicationSettings)    | null |
-| messageReceivers | Array of **message receivers**, used to receive messages. | *See bellow* | null |
-| notificationReceivers | Array of **notification receivers**, used to receive notifications. | *See bellow* | null |
+| messageReceivers | Array of **message receivers**, used to receive messages. | *See below* | null |
+| notificationReceivers | Array of **notification receivers**, used to receive notifications. | *See below* | null |
 | throughput | Envelopes processed limit by second. | 20 | 10 |
 | maxConnectionRetries | Reconnection retry limit with server host (1-5). | 3 | 5 |
 | routingRule | Routing rule of messages | Instance | Identity |
 | disableNotify | Disable automatic notification for messages received and consumed by chatbot | false | false |
-| channelCount | Conections count between chatbot and server | 1 | 5 | 
+| channelCount | Conections count between chatbot and server | 1 | 5 |
 | receiptEvents | Define the events type that the server will foward to the chatbot | [ Accepted, Dispatched, Received, Consumed, Failed ] | [ Received ] |
 
 Each **message receiver** can have the follow properties:
