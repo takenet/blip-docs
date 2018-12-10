@@ -3,7 +3,7 @@
 **Webhook** enables an integration between your bot and BLiP via **HTTP endpoints** to exchange messages, notifications and commands.
 If you are not able to create your chatbot using C\# or Javascript languages you must use BLiP's HTTP API agnostic for any language.
 
-The diagram bellow shows the messages flow between BLiP and your endpoint (API).
+The diagram below shows the messages flow between BLiP and your endpoint (API).
 
 <!--![Diagram HTTP message flow](images/http.png)-->
 
@@ -43,7 +43,7 @@ Any message will be delivered as a `HTTP POST` request on the configured chatbot
 To send messages, it is necessary to make a `HTTP POST` request to BLiP using the URL `https://msging.net/messages`.
 The request must contain an authorization header (`Authorization`) with `Key` type, as showed on chatbot settings. To know more about BLiP authentication process [click here](#authentication).
 
-The message data must be sent on the request `body` as a *JSON* following the LIME protocol format. 
+The message data must be sent on the request `body` as a *JSON* following the LIME protocol format.
 For more details go to [Content Types](#content-types) section.
 
 Imagine a chatbot with an Authorization token `Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=`. To send a message from this bot to a BLiP user, use:
@@ -114,14 +114,14 @@ Authorization: Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=
 Content-Type: application/json
 Content-Length: 393
 
-{  
+{
   "id":"2",
   "to":"postmaster@scheduler.msging.net",
   "method":"set",
   "uri":"/schedules",
   "type":"application/vnd.iris.schedule+json",
-  "resource":{  
-    "message":{  
+  "resource":{
+    "message":{
       "id":"ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67",
       "to":"553100001111@0mn.io",
       "type":"text/plain",
@@ -142,7 +142,7 @@ Access-Control-Allow-Credentials: true
 Date: Mon, 12 Sep 2016 17:35:02 GMT
 Content-Length: 131
 
-{  
+{
   "id":"2",
   "from":"postmaster@scheduler.msging.net/#irismsging1",
   "to":"blipmessaginghubapp@msging.net",

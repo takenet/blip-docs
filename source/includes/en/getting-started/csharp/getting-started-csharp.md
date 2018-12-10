@@ -1,6 +1,6 @@
-## Using SDK CSharp 
+## Using SDK CSharp
 
-Besides Builder is possible to create a bot using only code.  
+Besides Builder is possible to create a bot using only code.
 BLiP **C\# SDK** is a set of Nuget packages based on [.NET Core](https://dot.net/core), which allows the creation of multiplatform chatbots.
 You can check the SDK source code in [Github](https://github.com/takenet/blip-sdk-csharp/) and the documentation on our [Wiki](https://github.com/takenet/blip-sdk-csharp/wiki)
 
@@ -10,7 +10,7 @@ You can check the SDK source code in [Github](https://github.com/takenet/blip-sd
 
 **Before start**
 
-The easiest way to get started is using one of our `dotnet` templates. 
+The easiest way to get started is using one of our `dotnet` templates.
 
 > To install the templates, run the execute command in the shell:
 
@@ -33,7 +33,7 @@ There are available the following templates:
 
 ### 1. Starting your bot
 
-After installed and created the project template, open the `MyBot.csproj` file and build the project. Note that all the necessary files for your bot are already created. 
+After installed and created the project template, open the `MyBot.csproj` file and build the project. Note that all the necessary files for your bot are already created.
 
 You will need an `identifier` and an `access key` to be able to connect to the BLiP. To get them:
 
@@ -51,19 +51,20 @@ You will need an `identifier` and an `access key` to be able to connect to the B
 {
   "identifier": "your-identifier",
   "accessKey": "your-access-key",
-  
+
   // other stuffs
 }
 ```
 
 * After setted connection informations run your project. The console should show the following messages:
 
-`Starting application...`  
+`Starting application...`
+<br/>
 `Application started. Press any key to stop.`
 
 ### 2. Receiving a message
 
-The configuration of your chatbot is made on `application.json` file. Basically this file define all **receivers** and others control properties.  
+The configuration of your chatbot is made on `application.json` file. Basically this file define all **receivers** and others control properties.
 
 > Check an example of how to minimally set your application.json file:
 
@@ -151,7 +152,7 @@ public class ConsumedNotificationReceiver : INotificationReceiver
 
 In order to send messages and notifications use an instance of `ISender`, wich is automaticaly injected on constructors of registered receivers defined on project and on Startup class.
 
-> The sample bellow show how to reply a received message with a text:
+> The sample below show how to reply a received message with a text:
 
 ```csharp
 public class PlainTextMessageReceiver : IMessageReceiver
@@ -173,14 +174,14 @@ public class PlainTextMessageReceiver : IMessageReceiver
 }
 ```
 
-The process of send message is asynchronous and the status of sent messages is delivered to application by **notifications**.  
+The process of send message is asynchronous and the status of sent messages is delivered to application by **notifications**.
 If you need to send any other message content type [click here](#content-types)
 
 ### 4. Sending a command
 
 A **command** allows querying and manipulation of server resources and the consumption of **BLiP** extensions and integrations. To see more details about what are the commands [click here](#commands).
 
-There are two possibilities to send commands. Using the method **SendCommand** of `ISender` interface or using one of the available `IExtension` extensions. 
+There are two possibilities to send commands. Using the method **SendCommand** of `ISender` interface or using one of the available `IExtension` extensions.
 
 <aside class="notice">
 Try aways as possible use the `IExtension` interfaces insted of `ISender`.
@@ -218,7 +219,7 @@ namespace Extensions
     }
 }
 ```
-   
+
 > Using `ISender` interface
 
 ```csharp

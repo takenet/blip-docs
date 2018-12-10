@@ -1,38 +1,43 @@
 
 #Introduction
 
-Welcome to **BLiP**😊!
+Welcome to **BLiP Docs**😊!
 
-Here, you will be introduced to the most important platform's concepts in order to enable you explore all power of BLiP. 
+In this documentation, you will be introduced to the most important platform's concepts so you can explore all the power of BLiP!
 
-The main goal of this documentation is to provide development knowledge about BLiP platform and present a lot of samples. If you aren't interested in technical informations please use the **BLiP's Help Center** ([https://help.blip.ai](https://help.blip.ai)).
+The main goal of **BLiP Docs** is to provide **technical development knowledge** on the BLiP platform and present various **code samples**.
 
-For each subject, you'll find code samples on the **right side**. The samples are presented in C\#, JavaScript and as a generic HTTP request that you can use in your favorite programming language. In the **left side menu**, you will find a step-by-step guide for each big subject on BLiP.
+<aside class="notice">
+If you are <b>not</b> interested in technical programming information, please access <a href="https://help.blip.ai">BLiP's Help Center</a>.
+</aside>
 
-**Essential informations**
+Here, you will find code samples on the **right side** for each subject. The samples are presented in C\#, JavaScript and as a generic HTTP request that you can use in your favorite programming language. In the **left side menu**, you will find a step-by-step guide for each big subject on BLiP.
 
-- [Important concepts about BLiP](#concepts)  
-Description of basic and advanced concepts used by BLiP.
+**Essential information:**
 
-- [BLiP Authentication](#authentication)  
-How to make requests and receive messages in a safe way.
+- [Important concepts about BLiP](#concepts)
+<br/>Description of basic and advanced concepts used by BLiP.
 
-- [Getting started - Builder](#using-builder)  
-How to create a chatbot with no code
+- [BLiP Authentication](#authentication)
+<br/>How to make requests and receive messages in a safe way.
 
-- [Getting started - SDK C\#](#using-sdk-csharp)  
-How to create a chatbot using BLiP's SDK C\#
+- [Getting started - Builder](#using-builder)
+<br/>How to create a chatbot with no code.
 
-- [Getting started - SDK Javascript](#using-sdk-javascript)  
-How to create a chatbot using BLiP's SDK Javascript
+- [Getting started - SDK C\#](#using-sdk-csharp)
+<br/>How to create a chatbot using BLiP's SDK C\#.
 
-- [Getting started - HTTP](#using-http)  
-How to create a chatbot using BLiP's HTTP API (for any language)
+- [Getting started - SDK Javascript](#using-sdk-javascript)
+<br/>How to create a chatbot using BLiP's SDK Javascript.
 
-- [Forum to report issues, questions and suggestions](http://forum.blip.ai/)  
-Please use the forum if you need any help 😉.
+- [Getting started - HTTP](#using-http)
+<br/>How to create a chatbot using BLiP's HTTP API (for any language).
 
-- [Help Center](https://help.blip.ai)  
-Use BLiP's Help Center to discover all [BLiP's Portal](https://portal.blip.ai) and not technical features.
+- [Forum to report issues, questions and suggestions](http://forum.blip.ai/)
+<br/>Please use the forum if you need any help 😉.
+
+- [Help Center](https://help.blip.ai)
+<br/>Use BLiP's Help Center to discover all [BLiP's Portal](https://portal.blip.ai) and not technical features.
 
 - [Postman Collection for BLiP APIs](#postman-collection)
+<br/>A full set of requests for communicating with BLiP APIs.

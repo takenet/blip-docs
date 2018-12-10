@@ -35,7 +35,7 @@ You will need an `identifier` and an `access key` to be able to connect to the B
 * After your chatbot has been created click in **Configurations** and choose **Conection information** option in left side menu.
 * Enable the SDK connection and get the `identifier` and `access key` informations.
 
-> Create a `index.js` file add the code bellow and replace the variables IDENTIFIER and ACCESS_KEY with informations of your bot.
+> Create a `index.js` file add the code below and replace the variables IDENTIFIER and ACCESS_KEY with informations of your bot.
 
 ```javascript
 import * as BlipSdk from 'blip-sdk';
@@ -45,7 +45,7 @@ import * as WebSocketTransport from 'lime-transport-websocket'
 let IDENTIFIER = '';
 let ACCESS_KEY = '';
 
-// Create a client instance passing the identifier and accessKey of your chatbot 
+// Create a client instance passing the identifier and accessKey of your chatbot
 let client = new BlipSdk.ClientBuilder()
     .withIdentifier(IDENTIFIER)
     .withAccessKey(ACCESS_KEY)
@@ -55,21 +55,21 @@ let client = new BlipSdk.ClientBuilder()
 // Connect with server asynchronously
 // Connection will occurr via websocket on 8081 port.
 client.connect() // This method return a 'promise'.
-    .then(function(session) { 
-        // Connection success. Now is possible send and receive envelopes from server. */ 
+    .then(function(session) {
+        // Connection success. Now is possible send and receive envelopes from server. */
         console.log('Application started. Press Ctrl + c to stop.')
-    })  
-    .catch(function(err) { /* Connection failed. */ }); 
+    })
+    .catch(function(err) { /* Connection failed. */ });
 ```
 
-* After setted connection informations run your project. The console should show the following messages:  
+* After setted connection informations run your project. The console should show the following messages:
 
 `Application started. Press Ctrl + c to stop.`
 
 ### 2. Receiving a message (js)
 
-In order to receive and handle messages you need to use `addMessageReceiver` method in `client` object. 
-All messages sent to the chatbot are redirected to defined **messages** (or **notifications**) receivers. You also can define filters to each receiver. 
+In order to receive and handle messages you need to use `addMessageReceiver` method in `client` object.
+All messages sent to the chatbot are redirected to defined **messages** (or **notifications**) receivers. You also can define filters to each receiver.
 
 > The following example show how to add a simple message receiver:
 
@@ -120,7 +120,7 @@ client.addNotificationReceiver(() => true, function(notification) {
 
 ### 3. Sending a message (js)
 
-In order to send messages and notifications use the `sendMessage` (or `sendNotification`) method  in `client` object. 
+In order to send messages and notifications use the `sendMessage` (or `sendNotification`) method  in `client` object.
 
 <aside class="notice">
 It's possible send notifications and messages only after sessions has been stablished.
@@ -132,10 +132,10 @@ It's possible send notifications and messages only after sessions has been stabl
 client.connect()
     .then(function(session) {
         // After connection is possible send messages
-        var msg = { 
-            type: "text/plain", 
-            content: "Hello, world", 
-            to: "553199990000@0mn.io" 
+        var msg = {
+            type: "text/plain",
+            content: "Hello, world",
+            to: "553199990000@0mn.io"
         };
         client.sendMessage(msg);
     });
@@ -147,10 +147,10 @@ client.connect()
 client.connect()
     .then(function(session) {
         // Sending "received" notification
-        var notification = { 
-            id: "ef16284d-09b2-4d91-8220-74008f3a5788", 
-            to: "553199990000@0mn.io", 
-            event: Lime.NotificationEvent.RECEIVED 
+        var notification = {
+            id: "ef16284d-09b2-4d91-8220-74008f3a5788",
+            to: "553199990000@0mn.io",
+            event: Lime.NotificationEvent.RECEIVED
         };
         client.sendNotification(notification);
     });
