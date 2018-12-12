@@ -56,7 +56,8 @@ Authorization: Key {YOUR_TOKEN}
       "type": "text/plain",
       "content": "Scheduling test"
     },
-    "when": "2016-07-25T17:50:00.000Z"
+    "when": "2016-07-25T17:50:00.000Z",
+    "name": "New Schedule"
   }
 }
 ```
@@ -154,6 +155,7 @@ Content-Type: application/json
   "status": "success",
   "type": "application/vnd.iris.schedule+json",
   "resource": {
+    "name": "New Schedule",
     "when": "2016-07-25T17:50:00.000Z",
     "message": {
       "id": "9abfd060-f05b-4ccb-944c-ec9f13525fe0",
