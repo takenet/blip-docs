@@ -511,7 +511,7 @@ namespace Extensions
 
 If you already have a distribution list with some members, you can send messages to this list. Any message sent to a specific list will be received by all of its members.
 
-###Send message with replacement variable
+### Send message with replacement variable
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
