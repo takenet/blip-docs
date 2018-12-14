@@ -66,6 +66,7 @@ includes:
   - en/extensions
   - en/extensions/artificial-intelligence
   - en/extensions/broadcast
+  - en/extensions/builder
   - en/extensions/bucket
   - en/extensions/chatbot-profile
   - en/extensions/chat-history

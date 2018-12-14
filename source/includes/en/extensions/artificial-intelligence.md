@@ -12,7 +12,7 @@ The training of the model is performed simultaneously on all of the AI ​​pro
 
 All manipulation of the model can be done through the portal of the BLiP, and this extension can be used only to perform the **analysis of sentences** of the users of the chabot.
 
-#### Resources
+**API Resources**
 
 | URI                               | Method   | Description                                |
 |-----------------------------------|----------|--------------------------------------------|
