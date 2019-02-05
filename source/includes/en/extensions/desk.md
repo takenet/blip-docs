@@ -59,6 +59,47 @@ Content-Type: application/json
 }
 ```
 
+### Adding ticket tags
+
+Each ticket has an optional parameter called `Tags`. A tag is a label to identify important things in a ticket.
+To add tags in a specifc ticket send a command with `SET` method to `postmaster@desk.msging.net` and URI `/tickets/{ticketId}/change-tags`, where `ticketId` is the ticket identifier to be updated. Use the `resource` property to send tags informations.
+
+```
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "8d1f6a56-e287-4a0f-9030-6983c76ad26c",
+  "to": "postmaster@desk.msging.net",
+  "method": "set",
+  "uri": "/tickets/ba11b95c-7564-4685-b835-8cc76fae6fac/change-tags",
+  "type": "application/vnd.iris.ticket+json",
+  "resource": {
+    "id": "ba11b95c-7564-4685-b835-8cc76fae6fac",
+    "tags": ["tag1", "tag2", "tag3"]
+  }
+}
+```
+
+Server responds with ticked created
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "set",
+    "status": "success",
+    "id": "8d1f6a56-e287-4a0f-9030-6983c76ad26c",
+    "from": "postmaster@desk.msging.net/#az-iris6",
+    "to": "amt@msging.net",
+    "metadata": {
+        "#command.uri": "lime://amt@msging.net/tickets/d9e8fa05-a1da-4b3e-ab1f-0168be6e5be3/change-tags"
+    }
+}
+```
+
 ### Forwarding received messages to a human agent
 
 >Imagine a scenario where a user on Messenger channel asks for human help service. Therefore, while the ticket is still open, any message received by the bot should be sent to a **human agent**.
@@ -128,7 +169,7 @@ To forward a received message to the specific final user, the bot must decode th
     "type": "application/vnd.lime.redirect+json",
     "content": {
         "context": {
-            "type": ""type": "application/vnd.iris.ticket+json",
+            "type": "application/vnd.iris.ticket+json",
             "value": {
                 "id": "1654804277843415",
                 "sequentialId": 0,
