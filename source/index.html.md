@@ -90,6 +90,7 @@ includes:
   - en/integrations/takeio
   - en/integrations/tangram
   - en/integrations/telegram
+  - en/integrations/whatsapp
 
 search: true
 ---
