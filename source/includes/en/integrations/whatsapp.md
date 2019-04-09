@@ -1,7 +1,7 @@
 ## WhatsApp
 | FQDN                     | Identifier type                  | 
 |--------------------------|----------------------------------------|
-| @wa.gw.msging.net  | WhatsApp identifier (it's not necessary the MSISDN)   |
+| @wa.gw.msging.net  | WhatsApp identifier (it's not necessarily the MSISDN)   |
 
 **WhatsApp** is the world’s most popular business messaging channel, with more than 1.5 billion global users and end-to-end encryption. The **WhatsApp Business API** is a fast, simple, secure, and reliable way for businesses to reach their customers all over the world. This guide will help businesses onboard and build their first official WhatsApp messaging experience using BLiP and WhatsApp Business API. 
 
@@ -14,11 +14,11 @@ Before start using WhatsApp channel you should understand some basic concepts.
 
 You can use BLiP's API to send messages and notifications for your customers. (Remember, for the first interaction or after de 24h window you should send only notifications).
 
-### Sending a notifications
+### Sending a notification
 
 #### Prerequisites
 
-1. Opt-in
+##### 1. Opt-in
 
 A user must first consent to receive messages in WhatsApp by opting into them via a third-party channel. This can be any channel your business uses to communicate with people today — your website, app, email, SMS, retail location, etc.
 
@@ -27,7 +27,7 @@ A user must first consent to receive messages in WhatsApp by opting into them vi
 
 [Click here to see more about how to get opt-in for WhatsApp](https://developers.facebook.com/docs/whatsapp/guides/opt-in).
 
-2. Verify the customer identifier
+##### 2. Verify the customer identifier
 
 Before send a notification to a WhatsApp's customer you should get their identifier. Using the customer MSISDN, make a request to BLiP's API as demostrated aside. For instance, a Brazillian customer should be verified using a MSISDN like `+5531998765432`.
 
@@ -70,7 +70,7 @@ Content-Type: application/json
 
 After get the customer identifier you are able to send notifications. Use the `alternativeAccount` property received as response of the last request to send notifications (or messages) to your customer. For this sample `5531998765432@wa.gw.msging.net`.
 
-3. Creating a message template
+##### 3. Creating a message template
 
 The only way to send a notification is throught **Message Templates**. Message Templates are message formats for common reusable messages a business may want to send. **Businesses must use Message Templates for sending notifications to customers.** [Click here to see more about Message Templates](https://developers.facebook.com/docs/whatsapp/message-templates).
 
@@ -200,6 +200,8 @@ Authorization: Key {YOUR_TOKEN}
   "uri":  "/groups/{{createdGroupIdentity}}/invite-link"
 }
 ```
+
+Send this link to any customer you want invite to join the group.
 
 ### Receiving messages in a group
 
