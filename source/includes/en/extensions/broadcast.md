@@ -515,7 +515,7 @@ If you already have a distribution list with some members, you can send messages
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-  await client.sendCommand({  
+  await client.sendMessage({  
     "id": "7",
     "to": "your_distributionList@broadcast.msging.net",
     "type": "text/plain",
@@ -525,7 +525,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
