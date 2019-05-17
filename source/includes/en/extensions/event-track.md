@@ -456,3 +456,47 @@ Retrieves all events tracked with a specific pair of action and categories. The 
 | startDate    | Initial date to search for events          |
 | endDate      | Limit date to retrieve the events         |
 
+### Delete an event category
+
+If you need to delete a specific event category use the following command.
+Remember to replace {{categoryName}} variable for the category name that you want delete.
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({
+       id: "9494447a-2581-4597-be6a-a5dff33af156",
+       to: "postmaster@analytics.msging.net",
+       method: "delete",
+       uri: "/event-track/{{categoryName}}"
+    });
+});
+```
+
+
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "9494447a-2581-4597-be6a-a5dff33af156",
+  "to": "postmaster@analytics.msging.net",
+  "method": "delete",
+  "uri": "/event-track/{{categoryName}}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "9494447a-2581-4597-be6a-a5dff33af156",
+  "from": "postmaster@analytics.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "get",
+  "status": "success"
+}
+```
+
