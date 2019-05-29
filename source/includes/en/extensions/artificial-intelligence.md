@@ -2272,7 +2272,7 @@ Content-Type: application/json
         "items": [
             {
                 "OwnerIdentity": "botbot1@msging.net",
-                "id": "acabea5d-f9d8-44ff-ad7a-0743e92263dc",
+                "id": "{confusionMatrixId}",
                 "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
                 "version": "Reportão",
                 "score": 0,
@@ -2336,7 +2336,7 @@ Content-Type: application/json
         "items": [
             {
                 "OwnerIdentity": "botbot1@msging.net",
-                "id": "acabea5d-f9d8-44ff-ad7a-0743e92263dc",
+                "id": "{confusionMatrixId}",
                 "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
                 "version": "Reportão",
                 "score": 0,
@@ -2402,7 +2402,7 @@ Content-Type: application/json
         "items": [
             {
                 "OwnerIdentity": "botbot1@msging.net",
-                "id": "acabea5d-f9d8-44ff-ad7a-0743e92263dc",
+                "id": "{confusionMatrixId}",
                 "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
                 "version": "Reportão",
                 "score": 0,
@@ -2439,6 +2439,146 @@ Content-Type: application/json
     "to": "test@msging.net",
     "metadata": {
         "#command.uri": "lime://test@msging.net/analytics/confusion-matrix"
+    }
+}
+```
+### Get confusion matrix
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "to": "postmaster@ai.msging.net",
+    "method": "get",
+    "uri": "/analytics/confusion-matrix/{confusionMatrixId}"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "OwnerIdentity": "botbot1@msging.net",
+        "id": "{confusionMatrixId}",
+        "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
+        "version": "Reportão",
+        "score": 0,
+        "sampleSize": 30,
+        "createdDate": "2019-05-17T21:18:33.540Z",
+        "accuracy": 0.96,
+        "avgScore": 0.61698660140000006,
+        "precision": 0.92207792207792216,
+        "recall": 0.90238095238095239,
+        "f1Score": 0.980796980796981,
+        "numberOfSamples": 50,
+        "matrix": [[],...],
+        "perClasses": [{},...]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "e909fedf-fb70-463e-88c1-1cd02218c712",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/analytics/confusion-matrix/{confusionMatrixId}"
+    }
+}
+```
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "to": "postmaster@ai.msging.net",
+    "method": "get",
+    "uri": "/analytics/confusion-matrix/{confusionMatrixId}"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "OwnerIdentity": "botbot1@msging.net",
+        "id": "{confusionMatrixId}",
+        "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
+        "version": "Reportão",
+        "score": 0,
+        "sampleSize": 30,
+        "createdDate": "2019-05-17T21:18:33.540Z",
+        "accuracy": 0.96,
+        "avgScore": 0.61698660140000006,
+        "precision": 0.92207792207792216,
+        "recall": 0.90238095238095239,
+        "f1Score": 0.980796980796981,
+        "numberOfSamples": 50,
+        "matrix": [[],...],
+        "perClasses": [{},...]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "e909fedf-fb70-463e-88c1-1cd02218c712",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/analytics/confusion-matrix/{confusionMatrixId}"
+    }
+}
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "to": "postmaster@ai.msging.net",
+    "method": "get",
+    "uri": "/analytics/confusion-matrix/{confusionMatrixId}"
+}
+
+```
+
+```http
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "OwnerIdentity": "botbot1@msging.net",
+        "id": "{confusionMatrixId}",
+        "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
+        "version": "Reportão",
+        "score": 0,
+        "sampleSize": 30,
+        "createdDate": "2019-05-17T21:18:33.540Z",
+        "accuracy": 0.96,
+        "avgScore": 0.61698660140000006,
+        "precision": 0.92207792207792216,
+        "recall": 0.90238095238095239,
+        "f1Score": 0.980796980796981,
+        "numberOfSamples": 50,
+        "matrix": [[],...],
+        "perClasses": [{},...]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "e909fedf-fb70-463e-88c1-1cd02218c712",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/analytics/confusion-matrix/{confusionMatrixId}"
     }
 }
 ```
