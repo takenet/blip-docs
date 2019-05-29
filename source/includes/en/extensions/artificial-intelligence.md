@@ -886,16 +886,79 @@ Content-Type: application/json
   "status": "success"
 }
 ```
+
+### Get intent's answers
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "method": "get",
+    "to": "postmaster@ai.msging.net",
+    "uri": "/intentions/{intentionId}/answers?skip=0&take=100&ascending=false"
+}
+
+```
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "method": "get",
+    "to": "postmaster@ai.msging.net",
+    "uri": "/intentions/{intentionId}/answers?skip=0&take=100&ascending=false"
+}
+
+
+```
+
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "method": "get",
+    "to": "postmaster@ai.msging.net",
+    "uri": "/intentions/{intentionId}/answers?skip=0&take=100&ascending=false"
+}
+
+
+```
+
 ```csharp
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "5",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 1,
+        "itemType": "application/vnd.iris.ai.answer+json",
+        "items": [
+            {
+                "id": "1",
+                "type": "text/plain",
+                "value": "Agendaremos pra você"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "9f4d7980-c61a-4e2e-9fa2-233b5ecb2af1",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris2",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/agendar/answers?skip=0&take=100&ascending=false"
+    }
 }
 ```
 ```javascript
@@ -903,63 +966,53 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "5",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 1,
+        "itemType": "application/vnd.iris.ai.answer+json",
+        "items": [
+            {
+                "id": "1",
+                "type": "text/plain",
+                "value": "Agendaremos pra você"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris2",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/agendar/answers?skip=0&take=100&ascending=false"
+    }
 }
 ```
-
-
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "5",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-
-```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "5",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "5",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "5",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 1,
+        "itemType": "application/vnd.iris.ai.answer+json",
+        "items": [
+            {
+                "id": "1",
+                "type": "text/plain",
+                "value": "Agendaremos pra você"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris2",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/agendar/answers?skip=0&take=100&ascending=false"
+    }
 }
 ```
 
