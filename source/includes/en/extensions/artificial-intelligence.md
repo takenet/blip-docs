@@ -213,6 +213,7 @@ Content-Type: application/json
   }
 }
 ```
+
 ### Create an intention
 
 ```csharp
@@ -462,12 +463,16 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "10",
-  "from": "postmaster@ai.msging.net",
-  "to": "contact@msging.net/default",
-  "method": "delete",
-  "status": "success"
+    "method": "delete",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net",
+    "to": "contact@msging.net",
+    "metadata": {
+        "#command.uri": "lime://botname@msging.net/intentions"
+    }
 }
+
 ```
 
 
@@ -476,11 +481,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "10",
-  "from": "postmaster@ai.msging.net",
-  "to": "contact@msging.net/default",
-  "method": "delete",
-  "status": "success"
+    "method": "delete",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net",
+    "to": "contact@msging.net",
+    "metadata": {
+        "#command.uri": "lime://botname@msging.net/intentions"
+    }
 }
 ```
 
@@ -490,11 +498,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "10",
-  "from": "postmaster@ai.msging.net",
-  "to": "contact@msging.net/default",
-  "method": "delete",
-  "status": "success"
+    "method": "delete",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net",
+    "to": "contact@msging.net",
+    "metadata": {
+        "#command.uri": "lime://botname@msging.net/intentions"
+    }
 }
 ```
 
@@ -1462,7 +1473,25 @@ Authorization: Key {YOUR_TOKEN}
 ```javascript
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}### Analyze a sentence with a specific model
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/analysis",
+  "type": "application/vnd.iris.ai.analysis-request+json",
+  "resource": {
+    "text":"I want a pepperoni pizza",
+    "modelId":"fa0aa23b-5c62-4b90-9c13-986148c0d171"
+  }
+}
+
 
 {
   "id": "10",
@@ -2053,5 +2082,114 @@ Content-Type: application/json
   "to": "contact@msging.net/default",
   "method": "set",
   "status": "success"
+}
+```
+###Send enhancement analysis models by email
+
+While the filter can be sended empty.
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+   "id":"10",
+   "method":"set",
+   "resource":{  
+      "email":"test%40take.net",
+      "filter":"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
+   },
+   "to":"postmaster@ai.msging.net",
+   "type":"application/json",
+   "uri":"/enhancement/send-by-email"
+}
+```
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+   "id":"10",
+   "method":"set",
+   "resource":{  
+      "email":"test%40take.net",
+      "filter":"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
+   },
+   "to":"postmaster@ai.msging.net",
+   "type":"application/json",
+   "uri":"/enhancement/send-by-email"
+}
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+   "id":"10",
+   "method":"set",
+   "resource":{  
+      "email":"test%40take.net",
+      "filter":"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
+   },
+   "to":"postmaster@ai.msging.net",
+   "type":"application/json",
+   "uri":"/enhancement/send-by-email"
+}
+```
+
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{  
+   "id":"10",
+   "method":"set",
+   "resource":{  
+      "email":"test%40take.net",
+      "filter":"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
+   },
+   "to":"postmaster@ai.msging.net",
+   "type":"application/json",
+   "uri":"/enhancement/send-by-email"
+}
+```
+
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{  
+   "id":"10",
+   "method":"set",
+   "resource":{  
+      "email":"test%40take.net",
+      "filter":"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
+   },
+   "to":"postmaster@ai.msging.net",
+   "type":"application/json",
+   "uri":"/enhancement/send-by-email"
+}
+```
+
+
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  {
+    "method": "set",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/enhancement/send-by-email"
+    }
 }
 ```

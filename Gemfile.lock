@@ -83,6 +83,8 @@ GEM
       rouge (~> 2.0)
     mini_portile2 (2.3.0)
     minitest (5.10.1)
+    nokogiri (1.8.5)
+      mini_portile2 (~> 2.3.0)
     nokogiri (1.8.5-x64-mingw32)
       mini_portile2 (~> 2.3.0)
     padrino-helpers (0.13.3.3)
@@ -130,4 +132,4 @@ RUBY VERSION
    ruby 2.3.3p222
 
 BUNDLED WITH
-   1.16.0
+   1.17.3
