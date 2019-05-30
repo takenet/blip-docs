@@ -1016,6 +1016,91 @@ Content-Type: application/json
 }
 ```
 
+### Delete answer from intent
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "delete",
+  "uri": "/intentions/{intentionId}/answers/{answerId}"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/pesquisa_veiculo/answers/1"
+    }
+}
+```
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "delete",
+  "uri": "/intentions/{intentionId}/answers/{answerId}"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/pesquisa_veiculo/answers/1"
+    }
+}
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "delete",
+  "uri": "/intentions/{intentionId}/answers/{answerId}"
+}
+```
+```http
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/pesquisa_veiculo/answers/1"
+    }
+}
+```
+
+
 ### Train model
 
 ```csharp
@@ -1109,6 +1194,7 @@ Content-Type: application/json
   "status": "success"
 }
 ```
+
 ### Query the trained
 
 ```csharp
@@ -2246,6 +2332,7 @@ Content-Type: application/json
     }
 }
 ```
+
 ### Create a confusion matrix
 
 ```javascript
@@ -2393,6 +2480,7 @@ Content-Type: application/json
     }
 }
 ```
+
 ### Get confusion matrices
 
 ```javascript
