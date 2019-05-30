@@ -2247,7 +2247,7 @@ Content-Type: application/json
 }
 ```
 
-### Get version's models
+### Get confusion matrices
 
 ```javascript
 POST https://msging.net/commands HTTP/1.1
@@ -2442,7 +2442,7 @@ Content-Type: application/json
     }
 }
 ```
-### Get confusion matrix
+### Get a confusion matrix
 
 ```javascript
 POST https://msging.net/commands HTTP/1.1
@@ -2581,4 +2581,88 @@ Content-Type: application/json
         "#command.uri": "lime://test@msging.net/analytics/confusion-matrix/{confusionMatrixId}"
     }
 }
+```
+
+### Delete a confusion matrix
+
+```javascript
+
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+	"id": "10",
+	"method": "delete",
+	"to": "postmaster@ai.msging.net",
+	"uri": "/analytics/confusion-matrix/{confusionMatrixId}",
+	"from": "postmaster@ai.msging.net/#hmg-az-lx-iris1"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+	"id": "10",
+	"method": "delete",
+	"status": "success",
+	"to": "test.net/portal-test%40take.net"
+}
+
+```
+
+```csharp
+
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+	"id": "10",
+	"method": "delete",
+	"to": "postmaster@ai.msging.net",
+	"uri": "/analytics/confusion-matrix/{confusionMatrixId}",
+	"from": "postmaster@ai.msging.net/#hmg-az-lx-iris1"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+	"id": "10",
+	"method": "delete",
+	"status": "success",
+	"to": "test.net/portal-test%40take.net"
+}
+
+```
+
+
+```http
+
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+	"id": "10",
+	"method": "delete",
+	"to": "postmaster@ai.msging.net",
+	"uri": "/analytics/confusion-matrix/{confusionMatrixId}",
+	"from": "postmaster@ai.msging.net/#hmg-az-lx-iris1"
+}
+```
+
+```http
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+	"id": "10",
+	"method": "delete",
+	"status": "success",
+	"to": "test.net/portal-test%40take.net"
+}
+
 ```
