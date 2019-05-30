@@ -2246,7 +2246,153 @@ Content-Type: application/json
     }
 }
 ```
+### Create a confusion matrix
 
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "to": "postmaster@ai.msging.net",
+    "method": "set",
+    "uri": "/analytics/confusion-matrix",
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "version": "teste",
+        "sampleSize": 2
+    }
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "OwnerIdentity": "botbot1@msging.net",
+        "id": "d0b71e41-897c-48c4-a565-29d227013111",
+        "modelId": "botbot1_543659e7-902a-4326-8a2e-016adbc4b100",
+        "version": "teste",
+        "score": 0,
+        "sampleSize": 2,
+        "createdDate": "2019-05-30T17:22:02.139Z",
+        "accuracy": 0,
+        "avgScore": 0,
+        "precision": 0,
+        "recall": 0,
+        "f1Score": 0,
+        "numberOfSamples": 0
+    },
+    "method": "set",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris2",
+    "to": "botbot1@msging.net",
+    "metadata": {
+        "#command.uri": "lime://botbot1@msging.net/analytics/confusion-matrix"
+    }
+}
+```
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "to": "postmaster@ai.msging.net",
+    "method": "set",
+    "uri": "/analytics/confusion-matrix",
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "version": "teste",
+        "sampleSize": 2
+    }
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "OwnerIdentity": "botbot1@msging.net",
+        "id": "d0b71e41-897c-48c4-a565-29d227013111",
+        "modelId": "botbot1_543659e7-902a-4326-8a2e-016adbc4b100",
+        "version": "teste",
+        "score": 0,
+        "sampleSize": 2,
+        "createdDate": "2019-05-30T17:22:02.139Z",
+        "accuracy": 0,
+        "avgScore": 0,
+        "precision": 0,
+        "recall": 0,
+        "f1Score": 0,
+        "numberOfSamples": 0
+    },
+    "method": "set",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris2",
+    "to": "botbot1@msging.net",
+    "metadata": {
+        "#command.uri": "lime://botbot1@msging.net/analytics/confusion-matrix"
+    }
+}
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "to": "postmaster@ai.msging.net",
+    "method": "set",
+    "uri": "/analytics/confusion-matrix",
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "version": "teste",
+        "sampleSize": 2
+    }
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "OwnerIdentity": "botbot1@msging.net",
+        "id": "d0b71e41-897c-48c4-a565-29d227013111",
+        "modelId": "botbot1_543659e7-902a-4326-8a2e-016adbc4b100",
+        "version": "teste",
+        "score": 0,
+        "sampleSize": 2,
+        "createdDate": "2019-05-30T17:22:02.139Z",
+        "accuracy": 0,
+        "avgScore": 0,
+        "precision": 0,
+        "recall": 0,
+        "f1Score": 0,
+        "numberOfSamples": 0
+    },
+    "method": "set",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris2",
+    "to": "botbot1@msging.net",
+    "metadata": {
+        "#command.uri": "lime://botbot1@msging.net/analytics/confusion-matrix"
+    }
+}
+```
 ### Get confusion matrices
 
 ```javascript
@@ -2442,6 +2588,7 @@ Content-Type: application/json
     }
 }
 ```
+
 ### Get a confusion matrix
 
 ```javascript
