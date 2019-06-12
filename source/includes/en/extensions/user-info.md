@@ -4,7 +4,7 @@ The **directory** (or **User info**) extension allows querying information about
 
 If the information is available, an [Account](http://limeprotocol.org/resources.html#account) document is returned. The availability and detail level of the information depend on the channel, and the application should handle differences appropriately.
 
-The result of directory queries are automatically stored in the **chatbot's roster**, except when there's already an entry with the same identifier in the contacts. For more information about the roster, please refer to the [extension documentation](https://portal.blip.ai/#/docs/extensions/contacts).
+The result of directory queries are automatically stored in the **chatbot's roster**, except when there's already an entry with the same identifier in the contacts. For more information about the roster, please refer to the [extension documentation](https://docs.blip.ai/#contacts).
 
 To get information about a customer, send a command with the following properties:
 
@@ -21,13 +21,35 @@ To get information about a customer, send a command with the following propertie
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-    await client.sendCommand({  
-        'id': '3',
-        'method': 'get',
-        'uri': '/buckets/xyz1234'
+        await client.sendCommand({  
+            'id': '2',
+            'to': 'postmaster@messenger.gw.msging.net',
+            'method': 'get',
+            'uri': 'lime://messenger.gw.msging.net/accounts/1042221589186385'
+        });
     });
-});
 ```
+
+```javascript
+{ type: 'application/vnd.lime.account+json',
+  resource:
+   { fullName: 'Astraugésilo de Athayde',
+     identity: '1042221589186385@messenger.gw.msging.net',
+     photoUri:
+      'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtf1/v/t1.0-1/p200x200/14429_1013121325123122924983_n.jpg',
+     gender: 'male',
+     offset: -3,
+     culture: 'pt-BR',
+     source: 'Messenger' },
+  method: 'get',
+  status: 'success',
+  id: '2',
+  from: 'postmaster@messenger.gw.msging.net/#az-iris4',
+  to: 'demobot4@msging.net/default',
+  metadata:
+   { '#command.uri': 'lime://messenger.gw.msging.net/accounts/1042221589186385' } }
+``` 
+
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -91,6 +113,21 @@ namespace Extensions
         }
     }
 }
+```
+
+```csharp
+account: {Lime.Messaging.Resources.Account}
+AccessKey [string]: null 
+Address [string]: null
+Culture [string]: "pt-BR"
+FullName [string]: "João da Silva Sauro"
+Gender: Male
+Identity [Identity]: {1042221589186385@messenger.gw.msging.net}
+    Domain [string]: "messenger.gw.msging.net"
+    Name [string]: 1042221589186385
+Offset: -3
+PhotoUri [Uri]: "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtf1/v/t1.0-1/p200x200/14429_1013121325123122924983_n.jpg"
+Source [string]: "Messenger"
 ```
 
 
