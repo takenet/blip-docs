@@ -30,27 +30,6 @@ client.addMessageReceiver('text/plain', async (message) => {
     });
 ```
 
-```javascript
-{ type: 'application/vnd.lime.account+json',
-  resource:
-   { fullName: 'Astraugésilo de Athayde',
-     identity: '1042221589186385@messenger.gw.msging.net',
-     photoUri:
-      'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtf1/v/t1.0-1/p200x200/14429_1013121325123122924983_n.jpg',
-     gender: 'male',
-     offset: -3,
-     culture: 'pt-BR',
-     source: 'Messenger' },
-  method: 'get',
-  status: 'success',
-  id: '2',
-  from: 'postmaster@messenger.gw.msging.net/#az-iris4',
-  to: 'demobot4@msging.net/default',
-  metadata:
-   { '#command.uri': 'lime://messenger.gw.msging.net/accounts/1042221589186385' } }
-``` 
-
-
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -114,22 +93,6 @@ namespace Extensions
     }
 }
 ```
-
-```csharp
-account: {Lime.Messaging.Resources.Account}
-AccessKey [string]: null 
-Address [string]: null
-Culture [string]: "pt-BR"
-FullName [string]: "João da Silva Sauro"
-Gender: Male
-Identity [Identity]: {1042221589186385@messenger.gw.msging.net}
-    Domain [string]: "messenger.gw.msging.net"
-    Name [string]: 1042221589186385
-Offset: -3
-PhotoUri [Uri]: "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtf1/v/t1.0-1/p200x200/14429_1013121325123122924983_n.jpg"
-Source [string]: "Messenger"
-```
-
 
 ###Get client info (**Telegram**)
 
