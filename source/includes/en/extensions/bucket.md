@@ -43,6 +43,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 
 {  
   "id": "1",
@@ -127,6 +128,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 
 {  
   "id": "2",
