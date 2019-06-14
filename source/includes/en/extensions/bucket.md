@@ -197,10 +197,22 @@ namespace Extensions
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
+            // Storing a custom document without expiration
             var myTypeDocument = new MyType();
             myTypeDocument.MyTypeKey1 = "value1";
             myTypeDocument.MyTypeKey2 = 2;
             await _bucketExtension.SetAsync("abcd9876", myTypeDocument);
+            
+            // Storing a custom document with expiration
+            var bucketId = "abcd9876";
+            var expiration = 3000;
+            var command = new Command(){
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Set,
+                Uri = new LimeUri($"/buckets/{bucketId}?expiration={expiration}"), 
+                Resource = myTypeDocument
+            };
+
         }
     }
 }
