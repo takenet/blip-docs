@@ -163,6 +163,7 @@ using Take.Blip.Client;
 using Take.Blip.Client.Receivers;
 using Take.Blip.Client.Extensions.Bucket;
 using System.Runtime.Serialization;
+using Take.Blip.Client.Extensions;
 
 namespace Extensions
 {
@@ -199,8 +200,7 @@ namespace Extensions
             var myTypeDocument = new MyType();
             myTypeDocument.MyTypeKey1 = "value1";
             myTypeDocument.MyTypeKey2 = 2;
-
-            await _bucketExtension.SetAsync("abcd9876", jsonDocument);
+            await _bucketExtension.SetAsync("abcd9876", myTypeDocument);
         }
     }
 }
@@ -208,8 +208,8 @@ namespace Extensions
 
 Storing a custom document with type `application/x-my-type+json` and `abcd9876` identifier, setting the expiration to 30000 milisseconds (or 30 seconds):
 
-<aside class="notice">
-Note: If you create a custom document, <b>you must</b> register this type on <i>StartAsync</i> method of <i>Startup.cs</i> class. To do that, add this line: <code> TypeUtil.RegisterDocument&lt;MyType&gt;();</code> 
+<aside  class="notice">
+Note: If you create a custom document, <b>you must</b> register this type on <i>Startup.cs</i> class. To do that, follow this steps: Create a field <code>private  readonly  IDocumentTypeResolver  _documentTypeResolver</code>, assign it in the class constructor and then, on _<i>StartAsync</i>_ method add this line: <code>_documentTypeResolver.WithBlipDocuments();</code>
 </aside>
 
 
