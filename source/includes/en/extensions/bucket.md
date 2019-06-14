@@ -209,7 +209,7 @@ namespace Extensions
 Storing a custom document with type `application/x-my-type+json` and `abcd9876` identifier, setting the expiration to 30000 milisseconds (or 30 seconds):
 
 <aside  class="notice">
-Note: If you create a custom document, <b>you must</b> register this type on <i>Startup.cs</i> class. To do that, follow this steps: Create a field <code>private  readonly  IDocumentTypeResolver  _documentTypeResolver</code>, assign it in the class constructor and then, on _<i>StartAsync</i>_ method add this line: <code>_documentTypeResolver.WithBlipDocuments();</code>
+Note: If you create a custom document, <b>you must</b> register this type on <i>Startup.cs</i> class. To do that, follow this steps: Create a field <code>private  readonly  IDocumentTypeResolver  _documentTypeResolver</code>, assign it in the class constructor and then, on <i>StartAsync</i> method add this line: <code>_documentTypeResolver.WithBlipDocuments();</code>
 </aside>
 
 
