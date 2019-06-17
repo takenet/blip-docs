@@ -237,9 +237,9 @@ For the same contact `11121023102013021@messenger.gw.msging.net`, it is possible
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
     var data = await client.sendCommand({  
-            id: Lime.Guid(),
-            method: Lime.CommandMethod.GET,
-            uri: '/contacts?$skip=0&$take=3'
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.GET,
+        uri: '/contacts?$skip=0&$take=3'
     });
     data.resource.items.forEach(function (value) {
         console.log(value);
