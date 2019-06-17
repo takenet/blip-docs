@@ -30,7 +30,7 @@ client.addMessageReceiver('text/plain', async (message) => {
                     + ("0" + (currentDate.getMonth() + 1)).slice(-2)  + "-" 
                     + ("0" + currentDate.getDate()).slice(-2) + "T"  
                     + (currentDate.getHours() + 3) + ":"  
-                    + (currentDate.getMinutes() + 2) + ":" 
+                    + (currentDate.getMinutes() + 10) + ":" 
                     + currentDate.getSeconds() + ".000Z";
 
     await client.sendCommand({  
