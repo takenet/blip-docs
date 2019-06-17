@@ -54,6 +54,16 @@ Content-Type: application/json
 }
 ```
 
+```javascript
+client.sendCommand({
+  id: Lime.Guid(),
+  method: Lime.CommandMethod.SET,
+  uri: "/profile/greeting",
+  type: "text/plain",
+  resource: "Hello and welcome to our service!"
+})
+```
+
 ```csharp
 using System.Threading;
 using System.Threading.Tasks;
@@ -138,6 +148,37 @@ Content-Type: application/json
   "status": "success"
 }
 ```
+
+```javascript
+client.sendCommand({  
+    id: Lime.Guid(),
+    method: Lime.CommandMethod.SET,
+    uri:"/profile/persistent-menu",
+    type:"application/vnd.lime.document-select+json",
+    resource: {
+        "options":[
+        {
+            "label":{
+            "type":"text/plain",
+            "value":"Option 1"
+            }
+        },
+        {
+            "label":{
+            "type":"text/plain",
+            "value":"Option 2"
+            }
+        },
+        {
+            "label":{
+            "type":"text/plain",
+            "value":"Option 3"
+            }
+        }
+        ]
+    }
+})
+``` 
 
 ```csharp
 using System.Threading;
@@ -317,6 +358,92 @@ Content-Type: application/json
 }
 ```
 
+```javascript
+client.sendCommand({  
+    id: Lime.Guid(),
+    method: Lime.CommandMethod.SET,
+    type:"application/vnd.lime.document-select+json",
+    resource:{
+      "options":[
+        {
+          "label":{
+            "type":"application/vnd.lime.document-select+json",
+            "value":{
+              "header":{
+                "type":"text/plain",
+                "value":"Option 1"
+              },
+              "options":[
+                {
+                  "label":{
+                    "type":"text/plain",
+                    "value":"Option 1.1"
+                  }
+                },
+                {
+                  "label":{
+                    "type":"application/vnd.lime.web-link+json",
+                  "value":{
+                    "text":"Option 1.2",
+                    "uri":"https://address.com/option1.2"
+                  }
+                }
+              },
+              {
+                "label":{
+                  "type":"application/vnd.lime.document-select+json",
+                  "value":{
+                    "header":{
+                      "type":"text/plain",
+                      "value":"Option 1.3"
+                    },
+                    "options":[
+                      {
+                        "label":{
+                          "type":"text/plain",
+                          "value":"Option 1.3.1"
+                        }
+                      },
+                      {
+                        "label":{
+                          "type":"text/plain",
+                          "value":"Option 1.3.2"
+                        }
+                      },
+                      {
+                        "label":{
+                          "type":"text/plain",
+                          "value":"Option 1.3.3"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "label":{
+          "type":"text/plain",
+          "value":"Option 2"
+        }
+      },
+      {
+        "label":{
+          "type":"application/vnd.lime.web-link+json",
+          "value":{
+            "text":"Option 3",
+            "uri":"https://address.com/option1.3"
+          }
+        }
+      }
+    ]
+  }
+})
+```
+
 ```csharp
 using System.Threading;
 using System.Threading.Tasks;
@@ -492,6 +619,16 @@ Content-Type: application/json
 }
 ```
 
+```javascript
+client.sendCommand({
+  id: Lime.Guid(),
+  method: Lime.CommandMethod.SET,
+  uri: "/profile/get-started",
+  type: "text/plain",
+  resource: "Start now"
+})
+```
+
 ```csharp
 using System.Threading;
 using System.Threading.Tasks;
@@ -553,6 +690,14 @@ Content-Type: application/json
   "type": "text/plain",
   "resource": "Hello and welcome to our service!"
 }
+```
+
+```javascript
+client.sendCommand({
+  id: Lime.Guid(),
+  method: Lime.CommandMethod.GET,
+  uri: "/profile/greeting"
+})
 ```
 
 ```csharp
