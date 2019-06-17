@@ -25,14 +25,28 @@ A schedule object passed as a document `resource` has the following properties:
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-    await client.sendCommand({
-        'id': '1',
-        'to': 'postmaster@broadcast.msging.net',
-        'method': 'set',
-        'type': 'application/vnd.iris.distribution-list+json',
-        'uri': '/lists',
-        'resource': {
-            'identity': 'your_distributionList@broadcast.msging.net'
+    var currentDate = new Date(); 
+        currentDate = currentDate.getFullYear() + "-"
+                    + ("0" + (currentDate.getMonth() + 1)).slice(-2)  + "-" 
+                    + ("0" + currentDate.getDate()).slice(-2) + "T"  
+                    + (currentDate.getHours() + 3) + ":"  
+                    + (currentDate.getMinutes() + 2) + ":" 
+                    + currentDate.getSeconds() + ".000Z";
+
+    await client.sendCommand({  
+        id: Lime.Guid(),
+        to: 'postmaster@scheduler.msging.net',
+        method: Lime.CommandMethod.SET,
+        uri: '/schedules',
+        type: 'application/vnd.iris.schedule+json',
+        resource: {  
+            message: {  
+                id: Lime.Guid(),
+                to: 'destination@0mn.io',
+                type: 'text/plain',
+                content: 'Scheduling test.'
+            },
+            when: currentDate
         }
     });
 });
@@ -54,7 +68,7 @@ Authorization: Key {YOUR_TOKEN}
       "id": "ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67",
       "to": "destination@0mn.io",
       "type": "text/plain",
-      "content": "Scheduling test"
+      "content": "Scheduling test."
     },
     "when": "2016-07-25T17:50:00.000Z",
     "name": "New Schedule"
@@ -66,12 +80,15 @@ Authorization: Key {YOUR_TOKEN}
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-{ 
-  "id": "1",
-  "from": "postmaster@scheduler.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
+{
+    "method": "set",
+    "status": "success",
+    "id": "1",
+    "from": "postmaster@scheduler.msging.net/#az-iris4",
+    "to": "destination@msging.net",
+    "metadata": {
+        "#command.uri": "lime://destination@msging.net/schedules"
+    }
 }
 ```
 
@@ -99,7 +116,7 @@ namespace Extensions
         public async Task ReceiveAsync(Message receivedMessage, CancellationToken cancellationToken)
         {
             var schedullingDate = DateTimeOffset.Now.AddMinutes(10);
-            var messageContent = "Scheduling test";
+            var messageContent = "Scheduling test.";
 
             var message = new Message
             {
@@ -121,12 +138,13 @@ Scheduling a message text/plain with the content 'Scheduling test' to be sent to
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-    let scheduledMessage = await client.sendCommand({
-        'id': '1',
-        'to': 'postmaster@scheduler.msging.net',
-        'method': 'get',
-        'uri': '/schedules/ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67'
+    var scheduledMessage = await client.sendCommand({  
+        id: Lime.Guid(),
+        to: 'postmaster@scheduler.msging.net',
+        method: Lime.CommandMethod.GET,
+        uri: '/schedules/ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67'
     });
+    console.log(scheduledMessage);
 });
 ```
 
@@ -136,7 +154,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "75c1621e-350c-4e85-8854-3e2cf3abbc3a",
+  "id": "2",
   "to": "postmaster@scheduler.msging.net",
   "method": "get",
   "uri": "/schedules/ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67"
@@ -148,25 +166,30 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "from": "postmaster@scheduler.msging.net/#hmgirismsging2",
-  "to": "rssreader@msging.net/default",
-  "id": "75c1621e-350c-4e85-8854-3e2cf3abbc3a",
-  "method": "get",
-  "status": "success",
-  "type": "application/vnd.iris.schedule+json",
-  "resource": {
-    "name": "New Schedule",
-    "when": "2016-07-25T17:50:00.000Z",
-    "message": {
-      "id": "9abfd060-f05b-4ccb-944c-ec9f13525fe0",
-      "type": "text/plain",
-      "content": "Teste agendamento",
-      "from": "contact@msging.net",
-      "pp": "postmaster@scheduler.msging.net/contact%40msging.net",
-      "to": "destination@0mn.io",
+    "type": "application/vnd.iris.schedule+json",
+    "resource": {
+        "when": "2019-06-17T13:29:00.000Z",
+        "message": {
+            "type": "text/plain",
+            "content": "Scheduling test.",
+            "id": "ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67",
+            "from": "contact@msging.net",
+            "pp": "postmaster@scheduler.msging.net/contact%40msging.net",
+            "to": "destination@0mn.io",
+            "metadata": {
+                "#scheduler.when": "06/17/2019 13:29:00"
+            }
+        },
+        "status": "scheduled"
     },
-    "status": "scheduled"
-  }
+    "method": "get",
+    "status": "success",
+    "id": "2",
+    "from": "postmaster@scheduler.msging.net/#az-iris6",
+    "to": "contact@msging.net",
+    "metadata": {
+        "#command.uri": "lime://contact@msging.net/schedules/ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67"
+    }
 }
 ```
 
