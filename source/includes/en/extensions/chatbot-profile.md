@@ -670,7 +670,7 @@ namespace Extensions
 
 In order to set a get started button for your chatbot, use a `set` command on `/profile/get-started-label` URI. This sample shows how to add a button with `Start now` as label.
 <aside  class="notice">
-Note: Messenger doesn't allow label to be changed </aside>
+Note: Messenger doesn't allow the label to be changed </aside>
 
 ### Set a start message
 
@@ -743,7 +743,7 @@ namespace Extensions
 }
 ```
 
-In order to set a get started button for your chatbot, use a set command on /profile/get-started URI. This sample shows how to add a button that sends the text `Let's begin` to your chatbot during the first client interaction.
+In order to set a get started button for your chatbot, use a set command on `/profile/get-started` URI. This sample shows how to add a button that sends the text `Let's begin` to your chatbot during the first client interaction.
 
 ### Get greeting message
 
