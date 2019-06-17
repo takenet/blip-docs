@@ -41,22 +41,22 @@ The contacts fields can be used to replace variables on messages sent by the cha
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-  await client.sendCommand({  
-    "id": "1",
-    "method": "set",
-    "uri": "/contacts",
-    "type": "application/vnd.lime.contact+json",
-    "resource": {
-      "identity": "11121023102013021@messenger.gw.msging.net",
-      "name": "John Doe",
-      "gender":"male",
-      "group":"friends",    
-      "extras": {
-        "plan":"Gold",
-        "code":"1111"      
-      }
-    }
-  });
+    await client.sendCommand({  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.SET,
+        uri: '/contacts',
+        type: 'application/vnd.lime.contact+json',
+        resource: {
+            identity: '11121023102013021@messenger.gw.msging.net',
+            name: 'John Doe',
+            gender:'male',
+            group: 'friends',    
+            extras: {
+                plan: 'Gold',
+                code: '1111'      
+            }
+        }
+    });
 });
 ```
 
@@ -150,12 +150,12 @@ In order to store informations about a chatbot's client, it is possible to save 
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-  var data = await client.sendCommand({  
-    "id": "2",
-    "method": "get",
-    "uri": "/contacts/11121023102013021@messenger.gw.msging.net"
-  });
-  console.log(data);
+    var data = await client.sendCommand({  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.GET,
+        uri: '/contacts/11121023102013021@messenger.gw.msging.net'
+    });
+    console.log(data);
 });
 ```
 
@@ -236,14 +236,14 @@ For the same contact `11121023102013021@messenger.gw.msging.net`, it is possible
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-  var data = await client.sendCommand({  
-    "id": "3",
-    "method": "get",
-    "uri": "/contacts?$skip=0&$take=3"
-  });
-  data.resource.items.forEach(function (value) {
-    console.log(value);
-  });  
+    var data = await client.sendCommand({  
+            id: Lime.Guid(),
+            method: Lime.CommandMethod.GET,
+            uri: '/contacts?$skip=0&$take=3'
+        });
+        data.resource.items.forEach(function (value) {
+        console.log(value);
+    });  
 });
 ```
 
@@ -349,16 +349,15 @@ If you need to get more than one chatbot's contact, you can use a query paginati
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-  await client.sendCommand({  
-    "id": "1",
-    "to": "11121023102013021@messenger.gw.msging.net",
-    "type": "text/plain",
-    "content": "Hello ${contact.name}, welcome to the ${contact.extras.plan} plan!",
-    "metadata": 
-    {
-      "#message.replaceVariables": "true"
-    }
-  });
+    await client.sendCommand({  
+        id: Lime.Guid(),
+        to: '11121023102013021@messenger.gw.msging.net',
+        type: 'text/plain',
+        content: 'Hello ${contact.name}, welcome to the ${contact.extras.plan} plan!',
+        metadata: {
+            '#message.replaceVariables': 'true'
+        }
+    });
 });
 ```
 
@@ -368,7 +367,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "1",
+  "id": "4",
   "to": "11121023102013021@messenger.gw.msging.net",
   "type": "text/plain",
   "content": "Hello ${contact.name}, welcome to the ${contact.extras.plan} plan!",
