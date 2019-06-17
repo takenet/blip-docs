@@ -22,10 +22,10 @@ To get information about a customer, send a command with the following propertie
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
         await client.sendCommand({  
-            'id': '2',
-            'to': 'postmaster@messenger.gw.msging.net',
-            'method': 'get',
-            'uri': 'lime://messenger.gw.msging.net/accounts/1042221589186385'
+            id: Lime.Guid(),
+            method: Lime.CommandMethod.GET,
+            to: 'postmaster@messenger.gw.msging.net',
+            uri: 'lime://messenger.gw.msging.net/accounts/1042221589186385'
         });
     });
 ```
@@ -101,10 +101,10 @@ namespace Extensions
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({  
-        'id': '2',
-        'to': 'postmaster@telegram.gw.msging.net',
-        'method': 'get',
-        'uri': 'lime://telegram.gw.msging.net/accounts/255600202'
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.GET,
+        to: 'postmaster@telegram.gw.msging.net',
+        uri: 'lime://telegram.gw.msging.net/accounts/255600202'
     });
 });
 ```

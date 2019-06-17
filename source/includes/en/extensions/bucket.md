@@ -25,11 +25,11 @@ The document to be stored must be passed on the `resource` property.
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({
-        'id': '1',
-        'method': 'set',
-        'uri': '/buckets/xyz1234',
-        'type': 'application/json',
-        'resource': {  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.SET,
+        uri: '/buckets/xyz1234',
+        type: 'application/json',
+        resource: {  
             'key1': 'value1',
             'key2': 2,
             'key3': [  
@@ -113,11 +113,11 @@ Storing a JSON object `{"key1": "value1", "key2": 2, "key3": ["3a", "3b", "3c"]}
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({
-        "id": "2",
-        "method": "set",
-        "uri": "/buckets/abcd9876?expiration=30000",
-        "type": "application/x-my-type+json",
-        "resource": {  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.SET,
+        uri: "/buckets/abcd9876?expiration=30000",
+        type: "application/x-my-type+json",
+        resource: {  
             "myTypeKey1": "value1",
             "myTypeKey2": 2
         }
@@ -230,9 +230,9 @@ Note: If you create a custom document, <b>you must</b> register this type on <i>
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({  
-        'id': '3',
-        'method': 'get',
-        'uri': '/buckets/xyz1234'
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.GET,
+        uri: '/buckets/xyz1234'
     });
 });
 ```
