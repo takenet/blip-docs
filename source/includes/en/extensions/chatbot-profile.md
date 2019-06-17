@@ -599,7 +599,7 @@ Authorization: Key {YOUR_TOKEN}
 {  
   "id": "4",
   "method": "set",
-  "uri": "/profile/get-started",
+  "uri": "/profile/get-started-label",
   "type": "text/plain",
   "resource": "Start now"
 }
@@ -623,7 +623,7 @@ Content-Type: application/json
 client.sendCommand({
   id: Lime.Guid(),
   method: Lime.CommandMethod.SET,
-  uri: "/profile/get-started",
+  uri: "/profile/get-started-label",
   type: "text/plain",
   resource: "Start now"
 })
@@ -654,13 +654,96 @@ namespace Extensions
 
         public async Task ReceiveAsync(Message m, CancellationToken cancellationToken)
         {
-            await _profileExtension.SetGetStartedAsync(new PlainText { Text = "Start now" }, cancellationToken);
+            var command = new Command()
+            {
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Set,
+                Uri = new LimeUri("/profile/get-started-label"),
+                Resource = new PlainText { Text = "Start now" }
+            };
+
+            await _sender.SendCommandAsync(command, cancellationToken);
         }
     }
 }
 ```
 
-In order to set a get started button for your chatbot, use a `set` command on `/profile/get-started` URI. This sample shows how to add a button that sends the text `Start now` to your chatbot during the first client interaction.
+In order to set a get started button for your chatbot, use a `set` command on `/profile/get-started-label` URI. This sample shows how to add a button with `Start now` as label.
+<aside  class="notice">
+Note: Messenger doesn't allow label to be changed </aside>
+
+### Set a start message
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "4",
+  "method": "set",
+  "uri": "/profile/get-started",
+  "type": "text/plain",
+  "resource": "Let's begin"
+}
+
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "4",
+  "from": "postmaster@msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success"
+}
+```
+
+```javascript
+client.sendCommand({
+  id: Lime.Guid(),
+  method: Lime.CommandMethod.SET,
+  uri: "/profile/get-started",
+  type: "text/plain",
+  resource: "Let's begin"
+})
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Lime.Messaging.Contents;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Profile;
+
+namespace Extensions
+{
+    public class ProfileMessageReceiver : IMessageReceiver
+    {
+        private readonly IMessagingHubSender _sender;
+        private readonly IProfileExtension _profileExtension;
+
+        public ProfileMessageReceiver(IMessagingHubSender sender, IProfileExtension profileExtension)
+        {
+            _sender = sender;
+            _settings = settings;
+            _profileExtension = profileExtension;
+        }
+
+        public async Task ReceiveAsync(Message m, CancellationToken cancellationToken)
+        {
+            await _profileExtension.SetGetStartedAsync(new PlainText { Text = "Let's begin" }, cancellationToken);
+        }
+    }
+}
+```
+
+In order to set a get started button for your chatbot, use a set command on /profile/get-started URI. This sample shows how to add a button that sends the text `Let's begin` to your chatbot during the first client interaction.
 
 ### Get greeting message
 
