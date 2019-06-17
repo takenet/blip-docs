@@ -240,8 +240,8 @@ client.addMessageReceiver('text/plain', async (message) => {
             id: Lime.Guid(),
             method: Lime.CommandMethod.GET,
             uri: '/contacts?$skip=0&$take=3'
-        });
-        data.resource.items.forEach(function (value) {
+    });
+    data.resource.items.forEach(function (value) {
         console.log(value);
     });  
 });
