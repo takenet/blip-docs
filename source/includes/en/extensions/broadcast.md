@@ -32,7 +32,7 @@ For example, for a chatbot with identifier `mychatbot`, this list address would 
 
 #### Replacement variables
 
-It is possible to use contact replacement variables in the sent messages. For more information, please check the documentation of the [**Contacts** extension](https://portal.blip.ai/#/docs/extensions/contacts).
+It is possible to use contact replacement variables in the sent messages. For more information, please check the documentation of the [**Contacts** extension](#contacts).
 
 #### Availability
 
@@ -53,12 +53,12 @@ The Broadcast service is available in the following domains:
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
-    "id": "1",
-    "to": "postmaster@broadcast.msging.net",
-    "method": "set",
-    "type": "application/vnd.iris.distribution-list+json",
-    "uri": "/lists",
-    "resource": {
+    id: Lime.Guid(),
+    to: "postmaster@broadcast.msging.net",
+    method: Lime.CommandMethod.SET,
+    type: "application/vnd.iris.distribution-list+json",
+    uri: "/lists",
+    resource: {
         "identity": "your_distributionList@broadcast.msging.net"
     }
   });
@@ -131,10 +131,10 @@ Before making a broadcast, it is necessary to create a distribution list and add
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
-    "id": "2",
-    "to": "postmaster@broadcast.msging.net",
-    "method": "get",
-    "uri": "/lists"
+    id: Lime.Guid(),
+    to: "postmaster@broadcast.msging.net",
+    method: Lime.CommandMethod.GET,
+    uri: "/lists"
   });
 });
 ```
@@ -195,7 +195,7 @@ namespace Extensions
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
-            await _broadcastExtension.GetAllDistributionListsAsync(cancellationToken);
+            await _broadcastExtension.GetRecipientsAsynGetAllDistributionListsAsync(0, 5, cancellationToken);
         }
     }
 }
@@ -208,12 +208,12 @@ To get all distribution lists associated with your chatbot, you must send a comm
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({  
-      "id": "3",
-      "to": "postmaster@broadcast.msging.net",
-      "method": "set",
-      "uri": "/lists/your_distributionList@broadcast.msging.net/recipients",
-      "type": "application/vnd.lime.identity",
-      "resource": message.from //user identity
+      id: Lime.Guid(),
+      to: "postmaster@broadcast.msging.net",
+      method: Lime.CommandMethod.SET,
+      uri: "/lists/your_distributionList@broadcast.msging.net/recipients",
+      type: "application/vnd.lime.identity",
+      resource: message.from //user identity
     });
 });
 ```
@@ -283,10 +283,10 @@ After creating a distribution list, you must add some members to receive your br
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({  
-    "id": "4",
-    "to": "postmaster@broadcast.msging.net",
-    "method": "delete",
-    "uri": "/lists/your_distributionList@broadcast.msging.net/recipients/user_identity@0mn.io"
+    id: Lime.Guid(),
+    to: "postmaster@broadcast.msging.net",
+    method: Lime.CommandMethod.DELETE,
+    uri: "/lists/your_distributionList@broadcast.msging.net/recipients/user_identity@0mn.io"
   });
 });
 ```
@@ -300,7 +300,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "4",
   "to": "postmaster@broadcast.msging.net",
   "method": "delete",
-  "uri": "/lists/noticias@broadcast.msging.net/recipients/551100001111@0mn.io"
+  "uri": "/lists/your_distributionList@broadcast.msging.net/recipients/551100001111@0mn.io"
 }
 ```
 
@@ -353,10 +353,10 @@ As the same way you add some members into a distribution list, it is possible to
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
-    "id": "5",
-    "to": "postmaster@broadcast.msging.net",
-    "method": "get",
-    "uri": "/lists/your_distributionList@broadcast.msging.net/recipients?$skip=0&$take=5"
+    id: Lime.Guid(),
+    to: "postmaster@broadcast.msging.net",
+    method: Lime.CommandMethod.GET,
+    uri: "/lists/your_distributionList@broadcast.msging.net/recipients?$skip=0&$take=5"
   });
 });
 ```
@@ -430,15 +430,21 @@ namespace Extensions
 
 To get all members of a distribution list, you must send a command with `GET` method and command URI with the list identifier (`/lists/your_distributionList@broadcast.msging.net/recipients`)
 
+| Property     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **skip** | The number of members to be skipped                           | 0 |
+| **take** | The number of members to be returned                          | 100 |
+
+
 ###Send message
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
-    'id': '6',
-    'to': 'your_distributionList@broadcast.msging.net',
-    'type': 'text/plain',
-    'content': 'Hello participants of this list!'
+    id: Lime.Guid(),
+    to: 'your_distributionList@broadcast.msging.net',
+    type: 'text/plain',
+    content: 'Hello participants of this list!'
   });
 });
 ```
@@ -516,10 +522,10 @@ If you already have a distribution list with some members, you can send messages
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendMessage({  
-    "id": "7",
-    "to": "your_distributionList@broadcast.msging.net",
-    "type": "text/plain",
-    "content": "Hello ${contact.name}, come to check out our prices!"
+    id: Lime.Guid(),
+    to: "your_distributionList@broadcast.msging.net",
+    type: "text/plain",
+    content: "Hello ${contact.name}, come to check out our prices!"
   });
 });
 ```
@@ -572,14 +578,3 @@ Note: To make your broadcast more personal, you can also replace contact variabl
 </aside>
 
 For more information, please check the documentation of the [**Contacts** extension](#contacts).
-
-
-
-
-
-
-
-
-
-
-
