@@ -195,6 +195,8 @@ namespace Extensions
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
+            // 0 is the initial position (number of lists to be skipped)
+            // 5 is the number os lists to be returned
             await _broadcastExtension.GetRecipientsAsynGetAllDistributionListsAsync(0, 5, cancellationToken);
         }
     }
