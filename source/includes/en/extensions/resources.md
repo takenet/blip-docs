@@ -280,8 +280,8 @@ Getting all bot resources.
 
 | Property     | Description                                                        | Example |
 |--------------|--------------------------------------------------------------------|---------|
-| **skip** | The number of members to be skipped.                                   | 0 |
-| **take** | The number of members to be returned.                                  | 100 |
+| **skip** | The number of resources to be skipped.                                   | 0 |
+| **take** | The number of resources to be returned.                                  | 100 |
 
 ### Get a specific resource
 
