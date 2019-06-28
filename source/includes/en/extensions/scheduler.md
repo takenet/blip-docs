@@ -85,9 +85,9 @@ Content-Type: application/json
     "status": "success",
     "id": "1",
     "from": "postmaster@scheduler.msging.net/#az-iris4",
-    "to": "destination@msging.net",
+    "to": "destination@0mn.io",
     "metadata": {
-        "#command.uri": "lime://destination@msging.net/schedules"
+        "#command.uri": "lime://destination@0mn.io/schedules"
     }
 }
 ```
