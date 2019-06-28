@@ -108,48 +108,46 @@ In order to use BLiP's [extensions](#extensions) (like schedule and directory), 
 
 For instance, send a command to schedule some message:
 
-```
+```http
 POST https://msging.net/commands HTTP/1.1
-Authorization: Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=
 Content-Type: application/json
-Content-Length: 393
+Authorization: Key {YOUR_TOKEN}
 
-{
-  "id":"2",
-  "to":"postmaster@scheduler.msging.net",
-  "method":"set",
-  "uri":"/schedules",
-  "type":"application/vnd.iris.schedule+json",
-  "resource":{
-    "message":{
-      "id":"ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67",
-      "to":"553100001111@0mn.io",
-      "type":"text/plain",
-      "content":"Scheduled Message"
+{  
+  "id": "1",
+  "to": "postmaster@scheduler.msging.net",
+  "method": "set",
+  "uri": "/schedules",
+  "type": "application/vnd.iris.schedule+json",
+  "resource": {  
+    "message": {  
+      "id": "ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67",
+      "to": "destination@0mn.io",
+      "type": "text/plain",
+      "content": "Scheduling test."
     },
-    "when":"2016-07-25T17:50:00.000Z"
+    "when": "2016-07-25T17:50:00.000Z",
+    "name": "New Schedule"
   }
 }
 ```
 
 The command response is immediately delivered on HTTP response, as below:
 
-```
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
-Access-Control-Allow-Origin: *
-Access-Control-Allow-Credentials: true
-Date: Mon, 12 Sep 2016 17:35:02 GMT
-Content-Length: 131
 
 {
-  "id":"2",
-  "from":"postmaster@scheduler.msging.net/#irismsging1",
-  "to":"blipmessaginghubapp@msging.net",
-  "method":"set",
-  "status":"success"
+  "method": "set",
+  "status": "success",
+  "id": "1",
+  "from": "postmaster@scheduler.msging.net/#az-iris4",
+  "to": "destination@0mn.io",
+  "metadata": {
+    "#command.uri": "lime://destination@0mn.io/schedules"
+  }
 }
-
 ```
 
 ### Aditional informations
