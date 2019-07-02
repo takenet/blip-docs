@@ -378,9 +378,9 @@ To retrieve all counters of a category, add the category name to the command uri
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   var events = await client.sendCommand({
-    id: '5',
+    id: Lime.Guid(),
     to: 'postmaster@analytics.msging.net',
-    method: 'get',
+    method: Lime.CommandMethod.GET,
     uri: '/event-track/payments/success-order?startDate=2019-06-21&endDate=2019-06-28&$take=10'
   });
   events.resource.items.forEach(function (item) {
