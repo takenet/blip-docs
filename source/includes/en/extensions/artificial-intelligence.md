@@ -943,65 +943,6 @@ namespace Extension
 }
 ```
 
-### Analyze a sentence in the last published model
-
-```javascript
-
-```
-
-```http
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "9",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/analysis",
-  "type": "application/vnd.iris.ai.analysis-request+json",
-  "resource": {
-    "text":"I want a pepperoni pizza"
-  }
-}
-
-```
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "9",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.iris.ai.analysis-response+json",
-  "resource": {
-    "text":"I want a pepperoni pizza",
-    "intentions":[
-      {
-        "id": "order_pizza",
-        "name": "Order pizza",
-        "score": 0.95
-      }
-    ],
-    "entities":[
-      {
-        "id": "flavor",
-        "name": "Flavor",
-        "value": "Pepperoni"
-      }
-    ]
-  }
-}
-```
-
-```csharp
-
-```
-
 ### Analyze a sentence with a specific model
 
 It is possible to analyze a sentence with a specific model, to improve the model. 
