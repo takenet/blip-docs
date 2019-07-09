@@ -1069,8 +1069,26 @@ namespace Extension
 
 ###Get the last 10 analysis
 
-```javascript
+Getting the last 10 analysis given by the artificial intelligence provider for user phrases.
 
+| Property     | Description                                                          | Example |
+|--------------|----------------------------------------------------------------------|---------|
+| **skip** | The number of analysis to be skipped.                                    |    0    |
+| **take** | The number of analysis to be returned.                                   |   100   |
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  var analisys = await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.GET,
+    uri: '/analysis?$skip=0&$take=10',
+  });
+
+  analisys.resource.items.forEach(function (item) {
+    console.log(item);
+  });
+});
 ```
 
 ```http
@@ -1082,7 +1100,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "11",
   "to": "postmaster@ai.msging.net",
   "method": "get",
-  "uri": "/analysis?$take=10&$filter=feedback%20eq%20none"
+  "uri": "/analysis?$skip=0&$take=10"
 }
 ```
 
@@ -1091,43 +1109,219 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "11",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "get",
-  "status": "success",
   "type": "application/vnd.lime.collection+json",
   "resource": {
-    "itemType":"application/vnd.iris.ai.analysis+json",
-    "items":[
+    "total": 6,
+    "itemType": "application/vnd.iris.ai.analysis+json",
+    "items": [
       {
-        "id": "7363369c-8c99-4293-883f-aaabac7dd822",
-        "requestDateTime": "2017-07-13T12:28:14.040Z",
-        "text": "quero uma pizza marguerita",
-        "intention": "I want a pepperoni pizza",
-        "score": 1.0,
+        "id": "2b05bb98-b470-475c-a6fb-016bb411bfb9",
+        "requestDateTime": "2019-07-02T19:03:09.660Z",
+        "text": "i want a pepperoni pizza",
+        "intention": "order_pizza",
+        "score": 0.9580827713012696,
         "intentions": [
           {
-            "id":"order_pizza",
-            "name":"Order pizza",
-            "score": 1.0
+            "id": "order_pizza",
+            "name": "Order pizza",
+            "score": 0.9580827713012696,
+            "answer": {
+              "id": "1",
+              "type": "text/plain",
+              "value": "{}"
+            }
+          },
+          {
+            "id": "help",
+            "name": "help",
+            "score": 0.24191724956035615
           }
         ],
         "entities": [
           {
-            "id":"flavor",
-            "name":"Flavor",
-            "value":"Pepperoni"
+            "id": "flavor",
+            "name": "Flavor",
+            "value": "pepperoni"
+          }
+        ]
+      },
+      {
+        "id": "d011e14d-5bb6-4dce-82c7-016bb308a973",
+        "requestDateTime": "2019-07-02T14:13:36.040Z",
+        "text": "i want a mushrooms pizza",
+        "intention": "order_pizza",
+        "score": 0.5515909,
+        "intentions": [
+          {
+            "id": "order_pizza",
+            "name": "Order pizza",
+            "score": 0.5515909,
+            "answer": {
+              "id": "1",
+              "type": "text/plain",
+              "value": "{}"
+            }
           }
         ],
+        "entities": [
+          {
+            "id": "flavor",
+            "name": "Flavor",
+            "value": "mushrooms"
+          }
+        ]
+      },
+      {
+        "id": "a3d8e978-a57b-4f0f-9abc-016baf4d338a",
+        "requestDateTime": "2019-07-01T20:49:58.980Z",
+        "text": "i want a mushrooms pizza",
+        "intention": "order_pizza",
+        "score": 0.5515909,
+        "feedback": "rejected",
+        "intentions": [
+          {
+            "id": "order_pizza",
+            "name": "Order pizza",
+            "score": 0.5515909,
+            "answer": {
+              "id": "1",
+              "type": "text/plain",
+              "value": "{}"
+            }
+          }
+        ],
+        "entities": [
+          {
+            "id": "flavor",
+            "name": "Flavor",
+            "value": "mushrooms"
+          }
+        ]
+      },
+      {
+        "id": "4e0892f9-4188-47ee-9527-016baf12d13f",
+        "requestDateTime": "2019-07-01T19:46:13.260Z",
+        "text": "i want a mushrooms pizza",
+        "intention": "order_pizza",
+        "score": 0.5515909,
+        "intentions": [
+          {
+            "id": "order_pizza",
+            "name": "Order pizza",
+            "score": 0.5515909,
+            "answer": {
+              "id": "1",
+              "type": "text/plain",
+              "value": "{}"
+            }
+          }
+        ],
+        "entities": [
+          {
+            "id": "flavor",
+            "name": "Flavor",
+            "value": "mushrooms"
+          }
+        ]
+      },
+      {
+        "id": "60b6716f-7e43-46fe-823c-016baf0db599",
+        "requestDateTime": "2019-07-01T19:40:38.260Z",
+        "text": "i want a pepperoni pizza",
+        "intention": "order_pizza",
+        "score": 0.5535872,
+        "intentions": [
+          {
+            "id": "order_pizza",
+            "name": "Order pizza",
+            "score": 0.5535872,
+            "answer": {
+              "id": "1",
+              "type": "text/plain",
+              "value": "{}"
+            }
+          }
+        ],
+        "entities": [
+          {
+            "id": "flavor",
+            "name": "Flavor",
+            "value": "pepperoni"
+          }
+        ]
+      },
+      {
+        "id": "bde80a9f-9374-4f09-b0bf-016baf047fbd",
+        "requestDateTime": "2019-07-01T19:30:34.630Z",
+        "text": "i want a pepperoni pizza",
+        "intention": "order_pizza",
+        "score": 0.5535872,
+        "intentions": [
+          {
+            "id": "order_pizza",
+            "name": "Order pizza",
+            "score": 0.5535872,
+            "answer": {
+              "id": "1",
+              "type": "text/plain",
+              "value": "{}"
+            }
+          }
+        ],
+        "entities": [
+          {
+            "id": "flavor",
+            "name": "Flavor",
+            "value": "pepperoni"
+          }
+        ]
       }
     ]
+  },
+  "method": "get",
+  "status": "success",
+  "id": "11",
+  "from": "postmaster@ai.msging.net/#az-iris4",
+  "to": "contact@msging.net",
+  "metadata": {
+    "#command.uri": "lime://contact@msging.net/analysis?$skip=0&$take=10"
   }
 }
 ```
 
 ```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
 
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+            _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var skip = 0;
+            var take = 10;
+
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Get,
+                To = Node.Parse("postmaster@ai.msging.net"),
+                Uri = new LimeUri($"/analysis?$skip={skip}&$take={take}")
+            };
+
+           var analisys = await _sender.ProcessCommandAsync(command, cancellationToken);
+        }
+    }
+}
 ```
 
 ### Send an 'approved' feedback
