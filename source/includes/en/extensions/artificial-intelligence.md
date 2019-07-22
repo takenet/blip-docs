@@ -52,59 +52,59 @@ The resource types are:
 
 ### Create an entity
 
-```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id":"1",
-  "to":"postmaster@ai.msging.net",
-  "method":"set",
-  "uri":"/entities",
-  "type":"application/vnd.iris.ai.entity+json",
-  "resource":{
-    "name":"Flavor",
-    "values":[
-      {
-        "name":"Pepperoni",
-        "synonymous":[
-          "Peperoni",
-          "Pepperonee",
-          "Pepperouni",
-          "Peperony"
-        ]
-      },
-      {
-        "name":"Mushrooms",
-        "synonymous":[
-          "Mashrooms",
-          "Mushroom",
-          "Mshrooms"
-        ]
-      }
-    ]
-  }
-}
-```
+Defining the entities present in user phrases.
 
 ```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: '/entities',
+    type: 'application/vnd.iris.ai.entity+json',
+    resource: {
+      name: 'Flavor',
+      values: [
+        {
+          name: 'Pepperoni',
+          synonymous: [
+            'Peperoni',
+            'Pepperonee',
+            'Pepperouni',
+            'Peperony'
+          ]
+        },
+        {
+          name: 'Mushrooms',
+          synonymous: [
+            'Mashrooms',
+            'Mushroom',
+            'Mshrooms'
+          ]
+        }
+      ]
+    }
+  });
+});
+```
+
+```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id":"1",
-  "to":"postmaster@ai.msging.net",
-  "method":"set",
-  "uri":"/entities",
-  "type":"application/vnd.iris.ai.entity+json",
-  "resource":{
-    "name":"Flavor",
-    "values":[
+  "id": "1",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/entities",
+  "type": "application/vnd.iris.ai.entity+json",
+  "resource": {
+    "name": "Flavor",
+    "values": [
       {
-        "name":"Pepperoni",
-        "synonymous":[
+        "name": "Pepperoni",
+        "synonymous": [
           "Peperoni",
           "Pepperonee",
           "Pepperouni",
@@ -112,8 +112,8 @@ Authorization: Key {YOUR_TOKEN}
         ]
       },
       {
-        "name":"Mushrooms",
-        "synonymous":[
+        "name": "Mushrooms",
+        "synonymous": [
           "Mashrooms",
           "Mushroom",
           "Mshrooms"
@@ -125,132 +125,94 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+HTTP/1.1 200 OK
 Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
 
 {
-  "id":"1",
-  "to":"postmaster@ai.msging.net",
-  "method":"set",
-  "uri":"/entities",
-  "type":"application/vnd.iris.ai.entity+json",
-  "resource":{
-    "name":"Flavor",
-    "values":[
-      {
-        "name":"Pepperoni",
-        "synonymous":[
-          "Peperoni",
-          "Pepperonee",
-          "Pepperouni",
-          "Peperony"
-        ]
-      },
-      {
-        "name":"Mushrooms",
-        "synonymous":[
-          "Mashrooms",
-          "Mushroom",
-          "Mshrooms"
-        ]
-      }
-    ]
+  "type": "application/vnd.iris.ai.entity+json",
+  "resource": {
+    "id": "flavor"
+  },
+  "method": "set",
+  "status": "success",
+  "id": "1",
+  "from": "postmaster@ai.msging.net/#az-iris6",
+  "to": "contact@msging.net",
+  "metadata": {
+    "#command.uri": "lime://contact@msging.net/entities"
   }
 }
-
 ```
 
 
 ```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.ArtificialIntelligence;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
 
+namespace Extensions
 {
-  "id": "1",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.iris.ai.entity+json",
-  "resource": {
-      "id": "flavor"
-  }
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
+
+        public ArtificialIntelligenceReceiver(IArtificialIntelligenceExtension artificialIntelligenceExtension)
+        {
+            _artificialIntelligenceExtension = artificialIntelligenceExtension;
+        }
+
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var entity = new Entity{
+                Name = "Flavor",
+                Values = new [] { 
+                    new EntityValues {
+                        Name = "Pepperoni",
+                        Synonymous = new [] {
+                            "Peperoni",
+                            "Pepperonee",
+                            "Pepperouni",
+                            "Peperony"
+                        },
+                    },
+                    new EntityValues {
+                        Name = "Mushrooms",
+                        Synonymous = new [] {
+                            "Mashrooms",
+                            "Mushroom",
+                            "Mshrooms"
+                        }
+                    }
+                }
+            };
+
+            await _artificialIntelligenceExtension.SetEntityAsync(entity, cancellationToken);
+        }
+    }
 }
 ```
 
-
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "1",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.iris.ai.entity+json",
-  "resource": {
-      "id": "flavor"
-  }
-}
-```
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "1",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.iris.ai.entity+json",
-  "resource": {
-      "id": "flavor"
-  }
-}
-```
 ### Create an intention
 
-```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "2",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/intentions",
-  "type": "application/vnd.iris.ai.intention+json",
-  "resource": {
-      "name": "Order pizza"
-  }
-}
-
-```
+Defining how the chatbot should interpret and respond to the user.
 
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "2",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/intentions",
-  "type": "application/vnd.iris.ai.intention+json",
-  "resource": {
-      "name": "Order pizza"
-  }
-}
-
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: '/intentions',
+    type: 'application/vnd.iris.ai.intention+json',
+    resource: {
+      name: 'Order pizza'
+    }
+  });
+});
 ```
-
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -267,94 +229,75 @@ Authorization: Key {YOUR_TOKEN}
       "name": "Order pizza"
   }
 }
-
 ```
-
-
-```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "2",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.iris.ai.intention+json",
-  "resource": {
-      "id": "order_pizza"
-  }
-}
-```
-
-
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "2",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.iris.ai.intention+json",
-  "resource": {
-      "id": "order_pizza"
-  }
-}
-```
-
 
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "2",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
   "type": "application/vnd.iris.ai.intention+json",
   "resource": {
-      "id": "order_pizza"
+    "id": "order_pizza"
+  },
+  "method": "set",
+  "status": "success",
+  "id": "2",
+  "from": "postmaster@ai.msging.net/#az-iris2",
+  "to": "contact@msging.net",
+  "metadata": {
+    "#command.uri": "lime://contact@msging.net/intentions"
   }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.ArtificialIntelligence;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
+
+        public ArtificialIntelligenceReceiver(IArtificialIntelligenceExtension artificialIntelligenceExtension)
+        {
+            _artificialIntelligenceExtension = artificialIntelligenceExtension;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var intention = new Intention { Name = "Order pizza" };
+
+            await _artificialIntelligenceExtension.SetIntentionAsync(intention, cancellationToken);
+        }
+    }
 }
 ```
 
 ### Delete an intention
 
-Where `{intention_id}` is the intention identifier of an already created intention.
+Deleting an intention, where `{intention_id}` is the intention identifier of an already created intention.
 
-```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "10",
-  "to": "postmaster@ai.msging.net",
-  "method": "delete",
-  "uri": "/intentions/{intention_id}",
-}
-```
+<aside class="notice">
+Note: Remember to replace the variable <b>{intention_id}</b> for the intention identifier you want to delete.
+</aside>
 
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "10",
-  "to": "postmaster@ai.msging.net",
-  "method": "delete",
-  "uri": "/intentions/{intention_id}",
-}
-
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.DELETE,
+    uri: '/intentions/{intention_id}',
+  });
+});
 ```
-
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -367,82 +310,79 @@ Authorization: Key {YOUR_TOKEN}
   "method": "delete",
   "uri": "/intentions/{intention_id}",
 }
-
 ```
-
-
-```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "10",
-  "from": "postmaster@ai.msging.net",
-  "to": "contact@msging.net/default",
-  "method": "delete",
-  "status": "success"
-}
-```
-
-
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "10",
-  "from": "postmaster@ai.msging.net",
-  "to": "contact@msging.net/default",
-  "method": "delete",
-  "status": "success"
-}
-```
-
 
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "10",
-  "from": "postmaster@ai.msging.net",
-  "to": "contact@msging.net/default",
   "method": "delete",
-  "status": "success"
+  "status": "success",
+  "id": "10",
+  "from": "postmaster@ai.msging.net/#az-iris4",
+  "to": "contact@msging.net",
+  "metadata": {
+    "#command.uri": "lime://contact@msging.net/intentions/{intention_id}"
+  }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Delete,
+                Uri = new LimeUri("/intentions/{intention_id}")
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
+    }
 }
 ```
 
 ### Query the first 10 intentions
 
-```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
+Querying the first 10 intentions.
 
-{
-  "id": "3",
-  "to": "postmaster@ai.msging.net",
-  "method": "get",
-  "uri": "/intentions?$skip=0&$take=10"
-}
-
-```
-
+| Property     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **skip** | The number of intentions to be skipped.                                |    0    |
+| **take** | The number of intentions to be returned.                               |   100   |
+| **ascending** | Sets ascending alphabetical order.                                |    -    |
 
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "3",
-  "to": "postmaster@ai.msging.net",
-  "method": "get",
-  "uri": "/intentions?$skip=0&$take=10"
-}
-
+client.addMessageReceiver('text/plain', async (message) => {
+  var intentions = await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.GET,
+    uri: '/intentions?$skip=0&$take=10',
+  });
+  
+  intentions.resource.items.forEach(function (item) {
+    console.log(item);
+  });
+});
 ```
-
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -455,154 +395,98 @@ Authorization: Key {YOUR_TOKEN}
   "method": "get",
   "uri": "/intentions?$skip=0&$take=10"
 }
-
 ```
-```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "3",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "get",
-  "status": "success",
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-      "total": 2,
-      "itemType": "application/vnd.iris.ai.intention+json",
-      "items": [
-        {
-          "id": "order_pizza",
-          "name": "Order pizza"
-        },
-        {
-          "id": "choose_flavor",
-          "name": "Choose flavor"
-        }
-      ]
-  }
-}
-```
-
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "3",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "get",
-  "status": "success",
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-      "total": 2,
-      "itemType": "application/vnd.iris.ai.intention+json",
-      "items": [
-        {
-          "id": "order_pizza",
-          "name": "Order pizza"
-        },
-        {
-          "id": "choose_flavor",
-          "name": "Choose flavor"
-        }
-      ]
-  }
-}
-```
-
 
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "3",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "get",
-  "status": "success",
   "type": "application/vnd.lime.collection+json",
   "resource": {
-      "total": 2,
-      "itemType": "application/vnd.iris.ai.intention+json",
-      "items": [
-        {
-          "id": "order_pizza",
-          "name": "Order pizza"
-        },
-        {
-          "id": "choose_flavor",
-          "name": "Choose flavor"
-        }
-      ]
+    "total": 2,
+    "itemType": "application/vnd.iris.ai.intention+json",
+    "items": [
+      {
+        "id": "order_pizza",
+        "name": "Order pizza",
+        "healthScore": 0,
+        "storageDate": "2019-06-26T17:37:56.570Z"
+      },
+      {
+        "id": "choose_flavor",
+        "name": "Choose flavor",
+        "healthScore": 0,
+        "storageDate": "2019-06-26T17:38:08.880Z"
+      }
+    ]
+  },
+  "method": "get",
+  "status": "success",
+  "id": "3",
+  "from": "postmaster@ai.msging.net/#az-iris2",
+  "to": "contact@msging.net",
+  "metadata": {
+    "#command.uri": "lime://contact@msging.net/intentions?$skip=0&$take=10"
   }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.ArtificialIntelligence;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver4 : IMessageReceiver
+    {
+        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
+
+        public ArtificialIntelligenceReceiver4(IArtificialIntelligenceExtension artificialIntelligenceExtension)
+        {
+            _artificialIntelligenceExtension = artificialIntelligenceExtension;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var intentions = await _artificialIntelligenceExtension.GetIntentionsAsync(0, 10, cancellationToken: cancellationToken);
+        }
+    }
 }
 ```
 
 ### Associate questions to an intention
 
-```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "4",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/intentions/order_pizza/questions",
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-    "itemType": "application/vnd.iris.ai.question+json",
-    "items":[
-      {
-        "text": "I want a pizza"
-      },
-      {
-        "text": "I wanna order a pizza"
-      },
-      {
-        "text": "Give me a pizza"
-      }
-    ]
-  }
-}
-
-```
+Associating examples of questions from the user. A variety of examples may be added to train the artificial intelligence model.
 
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "4",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/intentions/order_pizza/questions",
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-    "itemType": "application/vnd.iris.ai.question+json",
-    "items":[
-      {
-        "text": "I want a pizza"
-      },
-      {
-        "text": "I wanna order a pizza"
-      },
-      {
-        "text": "Give me a pizza"
-      }
-    ]
-  }
-}
-
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: '/intentions/order_pizza/questions',
+    type: 'application/vnd.lime.collection+json',
+    resource: {
+      itemType: 'application/vnd.iris.ai.question+json',
+      items: [
+        {
+          text: 'I want a pizza'
+        },
+        {
+          text: 'I wanna order a pizza'
+        },
+        {
+          text: 'Give me a pizza'
+        }
+      ]
+    }
+  });
+});
 ```
-
-
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -630,99 +514,84 @@ Authorization: Key {YOUR_TOKEN}
     ]
   }
 }
-
 ```
-
-```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "4",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "4",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-
 
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "4",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
   "method": "set",
-  "status": "success"
+  "status": "success",
+  "id": "4",
+  "from": "postmaster@ai.msging.net/#az-iris5",
+  "to": "contact@msging.net",
+  "metadata": {
+    "#command.uri": "lime://contact@msging.net/intentions/order_pizza/questions"
+  }
+}
+```
+
+```csharp
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.ArtificialIntelligence;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
+
+        public ArtificialIntelligenceReceiver(IArtificialIntelligenceExtension artificialIntelligenceExtension)
+        {
+            _artificialIntelligenceExtension = artificialIntelligenceExtension;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var intentionId = "order_pizza";
+
+            var questions = new List<Question>(){
+                new Question{ Text = "I want a pizza" },
+                new Question{ Text = "I wanna order a pizza" },
+                new Question{ Text = "Give me a pizza" }
+            };
+
+            await _artificialIntelligenceExtension.SetQuestionsAsync(intentionId, questions, cancellationToken);
+        }
+    }
 }
 ```
 
 ### Associate answers to an intention
 
-```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "5",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/intentions/order_pizza/answers",
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-    "itemType": "application/vnd.iris.ai.answer+json",
-    "items":[
-      {
-        "type":"text/plain",
-        "value":"Which flavor do you want?"
-      }
-    ]
-  }
-}
-
-```
+Associating possible answers to send to the user. 
 
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "5",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/intentions/order_pizza/answers",
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-    "itemType": "application/vnd.iris.ai.answer+json",
-    "items":[
-      {
-        "type":"text/plain",
-        "value":"Which flavor do you want?"
-      }
-    ]
-  }
-}
-
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: '/intentions/order_pizza/answers',
+    type: 'application/vnd.lime.collection+json',
+    resource: {
+      itemType: 'application/vnd.iris.ai.answer+json',
+      items: [
+        {
+          type: 'text/plain',
+          value: 'Which flavor do you want?'
+        }
+      ]
+    }
+  });
+});
 ```
-
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -745,110 +614,6 @@ Authorization: Key {YOUR_TOKEN}
     ]
   }
 }
-
-```
-
-```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "5",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "5",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-
-
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "5",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "5",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "5",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "5",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-
-```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "5",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "5",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
 ```
 
 ```http
@@ -856,50 +621,65 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "5",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
   "method": "set",
-  "status": "success"
+  "status": "success",
+  "id": "5",
+  "from": "postmaster@ai.msging.net/#az-iris1",
+  "to": "contact@msging.net",
+  "metadata": {
+      "#command.uri": "lime://contact@msging.net/intentions/order_pizza/answers"
+  }
+}
+```
+
+```csharp
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.ArtificialIntelligence;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
+
+        public ArtificialIntelligenceReceiver(IArtificialIntelligenceExtension artificialIntelligenceExtension)
+        {
+            _artificialIntelligenceExtension = artificialIntelligenceExtension;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var intentionId = "order_pizza";
+
+            var answers = new List<Answer>(){ new Answer{ Value = "Which flavor do you want?" } };
+
+            await _artificialIntelligenceExtension.SetAnswersAsync(intentionId, answers, cancellationToken);
+        }
+    }
 }
 ```
 
 ### Train model
 
-```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "6",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/models",
-  "type": "application/vnd.iris.ai.model-training+json",
-  "resource": {
-  }
-}
-
-```
+Before you train an artificial intelligence model, you need to configure the artificial intelligence provider that will be associeated with chatbot and add user intentions to the model.
 
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "6",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/models",
-  "type": "application/vnd.iris.ai.model-training+json",
-  "resource": {
-  }
-}
-
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: '/models',
+    type: 'application/vnd.iris.ai.model-training+json',
+    resource: {}
+  });
+});
 ```
-
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -912,81 +692,76 @@ Authorization: Key {YOUR_TOKEN}
   "method": "set",
   "uri": "/models",
   "type": "application/vnd.iris.ai.model-training+json",
-  "resource": {
-  }
-}
-
-```
-
-```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "6",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
+  "resource": {}
 }
 ```
-
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "6",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-
 
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "6",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
   "method": "set",
-  "status": "success"
+  "status": "success",
+  "id": "6",
+  "from": "postmaster@ai.msging.net/#az-iris1",
+  "to": "contact@msging.net",
+  "metadata": {
+    "#command.uri": "lime://contact@msging.net/models"
+  }
 }
 ```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.ArtificialIntelligence;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
+
+        public ArtificialIntelligenceReceiver(IArtificialIntelligenceExtension artificialIntelligenceExtension)
+        {
+            _artificialIntelligenceExtension = artificialIntelligenceExtension;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            await _artificialIntelligenceExtension.TrainModelAsync(cancellationToken);
+        }
+    }
+}
+```
+
 ### Query the trained
 
-```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
+Querying information about created models.
 
-{
-  "id": "7",
-  "to": "postmaster@ai.msging.net",
-  "method": "get",
-  "uri": "/models"
-}
-
-```
+| Property     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **skip** | The number of models to be skipped.                                    |    0    |
+| **take** | The number of models to be returned.                                   |   100   |
+| **ascending** | Sets ascending alphabetical order.                                |    -    |
 
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
+client.addMessageReceiver('text/plain', async (message) => {
+  var models = await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.GET,
+    uri: '/models',
+  });
 
-{
-  "id": "7",
-  "to": "postmaster@ai.msging.net",
-  "method": "get",
-  "uri": "/models"
-}
-
+  models.resource.items.forEach(function (item) {
+    console.log(item);
+  });
+});
 ```
-
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -999,147 +774,115 @@ Authorization: Key {YOUR_TOKEN}
   "method": "get",
   "uri": "/models"
 }
-
 ```
-
-```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "7",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-      "total": 1,
-      "itemType": "application/vnd.iris.ai.model+json",
-      "items": [
-        {
-          "id":"d3190b46-c723-4831-b9e8-fe43c1816f80",
-          "provider":"Watson",
-          "externalId":"b518633d-26f6-454c-bd17-890b426f2d40",
-          "storageDate":"2017-07-07T18:13:00.000Z",
-          "trainingDate":"2017-07-07T18:13:00.000Z"
-        },
-        {
-          "id":"fa0aa23b-5c62-4b90-9c13-986148c0d171",
-          "provider":"Luis",
-          "externalId":"713331f2-0375-462d-aa58-ff9b8c5075be",
-          "storageDate":"2017-07-07T18:13:00.000Z",
-          "trainingDate":"2017-07-07T18:13:00.000Z"
-        }
-      ]
-  }
-}
-```
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "7",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-      "total": 1,
-      "itemType": "application/vnd.iris.ai.model+json",
-      "items": [
-        {
-          "id":"d3190b46-c723-4831-b9e8-fe43c1816f80",
-          "provider":"Watson",
-          "externalId":"b518633d-26f6-454c-bd17-890b426f2d40",
-          "storageDate":"2017-07-07T18:13:00.000Z",
-          "trainingDate":"2017-07-07T18:13:00.000Z"
-        },
-        {
-          "id":"fa0aa23b-5c62-4b90-9c13-986148c0d171",
-          "provider":"Luis",
-          "externalId":"713331f2-0375-462d-aa58-ff9b8c5075be",
-          "storageDate":"2017-07-07T18:13:00.000Z",
-          "trainingDate":"2017-07-07T18:13:00.000Z"
-        }
-      ]
-  }
-}
-```
-
 
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "7",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
   "type": "application/vnd.lime.collection+json",
   "resource": {
-      "total": 1,
-      "itemType": "application/vnd.iris.ai.model+json",
-      "items": [
-        {
-          "id":"d3190b46-c723-4831-b9e8-fe43c1816f80",
-          "provider":"Watson",
-          "externalId":"b518633d-26f6-454c-bd17-890b426f2d40",
-          "storageDate":"2017-07-07T18:13:00.000Z",
-          "trainingDate":"2017-07-07T18:13:00.000Z"
-        },
-        {
-          "id":"fa0aa23b-5c62-4b90-9c13-986148c0d171",
-          "provider":"Luis",
-          "externalId":"713331f2-0375-462d-aa58-ff9b8c5075be",
-          "storageDate":"2017-07-07T18:13:00.000Z",
-          "trainingDate":"2017-07-07T18:13:00.000Z"
-        }
-      ]
+    "total": 4,
+    "itemType": "application/vnd.iris.ai.model+json",
+    "items": [
+      {
+        "id": "12345",
+        "culture": "pt-br",
+        "provider": "Watson",
+        "externalId": "678910",
+        "storageDate": "2019-07-01T13:35:36.930Z",
+        "trainingDate": "2019-07-01T13:35:36.930Z",
+        "apiUri": "https://gateway.watsonplatform.net/assistant/api",
+        "status": "Training"
+      },
+      {
+        "id": "111213",
+        "culture": "pt-br",
+        "provider": "Dialogflow",
+        "externalId": "141516",
+        "storageDate": "2019-07-01T13:35:34.330Z",
+        "trainingDate": "2019-07-01T13:35:34.330Z",
+        "status": "Trained"
+      },
+      {
+        "id": "171819",
+        "culture": "pt-br",
+        "provider": "Watson",
+        "storageDate": "2019-07-01T13:28:05.520Z",
+        "trainingDate": "2019-07-01T13:28:05.520Z",
+        "apiUri": "https://gateway.watsonplatform.net/assistant/api",
+        "status": "Deleted"
+      },
+      {
+        "id": "202122",
+        "culture": "pt-br",
+        "provider": "Dialogflow",
+        "storageDate": "2019-07-01T13:28:01.870Z",
+        "trainingDate": "2019-07-01T13:28:01.870Z",
+        "status": "Deleted"
+      }
+    ]
+  },
+  "method": "get",
+  "status": "success",
+  "id": "7",
+  "from": "postmaster@ai.msging.net/#az-iris5",
+  "to": "contact@msging.net",
+  "metadata": {
+    "#command.uri": "lime://contact@msging.net/models"
   }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.ArtificialIntelligence;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
+
+        public ArtificialIntelligenceReceiver(IArtificialIntelligenceExtension artificialIntelligenceExtension)
+        {
+            _artificialIntelligenceExtension = artificialIntelligenceExtension;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var models = await _artificialIntelligenceExtension.GetModelsAsync(0, 100, cancellationToken: cancellationToken);
+        }
+    }
 }
 ```
 
 ### Publish model
-```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
 
-{
-  "id": "8",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/models",
-  "type": "application/vnd.iris.ai.model-publishing+json",
-  "resource": {
-    "id":"d3190b46-c723-4831-b9e8-fe43c1816f80"
-  }
-}
+Publishing an existing artificial intelligence model.
 
-```
+<aside class="notice">
+Note: Remember to replace the variable <b>{your_model_id}</b> for the model identifier you want to publish.
+</aside>
+
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "8",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/models",
-  "type": "application/vnd.iris.ai.model-publishing+json",
-  "resource": {
-    "id":"d3190b46-c723-4831-b9e8-fe43c1816f80"
-  }
-}
-
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: '/models',
+    type: 'application/vnd.iris.ai.model-publishing+json',
+    resource: {
+      id: '{your_model_id}'
+    }
+  });
+});
 ```
-
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -1153,243 +896,84 @@ Authorization: Key {YOUR_TOKEN}
   "uri": "/models",
   "type": "application/vnd.iris.ai.model-publishing+json",
   "resource": {
-    "id":"d3190b46-c723-4831-b9e8-fe43c1816f80"
+    "id": "{your_model_id}"
   }
 }
-
 ```
-
-```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "8",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "8",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-
 
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
+  "method": "set",
+  "status": "success",
   "id": "8",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-
-### Analyze a sentence in the last published model
-
-```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "9",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/analysis",
-  "type": "application/vnd.iris.ai.analysis-request+json",
-  "resource": {
-    "text":"I want a pepperoni pizza"
+  "from": "postmaster@ai.msging.net/#az-iris2",
+  "to": "contact@msging.net",
+  "metadata": {
+    "#command.uri": "lime://contact@msging.net/models"
   }
 }
-
-```
-
-```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "9",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/analysis",
-  "type": "application/vnd.iris.ai.analysis-request+json",
-  "resource": {
-    "text":"I want a pepperoni pizza"
-  }
-}
-
-```
-
-
-```http
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "9",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/analysis",
-  "type": "application/vnd.iris.ai.analysis-request+json",
-  "resource": {
-    "text":"I want a pepperoni pizza"
-  }
-}
-
 ```
 
 ```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.ArtificialIntelligence;
 
+namespace Extension
 {
-  "id": "9",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.iris.ai.analysis-response+json",
-  "resource": {
-    "text":"I want a pepperoni pizza",
-    "intentions":[
-      {
-        "id":"order_pizza",
-        "name":"Order pizza",
-        "score": 0.95
-      }
-    ],
-    "entities":[
-      {
-        "id":"flavor",
-        "name":"Flavor",
-        "value":"Pepperoni"
-      }
-    ]
-  }
-}
-```
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
 
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "9",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.iris.ai.analysis-response+json",
-  "resource": {
-    "text":"I want a pepperoni pizza",
-    "intentions":[
-      {
-        "id":"order_pizza",
-        "name":"Order pizza",
-        "score": 0.95
-      }
-    ],
-    "entities":[
-      {
-        "id":"flavor",
-        "name":"Flavor",
-        "value":"Pepperoni"
-      }
-    ]
-  }
-}
-```
-
-
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "9",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.iris.ai.analysis-response+json",
-  "resource": {
-    "text":"I want a pepperoni pizza",
-    "intentions":[
-      {
-        "id":"order_pizza",
-        "name":"Order pizza",
-        "score": 0.95
-      }
-    ],
-    "entities":[
-      {
-        "id":"flavor",
-        "name":"Flavor",
-        "value":"Pepperoni"
-      }
-    ]
-  }
+        public ArtificialIntelligenceReceiver(IArtificialIntelligenceExtension artificialIntelligenceExtension)
+        {
+            _artificialIntelligenceExtension = artificialIntelligenceExtension;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            await _artificialIntelligenceExtension.PublishModelAsync("{your_model_id}", cancellationToken);
+        }
+    }
 }
 ```
 
 ### Analyze a sentence with a specific model
 
-```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
+It is possible to analyze a sentence with a specific model, to improve the model. 
 
-{
-  "id": "10",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/analysis",
-  "type": "application/vnd.iris.ai.analysis-request+json",
-  "resource": {
-    "text":"I want a pepperoni pizza",
-    "modelId":"fa0aa23b-5c62-4b90-9c13-986148c0d171"
-  }
-}
+<aside class="notice">
+Note: Remember to replace the variable <b>modelId</b> for the model identifier you want to use (for instance: <b>12345</b>).
+</aside>
 
-```
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
+client.addMessageReceiver('text/plain', async (message) => {
+  var result = await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: '/analysis',
+    type: 'application/vnd.iris.ai.analysis-request+json',
+    resource: {
+      text: 'I want a pepperoni pizza',
+      modelId: '12345'
+    }
+  });
 
-{
-  "id": "10",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/analysis",
-  "type": "application/vnd.iris.ai.analysis-request+json",
-  "resource": {
-    "text":"I want a pepperoni pizza",
-    "modelId":"fa0aa23b-5c62-4b90-9c13-986148c0d171"
-  }
-}
-
+  result.resource.intentions.forEach(function (intention) {
+    console.log(intention);
+  });
+  
+  result.resource.entities.forEach(function (entity) {
+    console.log(entity);
+  });
+});
 ```
-
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -1404,70 +988,7 @@ Authorization: Key {YOUR_TOKEN}
   "type": "application/vnd.iris.ai.analysis-request+json",
   "resource": {
     "text":"I want a pepperoni pizza",
-    "modelId":"fa0aa23b-5c62-4b90-9c13-986148c0d171"
-  }
-}
-
-```
-
-```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "10",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.iris.ai.analysis-response+json",
-  "resource": {
-    "text":"I want a pepperoni pizza",
-    "intentions":[
-      {
-        "id":"order_pizza",
-        "name":"Order pizza",
-        "score": 0.95
-      }
-    ],
-    "entities":[
-      {
-        "id":"flavor",
-        "name":"Flavor",
-        "value":"Pepperoni"
-      }
-    ]
-  }
-}
-```
-
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "10",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.iris.ai.analysis-response+json",
-  "resource": {
-    "text":"I want a pepperoni pizza",
-    "intentions":[
-      {
-        "id":"order_pizza",
-        "name":"Order pizza",
-        "score": 0.95
-      }
-    ],
-    "entities":[
-      {
-        "id":"flavor",
-        "name":"Flavor",
-        "value":"Pepperoni"
-      }
-    ]
+    "modelId":"12345"
   }
 }
 ```
@@ -1477,57 +998,97 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "10",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
   "type": "application/vnd.iris.ai.analysis-response+json",
   "resource": {
-    "text":"I want a pepperoni pizza",
-    "intentions":[
+    "id": "456789",
+    "text": "i want a pepperoni pizza",
+    "intentions": [
       {
-        "id":"order_pizza",
-        "name":"Order pizza",
-        "score": 0.95
+        "id": "order_pizza",
+        "name": "Order pizza",
+        "score": 0.5535872,
+        "answer": {
+          "id": "1",
+          "type": "text/plain",
+          "value": "Which flavor do you want?"
+        }
       }
     ],
-    "entities":[
+    "entities": [
       {
-        "id":"flavor",
-        "name":"Flavor",
-        "value":"Pepperoni"
+        "id": "flavor",
+        "name": "Flavor",
+        "value": "pepperoni"
       }
-    ]
+    ],
+    "provider": "Dialogflow",
+    "modelId": "12345"
+  },
+  "method": "set",
+  "status": "success",
+  "id": "10",
+  "from": "postmaster@ai.msging.net/#az-iris4",
+  "to": "contact@msging.net",
+  "metadata": {
+    "#command.uri": "lime://contact@msging.net/analysis"
   }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.ArtificialIntelligence;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver10 : IMessageReceiver
+    {
+        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
+
+        public ArtificialIntelligenceReceiver10(IArtificialIntelligenceExtension artificialIntelligenceExtension)
+        {
+            _artificialIntelligenceExtension = artificialIntelligenceExtension;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var analysisRequest = new AnalysisRequest{
+                Text = "I want a pepperoni pizza",
+                ModelId = "12345"
+            };
+
+            var result = await _artificialIntelligenceExtension.AnalyzeAsync(analysisRequest, cancellationToken);
+        }
+    }
 }
 ```
 
 ###Get the last 10 analysis
 
-```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
+Getting the last 10 analysis given by the artificial intelligence provider for user phrases.
 
-{
-  "id": "11",
-  "to": "postmaster@ai.msging.net",
-  "method": "get",
-  "uri": "/analysis?$take=10&$filter=feedback%20eq%20none"
-}
-```
+| Property     | Description                                                          | Example |
+|--------------|----------------------------------------------------------------------|---------|
+| **skip** | The number of analysis to be skipped.                                    |    0    |
+| **take** | The number of analysis to be returned.                                   |   100   |
+
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
+client.addMessageReceiver('text/plain', async (message) => {
+  var analisys = await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.GET,
+    uri: '/analysis?$skip=0&$take=10',
+  });
 
-{
-  "id": "11",
-  "to": "postmaster@ai.msging.net",
-  "method": "get",
-  "uri": "/analysis?$take=10&$filter=feedback%20eq%20none"
-}
+  analisys.resource.items.forEach(function (item) {
+    console.log(item);
+  });
+});
 ```
 
 ```http
@@ -1539,169 +1100,252 @@ Authorization: Key {YOUR_TOKEN}
   "id": "11",
   "to": "postmaster@ai.msging.net",
   "method": "get",
-  "uri": "/analysis?$take=10&$filter=feedback%20eq%20none"
+  "uri": "/analysis?$skip=0&$take=10"
 }
 ```
-
-```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "11",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "get",
-  "status": "success",
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-    "itemType":"application/vnd.iris.ai.analysis+json",
-    "items":[
-      {
-        "id": "7363369c-8c99-4293-883f-aaabac7dd822",
-        "requestDateTime": "2017-07-13T12:28:14.040Z",
-        "text": "quero uma pizza marguerita",
-        "intention": "I want a pepperoni pizza",
-        "score": 1.0,
-        "intentions": [
-          {
-            "id":"order_pizza",
-            "name":"Order pizza",
-            "score": 1.0
-          }
-        ],
-        "entities": [
-          {
-            "id":"flavor",
-            "name":"Flavor",
-            "value":"Pepperoni"
-          }
-        ],
-      }
-    ]
-  }
-}
-```
-
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "11",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "get",
-  "status": "success",
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-    "itemType":"application/vnd.iris.ai.analysis+json",
-    "items":[
-      {
-        "id": "7363369c-8c99-4293-883f-aaabac7dd822",
-        "requestDateTime": "2017-07-13T12:28:14.040Z",
-        "text": "quero uma pizza marguerita",
-        "intention": "I want a pepperoni pizza",
-        "score": 1.0,
-        "intentions": [
-          {
-            "id":"order_pizza",
-            "name":"Order pizza",
-            "score": 1.0
-          }
-        ],
-        "entities": [
-          {
-            "id":"flavor",
-            "name":"Flavor",
-            "value":"Pepperoni"
-          }
-        ],
-      }
-    ]
-  }
-}
-```
-
-
 
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "11",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "get",
-  "status": "success",
   "type": "application/vnd.lime.collection+json",
   "resource": {
-    "itemType":"application/vnd.iris.ai.analysis+json",
-    "items":[
+    "total": 6,
+    "itemType": "application/vnd.iris.ai.analysis+json",
+    "items": [
       {
-        "id": "7363369c-8c99-4293-883f-aaabac7dd822",
-        "requestDateTime": "2017-07-13T12:28:14.040Z",
-        "text": "quero uma pizza marguerita",
-        "intention": "I want a pepperoni pizza",
-        "score": 1.0,
+        "id": "2b05bb98-b470-475c-a6fb-016bb411bfb9",
+        "requestDateTime": "2019-07-02T19:03:09.660Z",
+        "text": "i want a pepperoni pizza",
+        "intention": "order_pizza",
+        "score": 0.9580827713012696,
         "intentions": [
           {
-            "id":"order_pizza",
-            "name":"Order pizza",
-            "score": 1.0
+            "id": "order_pizza",
+            "name": "Order pizza",
+            "score": 0.9580827713012696,
+            "answer": {
+              "id": "1",
+              "type": "text/plain",
+              "value": "{}"
+            }
+          },
+          {
+            "id": "help",
+            "name": "help",
+            "score": 0.24191724956035615
           }
         ],
         "entities": [
           {
-            "id":"flavor",
-            "name":"Flavor",
-            "value":"Pepperoni"
+            "id": "flavor",
+            "name": "Flavor",
+            "value": "pepperoni"
+          }
+        ]
+      },
+      {
+        "id": "d011e14d-5bb6-4dce-82c7-016bb308a973",
+        "requestDateTime": "2019-07-02T14:13:36.040Z",
+        "text": "i want a mushrooms pizza",
+        "intention": "order_pizza",
+        "score": 0.5515909,
+        "intentions": [
+          {
+            "id": "order_pizza",
+            "name": "Order pizza",
+            "score": 0.5515909,
+            "answer": {
+              "id": "1",
+              "type": "text/plain",
+              "value": "{}"
+            }
           }
         ],
+        "entities": [
+          {
+            "id": "flavor",
+            "name": "Flavor",
+            "value": "mushrooms"
+          }
+        ]
+      },
+      {
+        "id": "a3d8e978-a57b-4f0f-9abc-016baf4d338a",
+        "requestDateTime": "2019-07-01T20:49:58.980Z",
+        "text": "i want a mushrooms pizza",
+        "intention": "order_pizza",
+        "score": 0.5515909,
+        "feedback": "rejected",
+        "intentions": [
+          {
+            "id": "order_pizza",
+            "name": "Order pizza",
+            "score": 0.5515909,
+            "answer": {
+              "id": "1",
+              "type": "text/plain",
+              "value": "{}"
+            }
+          }
+        ],
+        "entities": [
+          {
+            "id": "flavor",
+            "name": "Flavor",
+            "value": "mushrooms"
+          }
+        ]
+      },
+      {
+        "id": "4e0892f9-4188-47ee-9527-016baf12d13f",
+        "requestDateTime": "2019-07-01T19:46:13.260Z",
+        "text": "i want a mushrooms pizza",
+        "intention": "order_pizza",
+        "score": 0.5515909,
+        "intentions": [
+          {
+            "id": "order_pizza",
+            "name": "Order pizza",
+            "score": 0.5515909,
+            "answer": {
+              "id": "1",
+              "type": "text/plain",
+              "value": "{}"
+            }
+          }
+        ],
+        "entities": [
+          {
+            "id": "flavor",
+            "name": "Flavor",
+            "value": "mushrooms"
+          }
+        ]
+      },
+      {
+        "id": "60b6716f-7e43-46fe-823c-016baf0db599",
+        "requestDateTime": "2019-07-01T19:40:38.260Z",
+        "text": "i want a pepperoni pizza",
+        "intention": "order_pizza",
+        "score": 0.5535872,
+        "intentions": [
+          {
+            "id": "order_pizza",
+            "name": "Order pizza",
+            "score": 0.5535872,
+            "answer": {
+              "id": "1",
+              "type": "text/plain",
+              "value": "{}"
+            }
+          }
+        ],
+        "entities": [
+          {
+            "id": "flavor",
+            "name": "Flavor",
+            "value": "pepperoni"
+          }
+        ]
+      },
+      {
+        "id": "bde80a9f-9374-4f09-b0bf-016baf047fbd",
+        "requestDateTime": "2019-07-01T19:30:34.630Z",
+        "text": "i want a pepperoni pizza",
+        "intention": "order_pizza",
+        "score": 0.5535872,
+        "intentions": [
+          {
+            "id": "order_pizza",
+            "name": "Order pizza",
+            "score": 0.5535872,
+            "answer": {
+              "id": "1",
+              "type": "text/plain",
+              "value": "{}"
+            }
+          }
+        ],
+        "entities": [
+          {
+            "id": "flavor",
+            "name": "Flavor",
+            "value": "pepperoni"
+          }
+        ]
       }
     ]
+  },
+  "method": "get",
+  "status": "success",
+  "id": "11",
+  "from": "postmaster@ai.msging.net/#az-iris4",
+  "to": "contact@msging.net",
+  "metadata": {
+    "#command.uri": "lime://contact@msging.net/analysis?$skip=0&$take=10"
   }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+            _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var skip = 0;
+            var take = 10;
+
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Get,
+                To = Node.Parse("postmaster@ai.msging.net"),
+                Uri = new LimeUri($"/analysis?$skip={skip}&$take={take}")
+            };
+
+           var analisys = await _sender.ProcessCommandAsync(command, cancellationToken);
+        }
+    }
 }
 ```
 
 ### Send an 'approved' feedback
 
-```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
+Sending positive feedback about an analysis.
 
-{
-  "id":"12",
-  "to":"postmaster@ai.msging.net",
-  "method":"set",
-  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
-  "type":"application/vnd.iris.ai.analysis-feedback+json",
-  "resource":{
-    "feedback":"approved"
-  }
-}
+<aside class="notice">
+Note: Remember to replace the variable <b>{analyze_id}</b> for the analyze identifier you want to approve.
+</aside>
 
-```
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id":"12",
-  "to":"postmaster@ai.msging.net",
-  "method":"set",
-  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
-  "type":"application/vnd.iris.ai.analysis-feedback+json",
-  "resource":{
-    "feedback":"approved"
-  }
-}
-
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: '/analysis/{analyze_id}/feedback',
+    type: 'application/vnd.iris.ai.analysis-feedback+json',
+    resource: {
+      feedback: 'approved'
+    }
+  });
+});
 ```
-
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -1712,204 +1356,84 @@ Authorization: Key {YOUR_TOKEN}
   "id":"12",
   "to":"postmaster@ai.msging.net",
   "method":"set",
-  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
+  "uri":"/analysis/{analyze_id}/feedback",
   "type":"application/vnd.iris.ai.analysis-feedback+json",
   "resource":{
     "feedback":"approved"
   }
 }
-
 ```
-
-```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id":"12",
-  "to":"postmaster@ai.msging.net",
-  "method":"set",
-  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
-  "type":"application/vnd.iris.ai.analysis-feedback+json",
-  "resource":{
-    "feedback":"approved"
-  }
-}
-
-```
-
-```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id":"12",
-  "to":"postmaster@ai.msging.net",
-  "method":"set",
-  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
-  "type":"application/vnd.iris.ai.analysis-feedback+json",
-  "resource":{
-    "feedback":"approved"
-  }
-}
-
-```
-
-
-```http
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id":"12",
-  "to":"postmaster@ai.msging.net",
-  "method":"set",
-  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
-  "type":"application/vnd.iris.ai.analysis-feedback+json",
-  "resource":{
-    "feedback":"approved"
-  }
-}
-
-```
-
-```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id":"12",
-  "to":"postmaster@ai.msging.net",
-  "method":"set",
-  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
-  "type":"application/vnd.iris.ai.analysis-feedback+json",
-  "resource":{
-    "feedback":"approved"
-  }
-}
-
-```
-
-```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id":"12",
-  "to":"postmaster@ai.msging.net",
-  "method":"set",
-  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
-  "type":"application/vnd.iris.ai.analysis-feedback+json",
-  "resource":{
-    "feedback":"approved"
-  }
-}
-
-```
-
-
-```http
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id":"12",
-  "to":"postmaster@ai.msging.net",
-  "method":"set",
-  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
-  "type":"application/vnd.iris.ai.analysis-feedback+json",
-  "resource":{
-    "feedback":"approved"
-  }
-}
-
-```
-
-```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "12",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "12",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-
 
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "12",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
   "method": "set",
-  "status": "success"
+  "status": "success",
+  "id": "12",
+  "from": "postmaster@ai.msging.net/#az-iris3",
+  "to": "contact@msging.net",
+  "metadata": {
+    "#command.uri": "lime://contact@msging.net/analysis/{analyze_id}/feedback"
+  }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.ArtificialIntelligence;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
+
+        public ArtificialIntelligenceReceiver(IArtificialIntelligenceExtension artificialIntelligenceExtension)
+        {
+            _artificialIntelligenceExtension = artificialIntelligenceExtension;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var analysisFeedback = new AnalysisFeedback{
+                Feedback = AnalysisModelFeedback.Approved
+            };
+
+            await _artificialIntelligenceExtension.SendFeedbackAsync("{analyze_id}", analysisFeedback, cancellationToken);
+        }
+    }
 }
 ```
 
 ### Send a 'rejected' feedback
 
-```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
+To submit a rejection feedback, it is necessary to enter the id of the correct intention for the case.
 
-{
-  "id":"13",
-  "to":"postmaster@ai.msging.net",
-  "method":"set",
-  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
-  "type":"application/vnd.iris.ai.analysis-feedback+json",
-  "resource":{
-    "feedback":"rejected",
-    "intentionId":"other_intention"
-  }
-}
+<aside class="notice">
+Note: Remember to replace the variable <b>{analyze_id}</b> for the analyze id you want to reject and <b>{other_intention_id}</b> for the intention identifier you really want to use.
+</aside>
 
-```
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id":"13",
-  "to":"postmaster@ai.msging.net",
-  "method":"set",
-  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
-  "type":"application/vnd.iris.ai.analysis-feedback+json",
-  "resource":{
-    "feedback":"rejected",
-    "intentionId":"other_intention"
-  }
-}
-
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: '/analysis/{analyze_id}/feedback',
+    type: 'application/vnd.iris.ai.analysis-feedback+json',
+    resource: {
+      feedback: 'rejected',
+      intentionId: '{other_intention_id}}'
+    }
+  });
+});
 ```
-
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -1917,41 +1441,15 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id":"13",
-  "to":"postmaster@ai.msging.net",
-  "method":"set",
-  "uri":"/analysis/7363369c-8c99-4293-883f-aaabac7dd822/feedback",
-  "type":"application/vnd.iris.ai.analysis-feedback+json",
-  "resource":{
-    "feedback":"rejected",
-    "intentionId":"other_intention"
+  "id": "13",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/analysis/{analyze_id}/feedback",
+  "type": "application/vnd.iris.ai.analysis-feedback+json",
+  "resource": {
+    "feedback": "rejected"
+    "intentionId": "{other_intention_id}}"
   }
-}
-
-```
-
-```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "13",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "13",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
 }
 ```
 
@@ -1960,10 +1458,45 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "13",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
   "method": "set",
-  "status": "success"
+  "status": "success",
+  "id": "13",
+  "from": "postmaster@ai.msging.net/#az-iris3",
+  "to": "contact@msging.net",
+  "metadata": {
+    "#command.uri": "lime://contact@msging.net/analysis/{analyze_id}/feedback"
+  }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.ArtificialIntelligence;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
+
+        public ArtificialIntelligenceReceiver(IArtificialIntelligenceExtension artificialIntelligenceExtension)
+        {
+            _artificialIntelligenceExtension = artificialIntelligenceExtension;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var analysisFeedback = new AnalysisFeedback{
+                Feedback = AnalysisModelFeedback.Rejected,
+                IntentionId = "{other_intention_id}"
+            };
+
+            await _artificialIntelligenceExtension.SendFeedbackAsync("{analyze_id}", analysisFeedback, cancellationToken);
+        }
+    }
 }
 ```

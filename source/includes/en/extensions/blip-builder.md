@@ -20,8 +20,18 @@ In order to reset a user state, send a command with the following properties:
 | to     | **postmaster@msging.net** (not required) |
 
 <aside class="notice">
-Note: Remember to replace the variable {{user-identity}} for the user identity you want to reset (for instance: <b>30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest%400mn.io</b>)
+Note: Remember to replace the variable {{user-identity}} for the user identity you want to reset (for instance: <b>30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io</b>)
 </aside>
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.DELETE,
+        uri: '/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400'
+    });
+});
+```
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -31,7 +41,7 @@ Authorization: Key {YOUR_TOKEN}
 {  
   "id": "0094447a-2581-4597-be6a-a5dff33af156",
   "method": "delete",
-  "uri": "/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest%400mn.io/stateid%400"
+  "uri": "/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400"
 }
 ```
 
@@ -42,11 +52,37 @@ Content-Type: application/json
 {
     "method": "delete",
     "status": "success",
-    "id": "a32de42c-fb36-49ef-85aa-02384a3733d6",
-    "from": "postmaster@msging.net/#az-iris2",
+    "id": "0094447a-2581-4597-be6a-a5dff33af156",
+    "from": "postmaster@msging.net/#az-iris1",
     "to": "docstest@msging.net",
     "metadata": {
-        "#command.uri": "lime://docstest@msging.net/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest%400mn.io/stateid%400"
+        "#command.uri": "lime://docstest@msging.net/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400"
+    }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Session;
+
+namespace Extensions
+{
+    public class ResetUserStateReceiver : IMessageReceiver
+    {
+        private readonly IStateManager _stateManager;
+
+        public ResetUserStateReceiver(IStateManager stateManager)
+        {
+            _stateManager = stateManager;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            await _stateManager.ResetStateAsync(message.From, cancellationToken);
+        }
     }
 }
 ```
@@ -73,9 +109,21 @@ To get the flow identifier, click in Builder's settings and go to Flow Identifie
 ![image](flow_id.png)
 
 <aside class="notice">
-Note: Remember to replace the variable {{user-identity}} for the user identity you want to reset (for instance: <b>30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest%400mn.io</b>). You must also define what is the new state you want to send the user, replacing the {{state-id}} variable.
+Note: Remember to replace the variable {{user-identity}} for the user identity you want to reset (for instance: <b>30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io</b>). You must also define what is the new state you want to send the user, replacing the {{state-id}} variable (for instance: <b>state-one</b>).
 </aside>
 
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        id: Lime.Guid(),
+        to: 'postmaster@msging.net',
+        method: Lime.CommandMethod.SET,
+        uri: '/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400',
+        type: 'text/plain',
+        resource: 'state-one'
+    });
+});
+```
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -86,9 +134,9 @@ Authorization: Key {YOUR_TOKEN}
   "id": "1294447a-2581-4597-be6a-a5dff33af156",
   "to": "postmaster@msging.net",
   "method": "set",
-  "uri": "/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest%400mn.io/stateid%400",
+  "uri": "/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400",
   "type": "text/plain",
-  "resource": "state"
+  "resource": "state-one"
 }
 ```
 
@@ -103,7 +151,33 @@ Content-Type: application/json
     "from": "postmaster@msging.net/#az-iris3",
     "to": "docstest@msging.net",
     "metadata": {
-        "#command.uri": "lime://docstest@msging.net/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest%400mn.io/stateid%400"
+        "#command.uri": "lime://docstest@msging.net/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400"
+    }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Session;
+
+namespace Extensions
+{
+    public class ChangeUserStateReceiver : IMessageReceiver
+    {
+        private readonly IStateManager _stateManager;
+
+        public ChangeUserStateReceiver(IStateManager stateManager)
+        {
+            _stateManager = stateManager;
+        }
+        
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            await _stateManager.SetStateAsync(message.From, "state-one", cancellationToken);
+        }
     }
 }
 ```

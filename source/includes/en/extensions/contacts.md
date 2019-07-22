@@ -39,6 +39,27 @@ The contacts fields can be used to replace variables on messages sent by the cha
 
 ### Add (or update) a contact
 
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.SET,
+        uri: '/contacts',
+        type: 'application/vnd.lime.contact+json',
+        resource: {
+            identity: '11121023102013021@messenger.gw.msging.net',
+            name: 'John Doe',
+            gender:'male',
+            group: 'friends',    
+            extras: {
+                plan: 'Gold',
+                code: '1111'      
+            }
+        }
+    });
+});
+```
+
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -67,11 +88,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "1",
-  "from": "postmaster@msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
+    "method": "set",
+    "status": "success",
+    "id": "1",
+    "from": "postmaster@crm.msging.net/#az-iris5",
+    "to": "contact@msging.net",
+    "metadata": {
+        "#command.uri": "lime://contact@msging.net/contacts"
+    }
 }
 ```
 
@@ -80,7 +104,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
 using Take.Blip.Client;
-using Take.Blip.Client.Receivers;
 using Take.Blip.Client.Extensions.Contacts;
 using Lime.Messaging.Resources;
 using System.Collections.Generic;
@@ -89,10 +112,11 @@ namespace Extensions
 {
     public class ContactMessageReceiver : IMessageReceiver
     {
-        private readonly IMessagingHubSender _sender;
+        private readonly ISender _sender;
+        private readonly Settings _settings;
         private readonly IContactExtension _contactExtension;
 
-        public ContactMessageReceiver(IMessagingHubSender sender, IContactExtension contactExtension)
+        public ContactMessageReceiver(ISender sender, Settings settings, IContactExtension contactExtension)
         {
             _sender = sender;
             _settings = settings;
@@ -124,6 +148,17 @@ In order to store informations about a chatbot's client, it is possible to save 
 
 ### Get contact
 
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    var data = await client.sendCommand({  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.GET,
+        uri: '/contacts/11121023102013021@messenger.gw.msging.net'
+    });
+    console.log(data);
+});
+```
+
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -141,22 +176,25 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "2",
-  "from": "postmaster@msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "get",
-  "status": "success",
-  "type": "application/vnd.lime.contact+json",
-  "resource": {
-    "identity": "11121023102013021@messenger.gw.msging.net",
-    "name": "John Doe",
-    "gender":"male",
-    "group":"friends",
-    "extras": {
-      "plan":"Gold",
-      "code":"1111"      
+    "type": "application/vnd.lime.contact+json",
+    "resource": {
+        "name": "John Doe",
+        "group": "friends",
+        "identity": "11121023102013021@messenger.gw.msging.net",
+        "gender": "male",
+        "extras": {
+            "plan": "Gold",
+            "code": "1111"
+        }
+    },
+    "method": "get",
+    "status": "success",
+    "id": "2",
+    "from": "postmaster@crm.msging.net/#az-iris3",
+    "to": "contact@msging.net/default",
+    "metadata": {
+        "#command.uri": "lime://contact@msging.net/contacts/11121023102013021@messenger.gw.msging.net"
     }
-  }  
 }
 ```
 
@@ -165,17 +203,17 @@ using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
 using Take.Blip.Client;
-using Take.Blip.Client.Receivers;
 using Take.Blip.Client.Extensions.Contacts;
 
 namespace Extensions
 {
     public class ContactMessageReceiver : IMessageReceiver
     {
-        private readonly IMessagingHubSender _sender;
+        private readonly ISender _sender;
         private readonly IContactExtension _contactExtension;
+        private readonly Settings _settings;
 
-        public ContactMessageReceiver(IMessagingHubSender sender, IContactExtension contactExtension)
+        public ContactMessageReceiver(ISender sender, Settings settings, IContactExtension contactExtension)
         {
             _sender = sender;
             _settings = settings;
@@ -196,6 +234,19 @@ For the same contact `11121023102013021@messenger.gw.msging.net`, it is possible
 
 ### Get contacts with paging
 
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    var data = await client.sendCommand({  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.GET,
+        uri: '/contacts?$skip=0&$take=3'
+    });
+    data.resource.items.forEach(function (value) {
+        console.log(value);
+    });  
+});
+```
+
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -213,40 +264,61 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "3",
-  "from": "postmaster@msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "get",
-  "status": "success",
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-    "itemType":"application/vnd.lime.contact+json",
-    "total":10,
-    "items": [
-      {"identity": "11121023102013021@messenger.gw.msging.net","name": "John Doe","gender":"male", "group":"friends", "extras":{"plan":"Gold","code":"1111"}},
-      {"identity": "213121@telegram.gw.msging.net","name": "Joseph from Telegram","email":"ze@gmail.com"},
-      {"identity": "5511999990000@take.io","name": "Mary"}
-    ]    
-  }  
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 12,
+        "itemType": "application/vnd.lime.contact+json",
+        "items": [
+            {
+				"identity": "11121023102013021@messenger.gw.msging.net",
+				"name": "John Doe",
+				"gender":"male", 
+				"group":"friends", 
+				"extras":{
+					"plan":"Gold",
+					"code":"1111"
+				}
+			},
+			{
+				"identity": "213121@telegram.gw.msging.net",
+				"name": "Joseph from Telegram",
+				"email":"ze@gmail.com"
+			},
+			{
+				"identity": "5511999990000@take.io",
+				"name": "Mary"
+			}
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "3",
+    "from": "postmaster@crm.msging.net/#az-iris5",
+    "to": "contact@msging.net",
+    "metadata": {
+        "#command.uri": "lime://contact@msging.net/contacts?$skip=0&$take=3"
+    }
 }
 ```
 
 ```csharp
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
 using Take.Blip.Client;
-using Take.Blip.Client.Receivers;
 using Take.Blip.Client.Extensions.Contacts;
+using teste_documentacao;
 
 namespace Extensions
 {
     public class ContactMessageReceiver : IMessageReceiver
     {
-        private readonly IMessagingHubSender _sender;
+        private readonly ISender _sender;
+        private readonly Settings _settings;
         private readonly IContactExtension _contactExtension;
 
-        public ContactMessageReceiver(IMessagingHubSender sender, IContactExtension contactExtension)
+        public ContactMessageReceiver(ISender sender, Settings settings, IContactExtension contactExtension)
         {
             _sender = sender;
             _settings = settings;
@@ -255,9 +327,17 @@ namespace Extensions
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
-            var identity = new Identity("11121023102013021", "messenger.gw.msging.net");
+            var take = 3;
+            var skip = 0;
 
-            var contact = await _contactExtension.GetAsync(identity, cancellationToken);
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Get,
+                Uri = new LimeUri($"/contacts?skip={skip}&$take={take}")
+            };
+
+            var commandResponse = await _sender.ProcessCommandAsync(command, cancellationToken);
+            var contacts = commandResponse.Resource as DocumentCollection;
         }
     }
 }
@@ -267,32 +347,32 @@ If you need to get more than one chatbot's contact, you can use a query paginati
 
 ### Send message with contact name
 
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        id: Lime.Guid(),
+        to: '11121023102013021@messenger.gw.msging.net',
+        type: 'text/plain',
+        content: 'Hello ${contact.name}, welcome to the ${contact.extras.plan} plan!',
+        metadata: {
+            '#message.replaceVariables': 'true'
+        }
+    });
+});
+```
+
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "1",
+  "id": "4",
   "to": "11121023102013021@messenger.gw.msging.net",
   "type": "text/plain",
-  "value": "Hello ${contact.name}, welcome to the ${contact.extras.plan} plan!",
-  "metadata": {
-    "#message.replaceVariables": "true"
-  }
-}
-```
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{  
-  "id": "1",
-  "to": "11121023102013021@messenger.gw.msging.net",
-  "type": "text/plain",
-  "value": "Hello John Doe, welcome to the Gold plan!",
-  "metadata": {
+  "content": "Hello ${contact.name}, welcome to the ${contact.extras.plan} plan!",
+  "metadata": 
+  {
     "#message.replaceVariables": "true"
   }
 }
@@ -305,16 +385,16 @@ using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
 using Take.Blip.Client;
-using Take.Blip.Client.Receivers;
 using Lime.Messaging.Contents;
 
 namespace Extensions
 {
     public class PlainTextMessageReceiver : IMessageReceiver
     {
-        private readonly IMessagingHubSender _sender;
+        private readonly ISender _sender;
+        private readonly Settings _settings;
 
-        public PlainTextMessageReceiver(IMessagingHubSender sender)
+        public PlainTextMessageReceiver(ISender sender, Settings settings)
         {
             _sender = sender;
             _settings = settings;
