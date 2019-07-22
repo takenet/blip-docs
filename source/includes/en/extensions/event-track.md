@@ -472,8 +472,6 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
-
-
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json

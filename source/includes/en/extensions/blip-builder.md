@@ -59,14 +59,18 @@ In order to change a user state, send a command with the following properties:
 |---------------------------------|--------------|
 | id    | Unique identifier of the command.   |
 | method    | **set**  |
-| uri    | **/contexts/{{user-identity}}/stateid%400**   |
+| uri    | **/contexts/{{user-identity}}/stateid%40{{flow-identifier}}**   |
 | to     | **postmaster@msging.net** (not required) |
 | type   | **text/plain** |
 | resource | **{{state-id}}** |
 
-You need access the portal, go to Builder and click on the block contextual menu to get its ID (as picture below).
+Access the portal, go to Builder and click on the block contextual menu to get its ID (as picture below).
 
 ![image](state_id.png)
+
+To get the flow identifier, click in Builder's settings and go to Flow Identifier section (as picture below).
+
+![image](flow_id.png)
 
 <aside class="notice">
 Note: Remember to replace the variable {{user-identity}} for the user identity you want to reset (for instance: <b>30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest%400mn.io</b>). You must also define what is the new state you want to send the user, replacing the {{state-id}} variable.
