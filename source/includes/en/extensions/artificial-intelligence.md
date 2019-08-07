@@ -772,6 +772,134 @@ Content-Type: application/json
 }
 ```
 
+### Get questions from intent
+
+```javascript
+
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/intentions/pesquisa_veiculo/questions"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 33,
+        "itemType": "application/vnd.iris.ai.question+json",
+        "items": [
+            {
+                "id": "32",
+                "text": "O carro saiu de linha?"
+            },
+            {
+                "id": "33",
+                "text": "Qual o valor do fiat"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",l
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/pesquisa_veiculo/questions"
+    }
+}
+```
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/intentions/pesquisa_veiculo/questions"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 33,
+        "itemType": "application/vnd.iris.ai.question+json",
+        "items": [
+            {
+                "id": "32",
+                "text": "O carro saiu de linha?"
+            },
+            {
+                "id": "33",
+                "text": "Qual o valor do fiat"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",l
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/pesquisa_veiculo/questions"
+    }
+}
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/intentions/pesquisa_veiculo/questions"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 33,
+        "itemType": "application/vnd.iris.ai.question+json",
+        "items": [
+            {
+                "id": "32",
+                "text": "O carro saiu de linha?"
+            },
+            {
+                "id": "33",
+                "text": "Qual o valor do fiat"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",l
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/pesquisa_veiculo/questions"
+    }
+}
+```
+
 ### Associate answers to an intention
 
 ```csharp
