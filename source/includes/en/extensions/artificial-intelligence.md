@@ -827,32 +827,47 @@ namespace Extension
 ### Get intent's answers
 
 ```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.ArtificialIntelligence;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
 
+namespace Extensions
 {
-    "id": "10",
-    "method": "get",
-    "to": "postmaster@ai.msging.net",
-    "uri": "/intentions/{intentId}/answers?skip=0&take=100&ascending=false"
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
+
+        public ArtificialIntelligenceReceiver(IArtificialIntelligenceExtension artificialIntelligenceExtension)
+        {
+            _artificialIntelligenceExtension = artificialIntelligenceExtension;
+        }
+
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {            
+            var intentId = "order_pizza";
+            var skip = 0; //optional
+            var take = 100; //optional
+            var ascending = true; //optional
+
+            await _artificialIntelligenceExtension.GetAnswersAsync(intentId, cancellationToken);
+        }
+    }
 }
 
 ```
 
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-    "id": "10",
-    "method": "get",
-    "to": "postmaster@ai.msging.net",
-    "uri": "/intentions/{intentId}/answers?skip=0&take=100&ascending=false"
-}
-
-
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.GET,
+    uri: '/intentions/{intentId}/answers?skip=0&take=100&ascending=false'
+  });
+});
 ```
 
 
@@ -868,64 +883,6 @@ Authorization: Key {YOUR_TOKEN}
     "uri": "/intentions/{intentId}/answers?skip=0&take=100&ascending=false"
 }
 
-
-```
-
-```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "type": "application/vnd.lime.collection+json",
-    "resource": {
-        "total": 1,
-        "itemType": "application/vnd.iris.ai.answer+json",
-        "items": [
-            {
-                "id": "1",
-                "type": "text/plain",
-                "value": "Agendaremos pra você"
-            }
-        ]
-    },
-    "method": "get",
-    "status": "success",
-    "id": "9f4d7980-c61a-4e2e-9fa2-233b5ecb2af1",
-    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris2",
-    "to": "test@msging.net",
-    "metadata": {
-        "#command.uri": "lime://test@msging.net/intentions/agendar/answers?skip=0&take=100&ascending=false"
-    }
-}
-```
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "type": "application/vnd.lime.collection+json",
-    "resource": {
-        "total": 1,
-        "itemType": "application/vnd.iris.ai.answer+json",
-        "items": [
-            {
-                "id": "1",
-                "type": "text/plain",
-                "value": "Agendaremos pra você"
-            }
-        ]
-    },
-    "method": "get",
-    "status": "success",
-    "id": "10",
-    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris2",
-    "to": "test@msging.net",
-    "metadata": {
-        "#command.uri": "lime://test@msging.net/intentions/agendar/answers?skip=0&take=100&ascending=false"
-    }
-}
-```
-```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -956,54 +913,43 @@ Content-Type: application/json
 ### Delete answer from intent
 
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "10",
-  "to": "postmaster@ai.msging.net",
-  "method": "delete",
-  "uri": "/intentions/{intentId}/answers/{answerId}"
-}
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "method": "delete",
-    "status": "success",
-    "id": "10",
-    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
-    "to": "test@msging.net",
-    "metadata": {
-        "#command.uri": "lime://test@msging.net/intentions/pesquisa_veiculo/answers/1"
-    }
-}
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.DELETE,
+    uri: '/intentions/{intentId}/answers/{answerId}'
+  });
+});
 ```
+
 ```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
 
+namespace Extension
 {
-  "id": "10",
-  "to": "postmaster@ai.msging.net",
-  "method": "delete",
-  "uri": "/intentions/{intentId}/answers/{answerId}"
-}
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
 
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "method": "delete",
-    "status": "success",
-    "id": "10",
-    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
-    "to": "test@msging.net",
-    "metadata": {
-        "#command.uri": "lime://test@msging.net/intentions/pesquisa_veiculo/answers/1"
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Delete,
+                Uri = new LimeUri("/intentions/{intentId}/answers/{answerId}")
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
     }
 }
 ```
@@ -1019,8 +965,6 @@ Authorization: Key {YOUR_TOKEN}
   "method": "delete",
   "uri": "/intentions/{intentId}/answers/{answerId}"
 }
-```
-```http
 
 HTTP/1.1 200 OK
 Content-Type: application/json
