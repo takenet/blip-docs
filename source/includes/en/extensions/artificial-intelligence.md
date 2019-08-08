@@ -2089,6 +2089,105 @@ namespace Extension
 }
 ```
 
+###Send enhancement analysis models by email
+
+The filter can be sent empty.
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+   "id":"10",
+   "method":"set",
+   "resource":{  
+      "email":"test%40take.net",
+      "filter":"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
+   },
+   "to":"postmaster@ai.msging.net",
+   "type":"application/json",
+   "uri":"/enhancement/send-by-email"
+}
+```
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+   "id":"10",
+   "method":"set",
+   "resource":{  
+      "email":"test%40take.net",
+      "filter":"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
+   },
+   "to":"postmaster@ai.msging.net",
+   "type":"application/json",
+   "uri":"/enhancement/send-by-email"
+}
+```
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+   "id":"10",
+   "method":"set",
+   "resource":{  
+      "email":"test%40take.net",
+      "filter":"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
+   },
+   "to":"postmaster@ai.msging.net",
+   "type":"application/json",
+   "uri":"/enhancement/send-by-email"
+}
+```
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+{  
+   "id":"10",
+   "method":"set",
+   "resource":{  
+      "email":"test%40take.net",
+      "filter":"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
+   },
+   "to":"postmaster@ai.msging.net",
+   "type":"application/json",
+   "uri":"/enhancement/send-by-email"
+}
+```
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+{  
+   "id":"10",
+   "method":"set",
+   "resource":{  
+      "email":"test%40take.net",
+      "filter":"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
+   },
+   "to":"postmaster@ai.msging.net",
+   "type":"application/json",
+   "uri":"/enhancement/send-by-email"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  {
+    "method": "set",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/enhancement/send-by-email"
+    }
+}
+```
+
 ### Create a confusion matrix
 
 ```javascript
