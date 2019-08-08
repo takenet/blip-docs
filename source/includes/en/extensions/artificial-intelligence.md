@@ -1922,86 +1922,74 @@ namespace Extension
 
 The filter can be sent empty.
 
-```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-{  
-   "id":"10",
-   "method":"set",
-   "resource":{  
-      "email":"test%40take.net",
-      "filter":"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
-   },
-   "to":"postmaster@ai.msging.net",
-   "type":"application/json",
-   "uri":"/enhancement/send-by-email"
-}
-```
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-{  
-   "id":"10",
-   "method":"set",
-   "resource":{  
-      "email":"test%40take.net",
-      "filter":"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
-   },
-   "to":"postmaster@ai.msging.net",
-   "type":"application/json",
-   "uri":"/enhancement/send-by-email"
-}
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: "/enhancement/send-by-email",
+    type:"application/json",
+    resource:{  
+      email:"test%40take.net",
+      filter:"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
+    }
+  });
+});
 ```
-```http
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-{  
-   "id":"10",
-   "method":"set",
-   "resource":{  
-      "email":"test%40take.net",
-      "filter":"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
-   },
-   "to":"postmaster@ai.msging.net",
-   "type":"application/json",
-   "uri":"/enhancement/send-by-email"
-}
-```
+
 ```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-{  
-   "id":"10",
-   "method":"set",
-   "resource":{  
-      "email":"test%40take.net",
-      "filter":"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
-   },
-   "to":"postmaster@ai.msging.net",
-   "type":"application/json",
-   "uri":"/enhancement/send-by-email"
-}
-```
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-{  
-   "id":"10",
-   "method":"set",
-   "resource":{  
-      "email":"test%40take.net",
-      "filter":"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
-   },
-   "to":"postmaster@ai.msging.net",
-   "type":"application/json",
-   "uri":"/enhancement/send-by-email"
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+          _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+          var command = new Command{
+            Id = EnvelopeId.NewId(),
+            Method = CommandMethod.Set,
+            Uri = new LimeUri("/enhancement/send-by-email"),
+            Resource = new {  
+              email = "test%40take.net",
+              filter = "requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
+            },
+            Type :"application/json"
+          };
+           
+          await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
+    }
 }
 ```
 
 ```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+   "id":"10",
+   "method":"set",
+   "resource":{  
+      "email":"test%40take.net",
+      "filter":"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
+   },
+   "to":"postmaster@ai.msging.net",
+   "type":"application/json",
+   "uri":"/enhancement/send-by-email"
+}
+
 HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -2363,7 +2351,6 @@ client.addMessageReceiver('text/plain', async (message) => {
     uri: '/analytics/confusion-matrix/{confusionMatrixId}'    
   });
 });
-
 ```
 
 ```http
