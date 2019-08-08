@@ -644,85 +644,44 @@ namespace Extension
 ### Get questions from intent
 
 ```javascript
-
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "10",
-  "to": "postmaster@ai.msging.net",
-  "method": "get",
-  "uri": "/intentions/pesquisa_veiculo/questions"
-}
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "type": "application/vnd.lime.collection+json",
-    "resource": {
-        "total": 33,
-        "itemType": "application/vnd.iris.ai.question+json",
-        "items": [
-            {
-                "id": "32",
-                "text": "O carro saiu de linha?"
-            },
-            {
-                "id": "33",
-                "text": "Qual o valor do fiat"
-            }
-        ]
-    },
-    "method": "get",
-    "status": "success",
-    "id": "10",
-    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",l
-    "to": "test@msging.net",
-    "metadata": {
-        "#command.uri": "lime://test@msging.net/intentions/pesquisa_veiculo/questions"
-    }
-}
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.GET,
+    uri: '/intentions/order_pizza/questions'
+  });
+});
 ```
+
 ```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.ArtificialIntelligence;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
 
+namespace Extensions
 {
-  "id": "10",
-  "to": "postmaster@ai.msging.net",
-  "method": "get",
-  "uri": "/intentions/pesquisa_veiculo/questions"
-}
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
 
-HTTP/1.1 200 OK
-Content-Type: application/json
+        public ArtificialIntelligenceReceiver(IArtificialIntelligenceExtension artificialIntelligenceExtension)
+        {
+            _artificialIntelligenceExtension = artificialIntelligenceExtension;
+        }
 
-{
-    "type": "application/vnd.lime.collection+json",
-    "resource": {
-        "total": 33,
-        "itemType": "application/vnd.iris.ai.question+json",
-        "items": [
-            {
-                "id": "32",
-                "text": "O carro saiu de linha?"
-            },
-            {
-                "id": "33",
-                "text": "Qual o valor do fiat"
-            }
-        ]
-    },
-    "method": "get",
-    "status": "success",
-    "id": "10",
-    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",l
-    "to": "test@msging.net",
-    "metadata": {
-        "#command.uri": "lime://test@msging.net/intentions/pesquisa_veiculo/questions"
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {            
+            var intentId = "order_pizza";
+            var skip = 0; //optional
+            var take = 100; //optional
+            var ascending = true; //optional
+
+            await _artificialIntelligenceExtension.GetQuestionsAsync(intentId, cancellationToken);
+        }
     }
 }
 ```
