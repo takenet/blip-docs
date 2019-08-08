@@ -2323,58 +2323,48 @@ Content-Type: application/json
 
 ### Delete a confusion matrix
 
-```javascript
-
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-	"id": "10",
-	"method": "delete",
-	"to": "postmaster@ai.msging.net",
-	"uri": "/analytics/confusion-matrix/{confusionMatrixId}",
-	"from": "postmaster@ai.msging.net/#hmg-az-lx-iris1"
-}
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-	"id": "10",
-	"method": "delete",
-	"status": "success",
-	"to": "test.net/portal-test%40take.net"
-}
-
-```
-
 ```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
 
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
+namespace Extension
 {
-	"id": "10",
-	"method": "delete",
-	"to": "postmaster@ai.msging.net",
-	"uri": "/analytics/confusion-matrix/{confusionMatrixId}",
-	"from": "postmaster@ai.msging.net/#hmg-az-lx-iris1"
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Delete,
+                Uri = new LimeUri("/analytics/confusion-matrix/{confusionMatrixId}")
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
+    }
 }
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-	"id": "10",
-	"method": "delete",
-	"status": "success",
-	"to": "test.net/portal-test%40take.net"
-}
-
 ```
 
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.DELETE,
+    uri: '/analytics/confusion-matrix/{confusionMatrixId}'    
+  });
+});
+
+```
 
 ```http
 
