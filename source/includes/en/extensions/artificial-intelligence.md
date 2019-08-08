@@ -4,9 +4,9 @@
 |---------------------------------|
 | postmaster@ai.msging.net        |
 
-The  **Artificial Intelligence** extension allows the creation, training and publication of artificial intelligence models in the providers associated with the chatbot, besides performing sentence analysis to identify intentions and entities. The configuration of the chatbot providers is done through the **Artificial Intelligence**  menu in the [BLiP portal] (https://portal.blip.ai).
+The  **Artificial Intelligence** extension allows the creation, training and publication of artificial intelligence models in the providers associated with the chatbot, besides performing sentence analysis to identify intents and entities. The configuration of the chatbot providers is done through the **Artificial Intelligence**  menu in the [BLiP portal] (https://portal.blip.ai).
 
-You can associate **response documents** with the model that should be submitted when an intent is matched in a sentence. In addition, the extension can be used to improve the model by associating questions with intentions.
+You can associate **response documents** with the model that should be submitted when an intent is matched in a sentence. In addition, the extension can be used to improve the model by associating questions with intents.
 
 The training of the model is performed simultaneously on all of the AI ​​providers associated with chatbot. In that case, a snapshot of the model is stored and can be retrieved later to compare its effectiveness with other versions. To use a trained template, you must publish it.
 
@@ -16,36 +16,36 @@ All manipulation of the model can be done through the portal of the BLiP, and th
 
 | URI                               | Method   | Description                                |
 |-----------------------------------|----------|--------------------------------------------|
-| `/intentions`                     | `set`    | Creates a new intention. The `id` of the intention is returned in the command response. |
-| `/intentions`                     | `get`    | Search in all intentions that are associated to the chatbot. It is possible to paginate the request using `$skip` and `$take` arguments. |
-| `/intentions/{id}`                | `get`    | Retrieves an intention by its `id`.           |
+| `/intentions`                     | `set`    | Creates a new intent. The `id` of the intent is returned in the command response. |
+| `/intentions`                     | `get`    | Search in all intents that are associated to the chatbot. It is possible to paginate the request using `$skip` and `$take` arguments. |
+| `/intentions/{id}`                | `get`    | Retrieves an intent by its `id`.           |
 | `/entities`                       | `set`    | Creates a new entity. The `id` of the entity is returned in the command response. |
-| `/entities`                       | `get`    | Search in all intentions that are associated to the chatbot. It is possible to paginate the request using `$skip` and `$take` arguments. |
+| `/entities`                       | `get`    | Search in all intents that are associated to the chatbot. It is possible to paginate the request using `$skip` and `$take` arguments. |
 | `/entities/{id}`                  | `get`    | Retrieves an entity by its `id`.           |
-| `/intentions/{id}/questions`      | `set`    | Create questions associated to the intention `id`. |
-| `/intentions/{id}/questions`      | `get`    | Search in all questions that are associated to the intention `id`. It is possible to paginate the request using `$skip` and `$take` arguments. |
+| `/intentions/{id}/questions`      | `set`    | Create questions associated to the intent `id`. |
+| `/intentions/{id}/questions`      | `get`    | Search in all questions that are associated to the intent `id`. It is possible to paginate the request using `$skip` and `$take` arguments. |
 | `/intentions/{id}/questions/{qid}`| `delete` | Removes the question with id `qid`.          |
-| `/intentions/{id}/answers`        | `set`    | Create answers associated to the intention `id`. |
-| `/intentions/{id}/answers`        | `get`    | Search in all answers that are associated to the intention `id`. It is possible to paginate the request using `$skip` and `$take` arguments. |
+| `/intentions/{id}/answers`        | `set`    | Create answers associated to the intent `id`. |
+| `/intentions/{id}/answers`        | `get`    | Search in all answers that are associated to the intent `id`. It is possible to paginate the request using `$skip` and `$take` arguments. |
 | `/intentions/{id}/answers/{aid}`  | `delete` | Removes the answer with id `aid`.          |
 | `/models`                         | `set`    | Executes the training or publishing of the model. The action depends of the type of the resource (see the table below). |
 | `/models`                         | `get`    | Search in all trained and/or published models. |
 | `/analysis`                       | `set`    | Analyzes an user sentence using a published model. |
 | `/analysis`                       | `get`    | Retrieves the history of performed analysis. It is possible to paginate the request using using `$skip` and `$take` arguments and filter with `$filter`, using the [OData syntax](http://www.odata.org/documentation/odata-version-2-0/uri-conventions/#FilterSystemQueryOption). |
-| `/analysis/{id}/feedback`         | `set`    | Provides feedback to a performed analysis and suggest an intention to improve the model. |
+| `/analysis/{id}/feedback`         | `set`    | Provides feedback to a performed analysis and suggest an intent to improve the model. |
 
 The resource types are:
 
 | Name              | MIME Type                                       | Description                                      |
 |-------------------|-------------------------------------------------|--------------------------------------------------|
-| Intention         | `application/vnd.iris.ai.intention+json`        | Intention expressed through a sentence.                |
-| Entity            | `application/vnd.iris.ai.entity+json`           | Entity identified in an intention, with its synonyms.  |
-| Question          | `application/vnd.iris.ai.question+json`         | A user's question that is associated with an intention for model training. |
-| Answer            | `application/vnd.iris.ai.answer+json`           | Response that can be sent in case a user's intention is identified. |
+| Intent         | `application/vnd.iris.ai.intention+json`        | Intent expressed through a sentence.                |
+| Entity            | `application/vnd.iris.ai.entity+json`           | Entity identified in an intent, with its synonyms.  |
+| Question          | `application/vnd.iris.ai.question+json`         | A user's question that is associated with an intent for model training. |
+| Answer            | `application/vnd.iris.ai.answer+json`           | Response that can be sent in case a user's intent is identified. |
 | Training          | `application/vnd.iris.ai.model-training+json`   | Model training request. |
 | Publishing        | `application/vnd.iris.ai.model-publishing+json` | Model publishing request, to make it available for use. |
 | Analisys request  | `application/vnd.iris.ai.analysis-request+json` | Sentence analysis request. |
-| Analisys response | `application/vnd.iris.ai.analysis-response+json`| Sentence analysis response with the identified intentions and entities. |
+| Analisys response | `application/vnd.iris.ai.analysis-response+json`| Sentence analysis response with the identified intents and entities. |
 | Analisys          | `application/vnd.iris.ai.analysis+json`         | History information about a performed analysis.  |
 | Analisys feedback | `application/vnd.iris.ai.analysis-feedback+json`| Feedback information about a performed analysis. |
 
@@ -195,7 +195,7 @@ namespace Extensions
 }
 ```
 
-### Create an intention
+### Create an intent
 
 Defining how the chatbot should interpret and respond to the user.
 
@@ -280,12 +280,12 @@ namespace Extension
 }
 ```
 
-### Delete an intention
+### Delete an intent
 
-Deleting an intention, where `{intention_id}` is the intention identifier of an already created intention.
+Deleting an intenti, where `{intent_id}` is the intent identifier of an already created intent.
 
 <aside class="notice">
-Note: Remember to replace the variable <b>{intention_id}</b> for the intention identifier you want to delete.
+Note: Remember to replace the variable <b>{intent_id}</b> for the intent identifier you want to delete.
 </aside>
 
 ```javascript
@@ -294,7 +294,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     id: Lime.Guid(),
     to: 'postmaster@ai.msging.net',
     method: Lime.CommandMethod.DELETE,
-    uri: '/intentions/{intention_id}',
+    uri: '/intentions/{intent_id}',
   });
 });
 ```
@@ -308,7 +308,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "10",
   "to": "postmaster@ai.msging.net",
   "method": "delete",
-  "uri": "/intentions/{intention_id}",
+  "uri": "/intentions/{intent_id}",
 }
 ```
 
@@ -323,7 +323,7 @@ Content-Type: application/json
   "from": "postmaster@ai.msging.net/#az-iris4",
   "to": "contact@msging.net",
   "metadata": {
-    "#command.uri": "lime://contact@msging.net/intentions/{intention_id}"
+    "#command.uri": "lime://contact@msging.net/intentions/{intent_id}"
   }
 }
 ```
@@ -350,7 +350,7 @@ namespace Extension
             var command = new Command{
                 Id = EnvelopeId.NewId(),
                 Method = CommandMethod.Delete,
-                Uri = new LimeUri("/intentions/{intention_id}")
+                Uri = new LimeUri("/intentions/{intent_id}")
             };
            
            await _sender.SendCommandAsync(command, cancellationToken);     
@@ -454,26 +454,26 @@ Content-Type: application/json
 }
 ```
 
-### Query the first 10 intentions
+### Query the first 10 intents
 
-Querying the first 10 intentions.
+Querying the first 10 intents.
 
 | Property     | Description                                                        | Example |
 |--------------|--------------------------------------------------------------------|---------|
-| **skip** | The number of intentions to be skipped.                                |    0    |
-| **take** | The number of intentions to be returned.                               |   100   |
+| **skip** | The number of intents to be skipped.                                |    0    |
+| **take** | The number of intents to be returned.                               |   100   |
 | **ascending** | Sets ascending alphabetical order.                                |    -    |
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-  var intentions = await client.sendCommand({
+  var intents = await client.sendCommand({
     id: Lime.Guid(),
     to: 'postmaster@ai.msging.net',
     method: Lime.CommandMethod.GET,
     uri: '/intentions?$skip=0&$take=10',
   });
   
-  intentions.resource.items.forEach(function (item) {
+  intents.resource.items.forEach(function (item) {
     console.log(item);
   });
 });
@@ -553,7 +553,7 @@ namespace Extension
 }
 ```
 
-### Associate questions to an intention
+### Associate questions to an intent
 
 Associating examples of questions from the user. A variety of examples may be added to train the artificial intelligence model.
 
@@ -649,7 +649,7 @@ namespace Extension
         
         public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
         {
-            var intentionId = "order_pizza";
+            var intentId = "order_pizza";
 
             var questions = new List<Question>(){
                 new Question{ Text = "I want a pizza" },
@@ -657,7 +657,7 @@ namespace Extension
                 new Question{ Text = "Give me a pizza" }
             };
 
-            await _artificialIntelligenceExtension.SetQuestionsAsync(intentionId, questions, cancellationToken);
+            await _artificialIntelligenceExtension.SetQuestionsAsync(intentId, questions, cancellationToken);
         }
     }
 }
@@ -791,7 +791,7 @@ Content-Type: application/json
 }
 ```
 
-### Associate answers to an intention
+### Associate answers to an intent
 
 Associating possible answers to send to the user. 
 
@@ -877,11 +877,11 @@ namespace Extension
         
         public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
         {
-            var intentionId = "order_pizza";
+            var intentId = "order_pizza";
 
             var answers = new List<Answer>(){ new Answer{ Value = "Which flavor do you want?" } };
 
-            await _artificialIntelligenceExtension.SetAnswersAsync(intentionId, answers, cancellationToken);
+            await _artificialIntelligenceExtension.SetAnswersAsync(intentId, answers, cancellationToken);
         }
     }
 }
@@ -898,7 +898,7 @@ Authorization: Key {YOUR_TOKEN}
     "id": "10",
     "method": "get",
     "to": "postmaster@ai.msging.net",
-    "uri": "/intentions/{intentionId}/answers?skip=0&take=100&ascending=false"
+    "uri": "/intentions/{intentId}/answers?skip=0&take=100&ascending=false"
 }
 
 ```
@@ -912,7 +912,7 @@ Authorization: Key {YOUR_TOKEN}
     "id": "10",
     "method": "get",
     "to": "postmaster@ai.msging.net",
-    "uri": "/intentions/{intentionId}/answers?skip=0&take=100&ascending=false"
+    "uri": "/intentions/{intentId}/answers?skip=0&take=100&ascending=false"
 }
 
 
@@ -928,7 +928,7 @@ Authorization: Key {YOUR_TOKEN}
     "id": "10",
     "method": "get",
     "to": "postmaster@ai.msging.net",
-    "uri": "/intentions/{intentionId}/answers?skip=0&take=100&ascending=false"
+    "uri": "/intentions/{intentId}/answers?skip=0&take=100&ascending=false"
 }
 
 
@@ -1027,7 +1027,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "10",
   "to": "postmaster@ai.msging.net",
   "method": "delete",
-  "uri": "/intentions/{intentionId}/answers/{answerId}"
+  "uri": "/intentions/{intentId}/answers/{answerId}"
 }
 
 HTTP/1.1 200 OK
@@ -1053,7 +1053,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "10",
   "to": "postmaster@ai.msging.net",
   "method": "delete",
-  "uri": "/intentions/{intentionId}/answers/{answerId}"
+  "uri": "/intentions/{intentId}/answers/{answerId}"
 }
 
 HTTP/1.1 200 OK
@@ -1080,7 +1080,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "10",
   "to": "postmaster@ai.msging.net",
   "method": "delete",
-  "uri": "/intentions/{intentionId}/answers/{answerId}"
+  "uri": "/intentions/{intentId}/answers/{answerId}"
 }
 ```
 ```http
@@ -1102,7 +1102,7 @@ Content-Type: application/json
 
 ### Train model
 
-Before you train an artificial intelligence model, you need to configure the artificial intelligence provider that will be associeated with chatbot and add user intentions to the model.
+Before you train an artificial intelligence model, you need to configure the artificial intelligence provider that will be associeated with chatbot and add user intents to the model.
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
@@ -1553,8 +1553,8 @@ client.addMessageReceiver('text/plain', async (message) => {
     }
   });
 
-  result.resource.intentions.forEach(function (intention) {
-    console.log(intention);
+  result.resource.intentions.forEach(function (intent) {
+    console.log(intent);
   });
   
   result.resource.entities.forEach(function (entity) {
@@ -2001,10 +2001,10 @@ namespace Extension
 
 ### Send a 'rejected' feedback
 
-To submit a rejection feedback, it is necessary to enter the id of the correct intention for the case.
+To submit a rejection feedback, it is necessary to enter the id of the correct intent for the case.
 
 <aside class="notice">
-Note: Remember to replace the variable <b>{analyze_id}</b> for the analyze id you want to reject and <b>{other_intention_id}</b> for the intention identifier you really want to use.
+Note: Remember to replace the variable <b>{analyze_id}</b> for the analyze id you want to reject and <b>{other_intent_id}</b> for the intent identifier you really want to use.
 </aside>
 
 ```javascript
@@ -2017,7 +2017,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     type: 'application/vnd.iris.ai.analysis-feedback+json',
     resource: {
       feedback: 'rejected',
-      intentionId: '{other_intention_id}}'
+      intentionId: '{other_intent_id}}'
     }
   });
 });
@@ -2036,7 +2036,7 @@ Authorization: Key {YOUR_TOKEN}
   "type": "application/vnd.iris.ai.analysis-feedback+json",
   "resource": {
     "feedback": "rejected"
-    "intentionId": "{other_intention_id}}"
+    "intentionId": "{other_intent_id}}"
   }
 }
 ```
@@ -2080,7 +2080,7 @@ namespace Extension
         {
             var analysisFeedback = new AnalysisFeedback{
                 Feedback = AnalysisModelFeedback.Rejected,
-                IntentionId = "{other_intention_id}"
+                IntentionId = "{other_intent_id}"
             };
 
             await _artificialIntelligenceExtension.SendFeedbackAsync("{analyze_id}", analysisFeedback, cancellationToken);
