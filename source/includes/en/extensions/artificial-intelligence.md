@@ -1267,6 +1267,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
 using Take.Blip.Client;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
 
 namespace Extension
 {
@@ -1284,10 +1285,10 @@ namespace Extension
             var command = new Command{
                 Id = EnvelopeId.NewId(),
                 Method = CommandMethod.Set,
-                Uri = new LimeUri("/intentions"),
-                Type: 'application/vnd.iris.ai.analysis-request+json',
-                Resource: {
-                  text: 'I want a pepperoni pizza'
+                Uri = new LimeUri("/analysis"),
+                Type = 'application/vnd.iris.ai.analysis-request+json',
+                Resource = new AnalysisRequest {
+                  Text = 'I want a pepperoni pizza'
                 }
             };
            
@@ -2019,97 +2020,54 @@ Content-Type: application/json
 ### Create a confusion matrix
 
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-    "id": "10",
-    "to": "postmaster@ai.msging.net",
-    "method": "set",
-    "uri": "/analytics/confusion-matrix",
-    "type": "application/vnd.iris.ai.confusion-matrix+json",
-    "resource": {
-        "version": "teste",
-        "sampleSize": 2
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: "/analytics/confusion-matrix",
+    type: "application/vnd.iris.ai.confusion-matrix+json",
+    resource: {
+        version: "test",
+        sampleSize: 2
     }
-}
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "type": "application/vnd.iris.ai.confusion-matrix+json",
-    "resource": {
-        "OwnerIdentity": "botbot1@msging.net",
-        "id": "d0b71e41-897c-48c4-a565-29d227013111",
-        "modelId": "botbot1_543659e7-902a-4326-8a2e-016adbc4b100",
-        "version": "teste",
-        "score": 0,
-        "sampleSize": 2,
-        "createdDate": "2019-05-30T17:22:02.139Z",
-        "accuracy": 0,
-        "avgScore": 0,
-        "precision": 0,
-        "recall": 0,
-        "f1Score": 0,
-        "numberOfSamples": 0
-    },
-    "method": "set",
-    "status": "success",
-    "id": "10",
-    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris2",
-    "to": "botbot1@msging.net",
-    "metadata": {
-        "#command.uri": "lime://botbot1@msging.net/analytics/confusion-matrix"
-    }
-}
+  });
+});
 ```
 
 ```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
 
+namespace Extension
 {
-    "id": "10",
-    "to": "postmaster@ai.msging.net",
-    "method": "set",
-    "uri": "/analytics/confusion-matrix",
-    "type": "application/vnd.iris.ai.confusion-matrix+json",
-    "resource": {
-        "version": "teste",
-        "sampleSize": 2
-    }
-}
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
 
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "type": "application/vnd.iris.ai.confusion-matrix+json",
-    "resource": {
-        "OwnerIdentity": "botbot1@msging.net",
-        "id": "d0b71e41-897c-48c4-a565-29d227013111",
-        "modelId": "botbot1_543659e7-902a-4326-8a2e-016adbc4b100",
-        "version": "teste",
-        "score": 0,
-        "sampleSize": 2,
-        "createdDate": "2019-05-30T17:22:02.139Z",
-        "accuracy": 0,
-        "avgScore": 0,
-        "precision": 0,
-        "recall": 0,
-        "f1Score": 0,
-        "numberOfSamples": 0
-    },
-    "method": "set",
-    "status": "success",
-    "id": "10",
-    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris2",
-    "to": "botbot1@msging.net",
-    "metadata": {
-        "#command.uri": "lime://botbot1@msging.net/analytics/confusion-matrix"
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Set,
+                Uri = new LimeUri("/analytics/confusion-matrix")
+                Type= "application/vnd.iris.ai.confusion-matrix+json",
+                Resource = new ConfusionMatrix{
+                  Version = "teste",
+                  SampleSize = 2
+                }
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
     }
 }
 ```
@@ -2130,9 +2088,7 @@ Authorization: Key {YOUR_TOKEN}
         "sampleSize": 2
     }
 }
-```
 
-```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
