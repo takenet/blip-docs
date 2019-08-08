@@ -1263,39 +1263,53 @@ namespace Extension
 ### Analyze a sentence in the last published model
 
 ```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
 
+namespace Extension
 {
-  "id": "9",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/analysis",
-  "type": "application/vnd.iris.ai.analysis-request+json",
-  "resource": {
-    "text":"I want a pepperoni pizza"
-  }
-}
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
 
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Set,
+                Uri = new LimeUri("/intentions"),
+                Type: 'application/vnd.iris.ai.analysis-request+json',
+                Resource: {
+                  text: 'I want a pepperoni pizza'
+                }
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
+    }
+}
 ```
 
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "9",
-  "to": "postmaster@ai.msging.net",
-  "method": "set",
-  "uri": "/analysis",
-  "type": "application/vnd.iris.ai.analysis-request+json",
-  "resource": {
-    "text":"I want a pepperoni pizza"
-  }
-}
-
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: '/analysis',
+    type: 'application/vnd.iris.ai.analysis-request+json',
+    resource: {
+      text: 'I want a pepperoni pizza'
+    }
+  });
+});
 ```
 
 
@@ -1315,73 +1329,6 @@ Authorization: Key {YOUR_TOKEN}
   }
 }
 
-```
-
-```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "9",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.iris.ai.analysis-response+json",
-  "resource": {
-    "text":"I want a pepperoni pizza",
-    "intentions":[
-      {
-        "id":"order_pizza",
-        "name":"Order pizza",
-        "score": 0.95
-      }
-    ],
-    "entities":[
-      {
-        "id":"flavor",
-        "name":"Flavor",
-        "value":"Pepperoni"
-      }
-    ]
-  }
-}
-```
-
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "9",
-  "from": "postmaster@ai.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success",
-  "type": "application/vnd.iris.ai.analysis-response+json",
-  "resource": {
-    "text":"I want a pepperoni pizza",
-    "intentions":[
-      {
-        "id":"order_pizza",
-        "name":"Order pizza",
-        "score": 0.95
-      }
-    ],
-    "entities":[
-      {
-        "id":"flavor",
-        "name":"Flavor",
-        "value":"Pepperoni"
-      }
-    ]
-  }
-}
-```
-
-
-
-```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
