@@ -359,6 +359,101 @@ namespace Extension
 }
 ```
 
+### Delete all intents
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "delete",
+  "uri": "/intentions"
+}
+```
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "delete",
+  "uri": "/intentions"
+}
+
+```
+
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "delete",
+  "uri": "/intentions"
+}
+
+```
+
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net",
+    "to": "contact@msging.net",
+    "metadata": {
+        "#command.uri": "lime://botname@msging.net/intentions"
+    }
+}
+
+```
+
+
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net",
+    "to": "contact@msging.net",
+    "metadata": {
+        "#command.uri": "lime://botname@msging.net/intentions"
+    }
+}
+```
+
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net",
+    "to": "contact@msging.net",
+    "metadata": {
+        "#command.uri": "lime://botname@msging.net/intentions"
+    }
+}
+```
+
 ### Query the first 10 intentions
 
 Querying the first 10 intentions.
@@ -568,6 +663,134 @@ namespace Extension
 }
 ```
 
+### Get questions from intent
+
+```javascript
+
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/intentions/pesquisa_veiculo/questions"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 33,
+        "itemType": "application/vnd.iris.ai.question+json",
+        "items": [
+            {
+                "id": "32",
+                "text": "O carro saiu de linha?"
+            },
+            {
+                "id": "33",
+                "text": "Qual o valor do fiat"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",l
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/pesquisa_veiculo/questions"
+    }
+}
+```
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/intentions/pesquisa_veiculo/questions"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 33,
+        "itemType": "application/vnd.iris.ai.question+json",
+        "items": [
+            {
+                "id": "32",
+                "text": "O carro saiu de linha?"
+            },
+            {
+                "id": "33",
+                "text": "Qual o valor do fiat"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",l
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/pesquisa_veiculo/questions"
+    }
+}
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/intentions/pesquisa_veiculo/questions"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 33,
+        "itemType": "application/vnd.iris.ai.question+json",
+        "items": [
+            {
+                "id": "32",
+                "text": "O carro saiu de linha?"
+            },
+            {
+                "id": "33",
+                "text": "Qual o valor do fiat"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",l
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/pesquisa_veiculo/questions"
+    }
+}
+```
+
 ### Associate answers to an intention
 
 Associating possible answers to send to the user. 
@@ -660,6 +883,219 @@ namespace Extension
 
             await _artificialIntelligenceExtension.SetAnswersAsync(intentionId, answers, cancellationToken);
         }
+    }
+}
+```
+
+### Get intent's answers
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "method": "get",
+    "to": "postmaster@ai.msging.net",
+    "uri": "/intentions/{intentionId}/answers?skip=0&take=100&ascending=false"
+}
+
+```
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "method": "get",
+    "to": "postmaster@ai.msging.net",
+    "uri": "/intentions/{intentionId}/answers?skip=0&take=100&ascending=false"
+}
+
+
+```
+
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "method": "get",
+    "to": "postmaster@ai.msging.net",
+    "uri": "/intentions/{intentionId}/answers?skip=0&take=100&ascending=false"
+}
+
+
+```
+
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 1,
+        "itemType": "application/vnd.iris.ai.answer+json",
+        "items": [
+            {
+                "id": "1",
+                "type": "text/plain",
+                "value": "Agendaremos pra você"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "9f4d7980-c61a-4e2e-9fa2-233b5ecb2af1",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris2",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/agendar/answers?skip=0&take=100&ascending=false"
+    }
+}
+```
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 1,
+        "itemType": "application/vnd.iris.ai.answer+json",
+        "items": [
+            {
+                "id": "1",
+                "type": "text/plain",
+                "value": "Agendaremos pra você"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris2",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/agendar/answers?skip=0&take=100&ascending=false"
+    }
+}
+```
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 1,
+        "itemType": "application/vnd.iris.ai.answer+json",
+        "items": [
+            {
+                "id": "1",
+                "type": "text/plain",
+                "value": "Agendaremos pra você"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris2",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/agendar/answers?skip=0&take=100&ascending=false"
+    }
+}
+```
+
+### Delete answer from intent
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "delete",
+  "uri": "/intentions/{intentionId}/answers/{answerId}"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/pesquisa_veiculo/answers/1"
+    }
+}
+```
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "delete",
+  "uri": "/intentions/{intentionId}/answers/{answerId}"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/pesquisa_veiculo/answers/1"
+    }
+}
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "delete",
+  "uri": "/intentions/{intentionId}/answers/{answerId}"
+}
+```
+```http
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/pesquisa_veiculo/answers/1"
     }
 }
 ```
@@ -940,6 +1376,158 @@ namespace Extension
             await _artificialIntelligenceExtension.PublishModelAsync("{your_model_id}", cancellationToken);
         }
     }
+}
+```
+
+### Analyze a sentence in the last published model
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "9",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/analysis",
+  "type": "application/vnd.iris.ai.analysis-request+json",
+  "resource": {
+    "text":"I want a pepperoni pizza"
+  }
+}
+
+```
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "9",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/analysis",
+  "type": "application/vnd.iris.ai.analysis-request+json",
+  "resource": {
+    "text":"I want a pepperoni pizza"
+  }
+}
+
+```
+
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "9",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/analysis",
+  "type": "application/vnd.iris.ai.analysis-request+json",
+  "resource": {
+    "text":"I want a pepperoni pizza"
+  }
+}
+
+```
+
+```csharp
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "9",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.iris.ai.analysis-response+json",
+  "resource": {
+    "text":"I want a pepperoni pizza",
+    "intentions":[
+      {
+        "id":"order_pizza",
+        "name":"Order pizza",
+        "score": 0.95
+      }
+    ],
+    "entities":[
+      {
+        "id":"flavor",
+        "name":"Flavor",
+        "value":"Pepperoni"
+      }
+    ]
+  }
+}
+```
+
+```javascript
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "9",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.iris.ai.analysis-response+json",
+  "resource": {
+    "text":"I want a pepperoni pizza",
+    "intentions":[
+      {
+        "id":"order_pizza",
+        "name":"Order pizza",
+        "score": 0.95
+      }
+    ],
+    "entities":[
+      {
+        "id":"flavor",
+        "name":"Flavor",
+        "value":"Pepperoni"
+      }
+    ]
+  }
+}
+```
+
+
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "9",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.iris.ai.analysis-response+json",
+  "resource": {
+    "text":"I want a pepperoni pizza",
+    "intentions":[
+      {
+        "id":"order_pizza",
+        "name":"Order pizza",
+        "score": 0.95
+      }
+    ],
+    "entities":[
+      {
+        "id":"flavor",
+        "name":"Flavor",
+        "value":"Pepperoni"
+      }
+    ]
+  }
 }
 ```
 
@@ -1499,4 +2087,573 @@ namespace Extension
         }
     }
 }
+```
+
+### Create a confusion matrix
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "to": "postmaster@ai.msging.net",
+    "method": "set",
+    "uri": "/analytics/confusion-matrix",
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "version": "teste",
+        "sampleSize": 2
+    }
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "OwnerIdentity": "botbot1@msging.net",
+        "id": "d0b71e41-897c-48c4-a565-29d227013111",
+        "modelId": "botbot1_543659e7-902a-4326-8a2e-016adbc4b100",
+        "version": "teste",
+        "score": 0,
+        "sampleSize": 2,
+        "createdDate": "2019-05-30T17:22:02.139Z",
+        "accuracy": 0,
+        "avgScore": 0,
+        "precision": 0,
+        "recall": 0,
+        "f1Score": 0,
+        "numberOfSamples": 0
+    },
+    "method": "set",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris2",
+    "to": "botbot1@msging.net",
+    "metadata": {
+        "#command.uri": "lime://botbot1@msging.net/analytics/confusion-matrix"
+    }
+}
+```
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "to": "postmaster@ai.msging.net",
+    "method": "set",
+    "uri": "/analytics/confusion-matrix",
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "version": "teste",
+        "sampleSize": 2
+    }
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "OwnerIdentity": "botbot1@msging.net",
+        "id": "d0b71e41-897c-48c4-a565-29d227013111",
+        "modelId": "botbot1_543659e7-902a-4326-8a2e-016adbc4b100",
+        "version": "teste",
+        "score": 0,
+        "sampleSize": 2,
+        "createdDate": "2019-05-30T17:22:02.139Z",
+        "accuracy": 0,
+        "avgScore": 0,
+        "precision": 0,
+        "recall": 0,
+        "f1Score": 0,
+        "numberOfSamples": 0
+    },
+    "method": "set",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris2",
+    "to": "botbot1@msging.net",
+    "metadata": {
+        "#command.uri": "lime://botbot1@msging.net/analytics/confusion-matrix"
+    }
+}
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "to": "postmaster@ai.msging.net",
+    "method": "set",
+    "uri": "/analytics/confusion-matrix",
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "version": "teste",
+        "sampleSize": 2
+    }
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "OwnerIdentity": "botbot1@msging.net",
+        "id": "d0b71e41-897c-48c4-a565-29d227013111",
+        "modelId": "botbot1_543659e7-902a-4326-8a2e-016adbc4b100",
+        "version": "teste",
+        "score": 0,
+        "sampleSize": 2,
+        "createdDate": "2019-05-30T17:22:02.139Z",
+        "accuracy": 0,
+        "avgScore": 0,
+        "precision": 0,
+        "recall": 0,
+        "f1Score": 0,
+        "numberOfSamples": 0
+    },
+    "method": "set",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris2",
+    "to": "botbot1@msging.net",
+    "metadata": {
+        "#command.uri": "lime://botbot1@msging.net/analytics/confusion-matrix"
+    }
+}
+```
+
+### Get confusion matrices
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "to": "postmaster@ai.msging.net",
+    "method": "get",
+    "uri": "/analytics/confusion-matrix"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 2,
+        "itemType": "application/vnd.iris.ai.confusion-matrix+json",
+        "items": [
+            {
+                "OwnerIdentity": "botbot1@msging.net",
+                "id": "{confusionMatrixId}",
+                "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
+                "version": "Reportão",
+                "score": 0,
+                "sampleSize": 30,
+                "createdDate": "2019-05-17T21:18:33.540Z",
+                "accuracy": 0.96,
+                "avgScore": 0.61698660140000006,
+                "precision": 0.92207792207792216,
+                "recall": 0.90238095238095239,
+                "f1Score": 0.980796980796981,
+                "numberOfSamples": 50
+            },
+            {
+                "OwnerIdentity": "botbot1@msging.net",
+                "id": "4dcb1b00-dc95-488e-a38f-95f8d213f842",
+                "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
+                "version": "Reportão",
+                "score": 0,
+                "sampleSize": 30,
+                "createdDate": "2019-05-17T21:18:30.520Z",
+                "accuracy": 1,
+                "avgScore": 0.67095285047619058,
+                "precision": 1,
+                "recall": 1,
+                "f1Score": 1,
+                "numberOfSamples": 21
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "71c0b1f1-332d-498e-afa6-792dbe86d464",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/analytics/confusion-matrix"
+    }
+}
+```
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "to": "postmaster@ai.msging.net",
+    "method": "get",
+    "uri": "/analytics/confusion-matrix"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 2,
+        "itemType": "application/vnd.iris.ai.confusion-matrix+json",
+        "items": [
+            {
+                "OwnerIdentity": "botbot1@msging.net",
+                "id": "{confusionMatrixId}",
+                "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
+                "version": "Reportão",
+                "score": 0,
+                "sampleSize": 30,
+                "createdDate": "2019-05-17T21:18:33.540Z",
+                "accuracy": 0.96,
+                "avgScore": 0.61698660140000006,
+                "precision": 0.92207792207792216,
+                "recall": 0.90238095238095239,
+                "f1Score": 0.980796980796981,
+                "numberOfSamples": 50
+            },
+            {
+                "OwnerIdentity": "botbot1@msging.net",
+                "id": "4dcb1b00-dc95-488e-a38f-95f8d213f842",
+                "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
+                "version": "Reportão",
+                "score": 0,
+                "sampleSize": 30,
+                "createdDate": "2019-05-17T21:18:30.520Z",
+                "accuracy": 1,
+                "avgScore": 0.67095285047619058,
+                "precision": 1,
+                "recall": 1,
+                "f1Score": 1,
+                "numberOfSamples": 21
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "71c0b1f1-332d-498e-afa6-792dbe86d464",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/analytics/confusion-matrix"
+    }
+}
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "to": "postmaster@ai.msging.net",
+    "method": "get",
+    "uri": "/analytics/confusion-matrix"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 2,
+        "itemType": "application/vnd.iris.ai.confusion-matrix+json",
+        "items": [
+            {
+                "OwnerIdentity": "botbot1@msging.net",
+                "id": "{confusionMatrixId}",
+                "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
+                "version": "Reportão",
+                "score": 0,
+                "sampleSize": 30,
+                "createdDate": "2019-05-17T21:18:33.540Z",
+                "accuracy": 0.96,
+                "avgScore": 0.61698660140000006,
+                "precision": 0.92207792207792216,
+                "recall": 0.90238095238095239,
+                "f1Score": 0.980796980796981,
+                "numberOfSamples": 50
+            },
+            {
+                "OwnerIdentity": "botbot1@msging.net",
+                "id": "4dcb1b00-dc95-488e-a38f-95f8d213f842",
+                "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
+                "version": "Reportão",
+                "score": 0,
+                "sampleSize": 30,
+                "createdDate": "2019-05-17T21:18:30.520Z",
+                "accuracy": 1,
+                "avgScore": 0.67095285047619058,
+                "precision": 1,
+                "recall": 1,
+                "f1Score": 1,
+                "numberOfSamples": 21
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "71c0b1f1-332d-498e-afa6-792dbe86d464",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/analytics/confusion-matrix"
+    }
+}
+```
+
+### Get a confusion matrix
+
+```javascript
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "to": "postmaster@ai.msging.net",
+    "method": "get",
+    "uri": "/analytics/confusion-matrix/{confusionMatrixId}"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "OwnerIdentity": "botbot1@msging.net",
+        "id": "{confusionMatrixId}",
+        "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
+        "version": "Reportão",
+        "score": 0,
+        "sampleSize": 30,
+        "createdDate": "2019-05-17T21:18:33.540Z",
+        "accuracy": 0.96,
+        "avgScore": 0.61698660140000006,
+        "precision": 0.92207792207792216,
+        "recall": 0.90238095238095239,
+        "f1Score": 0.980796980796981,
+        "numberOfSamples": 50,
+        "matrix": [[],...],
+        "perClasses": [{},...]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "e909fedf-fb70-463e-88c1-1cd02218c712",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/analytics/confusion-matrix/{confusionMatrixId}"
+    }
+}
+```
+
+```csharp
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "to": "postmaster@ai.msging.net",
+    "method": "get",
+    "uri": "/analytics/confusion-matrix/{confusionMatrixId}"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "OwnerIdentity": "botbot1@msging.net",
+        "id": "{confusionMatrixId}",
+        "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
+        "version": "Reportão",
+        "score": 0,
+        "sampleSize": 30,
+        "createdDate": "2019-05-17T21:18:33.540Z",
+        "accuracy": 0.96,
+        "avgScore": 0.61698660140000006,
+        "precision": 0.92207792207792216,
+        "recall": 0.90238095238095239,
+        "f1Score": 0.980796980796981,
+        "numberOfSamples": 50,
+        "matrix": [[],...],
+        "perClasses": [{},...]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "e909fedf-fb70-463e-88c1-1cd02218c712",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/analytics/confusion-matrix/{confusionMatrixId}"
+    }
+}
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "to": "postmaster@ai.msging.net",
+    "method": "get",
+    "uri": "/analytics/confusion-matrix/{confusionMatrixId}"
+}
+
+```
+
+```http
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "OwnerIdentity": "botbot1@msging.net",
+        "id": "{confusionMatrixId}",
+        "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
+        "version": "Reportão",
+        "score": 0,
+        "sampleSize": 30,
+        "createdDate": "2019-05-17T21:18:33.540Z",
+        "accuracy": 0.96,
+        "avgScore": 0.61698660140000006,
+        "precision": 0.92207792207792216,
+        "recall": 0.90238095238095239,
+        "f1Score": 0.980796980796981,
+        "numberOfSamples": 50,
+        "matrix": [[],...],
+        "perClasses": [{},...]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "e909fedf-fb70-463e-88c1-1cd02218c712",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/analytics/confusion-matrix/{confusionMatrixId}"
+    }
+}
+```
+
+### Delete a confusion matrix
+
+```javascript
+
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+	"id": "10",
+	"method": "delete",
+	"to": "postmaster@ai.msging.net",
+	"uri": "/analytics/confusion-matrix/{confusionMatrixId}",
+	"from": "postmaster@ai.msging.net/#hmg-az-lx-iris1"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+	"id": "10",
+	"method": "delete",
+	"status": "success",
+	"to": "test.net/portal-test%40take.net"
+}
+
+```
+
+```csharp
+
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+	"id": "10",
+	"method": "delete",
+	"to": "postmaster@ai.msging.net",
+	"uri": "/analytics/confusion-matrix/{confusionMatrixId}",
+	"from": "postmaster@ai.msging.net/#hmg-az-lx-iris1"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+	"id": "10",
+	"method": "delete",
+	"status": "success",
+	"to": "test.net/portal-test%40take.net"
+}
+
+```
+
+
+```http
+
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+	"id": "10",
+	"method": "delete",
+	"to": "postmaster@ai.msging.net",
+	"uri": "/analytics/confusion-matrix/{confusionMatrixId}",
+	"from": "postmaster@ai.msging.net/#hmg-az-lx-iris1"
+}
+```
+
+```http
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+	"id": "10",
+	"method": "delete",
+	"status": "success",
+	"to": "test.net/portal-test%40take.net"
+}
+
 ```
