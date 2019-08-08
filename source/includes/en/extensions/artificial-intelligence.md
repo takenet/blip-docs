@@ -2123,129 +2123,43 @@ Content-Type: application/json
 ### Get confusion matrices
 
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-    "id": "10",
-    "to": "postmaster@ai.msging.net",
-    "method": "get",
-    "uri": "/analytics/confusion-matrix"
-}
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "type": "application/vnd.lime.collection+json",
-    "resource": {
-        "total": 2,
-        "itemType": "application/vnd.iris.ai.confusion-matrix+json",
-        "items": [
-            {
-                "OwnerIdentity": "botbot1@msging.net",
-                "id": "{confusionMatrixId}",
-                "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
-                "version": "Reportão",
-                "score": 0,
-                "sampleSize": 30,
-                "createdDate": "2019-05-17T21:18:33.540Z",
-                "accuracy": 0.96,
-                "avgScore": 0.61698660140000006,
-                "precision": 0.92207792207792216,
-                "recall": 0.90238095238095239,
-                "f1Score": 0.980796980796981,
-                "numberOfSamples": 50
-            },
-            {
-                "OwnerIdentity": "botbot1@msging.net",
-                "id": "4dcb1b00-dc95-488e-a38f-95f8d213f842",
-                "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
-                "version": "Reportão",
-                "score": 0,
-                "sampleSize": 30,
-                "createdDate": "2019-05-17T21:18:30.520Z",
-                "accuracy": 1,
-                "avgScore": 0.67095285047619058,
-                "precision": 1,
-                "recall": 1,
-                "f1Score": 1,
-                "numberOfSamples": 21
-            }
-        ]
-    },
-    "method": "get",
-    "status": "success",
-    "id": "71c0b1f1-332d-498e-afa6-792dbe86d464",
-    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
-    "to": "test@msging.net",
-    "metadata": {
-        "#command.uri": "lime://test@msging.net/analytics/confusion-matrix"
-    }
-}
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.GET,
+    uri: '/analytics/confusion-matrix'
+  });
+});
 ```
 
 ```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
 
+namespace Extension
 {
-    "id": "10",
-    "to": "postmaster@ai.msging.net",
-    "method": "get",
-    "uri": "/analytics/confusion-matrix"
-}
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
 
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "type": "application/vnd.lime.collection+json",
-    "resource": {
-        "total": 2,
-        "itemType": "application/vnd.iris.ai.confusion-matrix+json",
-        "items": [
-            {
-                "OwnerIdentity": "botbot1@msging.net",
-                "id": "{confusionMatrixId}",
-                "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
-                "version": "Reportão",
-                "score": 0,
-                "sampleSize": 30,
-                "createdDate": "2019-05-17T21:18:33.540Z",
-                "accuracy": 0.96,
-                "avgScore": 0.61698660140000006,
-                "precision": 0.92207792207792216,
-                "recall": 0.90238095238095239,
-                "f1Score": 0.980796980796981,
-                "numberOfSamples": 50
-            },
-            {
-                "OwnerIdentity": "botbot1@msging.net",
-                "id": "4dcb1b00-dc95-488e-a38f-95f8d213f842",
-                "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
-                "version": "Reportão",
-                "score": 0,
-                "sampleSize": 30,
-                "createdDate": "2019-05-17T21:18:30.520Z",
-                "accuracy": 1,
-                "avgScore": 0.67095285047619058,
-                "precision": 1,
-                "recall": 1,
-                "f1Score": 1,
-                "numberOfSamples": 21
-            }
-        ]
-    },
-    "method": "get",
-    "status": "success",
-    "id": "71c0b1f1-332d-498e-afa6-792dbe86d464",
-    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
-    "to": "test@msging.net",
-    "metadata": {
-        "#command.uri": "lime://test@msging.net/analytics/confusion-matrix"
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Get,
+                Uri = new LimeUri("/analytics/confusion-matrix")
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
     }
 }
 ```
@@ -2261,9 +2175,7 @@ Authorization: Key {YOUR_TOKEN}
     "method": "get",
     "uri": "/analytics/confusion-matrix"
 }
-```
 
-```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -2319,91 +2231,43 @@ Content-Type: application/json
 ### Get a confusion matrix
 
 ```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-    "id": "10",
-    "to": "postmaster@ai.msging.net",
-    "method": "get",
-    "uri": "/analytics/confusion-matrix/{confusionMatrixId}"
-}
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "type": "application/vnd.iris.ai.confusion-matrix+json",
-    "resource": {
-        "OwnerIdentity": "botbot1@msging.net",
-        "id": "{confusionMatrixId}",
-        "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
-        "version": "Reportão",
-        "score": 0,
-        "sampleSize": 30,
-        "createdDate": "2019-05-17T21:18:33.540Z",
-        "accuracy": 0.96,
-        "avgScore": 0.61698660140000006,
-        "precision": 0.92207792207792216,
-        "recall": 0.90238095238095239,
-        "f1Score": 0.980796980796981,
-        "numberOfSamples": 50,
-        "matrix": [[],...],
-        "perClasses": [{},...]
-    },
-    "method": "get",
-    "status": "success",
-    "id": "e909fedf-fb70-463e-88c1-1cd02218c712",
-    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
-    "to": "test@msging.net",
-    "metadata": {
-        "#command.uri": "lime://test@msging.net/analytics/confusion-matrix/{confusionMatrixId}"
-    }
-}
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.GET,
+    uri: '/analytics/confusion-matrix/{confusionMatrixId}'
+  });
+});
 ```
 
 ```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
 
+namespace Extension
 {
-    "id": "10",
-    "to": "postmaster@ai.msging.net",
-    "method": "get",
-    "uri": "/analytics/confusion-matrix/{confusionMatrixId}"
-}
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
 
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "type": "application/vnd.iris.ai.confusion-matrix+json",
-    "resource": {
-        "OwnerIdentity": "botbot1@msging.net",
-        "id": "{confusionMatrixId}",
-        "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
-        "version": "Reportão",
-        "score": 0,
-        "sampleSize": 30,
-        "createdDate": "2019-05-17T21:18:33.540Z",
-        "accuracy": 0.96,
-        "avgScore": 0.61698660140000006,
-        "precision": 0.92207792207792216,
-        "recall": 0.90238095238095239,
-        "f1Score": 0.980796980796981,
-        "numberOfSamples": 50,
-        "matrix": [[],...],
-        "perClasses": [{},...]
-    },
-    "method": "get",
-    "status": "success",
-    "id": "e909fedf-fb70-463e-88c1-1cd02218c712",
-    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
-    "to": "test@msging.net",
-    "metadata": {
-        "#command.uri": "lime://test@msging.net/analytics/confusion-matrix/{confusionMatrixId}"
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Get,
+                Uri = new LimeUri("/analytics/confusion-matrix/{confusionMatrixId}")
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
     }
 }
 ```
