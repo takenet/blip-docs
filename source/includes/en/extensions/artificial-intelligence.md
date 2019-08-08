@@ -362,83 +362,61 @@ namespace Extension
 ### Delete all intents
 
 ```csharp
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
 
+namespace Extension
 {
-  "id": "10",
-  "to": "postmaster@ai.msging.net",
-  "method": "delete",
-  "uri": "/intentions"
-}
-```
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
 
-```javascript
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "10",
-  "to": "postmaster@ai.msging.net",
-  "method": "delete",
-  "uri": "/intentions"
-}
-
-```
-
-
-```http
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "10",
-  "to": "postmaster@ai.msging.net",
-  "method": "delete",
-  "uri": "/intentions"
-}
-
-```
-
-```csharp
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "method": "delete",
-    "status": "success",
-    "id": "10",
-    "from": "postmaster@ai.msging.net",
-    "to": "contact@msging.net",
-    "metadata": {
-        "#command.uri": "lime://botname@msging.net/intentions"
-    }
-}
-
-```
-
-
-```javascript
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "method": "delete",
-    "status": "success",
-    "id": "10",
-    "from": "postmaster@ai.msging.net",
-    "to": "contact@msging.net",
-    "metadata": {
-        "#command.uri": "lime://botname@msging.net/intentions"
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Delete,
+                Uri = new LimeUri("/intentions")
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
     }
 }
 ```
 
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.DELETE,
+    uri: '/intentions'    
+  });
+});
+
+```
 
 ```http
+
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "delete",
+  "uri": "/intentions"
+}
+
 HTTP/1.1 200 OK
 Content-Type: application/json
 
