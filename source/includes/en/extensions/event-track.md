@@ -7,7 +7,7 @@ To use any feature of **event analysis** extension, send a command with the foll
 | Name | Description |
 |---------------------------------|--------------|
 | id    | Unique identifier of the command.   |
-| method    | The command verb  |
+| method    | The command verb.  |
 | resource | The event document. |
 | type | **"application/vnd.iris.eventTrack+json"** |
 | uri    | **/event-track**   |
@@ -29,16 +29,16 @@ Imagine that your chatbot must track the number of payment orders realized and s
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-    await client.sendCommand({
-        'id': '9494447a-2581-4597-be6a-a5dff33af156',
-        'method': 'set',
-        'type': 'application/vnd.iris.eventTrack+json',
-        'uri': '/event-track',
-        'resource': {
-            'category': 'billing',
-            'action': 'payment'
-        }
-    });
+  await client.sendCommand({
+    id: Lime.Guid(),
+    method: Lime.CommandMethod.SET,
+    type: 'application/vnd.iris.eventTrack+json',
+    uri: '/event-track',
+    resource: {
+      category: 'billing',
+      action: 'payment'
+    }
+  });
 });
 ```
 
@@ -48,7 +48,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "9494447a-2581-4597-be6a-a5dff33af156",
+  "id": "1",
   "to": "postmaster@analytics.msging.net",
   "method": "set",
   "type": "application/vnd.iris.eventTrack+json",
@@ -65,11 +65,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "method": "set",
-  "status": "success",
-  "id": "9494447a-2581-4597-be6a-a5dff33af156",
-  "from": "postmaster@analytics.msging.net/#irismsging1",
-  "to": "contact@msging.net/default"
+    "method": "set",
+    "status": "success",
+    "id": "1",
+    "from": "postmaster@analytics.msging.net/#az-iris1",
+    "to": "contact@msging.net",
+    "metadata": {
+        "#command.uri": "lime://contact@msging.net/event-track"
+    }
 }
 ```
 
@@ -78,7 +81,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
 using Take.Blip.Client;
-using Take.Blip.Client.Receivers;
 using Take.Blip.Client.Extensions.EventTracker;
 
 namespace Extensions
@@ -94,7 +96,7 @@ namespace Extensions
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
-            await _eventTrackExtension.AddAsync("payments", "success-order");
+            await _eventTrackExtension.AddAsync("payments", "success-order", contact: null, extras: null, cancellationToken: cancellationToken);
         }
     }
 }
@@ -105,16 +107,16 @@ namespace Extensions
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({
-        'id': '9494447a-2581-4597-be6a-a5dff33af156',
-        'method': 'set',
-        'type': 'application/vnd.iris.eventTrack+json',
-        'uri': '/event-track',
-        'resource': {
-          'category': 'billing',
-          'action': 'payment',
-          'contact': {
-              'identity': '123456@messenger.gw.msging.net'
-          }
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.SET,
+        type: 'application/vnd.iris.eventTrack+json',
+        uri: '/event-track',
+        resource: {
+            category: 'billing',
+            action: 'payment',
+            contact: {
+                identity: '123456@messenger.gw.msging.net'
+            }
         }
     });
 });
@@ -134,7 +136,9 @@ Authorization: Key {YOUR_TOKEN}
     "resource": {
         "category": "payments",
         "action": "success-order",
-        "contact": { "identity": "123456@messenger.gw.msging.net"}
+        "contact": { 
+            "identity": "123456@messenger.gw.msging.net"
+        }
     }
 }
 ```
@@ -144,11 +148,14 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "method": "set",
-  "status": "success",
-  "id": "9494447a-2581-4597-be6a-a5dff33af156",
-  "from": "postmaster@analytics.msging.net/#irismsging1",
-  "to": "contact@msging.net/default"
+    "method": "set",
+    "status": "success",
+    "id": "9494447a-2581-4597-be6a-a5dff33af156",
+    "from": "postmaster@analytics.msging.net/#az-iris4",
+    "to": "contact@msging.net",
+    "metadata": {
+        "#command.uri": "lime://contact@msging.net/event-track"
+    }
 }
 ```
 
@@ -157,7 +164,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
 using Take.Blip.Client;
-using Take.Blip.Client.Receivers;
 using Take.Blip.Client.Extensions.EventTracker;
 
 namespace Extensions
@@ -186,11 +192,14 @@ If your bot has a `123456@messenger.gw.msging.net` contact identity as a tester 
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-    await client.sendCommand({
-        'id': '3',
-        'method': 'get',
-        'uri': '/event-track'
+    var categories = await client.sendCommand({
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.GET,
+        uri: '/event-track'
     });
+    categories.resource.items.forEach(function (item) {
+        console.log(item);
+  });
 });
 ```
 
@@ -212,21 +221,26 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "3",
-  "from": "postmaster@analytics.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "get",
-  "status": "success",
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-    "itemType": "application/vnd.iris.eventTrack+json",
-    "items": [{
-        "category": "payments"
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "itemType": "application/vnd.iris.eventTrack+json",
+        "items": [
+            {
+                "category": "accounts"
+            },
+            {
+                "category": "payments"
+            }
+        ]
     },
-    {
-        "category": "accounts"
-    }]
-  }
+    "method": "get",
+    "status": "success",
+    "id": "3",
+    "from": "postmaster@analytics.msging.net/#az-iris5",
+    "to": "contact@msging.net",
+    "metadata": {
+        "#command.uri": "lime://contact@msging.net/event-track"
+    }
 }
 ```
 
@@ -235,7 +249,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
 using Take.Blip.Client;
-using Take.Blip.Client.Receivers;
 using Take.Blip.Client.Extensions.EventTracker;
 
 namespace Extensions
@@ -251,7 +264,7 @@ namespace Extensions
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
-            var categories = await _eventTrackExtension.GetCategoriesAsync();
+            var events = await _eventTrackExtension.GetCategoriesAsync();
         }
     }
 }
@@ -263,11 +276,14 @@ Retrieves all tracked categories.
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-    await client.sendCommand({
-        'id': '4',
-        'method': 'get',
-        'uri': '/event-track/billing?startDate=2016-01-01&$take=10'
-    });
+  var events = await client.sendCommand({
+    id:Lime.Guid(),
+    method: Lime.CommandMethod.GET,
+    uri: '/event-track/payments?startDate=2019-06-21&endDate=2019-06-28&$take=10'
+  });
+  events.resource.items.forEach(function (item) {
+    console.log(item);
+  });
 });
 ```
 
@@ -280,7 +296,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "4",
   "to": "postmaster@analytics.msging.net",
   "method": "get",
-  "uri": "/event-track/payments?startDate=2016-01-01&$take=10"
+  "uri": "/event-track/payments?startDate=2019-06-21&endDate=2019-06-28&$take=10"
 }
 ```
 
@@ -289,26 +305,31 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "4",
-  "from": "postmaster@analytics.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "get",
-  "status": "success",
   "type": "application/vnd.lime.collection+json",
   "resource": {
     "itemType": "application/vnd.iris.eventTrack+json",
-    "items": [{
+    "items": [
+      {
+        "storageDate": "2019-06-25T03:00:00.000Z",
         "category": "payments",
         "action": "success-order",
-        "storageDate": "2016-01-01",
-        "count": 10
-    },
-    {
+        "count": "4"
+      },
+      {
+        "storageDate": "2019-06-24T03:00:00.000Z",
         "category": "payments",
         "action": "success-order",
-        "storageDate": "2016-01-02",
-        "count": 20
-    }]
+        "count": "1"
+      }
+    ]
+  },
+  "method": "get",
+  "status": "success",
+  "id": "4",
+  "from": "postmaster@analytics.msging.net/#az-iris5",
+  "to": "contact@msging.net",
+  "metadata": {
+    "#command.uri": "lime://contact@msging.net/event-track/payments?startDate=2019-06-21&endDate=2019-06-28&$take=10"
   }
 }
 ```
@@ -318,7 +339,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
 using Take.Blip.Client;
-using Take.Blip.Client.Receivers;
 using Take.Blip.Client.Extensions.EventTracker;
 using System;
 
@@ -335,12 +355,11 @@ namespace Extensions
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
-            var startDate = new DateTimeOffset(2016, 1, 1, 0, 0, 0, default(TimeSpan));
-            var endDate = new DateTimeOffset(2017, 1, 1, 0, 0, 0, default(TimeSpan));
+            var startDate = new DateTimeOffset(2019, 6, 21, 0, 0, 0, default(TimeSpan));
+            var endDate = new DateTimeOffset(2019, 6, 28, 15, 27, 0, default(TimeSpan));
             var take = 10;
 
-            var categories =
-              await _eventTrackExtension.GetCategoryActionsCounterAsync(startDate, endDate, "payments", take);
+            var events = await _eventTrackExtension.GetCategoryActionsCounterAsync(startDate, endDate, "payments", take);
         }
     }
 }
@@ -350,19 +369,23 @@ To retrieve all counters of a category, add the category name to the command uri
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|
-| $take        | Limit of total of items to be returned    |
-| startDate    | Initial date to search for events          |
-| endDate      | Limit date to retrieve the events         |
+| $take        | Limit of total of items to be returned.   |
+| startDate    | Initial date to search for events.        |
+| endDate      | Limit date to retrieve the events.        |
 
 ### Get Details
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-    await client.sendCommand({
-        'id': '5',
-        'method': 'get',
-        'uri': '/event-track/billing/payment?startDate=2016-01-01&$take=10'
-    });
+  var events = await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@analytics.msging.net',
+    method: Lime.CommandMethod.GET,
+    uri: '/event-track/payments/success-order?startDate=2019-06-21&endDate=2019-06-28&$take=10'
+  });
+  events.resource.items.forEach(function (item) {
+    console.log(item);
+  });
 });
 ```
 
@@ -375,7 +398,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "5",
   "to": "postmaster@analytics.msging.net",
   "method": "get",
-  "uri": "/event-track/payments/success-order?startDate=2016-01-01&$take=10"
+  "uri": "/event-track/payments/success-order?startDate=2019-06-21&endDate=2019-06-28&$take=10"
 }
 ```
 
@@ -384,33 +407,39 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "5",
-  "from": "postmaster@analytics.msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "get",
-  "status": "success",
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-    "itemType": "application/vnd.iris.eventTrack+json",
-    "items": [{
-        "category": "payments",
-        "action": "success-order",
-        "storageDate": "2016-01-01T12:30:00.000Z",
-        "extras": {
-          "expiration": "2015-12-30",
-          "customerId": "199213"
-        }
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 5,
+        "itemType": "application/vnd.iris.eventTrack+json",
+        "items": [
+            {
+                "category": "payments",
+                "action": "success-order",
+                "storageDate": "2016-01-01T12:30:00.000Z",
+                "extras": {
+                    "expiration": "2015-12-30",
+                    "customerId": "199213"
+                }   
+            },
+            {
+                "category": "payments",
+                "action": "success-order",
+                "storageDate": "2016-01-02T09:15:00.000Z",
+                "extras": {
+                    "expiration": "2016-01-01",
+                    "customerId": "4123123"
+                }
+            }
+        ]
     },
-    {
-        "category": "payments",
-        "action": "success-order",
-        "storageDate": "2016-01-02T09:15:00.000Z",
-        "extras": {
-          "expiration": "2016-01-01",
-          "customerId": "4123123"
-        }
-    }]
-  }
+    "method": "get",
+    "status": "success",
+    "id": "5",
+    "from": "postmaster@analytics.msging.net/#az-iris2",
+    "to": "contact@msging.net",
+    "metadata": {
+        "#command.uri": "lime://contact@msging.net/event-track/payments/success-order?startDate=2019-06-21&endDate=2019-06-28&$take=10"
+    }
 }
 ```
 
@@ -419,7 +448,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
 using Take.Blip.Client;
-using Take.Blip.Client.Receivers;
 using Take.Blip.Client.Extensions.EventTracker;
 using System;
 
@@ -436,12 +464,10 @@ namespace Extensions
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
-            var startDate = new DateTimeOffset(2016, 1, 1, 0, 0, 0, default(TimeSpan));
-            var endDate = new DateTimeOffset(2017, 1, 1, 0, 0, 0, default(TimeSpan));
-            var take = 10;
+            var startDate = new DateTimeOffset(2019, 6, 21, 0, 0, 0, default(TimeSpan));
+            var endDate = new DateTimeOffset(2019, 6, 28, 15, 27, 0, default(TimeSpan));
 
-            var categories =
-              await _eventTrackExtension.GetAllAsync(startDate, endDate, "payments", "success-order", take: take);
+            var events = await _eventTrackExtension.GetAllAsync(startDate, endDate, "payments", "success-order", 0, 20, cancellationToken);
         }
     }
 }
@@ -451,8 +477,84 @@ Retrieves all events tracked with a specific pair of action and categories. The 
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|
-| $skip        | Number of items to be skipped for paging  |
-| $take        | Limit of total of items to be returned    |
-| startDate    | Initial date to search for events          |
-| endDate      | Limit date to retrieve the events         |
+| $skip        | Number of items to be skipped for paging. |
+| $take        | Limit of total of items to be returned.   |
+| startDate    | Initial date to search for events.        |
+| endDate      | Limit date to retrieve the events.        |
+
+### Delete an event category
+
+If you need to delete a specific event category use the following command.
+Remember to replace {{categoryName}} variable for the category name that you want delete.
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({
+       id: Lime.Guid(),
+       to: "postmaster@analytics.msging.net",
+       method: Lime.CommandMethod.DELETE,
+       uri: "/event-track/{{categoryName}}"
+    });
+});
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "6",
+  "to": "postmaster@analytics.msging.net",
+  "method": "delete",
+  "uri": "/event-track/{{categoryName}}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "6",
+    "from": "postmaster@analytics.msging.net/#az-iris3",
+    "to": "contact@msging.net",
+    "metadata": {
+        "#command.uri": "lime://contact@msging.net/event-track/{{categoryName}}"
+    }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public SampleMessageReceiver(ISender sender)
+        {
+            _sender = sender;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Delete,
+                Uri = new LimeUri("/event-track/{{categoryName}}")
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);
+        }
+    }
+}
+```
 

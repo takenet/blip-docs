@@ -14,6 +14,19 @@ To get client's **threads** or **messages** exchanged with a bot, send a command
 
 ### Get last threads
 
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    var lastThreads = await client.sendCommand({  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.GET,
+        uri: '/threads'
+    });
+    lastThreads.resource.items.forEach(function (item) {
+        console.log(item);
+    });  
+});
+```
+
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -31,14 +44,8 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "method": "get",
-  "status": "success",
-  "id": "0094447a-2581-4597-be6a-a5dff33af156",
-  "from": "postmaster@msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
   "type": "application/vnd.lime.collection+json",
   "resource": {
-    "total": 2,
     "itemType": "application/vnd.iris.thread+json",
     "items": [
       {
@@ -66,7 +73,41 @@ Content-Type: application/json
         "unreadMessages": 1
       }
     ]
+  },
+  "method": "get",
+  "status": "success",
+  "id": "0094447a-2581-4597-be6a-a5dff33af156",
+  "from": "postmaster@msging.net/#az-iris3",
+  "to": "contact@msging.net",
+  "metadata": {
+      "#command.uri": "lime://contact@msging.net/threads"
   }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.Threads;
+
+namespace Extensions
+{
+    public class GetThreadsReceiver : IMessageReceiver
+    {
+        private readonly IThreadExtension _threadExtension;
+
+        public GetThreadsReceiver(IThreadExtension threadExtension)
+        {
+            _threadExtension = threadExtension;
+        }
+
+        public async Task ReceiveAsync(Message receivedMessage, CancellationToken cancellationToken)
+        {
+            var lastThreads = await _threadExtension.GetThreadsAsync(cancellationToken);
+        }
+    }
 }
 ```
 
@@ -80,6 +121,19 @@ The following uri filters are available to get chatbot's threads:
 | messageDate  | Initial date on the threads query         |
 
 ### Get last messages
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    var lastMessages = await client.sendCommand({  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.GET,
+        uri: '/threads/destination@0mn.io'
+    });
+    lastMessages.resource.items.forEach(function (item) {
+        console.log(item);
+    });  
+});
+```
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -98,11 +152,6 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "method": "get",
-  "status": "success",
-  "id": "0094447a-2581-4597-be6a-a5dff33af156",
-  "from": "postmaster@msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
   "type": "application/vnd.lime.collection+json",
   "resource": {
     "total": 3,
@@ -133,7 +182,44 @@ Content-Type: application/json
         "status": "accepted"
       }
     ]
+  },
+  "method": "get",
+  "status": "success",
+  "id": "0094447a-2581-4597-be6a-a5dff33af156",
+  "from": "postmaster@msging.net/#az-iris1",
+  "to": "contact@msging.net",
+  "metadata": {
+      "#command.uri": "lime://contact@msging.net/threads/destination@0mn.io"
   }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.Threads;
+
+namespace Extensions
+{
+    public class GetMessagesReceiver : IMessageReceiver
+    {
+        private readonly IThreadExtension _threadExtension;
+
+        public GetMessagesReceiver(IThreadExtension threadExtension)
+        {
+            _threadExtension = threadExtension;
+        }
+
+        public async Task ReceiveAsync(Message receivedMessage, CancellationToken cancellationToken)
+        {
+            var lastMessages = await _threadExtension.GetThreadAsync(
+                "destination@0mn.io", 
+                cancellationToken
+            );
+        }
+    }
 }
 ```
 

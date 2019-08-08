@@ -4,7 +4,7 @@ The **tunnel** extension allows routing and exchange of messages and notificatio
 
 This feature is useful for **isolating different parts of navigation in independent bots** with only one published on the channel. For example, imagine that you want to have a chatbot on a Facebook page that has an automatic navigation (static answers), part questions and answers and part attendance made by an human operator. You would then need a bot **main** (SDK / Webhook) that will act as a *switcher* and three **sub-bots** - the first of the SDK/Webhook template, the second FAQ and the last human operator. These last three **would not be published directly on the channel**, but would only receive messages from the main bot, this one - published on Facebook and other channels. The main bot would be the **sender** and the other **receivers** of the tunnel.
 
-*Note: The BLiP portal offers the [**master** template](https://portal.blip.ai/#/docs/templates/master) that uses the tunnel extension and acts as a switcher for the sub-bots, so the implementation is not necessary in most cases.*
+*Note: The BLiP portal offers the [**master** template](https://portal.blip.ai) that uses the tunnel extension and acts as a switcher for the sub-bots, so the implementation is not necessary in most cases.*
 
 To create a tunnel between two *chatbots*, the **sender** needs to send a message to a address using the following convention:
 
@@ -64,6 +64,16 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```javascript
+client.sendMessage({
+        id: Lime.Guid(),
+        from: "flow@msging.net/instance", 
+        to: "operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net",
+        type: "text/plain",
+        content: "Hello, I would like to talk to an attendant"
+      })
+```
+
 >Internally, the server creates an **id** for the tunnel and forwards the message to the **operator** bot, which receives it as follows:
 
 ```http
@@ -78,6 +88,17 @@ Authorization: Key {YOUR_TOKEN}
     "type": "text/plain",
     "content": "Hello, I would like to talk to an attendant."
 }
+```
+
+```javascript
+    {
+        id: 1,
+        from: "ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net",
+        to: "operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net",
+        type: "text/plain",
+        content: "Hello, I would like to talk to an attendant"
+    }
+
 ```
 
 
@@ -97,6 +118,16 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```javascript
+client.senMessage({
+        id: Lime.Guid(),
+        from: "operator@msging.net/instance",
+        to: "ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net",
+        type: "text/plain",
+        content: "Hi, my name is Andre. How may I help you?"
+      })
+```
+
 >The server uses the tunnel **id** to change the address of the response message and forwards it to the **flow** bot:
 
 ```http
@@ -113,6 +144,16 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```javascript
+client.sendMessage({
+        id: Lime.Guid(),
+        from: "operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net",
+        to: "flow@msging.net/instance",
+        type: "text/plain",
+        content: "Hi, my name is Andre. How may I help you?"
+      })
+```
+
 >The bot flow identifies the message received from a **receiver**, decodes the original address that is in **instance** and sends the message to the final recipient:
 
 ```http
@@ -126,6 +167,16 @@ Authorization: Key {YOUR_TOKEN}
     "to": "1654804277843415@messenger.gw.msging.net",
     "type": "text/plain",
     "content": "Hi, my name is Andre. How may I help you?"
+}
+```
+
+```javascript
+{
+    id: "2",
+    from: "flow@msging.net/instance",
+    to: "1654804277843415@messenger.gw.msging.net",
+    type: "text/plain",
+    content: "Hi, my name is Andre. How may I help you?"
 }
 ```
 
@@ -148,6 +199,17 @@ Authorization: Key {YOUR_TOKEN}
     "uri": "lime://tunnel.msging.net/accounts/ecb99cf5-fb5c-4376-8acd-4b478091de15"
 }
 ```
+
+```javascript
+client.sendCommand({
+        id: Lime.Guid(),
+        from: "operator@msging.net/instance",
+        to: "flow@msging.net/instance",
+        type: "text/plain",
+        content: "Hi, my name is Andre. How may I help you?"
+      })
+```
+
 >The server identifies that the query is for a tunnel user and performs the query **on behalf of the sender** directly in its contacts roster and returns the information:
 
 ```http
@@ -169,5 +231,20 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```javascript
+{
+    id: "3",
+    from: "postmaster@tunnel.msging.net",
+    to: "operator@msging.net/instance",
+    method:"get",
+    status: "success",
+    type: "application/vnd.lime.account+json",
+    resource: {
+        fullName: "John Deere",
+        gender: "male"
+    }
+}
+```
 
-For more information about the contacts extension, please refer to the [extension documentation](https://portal.blip.ai/#/docs/extensions/contacts).
+
+For more information about the contacts extension, please refer to the [extension documentation](https://docs.blip.ai/?http#contacts).

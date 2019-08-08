@@ -25,11 +25,11 @@ The document to be stored must be passed on the `resource` property.
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({
-        'id': '1',
-        'method': 'set',
-        'uri': '/buckets/xyz1234',
-        'type': 'application/json',
-        'resource': {  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.SET,
+        uri: '/buckets/xyz1234',
+        type: 'application/json',
+        resource: {  
             'key1': 'value1',
             'key2': 2,
             'key3': [  
@@ -43,6 +43,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 
 {  
   "id": "1",
@@ -112,11 +113,11 @@ Storing a JSON object `{"key1": "value1", "key2": 2, "key3": ["3a", "3b", "3c"]}
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({
-        "id": "2",
-        "method": "set",
-        "uri": "/buckets/abcd9876?expiration=30000",
-        "type": "application/x-my-type+json",
-        "resource": {  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.SET,
+        uri: "/buckets/abcd9876?expiration=30000",
+        type: "application/x-my-type+json",
+        resource: {  
             "myTypeKey1": "value1",
             "myTypeKey2": 2
         }
@@ -127,6 +128,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
 
 {  
   "id": "2",
@@ -161,6 +163,7 @@ using Take.Blip.Client;
 using Take.Blip.Client.Receivers;
 using Take.Blip.Client.Extensions.Bucket;
 using System.Runtime.Serialization;
+using Take.Blip.Client.Extensions;
 
 namespace Extensions
 {
@@ -194,11 +197,22 @@ namespace Extensions
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
+            // Storing a custom document without expiration
             var myTypeDocument = new MyType();
             myTypeDocument.MyTypeKey1 = "value1";
             myTypeDocument.MyTypeKey2 = 2;
+            await _bucketExtension.SetAsync("abcd9876", myTypeDocument);
+            
+            // Storing a custom document with expiration
+            var bucketId = "abcd9876";
+            var expiration = 3000;
+            var command = new Command(){
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Set,
+                Uri = new LimeUri($"/buckets/{bucketId}?expiration={expiration}"), 
+                Resource = myTypeDocument
+            };
 
-            await _bucketExtension.SetAsync("abcd9876", jsonDocument);
         }
     }
 }
@@ -206,8 +220,8 @@ namespace Extensions
 
 Storing a custom document with type `application/x-my-type+json` and `abcd9876` identifier, setting the expiration to 30000 milisseconds (or 30 seconds):
 
-<aside class="notice">
-Note: If you create a custom document, <b>you must</b> register this type on <i>StartAsync</i> method of <i>Startup.cs</i> class. To do that, add this line: <code> TypeUtil.RegisterDocument&lt;MyType&gt;();</code> 
+<aside  class="notice">
+Note: If you create a custom document, <b>you must</b> register this type on <i>Startup.cs</i> class. To do that, follow this steps: Create a field <code>private  readonly  IDocumentTypeResolver  _documentTypeResolver</code>, assign it in the class constructor and then, on <i>StartAsync</i> method add this line: <code>_documentTypeResolver.WithBlipDocuments();</code>
 </aside>
 
 
@@ -216,9 +230,9 @@ Note: If you create a custom document, <b>you must</b> register this type on <i>
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({  
-        'id': '3',
-        'method': 'get',
-        'uri': '/buckets/xyz1234'
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.GET,
+        uri: '/buckets/xyz1234'
     });
 });
 ```

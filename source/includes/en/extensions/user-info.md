@@ -4,7 +4,7 @@ The **directory** (or **User info**) extension allows querying information about
 
 If the information is available, an [Account](http://limeprotocol.org/resources.html#account) document is returned. The availability and detail level of the information depend on the channel, and the application should handle differences appropriately.
 
-The result of directory queries are automatically stored in the **chatbot's roster**, except when there's already an entry with the same identifier in the contacts. For more information about the roster, please refer to the [extension documentation](https://portal.blip.ai/#/docs/extensions/contacts).
+The result of directory queries are automatically stored in the **chatbot's roster**, except when there's already an entry with the same identifier in the contacts. For more information about the roster, please refer to the [extension documentation](https://docs.blip.ai/#contacts).
 
 To get information about a customer, send a command with the following properties:
 
@@ -21,12 +21,13 @@ To get information about a customer, send a command with the following propertie
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-    await client.sendCommand({  
-        'id': '3',
-        'method': 'get',
-        'uri': '/buckets/xyz1234'
+        await client.sendCommand({  
+            id: Lime.Guid(),
+            method: Lime.CommandMethod.GET,
+            to: 'postmaster@messenger.gw.msging.net',
+            uri: 'lime://messenger.gw.msging.net/accounts/1042221589186385'
+        });
     });
-});
 ```
 
 ```http
@@ -93,7 +94,6 @@ namespace Extensions
 }
 ```
 
-
 ###Get client info (**Telegram**)
 
 * Telegram FQDN: `telegram.gw.msging.net`
@@ -101,10 +101,10 @@ namespace Extensions
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({  
-        'id': '2',
-        'to': 'postmaster@telegram.gw.msging.net',
-        'method': 'get',
-        'uri': 'lime://telegram.gw.msging.net/accounts/255600202'
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.GET,
+        to: 'postmaster@telegram.gw.msging.net',
+        uri: 'lime://telegram.gw.msging.net/accounts/255600202'
     });
 });
 ```
