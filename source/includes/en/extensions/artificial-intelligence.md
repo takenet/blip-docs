@@ -4,9 +4,9 @@
 |---------------------------------|
 | postmaster@ai.msging.net        |
 
-The  **Artificial Intelligence** extension allows the creation, training and publication of artificial intelligence models in the providers associated with the chatbot, besides performing sentence analysis to identify intentions and entities. The configuration of the chatbot providers is done through the **Artificial Intelligence**  menu in the [BLiP portal] (https://portal.blip.ai).
+The  **Artificial Intelligence** extension allows the creation, training and publication of artificial intelligence models in the providers associated with the chatbot, besides performing sentence analysis to identify intents and entities. The configuration of the chatbot providers is done through the **Artificial Intelligence**  menu in the [BLiP portal] (https://portal.blip.ai).
 
-You can associate **response documents** with the model that should be submitted when an intent is matched in a sentence. In addition, the extension can be used to improve the model by associating questions with intentions.
+You can associate **response documents** with the model that should be submitted when an intent is matched in a sentence. In addition, the extension can be used to improve the model by associating questions with intents.
 
 The training of the model is performed simultaneously on all of the AI ​​providers associated with chatbot. In that case, a snapshot of the model is stored and can be retrieved later to compare its effectiveness with other versions. To use a trained template, you must publish it.
 
@@ -16,36 +16,36 @@ All manipulation of the model can be done through the portal of the BLiP, and th
 
 | URI                               | Method   | Description                                |
 |-----------------------------------|----------|--------------------------------------------|
-| `/intentions`                     | `set`    | Creates a new intention. The `id` of the intention is returned in the command response. |
-| `/intentions`                     | `get`    | Search in all intentions that are associated to the chatbot. It is possible to paginate the request using `$skip` and `$take` arguments. |
-| `/intentions/{id}`                | `get`    | Retrieves an intention by its `id`.           |
+| `/intentions`                     | `set`    | Creates a new intent. The `id` of the intent is returned in the command response. |
+| `/intentions`                     | `get`    | Search in all intents that are associated to the chatbot. It is possible to paginate the request using `$skip` and `$take` arguments. |
+| `/intentions/{id}`                | `get`    | Retrieves an intent by its `id`.           |
 | `/entities`                       | `set`    | Creates a new entity. The `id` of the entity is returned in the command response. |
-| `/entities`                       | `get`    | Search in all intentions that are associated to the chatbot. It is possible to paginate the request using `$skip` and `$take` arguments. |
+| `/entities`                       | `get`    | Search in all intents that are associated to the chatbot. It is possible to paginate the request using `$skip` and `$take` arguments. |
 | `/entities/{id}`                  | `get`    | Retrieves an entity by its `id`.           |
-| `/intentions/{id}/questions`      | `set`    | Create questions associated to the intention `id`. |
-| `/intentions/{id}/questions`      | `get`    | Search in all questions that are associated to the intention `id`. It is possible to paginate the request using `$skip` and `$take` arguments. |
+| `/intentions/{id}/questions`      | `set`    | Create questions associated to the intent `id`. |
+| `/intentions/{id}/questions`      | `get`    | Search in all questions that are associated to the intent `id`. It is possible to paginate the request using `$skip` and `$take` arguments. |
 | `/intentions/{id}/questions/{qid}`| `delete` | Removes the question with id `qid`.          |
-| `/intentions/{id}/answers`        | `set`    | Create answers associated to the intention `id`. |
-| `/intentions/{id}/answers`        | `get`    | Search in all answers that are associated to the intention `id`. It is possible to paginate the request using `$skip` and `$take` arguments. |
+| `/intentions/{id}/answers`        | `set`    | Create answers associated to the intent `id`. |
+| `/intentions/{id}/answers`        | `get`    | Search in all answers that are associated to the intent `id`. It is possible to paginate the request using `$skip` and `$take` arguments. |
 | `/intentions/{id}/answers/{aid}`  | `delete` | Removes the answer with id `aid`.          |
 | `/models`                         | `set`    | Executes the training or publishing of the model. The action depends of the type of the resource (see the table below). |
 | `/models`                         | `get`    | Search in all trained and/or published models. |
 | `/analysis`                       | `set`    | Analyzes an user sentence using a published model. |
 | `/analysis`                       | `get`    | Retrieves the history of performed analysis. It is possible to paginate the request using using `$skip` and `$take` arguments and filter with `$filter`, using the [OData syntax](http://www.odata.org/documentation/odata-version-2-0/uri-conventions/#FilterSystemQueryOption). |
-| `/analysis/{id}/feedback`         | `set`    | Provides feedback to a performed analysis and suggest an intention to improve the model. |
+| `/analysis/{id}/feedback`         | `set`    | Provides feedback to a performed analysis and suggest an intent to improve the model. |
 
 The resource types are:
 
 | Name              | MIME Type                                       | Description                                      |
 |-------------------|-------------------------------------------------|--------------------------------------------------|
-| Intention         | `application/vnd.iris.ai.intention+json`        | Intention expressed through a sentence.                |
-| Entity            | `application/vnd.iris.ai.entity+json`           | Entity identified in an intention, with its synonyms.  |
-| Question          | `application/vnd.iris.ai.question+json`         | A user's question that is associated with an intention for model training. |
-| Answer            | `application/vnd.iris.ai.answer+json`           | Response that can be sent in case a user's intention is identified. |
+| Intent         | `application/vnd.iris.ai.intention+json`        | Intent expressed through a sentence.                |
+| Entity            | `application/vnd.iris.ai.entity+json`           | Entity identified in an intent, with its synonyms.  |
+| Question          | `application/vnd.iris.ai.question+json`         | A user's question that is associated with an intent for model training. |
+| Answer            | `application/vnd.iris.ai.answer+json`           | Response that can be sent in case a user's intent is identified. |
 | Training          | `application/vnd.iris.ai.model-training+json`   | Model training request. |
 | Publishing        | `application/vnd.iris.ai.model-publishing+json` | Model publishing request, to make it available for use. |
 | Analisys request  | `application/vnd.iris.ai.analysis-request+json` | Sentence analysis request. |
-| Analisys response | `application/vnd.iris.ai.analysis-response+json`| Sentence analysis response with the identified intentions and entities. |
+| Analisys response | `application/vnd.iris.ai.analysis-response+json`| Sentence analysis response with the identified intents and entities. |
 | Analisys          | `application/vnd.iris.ai.analysis+json`         | History information about a performed analysis.  |
 | Analisys feedback | `application/vnd.iris.ai.analysis-feedback+json`| Feedback information about a performed analysis. |
 
@@ -195,7 +195,7 @@ namespace Extensions
 }
 ```
 
-### Create an intention
+### Create an intent
 
 Defining how the chatbot should interpret and respond to the user.
 
@@ -280,12 +280,12 @@ namespace Extension
 }
 ```
 
-### Delete an intention
+### Delete an intent
 
-Deleting an intention, where `{intention_id}` is the intention identifier of an already created intention.
+Deleting an intenti, where `{intent_id}` is the intent identifier of an already created intent.
 
 <aside class="notice">
-Note: Remember to replace the variable <b>{intention_id}</b> for the intention identifier you want to delete.
+Note: Remember to replace the variable <b>{intent_id}</b> for the intent identifier you want to delete.
 </aside>
 
 ```javascript
@@ -294,7 +294,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     id: Lime.Guid(),
     to: 'postmaster@ai.msging.net',
     method: Lime.CommandMethod.DELETE,
-    uri: '/intentions/{intention_id}',
+    uri: '/intentions/{intent_id}',
   });
 });
 ```
@@ -308,7 +308,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "10",
   "to": "postmaster@ai.msging.net",
   "method": "delete",
-  "uri": "/intentions/{intention_id}",
+  "uri": "/intentions/{intent_id}",
 }
 ```
 
@@ -323,7 +323,7 @@ Content-Type: application/json
   "from": "postmaster@ai.msging.net/#az-iris4",
   "to": "contact@msging.net",
   "metadata": {
-    "#command.uri": "lime://contact@msging.net/intentions/{intention_id}"
+    "#command.uri": "lime://contact@msging.net/intentions/{intent_id}"
   }
 }
 ```
@@ -350,7 +350,7 @@ namespace Extension
             var command = new Command{
                 Id = EnvelopeId.NewId(),
                 Method = CommandMethod.Delete,
-                Uri = new LimeUri("/intentions/{intention_id}")
+                Uri = new LimeUri("/intentions/{intent_id}")
             };
            
            await _sender.SendCommandAsync(command, cancellationToken);     
@@ -359,26 +359,99 @@ namespace Extension
 }
 ```
 
-### Query the first 10 intentions
+### Delete all intents
 
-Querying the first 10 intentions.
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Delete,
+                Uri = new LimeUri("/intentions")
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
+    }
+}
+```
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.DELETE,
+    uri: '/intentions'    
+  });
+});
+
+```
+
+```http
+
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "delete",
+  "uri": "/intentions"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net",
+    "to": "contact@msging.net",
+    "metadata": {
+        "#command.uri": "lime://botname@msging.net/intentions"
+    }
+}
+```
+
+### Query the first 10 intents
+
+Querying the first 10 intents.
 
 | Property     | Description                                                        | Example |
 |--------------|--------------------------------------------------------------------|---------|
-| **skip** | The number of intentions to be skipped.                                |    0    |
-| **take** | The number of intentions to be returned.                               |   100   |
+| **skip** | The number of intents to be skipped.                                |    0    |
+| **take** | The number of intents to be returned.                               |   100   |
 | **ascending** | Sets ascending alphabetical order.                                |    -    |
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-  var intentions = await client.sendCommand({
+  var intents = await client.sendCommand({
     id: Lime.Guid(),
     to: 'postmaster@ai.msging.net',
     method: Lime.CommandMethod.GET,
     uri: '/intentions?$skip=0&$take=10',
   });
   
-  intentions.resource.items.forEach(function (item) {
+  intents.resource.items.forEach(function (item) {
     console.log(item);
   });
 });
@@ -458,7 +531,7 @@ namespace Extension
 }
 ```
 
-### Associate questions to an intention
+### Associate questions to an intent
 
 Associating examples of questions from the user. A variety of examples may be added to train the artificial intelligence model.
 
@@ -554,7 +627,7 @@ namespace Extension
         
         public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
         {
-            var intentionId = "order_pizza";
+            var intentId = "order_pizza";
 
             var questions = new List<Question>(){
                 new Question{ Text = "I want a pizza" },
@@ -562,13 +635,100 @@ namespace Extension
                 new Question{ Text = "Give me a pizza" }
             };
 
-            await _artificialIntelligenceExtension.SetQuestionsAsync(intentionId, questions, cancellationToken);
+            await _artificialIntelligenceExtension.SetQuestionsAsync(intentId, questions, cancellationToken);
         }
     }
 }
 ```
 
-### Associate answers to an intention
+### Get questions from intent
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.GET,
+    uri: '/intentions/order_pizza/questions'
+  });
+});
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.ArtificialIntelligence;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
+
+namespace Extensions
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
+
+        public ArtificialIntelligenceReceiver(IArtificialIntelligenceExtension artificialIntelligenceExtension)
+        {
+            _artificialIntelligenceExtension = artificialIntelligenceExtension;
+        }
+
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {            
+            var intentId = "order_pizza";
+            var skip = 0; //optional
+            var take = 100; //optional
+            var ascending = true; //optional
+
+            await _artificialIntelligenceExtension.GetQuestionsAsync(intentId, cancellationToken);
+        }
+    }
+}
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/intentions/pesquisa_veiculo/questions"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 33,
+        "itemType": "application/vnd.iris.ai.question+json",
+        "items": [
+            {
+                "id": "32",
+                "text": "O carro saiu de linha?"
+            },
+            {
+                "id": "33",
+                "text": "Qual o valor do fiat"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",l
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/pesquisa_veiculo/questions"
+    }
+}
+```
+
+### Associate answers to an intent
 
 Associating possible answers to send to the user. 
 
@@ -654,19 +814,176 @@ namespace Extension
         
         public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
         {
-            var intentionId = "order_pizza";
+            var intentId = "order_pizza";
 
             var answers = new List<Answer>(){ new Answer{ Value = "Which flavor do you want?" } };
 
-            await _artificialIntelligenceExtension.SetAnswersAsync(intentionId, answers, cancellationToken);
+            await _artificialIntelligenceExtension.SetAnswersAsync(intentId, answers, cancellationToken);
         }
+    }
+}
+```
+
+### Get intent's answers
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.ArtificialIntelligence;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
+
+namespace Extensions
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
+
+        public ArtificialIntelligenceReceiver(IArtificialIntelligenceExtension artificialIntelligenceExtension)
+        {
+            _artificialIntelligenceExtension = artificialIntelligenceExtension;
+        }
+
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {            
+            var intentId = "order_pizza";
+            var skip = 0; //optional
+            var take = 100; //optional
+            var ascending = true; //optional
+
+            await _artificialIntelligenceExtension.GetAnswersAsync(intentId, cancellationToken);
+        }
+    }
+}
+
+```
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.GET,
+    uri: '/intentions/{intentId}/answers?skip=0&take=100&ascending=false'
+  });
+});
+```
+
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "method": "get",
+    "to": "postmaster@ai.msging.net",
+    "uri": "/intentions/{intentId}/answers?skip=0&take=100&ascending=false"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 1,
+        "itemType": "application/vnd.iris.ai.answer+json",
+        "items": [
+            {
+                "id": "1",
+                "type": "text/plain",
+                "value": "Agendaremos pra você"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris2",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/agendar/answers?skip=0&take=100&ascending=false"
+    }
+}
+```
+
+### Delete answer from intent
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.DELETE,
+    uri: '/intentions/{intentId}/answers/{answerId}'
+  });
+});
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Delete,
+                Uri = new LimeUri("/intentions/{intentId}/answers/{answerId}")
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
+    }
+}
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "10",
+  "to": "postmaster@ai.msging.net",
+  "method": "delete",
+  "uri": "/intentions/{intentId}/answers/{answerId}"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/intentions/pesquisa_veiculo/answers/1"
     }
 }
 ```
 
 ### Train model
 
-Before you train an artificial intelligence model, you need to configure the artificial intelligence provider that will be associeated with chatbot and add user intentions to the model.
+Before you train an artificial intelligence model, you need to configure the artificial intelligence provider that will be associeated with chatbot and add user intents to the model.
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
@@ -943,6 +1260,106 @@ namespace Extension
 }
 ```
 
+### Analyze a sentence in the last published model
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Set,
+                Uri = new LimeUri("/analysis"),
+                Type = 'application/vnd.iris.ai.analysis-request+json',
+                Resource = new AnalysisRequest {
+                  Text = 'I want a pepperoni pizza'
+                }
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
+    }
+}
+```
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: '/analysis',
+    type: 'application/vnd.iris.ai.analysis-request+json',
+    resource: {
+      text: 'I want a pepperoni pizza'
+    }
+  });
+});
+```
+
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "9",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/analysis",
+  "type": "application/vnd.iris.ai.analysis-request+json",
+  "resource": {
+    "text":"I want a pepperoni pizza"
+  }
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "9",
+  "from": "postmaster@ai.msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "set",
+  "status": "success",
+  "type": "application/vnd.iris.ai.analysis-response+json",
+  "resource": {
+    "text":"I want a pepperoni pizza",
+    "intentions":[
+      {
+        "id":"order_pizza",
+        "name":"Order pizza",
+        "score": 0.95
+      }
+    ],
+    "entities":[
+      {
+        "id":"flavor",
+        "name":"Flavor",
+        "value":"Pepperoni"
+      }
+    ]
+  }
+}
+```
+
 ### Analyze a sentence with a specific model
 
 It is possible to analyze a sentence with a specific model, to improve the model. 
@@ -965,8 +1382,8 @@ client.addMessageReceiver('text/plain', async (message) => {
     }
   });
 
-  result.resource.intentions.forEach(function (intention) {
-    console.log(intention);
+  result.resource.intentions.forEach(function (intent) {
+    console.log(intent);
   });
   
   result.resource.entities.forEach(function (entity) {
@@ -1413,10 +1830,10 @@ namespace Extension
 
 ### Send a 'rejected' feedback
 
-To submit a rejection feedback, it is necessary to enter the id of the correct intention for the case.
+To submit a rejection feedback, it is necessary to enter the id of the correct intent for the case.
 
 <aside class="notice">
-Note: Remember to replace the variable <b>{analyze_id}</b> for the analyze id you want to reject and <b>{other_intention_id}</b> for the intention identifier you really want to use.
+Note: Remember to replace the variable <b>{analyze_id}</b> for the analyze id you want to reject and <b>{other_intent_id}</b> for the intent identifier you really want to use.
 </aside>
 
 ```javascript
@@ -1429,7 +1846,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     type: 'application/vnd.iris.ai.analysis-feedback+json',
     resource: {
       feedback: 'rejected',
-      intentionId: '{other_intention_id}}'
+      intentionId: '{other_intent_id}}'
     }
   });
 });
@@ -1448,7 +1865,7 @@ Authorization: Key {YOUR_TOKEN}
   "type": "application/vnd.iris.ai.analysis-feedback+json",
   "resource": {
     "feedback": "rejected"
-    "intentionId": "{other_intention_id}}"
+    "intentionId": "{other_intent_id}}"
   }
 }
 ```
@@ -1492,11 +1909,475 @@ namespace Extension
         {
             var analysisFeedback = new AnalysisFeedback{
                 Feedback = AnalysisModelFeedback.Rejected,
-                IntentionId = "{other_intention_id}"
+                IntentionId = "{other_intent_id}"
             };
 
             await _artificialIntelligenceExtension.SendFeedbackAsync("{analyze_id}", analysisFeedback, cancellationToken);
         }
     }
 }
+```
+
+###Send enhancement analysis models by email
+
+The filter can be sent empty.
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: "/enhancement/send-by-email",
+    type:"application/json",
+    resource:{  
+      email:"test%40take.net",
+      filter:"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
+    }
+  });
+});
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+          _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+          var command = new Command{
+            Id = EnvelopeId.NewId(),
+            Method = CommandMethod.Set,
+            Uri = new LimeUri("/enhancement/send-by-email"),
+            Resource = new {  
+              email = "test%40take.net",
+              filter = "requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
+            },
+            Type :"application/json"
+          };
+           
+          await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
+    }
+}
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+   "id":"10",
+   "method":"set",
+   "resource":{  
+      "email":"test%40take.net",
+      "filter":"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
+   },
+   "to":"postmaster@ai.msging.net",
+   "type":"application/json",
+   "uri":"/enhancement/send-by-email"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  {
+    "method": "set",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/enhancement/send-by-email"
+    }
+}
+```
+
+### Create a confusion matrix
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: "/analytics/confusion-matrix",
+    type: "application/vnd.iris.ai.confusion-matrix+json",
+    resource: {
+        version: "test",
+        sampleSize: 2
+    }
+  });
+});
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Set,
+                Uri = new LimeUri("/analytics/confusion-matrix")
+                Type= "application/vnd.iris.ai.confusion-matrix+json",
+                Resource = new ConfusionMatrix{
+                  Version = "teste",
+                  SampleSize = 2
+                }
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
+    }
+}
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "to": "postmaster@ai.msging.net",
+    "method": "set",
+    "uri": "/analytics/confusion-matrix",
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "version": "teste",
+        "sampleSize": 2
+    }
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "OwnerIdentity": "botbot1@msging.net",
+        "id": "d0b71e41-897c-48c4-a565-29d227013111",
+        "modelId": "botbot1_543659e7-902a-4326-8a2e-016adbc4b100",
+        "version": "teste",
+        "score": 0,
+        "sampleSize": 2,
+        "createdDate": "2019-05-30T17:22:02.139Z",
+        "accuracy": 0,
+        "avgScore": 0,
+        "precision": 0,
+        "recall": 0,
+        "f1Score": 0,
+        "numberOfSamples": 0
+    },
+    "method": "set",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris2",
+    "to": "botbot1@msging.net",
+    "metadata": {
+        "#command.uri": "lime://botbot1@msging.net/analytics/confusion-matrix"
+    }
+}
+```
+
+### Get confusion matrices
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.GET,
+    uri: '/analytics/confusion-matrix'
+  });
+});
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Get,
+                Uri = new LimeUri("/analytics/confusion-matrix")
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
+    }
+}
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "to": "postmaster@ai.msging.net",
+    "method": "get",
+    "uri": "/analytics/confusion-matrix"
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 2,
+        "itemType": "application/vnd.iris.ai.confusion-matrix+json",
+        "items": [
+            {
+                "OwnerIdentity": "botbot1@msging.net",
+                "id": "{confusionMatrixId}",
+                "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
+                "version": "Reportão",
+                "score": 0,
+                "sampleSize": 30,
+                "createdDate": "2019-05-17T21:18:33.540Z",
+                "accuracy": 0.96,
+                "avgScore": 0.61698660140000006,
+                "precision": 0.92207792207792216,
+                "recall": 0.90238095238095239,
+                "f1Score": 0.980796980796981,
+                "numberOfSamples": 50
+            },
+            {
+                "OwnerIdentity": "botbot1@msging.net",
+                "id": "4dcb1b00-dc95-488e-a38f-95f8d213f842",
+                "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
+                "version": "Reportão",
+                "score": 0,
+                "sampleSize": 30,
+                "createdDate": "2019-05-17T21:18:30.520Z",
+                "accuracy": 1,
+                "avgScore": 0.67095285047619058,
+                "precision": 1,
+                "recall": 1,
+                "f1Score": 1,
+                "numberOfSamples": 21
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "71c0b1f1-332d-498e-afa6-792dbe86d464",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/analytics/confusion-matrix"
+    }
+}
+```
+
+### Get a confusion matrix
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.GET,
+    uri: '/analytics/confusion-matrix/{confusionMatrixId}'
+  });
+});
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Get,
+                Uri = new LimeUri("/analytics/confusion-matrix/{confusionMatrixId}")
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
+    }
+}
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "10",
+    "to": "postmaster@ai.msging.net",
+    "method": "get",
+    "uri": "/analytics/confusion-matrix/{confusionMatrixId}"
+}
+
+```
+
+```http
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ai.confusion-matrix+json",
+    "resource": {
+        "OwnerIdentity": "botbot1@msging.net",
+        "id": "{confusionMatrixId}",
+        "modelId": "botbot1_5fcc572f-f9c5-47f9-964f-016ac7541425",
+        "version": "Reportão",
+        "score": 0,
+        "sampleSize": 30,
+        "createdDate": "2019-05-17T21:18:33.540Z",
+        "accuracy": 0.96,
+        "avgScore": 0.61698660140000006,
+        "precision": 0.92207792207792216,
+        "recall": 0.90238095238095239,
+        "f1Score": 0.980796980796981,
+        "numberOfSamples": 50,
+        "matrix": [[],...],
+        "perClasses": [{},...]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "e909fedf-fb70-463e-88c1-1cd02218c712",
+    "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1",
+    "to": "test@msging.net",
+    "metadata": {
+        "#command.uri": "lime://test@msging.net/analytics/confusion-matrix/{confusionMatrixId}"
+    }
+}
+```
+
+### Delete a confusion matrix
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Delete,
+                Uri = new LimeUri("/analytics/confusion-matrix/{confusionMatrixId}")
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
+    }
+}
+```
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.DELETE,
+    uri: '/analytics/confusion-matrix/{confusionMatrixId}'    
+  });
+});
+```
+
+```http
+
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+	"id": "10",
+	"method": "delete",
+	"to": "postmaster@ai.msging.net",
+	"uri": "/analytics/confusion-matrix/{confusionMatrixId}",
+	"from": "postmaster@ai.msging.net/#hmg-az-lx-iris1"
+}
+```
+
+```http
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+	"id": "10",
+	"method": "delete",
+	"status": "success",
+	"to": "test.net/portal-test%40take.net"
+}
+
 ```
