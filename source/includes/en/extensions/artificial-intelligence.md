@@ -144,7 +144,6 @@ Content-Type: application/json
 }
 ```
 
-
 ```csharp
 using System.Threading;
 using System.Threading.Tasks;
@@ -282,7 +281,7 @@ namespace Extension
 
 ### Delete an intent
 
-Deleting an intenti, where `{intent_id}` is the intent identifier of an already created intent.
+Deleting an intent, where `{intent_id}` is the intent identifier of an already created intent.
 
 <aside class="notice">
 Note: Remember to replace the variable <b>{intent_id}</b> for the intent identifier you want to delete.
@@ -983,7 +982,7 @@ Content-Type: application/json
 
 ### Train model
 
-Before you train an artificial intelligence model, you need to configure the artificial intelligence provider that will be associeated with chatbot and add user intents to the model.
+Before you train an artificial intelligence model, you need to configure the artificial intelligence provider that will be associated with chatbot and add user intents to the model.
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
