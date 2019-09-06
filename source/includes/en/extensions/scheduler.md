@@ -25,13 +25,8 @@ A schedule object passed as a document `resource` has the following properties:
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-    var currentDate = new Date(); 
-        currentDate = currentDate.getFullYear() + "-"
-                    + ("0" + (currentDate.getMonth() + 1)).slice(-2)  + "-" 
-                    + ("0" + currentDate.getDate()).slice(-2) + "T"  
-                    + (currentDate.getHours() + 3) + ":"  
-                    + (currentDate.getMinutes() + 10) + ":" 
-                    + currentDate.getSeconds() + ".000Z";
+    var currentDate = new Date(),
+        currentDate = currentDate.toISOString();
 
     await client.sendCommand({  
         id: Lime.Guid(),
