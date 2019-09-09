@@ -22,6 +22,7 @@ includes:
   - en/concepts2/handle-notifications
   - en/concepts2/commands
   - en/concepts2/handle-commands
+  - en/concepts2/throughput
   
   - en/authentication
 
