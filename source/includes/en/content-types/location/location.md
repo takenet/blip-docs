@@ -167,7 +167,7 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 | Channel              | Type                    |
 |--------------------|-------------------------|
 | BLiP Chat          | Location             |
-| Messenger          | [Generic template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/generic-template)|
+| <s>Messenger</s>          | Starting August 15, 2019, updated versions of the Messenger app will no longer render Location quick reply.|
 | Whatsapp           | Text with link          |
 | SMS                | Text with link          |
 | Skype              | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1)|
