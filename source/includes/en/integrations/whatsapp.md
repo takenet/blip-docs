@@ -207,7 +207,7 @@ Send this link to any customer you want invite to join the group.
 
 Every message received by bot in a WhatsApp's group has the `from` node equals to `groups@wa.gw.msging.net`. Take a look at a sample:
 
-```http
+```
 {
   "id": "65603604-fe19-479c-c885-3195b196fe8e",
   "from": "groups@wa.gw.msging.net",
