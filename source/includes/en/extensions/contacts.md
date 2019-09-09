@@ -345,6 +345,13 @@ namespace Extensions
 
 If you need to get more than one chatbot's contact, you can use a query pagination. This sample shows how to take the **three first roaster's contacts**.
 
+<aside  class="notice">
+Note: You can also filter your query with one of the properties of the contact resource, using the <code>filter</code> property:<br><br>
+
+<code>filter=(substringof('{value}',{propertyName}))</code><br><br>
+
+<b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(substringof('John Doe',name))</b> </aside>
+
 ### Send message with contact name
 
 ```javascript
