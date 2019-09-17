@@ -196,6 +196,8 @@ namespace Extensions
 
 ### Create an intent
 
+The set intent command creates a new intent, or set of intents, and cleans the old intents on the knowledge base.
+
 Defining how the chatbot should interpret and respond to the user.
 
 ```javascript
@@ -276,6 +278,65 @@ namespace Extension
             await _artificialIntelligenceExtension.SetIntentionAsync(intention, cancellationToken);
         }
     }
+}
+```
+
+### Merge an intent into a base
+
+The merge intent command creates a new intent, or set of intents, and merges them into the knowledge base without deleting the old intents.
+Note that there is currently no implementation for this method using the C# SDK.
+
+Defining how the chatbot should interpret and respond to the user.
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.MERGE,
+    uri: '/intentions',
+    type: 'application/vnd.iris.ai.intention+json',
+    resource: {
+      name: 'Order pizza'
+    }
+  });
+});
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "2",
+  "to": "postmaster@ai.msging.net",
+  "method": "merge",
+  "uri": "/intentions",
+  "type": "application/vnd.iris.ai.intention+json",
+  "resource": {
+      "name": "Order pizza"
+  }
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "type": "application/vnd.iris.ai.intention+json",
+  "resource": {
+    "id": "order_pizza"
+  },
+  "method": "merge",
+  "status": "success",
+  "id": "2",
+  "from": "postmaster@ai.msging.net/#az-iris2",
+  "to": "contact@msging.net",
+  "metadata": {
+    "#command.uri": "lime://contact@msging.net/intentions"
+  }
 }
 ```
 
