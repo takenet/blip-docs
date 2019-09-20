@@ -16,8 +16,12 @@ In order to reset a user state, send a command with the following properties:
 |---------------------------------|--------------|
 | id    | Unique identifier of the command.   |
 | method    | **delete**  |
-| uri    | **/contexts/{{user-identity}}/stateid%400**   |
+| uri    | **/contexts/{{user-identity}}/stateid%40{{flow-identifier}}**   |
 | to     | **postmaster@msging.net** (not required) |
+
+To get the flow identifier, click in Builder's settings and go to Flow Identifier section (as picture below).
+
+![image](flow_id.png)
 
 <aside class="notice">
 Note: Remember to replace the variable {{user-identity}} for the user identity you want to reset (for instance: <b>30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io</b>)
@@ -28,7 +32,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({  
         id: Lime.Guid(),
         method: Lime.CommandMethod.DELETE,
-        uri: '/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400'
+        uri: '/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400f2b4564-9063-43e4-b0ef-46406dea65a5'
     });
 });
 ```
@@ -41,7 +45,7 @@ Authorization: Key {YOUR_TOKEN}
 {  
   "id": "0094447a-2581-4597-be6a-a5dff33af156",
   "method": "delete",
-  "uri": "/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400"
+  "uri": "/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400f2b4564-9063-43e4-b0ef-46406dea65a5"
 }
 ```
 
@@ -56,7 +60,7 @@ Content-Type: application/json
     "from": "postmaster@msging.net/#az-iris1",
     "to": "docstest@msging.net",
     "metadata": {
-        "#command.uri": "lime://docstest@msging.net/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400"
+        "#command.uri": "lime://docstest@msging.net/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400f2b4564-9063-43e4-b0ef-46406dea65a5"
     }
 }
 ```
