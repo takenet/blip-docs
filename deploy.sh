@@ -15,9 +15,14 @@ Options:
                            deploy branch.
   -n, --no-hash            Don't append the source commit's hash to the deploy
                            commit's message.
+      --source-only        Only build but not push
+      --push-only          Only push but not build
 "
 
-bundle exec middleman build --clean
+
+run_build() {
+  bundle exec middleman build --clean
+}
 
 parse_args() {
   # Set args from a local environment file.
@@ -97,7 +102,7 @@ main() {
     return 1
   fi
 
-  # must use short form of flag in ls for compatibility with OS X and BSD
+  # must use short form of flag in ls for compatibility with macOS and BSD
   if [[ -z `ls -A "$deploy_directory" 2> /dev/null` && -z $allow_empty ]]; then
     echo "Deploy directory '$deploy_directory' is empty. Aborting. If you're sure you want to deploy an empty tree, use the --allow-empty / -e flag." >&2
     return 1
@@ -200,4 +205,11 @@ sanitize() {
   "$@" 2> >(filter 1>&2) | filter
 }
 
-[[ $1 = --source-only ]] || main "$@"
+if [[ $1 = --source-only ]]; then
+  run_build
+elif [[ $1 = --push-only ]]; then
+  main "$@"
+else
+  run_build
+  main "$@"
+fi

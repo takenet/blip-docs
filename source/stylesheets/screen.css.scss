@@ -3,6 +3,7 @@
 @import 'variables';
 @import 'icon-font';
 @import 'mixins/module';
+// @import 'rtl'; // uncomment to switch to RTL format
 
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
@@ -49,7 +50,6 @@ html, body {
 
 .toc-wrapper {
   transition: left 0.3s ease-in-out;
-
   overflow-y: auto;
   overflow-x: hidden;
   position: fixed;
@@ -58,7 +58,6 @@ html, body {
   left: 0;
   bottom: 0;
   width: $nav-width;
-  padding: $nav-padding;
   background-color: $nav-bg;
   border-right: 1px solid #ccc;
   font-size: 13px;
@@ -85,14 +84,14 @@ html, body {
   &>.search {
     position: relative;
     padding: 10px 30px;
-    margin: 10px -30px 40px;
+    margin: 10px -20px 20px;
     background: #f6f8f8;
 
     input {
       background: transparent;
       border-width: 0 0 1px 0;
       border-color: $search-box-border-color;
-      padding: 6px 0 6px 30px;
+      padding: 6px 0 6px 40px;
       box-sizing: border-box;
       width: $nav-width - 30;
       outline: none;
@@ -115,6 +114,7 @@ html, body {
 
     &:before {
       position: absolute;
+      padding-left: 10px;
       top: 15px;
       left: 30px;
       color: $search-color;
@@ -248,7 +248,7 @@ html, body {
 #nav-button {
   span {
     display: block;
-    $side-pad: $main-padding / 2 - 0.8*$m;
+    $side-pad: $main-padding / 2 - 8px;
     padding: $side-pad $side-pad $side-pad;
     background-color: rgba($main-bg, 0.7);
     transform-origin: 0 0;
@@ -322,7 +322,7 @@ html, body {
     float:left;
     color: $lang-select-text;
     text-decoration: none;
-    padding: 0 30px;
+    padding: 0 15px;
     line-height: 48px;
     outline: 0;
 
@@ -637,7 +637,28 @@ html, body {
 // These are the styles for phones and tablets
 // There are also a couple styles disperesed
 
+@media (max-width: $tablet-width) {
+  .toc-wrapper {
+    left: -$nav-width;
 
+    &.open {
+      left: 0;
+    }
+  }
+
+  .page-wrapper {
+    margin-left: 0;
+  }
+
+  #nav-button {
+    display: block;
+  }
+
+  .toc-link {
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+  }
+}
 
 @media (max-width: $phone-width) {
   .dark-box {

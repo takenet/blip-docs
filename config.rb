@@ -8,6 +8,7 @@ set :markdown,
     smartypants: true,
     disable_indented_code_blocks: true,
     prettify: true,
+    strikethrough: true,
     tables: true,
     with_toc_data: true,
     no_intra_emphasis: true,
@@ -37,24 +38,13 @@ end
 activate :relative_assets
 set :relative_links, true
 
-# Middleman Server Configuration
-configure :development do
-  # if ENV['THEME'] == "hmg"
-  #   config[:prod] = 'UA-79317370-6'
-  # else 
-  #   config[:prod] = 'UA-79317370-1'
-  # end
-end
-
-
 # Build Configuration
 configure :build do
   # If you're having trouble with Middleman hanging, commenting
   # out the following two lines has been known to help
-
   activate :minify_css
   activate :minify_javascript
-  
+  # activate :relative_assets
   # activate :asset_hash
   # activate :gzip
 end
@@ -66,4 +56,3 @@ set :port, 4567
 helpers do
   require './lib/toc_data.rb'
 end
-
