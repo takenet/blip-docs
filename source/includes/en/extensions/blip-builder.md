@@ -103,6 +103,56 @@ namespace Extensions
 }
 ```
 
+### Get user state
+
+In order to change a user state, send a command with the following properties:
+
+| Name | Description |
+|---------------------------------|--------------|
+| id    | Unique identifier of the command.   |
+| to     | **postmaster@msging.net** (not required) |
+| method    | **get**  |
+| uri    | **/contexts/{{user-identity}}/stateid%40{{flow-identifier}}**   |
+
+To get the flow identifier, click in Builder's settings and go to Flow Identifier section (as picture below).
+
+![image](flow_id.png)
+
+<aside class="notice">
+Note: Remember to replace the variable {{user-identity}} for the user identity you want to reset (for instance: <b>30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io</b>). You must also define what is the new state you want to send the user, replacing the {{state-id}} variable (for instance: <b>state-one</b>).
+</aside>
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "1294447a-2581-4597-be6a-a5dff33af156",
+  "to": "postmaster@msging.net",
+  "method": "get",
+  "uri": "/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest%400mn.io/stateid%400"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{    
+    "type": "text/plain",
+    "resource": "950dbc23-124a-41ac-8014-37dc6a7909d6",
+    "method": "get",
+    "status": "success",
+    "id": "1294447a-2581-4597-be6a-a5dff33af156",
+    "from": "postmaster@msging.net/#az-iris4",
+    "to": "docstest@msging.net",
+    "metadata": {
+        "#command.uri": "lime://docstest@msging.net/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest%400mn.io/stateid%400"
+    }
+}
+```
+
 ### Reset user state
 
 In order to reset a user state, send a command with the following properties:
