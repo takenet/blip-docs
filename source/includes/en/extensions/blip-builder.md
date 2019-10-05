@@ -119,7 +119,7 @@ To get the flow identifier, click in Builder's settings and go to Flow Identifie
 ![image](flow_id.png)
 
 <aside class="notice">
-Note: Remember to replace the variable {{user-identity}} for the user identity you want to reset (for instance: <b>30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io</b>). You must also define what is the new state you want to send the user, replacing the {{state-id}} variable (for instance: <b>state-one</b>).
+Note: Remember to replace the variable {{user-identity}} for the user identity you want to reset (for instance: <b>30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io</b>).
 </aside>
 
 ```javascript
@@ -160,6 +160,32 @@ Content-Type: application/json
     "to": "docstest@msging.net",
     "metadata": {
         "#command.uri": "lime://docstest@msging.net/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest%400mn.io/stateid%400"
+    }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Session;
+
+namespace Extensions
+{
+    public class GetUserStateReceiver : IMessageReceiver
+    {
+        private readonly IStateManager _stateManager;
+
+        public GetUserStateReceiver(IStateManager stateManager)
+        {
+            _stateManager = stateManager;
+        }
+        
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var state = await _stateManager.GetStateAsync(message.From, cancellationToken);
+        }
     }
 }
 ```
