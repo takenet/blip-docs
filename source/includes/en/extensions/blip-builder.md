@@ -105,7 +105,7 @@ namespace Extensions
 
 ### Get user state
 
-In order to change a user state, send a command with the following properties:
+In order to get a user state, send a command with the following properties:
 
 | Name | Description |
 |---------------------------------|--------------|
@@ -121,6 +121,17 @@ To get the flow identifier, click in Builder's settings and go to Flow Identifie
 <aside class="notice">
 Note: Remember to replace the variable {{user-identity}} for the user identity you want to reset (for instance: <b>30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io</b>). You must also define what is the new state you want to send the user, replacing the {{state-id}} variable (for instance: <b>state-one</b>).
 </aside>
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        id: Lime.Guid(),
+        to: 'postmaster@msging.net',
+        method: Lime.CommandMethod.GET,
+        uri: '/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest%400mn.io/stateid%400'        
+    });
+});
+```
 
 ```http
 POST https://msging.net/commands HTTP/1.1
