@@ -3,7 +3,9 @@
 |--------------------------|---------------------------------------------------------------|
 | @mailgun.gw.msging.net   | E-mail address on [URL encoded](http://www.w3schools.com/tags/ref_urlencode.asp) format  |
 
-**E-mail** channel allows sending and receiving messages through e-mail messages. Each chatbot has an unique address automatically created by the platform. 
+**E-mail** channel allows sending and receiving messages through e-mail messages. Each chatbot has an unique address automatically created by the platform. To know exactly what is the email of your bot access the Portal <b>Channels > Email</b> module, as below image:
+
+![image](bot_email.png)
 
 ### Send e-mail
 
