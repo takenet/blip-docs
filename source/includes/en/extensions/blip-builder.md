@@ -6,7 +6,7 @@
 
 **Builder** is a visual tool for create any type of bots with no code. Behind the scenes Builder is a state machine fully integrated with the others BLiP's components.
 
-**The Builder** extension allows change some Builder's behaviors programmaticaly. You can **change or reset a user state** with a command. In addition, the extension can be used to manage the whole bot flow.
+**The Builder** extension allows change some Builder's behaviors programmaticaly. You can **change, get or reset a user state** with a command. In addition, the extension can be used to manage the whole bot flow.
 
 ### Change user state
 
@@ -119,7 +119,7 @@ To get the flow identifier, click in Builder's settings and go to Flow Identifie
 ![image](flow_id.png)
 
 <aside class="notice">
-Note: Remember to replace the variable {{user-identity}} for the user identity you want to reset (for instance: <b>30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io</b>).
+Note: Remember to replace the variable {{user-identity}} for the user identity you want to get (for instance: <b>30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io</b>).
 </aside>
 
 ```javascript
