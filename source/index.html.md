@@ -8,6 +8,8 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a target="_blank" href="https://portal.blip.ai">Sign Up for a BLiP Account</a>
+  - <a target="_blank" href="https://github.com/takenet/blip-docs">Help to improve this docs</a>
+  - <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfOrnQqItLAxOhcrlhD6z5_ClTA54rSBbNGh5gKXr5J0a5tHA/viewform">Suggest an update ✌️</a>
   
 
 includes:
