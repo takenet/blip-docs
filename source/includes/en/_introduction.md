@@ -3,9 +3,7 @@
 
 Welcome to **BLiP Docs**😊!
 
-In this documentation, you will be introduced to the most important platform's concepts so you can explore all the power of BLiP!
-
-The main goal of **BLiP Docs** is to provide **technical development knowledge** on the BLiP platform and present various **code samples**.
+The main goal of **BLiP Docs** is to provide **technical development knowledge** on the BLiP platform and present various **code samples**. These are the minimum necessary concepts for who wants to explore all power of BLiP.
 
 <aside class="notice">
 If you are <b>not</b> interested in technical programming information, please access <a href="https://help.blip.ai">BLiP's Help Center</a>.
@@ -15,10 +13,12 @@ Here, you will find code samples on the **right side** for each subject. The sam
 
 **Essential information:**
 
-- [Important concepts about BLiP](#concepts)
-<br/>Description of basic and advanced concepts used by BLiP.
+This documentation is organized in sections. Each section go deep in a specific topic about BLiP.
 
-- [BLiP Authentication](#authentication)
+- [Concepts](#concepts)
+<br/>Description of important concepts (basic and advanced) used by BLiP.
+
+- [Authentication](#authentication)
 <br/>How to make requests and receive messages in a safe way.
 
 - [Getting started - Builder](#using-builder)
@@ -33,11 +33,25 @@ Here, you will find code samples on the **right side** for each subject. The sam
 - [Getting started - HTTP](#using-http)
 <br/>How to create a chatbot using BLiP's HTTP API (for any language).
 
+- [Content Types](#content-types)
+<br/>Description of all content type used by BLiP. Each message sent or received by bot has a specific content type.
+
+<!-- - [Documents](#documents)
+<br/>Description of all documents sent or received by BLiP API. Documents are models used by BLiP to organize information. -->
+
+- [Extensions](#extensions)
+<br/>Description of all extension in BLiP API. Extensions are BLiP connected services that provide developers with different features for their chatbots.
+
+- [Integrations](#integrations)
+<br/>Description of all external APIs integrated into BLiP. Use this section to see specific topics about these integrations.
+
+**Helpfull links:**
+
 - [Forum to report issues, questions and suggestions](http://forum.blip.ai/)
-<br/>Please use the forum if you need any help 😉.
+<br/>Please use the forum if you need any assistance 😉.
 
 - [Help Center](https://help.blip.ai)
-<br/>Use BLiP's Help Center to discover all [BLiP's Portal](https://portal.blip.ai) and not technical features.
+<br/>Use BLiP's Help Center to discover all [BLiP's Portal](https://portal.blip.ai) features. <b>Help Center isn't focused on technical programming features.</b>
 
 - [Postman Collection for BLiP APIs](#postman-collection)
 <br/>A full set of requests for communicating with BLiP APIs.
