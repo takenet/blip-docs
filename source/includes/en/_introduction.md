@@ -47,6 +47,8 @@ This documentation is organized in sections. Each section go deep in a specific 
 
 **Helpfull links:**
 
+If you need more information about BLiP take a look in one of the following links:
+
 - [Forum to report issues, questions and suggestions](http://forum.blip.ai/)
 <br/>Please use the forum if you need any assistance 😉.
 
