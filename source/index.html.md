@@ -60,7 +60,6 @@ includes:
   - en/content-types/text
   - en/content-types/redirect  
   - en/content-types/resource
-  - en/content-types/menu/quickreply
   - en/content-types/sensitive
   - en/content-types/web-link
 
