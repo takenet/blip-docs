@@ -36,8 +36,8 @@ This documentation is organized in sections. Each section go deep in a specific 
 - [Content Types](#content-types)
 <br/>Description of all content type used by BLiP. Each message sent or received by bot has a specific content type.
 
-<!-- - [Documents](#documents)
-<br/>Description of all documents sent or received by BLiP API. Documents are models used by BLiP to organize information. -->
+- [Documents](#documents)
+<br/>Description of all documents sent or received by BLiP API. Documents are models used by BLiP to organize information.
 
 - [Extensions](#extensions)
 <br/>Description of all extension in BLiP API. Extensions are BLiP connected services that provide developers with different features for their chatbots.

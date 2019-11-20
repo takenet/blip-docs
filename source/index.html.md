@@ -64,6 +64,76 @@ includes:
   - en/content-types/sensitive
   - en/content-types/web-link
 
+
+# Add documents 
+
+  - en/documents
+  - en/documents/accessKey
+  - en/documents/accountContact
+  - en/documents/accountKeyRequest
+  - en/documents/agentProductivitySummary
+  - en/documents/analysis
+  - en/documents/analysisFeedback
+  - en/documents/analysisRequest
+  - en/documents/analysisResponse
+  - en/documents/answer
+  - en/documents/attendanceTimeSummary
+  - en/documents/attendant
+  - en/documents/attendantTeam
+  - en/documents/billingRule
+  - en/documents/chart
+  - en/documents/comment
+  - en/documents/configuration
+  - en/documents/confusionMatrix
+  - en/documents/customReply
+  - en/documents/distributionList
+  - en/documents/distributionListMessage
+  - en/documents/distributionListNotification
+  - en/documents/entity
+  - en/documents/eventTrack
+  - en/documents/httpContentDocument
+  - en/documents/identityPerDay
+  - en/documents/identityPlan
+  - en/documents/identitySubscription
+  - en/documents/identityTotalPerDay
+  - en/documents/identityWallet
+  - en/documents/intention
+  - en/documents/metricIndicators
+  - en/documents/metricsSummary
+  - en/documents/model
+  - en/documents/modelSummary
+  - en/documents/OAuthToken
+  - en/documents/openTicketSummary
+  - en/documents/plan
+  - en/documents/question
+  - en/documents/report
+  - en/documents/resource
+  - en/documents/responseTime
+  - en/documents/role
+  - en/documents/rolePermission
+  - en/documents/rule
+  - en/documents/schedule
+  - en/documents/serviceTimeSummary
+  - en/documents/subscription (plan)
+  - en/documents/subscription (resource)
+  - en/documents/subscriptionEvent
+  - en/documents/subscriptionItem
+  - en/documents/team
+  - en/documents/tenantInformation
+  - en/documents/tenantUserInformation
+  - en/documents/thread
+  - en/documents/threadMessage
+  - en/documents/ticket
+  - en/documents/ticketsMetricsSummary
+  - en/documents/ticketsSummary
+  - en/documents/tunnel
+  - en/documents/user
+  - en/documents/userPermission
+  - en/documents/usersRequest
+  - en/documents/waitingTicketSummary
+  - en/documents/wallet
+  - en/documents/walletTransaction
+
 # Add an extension keeping the order
 
   - en/extensions
