@@ -2,6 +2,10 @@
 
 Represents the Portal user permission.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.portal.user-permission+json |
+
 | Name               | Description                                   | Type                                    |
 |--------------------|-----------------------------------------------|-----------------------------------------|
 | userIdentity       | the user identifier                           | Identity                                |

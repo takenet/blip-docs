@@ -2,6 +2,10 @@
 
 Represents the summary of tickets values.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.desk.ticketssummary+json |
+
 | Name            | Description                                  | Type                        |
 |-----------------|----------------------------------------------|-----------------------------|
 | date            | the ticket date                              | DateTimeOffset              |

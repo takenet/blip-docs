@@ -2,6 +2,10 @@
 
 Represents an entity in a model.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.ai.entity+json |
+
 | Name                     | Description                                    | Type                         |
 |--------------------------|------------------------------------------------|------------------------------|
 | id                       | the entity id                                  | string                       |

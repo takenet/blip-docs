@@ -2,6 +2,10 @@
 
 Represents an account key request model.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.keyRequest+json |
+
 | Name                     | Description                                                     | Type                       |
 |--------------------------|-----------------------------------------------------------------|----------------------------|
 | alternativeAddress       | the account alternative address (email, phone)                  | Identity                   |

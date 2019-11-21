@@ -2,6 +2,10 @@
 
 Represents an agent team.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.desk.attendant-team+json |
+
 | Name                     | Description                                     | Type                       |
 |--------------------------|-------------------------------------------------|----------------------------|
 | ownerIdentity            | the identity of the owner                       | string                     |

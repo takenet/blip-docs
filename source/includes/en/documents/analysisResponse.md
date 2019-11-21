@@ -2,6 +2,10 @@
 
 Represents the result of an analysis request.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.ai.analysis-response+json |
+
 | Name                     | Description                                           | Type                        |
 |--------------------------|-------------------------------------------------------|-----------------------------|
 | id                       | the analysis id                                       | string                      |

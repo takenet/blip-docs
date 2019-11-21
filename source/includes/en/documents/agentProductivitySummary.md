@@ -2,6 +2,10 @@
 
 Represents a summary about agent productivity.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.desk.agentproductivitysummary+json |
+
 | Name                     | Description                                     | Type                       |
 |--------------------------|-------------------------------------------------|----------------------------|
 | identity                 | the agent identity                              | Identity                   |

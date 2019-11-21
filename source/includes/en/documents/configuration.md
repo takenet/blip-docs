@@ -2,6 +2,10 @@
 
 Represents a configuration entry.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.configuration+json |
+
 | Name                     | Description                                                           | Type                       |
 |--------------------------|-----------------------------------------------------------------------|----------------------------|
 | owner                    | the configuration owner identity                                      | Identity                   |

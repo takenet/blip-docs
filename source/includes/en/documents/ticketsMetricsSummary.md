@@ -2,6 +2,10 @@
 
 Represents summary of tickets metrics.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.desk.tickets-metrics-summary+json|
+
 | Name                 | Description                                  | Type                        |
 |----------------------|----------------------------------------------|-----------------------------|
 | maxQueueTime         | the max queue time                           | TimeSpan                    |

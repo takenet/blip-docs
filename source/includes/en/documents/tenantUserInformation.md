@@ -2,6 +2,10 @@
 
 Represents a information reguarding a single tenant user.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.portal.tenant-user-information+json |
+
 | Name                     | Description                                    | Type                         |
 |--------------------------|------------------------------------------------|------------------------------|
 | tenantId                 | the id of the tenant                           | string                       |

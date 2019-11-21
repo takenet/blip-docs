@@ -2,6 +2,10 @@
 
 Represents an item associated to a subscription.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.billing.subscription-item+json |
+
 | Name                     | Description                                    | Type                         |
 |--------------------------|------------------------------------------------|------------------------------|
 | ownerIdentity            | the item’s owner identity                      | Identity                     |

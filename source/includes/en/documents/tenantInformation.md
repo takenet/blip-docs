@@ -2,6 +2,10 @@
 
 Represents a way to carry non sensitive information about a tenant.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.portal.tenant-information+json|
+
 
 | Name                     | Description                                    | Type                         |
 |--------------------------|------------------------------------------------|------------------------------|

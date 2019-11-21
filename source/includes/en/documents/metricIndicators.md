@@ -2,6 +2,10 @@
 
 Represents the number of events in a range.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.analytics.metric-indicators+json|
+
 | Name                     | Description                                    | Type              |
 |--------------------------|------------------------------------------------|-------------------|
 | intervalStart            | the initial date of the interval               | DateTimeOffset    |

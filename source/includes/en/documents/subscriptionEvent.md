@@ -2,6 +2,10 @@
 
 Represents an event that occurred in a subscription.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.billing.subscription-event+json |
+
 | Name                     | Description                                    | Type                         |
 |--------------------------|------------------------------------------------|------------------------------|
 | id                       | the event id                                   | string                       |

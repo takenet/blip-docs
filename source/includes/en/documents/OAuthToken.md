@@ -2,6 +2,10 @@
 
 Represents information about an OAuth token.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.oauth-token+json |
+
 | Name                     | Description                                    | Type              |
 |--------------------------|------------------------------------------------|-------------------|
 | token_type               | the token type                                 | string            |

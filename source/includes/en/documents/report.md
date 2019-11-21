@@ -2,6 +2,10 @@
 
 Represents an analytics report.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.report+json |
+
 | Name                     | Description                                    | Type                         |
 |--------------------------|------------------------------------------------|------------------------------|
 | id                       | the unique report id                           | string                       |

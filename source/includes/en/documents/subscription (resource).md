@@ -2,6 +2,10 @@
 
 Represents a subscription to a resource.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.subscription+json |
+
 | Name                     | Description                                    | Type                         |
 |--------------------------|------------------------------------------------|------------------------------|
 | subscriber               | the subscriber                                 | Node                         |

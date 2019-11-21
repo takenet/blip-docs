@@ -2,6 +2,10 @@
 
 Represents an event track.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.eventTrack+json |
+
 | Name                     | Description                                    | Type                         |
 |--------------------------|------------------------------------------------|------------------------------|
 | identity                 | user identity                                  | Identity                     |

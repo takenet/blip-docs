@@ -2,6 +2,10 @@
 
 Represents the summary about waiting tickets.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.desk.waiting-ticket-summary+json|
+
 | Name               | Description                                  | Type                                    |
 |--------------------|----------------------------------------------|-----------------------------------------|
 | id                 | the waiting ticket id                        | string                                  |

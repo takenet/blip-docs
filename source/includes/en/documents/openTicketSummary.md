@@ -2,6 +2,10 @@
 
 Represents summary about open tickets.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.desk.open-ticket-summary+json |
+
 | Name                     | Description                                    | Type              |
 |--------------------------|------------------------------------------------|-------------------|
 | id                       | the open ticket id                             | string            |

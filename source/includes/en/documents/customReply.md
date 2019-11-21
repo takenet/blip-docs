@@ -2,6 +2,10 @@
 
 Represents a custom reply.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.desk.custom-reply+json |
+
 | Name                     | Description                                    | Type                           |
 |--------------------------|------------------------------------------------|--------------------------------|
 | id                       | the id of the custom reply                     | string                         |

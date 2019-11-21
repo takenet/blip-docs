@@ -2,6 +2,10 @@
 
 Represents the account's subscription of a plan.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.billing.subscription+json |
+
 | Name                     | Description                                    | Type                         |
 |--------------------------|------------------------------------------------|------------------------------|
 | ownerIdentity            | the subscription owner identity                | Identity                     |

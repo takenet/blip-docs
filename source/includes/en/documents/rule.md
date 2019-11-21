@@ -2,6 +2,10 @@
 
 Represents an forward rule for agent messages.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.desk.rule+json |
+
 | Name                     | Description                                    | Type                         |
 |--------------------------|------------------------------------------------|------------------------------|
 | id                       | the rule id                                    | string                       |

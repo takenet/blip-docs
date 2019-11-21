@@ -2,6 +2,10 @@
 
 Represents a wallet.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.billing.wallet+json |
+
 | Name               | Description                                  | Type                                    |
 |--------------------|----------------------------------------------|-----------------------------------------|
 | id                 | the wallet id                                | string                                  |

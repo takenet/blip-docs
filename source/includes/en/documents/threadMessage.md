@@ -2,6 +2,10 @@
 
 Represents a thread message.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.thread-message+json |
+
 | Name                     | Description                                    | Type                         |
 |--------------------------|------------------------------------------------|------------------------------|
 | id                       | the unique id                                  | string                       |

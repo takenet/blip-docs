@@ -2,6 +2,10 @@
 
 Represents the complete AI model.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.ai.model+json |
+
 | Name                     | Description                                    | Type              |
 |--------------------------|------------------------------------------------|-------------------|
 | id                       | the model id                                   | string            |

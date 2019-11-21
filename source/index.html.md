@@ -79,6 +79,7 @@ includes:
   - en/documents/attendanceTimeSummary
   - en/documents/attendant
   - en/documents/attendantTeam
+  - en/documents/attendantTicketsSummary
   - en/documents/billingRule
   - en/documents/chart
   - en/documents/comment
@@ -98,7 +99,6 @@ includes:
   - en/documents/identityWallet
   - en/documents/intention
   - en/documents/metricIndicators
-  - en/documents/metricsSummary
   - en/documents/model
   - en/documents/modelSummary
   - en/documents/OAuthToken
@@ -117,7 +117,9 @@ includes:
   - en/documents/subscription (resource)
   - en/documents/subscriptionEvent
   - en/documents/subscriptionItem
+  - en/documents/tagTicketsSummary
   - en/documents/team
+  - en/documents/teamTicketsSummary
   - en/documents/tenantInformation
   - en/documents/tenantUserInformation
   - en/documents/thread

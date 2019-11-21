@@ -2,6 +2,10 @@
 
 Represent an intent in a model.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.ai.intention+json |
+
 | Name                     | Description                                    | Type              |
 |--------------------------|------------------------------------------------|-------------------|
 | id                       | the intention identifier                       | string            |

@@ -2,6 +2,10 @@
 
 Represents a message schedule.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.schedule+json |
+
 | Name                     | Description                                    | Type                         |
 |--------------------------|------------------------------------------------|------------------------------|
 | name                     | the schedule name                              | string                       |

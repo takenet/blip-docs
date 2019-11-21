@@ -2,6 +2,11 @@
 
 Represents an access key.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.accessKey+json |
+
+
 | Name                     | Description                                               | Type                       |
 |--------------------------|-----------------------------------------------------------|----------------------------|
 | id                       | the key id                                                | string                     |

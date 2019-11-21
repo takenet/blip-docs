@@ -2,6 +2,10 @@
 
 Represents an AI text analysis.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.talkservice.analysis+json |
+
 | Name                     | Description                                     | Type                       |
 |--------------------------|-------------------------------------------------|----------------------------|
 | id                       | the analysis id                                 | string                     |

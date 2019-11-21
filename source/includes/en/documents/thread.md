@@ -2,6 +2,10 @@
 
 Represents a conversation thread.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.thread+json |
+
 | Name                     | Description                                    | Type                         |
 |--------------------------|------------------------------------------------|------------------------------|
 | ownerIdentity            | the owner identity                             | Identity                     |

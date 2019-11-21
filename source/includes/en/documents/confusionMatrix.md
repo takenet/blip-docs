@@ -2,6 +2,10 @@
 
 Represents a confusion matrix model.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.ai.confusion-matrix+json |
+
 | Name                     | Description                                                           | Type                       |
 |--------------------------|-----------------------------------------------------------------------|----------------------------|
 | ownerIdentity            | the owner identifier                                                  | string                     |

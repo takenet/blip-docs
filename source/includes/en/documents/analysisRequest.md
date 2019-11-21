@@ -2,6 +2,10 @@
 
 Represents an AI text analysis request.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.ai.analysis-request+json |
+
 | Name                     | Description                                           | Type                        |
 |--------------------------|-------------------------------------------------------|-----------------------------|
 | modelId                  | the model id used in the request                      | string                      |

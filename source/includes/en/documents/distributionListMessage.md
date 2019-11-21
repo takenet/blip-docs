@@ -2,6 +2,10 @@
 
 Represents information about a distribution list message.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.distribution-list-message+json |
+
 | Name                     | Description                                    | Type                           |
 |--------------------------|------------------------------------------------|--------------------------------|
 | id                       | the distribution list message id               | string                         |

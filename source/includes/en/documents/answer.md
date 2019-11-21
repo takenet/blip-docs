@@ -1,6 +1,10 @@
 ## Answer
 
-Represents an answer associated with an intent
+Represents an answer associated with an intent.
+
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.ai.answer+json |
 
 | Name                     | Description                                               | Type                       |
 |--------------------------|-----------------------------------------------------------|----------------------------|

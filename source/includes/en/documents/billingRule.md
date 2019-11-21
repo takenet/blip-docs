@@ -2,6 +2,10 @@
 
 Represents a rule for message billing.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.billing.rule+json |
+
 | Name                     | Description                                                   | Type                       |
 |--------------------------|---------------------------------------------------------------|----------------------------|
 | id                       | the rule id                                                   | string                     |

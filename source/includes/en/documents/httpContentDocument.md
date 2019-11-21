@@ -2,6 +2,10 @@
 
 Represents a http content.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.httpContent+json |
+
 | Name                     | Description                                    | Type                          |
 |--------------------------|------------------------------------------------|-------------------------------|
 | uri                      | the uri of the http content                    | Uri                           |

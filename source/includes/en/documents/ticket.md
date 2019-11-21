@@ -2,6 +2,10 @@
 
 Represents an attendance ticket.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.ticket+json |
+
 | Name                     | Description                                    | Type              |
 |--------------------------|------------------------------------------------|-------------------|
 | id                       | the id of the ticket                           | string            |

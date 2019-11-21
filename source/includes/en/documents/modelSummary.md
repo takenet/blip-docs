@@ -2,6 +2,10 @@
 
 Represents a model summary.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.ai.model-summary+json |
+
 | Name                     | Description                                          | Type                  |
 |--------------------------|------------------------------------------------------|-----------------------|
 | intentionsCount          | the intentions count                                 | int                   |

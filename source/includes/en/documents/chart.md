@@ -2,6 +2,10 @@
 
 Represents an analytics chart.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.chart+json |
+
 | Name                     | Description                                     | Type                       |
 |--------------------------|-------------------------------------------------|----------------------------|
 | id                       | the chart unique id                             | string                     |

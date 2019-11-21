@@ -2,6 +2,10 @@
 
 Represents a comment for an account.
 
+| MIME type                                 |
+|-------------------------------------------|
+| application/vnd.iris.crm.comment+json |
+
 | Name                     | Description                                                           | Type                       |
 |--------------------------|-----------------------------------------------------------------------|----------------------------|
 | id                       | the comment id                                                        | string                     |
