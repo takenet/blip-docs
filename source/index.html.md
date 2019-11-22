@@ -68,6 +68,7 @@ includes:
 
   - en/documents
   - en/documents/accessKey
+  - en/documents/account
   - en/documents/accountContact
   - en/documents/accountKeyRequest
   - en/documents/agentProductivitySummary
@@ -81,10 +82,12 @@ includes:
   - en/documents/attendantTeam
   - en/documents/attendantTicketsSummary
   - en/documents/billingRule
+  - en/documents/capability
   - en/documents/chart
   - en/documents/comment
   - en/documents/configuration
   - en/documents/confusionMatrix
+  - en/documents/contact
   - en/documents/customReply
   - en/documents/distributionList
   - en/documents/distributionListMessage

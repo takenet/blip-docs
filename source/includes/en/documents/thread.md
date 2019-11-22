@@ -1,6 +1,8 @@
 ## Thread
 
-Represents a conversation thread.
+Represents a conversation thread. A conversation thread could be a conversation, a message or a message group.
+
+Every thread must have an associated [Account](#account) or [Contact](#contact).
 
 | MIME type                                 |
 |-------------------------------------------|
