@@ -20,6 +20,60 @@ To use the **bucket** extension, send a command with the following properties:
 The command's properties `resource` and `method` can change according to the feature.
 The document to be stored must be passed on the `resource` property.
 
+
+### Get a document collection
+
+Retrieving all documents identifieds by ID key.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "199591239123",
+  "to": "postmaster@msging.net",
+  "method": "get",
+  "uri": "/buckets"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 2,
+        "itemType": "text/plain",
+        "items": [
+            "abcd9876",
+            "xyz1234"
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "ed5f2afb-2107-43e2-9c61-43637a7aafaa",
+    "from": "postmaster@msging.net/#az-iris3",
+    "to": "demobot4@msging.net",
+    "metadata": {
+        "#command.uri": "lime://demobot4@msging.net/buckets"
+    }
+}
+```
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.GET,
+        uri: '/buckets'
+    });
+});
+```
+
+
 ### Store a JSON document
 
 ```javascript
@@ -298,3 +352,42 @@ namespace Extensions
 ```
 
 Retrieving a JSON document identified by `xyz1234` key.
+
+
+### Delete a Document
+
+Delete a specific document command. Remember to replace `{{documentKey}}` variable for the document Key that you want delete.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "{{$guid}}",
+  "to": "postmaster@msging.net",
+  "method": "delete",
+  "uri": "/buckets/{{documentKey}}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+    "method": "delete",
+    "status": "success",
+    "id": "1306d0bb-29f8-41c3-bdf2-c84dec02852c",
+    "from": "postmaster@msging.net/#az-iris4"
+}
+```
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.DELETE,
+        uri: '/buckets/xyz1234'
+    });
+});
+```
