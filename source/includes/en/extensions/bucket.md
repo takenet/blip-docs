@@ -20,6 +20,116 @@ To use the **bucket** extension, send a command with the following properties:
 The command's properties `resource` and `method` can change according to the feature.
 The document to be stored must be passed on the `resource` property.
 
+### Delete a Document
+
+Delete a specific document command. Remember to replace `{{documentKey}}` variable for the document Key that you want delete.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "{{$guid}}",
+  "to": "postmaster@msging.net",
+  "method": "delete",
+  "uri": "/buckets/{{documentKey}}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+    "method": "delete",
+    "status": "success",
+    "id": "1306d0bb-29f8-41c3-bdf2-c84dec02852c",
+    "from": "postmaster@msging.net/#az-iris4"
+}
+```
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.DELETE,
+        uri: '/buckets/xyz1234'
+    });
+});
+```
+### Get a document
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.GET,
+        uri: '/buckets/xyz1234'
+    });
+});
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "3",
+  "method": "get",
+  "uri": "/buckets/xyz1234"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "3",
+  "from": "postmaster@msging.net/#irismsging1",
+  "to": "contact@msging.net/default",
+  "method": "get",
+  "status": "success",
+  "type": "application/json",
+  "resource": {  
+    "key1": "value1",
+    "key2": 2,
+    "key3": [  
+      "3a", "3b", "3c"
+    ]
+  }  
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Bucket;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private readonly IBucketExtension _bucketExtension;
+
+        public SampleMessageReceiver(IBucketExtension bucketExtension)
+        {
+            _bucketExtension = bucketExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var document = await _bucketExtension.GetAsync<JsonDocument>("xyz1234", cancellationToken);
+        }
+    }
+}
+```
+
+Retrieving a JSON document identified by `xyz1234` key.
 
 ### Get a document collection
 
@@ -72,95 +182,6 @@ client.addMessageReceiver('text/plain', async (message) => {
     });
 });
 ```
-
-
-### Store a JSON document
-
-```javascript
-client.addMessageReceiver('text/plain', async (message) => {
-    await client.sendCommand({
-        id: Lime.Guid(),
-        method: Lime.CommandMethod.SET,
-        uri: '/buckets/xyz1234',
-        type: 'application/json',
-        resource: {  
-            'key1': 'value1',
-            'key2': 2,
-            'key3': [  
-                '3a', '3b', '3c'
-            ]
-        }
-    });
-});
-```
-
-```http
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{  
-  "id": "1",
-  "method": "set",
-  "uri": "/buckets/xyz1234",
-  "type": "application/json",
-  "resource": {  
-    "key1": "value1",
-    "key2": 2,
-    "key3": [  
-      "3a", "3b", "3c"
-    ]
-  }
-}
-```
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "id": "1",
-  "from": "postmaster@msging.net/#irismsging1",
-  "to": "contact@msging.net/default",
-  "method": "set",
-  "status": "success"
-}
-```
-
-```csharp
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Lime.Protocol;
-using Take.Blip.Client;
-using Take.Blip.Client.Receivers;
-using Take.Blip.Client.Extensions.Bucket;
-
-namespace Extensions
-{
-    public class SampleMessageReceiver : IMessageReceiver
-    {
-        private readonly IBucketExtension _bucketExtension;
-
-        public SampleMessageReceiver(IBucketExtension bucketExtension)
-        {
-            _bucketExtension = bucketExtension;
-        }
-
-        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
-        {
-            var jsonDocument = new JsonDocument();
-            jsonDocument.Add("key1", "value1");
-            jsonDocument.Add("key2", 2);
-            jsonDocument.Add("key3", new string[] { "3a", "3b", "3c"} );
-
-            await _bucketExtension.SetAsync("xyz1234", jsonDocument);
-        }
-    }
-}
-```
-
-Storing a JSON object `{"key1": "value1", "key2": 2, "key3": ["3a", "3b", "3c"]}` identified by `xyz1234` key.
 
 ### Store a custom document
 
@@ -278,15 +299,22 @@ Storing a custom document with type `application/x-my-type+json` and `abcd9876` 
 Note: If you create a custom document, <b>you must</b> register this type on <i>Startup.cs</i> class. To do that, follow this steps: Create a field <code>private  readonly  IDocumentTypeResolver  _documentTypeResolver</code>, assign it in the class constructor and then, on <i>StartAsync</i> method add this line: <code>_documentTypeResolver.WithBlipDocuments();</code>
 </aside>
 
-
-### Get a document
+### Store a JSON document
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-    await client.sendCommand({  
+    await client.sendCommand({
         id: Lime.Guid(),
-        method: Lime.CommandMethod.GET,
-        uri: '/buckets/xyz1234'
+        method: Lime.CommandMethod.SET,
+        uri: '/buckets/xyz1234',
+        type: 'application/json',
+        resource: {  
+            'key1': 'value1',
+            'key2': 2,
+            'key3': [  
+                '3a', '3b', '3c'
+            ]
+        }
     });
 });
 ```
@@ -297,9 +325,17 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "3",
-  "method": "get",
-  "uri": "/buckets/xyz1234"
+  "id": "1",
+  "method": "set",
+  "uri": "/buckets/xyz1234",
+  "type": "application/json",
+  "resource": {  
+    "key1": "value1",
+    "key2": 2,
+    "key3": [  
+      "3a", "3b", "3c"
+    ]
+  }
 }
 ```
 
@@ -308,23 +344,16 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id": "3",
+  "id": "1",
   "from": "postmaster@msging.net/#irismsging1",
   "to": "contact@msging.net/default",
-  "method": "get",
-  "status": "success",
-  "type": "application/json",
-  "resource": {  
-    "key1": "value1",
-    "key2": 2,
-    "key3": [  
-      "3a", "3b", "3c"
-    ]
-  }  
+  "method": "set",
+  "status": "success"
 }
 ```
 
 ```csharp
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
@@ -345,49 +374,15 @@ namespace Extensions
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
-            var document = await _bucketExtension.GetAsync<JsonDocument>("xyz1234", cancellationToken);
+            var jsonDocument = new JsonDocument();
+            jsonDocument.Add("key1", "value1");
+            jsonDocument.Add("key2", 2);
+            jsonDocument.Add("key3", new string[] { "3a", "3b", "3c"} );
+
+            await _bucketExtension.SetAsync("xyz1234", jsonDocument);
         }
     }
 }
 ```
 
-Retrieving a JSON document identified by `xyz1234` key.
-
-
-### Delete a Document
-
-Delete a specific document command. Remember to replace `{{documentKey}}` variable for the document Key that you want delete.
-
-```http
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "{{$guid}}",
-  "to": "postmaster@msging.net",
-  "method": "delete",
-  "uri": "/buckets/{{documentKey}}"
-}
-```
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-{
-    "method": "delete",
-    "status": "success",
-    "id": "1306d0bb-29f8-41c3-bdf2-c84dec02852c",
-    "from": "postmaster@msging.net/#az-iris4"
-}
-```
-
-```javascript
-client.addMessageReceiver('text/plain', async (message) => {
-    await client.sendCommand({  
-        id: Lime.Guid(),
-        method: Lime.CommandMethod.DELETE,
-        uri: '/buckets/xyz1234'
-    });
-});
-```
+Storing a JSON object `{"key1": "value1", "key2": 2, "key3": ["3a", "3b", "3c"]}` identified by `xyz1234` key.
