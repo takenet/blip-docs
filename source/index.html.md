@@ -130,7 +130,7 @@ includes:
   - en/documents/ticket
   - en/documents/ticketsMetricsSummary
   - en/documents/ticketsSummary
-  - en/documents/tunnel
+  - en/documents/tunnels
   - en/documents/user
   - en/documents/userPermission
   - en/documents/usersRequest

@@ -1,4 +1,4 @@
-## Tunnel
+## Tunnels
 
 Represents a tunnel.
 
