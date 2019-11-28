@@ -594,7 +594,7 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 |--------------------|---------------------------|
 | BLiP Chat           | Collection               |
 | Messenger          | Multiple messages / [Generic template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/generic-template) (if is a **multimedia menu** collection)|
-| Wathsapp           | Text (multiple lines) |
+| WhatsApp           | Text (multiple lines) |
 | SMS                | Text (multiple lines) |
 | Skype              | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1) (multiple lines)|
 | Telegram           | [Message](https://core.telegram.org/bots/api#message) (multiple lines)|
