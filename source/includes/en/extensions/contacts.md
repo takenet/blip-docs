@@ -391,6 +391,13 @@ namespace Extensions
 
 For the same contact `11121023102013021@messenger.gw.msging.net`, it is possible to get all of its information using a `GET` contact command.
 
+<aside  class="notice">
+Note: You can also filter your query with one of the properties of the contact resource, using the <code>filter</code> property:<br><br>
+
+<code>filter=(substringof('{value}',{propertyName}))</code><br><br>
+
+<b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(substringof('John Doe',name))</b> </aside>
+
 ### Get contacts with paging
 
 ```javascript
