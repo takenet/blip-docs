@@ -114,7 +114,7 @@ includes:
   - en/documents/role
   - en/documents/rolePermission
   - en/documents/rule
-  - en/documents/schedule
+  - en/documents/schedules
   - en/documents/serviceTimeSummary
   - en/documents/subscription (plan)
   - en/documents/subscription (resource)

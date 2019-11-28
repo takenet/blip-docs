@@ -1,4 +1,4 @@
-## Schedule
+## Schedules
 
 Represents a message schedule.
 
