@@ -14,7 +14,7 @@ To use any feature of **contacts** extension send a command with the following p
 | to     | **postmaster@msging.net** (not required) |
 
 The command's properties `resource` and `method` can change according to the feature.
-A contact object passed as a document `resource` has the following properties:
+A [contact object](/#contact) passed as a document `resource` has the following properties:
 
 | Property     | Description                                                        | Example |
 |--------------|--------------------------------------------------------------------|---------|
@@ -146,6 +146,165 @@ namespace Extensions
 
 In order to store informations about a chatbot's client, it is possible to save and update data using **contacts extension**. This sample shows how to add a Messenger customer with identity `11121023102013021@messenger.gw.msging.net` to the chatbot's roster. 
 
+### Add a comment
+
+Add a new comment for a contact ( `contactIdentity` ), using a [Comment](/#comment) document.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "4567897123123",
+  "to": "postmaster@crm.msging.net",
+  "method": "set",
+  "uri": "/contacts/{{contactIdentity}}/comments",
+  "type": "application/vnd.iris.crm.comment+json",
+  "resource": {
+  	"content": "This is a comment example"
+  }
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.crm.comment+json",
+    "resource": {
+        "id": "3d24afee-898c-47b8-9de6-8d4bfa8fb93a",
+        "storageDate": "2019-11-27T19:36:04.076Z",
+        "content": "This is a comment example"
+    },
+    "method": "set",
+    "status": "success",
+    "id": "e38ba651-cd35-4a1d-a9e7-4c081f5cf2bb",
+    "from": "postmaster@crm.msging.net/#az-iris1",
+    "to": "demobot@msging.net",
+}
+```
+
+### Check a link between contacts
+
+Check if a `contacIdentity` is linked with `linkedContactIdentity`.
+
+<aside  class="notice">
+Note: Returns <code>The linked contact was not found</code> if the contacts are not linked and a contact if they are.</aside>
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "1234564678789",
+  "to": "postmaster@msging.net",
+  "method": "get",
+  "uri": "/contacts/{{contacIdentity}}/linked/{{linkedContactIdentity}}"
+}
+
+```
+
+### Delete a comment
+
+Delete a specific comment for a contact.
+
+Replace `commentId` with the comment Id.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "123456788881",
+  "to": "postmaster@crm.msging.net",
+  "method": "delete",
+  "uri": "/contacts/{{contactIdentity}}/comments/{{commentId}}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "fe76fdb3-d4be-4969-aad3-9303d4897776",
+    "from": "postmaster@crm.msging.net/#az-iris3",
+    "to": "demobot@msging.net",
+}
+```
+
+### Delete a link
+
+Delete a link between two contacts, `contacIdentity` and `linkedContactIdentity`.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "15871441222",
+  "to": "postmaster@msging.net",
+  "method": "delete",
+  "uri": "/contacts/{{contacIdentity}}/linked/{{linkedContactIdentity}}"
+}
+
+```
+
+### Get comments
+
+
+Get all comments for a contact ( `contactIdentity` ).
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "55711244",
+  "to": "postmaster@crm.msging.net",
+  "method": "get",
+  "uri": "/contacts/{{contactIdentity}}/comments"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 2,
+        "itemType": "application/vnd.iris.crm.comment+json",
+        "items": [
+            {
+                "id": "03232ff4-2e0b-4d89-8440-7f888983048d",
+                "storageDate": "2019-10-24T14:10:16.820Z",
+                "content": "I love this guy!!"
+            },
+            {
+                "id": "3d24afee-898c-47b8-9de6-8d4bfa8fb93a",
+                "storageDate": "2019-11-27T19:36:04.080Z",
+                "content": "This is a comment example"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "6f85587e-f58a-42c3-90b4-a2b603a7ed65",
+    "from": "postmaster@crm.msging.net/#az-iris2",
+    "to": "demobot@msging.net"
+}
+```
+
 ### Get contact
 
 ```javascript
@@ -231,6 +390,13 @@ namespace Extensions
 ```
 
 For the same contact `11121023102013021@messenger.gw.msging.net`, it is possible to get all of its information using a `GET` contact command.
+
+<aside  class="notice">
+Note: You can also filter your query with one of the properties of the contact resource, using the <code>filter</code> property:<br><br>
+
+<code>filter=(substringof('{value}',{propertyName}))</code><br><br>
+
+<b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(substringof('John Doe',name))</b> </aside>
 
 ### Get contacts with paging
 
@@ -351,6 +517,83 @@ Note: You can also filter your query with one of the properties of the contact r
 <code>filter=(substringof('{value}',{propertyName}))</code><br><br>
 
 <b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(substringof('John Doe',name))</b> </aside>
+
+### Get linked contacts
+
+Get all contacts linked with a specific contact.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "46791313212",
+  "to": "postmaster@msging.net",
+  "method": "get",
+  "uri": "/contacts/{{contactIdentity}}/linked",
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 2,
+        "itemType": "application/vnd.lime.contact+json",
+        "items": [
+            {
+                "name": "John Doe",
+                "identity": "346173a7-3f9e-0125588.demobot@0mn.io",
+                "extras": {
+                    "City": "San Diego"
+                },
+                "source": "0mn.io"
+            },
+            {
+                "name": "Mary",
+                "identity": "d29b6c19-4904-9628-10559@tunnel.msging.net",
+                "extras": {
+                    "tunnel.owner": "someRouterTunnel@msging.net"
+                },
+                "source": "WhatsApp"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "8d49c7c5-3b7e-46fb-bd5e-0a5f73efa460",
+    "from": "postmaster@crm.msging.net/#az-iris6",
+    "to": "demobot@msging.net"
+}
+```
+
+### Link contacts
+
+Set a contact linked with other, using a [Contact](/#contact) document.
+
+Replace the `<contactIdentity>` with the Identity of the contact you want to link with other.
+Replace the `<contactToBeLinkedWithIdentity>` with the Identity of the contact you want to be linked with the first one.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "46791313212",
+  "to": "postmaster@msging.net",
+  "method": "set",
+  "uri": "/contacts/{{contactIdentity}}/linked",
+  "type": "application/vnd.lime.contact+json",
+  "resource": {
+  	"Identity": "{{contactToBeLinkedWithIdentity}}"
+  }
+}
+```
 
 ### Send message with contact name
 

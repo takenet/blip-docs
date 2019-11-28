@@ -15,7 +15,30 @@ To get information about a customer, send a command with the following propertie
 | uri    | **/lime://&lt;FQDN of the channel&gt;/accounts/&lt;Client identity&gt;**   |
 | to     | **postmaster@&lt;FQDN of the channel&gt;** |
 
-### Get client info (on Messenger)
+### Create an alternative address
+To create an accessKey for an alternative address, using an [AccountKeyRequest](/#accountkeyrequest) document, send a command to the Uri `lime://<FQDN of the channel>/accounts/<Client identity>/key`.
+
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "8765464213",
+  "to": "postmaster@msging.net",
+  "method": "set",
+  "uri": "lime://<FQDN of the channel>/accounts/<Client identity>/key",
+  "type": "application/vnd.iris.keyRequest+json",
+  "resource": {
+  	"alternativeAddress": "<alternative Client Identity>",
+  	"purpose": "<Purpose>",
+  	"temporary": "<true/false>"
+  }
+}
+```
+
+### Get client info (Messenger)
 
 * Messenger FQDN: `messenger.gw.msging.net`
 
