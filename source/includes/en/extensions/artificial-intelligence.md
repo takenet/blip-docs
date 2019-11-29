@@ -1650,6 +1650,128 @@ namespace Extensions
 }
 ```
 
+### Get all models
+
+Search in all trained and/or published [models](/#model).
+
+The following uri filters are available to get the models:
+
+| Property     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **skip** | The number of models to be skipped.                                    |    0    |
+| **take** | The number of models to be returned.                                   |   100   |
+| **ascending** | Sets ascending alphabetical order.                                |    -    |
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  var models = await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.GET,
+    uri: '/models',
+  });
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "7",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/models"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+    "total": 4,
+    "itemType": "application/vnd.iris.ai.model+json",
+    "items": [
+      {
+        "id": "12345",
+        "culture": "pt-br",
+        "provider": "Watson",
+        "externalId": "678910",
+        "storageDate": "2019-07-01T13:35:36.930Z",
+        "trainingDate": "2019-07-01T13:35:36.930Z",
+        "apiUri": "https://gateway.watsonplatform.net/assistant/api",
+        "status": "Training"
+      },
+      {
+        "id": "111213",
+        "culture": "pt-br",
+        "provider": "Dialogflow",
+        "externalId": "141516",
+        "storageDate": "2019-07-01T13:35:34.330Z",
+        "trainingDate": "2019-07-01T13:35:34.330Z",
+        "status": "Trained"
+      },
+      {
+        "id": "171819",
+        "culture": "pt-br",
+        "provider": "Watson",
+        "storageDate": "2019-07-01T13:28:05.520Z",
+        "trainingDate": "2019-07-01T13:28:05.520Z",
+        "apiUri": "https://gateway.watsonplatform.net/assistant/api",
+        "status": "Deleted"
+      },
+      {
+        "id": "202122",
+        "culture": "pt-br",
+        "provider": "Dialogflow",
+        "storageDate": "2019-07-01T13:28:01.870Z",
+        "trainingDate": "2019-07-01T13:28:01.870Z",
+        "status": "Deleted"
+      }
+    ]
+  },
+  "method": "get",
+  "status": "success",
+  "id": "7",
+  "from": "postmaster@ai.msging.net/#az-iris5",
+  "to": "contact@msging.net",
+  "metadata": {
+    "#command.uri": "lime://contact@msging.net/models"
+  }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.ArtificialIntelligence;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
+
+        public ArtificialIntelligenceReceiver(IArtificialIntelligenceExtension artificialIntelligenceExtension)
+        {
+            _artificialIntelligenceExtension = artificialIntelligenceExtension;
+        }
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var skip = 0; //optional
+            var take = 100; //optional
+            var ascending = true; //optional
+            var models = await _artificialIntelligenceExtension.GetModelsAsync(skip, take, ascending, cancellationToken);
+        }
+    }
+}
+```
+
 ### Get an entity
 
 Get a specific [entity](/#entity).
@@ -2491,7 +2613,7 @@ Content-Type: application/json
 }
 ```
 
-### Publish model
+### Publish a model
 
 Publishing an existing artificial intelligence model.
 
@@ -2568,228 +2690,6 @@ namespace Extension
         public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
         {
             await _artificialIntelligenceExtension.PublishModelAsync("{your_model_id}", cancellationToken);
-        }
-    }
-}
-```
-
-### Query the first 10 intents
-
-Querying the first 10 intents.
-
-| Property     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **skip** | The number of intents to be skipped.                                |    0    |
-| **take** | The number of intents to be returned.                               |   100   |
-| **ascending** | Sets ascending alphabetical order.                                |    -    |
-
-```javascript
-client.addMessageReceiver('text/plain', async (message) => {
-  var intents = await client.sendCommand({
-    id: Lime.Guid(),
-    to: 'postmaster@ai.msging.net',
-    method: Lime.CommandMethod.GET,
-    uri: '/intentions?$skip=0&$take=10',
-  });
-  
-  intents.resource.items.forEach(function (item) {
-    console.log(item);
-  });
-});
-```
-
-```http
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "3",
-  "to": "postmaster@ai.msging.net",
-  "method": "get",
-  "uri": "/intentions?$skip=0&$take=10"
-}
-```
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-    "total": 2,
-    "itemType": "application/vnd.iris.ai.intention+json",
-    "items": [
-      {
-        "id": "order_pizza",
-        "name": "Order pizza",
-        "healthScore": 0,
-        "storageDate": "2019-06-26T17:37:56.570Z"
-      },
-      {
-        "id": "choose_flavor",
-        "name": "Choose flavor",
-        "healthScore": 0,
-        "storageDate": "2019-06-26T17:38:08.880Z"
-      }
-    ]
-  },
-  "method": "get",
-  "status": "success",
-  "id": "3",
-  "from": "postmaster@ai.msging.net/#az-iris2",
-  "to": "contact@msging.net",
-  "metadata": {
-    "#command.uri": "lime://contact@msging.net/intentions?$skip=0&$take=10"
-  }
-}
-```
-
-```csharp
-using System.Threading;
-using System.Threading.Tasks;
-using Lime.Protocol;
-using Take.Blip.Client;
-using Take.Blip.Client.Extensions.ArtificialIntelligence;
-
-namespace Extension
-{
-    public class ArtificialIntelligenceReceiver4 : IMessageReceiver
-    {
-        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
-
-        public ArtificialIntelligenceReceiver4(IArtificialIntelligenceExtension artificialIntelligenceExtension)
-        {
-            _artificialIntelligenceExtension = artificialIntelligenceExtension;
-        }
-        
-        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
-        {
-            var intentions = await _artificialIntelligenceExtension.GetIntentionsAsync(0, 10, cancellationToken: cancellationToken);
-        }
-    }
-}
-```
-
-### Query the trained
-
-Querying information about created models.
-
-| Property     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **skip** | The number of models to be skipped.                                    |    0    |
-| **take** | The number of models to be returned.                                   |   100   |
-| **ascending** | Sets ascending alphabetical order.                                |    -    |
-
-```javascript
-client.addMessageReceiver('text/plain', async (message) => {
-  var models = await client.sendCommand({
-    id: Lime.Guid(),
-    to: 'postmaster@ai.msging.net',
-    method: Lime.CommandMethod.GET,
-    uri: '/models',
-  });
-
-  models.resource.items.forEach(function (item) {
-    console.log(item);
-  });
-});
-```
-
-```http
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "7",
-  "to": "postmaster@ai.msging.net",
-  "method": "get",
-  "uri": "/models"
-}
-```
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "type": "application/vnd.lime.collection+json",
-  "resource": {
-    "total": 4,
-    "itemType": "application/vnd.iris.ai.model+json",
-    "items": [
-      {
-        "id": "12345",
-        "culture": "pt-br",
-        "provider": "Watson",
-        "externalId": "678910",
-        "storageDate": "2019-07-01T13:35:36.930Z",
-        "trainingDate": "2019-07-01T13:35:36.930Z",
-        "apiUri": "https://gateway.watsonplatform.net/assistant/api",
-        "status": "Training"
-      },
-      {
-        "id": "111213",
-        "culture": "pt-br",
-        "provider": "Dialogflow",
-        "externalId": "141516",
-        "storageDate": "2019-07-01T13:35:34.330Z",
-        "trainingDate": "2019-07-01T13:35:34.330Z",
-        "status": "Trained"
-      },
-      {
-        "id": "171819",
-        "culture": "pt-br",
-        "provider": "Watson",
-        "storageDate": "2019-07-01T13:28:05.520Z",
-        "trainingDate": "2019-07-01T13:28:05.520Z",
-        "apiUri": "https://gateway.watsonplatform.net/assistant/api",
-        "status": "Deleted"
-      },
-      {
-        "id": "202122",
-        "culture": "pt-br",
-        "provider": "Dialogflow",
-        "storageDate": "2019-07-01T13:28:01.870Z",
-        "trainingDate": "2019-07-01T13:28:01.870Z",
-        "status": "Deleted"
-      }
-    ]
-  },
-  "method": "get",
-  "status": "success",
-  "id": "7",
-  "from": "postmaster@ai.msging.net/#az-iris5",
-  "to": "contact@msging.net",
-  "metadata": {
-    "#command.uri": "lime://contact@msging.net/models"
-  }
-}
-```
-
-```csharp
-using System.Threading;
-using System.Threading.Tasks;
-using Lime.Protocol;
-using Take.Blip.Client;
-using Take.Blip.Client.Extensions.ArtificialIntelligence;
-
-namespace Extension
-{
-    public class ArtificialIntelligenceReceiver : IMessageReceiver
-    {
-        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
-
-        public ArtificialIntelligenceReceiver(IArtificialIntelligenceExtension artificialIntelligenceExtension)
-        {
-            _artificialIntelligenceExtension = artificialIntelligenceExtension;
-        }
-        
-        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
-        {
-            var models = await _artificialIntelligenceExtension.GetModelsAsync(0, 100, cancellationToken: cancellationToken);
         }
     }
 }
