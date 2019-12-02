@@ -1441,6 +1441,194 @@ Content-Type: application/json
 }
 ```
 
+### Get a model
+
+Get a specific [model](/#model).
+
+Replace the variable `{modelId}` with the model id you want to get.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "774455",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/model/{modelId}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ai.model+json",
+    "resource": {
+        "id": "demobot_47b1f7e0-a216-47cd-8635-016eb1f558ad",
+        "culture": "pt-br",
+        "provider": "Watson",
+        "externalId": "7c3-9139-ce2b6705",
+        "storageDate": "2019-11-28T12:21:16.590Z",
+        "trainingDate": "2019-11-28T12:21:16.590Z",
+        "apiUri": "https://gateway.watsonplatform.net/assistant/api",
+        "status": "Trained"
+    },
+    "method": "get",
+    "status": "success",
+    "id": "afcc9-9eab924a",
+    "from": "postmaster@ai.msging.net/#az-iris3",
+    "to": "demobot@msging.net"
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+          _sender = sender;
+        }
+
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+          var command = new Command{
+            Id = EnvelopeId.NewId(),
+            To = "postmaster@ai.msging.net",
+            Method = CommandMethod.Get,
+            Uri = new LimeUri("/model/{modelId}"),
+          };
+
+          await _sender.SendCommandAsync(command, cancellationToken);
+        }
+    }
+}
+
+```
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.GET,
+    uri: '/model/{modelId}'
+  });
+});
+```
+
+### Get a model summary overview
+
+Get an overview about a [model](/#modelsummary) metrics.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "887744999",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/models/summary"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  {
+    "type": "application/vnd.iris.ai.model-summary+json",
+    "resource": {
+        "intentionsCount": 3,
+        "intentionMinQuestions": 0,
+        "intentionsSummary": [
+            {
+                "id": "help",
+                "name": "Help",
+                "countQuestions": 11,
+                "healthScore": 0.9
+            },
+            {
+                "id": "card",
+                "name": "Card",
+                "countQuestions": 10,
+                "healthScore": 1.0
+            },
+            {
+                "id": "work",
+                "name": "Work",
+                "countQuestions": 10,
+                "healthScore": 1.0
+            }
+        ],
+        "median": 10.0
+    },
+    "method": "get",
+    "status": "success",
+    "id": "7bd2e1a4-0205-4743-9c25-2ee7085bdb7f",
+    "from": "postmaster@ai.msging.net/#az-iris1",
+    "to": "demobot4@msging.net"
+  }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                To = "postmaster@ai.msging.net",
+                Method = CommandMethod.Get,
+                Uri = new LimeUri("/models/summary")
+            };
+
+           await _sender.SendCommandAsync(command, cancellationToken);
+        }
+    }
+}
+```
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.GET,
+    uri: '/models/summary'
+  });
+});
+```
+
 ### Get all entities
 
 Getting all [entities](/#entity) from a model.
@@ -2966,6 +3154,104 @@ Content-Type: application/json
         "#command.uri": "lime://test@msging.net/enhancement/send-by-email"
     }
 }
+```
+
+### Send feedbacks into analysis
+
+To submit one or more [feedbacks](/#analysisfeedback) into [analysis](/#analysis), it is necessary to enter the id of the [intent](/#intention) for the case and the id of the analysis you want to send a feedback.
+
+Replace `{intentionId}` with the intent Id and `{analysisId}` with the analysis Id.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "45678884444",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/analysis/feedback",
+  "type": "application/vnd.iris.ai.analysis-feedback+json",
+  "resource":
+	{
+  		"IntentionId": "{intentionId}",
+  		"AnalysisId": "{analysisId}"
+  	}
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "set",
+    "status": "success",
+    "id": "081c7606-c955-4d61-aae2-8410453d79f8",
+    "from": "postmaster@ai.msging.net/#az-iris6",
+    "to": "demobot@msging.net",
+    "metadata": {
+        "#command.uri": "lime://demobot4@msging.net/analysis/feedback",
+        "uber-trace-id": "3d1a97d809926da7%3A3d1a97d809926da7%3A0%3A1"
+    }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+          _sender = sender;
+        }
+
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+          var command = new Command{
+            Id = EnvelopeId.NewId(),
+            To = "postmaster@ai.msging.net", s
+            Method = CommandMethod.Set,
+            Uri = new LimeUri("/analysis/feedback"),
+            Type: "application/vnd.iris.ai.analysis-feedback+json",
+            Resource = new {  
+            {
+              IntentionId: "{intentionId}",
+              AnalysisId: "{analysisId}"
+            }
+          };
+
+          await _sender.SendCommandAsync(command, cancellationToken);
+        }
+    }
+}
+
+```
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: "/analysis/feedback",
+    type: "application/vnd.iris.ai.analysis-feedback+json",
+    resource:
+      {
+        "IntentionId": "{intentId}",
+        "AnalysisId": "{analysisId}"
+      }
+  });
+});
 ```
 
 ### Train model
