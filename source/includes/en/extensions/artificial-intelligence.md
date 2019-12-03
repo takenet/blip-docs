@@ -596,6 +596,10 @@ namespace Extension
 
 ### Create a confusion matrix
 
+Create a [confusion matrix](/#confusionmatrix) into your model.
+
+Replace `version` and `sampleSize` with the values you want.
+
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
@@ -665,7 +669,9 @@ Authorization: Key {YOUR_TOKEN}
         "sampleSize": 2
     }
 }
+```
 
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -928,6 +934,10 @@ namespace Extension
 ```
 
 ### Delete a confusion matrix
+
+Remove a [confusion matrix](/#confusionmatrix) from your model.
+
+Replace the variable `{confusionMatrixId}` with the Confusion Matrix Id you want to delete.
 
 ```csharp
 using System.Threading;
@@ -2231,6 +2241,16 @@ Content-Type: application/json
 
 ### Get confusion matrices
 
+Get all [confusion matrices](/#confusionmatrix) from your model.
+
+The following uri filters are available to get the confusion matrices:
+
+| QueryString     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **skip** | The number of confusion matrices to be skipped.                                |    0    |
+| **take** | The number of confusion matrices to be returned.                               |   100   |
+| **ascending** | Sets ascending alphabetical order.                                |    true    |
+
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
@@ -2284,7 +2304,9 @@ Authorization: Key {YOUR_TOKEN}
     "method": "get",
     "uri": "/analytics/confusion-matrix"
 }
+```
 
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
