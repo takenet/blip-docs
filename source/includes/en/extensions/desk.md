@@ -161,7 +161,76 @@ Content-Type: application/json
       }
 ```
 
-### Closing an ticket as the user
+### Close a ticket as attendant
+
+Closing a [ticket](/#ticket) as the attendant.
+
+To make this possible send a command with `SET` method to `postmaster@desk.msging.net` URI `/tickets/change-status` and resource with ticket `id` and `status` with **ClosedAttendant**.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "fbfd62ac",
+  "to": "postmaster@desk.msging.net",
+  "method": "set",
+  "uri": "/tickets/change-status",
+  "type": "application/vnd.iris.ticket+json",
+  "resource": {
+    "id": "{ticketId}",
+    "status": "ClosedAttendant"
+  }
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.SET,
+    uri: "/tickets/change-status",
+    type: "application/vnd.iris.ticket+json",
+    resource: {
+    id: "{ticketId}",
+    status: "ClosedAttendant"
+    }
+});
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Set,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/tickets/change-status"),
+    Resource = new Ticket
+    {
+        Id = ticketId,
+        Status = TicketStatusEnum.ClosedAttendant
+    }
+};
+
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
+Server responds with success.
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "set",
+    "status": "success",
+    "id": "fbfd62ac",
+    "from": "postmaster@desk.msging.net/#az-iris2",
+    "to": "testehome1@msging.net"
+}
+```
+
+### Close a ticket as user
 
 Sometimes may be interesting allow the users close the [ticket](/#ticket) when they want. To make this possible send a command with `SET` method to `postmaster@desk.msging.net` URI `/tickets/change-status` and resource with ticket `id` and `status` with **ClosedClient**.
 
@@ -246,9 +315,86 @@ result: {Lime.Protocol.Command}
     status [string]: "sucess"
 ```
 
+### Create a new ticket
+
+To create a new ticket, you must submit a [ticket](/#ticket) document, with at least a `customerIdentity`.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "487556",
+  "to": "postmaster@desk.msging.net",
+  "method": "set",
+  "uri": "/tickets",
+  "type": "application/vnd.iris.ticket+json",
+  "resource": { 
+  	"customerIdentity": "{customerIdentity}"
+  } 
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ticket+json",
+    "resource": {
+        "id": "76f5bc38-b476-4895-a0c6-016ed1288ba0",
+        "sequentialId": 138,
+        "ownerIdentity": "demobot@msging.net",
+        "customerIdentity": "2627641447@messenger.gw.msging.net",
+        "customerDomain": "messenger.gw.msging.net",
+        "provider": "Lime",
+        "status": "Waiting",
+        "storageDate": "2019-12-04T13:45:25.664Z",
+        "externalId": "76f5bc38-b476-4895-a0c6-016ed1288ba0",
+        "rating": 0,
+        "team": "Default",
+        "unreadMessages": 0,
+        "closed": false,
+        "customerInput": {}
+    },
+    "method": "set",
+    "status": "success",
+    "id": "5bdf8386-30a2-4916-9456-cc00779b7c5f",
+    "from": "postmaster@desk.msging.net/#az-iris2",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+  id: Lime.Guid(),
+  to: "postmaster@desk.msging.net",
+  method: Lime.CommandMethod.SET,
+  uri: "/tickets/",
+  type: "application/vnd.iris.ticket+json",
+  resource: {
+    customerIdentity: "{customerIdentity}"
+  }
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Set,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/tickets"),
+    Resource = new Ticket{
+        customerIdentity = "{customerIdentity}"
+    }
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
 ### Create a ticket for an attendance
 
-Before start to attendance some user is necessary first open a [ticket](/#ticket). 
+Before start to attendance some user is necessary first open a [ticket](/#ticket).
 To open a ticket send a command with `SET` method to `postmaster@desk.msging.net` and URI `/tickets/{customerIdentity}`, where `customerIdentity` is the customer identity to be attended. Use the `resource` property to delivery a context for the ticket.
 
 ```http
@@ -622,7 +768,130 @@ namespace user_info_extension_test_c_
 
 ```
 
-### Getting all bot's attendants
+### Get a ticket
+
+Get a specific [ticket](/#ticket).
+
+Replace the variable `{ticketId}` with the ticket id you want to get.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "74863215",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/ticket/{ticketId}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ticket+json",
+    "resource": {
+        "id": "76fed1288ba0",
+        "sequentialId": 138,
+        "ownerIdentity": "demobot@msging.net",
+        "customerIdentity": "26247641447@messenger.gw.msging.net",
+        "customerDomain": "messenger.gw.msging.net",
+        "provider": "Lime",
+        "status": "Waiting",
+        "storageDate": "2019-12-04T13:45:25.660Z",
+        "externalId": "76f5bc38-b476-4895-a0c6-016ed1288ba0",
+        "rating": 0,
+        "team": "Default",
+        "unreadMessages": 0,
+        "closed": false
+    },
+    "method": "get",
+    "status": "success",
+    "id": "c1a55103-7be6-4112-a273-cc8f66e8fea9",
+    "from": "postmaster@desk.msging.net/#az-iris7",
+    "to": "demobot@msging.net",
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.GET,
+    uri: "/ticket/{ticketId}"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/ticket/{ticketId}"),
+};
+
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
+### Get all active tickets
+
+Returns all the active [tickets](/#ticket).
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "8541256",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/tickets/active"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "itemType": "application/vnd.iris.ticket+json",
+        "items": []
+    },
+    "method": "get",
+    "status": "success",
+    "id": "056e24b4-414f-4f53-87fc-98172c30d27a",
+    "from": "postmaster@desk.msging.net/#az-iris5",
+    "to": "demobot@msging.net"
+}
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/tickets/active")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: "get",
+    uri: "/tickets/active"
+})
+```
+
+### Get all bot's attendants
 
 In order to get all attendants of some bot send a command with `GET` method to `postmaster@desk.msging.net` and URI `/attendants` . This feature is usefull to know if there are any available attendant to answer customers questions.
 
@@ -720,7 +989,146 @@ result: {Lime.Protocol.Command}
         ItemType [MediaType]: {application/vnd.iris.desk.attendant+json}
 ```
 
-### Getting all tickets of a bot
+### Get all closed tickets
+
+Returns all closed [tickets](/#ticket).
+
+Replace `{customerIdentity}` with the customer id you want to get.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+  "id": "0125744",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/tickets/{customerIdentity}/closed"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "itemType": "application/vnd.iris.ticket+json",
+        "items": []
+    },
+    "method": "get",
+    "status": "success",
+    "id": "0de283ce6f32ef",
+    "from": "postmaster@desk.msging.net/#az-iris6",
+    "to": "demobot@msging.net"
+}
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/tickets/{customerId}/closed")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: "get",
+    uri: "/tickets/{customerId}/closed"
+})
+```
+
+### Get all messages in a ticket
+
+Return all [messages](/#messages) from a specific [ticket](/#ticket).
+
+Replace `{ticketId}` with the ticket id you want to get the messages.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "0258413",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/tickets/{ticketId}/messages"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 3,
+        "itemType": "application/vnd.iris.thread-message+json",
+        "items": [
+            {
+                "id": "d7278f36a074e0",
+                "direction": "sent",
+                "type": "text/plain",
+                "content": "937dec5c1a27.demobot@0mn.io",
+                "date": "2019-12-04T16:15:34.759Z",
+                "status": "dispatched"
+            },
+            {
+                "id": "289ae91a-ff6e-47c1-be72-c41d6a46ff0f",
+                "direction": "sent",
+                "type": "application/vnd.lime.redirect+json",
+                "content": {},
+                "date": "2019-12-04T16:15:33.746Z",
+                "status": "dispatched"
+            },
+            {
+                "id": "fwd:fwd:b0534f19-d607-4ac9-b6bc-ac191f5aecf7",
+                "direction": "sent",
+                "type": "text/plain",
+                "content": "oi",
+                "date": "2019-12-04T16:14:51.952Z",
+                "status": "dispatched"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "0ae73314-86d9-4dc0-823d-cfad6636d829",
+    "from": "postmaster@desk.msging.net/#az-iris7",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: "get",
+    uri: "/tickets/{ticketId}/messages"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/tickets/{ticketId}/messages")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+### Get all tickets of a bot
 
 In order to get any ticket of some bot send a command with `GET` method to `postmaster@desk.msging.net` and URI `/tickets` .
 To filter specific tickets you can use **$filter** parameter on query string with the following properties:
@@ -870,6 +1278,58 @@ result: {Lime.Protocol.Command}
         ItemType [MediaType]: {application/vnd.iris.ticket+json}
 ```
 
+### Get waiting tickets
+
+Returns the number of waiting [tickets](/#ticket).
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "4965782",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/tickets/waiting"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "text/plain",
+    "resource": "5",
+    "method": "get",
+    "status": "success",
+    "id": "33d4-26a6c1c26b0e",
+    "from": "postmaster@desk.msging.net/#az-iris1",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: "get",
+    uri: "/tickets/waiting"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/tickets/waiting")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
 ### Handling the end of an attendance
 
 >When the human agent closes some attendance the bot receives a message with a *Redirect* content type. The Redirect's context property has a *Ticket* with information about the attendance. In order to get a closed attendance information, add a receiver to **application/vnd.lime.redirect+json** content type.
@@ -901,3 +1361,83 @@ result: {Lime.Protocol.Command}
 ```
 
 After receiving the Redirect message, the bot can change the user state and start to handle next messages automatically.
+
+### Transfer a ticket to another team
+
+Transfer a specfic [ticket](/#ticket) to another team.
+
+Replace `{ticketId}` with the ticket id you want to transfer.
+Replace `{teamName}` with the team name you want to transfer to.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "1488774",
+  "to": "postmaster@desk.msging.net",
+  "method": "set",
+  "uri": "/tickets/{ticketId}/transfer",
+  "type": "application/vnd.iris.ticket+json",
+  "resource": {
+  	"team": "{teamName}"
+  }
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ticket+json",
+    "resource": {
+        "id": "9565cc61-d0f4-4af0-9c34-016ed2130a11",
+        "sequentialId": 142,
+        "ownerIdentity": "demobot4@msging.net",
+        "customerIdentity": "255d0787b7b2bc.demobot@0mn.io",
+        "customerDomain": "0mn.io",
+        "provider": "Lime",
+        "status": "Waiting",
+        "storageDate": "2019-12-04T18:01:33.459Z",
+        "externalId": "9565cc61-d0f4-4af0-9c34-016ed2130a11",
+        "rating": 0,
+        "team": "Default",
+        "unreadMessages": 0,
+        "closed": false,
+        "parentSequentialId": 140
+    },
+    "method": "set",
+    "status": "success",
+    "id": "6b69c390-5660-483a-8b4e-1ef30c1088ae",
+    "from": "postmaster@desk.msging.net/#az-iris1",
+    "to": "demobot4@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+  id: Lime.Guid(),
+  to: "postmaster@desk.msging.net",
+  method: Lime.CommandMethod.SET,
+  uri: "/tickets/{ticketId}/transfer",
+  type: "application/vnd.iris.ticket+json",
+  resource: {
+    team: "{teamName}"
+  }
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Set,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/tickets/{ticketId/transfer"),
+    Resource = new Ticket{
+        Team = "{teamName}"
+    }
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
