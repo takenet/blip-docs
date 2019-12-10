@@ -82,6 +82,104 @@ var command = new Command(){
 };
 ```
 
+### Add custom replies to a category
+
+Add a category with a collection of custom replies.
+
+You must send a `application/vnd.lime.collection+json` document of [custom replies](/#customreply) objects.
+
+Replace `{categoryId}` with the category id you want to add custom replies to.
+
+<aside class="notice">
+You can also create a new category, just informing a new category id.
+</aside>
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "4ar4b5a4-1b21ae4a",
+  "to": "postmaster@desk.msging.net",
+  "method": "set",
+  "uri": "/replies/{categoryId}",
+  "type": "application/vnd.lime.collection+json",
+  "resource":{
+  	"itemType": "application/vnd.iris.desk.custom-reply+json",
+  	"items": [
+  		{
+		  	"category": "{categoryName}",
+			"document": "{content}",
+			"id": "{messageId}",
+			"isDynamicContent": {true/false},
+			"name": "{replyName}",
+			"type": "{replyType}"
+	  	}
+  	]
+  }
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "set",
+    "status": "success",
+    "id": "4ar4b5a4-1b21ae4a",
+    "from": "postmaster@desk.msging.net/#az-iris1",
+    "to": "demobot@msging.net
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.SET,
+    uri: "/replies/{categoryId}",
+    type: "application/vnd.lime.collection+json",
+    resource:{
+  	itemType: "application/vnd.iris.desk.custom-reply+json",
+  	items: [
+  		{
+		  	category: "{categoryName}",
+			document: "{content}",
+			id: "{messageId}",
+			isDynamicContent: "{true/false}",
+			name: "{replyName}",
+			type: "{replyType}"
+	  	}
+  	]
+  }
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Set,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/replies/{categoryId}"),
+    Type: "application/vnd.lime.collection+json",
+    Resource = {
+        itemType: "application/vnd.iris.desk.custom-reply+json"
+        items: [
+            {
+                category: "{categoryName}",
+                document: "{content}",
+                id: "{messageId}",
+                isDynamicContent: "{true/false}",
+                name: "{replyName}",
+                type: "{replyType}"
+            }
+        ]
+    }
+};
+```
+
 ### Add ticket tags
 
 Each [ticket](/#ticket) has an optional parameter called `Tags`. A tag is a label to identify important things in a ticket.
@@ -605,6 +703,58 @@ result: {Lime.Protocol.Command}
         OwnerIdentity [Identity]: {testehome1@msging.net}
 ```
 
+### Delete a custom reply category
+
+Delete a category of [custom replies](#customreply).
+
+Replace `{categoryId}` with the category id you want to delete.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "14afasf8-as4das5d4-asda1s",
+  "to": "postmaster@desk.msging.net",
+  "method": "delete",
+  "uri": "/replies/{categoryId}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "68533181-510d-4e36-93d3-e0f75b6aed93",
+    "from": "postmaster@desk.msging.net/#az-iris5",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.DELETE,
+    uri: "/replies/{categoryId}"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Delete,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/replies/{categoryId}"),
+};
+
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
 ### Delete a rule
 
 Delete a specific [attendance rule](/#rule).
@@ -918,6 +1068,73 @@ namespace user_info_extension_test_c_
 
 ```
 
+### Get a custom reply category
+
+Get a category of [custom replies](/#customreply).
+
+Replace `{categoryId}` with the category id you want to get.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "asgba8744-aabas222a",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/replies/{categoryId}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 1,
+        "itemType": "application/vnd.iris.desk.custom-reply+json",
+        "items": [
+            {
+                "id": "9e4a2a6c-e9c0-401f-a1b9-9cb45528a680",
+                "category": "Greetings",
+                "name": "Hi friend",
+                "document": "Some text",
+                "type": "text/plain",
+                "isDynamicContent": false
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "1bb745dd-784f-42b2-acab-cb2db6544e34",
+    "from": "postmaster@desk.msging.net/#az-iris4",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.GET,
+    uri: "/replies/{categoryId}"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/replies/{categoryId}"),
+};
+
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
 ### Get a report about agents
 
 Get a report about [agents](/#attendant).
@@ -1066,8 +1283,6 @@ var command = new Command(){
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
 ```
-
-
 
 ### Get a report about tags
 
