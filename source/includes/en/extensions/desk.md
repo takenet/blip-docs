@@ -82,6 +82,104 @@ var command = new Command(){
 };
 ```
 
+### Add custom replies to a category
+
+Add a category with a collection of custom replies.
+
+You must send a `application/vnd.lime.collection+json` document of [custom replies](/#customreply) objects.
+
+Replace `{categoryId}` with the category id you want to add custom replies to.
+
+<aside class="notice">
+You can also create a new category, just informing a new category id.
+</aside>
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "4ar4b5a4-1b21ae4a",
+  "to": "postmaster@desk.msging.net",
+  "method": "set",
+  "uri": "/replies/{categoryId}",
+  "type": "application/vnd.lime.collection+json",
+  "resource":{
+  	"itemType": "application/vnd.iris.desk.custom-reply+json",
+  	"items": [
+  		{
+		  	"category": "{categoryName}",
+			"document": "{content}",
+			"id": "{messageId}",
+			"isDynamicContent": {true/false},
+			"name": "{replyName}",
+			"type": "{replyType}"
+	  	}
+  	]
+  }
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "set",
+    "status": "success",
+    "id": "4ar4b5a4-1b21ae4a",
+    "from": "postmaster@desk.msging.net/#az-iris1",
+    "to": "demobot@msging.net
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.SET,
+    uri: "/replies/{categoryId}",
+    type: "application/vnd.lime.collection+json",
+    resource:{
+  	itemType: "application/vnd.iris.desk.custom-reply+json",
+  	items: [
+  		{
+		  	category: "{categoryName}",
+			document: "{content}",
+			id: "{messageId}",
+			isDynamicContent: "{true/false}",
+			name: "{replyName}",
+			type: "{replyType}"
+	  	}
+  	]
+  }
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Set,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/replies/{categoryId}"),
+    Type: "application/vnd.lime.collection+json",
+    Resource = {
+        itemType: "application/vnd.iris.desk.custom-reply+json"
+        items: [
+            {
+                category: "{categoryName}",
+                document: "{content}",
+                id: "{messageId}",
+                isDynamicContent: "{true/false}",
+                name: "{replyName}",
+                type: "{replyType}"
+            }
+        ]
+    }
+};
+```
+
 ### Add ticket tags
 
 Each [ticket](/#ticket) has an optional parameter called `Tags`. A tag is a label to identify important things in a ticket.
@@ -392,6 +490,104 @@ var command = new Command(){
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 ```
 
+### Create an attendance rule
+
+Set a new attendance rule.
+
+You must send a [rule](/#rule) document with your conditions.
+
+<aside class="notice">For example, if you want to forward a customer to a Team according to their city (using <a href="/#contact">contact</a> extras), you should do the following:</aside>
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "4rt-83atab-a712a",
+  "to": "postmaster@desk.msging.net",
+  "method": "set",
+  "uri": "/rules",
+  "type": "application/vnd.iris.desk.rule+json",
+  "resource": {
+  	"id": "rt5aax7a8a9-8as4da",
+  	"isActive": true,
+	"property": "Contact.Extras.City",
+	"relation": "Equals",
+	"team": "Default",
+	"title": "City Rule ",
+	"values": [
+		"Belo Horizonte", 
+		"BH", 
+		"Minas Gerais", 
+		"MG"
+		]
+	}
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "set",
+    "status": "success",
+    "id": "54ba657c-cefa-4414-bc32-7a7f25390551",
+    "from": "postmaster@desk.msging.net/#az-iris2",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+  id: Lime.Guid(),
+  to: "postmaster@desk.msging.net",
+  method: Lime.CommandMethod.SET,
+  uri: "/rules",
+  type: "application/vnd.iris.desk.rule+json",
+  resource: {
+    id: "rt5aax7a8a9-8as4da",
+  	isActive: true,
+	property: "Contact.Extras.City",
+	relation: "Equals",
+	team: "Default",
+	title: "City Rule ",
+	values: [
+		"Belo Horizonte", 
+		"BH", 
+		"Minas Gerais", 
+		"MG"
+		]
+	}
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Set,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/rules"),
+    Type: "application/vnd.iris.desk.rule+json",
+    Resource = new Rule{
+        id = "rt5aax7a8a9-8as4da",
+        isActive = true,
+        property = "Contact.Extras.City",
+        relation = "Equals",
+        team = "Default",
+        title = "City Rule ",
+        values = [
+            "Belo Horizonte",
+            "BH",
+            "Minas Gerais",
+            "MG"
+        ]
+    }
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
 ### Create a ticket for an attendance
 
 Before start to attendance some user is necessary first open a [ticket](/#ticket).
@@ -505,6 +701,110 @@ result: {Lime.Protocol.Command}
         SequentialId [int]: 1
         Provider [string]: "Lime"
         OwnerIdentity [Identity]: {testehome1@msging.net}
+```
+
+### Delete a custom reply category
+
+Delete a category of [custom replies](#customreply).
+
+Replace `{categoryId}` with the category id you want to delete.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "14afasf8-as4das5d4-asda1s",
+  "to": "postmaster@desk.msging.net",
+  "method": "delete",
+  "uri": "/replies/{categoryId}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "68533181-510d-4e36-93d3-e0f75b6aed93",
+    "from": "postmaster@desk.msging.net/#az-iris5",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.DELETE,
+    uri: "/replies/{categoryId}"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Delete,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/replies/{categoryId}"),
+};
+
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
+### Delete a rule
+
+Delete a specific [attendance rule](/#rule).
+
+Replace `{ruleId}`with the rule id you want to delete.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "aabbccddee",
+  "to": "postmaster@desk.msging.net",
+  "method": "delete",
+  "uri": "/rules/{ruleId}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "1a407581-7a55-484e-b269-ceb04f354cb3",
+    "from": "postmaster@desk.msging.net/#az-iris2",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.DELETE,
+    uri: "/rules/{ruleId}"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Delete,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/rules/{ruleId}"),
+};
+
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 ```
 
 ### Delete an agent
@@ -628,7 +928,7 @@ Note: The `tags` property can be hide if you didn't set the Tags configurations 
 First, the bot receives a message as below:
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
@@ -690,7 +990,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 At first, the bot receives a message and decides if it must route the user to a human agent. Imagine for instance that the message **"Hello, I would like to talk to an attendant."** is enough to send the user to an agent.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -768,6 +1068,630 @@ namespace user_info_extension_test_c_
 
 ```
 
+### Get a custom reply category
+
+Get a category of [custom replies](/#customreply).
+
+Replace `{categoryId}` with the category id you want to get.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "asgba8744-aabas222a",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/replies/{categoryId}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 1,
+        "itemType": "application/vnd.iris.desk.custom-reply+json",
+        "items": [
+            {
+                "id": "9e4a2a6c-e9c0-401f-a1b9-9cb45528a680",
+                "category": "Greetings",
+                "name": "Hi friend",
+                "document": "Some text",
+                "type": "text/plain",
+                "isDynamicContent": false
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "1bb745dd-784f-42b2-acab-cb2db6544e34",
+    "from": "postmaster@desk.msging.net/#az-iris4",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.GET,
+    uri: "/replies/{categoryId}"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/replies/{categoryId}"),
+};
+
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
+### Get a report about agents
+
+Get a report about [agents](/#attendant).
+
+Returns a [Attendant Summary](/#attendantticketssummary) document.
+
+The following filters are available:
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------|
+| beginDate    | Initial date to retrieve the report        |
+| endDate      | Limit date to retrieve the report.        |
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "as4a5w4az",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/analytics/reports/attendants"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 2,
+        "itemType": "application/vnd.iris.desk.attendantticketssummary+json",
+        "items": [
+            {
+                "identity": "john%40email.net@blip.ai",
+                "status": "Offline",
+                "openedTickets": 0,
+                "closedTickets": 12,
+                "averageFirstResponseTime": "00:00:06",
+                "averageWaitTime": "00:30:35",
+                "averageAttendanceTime": "00:15:43",
+                "averageResponseTime": "00:00:18.2650000"
+            },
+            {
+                "identity": "joanne%40email.net@blip.ai",
+                "status": "Offline",
+                "openedTickets": 0,
+                "closedTickets": 3,
+                "averageFirstResponseTime": "00:00:06",
+                "averageWaitTime": "00:00:15",
+                "averageAttendanceTime": "00:10:19",
+                "averageResponseTime": "00:00:00.8630000"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "2f34985c-96b0-493e-8499-f54e74968a6c",
+    "from": "postmaster@desk.msging.net/#az-iris5",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: "get",
+    uri: "/analytics/reports/attendants"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/analytics/reports/attendants")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+### Get a report about attendance time
+
+Get a report about attendance time.
+
+Returns a [Attendance Time Summary](/#attendancetimesummary) document.
+
+The following filters are available:
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------|
+| beginDate    | Initial date to retrieve the report        |
+| endDate      | Limit date to retrieve the report.        |
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "98t47axv",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/analytics/reports/attendancetime"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.desk.attendancetimesummary+json",
+    "resource": {
+        "attendanceTime": "00:14:49"
+    },
+    "method": "get",
+    "status": "success",
+    "id": "fd4ef884-4cc8-4a9a-b92c-bb8747a24bbd",
+    "from": "postmaster@desk.msging.net/#az-iris2",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: "get",
+    uri: "/analytics/reports/attendancetime"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/analytics/reports/attendancetime")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+### Get a report about tags
+
+Get a report about tags.
+
+Returns a [Tag Ticket Summary](/#tagticketssummary) document.
+
+The following filters are available:
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------|
+| beginDate    | Initial date to retrieve the report        |
+| endDate      | Limit date to retrieve the report.        |
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "98t47axv",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/analytics/reports/tags"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 3,
+        "itemType": "application/vnd.iris.desk.tag-tickets-summary+json",
+        "items": [
+            {
+                "name": "Awesome",
+                "closedTickets": 2,
+                "averageFirstResponseTime": "00:00:05",
+                "averageWaitTime": "00:00:16",
+                "averageAttendanceTime": "00:00:35",
+                "averageResponseTime": "00:00:18.2650000"
+            },
+            {
+                "name": "Cool",
+                "closedTickets": 1
+            },
+            {
+                "name": "Nice",
+                "closedTickets": 1
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "4d690307-646f-471a-9ea3-2e0d6623e2c4",
+    "from": "postmaster@desk.msging.net/#az-iris2",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: "get",
+    uri: "/analytics/reports/tags"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/analytics/reports/tags")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+### Get a report about teams
+
+Get a report about [teams](/#team).
+
+Returns a [Team Ticket Summary](/#teamticketssummary) document.
+
+The following filters are available:
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------|
+| beginDate    | Initial date to retrieve the report        |
+| endDate      | Limit date to retrieve the report.        |
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "as4a5w4az",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/analytics/reports/teams"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 3,
+        "itemType": "application/vnd.iris.desk.teamticketssummary+json",
+        "items": [
+            {
+                "name": "Default",
+                "waitingTickets": 0,
+                "openedTickets": 0,
+                "closedTickets": 14,
+                "averageFirstResponseTime": "00:00:06",
+                "averageWaitTime": "00:30:34",
+                "averageAttendanceTime": "00:17:40",
+                "averageResponseTime": "00:00:00.8630000"
+            },
+            {
+                "name": "Priority",
+                "waitingTickets": 0,
+                "openedTickets": 0,
+                "closedTickets": 2,
+                "averageFirstResponseTime": "00:00:05",
+                "averageWaitTime": "00:00:16",
+                "averageAttendanceTime": "00:00:35",
+                "averageResponseTime": "00:00:18.2650000"
+            },
+            {
+                "name": "NoPriority",
+                "waitingTickets": 0,
+                "openedTickets": 0,
+                "closedTickets": 1
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "ad8ad8d3-c05f-4f97-a0b6-52e0d5df5d4a",
+    "from": "postmaster@desk.msging.net/#az-iris4",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: "get",
+    uri: "/analytics/reports/teams"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/analytics/reports/teams")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+### Get a report about ticket timing
+
+Get a report about the tickets timing.
+
+Returns a [Ticket Metrics Summary](/#ticketsmetricssummary) document.
+
+The following filters are available:
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------|
+| beginDate    | Initial date to retrieve the report        |
+| endDate      | Limit date to retrieve the report.        |
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "98t47axv",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/analytics/reports/timings"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.desk.tickets-metrics-summary+json",
+    "resource": {
+        "maxQueueTime": "02:29:01",
+        "maxFirstResponseTime": "00:00:11",
+        "avgQueueTime": "00:12:10",
+        "avgFirstResponseTime": "00:00:06",
+        "avgWaitTime": "00:25:31.6670000",
+        "avgResponseTime": "00:00:09.5640000",
+        "avgAttendanceTime": "00:14:49"
+    },
+    "method": "get",
+    "status": "success",
+    "id": "aaf109bf-9b99-45d0-8d0c-a031128c3550",
+    "from": "postmaster@desk.msging.net/#az-iris5",
+    "to": "demobot@msging.net",
+    "metadata": {
+        "#command.uri": "lime://demobot4@msging.net/analytics/reports/timings?beginDate=2019-11-02&$endDate=2019-12-05",
+        "uber-trace-id": "ffae5adefbfc9395%3Affae5adefbfc9395%3A0%3A1"
+    }
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: "get",
+    uri: "/analytics/reports/timings"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/analytics/reports/timings)
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+### Get a report about tickets
+
+Get a report about [tickets](/#ticket).
+
+Returns a [Tickets Summary](/#ticketssummary) document.
+
+The following filters are available:
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------|
+| beginDate    | Initial date to retrieve the report        |
+| endDate      | Limit date to retrieve the report.        |
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "878855",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/analytics/reports/tickets"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 3,
+        "itemType": "application/vnd.iris.desk.ticketssummary+json",
+        "items": [
+            {
+                "date": "2019-11-02T03:00:00.000Z",
+                "waiting": 0,
+                "open": 0,
+                "closed": 3,
+                "closedAttendant": 3,
+                "closedClient": ,
+                "transferred": 2,
+                "missed": 0
+            },
+            {
+                "date": "2019-11-03T03:00:00.000Z",
+                "waiting": 1,
+                "open": 0,
+                "closed": 5,
+                "closedAttendant": 0,
+                "closedClient": 0,
+                "transferred": 2,
+                "missed": 0
+            },
+            {
+                "date": "2019-11-04T03:00:00.000Z",
+                "waiting": 0,
+                "open": 2,
+                "closed": 1,
+                "closedAttendant": 0,
+                "closedClient": 0,
+                "transferred": 0,
+                "missed": 0
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "76d535c7-7aa8-4822-b18a-0a53a3d2b865",
+    "from": "postmaster@desk.msging.net/#az-iris4",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: "get",
+    uri: "/analytics/reports/tickets"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/analytics/reports/tickets")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+### Get a rule
+
+Get a specific [attendance rule](/#rule).
+
+Replace `{ruleId}`with the rule id you want to get.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "aabbccddee",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/rules/{ruleId}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.desk.rule+json",
+    "resource": {
+        "id": "4067c9bc-278e-4ae2-96b1-aaac61428aae",
+        "ownerIdentity": "demobot@msging.net",
+        "title": "City Rule",
+        "team": "Belo Horizonte",
+        "property": "Contact.Extras.Cidade",
+        "relation": "Equals",
+        "isActive": true,
+        "values": [
+            "BH"
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "e105ecfe-e89c-458f-ac7b-983aecc8954d",
+    "from": "postmaster@desk.msging.net/#az-iris5",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.GET,
+    uri: "/rules/{ruleId}"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/rules/{ruleId}"),
+};
+
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
 ### Get a ticket
 
 Get a specific [ticket](/#ticket).
@@ -836,6 +1760,168 @@ var command = new Command(){
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 ```
 
+### Get agents metrics
+
+Get [agents](/#attendantticketssummary) metrics and informations.
+
+The following filters are available:
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------|
+| beginDate    | Initial date to retrieve the metrics        |
+| endDate      | Limit date to retrieve the metrics.        |
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "548753",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/monitoring/attendants"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 2,
+        "itemType": "application/vnd.iris.desk.attendantticketssummary+json",
+        "items": [
+            {
+                "identity": "john%40email.net@blip.ai",
+                "status": "Online",
+                "openedTickets": 2,
+                "closedTickets": 0,
+                "averageAttendanceTime": "00:00:00",
+                "averageResponseTime": "00:00:00"
+            },
+            {
+                "identity": "joanne%40email.net@blip.ai",
+                "status": "Offline",
+                "openedTickets": 0,
+                "closedTickets": 0,
+                "averageAttendanceTime": "00:00:00",
+                "averageResponseTime": "00:00:00"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "57ccbdf1-294e-4124-952a-f2248ba3cf1a",
+    "from": "postmaster@desk.msging.net/#az-iris7",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: "get",
+    uri: "/monitoring/attendants"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/monitoring/attendants")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+### Get agents productivity
+
+Get a report about [attendants](/#attendant) productivity.
+
+Returns a [Agent Productivity Summary](/#agentproductivitysummary) document.
+
+The following filters are available:
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------|
+| beginDate    | Initial date to retrieve the report        |
+| endDate      | Limit date to retrieve the report.        |
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "878855",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/analytics/reports/attendants/productivity"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 2,
+        "itemType": "application/vnd.iris.desk.agentproductivitysummary+json",
+        "items": [
+            {
+                "identity": "john%40email.net@blip.ai",
+                "online": "2.00:58:27.3058952",
+                "paused": "00:00:00",
+                "invisible": "3.20:47:20.4700000",
+                "offline": "24.20:50:17.7500000",
+                "total": "5.21:45:47.7758952"
+            },
+            {
+                "identity": "joanne%40email.net@blip.ai",
+                "online": "04:14:33.6700000",
+                "paused": "00:00:00",
+                "invisible": "00:40:07.4700000",
+                "offline": "13.19:55:36.3094029",
+                "total": "04:54:41.1400000"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "8d29fe6e-dcae-4eda-8837-515b67dd23df",
+    "from": "postmaster@desk.msging.net/#az-iris3",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: "get",
+    uri: "/analytics/reports/attendants/productivity"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/analytics/reports/attendants/productivity")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
 ### Get all active tickets
 
 Returns all the active [tickets](/#ticket).
@@ -891,7 +1977,7 @@ client.sendCommand({
 })
 ```
 
-### Get all bot's attendants
+### Get all bot's agents
 
 In order to get all attendants of some bot send a command with `GET` method to `postmaster@desk.msging.net` and URI `/attendants` . This feature is usefull to know if there are any available attendant to answer customers questions.
 
@@ -1128,6 +2214,71 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
 ```
 
+### Get all teams
+
+In order to get all agents [teams](/#team) of some bot send a command with `GET` method to `postmaster@desk.msging.net` and URI `/teams` .
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "a1b2c33",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/teams"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 2,
+        "itemType": "application/vnd.iris.desk.team+json",
+        "items": [
+            {
+                "name": "Default",
+                "agentsOnline": 0
+            },
+            {
+                "name": "Belo Horizonte",
+                "agentsOnline": 0
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "29b958d0-1ab7-40ad-96ff-2a3245e8ea8a",
+    "from": "postmaster@desk.msging.net/#az-iris7",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: "get",
+    uri: "/teams"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/teams")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
 ### Get all tickets of a bot
 
 In order to get any ticket of some bot send a command with `GET` method to `postmaster@desk.msging.net` and URI `/tickets` .
@@ -1278,9 +2429,17 @@ result: {Lime.Protocol.Command}
         ItemType [MediaType]: {application/vnd.iris.ticket+json}
 ```
 
-### Get attendants metrics
+### Get attendance rules
 
-Get [attendants](/#attendantticketssummary) metrics and informations.
+Get all [attendance rules](/#rule).
+
+The following uri filters are available to get rules:
+
+| QueryString     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **skip** | The number of rules to be skipped.                                |    0    |
+| **take** | The number of rules to be returned.                               |   100   |
+| **ascending** | Sets ascending alphabetical order.                                |    true    |
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -1288,10 +2447,146 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "548753",
+  "id": "a1b2c33",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/monitoring/attendants"
+  "uri": "/rules"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 1,
+        "itemType": "application/vnd.iris.desk.rule+json",
+        "items": [
+            {
+                "id": "4067c9bc-278e-4ae2-96b1-aaac61428aae",
+                "ownerIdentity": "demobot4@msging.net",
+                "title": "City rule",
+                "team": "Belo Horizonte",
+                "property": "Contact.Extras.Cidade",
+                "relation": "Equals",
+                "isActive": true,
+                "values": [
+                    "Belo Horizonte",
+                    "BH"
+                ]
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "897a7301-81f1-434d-8447-85c776d33875",
+    "from": "postmaster@desk.msging.net/#az-iris1",
+    "to": "demobot4@msging.net",
+    "metadata": {
+        "#command.uri": "lime://demobot4@msging.net/rules",
+        "uber-trace-id": "364c11dba2c5f82d%3A364c11dba2c5f82d%3A0%3A1"
+    }
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: "get",
+    uri: "/rules"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/rules")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+### Get custom replies
+
+Get the [custom replies](/#customreply) from your attendance model.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "abced017458",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/replies"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 1,
+        "itemType": "application/vnd.iris.desk.custom-reply+json",
+        "items": [
+            {
+                "id": "9e4a2a6c-e9c0-401f-a1b9-9cb45528a680",
+                "category": "Greetings",
+                "isDynamicContent": false
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "d5c863fe-56b7-49f0-9430-e5e27c4ab303",
+    "from": "postmaster@desk.msging.net/#az-iris3",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: "get",
+    uri: "/replies"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/replies")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+### Get online agents
+
+Get the number of online [agents](/#attendant) in each team.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "abced017458",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/teams/agents-online"
 }
 ```
 
@@ -1303,30 +2598,22 @@ Content-Type: application/json
     "type": "application/vnd.lime.collection+json",
     "resource": {
         "total": 2,
-        "itemType": "application/vnd.iris.desk.attendantticketssummary+json",
+        "itemType": "application/vnd.iris.desk.team+json",
         "items": [
             {
-                "identity": "john%40email.net@blip.ai",
-                "status": "Online",
-                "openedTickets": 2,
-                "closedTickets": 0,
-                "averageAttendanceTime": "00:00:00",
-                "averageResponseTime": "00:00:00"
+                "name": "Default",
+                "agentsOnline": 2
             },
             {
-                "identity": "joanne%40email.net@blip.ai",
-                "status": "Offline",
-                "openedTickets": 0,
-                "closedTickets": 0,
-                "averageAttendanceTime": "00:00:00",
-                "averageResponseTime": "00:00:00"
+                "name": "Belo Horizonte",
+                "agentsOnline": 1
             }
         ]
     },
     "method": "get",
     "status": "success",
-    "id": "57ccbdf1-294e-4124-952a-f2248ba3cf1a",
-    "from": "postmaster@desk.msging.net/#az-iris7",
+    "id": "0189ff97-1d3a-41c7-a80b-d1f139f49e29",
+    "from": "postmaster@desk.msging.net/#az-iris1",
     "to": "demobot@msging.net"
 }
 ```
@@ -1336,7 +2623,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/monitoring/attendants"
+    uri: "/monitoring/open-tickets"
 })
 ```
 
@@ -1345,7 +2632,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/monitoring/attendants")
+    Uri = new LimeUri("/monitoring/open-tickets")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -1354,6 +2641,13 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 ### Get open tickets metrics
 
 Get [open tickets](/#openticketsummary) metrics and informations.
+
+The following filters are available:
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------|
+| beginDate    | Initial date to retrieve the metrics        |
+| endDate      | Limit date to retrieve the metrics.        |
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -1430,6 +2724,14 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Get attendance [teams](/#teamticketssummary) metrics and informations.
 
+The following filters are available:
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------|
+| beginDate    | Initial date to retrieve the metrics        |
+| endDate      | Limit date to retrieve the metrics.        |
+
+
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -1503,6 +2805,13 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Get [tickets metrics](/#ticketsmetricssummary) for your monitoring.
 
+The following filters are available:
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------|
+| beginDate    | Initial date to retrieve the metrics        |
+| endDate      | Limit date to retrieve the metrics.        |
+
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -1564,6 +2873,13 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Get tickets counters by status.
 
+The following filters are available:
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------|
+| beginDate    | Initial date to retrieve the counters        |
+| endDate      | Limit date to retrieve the counters.        |
+
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -1615,6 +2931,67 @@ var command = new Command(){
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
     Uri = new LimeUri("/monitoring/tickets")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+### Get tickets per hour
+
+Get tickets-per-hour metrics (**for the current day**).
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "7865782",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/monitoring/tickets-per-hour"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 1,
+        "itemType": "application/vnd.iris.desk.tickets-by-hour-summary+json",
+        "items": [
+            {
+                "storageDate": "2019-12-05T14:00:00.000Z",
+                "ticketByHour": 1
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "dabe7f4d-0119-4aa0-8873-4dba11553954",
+    "from": "postmaster@desk.msging.net/#az-iris1",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: "get",
+    uri: "/monitoring/tickets-per-hour"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/monitoring/tickets-per-hour")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -1675,6 +3052,13 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 ### Get waiting tickets metrics
 
 Get [waiting tickets](/#openticketsummary) metrics and informations.
+
+The following filters are available:
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------|
+| beginDate    | Initial date to retrieve the metrics        |
+| endDate      | Limit date to retrieve the metrics.        |
 
 ```http
 POST https://msging.net/commands HTTP/1.1
