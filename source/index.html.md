@@ -141,16 +141,16 @@ includes:
 # Add an extension keeping the order
 
   - en/extensions
+  - en/extensions/event-track
   - en/extensions/artificial-intelligence
   - en/extensions/broadcast
   - en/extensions/bucket
   - en/extensions/blip-builder
-  - en/extensions/chatbot-profile
   - en/extensions/chat-history
+  - en/extensions/chatbot-profile
   - en/extensions/contacts
   - en/extensions/delegation
   - en/extensions/desk
-  - en/extensions/event-track
   - en/extensions/resources
   - en/extensions/scheduler
   - en/extensions/tunnel
