@@ -524,6 +524,90 @@ namespace Extensions
 }
 ```
 
+### Get active messages
+
+Get the [metrics](/#metricindicators) of active messages by an interval.
+
+Replace `{interval}` with the date interval you want to get the metrics.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "320c2b30-aaf3-4549-85fa-bddb3389022f",
+  "to": "postmaster@analytics.msging.net",
+  "method": "get",
+  "uri": "/metrics/active-messages/{interval}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 2,
+        "itemType": "application/vnd.iris.analytics.metric-indicators+json",
+        "items": [
+            {
+                "intervalStart": "2019-11-05T03:00:00.000Z",
+                "intervalEnd": "2019-12-05T03:00:00.000Z",
+                "count": 7
+            },
+            {
+                "intervalStart": "2019-12-05T03:00:00.000Z",
+                "intervalEnd": "2019-12-10T03:00:00.000Z",
+                "count": 0
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "541a4c6a-77c5-4928-a0e3-af79cfc77ad3",
+    "from": "postmaster@analytics.msging.net/#az-iris7",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@analytics.msging.net",
+    method: "get",
+    uri: "/metrics/active-messages/{interval}"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postmaster@analytics.msging.net",
+    Uri = new LimeUri("/metrics/active-messages/{interval}")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+Your interval must have one of this statistics interval:
+
+| Interval   | Description                           | QueryString                                       |
+|------------|---------------------------------------|---------------------------------------------------|
+| Daily      | Statistics collected at each day      | D?startDate=**DATE**&endDate=**DATE**           |
+| Monthly    | Statistics collected at each month    | M?startDate=**DATE**&endDate=**DATE**           |
+| NoInterval | Statistics collected with no interval | NI?startDate=**DATE**&endDate=**DATE**          |
+
+<aside clas="notice">
+<i>Example: If you want to get a <b>Daily</b> metric, starting from december 12 to december 14:</i>
+
+<br><br>
+<code>/metrics/active-messages/D?startDate=2019-12-12T03%3A00%3A00.000Z&endDate=2019-12-14T03%3A00%3A00.000Z</code>
+</aside>
+
 ### Get all reports
 
 Get a collection of [reports](/#report).
@@ -667,7 +751,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "880e6454-65e0-44ad-b2f4-7a4f3a5149c5",
   "to": "postmaster@analytics.msging.net",
   "method": "get",
-  "uri": "/metrics/engaged-identity/{interval}"
+  "uri": "/metrics/active-identity/{interval}"
 }
 ```
 
@@ -716,23 +800,21 @@ Content-Type: application/json
 }
 ```
 
-
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@analytics.msging.net",
     method: "get",
-    uri: "/metrics/engaged-identity/{interval}"
+    uri: "/metrics/active-identity/{interval}"
 })
 ```
-
 
 ```csharp
 var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postmaster@analytics.msging.net",
-    Uri = new LimeUri("/metrics/engaged-identity/{interval}")
+    Uri = new LimeUri("/metrics/active-identity/{interval}")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -742,9 +824,9 @@ Your interval must have one of this statistics interval:
 
 | Interval   | Description                           | QueryString                                       |
 |------------|---------------------------------------|---------------------------------------------------|
-| Daily      | Statistics collected at each day      | D?startDate=DATE&endDate=DATE           |
-| Monthly    | Statistics collected at each month    | M?startDate=DATE&endDate=DATE           |
-| NoInterval | Statistics collected with no interval | NI?startDate=DATE&endDate=DATE          |
+| Daily      | Statistics collected at each day      | D?startDate=**DATE**&endDate=**DATE**           |
+| Monthly    | Statistics collected at each month    | M?startDate=**DATE**&endDate=**DATE**           |
+| NoInterval | Statistics collected with no interval | NI?startDate=**DATE**&endDate=**DATE**          |
 
 <aside clas="notice">
 <i>Example: If you want to get a <b>Daily</b> metric, starting from december 12 to december 14:</i>
@@ -752,7 +834,6 @@ Your interval must have one of this statistics interval:
 <br><br>
 <code>/metrics/active-identity/D?startDate=2019-12-12T03%3A00%3A00.000Z&endDate=2019-12-14T03%3A00%3A00.000Z</code>
 </aside>
-
 
 ### Get categories
 
@@ -1114,6 +1195,291 @@ Retrieves all events tracked with a specific pair of action and categories. The 
 | $take        | Limit of total of items to be returned.   |
 | startDate    | Initial date to search for events.        |
 | endDate      | Limit date to retrieve the events.        |
+
+### Get engaged users
+
+Get the [metrics](/#metricindicators) of engaged users by an interval.
+
+Replace `{interval}` with the date interval you want to get the metrics.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "880e6454-65e0-44ad-b2f4-7a4f3a5149c5",
+  "to": "postmaster@analytics.msging.net",
+  "method": "get",
+  "uri": "/metrics/engaged-identity/{interval}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 5,
+        "itemType": "application/vnd.iris.analytics.metric-indicators+json",
+        "items": [
+            {
+                "intervalStart": "2019-12-05T03:00:00.000Z",
+                "intervalEnd": "2019-12-06T03:00:00.000Z",
+                "count": 1
+            },
+            {
+                "intervalStart": "2019-12-06T03:00:00.000Z",
+                "intervalEnd": "2019-12-07T03:00:00.000Z",
+                "count": 0
+            },
+            {
+                "intervalStart": "2019-12-07T03:00:00.000Z",
+                "intervalEnd": "2019-12-08T03:00:00.000Z",
+                "count": 0
+            },
+            {
+                "intervalStart": "2019-12-08T03:00:00.000Z",
+                "intervalEnd": "2019-12-09T03:00:00.000Z",
+                "count": 0
+            },
+            {
+                "intervalStart": "2019-12-09T03:00:00.000Z",
+                "intervalEnd": "2019-12-10T03:00:00.000Z",
+                "count": 0
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "f792891e-2b1e-4caf-9649-9256c900ac65",
+    "from": "postmaster@analytics.msging.net/#az-iris4",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@analytics.msging.net",
+    method: "get",
+    uri: "/metrics/engaged-identity/{interval}"
+})
+```
+
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postmaster@analytics.msging.net",
+    Uri = new LimeUri("/metrics/engaged-identity/{interval}")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+Your interval must have one of this statistics interval:
+
+| Interval   | Description                           | QueryString                                       |
+|------------|---------------------------------------|---------------------------------------------------|
+| Daily      | Statistics collected at each day      | D?startDate=**DATE**&endDate=**DATE**           |
+| Monthly    | Statistics collected at each month    | M?startDate=**DATE**&endDate=**DATE**           |
+| NoInterval | Statistics collected with no interval | NI?startDate=**DATE**&endDate=**DATE**          |
+
+<aside clas="notice">
+<i>Example: If you want to get a <b>Daily</b> metric, starting from december 12 to december 14:</i>
+
+<br><br>
+<code>/metrics/engaged-identity/D?startDate=2019-12-12T03%3A00%3A00.000Z&endDate=2019-12-14T03%3A00%3A00.000Z</code>
+</aside>
+
+### Get received messages
+
+Get the [metrics](/#metricindicators) of received messages by an interval.
+
+Replace `{interval}` with the date interval you want to get the metrics.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "320c2b30-aaf3-4549-85fa-bddb3389022f",
+  "to": "postmaster@analytics.msging.net",
+  "method": "get",
+  "uri": "/metrics/received-messages/{interval}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 2,
+        "itemType": "application/vnd.iris.analytics.metric-indicators+json",
+        "items": [
+            {
+                "intervalStart": "2019-11-05T03:00:00.000Z",
+                "intervalEnd": "2019-12-05T03:00:00.000Z",
+                "count": 16
+            },
+            {
+                "intervalStart": "2019-12-05T03:00:00.000Z",
+                "intervalEnd": "2019-12-10T03:00:00.000Z",
+                "count": 2
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "621ffd0b-6dfd-4bb2-a01d-d1f4021e9702",
+    "from": "postmaster@analytics.msging.net/#az-iris4",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@analytics.msging.net",
+    method: "get",
+    uri: "/metrics/received-messages/{interval}"
+})
+```
+
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postmaster@analytics.msging.net",
+    Uri = new LimeUri("/metrics/received-messages/{interval}")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+Your interval must have one of this statistics interval:
+
+| Interval   | Description                           | QueryString                                       |
+|------------|---------------------------------------|---------------------------------------------------|
+| Daily      | Statistics collected at each day      | D?startDate=**DATE**&endDate=**DATE**           |
+| Monthly    | Statistics collected at each month    | M?startDate=**DATE**&endDate=**DATE**           |
+| NoInterval | Statistics collected with no interval | NI?startDate=**DATE**&endDate=**DATE**          |
+
+<aside clas="notice">
+<i>Example: If you want to get a <b>Monthly</b> metric, starting from november 05 to december 09:</i>
+
+<br><br>
+<code>/metrics/received-messages/M?startDate=2019-11-05T03%3A00%3A00.000Z&endDate=2019-12-09T03%3A00%3A00.000Z</code>
+</aside>
+
+### Get sent messages
+
+Get the [metrics](/#metricindicators) of sent messages by an interval.
+
+Replace `{interval}` with the date interval you want to get the metrics.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "320c2b30-aaf3-4549-85fa-bddb3389022f",
+  "to": "postmaster@analytics.msging.net",
+  "method": "get",
+  "uri": "/metrics/sent-messages/{interval}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 5,
+        "itemType": "application/vnd.iris.analytics.metric-indicators+json",
+        "items": [
+            {
+                "intervalStart": "2019-12-05T03:00:00.000Z",
+                "intervalEnd": "2019-12-06T03:00:00.000Z",
+                "count": 2
+            },
+            {
+                "intervalStart": "2019-12-06T03:00:00.000Z",
+                "intervalEnd": "2019-12-07T03:00:00.000Z",
+                "count": 0
+            },
+            {
+                "intervalStart": "2019-12-07T03:00:00.000Z",
+                "intervalEnd": "2019-12-08T03:00:00.000Z",
+                "count": 0
+            },
+            {
+                "intervalStart": "2019-12-08T03:00:00.000Z",
+                "intervalEnd": "2019-12-09T03:00:00.000Z",
+                "count": 0
+            },
+            {
+                "intervalStart": "2019-12-09T03:00:00.000Z",
+                "intervalEnd": "2019-12-10T03:00:00.000Z",
+                "count": 0
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "320c2b30-aaf3-4549-85fa-bddb3389022f",
+    "from": "postmaster@analytics.msging.net/#az-iris7",
+    "to": "demobot@msging.net",
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@analytics.msging.net",
+    method: "get",
+    uri: "/metrics/sent-messages/{interval}"
+})
+```
+
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postmaster@analytics.msging.net",
+    Uri = new LimeUri("/metrics/sent-messages/{interval}")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+Your interval must have one of this statistics interval:
+
+| Interval   | Description                           | QueryString                                       |
+|------------|---------------------------------------|---------------------------------------------------|
+| Daily      | Statistics collected at each day      | D?startDate=**DATE**&endDate=**DATE**           |
+| Monthly    | Statistics collected at each month    | M?startDate=**DATE**&endDate=**DATE**           |
+| NoInterval | Statistics collected with no interval | NI?startDate=**DATE**&endDate=**DATE**          |
+
+<aside clas="notice">
+<i>Example: If you want to get a <b>Daily</b> metric, starting from december 12 to december 14:</i>
+
+<br><br>
+<code>/metrics/sent-messages/D?startDate=2019-12-12T03%3A00%3A00.000Z&endDate=2019-12-14T03%3A00%3A00.000Z</code>
+</aside>
 
 ### Update a chart in a report
 
