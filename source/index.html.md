@@ -141,7 +141,7 @@ includes:
 # Add an extension keeping the order
 
   - en/extensions
-  - en/extensions/event-track
+  - en/extensions/analytics
   - en/extensions/artificial-intelligence
   - en/extensions/broadcast
   - en/extensions/bucket
@@ -149,7 +149,7 @@ includes:
   - en/extensions/chat-history
   - en/extensions/chatbot-profile
   - en/extensions/contacts
-  - en/extensions/delegation
+  - en/extensions/security
   - en/extensions/desk
   - en/extensions/resources
   - en/extensions/scheduler
