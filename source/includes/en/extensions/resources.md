@@ -198,6 +198,154 @@ namespace Extensions
 
 Storing a `text plain` document with `help-message` key.
 
+### Delete a specific resource
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.DELETE,
+        uri: '/resources/xyz1234'
+    });
+});
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "a07258fa-0137-4596-a67e-859a5c2ce38f",
+  "method": "delete",
+  "uri": "/resources/xyz1234"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "a07258fa-0137-4596-a67e-859a5c2ce38f",
+    "from": "postmaster@msging.net/#az-iris1",
+    "to": "docstest@msging.net",
+    "metadata": {
+        "#command.uri": "lime://docstest@msging.net/resources/xyz1234"
+    }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.Resource;
+
+namespace Extensions
+{
+    public class ResourceMessageReceiver : IMessageReceiver
+    {
+        private IResourceExtension _resourceExtension;
+
+        public ResourceMessageReceiver(IResourceExtension resourceExtension)
+        {
+            _resourceExtension = resourceExtension;
+        }
+
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            await _resourceExtension.DeleteAsync("xyz1234", cancellationToken);
+        }
+    }
+}
+```
+
+Deleting a specific resource by id.
+
+### Get a specific resource
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    var resource = await client.sendCommand({  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.GET,
+        uri: '/resources/xyz1234'
+    });
+    console.log(resource);
+});
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "78981a10-d7a9-4fbb-84cf-1916a8ed93b8",
+  "method": "get",
+  "uri": "/resources/xyz1234"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.media-link+json",
+    "resource": {
+        "type": "image/jpeg",
+        "size": 227791,
+        "uri": "http://2.bp.blogspot.com/-pATX0YgNSFs/VP-82AQKcuI/AAAAAAAALSU/Vet9e7Qsjjw/s1600/Cat-hd-wallpapers.jpg",
+        "previewUri": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8qkelB28RstsNxLi7gbrwCLsBVmobPjb5IrwKJSuqSnGX4IzX",
+        "previewType": "image/jpeg",
+        "title": "Cat",
+        "text": "Here is a cat image for you!"
+    },
+    "method": "get",
+    "status": "success",
+    "id": "78981a10-d7a9-4fbb-84cf-1916a8ed93b8",
+    "from": "postmaster@msging.net/#az-iris6",
+    "to": "docstest@msging.net",
+    "metadata": {
+        "#command.uri": "lime://docstest@msging.net/resources/xyz1234"
+    }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Messaging.Contents;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.Resource;
+
+namespace Extensions
+{
+    public class ResourceMessageReceiver : IMessageReceiver
+    {
+        private IResourceExtension _resourceExtension;
+
+        public ResourceMessageReceiver(IResourceExtension resourceExtension)
+        {
+            _resourceExtension = resourceExtension;
+        }
+
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var resource = await _resourceExtension.GetAsync<MediaLink>("xyz1234", cancellationToken);
+        }
+    }
+}
+```
+
+Getting a specific resource by id.
+
 ### Get all Resources
 
 ```javascript
@@ -282,154 +430,6 @@ Getting all bot resources.
 |--------------|--------------------------------------------------------------------|---------|
 | **skip** | The number of resources to be skipped.                                   | 0 |
 | **take** | The number of resources to be returned.                                  | 100 |
-
-### Get a specific resource
-
-```javascript
-client.addMessageReceiver('text/plain', async (message) => {
-    var resource = await client.sendCommand({  
-        id: Lime.Guid(),
-        method: Lime.CommandMethod.GET,
-        uri: '/resources/xyz1234'
-    });
-    console.log(resource);
-});
-```
-
-```http
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{  
-  "id": "78981a10-d7a9-4fbb-84cf-1916a8ed93b8",
-  "method": "get",
-  "uri": "/resources/xyz1234"
-}
-```
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "type": "application/vnd.lime.media-link+json",
-    "resource": {
-        "type": "image/jpeg",
-        "size": 227791,
-        "uri": "http://2.bp.blogspot.com/-pATX0YgNSFs/VP-82AQKcuI/AAAAAAAALSU/Vet9e7Qsjjw/s1600/Cat-hd-wallpapers.jpg",
-        "previewUri": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8qkelB28RstsNxLi7gbrwCLsBVmobPjb5IrwKJSuqSnGX4IzX",
-        "previewType": "image/jpeg",
-        "title": "Cat",
-        "text": "Here is a cat image for you!"
-    },
-    "method": "get",
-    "status": "success",
-    "id": "78981a10-d7a9-4fbb-84cf-1916a8ed93b8",
-    "from": "postmaster@msging.net/#az-iris6",
-    "to": "docstest@msging.net",
-    "metadata": {
-        "#command.uri": "lime://docstest@msging.net/resources/xyz1234"
-    }
-}
-```
-
-```csharp
-using System.Threading;
-using System.Threading.Tasks;
-using Lime.Messaging.Contents;
-using Lime.Protocol;
-using Take.Blip.Client;
-using Take.Blip.Client.Extensions.Resource;
-
-namespace Extensions
-{
-    public class ResourceMessageReceiver : IMessageReceiver
-    {
-        private IResourceExtension _resourceExtension;
-
-        public ResourceMessageReceiver(IResourceExtension resourceExtension)
-        {
-            _resourceExtension = resourceExtension;
-        }
-
-        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
-        {
-            var resource = await _resourceExtension.GetAsync<MediaLink>("xyz1234", cancellationToken);
-        }
-    }
-}
-```
-
-Getting a specific resource by id.
-
-### Delete a specific resource
-
-```javascript
-client.addMessageReceiver('text/plain', async (message) => {
-    await client.sendCommand({  
-        id: Lime.Guid(),
-        method: Lime.CommandMethod.DELETE,
-        uri: '/resources/xyz1234'
-    });
-});
-```
-
-```http
-POST https://msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{  
-  "id": "a07258fa-0137-4596-a67e-859a5c2ce38f",
-  "method": "delete",
-  "uri": "/resources/xyz1234"
-}
-```
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "method": "delete",
-    "status": "success",
-    "id": "a07258fa-0137-4596-a67e-859a5c2ce38f",
-    "from": "postmaster@msging.net/#az-iris1",
-    "to": "docstest@msging.net",
-    "metadata": {
-        "#command.uri": "lime://docstest@msging.net/resources/xyz1234"
-    }
-}
-```
-
-```csharp
-using System.Threading;
-using System.Threading.Tasks;
-using Lime.Protocol;
-using Take.Blip.Client;
-using Take.Blip.Client.Extensions.Resource;
-
-namespace Extensions
-{
-    public class ResourceMessageReceiver : IMessageReceiver
-    {
-        private IResourceExtension _resourceExtension;
-
-        public ResourceMessageReceiver(IResourceExtension resourceExtension)
-        {
-            _resourceExtension = resourceExtension;
-        }
-
-        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
-        {
-            await _resourceExtension.DeleteAsync("xyz1234", cancellationToken);
-        }
-    }
-}
-```
-
-Deleting a specific resource by id.
 
 ### Store a **text/plain** resource with replacement variable
 
