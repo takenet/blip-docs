@@ -1,4 +1,6 @@
-## Delegation
+### <a name="delegation" style="display:none">Delegation</a>
+
+## Security
 
 The **delegation** extension allows the chatbot to give permissions to other **BLiP** identities - like another chatbots - to execute actions *on its behalf*, like sending messages. The delegation can be required by some extensions. It is required to be executed only once for each delegated identity.
 
