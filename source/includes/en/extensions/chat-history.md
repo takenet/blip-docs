@@ -403,7 +403,7 @@ Content-Type: application/json
 
 Get all logged [notifications](#notifications) of a specific [message](/#messages).
 
-Replace `{{messageId}}` with the message id.
+Replace `{messageId}` with the message id.
 
 
 ```http
@@ -415,7 +415,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "123456789123",
   "to": "postmaster@msging.net",
   "method": "get",
-  "uri": "/notifications?id={{messageId}}"
+  "uri": "/notifications?id={messageId}"
 }
 ```
 

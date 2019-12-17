@@ -1020,7 +1020,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "{{guid}}",
+  "id": "aa89s7da-b4as85da8as87",
   "to": "postmaster@ai.msging.net",
   "method": "delete",
   "uri": "/entities"
