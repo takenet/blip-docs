@@ -404,14 +404,20 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 If you need to delete a specific [report](/#report) use the following command.
 
-Remember to replace {{reportId}} variable for the report id that you want delete.
+Remember to replace `{{reportId}}` with the report id you want delete.
 
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
-```
 
+{
+  "id": "25aad309-5336-4a1c-be26-4b69bfeef554",
+  "to": "postmaster@analytics.msging.net",
+  "method": "delete",
+  "uri": "/reports/{reportId}"
+}
+```
 
 ```http
 HTTP/1.1 200 OK
@@ -425,7 +431,6 @@ Content-Type: application/json
     "to": "demobot@msging.net"
 }
 ```
-
 
 ```javascript
 client.sendCommand({
