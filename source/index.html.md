@@ -149,10 +149,10 @@ includes:
   - en/extensions/chat-history
   - en/extensions/chatbot-profile
   - en/extensions/contacts
-  - en/extensions/security
   - en/extensions/desk
   - en/extensions/resources
   - en/extensions/scheduler
+  - en/extensions/security
   - en/extensions/tunnel
   - en/extensions/user-info  
 
