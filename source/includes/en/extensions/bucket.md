@@ -22,7 +22,7 @@ The document to be stored must be passed on the `resource` property.
 
 ### Delete a Document
 
-Delete a specific document command. Remember to replace `{{documentKey}}` variable for the document Key that you want delete.
+Delete a specific document command. Remember to replace `{documentKey}` variable for the document Key that you want delete.
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -30,10 +30,10 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "{{$guid}}",
+  "id": "1306d0bb-29f8-41c3-bdf2-c84dec02852c",
   "to": "postmaster@msging.net",
   "method": "delete",
-  "uri": "/buckets/{{documentKey}}"
+  "uri": "/buckets/{documentKey}"
 }
 ```
 

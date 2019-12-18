@@ -159,7 +159,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "4567897123123",
   "to": "postmaster@crm.msging.net",
   "method": "set",
-  "uri": "/contacts/{{contactIdentity}}/comments",
+  "uri": "/contacts/{contactIdentity}/comments",
   "type": "application/vnd.iris.crm.comment+json",
   "resource": {
   	"content": "This is a comment example"
@@ -202,7 +202,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "1234564678789",
   "to": "postmaster@msging.net",
   "method": "get",
-  "uri": "/contacts/{{contacIdentity}}/linked/{{linkedContactIdentity}}"
+  "uri": "/contacts/{contacIdentity}/linked/{linkedContactIdentity}"
 }
 
 ```
@@ -222,7 +222,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "123456788881",
   "to": "postmaster@crm.msging.net",
   "method": "delete",
-  "uri": "/contacts/{{contactIdentity}}/comments/{{commentId}}"
+  "uri": "/contacts/{contactIdentity}/comments/{commentId}"
 }
 ```
 
@@ -252,7 +252,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "15871441222",
   "to": "postmaster@msging.net",
   "method": "delete",
-  "uri": "/contacts/{{contacIdentity}}/linked/{{linkedContactIdentity}}"
+  "uri": "/contacts/{contacIdentity}/linked/{linkedContactIdentity}"
 }
 
 ```
@@ -271,7 +271,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "55711244",
   "to": "postmaster@crm.msging.net",
   "method": "get",
-  "uri": "/contacts/{{contactIdentity}}/comments"
+  "uri": "/contacts/{contactIdentity}/comments"
 }
 ```
 
@@ -531,7 +531,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "46791313212",
   "to": "postmaster@msging.net",
   "method": "get",
-  "uri": "/contacts/{{contactIdentity}}/linked",
+  "uri": "/contacts/{contactIdentity}/linked",
 }
 ```
 
@@ -587,10 +587,10 @@ Authorization: Key {YOUR_TOKEN}
   "id": "46791313212",
   "to": "postmaster@msging.net",
   "method": "set",
-  "uri": "/contacts/{{contactIdentity}}/linked",
+  "uri": "/contacts/{contactIdentity}/linked",
   "type": "application/vnd.lime.contact+json",
   "resource": {
-  	"Identity": "{{contactToBeLinkedWithIdentity}}"
+  	"Identity": "{contactToBeLinkedWithIdentity}"
   }
 }
 ```

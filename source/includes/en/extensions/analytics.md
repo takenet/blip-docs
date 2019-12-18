@@ -404,14 +404,20 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 If you need to delete a specific [report](/#report) use the following command.
 
-Remember to replace {{reportId}} variable for the report id that you want delete.
+Remember to replace `{reportId}` with the report id you want delete.
 
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
-```
 
+{
+  "id": "25aad309-5336-4a1c-be26-4b69bfeef554",
+  "to": "postmaster@analytics.msging.net",
+  "method": "delete",
+  "uri": "/reports/{reportId}"
+}
+```
 
 ```http
 HTTP/1.1 200 OK
@@ -425,7 +431,6 @@ Content-Type: application/json
     "to": "demobot@msging.net"
 }
 ```
-
 
 ```javascript
 client.sendCommand({
@@ -451,7 +456,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 ### Delete an event category
 
 If you need to delete a specific event category use the following command.
-Remember to replace {{categoryName}} variable for the category name that you want delete.
+Remember to replace {categoryName} variable for the category name that you want delete.
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
@@ -459,7 +464,7 @@ client.addMessageReceiver('text/plain', async (message) => {
        id: Lime.Guid(),
        to: "postmaster@analytics.msging.net",
        method: Lime.CommandMethod.DELETE,
-       uri: "/event-track/{{categoryName}}"
+       uri: "/event-track/{categoryName}"
     });
 });
 ```
@@ -473,7 +478,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "6",
   "to": "postmaster@analytics.msging.net",
   "method": "delete",
-  "uri": "/event-track/{{categoryName}}"
+  "uri": "/event-track/{categoryName}"
 }
 ```
 
@@ -488,7 +493,7 @@ Content-Type: application/json
     "from": "postmaster@analytics.msging.net/#az-iris3",
     "to": "contact@msging.net",
     "metadata": {
-        "#command.uri": "lime://contact@msging.net/event-track/{{categoryName}}"
+        "#command.uri": "lime://contact@msging.net/event-track/{categoryName}"
     }
 }
 ```
@@ -515,7 +520,7 @@ namespace Extensions
             var command = new Command{
                 Id = EnvelopeId.NewId(),
                 Method = CommandMethod.Delete,
-                Uri = new LimeUri("/event-track/{{categoryName}}")
+                Uri = new LimeUri("/event-track/{categoryName}")
             };
            
            await _sender.SendCommandAsync(command, cancellationToken);

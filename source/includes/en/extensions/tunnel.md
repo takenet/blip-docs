@@ -57,7 +57,6 @@ Authorization: Key {YOUR_TOKEN}
 
 {
     "id": "1",
-    "from": "flow@msging.net/instance",
     "to": "operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net",
     "type": "text/plain",
     "content": "Hello, I would like to talk to an attendant."
@@ -67,7 +66,6 @@ Authorization: Key {YOUR_TOKEN}
 ```javascript
 client.sendMessage({
         id: Lime.Guid(),
-        from: "flow@msging.net/instance", 
         to: "operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net",
         type: "text/plain",
         content: "Hello, I would like to talk to an attendant"
@@ -111,7 +109,6 @@ Authorization: Key {YOUR_TOKEN}
 
 {
     "id": "2",
-    "from": "operator@msging.net/instance",
     "to": "ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net",
     "type": "text/plain",
     "content": "Hi, my name is Andre. How may I help you?"
@@ -121,7 +118,6 @@ Authorization: Key {YOUR_TOKEN}
 ```javascript
 client.senMessage({
         id: Lime.Guid(),
-        from: "operator@msging.net/instance",
         to: "ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net",
         type: "text/plain",
         content: "Hi, my name is Andre. How may I help you?"
@@ -163,7 +159,6 @@ Authorization: Key {YOUR_TOKEN}
 
 {
     "id": "2",
-    "from": "flow@msging.net/instance",
     "to": "1654804277843415@messenger.gw.msging.net",
     "type": "text/plain",
     "content": "Hi, my name is Andre. How may I help you?"
@@ -173,14 +168,71 @@ Authorization: Key {YOUR_TOKEN}
 ```javascript
 {
     id: "2",
-    from: "flow@msging.net/instance",
     to: "1654804277843415@messenger.gw.msging.net",
     type: "text/plain",
     content: "Hi, my name is Andre. How may I help you?"
 }
 ```
 
-###Querying information
+### Get a tunnel info
+
+Get a specific [tunnel](/#tunnels) by id.
+
+Replace `{tunnelId}` with the tunnel id you want to get.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "47c7e7e1-5e75-4ca4-a86b-2f8b06829160",
+  "to": "postmaster@tunnel.msging.net",
+  "method": "get",
+  "uri": "/tunnels/{tunnelId}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.tunnel+json",
+    "resource": {
+        "owner": "routerdobruno@msging.net",
+        "originator": "377d0d23-6aa2-445b-9725-0fe15c9d882a.routerdobruno@0mn.io",
+        "destination": "demobot@msging.net"
+    },
+    "method": "get",
+    "status": "success",
+    "id": "47c7e7e1-5e75-4ca4-a86b-2f8b06829160",
+    "from": "postmaster@tunnel.msging.net/#az-iris7",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@tunnel.msging.net",
+    method: "get",
+    uri: "/tunnels/{tunnelId}"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postmaster@tunnel.msging.net",
+    Uri = new LimeUri("/tunnels/{tunnelId}")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+### Querying information
 
 The **tunnel** extension also allows querying information from the message originator in the **directory**, as long as the information is stored in the contact roster of the **sender** bot. To use this feature, the bot just needs to send a common directory request:
 
@@ -193,7 +245,6 @@ Authorization: Key {YOUR_TOKEN}
 
 {
     "id": "3",
-    "from": "operator@msging.net/instance",
     "to": "postmaster@tunnel.msging.net",
     "method":"get",
     "uri": "lime://tunnel.msging.net/accounts/ecb99cf5-fb5c-4376-8acd-4b478091de15"
@@ -203,7 +254,6 @@ Authorization: Key {YOUR_TOKEN}
 ```javascript
 client.sendCommand({
         id: Lime.Guid(),
-        from: "operator@msging.net/instance",
         to: "flow@msging.net/instance",
         type: "text/plain",
         content: "Hi, my name is Andre. How may I help you?"
@@ -219,7 +269,6 @@ Authorization: Key {YOUR_TOKEN}
 
 {
     "id": "3",
-    "from": "postmaster@tunnel.msging.net",
     "to": "operator@msging.net/instance",
     "method":"get",
     "status": "success",
@@ -234,7 +283,6 @@ Authorization: Key {YOUR_TOKEN}
 ```javascript
 {
     id: "3",
-    from: "postmaster@tunnel.msging.net",
     to: "operator@msging.net/instance",
     method:"get",
     status: "success",
@@ -245,6 +293,5 @@ Authorization: Key {YOUR_TOKEN}
     }
 }
 ```
-
 
 For more information about the contacts extension, please refer to the [extension documentation](https://docs.blip.ai/?http#contacts).
