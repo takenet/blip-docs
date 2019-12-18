@@ -123,6 +123,7 @@ includes:
   - en/documents/tagTicketsSummary
   - en/documents/team
   - en/documents/teamTicketsSummary
+  - en/documents/tenant
   - en/documents/tenantInformation
   - en/documents/tenantUserInformation
   - en/documents/thread
@@ -150,11 +151,13 @@ includes:
   - en/extensions/chatbot-profile
   - en/extensions/contacts
   - en/extensions/desk
+  - en/extensions/portal
   - en/extensions/resources
   - en/extensions/scheduler
   - en/extensions/security
   - en/extensions/tunnel
-  - en/extensions/user-info  
+  - en/extensions/user-info
+  - en/extensions/utils  
 
 # Add an integration keeping the order
 
