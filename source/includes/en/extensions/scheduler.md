@@ -21,6 +21,74 @@ A schedule object passed as a document `resource` has the following properties:
 | **message** | A complete message object to be scheduled.                          | { "id": "1", "to": "destination@0mn.io", "type": "text/plain", "content": "Hi" } |
 | **when**   | The scheduled time (in the GMT timezone)  | "2017-07-25T17:50:00.000Z" |
 
+### Cancel a scheduling
+
+You can cancel a scheduling sending a DELETE command.
+
+Replace `{messageId}` with the message id for the scheduled message you want to delete. Use the [Get a scheduled message](/#get-a-scheduled-message) method to claim this information.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "e7018403-55da-41b5-ad7e-505025a1e13a",
+  "to": "postmaster@scheduler.msging.net",
+  "method": "delete",
+  "uri": "/schedules/{messageId}",
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "e7018403-55da-41b5-ad7e-505025a1e13a",
+    "from": "postmaster@scheduler.msging.net/#az-iris5",
+    "to": "demobot@msging.net",
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@scheduler.msging.net",
+    method: "delete",
+    uri: "/schedules/{messageId}"
+})
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Scheduler;
+
+namespace Extensions
+{
+    public class SampleExtensionMessageReceiver : IMessageReceiver
+    {
+        private readonly ISchedulerExtension _schedulerExtension;
+
+        public SampleExtensionMessageReceiver(ISchedulerExtension schedulerExtension)
+        {
+            _schedulerExtension = schedulerExtension;
+        }
+
+        public async Task ReceiveAsync(Message receivedMessage, CancellationToken cancellationToken)
+        {
+            var scheduledMessage = await _schedulerExtension.CancelScheduledMessageAsync("{messageId}", cancellationToken);
+        }
+    }
+}
+```
+
 ### Create a scheduling
 
 ```javascript
