@@ -12,7 +12,7 @@ To get client's **threads** or **messages** exchanged with a bot, send a command
 | to     | **postmaster@msging.net** (not required) |
 
 
-### Get average response time
+<!-- ### Get average response time
 
 Get the average [messages](/#messages) response time. This will return a [ResponseTime](/#responsetime) document.
 
@@ -27,7 +27,7 @@ Authorization: Key {YOUR_TOKEN}
   "method": "get",
   "uri": "/message-statistic/responseTime"
 }
-```
+``` -->
 
 ### Get last threads
 
