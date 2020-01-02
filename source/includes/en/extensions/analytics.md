@@ -182,7 +182,7 @@ namespace Extensions
 }
 ```
 
-### Create an report
+### Create a report
 
 Create a new report.
 
@@ -203,7 +203,7 @@ Authorization: Key {YOUR_TOKEN}
     "id": "d0b4f58a-664c-4c46-8d07-016ef5d5788ec",
     "name": "Testing",
     "isPrivate": true,
-    "ownerIdentity": "jonh%40email.net@blip.ai"
+    "ownerUserIdentity": "jonh%40email.net@blip.ai"
   }
 }
 ```
