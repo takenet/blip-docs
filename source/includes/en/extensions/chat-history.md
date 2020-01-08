@@ -249,6 +249,7 @@ The following uri filters are available to get a chatbot's thread:
 | $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
 | messageId  | Initial message id for the thread messages query        |
 | direction  | Possible values: `asc` and `desc`. Define if will be returned de messages after or before respectively |
+| storageDate  | The reference date to search              |
 
 ### Get logged messages
 
