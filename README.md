@@ -40,7 +40,7 @@ You're going to need:
 
  - **Linux or macOS** — Windows may work, but is unsupported.
  - **Ruby, version >= 2.3.1 < 2.5**
-  `https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.4.9-1/rubyinstaller-devkit-2.4.9-1-x64.exe`
+ `https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.4.9-1/rubyinstaller-devkit-2.4.9-1-x64.exe`
  - **Bundler** — If Ruby is already installed, but the `bundle` command doesn't work, just run `gem install bundler` in a terminal.
 
 ### Getting Set Up
