@@ -39,14 +39,15 @@ Getting Started with Slate
 You're going to need:
 
  - **Linux or macOS** — Windows may work, but is unsupported.
- - **Ruby, version 2.3.1 or newer**
+ - **Ruby, version >= 2.3.1 < 2.5**
+ `https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.4.9-1/rubyinstaller-devkit-2.4.9-1-x64.exe`
  - **Bundler** — If Ruby is already installed, but the `bundle` command doesn't work, just run `gem install bundler` in a terminal.
 
 ### Getting Set Up
 
 1. Fork this repository on GitHub.
-2. Clone *your forked repository* (not our original one) to your hard drive with `git clone https://github.com/YOURUSERNAME/slate.git`
-3. `cd slate`
+2. Clone *your forked repository* (not our original one) to your hard drive with `git clone https://github.com/YOURUSERNAME/blip-docs.git`
+3. `cd blip-docs`
 4. Initialize and start Slate. You can either do this locally, or with Vagrant:
 
 ```shell
