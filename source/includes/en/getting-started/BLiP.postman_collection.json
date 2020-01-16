@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e4a2b2b5-049d-458f-b7fa-d831e88dc89b",
+		"_postman_id": "00e7cebd-aacf-4466-af30-4fc04ec932f7",
 		"name": "BLiP",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -5990,12 +5990,12 @@
 										"commands"
 									]
 								},
-								"description": "Use this request to verify what is the Whatsapp identifier associated with a phone number."
+								"description": "Before send a notification to a WhatsApp's customer you should get their identifier. Using the customer MSISDN, make a request to BLiP's API as demostrated aside. For instance, a Brazillian customer should be verified using a MSISDN like `+5531998765432`.\r\n\r\nAfter get the customer identifier you are able to send notifications. Use the `alternativeAccount` property received as response of the last request to send notifications (or messages) to your customer. For this sample `5531998765432@wa.gw.msging.net`.\r\n\r\nFor more information, see https://docs.blip.ai/#sending-a-notification"
 							},
 							"response": []
 						},
 						{
-							"name": "Send a Message",
+							"name": "Send a Notification",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -6023,9 +6023,98 @@
 										"messages"
 									]
 								},
-								"description": "Send a message to a Whatsapp user"
+								"description": "In order to send a notification for your customer you will need:\n\n* Customer's identifier (get it in step 2), for instance `5531998765432@wa.gw.msging.net`\n* Element name of message template (get it in step 3), for instance `account_created`\n* Namespace of message template (get it in step 3), for instan\n\nFor more information, see https://docs.blip.ai/#sending-a-notification"
 							},
 							"response": []
+						},
+						{
+							"name": "Creating a group",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"21387123987128937123713\",\r\n  \"to\":\"postmaster@wa.gw.msging.net\",\r\n  \"method\": \"set\",\r\n  \"type\": \"application/vnd.lime.group+json\",\r\n  \"uri\":  \"/groups\",\r\n  \"resource\": {\r\n    \"name\": \"{{groupName}}\"\r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "Besides sending messages between customer and bot you are also able to send and receive messages in a group. \nWhen your bot creates a group you are able to invite people, listen, and reply group messages.\n\nBefore to start sending/receiving messages in a group, you must create the group. \n\nFor more information, see https://docs.blip.ai/#creating-a-group"
+							},
+							"response": []
+						},
+						{
+							"name": "Creating a invite link to the group",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"ABSLFYWLAASYSIOSSA\",\n    \"to\": \"postmaster@wa.gw.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/groups/{{createdGroupIdentity}}/invite-link\"\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "Besides sending messages between customer and bot you are also able to send and receive messages in a group. \nWhen your bot creates a group you are able to invite people, listen, and reply group messages.\n\nBefore to start sending/receiving messages in a group, you must create the group. \n\nFor more information, see https://docs.blip.ai/#creating-a-group"
+							},
+							"response": []
+						}
+					],
+					"description": "| FQDN                     | Identifier type                  | \r\n|--------------------------|----------------------------------------|\r\n| @wa.gw.msging.net  | WhatsApp identifier (it's not necessarily the MSISDN)   |\r\n\r\n**WhatsApp** is the world’s most popular business messaging channel, with more than 1.5 billion global users and end-to-end encryption. The **WhatsApp Business API** is a fast, simple, secure, and reliable way for businesses to reach their customers all over the world. This guide will help businesses onboard and build their first official WhatsApp messaging experience using BLiP and WhatsApp Business API. \r\n\r\nThrought BLiP you are able to create groups, invite users to previously created groups and send and receive messages (peer to peer and inside a group). In order to get more information about WhatsApp Business API [access the Official WhatsApp docs](https://developers.facebook.com/docs/whatsapp/).\r\n\r\nBefore start using WhatsApp channel you should understand some basic concepts.\r\n\r\n* Messages - If your chatbot receives some message from a customer you get the possibility to send normal messages to this user (for free) during a 24h window. Every message sent by the user reset this window.\r\n* Notifications (or Active Messages) - messages sent by bot to a user who doesn't sent message in the last 24 hours (outside the 24h window) must be a Notification. **This kind of message must be approved by WhatsApp before be sent and will be charged**.\r\n\r\nYou can use BLiP's API to send messages and notifications for your customers. (Remember, for the first interaction or after de 24h window you should send only notifications).",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6807393a-3548-49b4-990b-415f47d7bb22",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "d49b1714-1bfb-424b-b966-16b880e634ef",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -6141,6 +6230,145 @@
 							"response": []
 						}
 					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "E-mail",
+					"item": [
+						{
+							"name": "Send e-mail",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"xpto%40xpto.com@mailgun.gw.msging.net\",\r\n  \"type\": \"text/plain\",\r\n  \"content\": \"Hello, how can I help you?\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://msging.net/messages",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"messages"
+									]
+								},
+								"description": "Sending an e-mail is a common task for anyone developing a bot. Alerts or confirmation of information are some of the common scenarios for this demand. BLiP abstracts the whole process of sending and receiving e-mails to your bot.\r\n\r\n| Name | Description |\r\n|---------------------------------|--------------|\r\n| id    | Unique identifier of the command.   |\r\n| to     | **{{e-mail}}@mailgun.gw.msging.net**  |\r\n| type   | **text/plain** |\r\n| content | **{{message}}** |\r\n\r\n<aside class=\"notice\">\r\nNote: Remember to replace the variable {{e-mail}} for the email you want to send a message (for instance: <b> xpto%40xpto.com</b>). Since every LIME node has the @ character, it is required to sign @ the email by its corresponding ASCII code (%40). You must also define message you want to send the user, replacing the {{message}} variable according to the LIME protocol (for instance: <b>Welcome to our service! How can I help you?</b>).\r\n</aside>"
+							},
+							"response": []
+						}
+					],
+					"description": "| FQDN                     | Identifier type                                         | \r\n|--------------------------|---------------------------------------------------------------|\r\n| @mailgun.gw.msging.net   | E-mail address on [URL encoded](http://www.w3schools.com/tags/ref_urlencode.asp) format  |\r\n\r\n**E-mail** channel allows sending and receiving messages through e-mail messages. Each chatbot has an unique address automatically created by the platform. To know exactly what is the email of your bot access the Portal <b>Channels > Email</b> module, as below image:\r\n",
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "PagSeguro (Payments)",
+					"item": [
+						{
+							"name": "Payment Request",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{Authorization}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"2\",\r\n    \"to\": \"1042221589186385%40messenger.gw.msging.net@pagseguro.gw.msging.net\",\r\n    \"type\": \"application/vnd.lime.invoice+json\",\r\n    \"content\": {\r\n        \"created\": \"2016-08-26T19:03:37.024Z\",\r\n        \"dueTo\": \"2016-08-27T19:03:37.024Z\",\r\n        \"currency\": \"BRL\",\r\n        \"total\": 10.85,\r\n        \"items\": [{\r\n                \"quantity\": 1.0,\r\n                \"unit\": 10.85,\r\n                \"currency\": \"BRL\",\r\n                \"total\" :10.85,\r\n                \"description\": \"Item 1\"\r\n            }\r\n        ]\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://msging.net/messages",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"messages"
+									]
+								},
+								"description": "Example of how to send a payment request to a Facebook Messenger user using PagSeguro."
+							},
+							"response": []
+						},
+						{
+							"name": "Payment Status",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{Authorization}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"2\",\r\n    \"to\": \"1042221589186385%40messenger.gw.msging.net@pagseguro.gw.msging.net\",\r\n    \"type\": \"application/vnd.lime.invoice+json\",\r\n    \"content\": {\r\n        \"created\": \"2016-08-26T19:03:37.024Z\",\r\n        \"dueTo\": \"2016-08-27T19:03:37.024Z\",\r\n        \"currency\": \"BRL\",\r\n        \"total\": 10.85,\r\n        \"items\": [{\r\n                \"quantity\": 1.0,\r\n                \"unit\": 10.85,\r\n                \"currency\": \"BRL\",\r\n                \"total\" :10.85,\r\n                \"description\": \"Item 1\"\r\n            }\r\n        ]\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://msging.net/messages",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"messages"
+									]
+								},
+								"description": "When there is payment status change (for example: user has payed), a [payment status](./#/docs/content-types/invoice-status) message will be sent to the chatbot, the message identifier will be the same as the original payment request’s."
+							},
+							"response": []
+						}
+					],
+					"description": "\r\n| FQDN                     | Identifier type                  | \r\n|--------------------------|----------------------------------------|\r\n| @pagseguro.gw.msging.net | Identity ([name and original channel domain]|(./#/docs/concepts/addressing)) on [URL encoded] format\r\n(http://www.w3schools.com/tags/ref_urlencode.asp) |                           |\r\n\r\n\r\n**PagSeguro** is the [UOL's payments channel](https://pagseguro.uol.com.br/) to receive and send payments with flexibility and safety.\r\n\r\nPayment channels are integrations with payment suppliers connected to Blip Messaging Hub, in which the contacts may receive/send payment from/to customers. Each channel has one identifier that is utilized in the addressing, located before the @ of the address.\r\n\r\nIn order to receive or send payments to a channel, the contact must be configured on it. Configuration is made through the portal, where some specific channel information, such as the APIs’ tokens for example, will be requested. It is necessary to fullfill a previous registration form on each channel, normally through the supplier’s site.\r\n",
 					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
 				}
