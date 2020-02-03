@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "00e7cebd-aacf-4466-af30-4fc04ec932f7",
+		"_postman_id": "f1b8f516-d109-4dc8-9619-08e7e50bbbd7",
 		"name": "BLiP",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -4498,7 +4498,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/tickets/active\"\r\n}"
+									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/monitoring/tickets\"\n}"
 								},
 								"url": {
 									"raw": "https://msging.net/commands",
@@ -4958,7 +4958,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/tickets/waiting\"\r\n}\r\n"
+									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/monitoring/tickets\"\n}"
 								},
 								"url": {
 									"raw": "https://msging.net/commands",
