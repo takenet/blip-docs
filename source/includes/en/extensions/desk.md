@@ -1935,7 +1935,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "8541256",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/tickets/active"
+  "uri": "/monitoring/tickets"
 }
 ```
 
@@ -1943,18 +1943,28 @@ Authorization: Key {YOUR_TOKEN}
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-{
-    "type": "application/vnd.lime.collection+json",
+
+  "type": "application/vnd.iris.desk.ticketssummary+json",
     "resource": {
-        "itemType": "application/vnd.iris.ticket+json",
-        "items": []
+        "waiting": 5,
+        "open": 3,
+        "closed": 2,
+        "closedAttendant": 2,
+        "closedClient": 0,
+        "transferred": 0,
+        "missed": 0
     },
     "method": "get",
     "status": "success",
-    "id": "056e24b4-414f-4f53-87fc-98172c30d27a",
+    "id": "c9e659e4-5ef4-48ef-a13c-537b4d2add82",
     "from": "postmaster@desk.msging.net/#az-iris5",
-    "to": "demobot@msging.net"
+    "to": "demobot@msging.net",
+    "metadata": {
+        "#command.uri": "lime://demobot@msging.net/monitoring/tickets",
+        "uber-trace-id": "f7a2da1bdc1890d1%3A77aac8237b3d3172%3Af7a2da1bdc1890d1%3A1"
+    }
 }
+
 ```
 
 ```csharp
@@ -3010,7 +3020,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "4965782",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/tickets/waiting"
+  "uri": "/monitoring/tickets"
 }
 ```
 
@@ -3018,15 +3028,27 @@ Authorization: Key {YOUR_TOKEN}
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-{
-    "type": "text/plain",
-    "resource": "5",
+  "type": "application/vnd.iris.desk.ticketssummary+json",
+    "resource": {
+        "waiting": 5,
+        "open": 1,
+        "closed": 2,
+        "closedAttendant": 2,
+        "closedClient": 0,
+        "transferred": 0,
+        "missed": 0
+    },
     "method": "get",
     "status": "success",
-    "id": "33d4-26a6c1c26b0e",
-    "from": "postmaster@desk.msging.net/#az-iris1",
-    "to": "demobot@msging.net"
+    "id": "c9e659e4-5ef4-48ef-a13c-537b4d2add82",
+    "from": "postmaster@desk.msging.net/#az-iris5",
+    "to": "demobot@msging.net",
+    "metadata": {
+        "#command.uri": "lime://demobot@msging.net/monitoring/tickets",
+        "uber-trace-id": "f7a2da1bdc1890d1%3A77aac8237b3d3172%3Af7a2da1bdc1890d1%3A1"
+    }
 }
+
 ```
 
 ```javascript
