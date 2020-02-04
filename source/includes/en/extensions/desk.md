@@ -1972,7 +1972,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/tickets/active")
+    Uri = new LimeUri("/monitoring/tickets")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -1983,7 +1983,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/tickets/active"
+    uri: "/monitoring/tickets"
 })
 ```
 
@@ -3056,7 +3056,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/tickets/waiting"
+    uri: "/monitoring/tickets"
 })
 ```
 
@@ -3065,7 +3065,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/tickets/waiting")
+    Uri = new LimeUri("/monitoring/tickets")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
