@@ -12,14 +12,14 @@
 
 In order to change a user state, send a command with the following properties:
 
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| method    | **set**  |
-| uri    | **/contexts/{{user-identity}}/stateid%40{{flow-identifier}}**   |
-| to     | **postmaster@msging.net** (not required) |
-| type   | **text/plain** |
-| resource | **{{state-id}}** |
+| Name     | Description                                                   |
+| -------- | ------------------------------------------------------------- |
+| id       | Unique identifier of the command.                             |
+| method   | **set**                                                       |
+| uri      | **/contexts/{{user-identity}}/stateid%40{{flow-identifier}}** |
+| to       | **postmaster@msging.net** (not required)                      |
+| type     | **text/plain**                                                |
+| resource | **{{state-id}}**                                              |
 
 Access the portal, go to Builder and click on the block contextual menu to get its ID (as picture below).
 
@@ -417,12 +417,12 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 In order to get a user state, send a command with the following properties:
 
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| to     | **postmaster@msging.net** (not required) |
-| method    | **get**  |
-| uri    | **/contexts/{{user-identity}}/stateid%40{{flow-identifier}}**   |
+| Name   | Description                                                   |
+| ------ | ------------------------------------------------------------- |
+| id     | Unique identifier of the command.                             |
+| to     | **postmaster@msging.net** (not required)                      |
+| method | **get**                                                       |
+| uri    | **/contexts/{{user-identity}}/stateid%40{{flow-identifier}}** |
 
 To get the flow identifier, click in Builder's settings and go to Flow Identifier section (as picture below).
 
@@ -500,16 +500,462 @@ namespace Extensions
 }
 ```
 
+### Publish flow
+
+In order to publish your flow, send a command with the following properties:
+
+| Name     | Description                                   |
+| -------- | --------------------------------------------- |
+| id       | Unique identifier of the command.             |
+| method   | **set**                                       |
+| uri      | **/buckets/blip_portal:builder_working_flow** |
+| type     | **application/json**                          |
+| resource | **Your JSON**                                 |
+|
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.SET,
+        uri: '/buckets/blip_portal:builder_working_flow',
+        type:'application/json',
+        resource: '{"onboarding": {
+    "$contentActions": [
+      {
+        "input": {
+          "bypass": false,
+          "$cardContent": {
+            "document": {
+              "id": "a5f855b2-7344-44ad-bf8b-75bccd63d288",
+              "type": "text/plain",
+              "content": "Entrada do usuário"
+            },
+            "editable": false,
+            "deletable": false,
+            "position": "right"
+          },
+          "$invalid": false
+        },
+        "$invalid": false,
+        "$$hashKey": "object:9132"
+      }
+    ],
+    "$conditionOutputs": [
+      {
+        "stateId": "646ede55-1579-481d-87a9-c48463d7d190",
+        "$connId": "con_3",
+        "conditions": [
+          {
+            "source": "input",
+            "comparison": "exists",
+            "values": [],
+            "$$hashKey": "object:814"
+          }
+        ],
+        "$invalid": false,
+        "$$hashKey": "object:795"
+      }
+    ],
+    "$enteringCustomActions": [],
+    "$leavingCustomActions": [],
+    "$inputSuggestions": [],
+    "$defaultOutput": {
+      "stateId": "fallback",
+      "$invalid": false
+    },
+    "id": "onboarding",
+    "root": true,
+    "$position": {
+      "top": "148px",
+      "left": "1126px"
+    },
+    "$title": "Início",
+    "$invalidContentActions": false,
+    "$invalidOutputs": false,
+    "$invalidCustomActions": false,
+    "$invalid": false
+  },
+  "fallback": {
+    "$contentActions": [
+      {
+        "input": {
+          "bypass": true,
+          "$cardContent": {
+            "document": {
+              "id": "95b10ba8-e351-4d16-9b10-ce14961cb1fd",
+              "type": "text/plain",
+              "content": "Entrada do usuário"
+            },
+            "editable": false,
+            "deletable": true,
+            "position": "right"
+          },
+          "$invalid": false
+        },
+        "$invalid": false,
+        "$$hashKey": "object:8767"
+      }
+    ],
+    "$conditionOutputs": [],
+    "$enteringCustomActions": [],
+    "$leavingCustomActions": [],
+    "$inputSuggestions": [],
+    "$defaultOutput": {
+      "stateId": "onboarding",
+      "$invalid": false
+    },
+    "id": "fallback",
+    "$position": {
+      "top": "787px",
+      "left": "84px"
+    },
+    "$title": "Exceções",
+    "$invalidContentActions": false,
+    "$invalidOutputs": false,
+    "$invalidCustomActions": false,
+    "$invalid": false
+  },
+  "646ede55-1579-481d-87a9-c48463d7d190": {
+    "$contentActions": [
+      {
+        "action": {
+          "type": "SendMessage",
+          "settings": {
+            "id": "76d7a887-783d-4470-9636-59f4c0732f84",
+            "type": "application/vnd.lime.chatstate+json",
+            "content": {
+              "state": "composing",
+              "interval": 1000
+            }
+          },
+          "$cardContent": {
+            "document": {
+              "id": "76d7a887-783d-4470-9636-59f4c0732f84",
+              "type": "application/vnd.lime.chatstate+json",
+              "content": {
+                "state": "composing",
+                "interval": 1000
+              }
+            },
+            "editable": true,
+            "deletable": true,
+            "position": "left"
+          }
+        },
+        "$invalid": false,
+        "$$hashKey": "object:4839"
+      },
+      {
+        "action": {
+          "type": "SendMessage",
+          "settings": {
+            "id": "e66d9771-5303-453b-9446-410ee47ac15f",
+            "type": "text/plain",
+            "content": "Some text"
+          },
+          "$cardContent": {
+            "document": {
+              "id": "e66d9771-5303-453b-9446-410ee47ac15f",
+              "type": "text/plain",
+              "content": "Some text"
+            },
+            "editable": true,
+            "deletable": true,
+            "position": "left"
+          }
+        },
+        "$invalid": false,
+        "$$hashKey": "object:4840"
+      },
+      {
+        "input": {
+          "bypass": true,
+          "$cardContent": {
+            "document": {
+              "id": "1cf3aaa9-6293-41a3-916f-c05a1a33ecbd",
+              "type": "text/plain",
+              "content": "name"
+            },
+            "editable": false,
+            "deletable": true,
+            "position": "right",
+            "editing": false
+          },
+          "$invalid": false,
+          "variable": "name"
+        },
+        "$$hashKey": "object:9806",
+        "$invalid": false
+      }
+    ],
+    "$conditionOutputs": [],
+    "$enteringCustomActions": [],
+    "$leavingCustomActions": [],
+    "$inputSuggestions": [],
+    "$defaultOutput": {
+      "stateId": "fallback",
+      "$invalid": false
+    },
+    "$tags": [],
+    "id": "646ede55-1579-481d-87a9-c48463d7d190",
+    "root": false,
+    "$title": "Boas vindas",
+    "$position": {
+      "top": "299px",
+      "left": "1127px"
+    },
+    "$invalidContentActions": false,
+    "$invalidOutputs": false,
+    "$invalidCustomActions": false,
+    "$invalid": false
+  }}'
+    });
+});
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "0094447a-2581-4597-be6a-a5dff33af156",
+  "method": "set",
+   "uri": "/buckets/blip_portal:builder_working_flow",
+  "type": "application/json", 
+  "resource":{
+  	"onboarding": {
+    "$contentActions": [
+      {
+        "input": {
+          "bypass": false,
+          "$cardContent": {
+            "document": {
+              "id": "a5f855b2-7344-44ad-bf8b-75bccd63d288",
+              "type": "text/plain",
+              "content": "Entrada do usuário"
+            },
+            "editable": false,
+            "deletable": false,
+            "position": "right"
+          },
+          "$invalid": false
+        },
+        "$invalid": false,
+        "$$hashKey": "object:9132"
+      }
+    ],
+    "$conditionOutputs": [
+      {
+        "stateId": "646ede55-1579-481d-87a9-c48463d7d190",
+        "$connId": "con_3",
+        "conditions": [
+          {
+            "source": "input",
+            "comparison": "exists",
+            "values": [],
+            "$$hashKey": "object:814"
+          }
+        ],
+        "$invalid": false,
+        "$$hashKey": "object:795"
+      }
+    ],
+    "$enteringCustomActions": [],
+    "$leavingCustomActions": [],
+    "$inputSuggestions": [],
+    "$defaultOutput": {
+      "stateId": "fallback",
+      "$invalid": false
+    },
+    "id": "onboarding",
+    "root": true,
+    "$position": {
+      "top": "148px",
+      "left": "1126px"
+    },
+    "$title": "Início",
+    "$invalidContentActions": false,
+    "$invalidOutputs": false,
+    "$invalidCustomActions": false,
+    "$invalid": false
+  },
+  "fallback": {
+    "$contentActions": [
+      {
+        "input": {
+          "bypass": true,
+          "$cardContent": {
+            "document": {
+              "id": "95b10ba8-e351-4d16-9b10-ce14961cb1fd",
+              "type": "text/plain",
+              "content": "Entrada do usuário"
+            },
+            "editable": false,
+            "deletable": true,
+            "position": "right"
+          },
+          "$invalid": false
+        },
+        "$invalid": false,
+        "$$hashKey": "object:8767"
+      }
+    ],
+    "$conditionOutputs": [],
+    "$enteringCustomActions": [],
+    "$leavingCustomActions": [],
+    "$inputSuggestions": [],
+    "$defaultOutput": {
+      "stateId": "onboarding",
+      "$invalid": false
+    },
+    "id": "fallback",
+    "$position": {
+      "top": "787px",
+      "left": "84px"
+    },
+    "$title": "Exceções",
+    "$invalidContentActions": false,
+    "$invalidOutputs": false,
+    "$invalidCustomActions": false,
+    "$invalid": false
+  },
+  "646ede55-1579-481d-87a9-c48463d7d190": {
+    "$contentActions": [
+      {
+        "action": {
+          "type": "SendMessage",
+          "settings": {
+            "id": "76d7a887-783d-4470-9636-59f4c0732f84",
+            "type": "application/vnd.lime.chatstate+json",
+            "content": {
+              "state": "composing",
+              "interval": 1000
+            }
+          },
+          "$cardContent": {
+            "document": {
+              "id": "76d7a887-783d-4470-9636-59f4c0732f84",
+              "type": "application/vnd.lime.chatstate+json",
+              "content": {
+                "state": "composing",
+                "interval": 1000
+              }
+            },
+            "editable": true,
+            "deletable": true,
+            "position": "left"
+          }
+        },
+        "$invalid": false,
+        "$$hashKey": "object:4839"
+      },
+      {
+        "action": {
+          "type": "SendMessage",
+          "settings": {
+            "id": "e66d9771-5303-453b-9446-410ee47ac15f",
+            "type": "text/plain",
+            "content": "Some text"
+          },
+          "$cardContent": {
+            "document": {
+              "id": "e66d9771-5303-453b-9446-410ee47ac15f",
+              "type": "text/plain",
+              "content": "Some text"
+            },
+            "editable": true,
+            "deletable": true,
+            "position": "left"
+          }
+        },
+        "$invalid": false,
+        "$$hashKey": "object:4840"
+      },
+      {
+        "input": {
+          "bypass": true,
+          "$cardContent": {
+            "document": {
+              "id": "1cf3aaa9-6293-41a3-916f-c05a1a33ecbd",
+              "type": "text/plain",
+              "content": "name"
+            },
+            "editable": false,
+            "deletable": true,
+            "position": "right",
+            "editing": false
+          },
+          "$invalid": false,
+          "variable": "name"
+        },
+        "$$hashKey": "object:9806",
+        "$invalid": false
+      }
+    ],
+    "$conditionOutputs": [],
+    "$enteringCustomActions": [],
+    "$leavingCustomActions": [],
+    "$inputSuggestions": [],
+    "$defaultOutput": {
+      "stateId": "fallback",
+      "$invalid": false
+    },
+    "$tags": [],
+    "id": "646ede55-1579-481d-87a9-c48463d7d190",
+    "root": false,
+    "$title": "Boas vindas",
+    "$position": {
+      "top": "299px",
+      "left": "1127px"
+    },
+    "$invalidContentActions": false,
+    "$invalidOutputs": false,
+    "$invalidCustomActions": false,
+    "$invalid": false
+  }
+  }
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "set",
+    "status": "success",
+    "id": "afasdd-as9d8a7sd987",
+    "from": "postmaster@msging.net/#az-iris6",
+    "to": "bot@msging.net",
+    "metadata": {
+        "#command.uri": "lime://bot@msging.net/buckets/blip_portal:builder_working_flow",
+        "x-datadog-trace-id": "7204348957486186726",
+        "x-datadog-parent-id": "2265720854752050311",
+        "x-datadog-sampling-priority": "1"
+    }
+}
+```
+
+```csharp
+
+```
+
+<aside class="notice">
+Note: Remember to replace the resource content with your flow.
+</aside>
+
 ### Reset user state
 
 In order to reset a user state, send a command with the following properties:
 
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| method    | **delete**  |
-| uri    | **/contexts/{{user-identity}}/stateid%40{{flow-identifier}}**   |
-| to     | **postmaster@msging.net** (not required) |
+| Name   | Description                                                   |
+| ------ | ------------------------------------------------------------- |
+| id     | Unique identifier of the command.                             |
+| method | **delete**                                                    |
+| uri    | **/contexts/{{user-identity}}/stateid%40{{flow-identifier}}** |
+| to     | **postmaster@msging.net** (not required)                      |
 
 To get the flow identifier, click in Builder's settings and go to Flow Identifier section (as picture below).
 
