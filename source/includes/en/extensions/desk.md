@@ -259,6 +259,76 @@ Content-Type: application/json
       }
 ```
 
+### Assign a ticket to an agent
+
+You can assign a [ticket](/#ticket) to a specific agent to give him the attendance.
+
+To make this possible send a command with `SET` method to `postmaster@desk.msging.net` URI `/tickets/change-status` and resource with ticket `id`, `status` with **Open** and `agentIdentity` with the **agent identity**.
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "fbfda48q962ac",
+  "to": "postmaster@desk.msging.net",
+  "method": "set",
+  "uri": "/tickets/change-status",
+  "type": "application/vnd.iris.ticket+json",
+  "resource": {
+    "id": "{ticketId}",
+    "status": "Open",
+    "agentIdentity": "{agentIdentity}"
+  }
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "set",
+    "status": "success",
+    "id": "fbfda48q962ac",
+    "from": "postmaster@desk.msging.net/#az-iris2",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.SET,
+    uri: "/tickets/change-status",
+    type: "application/vnd.iris.ticket+json",
+    resource: {
+    id: "{ticketId}",
+    status: "Open",
+    agentIdentity: "{agentIdentity}"
+    }
+});
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Set,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/tickets/change-status"),
+    Resource = new Ticket
+    {
+        Id = ticketId,
+        Status = TicketStatusEnum.Open
+        AgentIdentity = agentIdentity
+    }
+};
+
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
 ### Close a ticket as attendant
 
 Closing a [ticket](/#ticket) as the attendant.
