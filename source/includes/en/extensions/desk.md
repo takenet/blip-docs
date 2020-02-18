@@ -2099,10 +2099,9 @@ Authorization: Key {YOUR_TOKEN}
   "id": "0125744",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/tickets/{customerIdentity}/closed"
+  "uri": "/tickets?$filter=(CustomerIdentity%20eq%20'{customer_identity}')&$closed=true&$skip=0&$take=100"
 }
 ```
-
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json

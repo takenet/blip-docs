@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f1b8f516-d109-4dc8-9619-08e7e50bbbd7",
+		"_postman_id": "d109fca1-f4fa-4da6-a3dd-8b729bc5164e",
 		"name": "BLiP",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -4599,7 +4599,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/tickets/{{customer_identity}}/closed\"\r\n}"
+									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/tickets?$filter=(CustomerIdentity%20eq%20'{customer_identity}')&$closed=true&$skip=0&$take=100\"\r\n}"
 								},
 								"url": {
 									"raw": "https://msging.net/commands",
