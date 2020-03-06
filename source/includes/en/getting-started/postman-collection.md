@@ -12,7 +12,7 @@ To get started, [download](https://www.getpostman.com/apps) and install Postman.
 
 After installed click on the `Run in Postman` button download and import the collection into your app.
 
-<a href="https://raw.githubusercontent.com/takenet/blip-docs/master/source/includes/en/getting-started/BLiP.postman_collection.json" target="_blank"><img src="https://run.pstmn.io/button.svg" alt="Postman logo" > </a>
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/25238039a3c6880752a3)
 
 ### Configure
 
