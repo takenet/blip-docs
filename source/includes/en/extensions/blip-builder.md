@@ -223,6 +223,11 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Get all bot's context variables (Builder's behaviors). It will return all available variables, represented by users' Identities.
 
+| QueryString     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **$skip** |The number of elements to be skipped.                                |    0    |
+| **$take** | Limit of total of items to be returned.                               |   100   |
+
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json

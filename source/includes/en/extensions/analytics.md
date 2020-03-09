@@ -617,6 +617,12 @@ Your interval must have one of this statistics interval:
 
 Get a collection of [reports](/#report).
 
+| QueryString     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **$skip** |The number of elements to be skipped.                                |    0    |
+| **$take** | Limit of total of items to be returned.                               |   100   |
+| **$ascending** | Sets ascending alphabetical order.                                |    true    |
+
 ```http
 POST https://msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -924,11 +930,22 @@ namespace Extensions
 
 Retrieves all tracked categories.
 
+| QueryString     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **$skip** |The number of elements to be skipped.                                |    0    |
+| **$take** | Limit of total of items to be returned.                               |   100   |
+
 ### Get charts in a report
 
 Get a collection of [charts](/#chart) in a [report](/#report).
 
 Replace `{reportId}` with the report id you want to get the charts in.
+
+| QueryString     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **$skip** |The number of elements to be skipped.                                |    0    |
+| **$take** | Limit of total of items to be returned.                               |   100   |
+| **$ascending** | Sets ascending alphabetical order.                                |    true    |
 
 ```http
 POST https://msging.net/commands HTTP/1.1

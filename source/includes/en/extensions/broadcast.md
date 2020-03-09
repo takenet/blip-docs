@@ -8,21 +8,21 @@ Notifications are forwarded to the chatbot when received by the extension.
 
 In order to use **broadcast** extension features, you must send commands with the following properties:
 
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| method    | The command verb  |
-| resource | The schedule document. |
-| type | **"application/vnd.iris.distribution-list+json"** |
-| uri    | **/lists**   |
-| to     | **postmaster@broadcast.msging.net** |
+| Name     | Description                                       |
+| -------- | ------------------------------------------------- |
+| id       | Unique identifier of the command.                 |
+| method   | The command verb                                  |
+| resource | The schedule document.                            |
+| type     | **"application/vnd.iris.distribution-list+json"** |
+| uri      | **/lists**                                        |
+| to       | **postmaster@broadcast.msging.net**               |
 
 The command's properties `resource` and `method` can change according to the feature.
 An schedule object passed as a document `resource` has the following properties:
 
-| Property     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **identity** | Identifier of a distribution list.                          | news@broadcast.msging.net |
+| Property     | Description                        | Example                   |
+| ------------ | ---------------------------------- | ------------------------- |
+| **identity** | Identifier of a distribution list. | news@broadcast.msging.net |
 
 #### Default list
 
@@ -204,6 +204,79 @@ namespace Extensions
 ```
 
 To get all distribution lists associated with your chatbot, you must send a command with `GET` method.
+
+### Delete a list
+Delete a distribution lists.
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.DELETE,
+        uri: '/lists/{{distribution_list_name}}@broadcast.msging.net'
+    });
+});
+```
+
+```http
+POST https://msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "3",
+  "to": "postmaster@broadcast.msging.net",
+  "method": "delete",
+  "uri": "/lists/{{distribution_list_name}}@broadcast.msging.net"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "5b679f5a-a130-4a65-aac7-fd4f84e7a101",
+    "from": "postmaster@broadcast.msging.net/#az-iris4",
+    "to": "bottest@msging.net",
+    "metadata": {
+        "#command.uri": "lime://bottest@msging.net/lists/75b3b1-776f-d4e6-148-84f5eb4ec1@broadcast.msging.net",
+        "uber-trace-id": "7caf927e1a45d352%3A7caf927e1a45d352%3A0%3A1"
+    }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Receivers;
+using Take.Blip.Client.Extensions.Broadcast;
+
+namespace Extensions
+{
+    public class SampleMessageReceiver : IMessageReceiver
+    {
+        private readonly IBroadcastExtension _broadcastExtension;
+
+        public SampleMessageReceiver(IBroadcastExtension broadcastExtension)
+        {
+            _broadcastExtension = broadcastExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var listName = "your_distributionList";
+
+            await _broadcastExtension.DeleteListAsync(listName);
+        }
+    }
+}
+```
 
 ### Add a member to list
 
@@ -432,10 +505,10 @@ namespace Extensions
 
 To get all members of a distribution list, you must send a command with `GET` method and command URI with the list identifier (`/lists/your_distributionList@broadcast.msging.net/recipients`)
 
-| Property     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **skip** | The number of members to be skipped                           | 0 |
-| **take** | The number of members to be returned                          | 100 |
+| Property | Description                          | Example |
+| -------- | ------------------------------------ | ------- |
+| **skip** | The number of members to be skipped  | 0       |
+| **take** | The number of members to be returned | 100     |
 
 
 ###Send message

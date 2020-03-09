@@ -260,7 +260,12 @@ Authorization: Key {YOUR_TOKEN}
 ### Get comments
 
 
-Get all comments for a contact ( `contactIdentity` ).
+Get all comments for a contact ( `contactIdentity` ). By default, BLiP will return the last 100 comments.
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------|
+| $skip | The number of elements to be skipped                           |
+| $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
 
 ```http
 POST https://msging.net/commands HTTP/1.1

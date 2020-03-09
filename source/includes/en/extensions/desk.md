@@ -12,10 +12,10 @@ Before using this extension, check if you have already properly set a customer s
 
 Add a new agent to your attendance team.
 
-You must submit a [attendant](/#attendant) document, with at least an `identity`, an `email` and a `team`.
+You must submit a [attendant](/#attendant) document, with at least an `identity` and a `team`.
 
 <aside class="notice">
-Note: The identity must be in the form <b>jonh%40email.com@blip.ai</b> for an email <b>jonh@email.com</b>
+Note: The identity must be in the form <b>jonh%40email.com@blip.ai</b>.
 </aside>
 
 ```http
@@ -30,7 +30,6 @@ Authorization: Key {YOUR_TOKEN}
   "type": "application/vnd.iris.desk.attendant+json",
   "resource": {
     "identity": "{identity}",
-    "email": "{email}",
     "teams": [
         "{team1}"
     ]
@@ -60,7 +59,6 @@ client.sendCommand({
     type: "application/vnd.iris.desk.attendant+json",
     resource: {
     identity: "{identity}",
-    email: "{email}",
     teams: [
     "{team1}"
     ]
@@ -77,7 +75,6 @@ var command = new Command(){
     Type: "application/vnd.iris.desk.attendant+json",
     Resource = new Attendant {
         Identity = "{identity}",
-        Email = "{email}"
     }
 };
 ```
@@ -2059,7 +2056,15 @@ client.sendCommand({
 
 ### Get all bot's agents
 
-In order to get all attendants of some bot send a command with `GET` method to `postmaster@desk.msging.net` and URI `/attendants` . This feature is usefull to know if there are any available attendant to answer customers questions.
+In order to get all attendants of some bot send a command with `GET` method to `postmaster@desk.msging.net` and URI `/attendants` . This feature is usefull to know if there are any available attendant to answer customers questions. By default, BLiP will return 20 agents.
+
+
+| QueryString     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **$skip** |The number of elements to be skipped.                                |    0    |
+| **$take** | Limit of total of items to be returned.                               |   100   |
+| **$ascending** | Sets ascending alphabetical order.                                |    true    |
+
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -2195,7 +2200,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/tickets/{customerId}/closed")
+    Uri = new LimeUri("/tickets?$filter=(CustomerIdentity%20eq%20'{customer_identity}')&$closed=true&$skip=0&$take=100")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -2206,7 +2211,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/tickets/{customerId}/closed"
+    uri: "/tickets?$filter=(CustomerIdentity%20eq%20'{customer_identity}')&$closed=true&$skip=0&$take=100"
 })
 ```
 
@@ -2215,6 +2220,13 @@ client.sendCommand({
 Return all [messages](/#messages) from a specific [ticket](/#ticket).
 
 Replace `{ticketId}` with the ticket id you want to get the messages.
+
+
+| QueryString     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **$skip** |The number of elements to be skipped.                                |    0    |
+| **$take** | Limit of total of items to be returned.                               |   100   |
+| **$ascending** | Sets ascending alphabetical order.                                |    true    |
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -2593,6 +2605,12 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 ### Get custom replies
 
 Get the [custom replies](/#customreply) from your attendance model.
+
+| QueryString     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **$skip** |The number of elements to be skipped.                                |    0    |
+| **$take** | Limit of total of items to be returned.                               |   100   |
+| **$ascending** | Sets ascending alphabetical order.                                |    true    |
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -3078,7 +3096,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 ### Get waiting tickets
 
-Returns the number of waiting [tickets](/#ticket).
+Returns all waiting [tickets](/#ticket).
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -3089,7 +3107,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "4965782",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/monitoring/tickets"
+  "uri": "/tickets?$filter=status%20eq%20'waiting'&$skip=0&$take=100"
 }
 ```
 
@@ -3097,24 +3115,37 @@ Authorization: Key {YOUR_TOKEN}
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-  "type": "application/vnd.iris.desk.ticketssummary+json",
+{
+    "type": "application/vnd.lime.collection+json",
     "resource": {
-        "waiting": 5,
-        "open": 1,
-        "closed": 2,
-        "closedAttendant": 2,
-        "closedClient": 0,
-        "transferred": 0,
-        "missed": 0
+        "total": 1,
+        "itemType": "application/vnd.iris.ticket+json",
+        "items": [
+            {
+                "id": "29af5ee0-e9cd-45bc-96e8-0170c01501c8",
+                "sequentialId": 67,
+                "ownerIdentity": "atendente@msging.net",
+                "customerIdentity": "09e6b554-fe22-495c-a2b7-307ce1ba3fde.atendente@0mn.io",
+                "customerDomain": "0mn.io",
+                "provider": "Lime",
+                "status": "Waiting",
+                "storageDate": "2020-03-09T16:16:07.110Z",
+                "externalId": "29af5ee0-e9cd-45bc-96e8-0170c01501c8",
+                "rating": 0,
+                "team": "Default",
+                "unreadMessages": 0,
+                "closed": false
+            }
+        ]
     },
     "method": "get",
     "status": "success",
-    "id": "c9e659e4-5ef4-48ef-a13c-537b4d2add82",
-    "from": "postmaster@desk.msging.net/#az-iris5",
-    "to": "demobot@msging.net",
+    "id": "511aeebd-21e0-4f8b-bbdc-a5815bb2361f",
+    "from": "postmaster@desk.msging.net/#az-iris7",
+    "to": "atendente@msging.net",
     "metadata": {
-        "#command.uri": "lime://demobot@msging.net/monitoring/tickets",
-        "uber-trace-id": "f7a2da1bdc1890d1%3A77aac8237b3d3172%3Af7a2da1bdc1890d1%3A1"
+        "#command.uri": "lime://atendente@msging.net/tickets?$filter=status%20eq%20'waiting'&$skip=0&$take=100",
+        "uber-trace-id": "96391c2153967ce%3A7a1bc8384ee20f4a%3A96391c2153967ce%3A1"
     }
 }
 
@@ -3125,7 +3156,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/monitoring/tickets"
+    uri: "/tickets?$filter=status%20eq%20'waiting'&$skip=0&$take=100"
 })
 ```
 
@@ -3134,7 +3165,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/monitoring/tickets")
+    Uri = new LimeUri("/tickets?$filter=status%20eq%20'waiting'&$skip=0&$take=100")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }

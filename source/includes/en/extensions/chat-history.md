@@ -134,6 +134,7 @@ The following uri filters are available to get chatbot's threads:
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|
+| $skip | The number of elements to be skipped                           |
 | $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
 | messageDate  | Initial date on the threads query         |
 
@@ -246,6 +247,7 @@ The following uri filters are available to get a chatbot's thread:
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|
+| $skip | The number of elements to be skipped                           |
 | $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
 | messageId  | Initial message id for the thread messages query        |
 | direction  | Possible values: `asc` and `desc`. Define if will be returned de messages after or before respectively |
@@ -253,7 +255,13 @@ The following uri filters are available to get a chatbot's thread:
 
 ### Get logged messages
 
-Get all logged [messages](/#messages).
+Get all logged [messages](/#messages). By default, BLiP returns the last 100 logged messages.
+
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------|
+| $skip | The number of elements to be skipped                           |
+| $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
 
 ```http
 POST https://msging.net/commands HTTP/1.1
@@ -319,7 +327,12 @@ Content-Type: application/json
 
 ### Get logged notifications
 
-Get all logged [notifications](/#notifications).
+Get all logged [notifications](/#notifications). By default, BLiP returns the last 100 logged notifications.
+
+| QueryString  | Description                               |
+|--------------|-------------------------------------------|
+| $skip | The number of elements to be skipped                           |
+| $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
 
 ```http
 POST https://msging.net/commands HTTP/1.1
