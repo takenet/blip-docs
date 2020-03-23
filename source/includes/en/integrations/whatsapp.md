@@ -119,8 +119,10 @@ client.addMessageReceiver('text/plain', async (message) => {
         "hsm": {
         "namespace": "whatsapp:hsm:messaging:blip",
         "element_name": "account_created",
-        "fallback_lg": "pt",
-        "fallback_lc": "BR",
+        "language": {
+                "policy": "deterministic",
+                "code": "pt_BR"
+         },
         "localizable_params": [
             {
             "default": "BLiPPer"
@@ -145,8 +147,10 @@ Authorization: Key {YOUR_TOKEN}
     "hsm": {
       "namespace": "whatsapp:hsm:messaging:blip",
       "element_name": "account_created",
-      "fallback_lg": "pt",
-      "fallback_lc": "BR",
+      "language": {
+                "policy": "deterministic",
+                "code": "pt_BR"
+      },
       "localizable_params": [
         {
           "default": "BLiPPer"
