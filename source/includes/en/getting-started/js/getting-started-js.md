@@ -24,6 +24,8 @@ Install `blip-sdk` package (via npm) as a dependecy of your project in order to 
 npm install --save blip-sdk lime-transport-websocket
 ```
 
+<aside class="notice"> From April 2020, an SDK bot may have a <u>limit of 100* simultaneous connections</u> to the platform. <b>We recommend using 5 maximum instances</b>. <br><br><i>*This value may be revised in the future.</i></aside>
+
 ### 1. Starting the bot (js)
 
 You will need an `identifier` and an `access key` to be able to connect to the BLiP. To get them:

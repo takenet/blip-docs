@@ -31,6 +31,8 @@ There are available the following templates:
 - `blip-console` - Run as a console application
 - `blip-web` - Run as a ASP.NET Core application (experimental)
 
+<aside class="notice"> From April 2020, an SDK bot may have a <u>limit of 100* simultaneous connections</u> to the platform. <b>We recommend using 5 maximum instances</b>. <br><br><i>*This value may be revised in the future.</i></aside>
+
 ### 1. Starting your bot
 
 After installed and created the project template, open the `MyBot.csproj` file and build the project. Note that all the necessary files for your bot are already created.
