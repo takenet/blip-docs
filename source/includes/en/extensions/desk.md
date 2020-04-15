@@ -19,7 +19,7 @@ Note: The identity must be in the form <b>jonh%40email.com@blip.ai</b>.
 </aside>
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -92,7 +92,7 @@ You can also create a new category, just informing a new category id.
 </aside>
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -183,7 +183,7 @@ Each [ticket](/#ticket) has an optional parameter called `Tags`. A tag is a labe
 To add tags in a specifc ticket send a command with `SET` method to `postmaster@desk.msging.net` and URI `/tickets/{ticketId}/change-tags`, where `ticketId` is the ticket identifier to be updated. Use the `resource` property to send tags informations.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -263,7 +263,7 @@ You can assign a [ticket](/#ticket) to a specific agent to give him the attendan
 To make this possible send a command with `SET` method to `postmaster@desk.msging.net` URI `/tickets/change-status` and resource with ticket `id`, `status` with **Open** and `agentIdentity` with the **agent identity**.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -333,7 +333,7 @@ Closing a [ticket](/#ticket) as the attendant.
 To make this possible send a command with `SET` method to `postmaster@desk.msging.net` URI `/tickets/change-status` and resource with ticket `id` and `status` with **ClosedAttendant**.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -400,7 +400,7 @@ Content-Type: application/json
 Sometimes may be interesting allow the users close the [ticket](/#ticket) when they want. To make this possible send a command with `SET` method to `postmaster@desk.msging.net` URI `/tickets/change-status` and resource with ticket `id` and `status` with **ClosedClient**.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -485,7 +485,7 @@ result: {Lime.Protocol.Command}
 To create a new ticket, you must submit a [ticket](/#ticket) document, with at least a `customerIdentity`.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -566,7 +566,7 @@ You must send a [rule](/#rule) document with your conditions.
 <aside class="notice">For example, if you want to forward a customer to a Team according to their city (using <a href="/#contact">contact</a> extras), you should do the following:</aside>
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -661,7 +661,7 @@ Before start to attendance some user is necessary first open a [ticket](/#ticket
 To open a ticket send a command with `SET` method to `postmaster@desk.msging.net` and URI `/tickets/{customerIdentity}`, where `customerIdentity` is the customer identity to be attended. Use the `resource` property to delivery a context for the ticket.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -777,7 +777,7 @@ Delete a category of [custom replies](#customreply).
 Replace `{categoryId}` with the category id you want to delete.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -829,7 +829,7 @@ Delete a specific [attendance rule](/#rule).
 Replace `{ruleId}`with the rule id you want to delete.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -885,7 +885,7 @@ Note: The identity must be in the form <b>jonh%2540email.com@blip.ai</b> for an 
 </aside>
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -934,7 +934,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 The proccess of close a ticket is the last thing to do during an attendance. If a [ticket](/#ticket) is closed by the customer is possible close permanently to unable any data update. In order to finalize permanently a ticket send a command with `SET` method to `postmaster@desk.msging.net` and URI `/tickets/{ticketId}/close` .
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -995,7 +995,7 @@ Note: The `tags` property can be hide if you didn't set the Tags configurations 
 First, the bot receives a message as below:
 
 ```http
-POST https://msging.net/messages HTTP/1.1
+POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
@@ -1057,7 +1057,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 At first, the bot receives a message and decides if it must route the user to a human agent. Imagine for instance that the message **"Hello, I would like to talk to an attendant."** is enough to send the user to an agent.
 
 ```http
-POST https://msging.net/messages HTTP/1.1
+POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1142,7 +1142,7 @@ Get a category of [custom replies](/#customreply).
 Replace `{categoryId}` with the category id you want to get.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1216,7 +1216,7 @@ The following filters are available:
 | endDate      | Limit date to retrieve the report.        |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1302,7 +1302,7 @@ The following filters are available:
 | endDate      | Limit date to retrieve the report.        |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1365,7 +1365,7 @@ The following filters are available:
 | endDate      | Limit date to retrieve the report.        |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1447,7 +1447,7 @@ The following filters are available:
 | endDate      | Limit date to retrieve the report.        |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1539,7 +1539,7 @@ The following filters are available:
 | endDate      | Limit date to retrieve the report.        |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1612,7 +1612,7 @@ The following filters are available:
 | endDate      | Limit date to retrieve the report.        |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1701,7 +1701,7 @@ Get a specific [attendance rule](/#rule).
 Replace `{ruleId}`with the rule id you want to get.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1766,7 +1766,7 @@ Get a specific [ticket](/#ticket).
 Replace the variable `{ticketId}` with the ticket id you want to get.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1839,7 +1839,7 @@ The following filters are available:
 | endDate      | Limit date to retrieve the metrics.        |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1921,7 +1921,7 @@ The following filters are available:
 | endDate      | Limit date to retrieve the report.        |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1994,7 +1994,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 Returns all the active [tickets](/#ticket).
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2067,7 +2067,7 @@ In order to get all attendants of some bot send a command with `GET` method to `
 
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2167,7 +2167,7 @@ Returns all closed [tickets](/#ticket).
 Replace `{customerIdentity}` with the customer id you want to get.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -2229,7 +2229,7 @@ Replace `{ticketId}` with the ticket id you want to get the messages.
 | **$ascending** | Sets ascending alphabetical order.                                |    true    |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2310,7 +2310,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 In order to get all agents [teams](/#team) of some bot send a command with `GET` method to `postmaster@desk.msging.net` and URI `/teams` .
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2411,7 +2411,7 @@ To filter specific tickets you can use **$filter** parameter on query string wit
 | Assigned | The ticket is assigned to an agent and is waiting for the consumed notification from them |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2533,7 +2533,7 @@ The following uri filters are available to get rules:
 | **ascending** | Sets ascending alphabetical order.                                |    true    |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2613,7 +2613,7 @@ Get the [custom replies](/#customreply) from your attendance model.
 | **$ascending** | Sets ascending alphabetical order.                                |    true    |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2675,7 +2675,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 Get the number of online [agents](/#attendant) in each team.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2747,7 +2747,7 @@ The following filters are available:
 | endDate      | Limit date to retrieve the metrics.        |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2830,7 +2830,7 @@ The following filters are available:
 
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2910,7 +2910,7 @@ The following filters are available:
 | endDate      | Limit date to retrieve the metrics.        |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2978,7 +2978,7 @@ The following filters are available:
 | endDate      | Limit date to retrieve the counters.        |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3038,7 +3038,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 Get tickets-per-hour metrics (**for the current day**).
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3099,7 +3099,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 Returns all waiting [tickets](/#ticket).
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3183,7 +3183,7 @@ The following filters are available:
 | endDate      | Limit date to retrieve the metrics.        |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3286,7 +3286,7 @@ Note: You can filter by date range, using two <i>requestDateTime</i> objects, us
 <br><br><b>The filter can be sent empty.</b> </aside>
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3355,7 +3355,7 @@ Replace `{ticketId}` with the ticket id you want to transfer.
 Replace `{teamName}` with the team name you want to transfer to.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

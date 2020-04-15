@@ -28,7 +28,7 @@ You can cancel a scheduling sending a DELETE command.
 Replace `{messageId}` with the message id for the scheduled message you want to delete. Use the [Get a scheduled message](/#get-a-scheduled-message) method to claim this information.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -116,7 +116,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -212,7 +212,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

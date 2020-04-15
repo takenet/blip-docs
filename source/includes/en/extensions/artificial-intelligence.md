@@ -62,7 +62,7 @@ The following uri filters are available to get an analysis:
 | **ascending** | Sets ascending alphabetical order.                                |    true    |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -219,7 +219,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -299,7 +299,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -418,7 +418,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -518,7 +518,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -654,7 +654,7 @@ namespace Extension
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -742,7 +742,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -868,7 +868,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -983,7 +983,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 
 ```http
 
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1015,7 +1015,7 @@ Content-Type: application/json
 Deleting all [entities](/#entity) in a model.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1101,7 +1101,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 
 ```http
 
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1149,7 +1149,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1257,7 +1257,7 @@ namespace Extension
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1331,7 +1331,7 @@ namespace Extension
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1405,7 +1405,7 @@ namespace Extension
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1458,7 +1458,7 @@ Get a specific [model](/#model).
 Replace the variable `{modelId}` with the model id you want to get.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1543,7 +1543,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 Get an overview about a [model](/#modelsummary) metrics.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1652,7 +1652,7 @@ The following uri filters are available to get a chatbot's entities:
 | **ascending** | Sets ascending alphabetical order.                                |    true    |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1760,7 +1760,7 @@ The following uri filters are available to get a chatbot's intents:
 
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1871,7 +1871,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1977,7 +1977,7 @@ Get a specific [entity](/#entity).
 Replace `{entityId}` with the entity Id you want to get.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2070,7 +2070,7 @@ Get a specific [intent](/#intention).
 Replace `{intentId}` with the intent Id you want to get.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2202,7 +2202,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2294,7 +2294,7 @@ namespace Extension
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2362,7 +2362,7 @@ Content-Type: application/json
 
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2468,7 +2468,7 @@ namespace Extensions
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2533,7 +2533,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2787,7 +2787,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2847,7 +2847,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2930,7 +2930,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3019,7 +3019,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3146,7 +3146,7 @@ namespace Extension
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -3185,7 +3185,7 @@ To submit one or more [feedbacks](/#analysisfeedback) into [analysis](/#analysis
 Replace `{intentionId}` with the intent Id and `{analysisId}` with the analysis Id.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3294,7 +3294,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

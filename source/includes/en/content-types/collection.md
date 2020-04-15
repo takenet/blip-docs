@@ -67,7 +67,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 ```
 
 ```http
-POST https://msging.net/messages HTTP/1.1
+POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -189,7 +189,7 @@ client.sendMessage({
 ```
 
 ```http
-POST https://msging.net/messages HTTP/1.1
+POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -478,7 +478,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 ```
 
 ```http
-POST https://msging.net/messages HTTP/1.1
+POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

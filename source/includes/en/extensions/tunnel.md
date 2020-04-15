@@ -51,7 +51,7 @@ The main bot receives a message from a Messenger user.
 According to its internal rules, the flow bot decides to forward this message to the operator bot. To do this, it changes the recipient of the message and sends it as below:
 
 ```http
-POST https://msging.net/messages HTTP/1.1
+POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -75,7 +75,7 @@ client.sendMessage({
 Internally, the server creates an **id** for the tunnel and forwards the message to the **operator** bot, which receives it as follows:
 
 ```http
-POST https://msging.net/messages HTTP/1.1
+POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -103,7 +103,7 @@ Authorization: Key {YOUR_TOKEN}
 The operator bot generates a reply to the message and forwards it to the source address, **without differentiating a message received directly from a channel** (the same goes for received/consumed notifications):
 
 ```http
-POST https://msging.net/messages HTTP/1.1
+POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -127,7 +127,7 @@ client.senMessage({
 The server uses the tunnel **id** to change the address of the response message and forwards it to the **flow** bot:
 
 ```http
-POST https://msging.net/messages HTTP/1.1
+POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -153,7 +153,7 @@ client.sendMessage({
 The bot flow identifies the message received from a **receiver**, decodes the original address that is in **instance** and sends the message to the final recipient:
 
 ```http
-POST https://msging.net/messages HTTP/1.1
+POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -181,7 +181,7 @@ Get a specific [tunnel](/#tunnels) by id.
 Replace `{tunnelId}` with the tunnel id you want to get.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -239,7 +239,7 @@ The **tunnel** extension also allows querying information from the message origi
 Sending a command to the query in the directory using the tunnel **id**:
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -263,7 +263,7 @@ client.sendCommand({
 The server identifies that the query is for a tunnel user and performs the query **on behalf of the sender** directly in its contacts roster and returns the information:
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

@@ -47,7 +47,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -113,7 +113,7 @@ Replace `{type}` with the variable [Mime Type](https://developer.mozilla.org/pt-
 Replace `{resource}` with the value to the variable.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -174,7 +174,7 @@ Replace `{identity}` with the user identity you want to delete the context varia
 Replace `{variableName}` with the variable name you want to delete.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -229,7 +229,7 @@ Get all bot's context variables (Builder's behaviors). It will return all availa
 | **$take** | Limit of total of items to be returned.                               |   100   |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -307,7 +307,7 @@ Get all user's context variables, like flow ids, state ids and other variables.
 Replace `{identity}` with the user identity you want to get the contexts variables.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -371,7 +371,7 @@ Replace `{identity}` with the user identity you want to get the variable from.
 Replace `{variableName}` with the variable name you want to get.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -449,7 +449,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -720,7 +720,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -981,7 +981,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

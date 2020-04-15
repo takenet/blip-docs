@@ -14,6 +14,10 @@ Please use [RequestBin](https://requestbin.fullcontact.com/) or [Ngrok](https://
 
 **Before start**
 
+<aside class="notice">
+From <b>April 2020</b>, the BLiP HTTP endpoint will change from <b>https://msging.net</b> to <b>https://http.msging.net</b>. <br><br>We strongly advise users to start using the new endpoint as soon as possible.
+</aside>
+
 Get the `Authorization` token of your bot to be able to connect to the BLiP. To get them:
 
 ![imagem](images/http-token.png)
@@ -40,7 +44,7 @@ Any message will be delivered as a `HTTP POST` request on the configured chatbot
 
 ### 2. Sending messages
 
-To send messages, it is necessary to make a `HTTP POST` request to BLiP using the URL `https://msging.net/messages`.
+To send messages, it is necessary to make a `HTTP POST` request to BLiP using the URL `https://http.msging.net/messages`.
 The request must contain an authorization header (`Authorization`) with `Key` type, as showed on chatbot settings. To know more about BLiP authentication process [click here](#authentication).
 
 The message data must be sent on the request `body` as a *JSON* following the LIME protocol format.
@@ -49,7 +53,7 @@ For more details go to [Content Types](#content-types) section.
 Imagine a chatbot with an Authorization token `Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=`. To send a message from this bot to a BLiP user, use:
 
 ```
-POST https://msging.net/messages HTTP/1.1
+POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=
 Content-Length: 131
@@ -85,12 +89,12 @@ For more information, check the [**Notification** documentation page](.#/docs/co
 
 In order to correctly show the message history, it is important that the chatbots send notifications of messages processed to originator clients.
 
-For each message processed, it is important to send a notification with the `consumed` event. In case of problems, the chatbot must send a notification with the `failed` event. The request must use the URL `https://msging.net/notifications` and contain an authorization header (`Authorization`) with `Key` type, as showed on chatbot settings.
+For each message processed, it is important to send a notification with the `consumed` event. In case of problems, the chatbot must send a notification with the `failed` event. The request must use the URL `https://http.msging.net/notifications` and contain an authorization header (`Authorization`) with `Key` type, as showed on chatbot settings.
 
 For instance, imagine that the received message from the example above (whit id **99cf454e-f25d-4ebd-831f-e48a1c612cd4**) was processed with success. The code below shows a complete notification request including the headers and the body request.
 
 ```
-POST https://msging.net/notifications HTTP/1.1
+POST https://http.msging.net/notifications HTTP/1.1
 Content-Type: application/json
 Authorization: Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=
 Content-Length: 131
@@ -109,7 +113,7 @@ In order to use BLiP's [extensions](#extensions) (like schedule and directory), 
 For instance, send a command to schedule some message:
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

@@ -61,7 +61,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -151,7 +151,7 @@ In order to store informations about a chatbot's client, it is possible to save 
 Add a new comment for a contact ( `contactIdentity` ), using a [Comment](/#comment) document.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -194,7 +194,7 @@ Check if a `contacIdentity` is linked with `linkedContactIdentity`.
 Note: Returns <code>The linked contact was not found</code> if the contacts are not linked and a contact if they are.</aside>
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -214,7 +214,7 @@ Delete a specific comment for a contact.
 Replace `commentId` with the comment Id.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -244,7 +244,7 @@ Content-Type: application/json
 Delete a link between two contacts, `contacIdentity` and `linkedContactIdentity`.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -268,7 +268,7 @@ Get all comments for a contact ( `contactIdentity` ). By default, BLiP will retu
 | $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -324,7 +324,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -419,7 +419,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -528,7 +528,7 @@ Note: You can also filter your query with one of the properties of the contact r
 Get all contacts linked with a specific contact.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -584,7 +584,7 @@ Replace the `<contactIdentity>` with the Identity of the contact you want to lin
 Replace the `<contactToBeLinkedWithIdentity>` with the Identity of the contact you want to be linked with the first one.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -617,7 +617,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/messages HTTP/1.1
+POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

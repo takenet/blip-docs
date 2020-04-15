@@ -32,7 +32,7 @@ A user must first consent to receive messages in WhatsApp by opting into them vi
 Before send a notification to a WhatsApp's customer you should get their identifier. Using the customer MSISDN, make a request to BLiP's API as demostrated aside. For instance, a Brazillian customer should be verified using a MSISDN like `+5531998765432`.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -134,7 +134,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/messages HTTP/1.1
+POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -171,7 +171,7 @@ Before to start sending/receiving messages in a group, you must create the group
 Make a request to BLiP's API as demostrated aside. Please, replace the `{{groupName}}` variable by your group name.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -193,7 +193,7 @@ After to create a group you should invite people to join. The invitation is made
 In order to create a group invite link, make a request to BLiP's API as demostrated aside. Please, replace the `{{createdGroupIdentity}}` variable by your group name.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

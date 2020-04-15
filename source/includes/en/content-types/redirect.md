@@ -35,7 +35,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 ```
 
 ```http
-POST https://msging.net/messages HTTP/1.1
+POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -102,7 +102,7 @@ public class SpecificRedirectPassingContext : IMessageReceiver
 ```
 
 ```http
-POST https://msging.net/messages HTTP/1.1
+POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -138,7 +138,7 @@ client.sendMessage({
 >In this example, the chatbot with `mysdkbot` identifier will receive the messages sent by the client, in addition to receiving a message with the content defined in the context, as if it had been sent by the client:
 
 ```http
-POST https://msging.net/messages HTTP/1.1
+POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

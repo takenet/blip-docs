@@ -17,7 +17,7 @@ To get client's **threads** or **messages** exchanged with a bot, send a command
 Get the average [messages](/#messages) response time. This will return a [ResponseTime](/#responsetime) document.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -45,7 +45,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -154,7 +154,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -264,7 +264,7 @@ Get all logged [messages](/#messages). By default, BLiP returns the last 100 log
 | $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -335,7 +335,7 @@ Get all logged [notifications](/#notifications). By default, BLiP returns the la
 | $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -421,7 +421,7 @@ Replace `{messageId}` with the message id.
 
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

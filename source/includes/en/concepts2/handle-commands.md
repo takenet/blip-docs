@@ -52,7 +52,7 @@ messagingHubClient
 
 ```http
 
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Authorization: Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=
 Content-Type: application/json
 Content-Length: 393

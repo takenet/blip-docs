@@ -58,7 +58,7 @@ public class PlainTextMessageReceiver : IMessageReceiver
 </blockquote>
 
 ```http
-POST https://msging.net/notifications HTTP/1.1
+POST https://http.msging.net/notifications HTTP/1.1
 Content-Type: application/json
 Authorization: Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=
 Content-Length: 131

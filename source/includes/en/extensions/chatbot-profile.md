@@ -33,7 +33,7 @@ Delete a message for a profile property.
 Replace `{propertyIdentifier}` with the property identifier you want to delete.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -83,7 +83,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 Get all the active chatbot's profile properties.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -149,7 +149,7 @@ Replace `{propertyIdentifier}` with one of the possible properties:
 * persistent-menu  
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -203,7 +203,7 @@ Example: Retrieve a saved chatbot's greeting message using a <b>get</b> command 
 ### Set a start message
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -276,7 +276,7 @@ In order to set a get started button for your chatbot, use a set command on `/pr
 ### Set start button
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -359,7 +359,7 @@ Note: Messenger doesn't allow the label to be changed </aside>
 ### Set complex persistent menu
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -697,7 +697,7 @@ Last but not least, you can also add a complex persistent menu (with links and s
 ### Set Greeting Message
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -769,7 +769,7 @@ In order to set a text greeting message for your chatbot, use a `set` command on
 ### Set simple persistent menu
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

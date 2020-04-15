@@ -7,7 +7,7 @@ The **utils** extension...  --- provide some information ---
 Delete a specific configuration.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -69,7 +69,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 Get a specific configuration.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -127,7 +127,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 Get all [configurations](/#configuration) of an identity (your bot).
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -214,7 +214,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 Set a specific configuration.
 
 ```http
-POST https://msging.net/commands HTTP/1.1
+POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
