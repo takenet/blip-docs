@@ -74,7 +74,7 @@ After get the customer identifier you are able to send notifications. Use the `a
 
 The only way to send a notification is throught **Message Templates**. Message Templates are message formats for common reusable messages a business may want to send. **Businesses must use Message Templates for sending notifications to customers.** [Click here to see more about Message Templates](https://developers.facebook.com/docs/whatsapp/message-templates).
 
-The meessage template is a plain text message individually approved by the WhatsApp team to ensure they do not violate the WhatsApp policies. Businesses must use templated messages when first reaching out to users or when sending a message 24h after the last message from the user.
+The meessage template is a message content (text, image, document, quick reply, call to action) individually approved by the WhatsApp team to ensure they do not violate the WhatsApp policies. Businesses must use templated messages when first reaching out to users or when sending a message 24h after the last message from the user.
 
 <aside class="notice">
 Note: This type of message is paid.
