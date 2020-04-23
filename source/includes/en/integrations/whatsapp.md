@@ -74,15 +74,15 @@ After get the customer identifier you are able to send notifications. Use the `a
 
 The only way to send a notification is throught **Message Templates**. Message Templates are message formats for common reusable messages a business may want to send. **Businesses must use Message Templates for sending notifications to customers.** [Click here to see more about Message Templates](https://developers.facebook.com/docs/whatsapp/message-templates).
 
-The meessage template is a plain text message individually approved by the WhatsApp team to ensure they do not violate the WhatsApp policies. Businesses must use templated messages when first reaching out to users or when sending a message 24h after the last message from the user. 
+The meessage template is a plain text message individually approved by the WhatsApp team to ensure they do not violate the WhatsApp policies. Businesses must use templated messages when first reaching out to users or when sending a message 24h after the last message from the user.
 
 <aside class="notice">
-Note: This type of message is paid. 
+Note: This type of message is paid.
 </aside>
 
-Nowadays **Message templates** are created in the WhatsApp developer portal manually. So, if you need to add a new Message Template to your bot, please send an email to your BLiP's support contact, containing the following information:
+Nowadays, **Message Templates** are created directly on the BLiP portal, manually. Therefore, if you need to add a new message template to your bot, just access the `Content > Message Template` menu, containing the following information:
 
-* Text content of your message
+* The ontent of your message
 * All translations desired
 * Optionally your message may has variables identified by the pattern {{X}}, where X is the index of the variable.
 

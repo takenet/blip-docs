@@ -292,8 +292,8 @@ The return message *type* will always be the same as the chosen option. When a v
 | Channel              | Type                    |
 |--------------------|-------------------------|
 | BLiP Chat           | Select  |
-| Messenger          | [Button template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/button-template) (on default scope) e [Quick replies](https://developers.facebook.com/docs/messenger-platform/send-api-reference/quick-replies) (on *immediate* scope)|
-| Whatsapp           | Text                  |
+| Messenger          | [Button template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/button-template) (on default scope) and [Quick replies](https://developers.facebook.com/docs/messenger-platform/send-api-reference/quick-replies) (on *immediate* scope)|
+| Whatsapp           | [Quick reply and Call to Actions](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates/interactive-message-templates/) as Message template                 |
 | SMS                | Text                  |
 | Skype              | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1)|
 | Telegram           | [Message](https://core.telegram.org/bots/api#message)|
