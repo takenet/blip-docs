@@ -1439,7 +1439,7 @@ Get a report about [teams](/#team).
 
 Returns a [Team Ticket Summary](/#teamticketssummary) document.
 
-The following filters are available:
+The following filters are **required**:
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|
@@ -1455,7 +1455,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "as4a5w4az",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/analytics/reports/teams"
+  "uri": "/analytics/reports/teams?beginDate=2019-04-15&endDate=2019-06-22"
 }
 ```
 
