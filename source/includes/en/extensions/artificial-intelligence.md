@@ -3381,8 +3381,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "5c8ddbff-952c-4a3b-b49f-431353a2276d",
   "to": "postmaster@ai.msging.net",
   "method": "get",
-  "uri": "/content"
-  metadata: {blip_portal.email: "user"}
+  "uri": "/content"  
 }
 ```
 
@@ -3400,8 +3399,8 @@ Content-Type: application/json
                 "id": "0059b633-9713-43c8-8f54-017189ae6745",
                 "name": "Content Title",
                 "result": {
-					type: "text/plain", 
-					content: "content"
+					"type": "text/plain", 
+					"content": "content"
 				},
                 "combinations": [
                     {
@@ -3419,8 +3418,7 @@ Content-Type: application/json
     "from": "postmaster@ai.msging.net/#az-iris2",
     "to": "demobot@msging.net",
     "metadata": {
-        "#command.uri": "lime://demobot@msging.net/content",
-        "uber-trace-id": "ea7defa3a6a9cdaa%3Aea7defa3a6a9cdaa%3A0%3A1"
+        "#command.uri": "lime://demobot@msging.net/content"
     }
 }
 ```
@@ -3495,7 +3493,7 @@ namespace Extension
                 Id = EnvelopeId.NewId(),
                 Method = CommandMethod.Set,
                 Uri = new LimeUri("/content/analysis"),
-                Type = 'application/vnd.iris.ai.content-result+json',
+                Type = "application/vnd.iris.ai.content-result+json",
                 Resource = new ContentResult {
                   "id": "ef031437-528a-4359-8b25-0b7a79860eb7",
                   "name": "new content",
@@ -3548,12 +3546,11 @@ Authorization: Key {YOUR_TOKEN}
   "method": "set",
   "uri": "/content/analysis",
   "resource": {
-    intent: "intent"
-    entities: ["entity"]
-    minEntityMatch:1
+    "intent": "intent"
+    "entities": ["entity"]
+    "minEntityMatch":1
     },
-  type: "application/vnd.iris.ai.content-combination+json",
-  metadata: {blip_portal.email: "user", server.shouldStore: "true"}
+  "type": "application/vnd.iris.ai.content-combination+json"
 }
 ```
 
@@ -3562,31 +3559,29 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  type: "application/vnd.iris.ai.content-result+json",
-  resource: {
-    id: "a11afe64-7bd0-4333-b22e-0171a2458562"
-    name: "new content"
-    result: {
-      type: "text/plain",
-      content: "new content",
+  "type": "application/vnd.iris.ai.content-result+json",
+  "resource": {
+    "id": "a11afe64-7bd0-4333-b22e-0171a2458562"
+    "name": "new content"
+    "result": {
+      "type": "text/plain",
+      "content": "new content",
       },
-    combinations: [
+    "combinations": [
       {
-        intent: "new",
-        entities: ["new"],
-        minEntityMatch: 1
+        "intent": "new",
+        "entities": ["new"],
+        "minEntityMatch": 1
         }
       ]
     }
-  method: "set"
-  status: "success"
-  id: "ef031437-528a-4359-8b25-0b7a79860eb7"
-  from: "postmaster@ai.msging.net/#hmg-az-iris2"
-  to: "bot14@msging.net"
-  metadata: {
-    server.shouldStore: "True"
+  "method": "set"
+  "status": "success"
+  "id": "ef031437-528a-4359-8b25-0b7a79860eb7"
+  "from": "postmaster@ai.msging.net/#hmg-az-iris2"
+  "to": "bot14@msging.net"
+  "metadata": {
     #command.uri: "lime://demobot@msging.net/content/analysis"
-    uber-trace-id: "d06d82c3d521f83d%3A664b7fc40ddbd97%3Ad06d82c3d521f83d%3A1"
   }
 }
 ```
@@ -3602,11 +3597,10 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  id: "baacf121-e472-48a3-956c-d5f12df0484b"
-  to: "postmaster@ai.msging.net"
-  method: "get"
-  uri: "/content/a11afe64-7bd0-4333-b22e-0171a2458562"
-  metadata: {blip_portal.email: "user"}
+  "id": "baacf121-e472-48a3-956c-d5f12df0484b"
+  "to": "postmaster@ai.msging.net"
+  "method": "get"
+  "uri": "/content/a11afe64-7bd0-4333-b22e-0171a2458562"
 
 }
 ```
@@ -3618,17 +3612,17 @@ Content-Type: application/json
 {
     "type": "application/vnd.lime.collection+json",
     "resource": {
-        id: "a11afe64-7bd0-4333-b22e-0171a2458562"
-        name: "new content"
-        result: {
-          type: "text/plain"
-          content: "new content"
+        "id": "a11afe64-7bd0-4333-b22e-0171a2458562"
+        "name": "new content"
+        "result": {
+          "type": "text/plain"
+          "content": "new content"
         }
-        combinations: [
+        "combinations": [
           {
-            intent: "new",
-            entities: ["new"],
-            minEntityMatch: 1
+            "intent": "new",
+            "entities": ["new"],
+            "minEntityMatch": 1
           }
         ]
     },
@@ -3638,8 +3632,7 @@ Content-Type: application/json
     "from": "postmaster@ai.msging.net/#az-iris2",
     "to": "demobot@msging.net",
     "metadata": {
-        "#command.uri": "lime://demobot@msging.net/content/a11afe64-7bd0-4333-b22e-0171a2458562",
-        "uber-trace-id": "ea7defa3a6a9cdaa%3Aea7defa3a6a9cdaa%3A0%3A1"
+        "#command.uri": "lime://demobot@msging.net/content/a11afe64-7bd0-4333-b22e-0171a2458562"
     }
 }
 ```
@@ -3711,7 +3704,7 @@ namespace Extension
                 Id = EnvelopeId.NewId(),
                 Method = CommandMethod.Set,
                 Uri = new LimeUri("/content/{id}"),
-                Type = 'application/vnd.iris.ai.content-result+json',
+                Type = "application/vnd.iris.ai.content-result+json",
                 Resource = new ContentResult {
                   "id": "a11afe64-7bd0-4333-b22e-0171a2458562",
                   "name": "New Content",
@@ -3817,9 +3810,7 @@ Content-Type: application/json
   "from":"postmaster@ai.msging.net/#az-iris2",
   "to":"demobot@msging.net",
   "metadata":{
-    "server.shouldStore":"True",
-    "#command.uri":"lime://demobot@msging.net/content/a11afe64-7bd0-4333-b22e-0171a2458562",
-    "uber-trace-id":"65c42fa092672b57%3A6c4260cbbe13293a%3A65c42fa092672b57%3A1"
+    "#command.uri":"lime://demobot@msging.net/content/a11afe64-7bd0-4333-b22e-0171a2458562"
   }
 }
 ```
@@ -3852,7 +3843,7 @@ namespace Extension
                 Id = EnvelopeId.NewId(),
                 Method = CommandMethod.Set,
                 Uri = new LimeUri("/content"),
-                Type = 'application/vnd.iris.ai.content-result+json',
+                Type = "application/vnd.iris.ai.content-result+json",
                 Resource = new ContentResult {
                   "id": "a11afe64-7bd0-4333-b22e-0171a2458562",
                   "name": "new content",
@@ -3928,8 +3919,7 @@ Authorization: Key {YOUR_TOKEN}
       }
     ]
   },
-  "type":"application/vnd.iris.ai.content-result+json",
-  "metadata":{"blip_portal.email":"user","server.shouldStore":"true"}
+  "type":"application/vnd.iris.ai.content-result+json"
 }
 ```
 
@@ -3959,9 +3949,7 @@ Content-Type: application/json
   "from":"postmaster@ai.msging.net/#hmg-az-iris2",
   "to":"demobot@msging.net",
   "metadata":{
-    "server.shouldStore":"True",
-    "#command.uri":"lime://demobot@msging.net/content",
-    "uber-trace-id":"65c42fa092672b57%3A6c4260cbbe13293a%3A65c42fa092672b57%3A1"
+    "#command.uri":"lime://demobot@msging.net/content"
   }
 }
 ```
@@ -4023,10 +4011,7 @@ Authorization: Key {YOUR_TOKEN}
   "to":"postmaster@ai.msging.net",
   "method":"delete",
   "uri":"/content/1170f877-928b-42ec-902e-0171a4429437",
-  "metadata":{
-    "blip_portal.email":"user",
-    "server.shouldStore":"true"
-  }
+  
 }
 ```
 
@@ -4041,9 +4026,7 @@ Content-Type: application/json
   "id":"e9df4092-54c5-4631-b367-be1f99f76d65",
   "from":"postmaster@ai.msging.net/#az-iris1",
   "to":"demobot@msging.net/":{
-    "server.shouldStore":"True",
-    "#command.uri":"lime://bot14@msging.net/content/1170f877-928b-42ec-902e-0171a4429437",
-    "uber-trace-id":"df018ff86483e2d3%3Adc94d4ebcca0568a%3Adf018ff86483e2d3%3A1"
+    "#command.uri":"lime://bot14@msging.net/content/1170f877-928b-42ec-902e-0171a4429437"
   }
 }
 
