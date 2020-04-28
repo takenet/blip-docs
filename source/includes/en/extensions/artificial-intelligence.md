@@ -33,12 +33,19 @@ All manipulation of the model can be done through the portal of the BLiP, and th
 | `/analysis`                       | `set`    | Analyzes an user sentence using a published model. |
 | `/analysis`                       | `get`    | Retrieves the history of performed analysis. It is possible to paginate the request using using `$skip` and `$take` arguments and filter with `$filter`, using the [OData syntax](http://www.odata.org/documentation/odata-version-2-0/uri-conventions/#FilterSystemQueryOption). |
 | `/analysis/{id}/feedback`         | `set`    | Provides feedback to a performed analysis and suggest an intent to improve the model. |
+| `/content`                        | `get`    | Search in all contents that are assosiated to the chatbot. It is possible to paginate the request using `$skip` and `$take` arguments. |
+| `/content/analysis`               | `set`    | Creates a new content analisys. |
+| `/content/{id}`                   | `get`    | Retrieves a content by its `id`. |
+| `/content/{id}`                   | `set`    | Creates a new content with a specified `id`. |
+| `/content/{id}`                   | `delete` | Removes a content with id {id}. |
+| `/content`                        | `set`    | Creates a new content. |
+| `/content`                        | `delete` | Removes multiple contents that are associated to the chatbot. |
 
 The resource types are:
 
 | Name              | MIME Type                                       | Description                                      |
 |-------------------|-------------------------------------------------|--------------------------------------------------|
-| Intent         | `application/vnd.iris.ai.intention+json`        | Intent expressed through a sentence.                |
+| Intent            | `application/vnd.iris.ai.intention+json`        | Intent expressed through a sentence.                |
 | Entity            | `application/vnd.iris.ai.entity+json`           | Entity identified in an intent, with its synonyms.  |
 | Question          | `application/vnd.iris.ai.question+json`         | A user's question that is associated with an intent for model training. |
 | Answer            | `application/vnd.iris.ai.answer+json`           | Response that can be sent in case a user's intent is identified. |
@@ -48,6 +55,7 @@ The resource types are:
 | Analisys response | `application/vnd.iris.ai.analysis-response+json`| Sentence analysis response with the identified intents and entities. |
 | Analisys          | `application/vnd.iris.ai.analysis+json`         | History information about a performed analysis.  |
 | Analisys feedback | `application/vnd.iris.ai.analysis-feedback+json`| Feedback information about a performed analysis. |
+| Content result    | `application/vnd.iris.ai.content-result+json`   | The content created. |
 
 ### Analyze a model
 
@@ -3348,4 +3356,736 @@ namespace Extension
         }
     }
 }
+```
+
+### 
+
+### Get all contents
+
+Getting all contents.
+
+The following uri filters are available to get a chatbot's contents:
+
+| QueryString     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **skip** | The number of entities to be skipped.                                |    0    |
+| **take** | The number of entities to be returned.                               |   100   |
+| **ascending** | Sets ascending alphabetical order.                                |    true    |
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "5c8ddbff-952c-4a3b-b49f-431353a2276d",
+  "to": "postmaster@ai.msging.net",
+  "method": "get",
+  "uri": "/content"  
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 1,
+        "itemType": "application/vnd.iris.ai.content-result+json",
+        "items": [
+            {
+                "id": "0059b633-9713-43c8-8f54-017189ae6745",
+                "name": "Content Title",
+                "result": {
+					"type": "text/plain", 
+					"content": "content"
+				},
+                "combinations": [
+                    {
+						"intent": "new_intent",
+						"entities": ["entity"],
+						"minEntityMatch": 1
+                    }
+				]
+            }			
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "34e0cb67-d56b-4b5c-aeb1-6c81e9784f67",
+    "from": "postmaster@ai.msging.net/#az-iris2",
+    "to": "demobot@msging.net",
+    "metadata": {
+        "#command.uri": "lime://demobot@msging.net/content"
+    }
+}
+```
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.GET,
+    uri: '/content'
+  });
+});
+``` 
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.ArtificialIntelligence;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
+
+namespace Extensions
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
+
+        public ArtificialIntelligenceReceiver(IArtificialIntelligenceExtension artificialIntelligenceExtension)
+        {
+            _artificialIntelligenceExtension = artificialIntelligenceExtension;
+        }
+
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {            
+            var skip = 0; //optional
+            var take = 100; //optional
+            var ascending = true; //optional
+
+            await _artificialIntelligenceExtension.GetFilteredContentResultAsync(skip, take, ascending, cancellationToken);
+        }
+    }
+}
+```
+
+### Create a content analysis
+
+Creates a new content analysis according to its type.
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Set,
+                Uri = new LimeUri("/content/analysis"),
+                Type = "application/vnd.iris.ai.content-result+json",
+                Resource = new ContentResult {
+                  "id": "ef031437-528a-4359-8b25-0b7a79860eb7",
+                  "name": "new content",
+                  "result": {
+                    type: "text/plain"
+                    content: "new content"
+                  },
+                  "combinations": [
+                    {
+                        "intent": ,
+                        "entities": [],
+                        "minEntityMatch": 
+                    }
+                  ]
+                }
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
+    }
+}
+```
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: '/content/analysis',
+    type: 'application/vnd.iris.ai.content-result+json',
+    resource: {
+      intent: "intent"
+      entities: ["entity"]
+      minEntityMatch:1
+      },
+    }
+  );
+});
+```
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "ef031437-528a-4359-8b25-0b7a79860eb7",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/content/analysis",
+  "resource": {
+    "intent": "intent"
+    "entities": ["entity"]
+    "minEntityMatch":1
+    },
+  "type": "application/vnd.iris.ai.content-combination+json"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "type": "application/vnd.iris.ai.content-result+json",
+  "resource": {
+    "id": "a11afe64-7bd0-4333-b22e-0171a2458562"
+    "name": "new content"
+    "result": {
+      "type": "text/plain",
+      "content": "new content",
+      },
+    "combinations": [
+      {
+        "intent": "new",
+        "entities": ["new"],
+        "minEntityMatch": 1
+        }
+      ]
+    }
+  "method": "set"
+  "status": "success"
+  "id": "ef031437-528a-4359-8b25-0b7a79860eb7"
+  "from": "postmaster@ai.msging.net/#hmg-az-iris2"
+  "to": "bot14@msging.net"
+  "metadata": {
+    "#command.uri": "lime://demobot@msging.net/content/analysis"
+  }
+}
+```
+
+
+### Get a content
+
+Getting a content by its id.
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "baacf121-e472-48a3-956c-d5f12df0484b"
+  "to": "postmaster@ai.msging.net"
+  "method": "get"
+  "uri": "/content/a11afe64-7bd0-4333-b22e-0171a2458562"
+
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "id": "a11afe64-7bd0-4333-b22e-0171a2458562"
+        "name": "new content"
+        "result": {
+          "type": "text/plain"
+          "content": "new content"
+        }
+        "combinations": [
+          {
+            "intent": "new",
+            "entities": ["new"],
+            "minEntityMatch": 1
+          }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "34e0cb67-d56b-4b5c-aeb1-6c81e9784f67",
+    "from": "postmaster@ai.msging.net/#az-iris2",
+    "to": "demobot@msging.net",
+    "metadata": {
+        "#command.uri": "lime://demobot@msging.net/content/a11afe64-7bd0-4333-b22e-0171a2458562"
+    }
+}
+```
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.GET,
+    uri: '/content/{id}'
+  });
+});
+``` 
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.ArtificialIntelligence;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
+
+namespace Extensions
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly IArtificialIntelligenceExtension _artificialIntelligenceExtension;
+
+        public ArtificialIntelligenceReceiver(IArtificialIntelligenceExtension artificialIntelligenceExtension)
+        {
+            _artificialIntelligenceExtension = artificialIntelligenceExtension;
+        }
+
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {            
+		    var contentResultId = "a11afe64-7bd0-4333-b22e-0171a2458562";
+            await _artificialIntelligenceExtension.GetContentResultAsync(contentResultId, cancellationToken);
+        }
+    }
+}
+```
+
+### Create a content with an id
+
+Create a new content with a specified id. If the id already refers to a content, it will be overwritten. If the id refers to a combination of contents, a new content will be added to the combination.
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Set,
+                Uri = new LimeUri("/content/{id}"),
+                Type = "application/vnd.iris.ai.content-result+json",
+                Resource = new ContentResult {
+                  "id": "a11afe64-7bd0-4333-b22e-0171a2458562",
+                  "name": "New Content",
+                  "result": {
+                    "type":"text/plain",
+                    "content":"description"},
+                  "combinations": [
+                    {
+                      "intent":"intent",
+                      "entities":["entity"],
+                      "minEntityMatch":1,
+                      "intentName":"intent" 
+                    }
+                  ]
+                }
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
+    }
+}
+```
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: '/content/{id}',
+    type: 'application/vnd.iris.ai.content-result+json',
+    resource: {
+          "id": "a11afe64-7bd0-4333-b22e-0171a2458562",
+          "name": "New Content",
+          "result": {
+            "type":"text/plain",
+            "content":"description"},
+          "combinations": [
+            {
+              "intent":"intent",
+              "entities":["entity"],
+              "minEntityMatch":1,
+              "intentName":"intent"
+            }
+          ]
+    }
+  });
+});
+```
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "f6b84179-fe30-4b18-a757-44c6d4f35efd",
+  "to": "postmaster@ai.msging.net",
+  "method": "set",
+  "uri": "/content/{id}",
+  "type": "application/vnd.iris.ai.content-result+json",
+  "resource": {
+    "id":"a11afe64-7bd0-4333-b22e-0171a2458562",
+    "name":"new content",
+    "result":{
+      "type":"text/plain",
+      "content":"description"},
+    "combinations":[
+      {
+        "intent":"intent",
+        "entities":["entity"],
+        "minEntityMatch":1,
+        "intentName":"intent"
+      }
+    ]
+  }
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "type":"application/vnd.iris.ai.content-result+json",
+  "resource":{
+    "id":"a11afe64-7bd0-4333-b22e-0171a2458562",
+    "name":"new content",
+    "result":{
+      "type":"text/plain",
+      "content":"description"
+    },
+    "combinations":[
+      {  "intent":"new",
+      "entities":["entity"],
+      "minEntityMatch":1
+      }
+    ]
+  },
+  "method":"set",
+  "status":"success",
+  "id":"f6b84179-fe30-4b18-a757-44c6d4f35efd",
+  "from":"postmaster@ai.msging.net/#az-iris2",
+  "to":"demobot@msging.net",
+  "metadata":{
+    "#command.uri":"lime://demobot@msging.net/content/a11afe64-7bd0-4333-b22e-0171a2458562"
+  }
+}
+```
+
+### Create a content
+
+Create a new content.
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Takenet.Iris.Messaging.Resources.ArtificialIntelligence;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Set,
+                Uri = new LimeUri("/content"),
+                Type = "application/vnd.iris.ai.content-result+json",
+                Resource = new ContentResult {
+                  "id": "a11afe64-7bd0-4333-b22e-0171a2458562",
+                  "name": "new content",
+                  "result": {
+                    "type":"text/plain",
+                    "content":"description"}
+                  "combinations": [
+                    {
+                      "intent":"intent",
+                      "entities":["entity"],
+                      "minEntityMatch":1,
+                      "intentName":"intent" 
+                    }
+                  ]
+                }
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
+    }
+}
+```
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.SET,
+    uri: '/content',
+    type: 'application/vnd.iris.ai.content-result+json',
+    resource: {
+          "id":"a11afe64-7bd0-4333-b22e-0171a2458562",
+          "name":"new content",
+          "result":{
+            "type":"text/plain",
+            "content":"description"},
+          "combinations":[
+            {
+              "intent":"intent",
+              "entities":["entity"],
+              "minEntityMatch":1,
+              "intentName":"intent"
+            }
+          ]
+    }
+  });
+});
+```
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id":"f6b84179-fe30-4b18-a757-44c6d4f35efd",
+  "to":"postmaster@ai.msging.net",
+  "method":"set",
+  "uri":"/content",
+  "resource":{
+    "id":"a11afe64-7bd0-4333-b22e-0171a2458562",
+    "name":"new content",
+    "result":{
+      "type":"text/plain",
+      "content":"description"},
+    "combinations":[
+      {
+        "intent":"intent",
+        "entities":["entity"],
+        "minEntityMatch":1,
+        "intentName":"intent"
+      }
+    ]
+  },
+  "type":"application/vnd.iris.ai.content-result+json"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "type":"application/vnd.iris.ai.content-result+json",
+  "resource":{
+    "id":"a11afe64-7bd0-4333-b22e-0171a2458562",
+    "name":"new content",
+    "result":{
+      "type":"text/plain",
+      "content":"description"
+    },
+    "combinations":[
+      {  "intent":"new",
+      "entities":["entity"],
+      "minEntityMatch":1
+      }
+    ]
+  },
+  "method":"set",
+  "status":"success",
+  "id":"f6b84179-fe30-4b18-a757-44c6d4f35efd",
+  "from":"postmaster@ai.msging.net/#hmg-az-iris2",
+  "to":"demobot@msging.net",
+  "metadata":{
+    "#command.uri":"lime://demobot@msging.net/content"
+  }
+}
+```
+
+### Delete a content
+
+Remove a content with id {id}.
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+
+namespace Extension
+{
+    public class ArtificialIntelligenceReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+
+        public ArtificialIntelligenceReceiver(ISender sender)
+        {
+           _sender = sender;
+        }
+        
+        public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+        {
+            var command = new Command{
+                Id = EnvelopeId.NewId(),
+                Method = CommandMethod.Delete,
+                Uri = new LimeUri("/content/1170f877-928b-42ec-902e-0171a4429437")
+            };
+           
+           await _sender.SendCommandAsync(command, cancellationToken);     
+        }           
+    }
+}
+```
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.DELETE,
+    uri: '/content/1170f877-928b-42ec-902e-0171a4429437'    
+  });
+});
+```
+
+```http
+
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id":"e9df4092-54c5-4631-b367-be1f99f76d65",
+  "to":"postmaster@ai.msging.net",
+  "method":"delete",
+  "uri":"/content/1170f877-928b-42ec-902e-0171a4429437",
+  
+}
+```
+
+```http
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "method":"delete",
+  "status":"success",
+  "id":"e9df4092-54c5-4631-b367-be1f99f76d65",
+  "from":"postmaster@ai.msging.net/#az-iris1",
+  "to":"demobot@msging.net/":{
+    "#command.uri":"lime://bot14@msging.net/content/1170f877-928b-42ec-902e-0171a4429437"
+  }
+}
+
+```
+
+### Delete all contents
+
+Deleting all contents associated to a chatbot.
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "aa89s7da-b4as85da8as87",
+  "to": "postmaster@ai.msging.net",
+  "method": "delete",
+  "uri": "/content"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "10",
+    "from": "postmaster@ai.msging.net",
+    "to": "contact@msging.net",
+    "metadata": {
+        "#command.uri": "lime://botname@msging.net/content"
+    }
+}
+```
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+  await client.sendCommand({
+    id: Lime.Guid(),
+    to: 'postmaster@ai.msging.net',
+    method: Lime.CommandMethod.DELETE,
+    uri: '/content'
+  });
+});
+```
+
+```csharp
+
+public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
+  {
+      var command = new Command{
+          Id = EnvelopeId.NewId(),
+          Method = CommandMethod.Delete,
+          Uri = new LimeUri("/content")
+      };
+
+      await _sender.SendCommandAsync(command, cancellationToken);
+  }
 ```
