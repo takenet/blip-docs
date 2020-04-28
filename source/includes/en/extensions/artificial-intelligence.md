@@ -3581,7 +3581,7 @@ Content-Type: application/json
   "from": "postmaster@ai.msging.net/#hmg-az-iris2"
   "to": "bot14@msging.net"
   "metadata": {
-    #command.uri: "lime://demobot@msging.net/content/analysis"
+    "#command.uri": "lime://demobot@msging.net/content/analysis"
   }
 }
 ```
