@@ -2229,6 +2229,15 @@ Replace `{ticketId}` with the ticket id you want to get the messages.
 | **$ascending** | Sets ascending alphabetical order.                                |    true    |
 | **$getFromOwnerIfTunnel** | Get all messages from owner router.                                |    true    |
 
+| Parameters | Example                              |
+|------------|--------------------------------------|
+| **ticketId**   | f1e95e10-2e21-4438-a076-71183b253981 |
+
+<aside class="notice">
+Note: After the ticket is created, it <b>expires in a month</b>. In this situation, messages are accessible only by endpoint <a href="https://docs.blip.ai/#get-last-threads">Get last threads</a>.
+</aside>
+
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
