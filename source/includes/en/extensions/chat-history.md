@@ -134,9 +134,15 @@ The following uri filters are available to get chatbot's threads:
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|
-| $skip | The number of elements to be skipped                           |
 | $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
-| messageDate  | Initial date on the threads query         |
+| $skip | The number of elements to be skipped                           |
+| $messageDate  | Initial date on the threads query         |
+| $messageId  | Initial date on the threads query         |
+
+
+<aside class="notice">
+Note: To recover all data, use the following uri iteratively <b>'/threads?$messageId={lastMessageId}&$take=100'</b> always updating $messageId with the value of the last message id obtained.
+</aside>
 
 ### Get last messages
 
@@ -249,9 +255,9 @@ The following uri filters are available to get a chatbot's thread:
 |--------------|-------------------------------------------|
 | $skip | The number of elements to be skipped                           |
 | $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
-| messageId  | Initial message id for the thread messages query        |
-| direction  | Possible values: `asc` and `desc`. Define if will be returned de messages after or before respectively |
-| storageDate  | The reference date to search. Example: `2020-01-08T15:59:07.086Z` |
+| $messageId  | Initial message id for the thread messages query        |
+| $direction  | Possible values: `asc` and `desc`. Define if will be returned de messages after or before respectively |
+| $storageDate  | The reference date to search. Example: `2020-01-08T15:59:07.086Z` |
 
 ### Get logged messages
 
