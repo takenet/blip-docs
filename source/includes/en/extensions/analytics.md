@@ -1109,6 +1109,8 @@ To retrieve all counters of a category, add the category name to the command uri
 | startDate    | Initial date to search for events.        |
 | endDate      | Limit date to retrieve the events.        |
 
+
+
 ### Get details
 
 ```javascript
@@ -1217,6 +1219,10 @@ Retrieves all events tracked with a specific pair of action and categories. The 
 | $take        | Limit of total of items to be returned.   |
 | startDate    | Initial date to search for events.        |
 | endDate      | Limit date to retrieve the events.        |
+
+<aside class="notice">
+By default, the request returns <b>only today's data<b>. Use the filters to increase the date range.
+</aside>
 
 ### Get engaged users
 
