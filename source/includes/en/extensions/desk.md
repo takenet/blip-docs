@@ -16,6 +16,8 @@ You must submit a [attendant](/#attendant) document, with at least an `identity`
 
 You can also send a `application/vnd.lime.collection+json` if you want to add many agents at once.
 
+That endpoint also set all the permissions needed to the attendant starts an attendance.
+
 <aside class="notice">
 Note: The identity must be in the form <b>jhonny%40email.com@blip.ai</b>.
 </aside>
