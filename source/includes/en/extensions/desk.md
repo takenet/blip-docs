@@ -8,14 +8,16 @@ This feature is useful for **enabling humans to reply some complex or unhandled 
 
 Before using this extension, check if you have already properly set a customer service tool (help desk application) on the Portal and if you already have at least one available human agent to receive and reply to messages.
 
-### Add a new agent
+### Add new agents
 
-Add a new agent to your attendance team.
+Add new agents to your attendance team.
 
 You must submit a [attendant](/#attendant) document, with at least an `identity` and a `team`.
 
+You can also send a `application/vnd.lime.collection+json` if you want to add many agents at once.
+
 <aside class="notice">
-Note: The identity must be in the form <b>jonh%40email.com@blip.ai</b>.
+Note: The identity must be in the form <b>jhonny%40email.com@blip.ai</b>.
 </aside>
 
 ```http
@@ -33,6 +35,31 @@ Authorization: Key {YOUR_TOKEN}
     "teams": [
         "{team1}"
     ]
+  }
+}
+```
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+{  
+  "id": "75481236",
+  "to": "postmaster@desk.msging.net",
+  "method": "set",
+  "uri": "/attendants",
+  "type": "application/vnd.lime.collection+json",
+  "resource":
+  {
+	"total": 1,
+	"itemType": "application/vnd.iris.desk.attendant+json",
+	"items": 
+	[{
+		"identity": "{identity}"
+        "teams": [
+            "{team1}"
+        ]
+	}]
   }
 }
 ```
