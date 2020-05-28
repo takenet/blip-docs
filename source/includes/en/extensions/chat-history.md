@@ -137,11 +137,11 @@ The following uri filters are available to get chatbot's threads:
 | $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
 | $skip | The number of elements to be skipped                           |
 | $messageDate  | Initial date on the threads query         |
-| $messageId  | Initial date on the threads query         |
+| messageId  | Initial date on the threads query         |
 
 
 <aside class="notice">
-Note: To recover all data, use the following uri iteratively <b>'/threads?$messageId={lastMessageId}&$take=100'</b> always updating $messageId with the value of the last message id obtained.
+Note: To recover all data, use the following uri iteratively <b>'/threads?messageId={lastMessageId}&$take=100'</b> always updating messageId with the value of the last message id obtained.
 </aside>
 
 ### Get last messages

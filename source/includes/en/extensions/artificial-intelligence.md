@@ -20,7 +20,7 @@ All manipulation of the model can be done through the portal of the BLiP, and th
 | `/intentions`                     | `get`    | Search in all intents that are associated to the chatbot. It is possible to paginate the request using `$skip` and `$take` arguments. |
 | `/intentions/{id}`                | `get`    | Retrieves an intent by its `id`.           |
 | `/entities`                       | `set`    | Creates a new entity. The `id` of the entity is returned in the command response. |
-| `/entities`                       | `get`    | Search in all intents that are associated to the chatbot. It is possible to paginate the request using `$skip` and `$take` arguments. |
+| `/entities`                       | `get`    | Search in all entities that are associated to the chatbot. It is possible to paginate the request using `$skip` and `$take` arguments. |
 | `/entities/{id}`                  | `get`    | Retrieves an entity by its `id`.           |
 | `/intentions/{id}/questions`      | `set`    | Create questions associated to the intent `id`. |
 | `/intentions/{id}/questions`      | `get`    | Search in all questions that are associated to the intent `id`. It is possible to paginate the request using `$skip` and `$take` arguments. |
@@ -51,10 +51,10 @@ The resource types are:
 | Answer            | `application/vnd.iris.ai.answer+json`           | Response that can be sent in case a user's intent is identified. |
 | Training          | `application/vnd.iris.ai.model-training+json`   | Model training request. |
 | Publishing        | `application/vnd.iris.ai.model-publishing+json` | Model publishing request, to make it available for use. |
-| Analisys request  | `application/vnd.iris.ai.analysis-request+json` | Sentence analysis request. |
-| Analisys response | `application/vnd.iris.ai.analysis-response+json`| Sentence analysis response with the identified intents and entities. |
-| Analisys          | `application/vnd.iris.ai.analysis+json`         | History information about a performed analysis.  |
-| Analisys feedback | `application/vnd.iris.ai.analysis-feedback+json`| Feedback information about a performed analysis. |
+| Analysis request  | `application/vnd.iris.ai.analysis-request+json` | Sentence analysis request. |
+| Analysis response | `application/vnd.iris.ai.analysis-response+json`| Sentence analysis response with the identified intents and entities. |
+| Analysis          | `application/vnd.iris.ai.analysis+json`         | History information about a performed analysis.  |
+| Analysis feedback | `application/vnd.iris.ai.analysis-feedback+json`| Feedback information about a performed analysis. |
 | Content result    | `application/vnd.iris.ai.content-result+json`   | The content created. |
 
 ### Analyze a model
