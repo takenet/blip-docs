@@ -1,6 +1,7 @@
 ## Thread
 
 Represents a conversation thread. A conversation thread could be a conversation, a message or a message group.
+It has the limitation of only returning messages stored in the last 3 months.
 
 Every thread must have an associated [Account](#account) or [Contact](#contact).
 
