@@ -26,7 +26,7 @@ Note: The identity must be in the form <b>jhonny%40email.com@blip.ai</b>.
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
-{  
+{
   "id": "75481236",
   "to": "postmaster@desk.msging.net",
   "method": "set",
@@ -45,7 +45,7 @@ Authorization: Key {YOUR_TOKEN}
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
-{  
+{
   "id": "75481236",
   "to": "postmaster@desk.msging.net",
   "method": "set",
@@ -55,7 +55,7 @@ Authorization: Key {YOUR_TOKEN}
   {
 	"total": 1,
 	"itemType": "application/vnd.iris.desk.attendant+json",
-	"items": 
+	"items":
 	[{
 		"identity": "{identity}"
         "teams": [
@@ -125,7 +125,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "4ar4b5a4-1b21ae4a",
   "to": "postmaster@desk.msging.net",
   "method": "set",
@@ -518,15 +518,15 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "487556",
   "to": "postmaster@desk.msging.net",
   "method": "set",
   "uri": "/tickets",
   "type": "application/vnd.iris.ticket+json",
-  "resource": { 
+  "resource": {
   	"customerIdentity": "{customerIdentity}"
-  } 
+  }
 }
 ```
 
@@ -599,7 +599,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "4rt-83atab-a712a",
   "to": "postmaster@desk.msging.net",
   "method": "set",
@@ -613,9 +613,9 @@ Authorization: Key {YOUR_TOKEN}
 	"team": "Default",
 	"title": "City Rule ",
 	"values": [
-		"Belo Horizonte", 
-		"BH", 
-		"Minas Gerais", 
+		"Belo Horizonte",
+		"BH",
+		"Minas Gerais",
 		"MG"
 		]
 	}
@@ -650,9 +650,9 @@ client.sendCommand({
 	team: "Default",
 	title: "City Rule ",
 	values: [
-		"Belo Horizonte", 
-		"BH", 
-		"Minas Gerais", 
+		"Belo Horizonte",
+		"BH",
+		"Minas Gerais",
 		"MG"
 		]
 	}
@@ -810,7 +810,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "14afasf8-as4das5d4-asda1s",
   "to": "postmaster@desk.msging.net",
   "method": "delete",
@@ -862,7 +862,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "aabbccddee",
   "to": "postmaster@desk.msging.net",
   "method": "delete",
@@ -918,7 +918,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "14857699",
   "to": "postmaster@desk.msging.net",
   "method": "delete",
@@ -1004,7 +1004,7 @@ var command = new Command(){
     To = "postsmaster@desk.msging.net",
     Uri = new LimeUri("/tickets/change-status"),
     Resource = new Ticket{
-        CustomerIdentity = "1654804277843415@messenger.gw.msging.net", 
+        CustomerIdentity = "1654804277843415@messenger.gw.msging.net",
         Id =  "ba11b95c-7564-4685-b835-8cc76fae6fac",
         OwnerIdentity = "testehome1@msging.net",
         Status = TicketStatusEnum.ClosedClient,
@@ -1144,20 +1144,20 @@ namespace user_info_extension_test_c_
     {
         private readonly ISender _sender;
         private readonly Settings _settings;
-        private readonly IHelpDeskExtension _helpdeskExtension; 
+        private readonly IHelpDeskExtension _helpdeskExtension;
 
         public PlainTextMessageReceiver(ISender sender, Settings settings, IHelpDeskExtension helpdeskExtension)
         {
             _sender = sender;
             _settings = settings;
-            _helpdeskExtension = helpdeskExtension; 
+            _helpdeskExtension = helpdeskExtension;
         }
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         { // Process received message
-           
+
             await _helpdeskExtension.ForwardMessageToAttendantAsync(message, cancellationToken);
-        
+
         }
     }
 }
@@ -1175,7 +1175,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "asgba8744-aabas222a",
   "to": "postmaster@desk.msging.net",
   "method": "get",
@@ -1249,7 +1249,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "as4a5w4az",
   "to": "postmaster@desk.msging.net",
   "method": "get",
@@ -1335,7 +1335,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "98t47axv",
   "to": "postmaster@desk.msging.net",
   "method": "get",
@@ -1398,7 +1398,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "98t47axv",
   "to": "postmaster@desk.msging.net",
   "method": "get",
@@ -1480,7 +1480,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "as4a5w4az",
   "to": "postmaster@desk.msging.net",
   "method": "get",
@@ -1572,7 +1572,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "98t47axv",
   "to": "postmaster@desk.msging.net",
   "method": "get",
@@ -1645,7 +1645,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "878855",
   "to": "postmaster@desk.msging.net",
   "method": "get",
@@ -1734,7 +1734,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "aabbccddee",
   "to": "postmaster@desk.msging.net",
   "method": "get",
@@ -1799,7 +1799,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "74863215",
   "to": "postmaster@desk.msging.net",
   "method": "get",
@@ -1860,23 +1860,18 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Get [agents](/#attendantticketssummary) metrics and informations.
 
-The following filters are available:
-
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| beginDate    | Initial date to retrieve the metrics        |
-| endDate      | Limit date to retrieve the metrics.        |
+The endpoint returns only data related to the current day.
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "548753",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/monitoring/attendants"
+  "uri": "/monitoring/attendants?version=2"
 }
 ```
 
@@ -1921,7 +1916,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/monitoring/attendants"
+    uri: "/monitoring/attendants?version=2"
 })
 ```
 
@@ -1930,7 +1925,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/monitoring/attendants")
+    Uri = new LimeUri("/monitoring/attendants?version=2")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -1954,7 +1949,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "878855",
   "to": "postmaster@desk.msging.net",
   "method": "get",
@@ -2027,11 +2022,11 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "8541256",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/monitoring/tickets"
+  "uri": "/monitoring/tickets?version=2"
 }
 ```
 
@@ -2056,7 +2051,7 @@ Content-Type: application/json
     "from": "postmaster@desk.msging.net/#az-iris5",
     "to": "demobot@msging.net",
     "metadata": {
-        "#command.uri": "lime://demobot@msging.net/monitoring/tickets",
+        "#command.uri": "lime://demobot@msging.net/monitoring/tickets?version=2",
         "uber-trace-id": "f7a2da1bdc1890d1%3A77aac8237b3d3172%3Af7a2da1bdc1890d1%3A1"
     }
 }
@@ -2068,7 +2063,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/monitoring/tickets")
+    Uri = new LimeUri("/monitoring/tickets?version=2")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -2079,7 +2074,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/monitoring/tickets"
+    uri: "/monitoring/tickets?version=2"
 })
 ```
 
@@ -2175,7 +2170,7 @@ Content-Type: application/json
   id: '9720839c-1692-4cda-85eb-99a46a655f9f',
   from: 'postmaster@desk.msging.net/#az-iris4',
   to: 'testehome1@msging.net/default',
-  metadata: { '#command.uri': 'lime://testehome1@msging.net/attendants' } 
+  metadata: { '#command.uri': 'lime://testehome1@msging.net/attendants' }
 }
 ```
 
@@ -2199,7 +2194,7 @@ Replace `{customerIdentity}` with the customer id you want to get.
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
-{  
+{
   "id": "0125744",
   "to": "postmaster@desk.msging.net",
   "method": "get",
@@ -2272,7 +2267,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "0258413",
   "to": "postmaster@desk.msging.net",
   "method": "get",
@@ -2353,7 +2348,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "a1b2c33",
   "to": "postmaster@desk.msging.net",
   "method": "get",
@@ -2545,7 +2540,7 @@ Content-Type: application/json
   from: 'postmaster@desk.msging.net/#az-iris1',
   to: 'testehome14@msging.net/default',
   metadata:
-   { '#command.uri': 'lime://testehome1@msging.net/tickets?$take=10' } 
+   { '#command.uri': 'lime://testehome1@msging.net/tickets?$take=10' }
 }
 ```
 
@@ -2576,7 +2571,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "a1b2c33",
   "to": "postmaster@desk.msging.net",
   "method": "get",
@@ -2656,7 +2651,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "abced017458",
   "to": "postmaster@desk.msging.net",
   "method": "get",
@@ -2718,7 +2713,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "abced017458",
   "to": "postmaster@desk.msging.net",
   "method": "get",
@@ -2759,7 +2754,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/monitoring/open-tickets"
+    uri: "/monitoring/open-tickets?version=2"
 })
 ```
 
@@ -2768,7 +2763,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/monitoring/open-tickets")
+    Uri = new LimeUri("/monitoring/open-tickets?version=2")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -2778,23 +2773,18 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Get [open tickets](/#openticketsummary) metrics and informations.
 
-The following filters are available:
-
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| beginDate    | Initial date to retrieve the metrics        |
-| endDate      | Limit date to retrieve the metrics.        |
+The endpoint returns only data related to the current day.
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "548753",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/monitoring/open-tickets"
+  "uri": "/monitoring/open-tickets?version=2"
 }
 ```
 
@@ -2841,7 +2831,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/monitoring/open-tickets"
+    uri: "/monitoring/open-tickets?version=2"
 })
 ```
 
@@ -2850,7 +2840,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/monitoring/open-tickets")
+    Uri = new LimeUri("/monitoring/open-tickets?version=2")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -2860,12 +2850,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Get attendance [teams](/#teamticketssummary) metrics and informations.
 
-The following filters are available:
-
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| beginDate    | Initial date to retrieve the metrics        |
-| endDate      | Limit date to retrieve the metrics.        |
+The endpoint returns only data related to the current day.
 
 
 ```http
@@ -2873,11 +2858,11 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "875553",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/monitoring/teams"
+  "uri": "/monitoring/teams?version=2"
 }
 ```
 
@@ -2922,7 +2907,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/monitoring/teams"
+    uri: "/monitoring/teams?version=2"
 })
 ```
 
@@ -2931,7 +2916,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/monitoring/teams")
+    Uri = new LimeUri("/monitoring/teams?version=2")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -2941,23 +2926,18 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Get [tickets metrics](/#ticketsmetricssummary) for your monitoring.
 
-The following filters are available:
-
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| beginDate    | Initial date to retrieve the metrics        |
-| endDate      | Limit date to retrieve the metrics.        |
+The endpoint returns only data related to the current day.
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "785423",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/monitoring/ticket-metrics"
+  "uri": "/monitoring/ticket-metrics?version=2"
 }
 ```
 
@@ -2990,7 +2970,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/monitoring/ticket-metrics"
+    uri: "/monitoring/ticket-metrics?version=2"
 })
 ```
 
@@ -2999,7 +2979,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/monitoring/ticket-metrics")
+    Uri = new LimeUri("/monitoring/ticket-metrics?version=2")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -3009,23 +2989,18 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Get tickets counters by status.
 
-The following filters are available:
-
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| beginDate    | Initial date to retrieve the counters        |
-| endDate      | Limit date to retrieve the counters.        |
+The endpoint returns only data related to the current day.
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "548753",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/monitoring/tickets"
+  "uri": "/monitoring/tickets?version=2"
 }
 ```
 
@@ -3057,7 +3032,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/monitoring/tickets"
+    uri: "/monitoring/tickets?version=2"
 })
 ```
 
@@ -3066,7 +3041,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/monitoring/tickets")
+    Uri = new LimeUri("/monitoring/tickets?version=2")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -3081,11 +3056,11 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "7865782",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/monitoring/tickets-per-hour"
+  "uri": "/monitoring/tickets-per-hour?version=2"
 }
 ```
 
@@ -3118,7 +3093,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/monitoring/tickets-per-hour"
+    uri: "/monitoring/tickets-per-hour?version=2"
 })
 ```
 
@@ -3127,7 +3102,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/monitoring/tickets-per-hour")
+    Uri = new LimeUri("/monitoring/tickets-per-hour?version=2")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -3142,7 +3117,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "4965782",
   "to": "postmaster@desk.msging.net",
   "method": "get",
@@ -3214,23 +3189,18 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Get [waiting tickets](/#openticketsummary) metrics and informations.
 
-The following filters are available:
-
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| beginDate    | Initial date to retrieve the metrics        |
-| endDate      | Limit date to retrieve the metrics.        |
+The endpoint returns only data related to the current day.
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "548753",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/monitoring/waiting-tickets"
+  "uri": "/monitoring/waiting-tickets?version=2"
 }
 ```
 
@@ -3266,7 +3236,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/monitoring/waiting-tickets"
+    uri: "/monitoring/waiting-tickets?version=2"
 })
 ```
 
@@ -3275,7 +3245,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/monitoring/waiting-tickets")
+    Uri = new LimeUri("/monitoring/waiting-tickets?version=2")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -3329,7 +3299,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "8574536",
   "to": "postmaster@desk.msging.net",
   "method": "set",
@@ -3363,7 +3333,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     method: Lime.CommandMethod.SET,
     uri: "/enhancement/send-by-email",
     type:"application/json",
-    resource:{  
+    resource:{
       email:"{email}",
       filter:"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
     }
@@ -3378,7 +3348,7 @@ var command = new Command(){
     To = "postsmaster@desk.msging.net",
     Uri = new LimeUri("/enhancement/send-by-email"),
     Type :"application/json"
-    Resource = new {  
+    Resource = new {
               email = "{email}",
               filter = "requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
             }
@@ -3398,7 +3368,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
-{  
+{
   "id": "1488774",
   "to": "postmaster@desk.msging.net",
   "method": "set",
