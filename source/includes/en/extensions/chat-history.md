@@ -254,9 +254,10 @@ The following uri filters are available to get a chatbot's thread:
 |--------------|-------------------------------------------|
 | $skip | The number of elements to be skipped                           |
 | $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
-| $messageId  | Initial message id for the thread messages query        |
-| $direction  | Possible values: `asc` and `desc`. Define if will be returned de messages after or before respectively |
-| $storageDate  | The reference date to search. Example: `2020-01-08T15:59:07.086Z` |
+| messageId  | Initial message id for the thread messages query        |
+| storageDate  | The reference date to search. Example: `2020-01-08T15:59:07.086Z` |
+| direction  | Possible values: `asc` and `desc`. Define whether messages will be returned after(in ascending order) or before(in descending order) a date, respectively. *Needs **storageDate** or **messageId** to be defined* |
+
 
 ### Get logged messages
 
