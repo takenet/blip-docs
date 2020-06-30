@@ -1029,8 +1029,8 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
     "id": "2",
-    "from": "1654804277843415%40messenger.gw.msging.net@desk.msging.net",
-    "to": "bot@msging.net/instance",
+    "to": "{user_identity}@desk.msging.net",
+    "from": "{bot_identity}@msging.net/instance",
     "type": "text/plain",
     "content": "Hello, here is a human being ;)"
 }
