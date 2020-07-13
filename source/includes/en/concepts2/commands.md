@@ -95,6 +95,8 @@ Each command has:
 - **from**: Command originator address. This value may be omitted in the requests, and by default it is the connected chatbot address.
 - **to**: Command recipient address. This value may be omitted in the requests, and by default it is the server remote address. It must be provided in case the command is sent to an **extension**.
 - **uri**: The path at the recipient the resource's command refers to. This value is mandatory for all requests and can be omitted in the responses.
+
+<aside class="notice">This uri needs to go through the encoding process <strong>if it has some kind of special character</strong>. See information <a href="https://www.w3schools.com/tags/ref_urlencode.asp">clicking here</a>.</aside>
 - **method**: Method for resource manipulation defined at the **uri**. This value is mandatory. Possible values are:
   * **get**: Acquires an existent value.
   * **set**: Creates or updates a value.
