@@ -258,6 +258,7 @@ The following uri filters are available to get a chatbot's thread:
 | storageDate  | The reference date to search. Example: `2020-01-08T15:59:07.086Z` |
 | direction  | Possible values: `asc` and `desc`. Define whether messages will be returned after(in ascending order) or before(in descending order) a date, respectively. *Needs **storageDate** or **messageId** to be defined* |
 
+Note: Both `storageDate` filter and `date` response parameter uses `ISO 8601` format. However, the return information is always at `GMT 00:00`.
 
 ### Get logged messages
 
