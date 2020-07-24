@@ -399,9 +399,26 @@ For the same contact `11121023102013021@messenger.gw.msging.net`, it is possible
 <aside  class="notice">
 Note: You can also filter your query with one of the properties of the contact resource, using the <code>filter</code> property:<br><br>
 
+<h3>StartsWith</h3>
+
+<code>filter=(startswith({propertyName},'{value}'))</code><br><br>
+
+<b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(startswith(name%2C'John'))</b>
+
+<h3>Equals</h3>
+
+<code>filter=({propertyName} eq '{value}')</code><br><br>
+<strong>Not equals</strong> can be used with <code>ne</code>.<br><br>
+
+<b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(name%20eq%20'John Doe')</b> <br>
+
+<h3>Substringof</h3>
+
+<i> We are having troubles with <strong>Substringof</strong> performance, we strongly recommend to use <strong>StartsWith</strong> instead.</i><br><br>
+
 <code>filter=(substringof('{value}',{propertyName}))</code><br><br>
 
-<b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(substringof('John Doe',name))</b> </aside>
+<b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(substringof('John Doe'%2Cname))</b></aside>
 
 ### Get contacts with paging
 
@@ -521,7 +538,7 @@ Note: You can also filter your query with one of the properties of the contact r
 
 <code>filter=(substringof('{value}',{propertyName}))</code><br><br>
 
-<b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(substringof('John Doe',name))</b> </aside>
+<b>Example</b>: /contacts?$skip=0&$take=20</aside>
 
 ### Get linked contacts
 
