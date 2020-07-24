@@ -397,28 +397,28 @@ namespace Extensions
 For the same contact `11121023102013021@messenger.gw.msging.net`, it is possible to get all of its information using a `GET` contact command.
 
 <aside  class="notice">
-Note: You can also filter your query with one of the properties of the contact resource, using the <code>filter</code> property:<br><br>
-
-<h3>StartsWith</h3>
+Note: You can also filter your query with one of the properties of the contact resource, using the <code>filter</code> property:
+<ul>
+<li><h4>StartsWith</h4></li>
 
 <code>filter=(startswith({propertyName},'{value}'))</code><br><br>
 
 <b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(startswith(name%2C'John'))</b>
 
-<h3>Equals</h3>
+<li><h4>Equals</h4></li>
 
 <code>filter=({propertyName} eq '{value}')</code><br><br>
-<strong>Not equals</strong> can be used with <code>ne</code>.<br><br>
+<b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(name%20eq%20'John Doe')</b><br><br>
+<strong>Not equals</strong> can be used with <code>ne</code>.
 
-<b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(name%20eq%20'John Doe')</b> <br>
-
-<h3>Substringof</h3>
+<li><h4>Substringof</h4></li>
 
 <i> We are having troubles with <strong>Substringof</strong> performance, we strongly recommend to use <strong>StartsWith</strong> instead.</i><br><br>
 
 <code>filter=(substringof('{value}',{propertyName}))</code><br><br>
 
-<b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(substringof('John Doe'%2Cname))</b></aside>
+<b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(substringof('John Doe'%2Cname))</b>
+</ul></aside>
 
 ### Get contacts with paging
 
