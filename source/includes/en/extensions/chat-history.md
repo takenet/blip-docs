@@ -11,6 +11,8 @@ To get client's **threads** or **messages** exchanged with a bot, send a command
 | uri    | **/threads**   |
 | to     | **postmaster@msging.net** (not required) |
 
+<aside class="notice">Note: With the media expiration, to retrieve MediaLink messages with valid url, use the <b>'refreshExpiredMedia=true'</b> querystring.
+</aside>
 
 <!-- ### Get average response time
 
@@ -137,6 +139,7 @@ The following uri filters are available to get chatbot's threads:
 | $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
 | $skip | The number of elements to be skipped                           |
 | messageDate  | Initial date on the threads query         |
+| refreshExpiredMedia | Defines if the expired media should be updated |
 
 
 <aside class="notice">
@@ -257,6 +260,7 @@ The following uri filters are available to get a chatbot's thread:
 | messageId  | Initial message id for the thread messages query        |
 | storageDate  | The reference date to search. Example: `2020-01-08T15:59:07.086Z` |
 | direction  | Possible values: `asc` and `desc`. Define whether messages will be returned after(in ascending order) or before(in descending order) a date, respectively. *Needs **storageDate** or **messageId** to be defined* |
+| refreshExpiredMedia | Defines if the expired media should be updated |
 
 <aside class="notice">
 Note: Both <b>storageDate</b> filter and <b>date</b> response parameter uses <b>ISO 8601</b> format. However, the return information is always at <b>GMT 00:00</b>.
