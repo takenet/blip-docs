@@ -17,6 +17,7 @@ The following channels are available in **BLiP** platform:
 | Take.IO (SMS)      | take.io                 |
 | Facebook Messenger | messenger.gw.msging.net |
 | WhatsApp           | wa.gw.msging.net        |
+| Google Business Messages | businessmessages.gw.msging.net |
 | Skype              | skype.gw.msging.net     |
 | Telegram           | telegram.gw.msging.net  |
 | Workplace          | workplace.gw.msging.net |
