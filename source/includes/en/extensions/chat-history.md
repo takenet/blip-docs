@@ -11,7 +11,7 @@ To get client's **threads** or **messages** exchanged with a bot, send a command
 | uri    | **/threads**                             |
 | to     | **postmaster@msging.net** (not required) |
 
-<aside class="notice">Note: With the media expiration, to retrieve MediaLink messages with a valid url, use the <b>'refreshExpiredMedia=true'</b> querystring.
+<aside class="notice">Note: To have the server automatically refresh any expired `MediaLink` messages returned by `/threads` and retrieve a valid URL, pass the <b>refreshExpiredMedia=true</b> parameter into the query string.
 </aside>
 
 <!-- ### Get average response time
@@ -139,7 +139,7 @@ The following uri filters are available to get chatbot's threads:
 | $take               | Limit of total of items to be returned. The maximum value allowed is 100 |
 | $skip               | The number of elements to be skipped                                     |
 | messageDate         | Initial date on the threads query                                        |
-| refreshExpiredMedia | Defines if the expired media should be updated                           |
+| refreshExpiredMedia | Defines if the expired media links should be refreshed                   |
 
 <aside class="notice">
 Note: To recover all data, use the following uri iteratively <b>'/threads?messageId={lastMessageId}&$take=100'</b> always updating messageId with the value of the last message id obtained.
@@ -259,7 +259,7 @@ The following uri filters are available to get a chatbot's thread:
 | messageId           | Initial message id for the thread messages query        |
 | storageDate         | The reference date to search. Example: `2020-01-08T15:59:07.086Z` |
 | direction           | Possible values: `asc` and `desc`. Define whether messages will be returned after(in ascending order) or before(in descending order) a date, respectively. *Needs **storageDate** or **messageId** to be defined* |
-| refreshExpiredMedia | Defines if the expired media should be updated |
+| refreshExpiredMedia | Defines if the expired media links should be refreshed |
 
 <aside class="notice">
 Note: Both <b>storageDate</b> filter and <b>date</b> response parameter uses <b>ISO 8601</b> format. However, the return information is always at <b>GMT 00:00</b>.

@@ -8,7 +8,7 @@ The **Media** extension allows to manipulate the chatbot's medias.
 
 ### Refresh a media expired link
 
- Medias are stored and accessed with expirable links. After the expiration, the media link becomes unavailable. This resource allows retrieving a new and valid url to see the media.
+ Medias are stored and accessed with expirable links. After the expiration date, the media link becomes unavailable. This resource allows retrieving a new and valid url to see the media.
 
  Name      | Description                       |
 |----------|-----------------------------------|
