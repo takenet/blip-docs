@@ -4,13 +4,15 @@ The **threads** (or **chat history**) extension allows the chatbot to retrieve t
 
 To get client's **threads** or **messages** exchanged with a bot, send a command with the following properties:
 
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| method    | **get**  |
-| uri    | **/threads**   |
+| Name   | Description                              |
+|--------|------------------------------------------|
+| id     | Unique identifier of the command.        |
+| method | **get**                                  |
+| uri    | **/threads**                             |
 | to     | **postmaster@msging.net** (not required) |
 
+<aside class="notice">Note: To have the server automatically refresh any expired `MediaLink` messages returned by `/threads` and retrieve a valid URL, pass the <b>refreshExpiredMedia=true</b> parameter into the query string.
+</aside>
 
 <!-- ### Get average response time
 
@@ -132,12 +134,12 @@ Getting the last chatbot's [threads](/#thread). By default, BLiP returns the las
 
 The following uri filters are available to get chatbot's threads:
 
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
-| $skip | The number of elements to be skipped                           |
-| messageDate  | Initial date on the threads query         |
-
+| QueryString         | Description                                                              |
+|---------------------|--------------------------------------------------------------------------|
+| $take               | Limit of total of items to be returned. The maximum value allowed is 100 |
+| $skip               | The number of elements to be skipped                                     |
+| messageDate         | Initial date on the threads query                                        |
+| refreshExpiredMedia | Defines if the expired media links should be refreshed                   |
 
 <aside class="notice">
 Note: To recover all data, use the following uri iteratively <b>'/threads?messageId={lastMessageId}&$take=100'</b> always updating messageId with the value of the last message id obtained.
@@ -250,13 +252,14 @@ Getting the last chatbot's [messages](/#messages) in a specific [thread](/#threa
 
 The following uri filters are available to get a chatbot's thread:
 
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| $skip | The number of elements to be skipped                           |
-| $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
-| messageId  | Initial message id for the thread messages query        |
-| storageDate  | The reference date to search. Example: `2020-01-08T15:59:07.086Z` |
-| direction  | Possible values: `asc` and `desc`. Define whether messages will be returned after(in ascending order) or before(in descending order) a date, respectively. *Needs **storageDate** or **messageId** to be defined* |
+| QueryString         | Description                               |
+|---------------------|-------------------------------------------|
+| $skip               | The number of elements to be skipped                           |
+| $take               | Limit of total of items to be returned. The maximum value allowed is 100 |
+| messageId           | Initial message id for the thread messages query        |
+| storageDate         | The reference date to search. Example: `2020-01-08T15:59:07.086Z` |
+| direction           | Possible values: `asc` and `desc`. Define whether messages will be returned after(in ascending order) or before(in descending order) a date, respectively. *Needs **storageDate** or **messageId** to be defined* |
+| refreshExpiredMedia | Defines if the expired media links should be refreshed |
 
 <aside class="notice">
 Note: Both <b>storageDate</b> filter and <b>date</b> response parameter uses <b>ISO 8601</b> format. However, the return information is always at <b>GMT 00:00</b>.
@@ -267,9 +270,9 @@ Note: Both <b>storageDate</b> filter and <b>date</b> response parameter uses <b>
 Get all logged [messages](/#messages). By default, BLiP returns the last 100 logged messages.
 
 
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| $skip | The number of elements to be skipped                           |
+| QueryString  | Description                                                              |
+|--------------|--------------------------------------------------------------------------|
+| $skip        | The number of elements to be skipped                                     |
 | $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
 
 ```http

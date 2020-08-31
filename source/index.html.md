@@ -151,6 +151,7 @@ includes:
   - en/extensions/chatbot-profile
   - en/extensions/contacts
   - en/extensions/desk
+  - en/extensions/media
   - en/extensions/portal
   - en/extensions/resources
   - en/extensions/scheduler
