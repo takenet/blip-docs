@@ -4,11 +4,11 @@
 |---------------------------------|
 | postmaster@media.msging.net     |
 
-The **Media** extension allows to manipulate the medias from your chatbot.
+The **Media** extension allows to manipulate the chatbot's medias.
 
 ### Refresh an expired media
 
- The medias are stored with an expiration period date. After the period, the media become unavailable. But it's possible to retrieve a new and valid url to see the media.
+ Medias are stored with an expiration date. After this date, the media becomes unavailable. But it's possible to retrieve a new and valid url to see the media.
 
  Name      | Description                       |
 |----------|-----------------------------------|

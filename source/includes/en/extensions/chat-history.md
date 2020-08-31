@@ -11,7 +11,7 @@ To get client's **threads** or **messages** exchanged with a bot, send a command
 | uri    | **/threads**                             |
 | to     | **postmaster@msging.net** (not required) |
 
-<aside class="notice">Note: With the media expiration, to retrieve MediaLink messages with valid url, use the <b>'refreshExpiredMedia=true'</b> querystring.
+<aside class="notice">Note: With the media expiration, to retrieve MediaLink messages with a valid url, use the <b>'refreshExpiredMedia=true'</b> querystring.
 </aside>
 
 <!-- ### Get average response time
