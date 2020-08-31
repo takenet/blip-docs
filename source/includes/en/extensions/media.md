@@ -28,7 +28,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "a43aa4d2-566a-4be0-bc51-38d43597eb58",
   "to": "postmaster@media.msging.net",
   "method": "set",
-  "uri": "/refresh/media/uri",
+  "uri": "/refresh-media-uri",
   "type": "text/plain",
   "resource": "URI_WITH_EXPIRED_TOKEN"
 }
