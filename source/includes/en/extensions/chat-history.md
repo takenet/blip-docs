@@ -258,11 +258,19 @@ The following uri filters are available to get a chatbot's thread:
 | $take               | Limit of total of items to be returned. The maximum value allowed is 100 |
 | messageId           | Initial message id for the thread messages query        |
 | storageDate         | The reference date to search. Example: `2020-01-08T15:59:07.086Z` |
-| direction           | Possible values: `asc` and `desc`. Define whether messages will be returned after(in ascending order) or before(in descending order) a date, respectively. *Needs **storageDate** or **messageId** to be defined* |
+| direction           | Possible values: `asc` and `desc`. Define whether messages will be returned after(in ascending order) or before(in descending order) a date, respectively. <i>Needs **storageDate** or **messageId** to be defined</i> |
 | refreshExpiredMedia | Defines if the expired media links should be refreshed |
 
 <aside class="notice">
 Note: Both <b>storageDate</b> filter and <b>date</b> response parameter uses <b>ISO 8601</b> format. However, the return information is always at <b>GMT 00:00</b>.
+</aside>
+
+<aside class="notice">
+Note: The <b>storageDate</b> filter can be passed both as UTC or GMT-03 timezones.<br><b>Example:</b><br>2020-06-18T11:30:44.000Z => UTC<br>2020-06-18T11:30:44.000-03:00 => GMT -03
+</aside>
+
+<aside class="notice">
+If you want to paginate your query to get more than 100 results, you must use the <b>storageDate</b> and <b>direction</b> filters.<br><b>Example:</b><br>/threads/{userIdentity}?storageDate=2020-05-29T00:00:00.531Z&direction=desc
 </aside>
 
 ### Get logged messages
