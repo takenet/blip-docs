@@ -432,6 +432,10 @@ Get all logged [notifications](#notifications) of a specific [message](/#message
 Replace `{messageId}` with the message id.
 
 
+<aside class="notice">
+Note: You can get notifications of a message after a <b>maximum period of 3 days from the current date</b>. All message notifications after that date are inaccessible and will not bet returned.
+</aside>
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json

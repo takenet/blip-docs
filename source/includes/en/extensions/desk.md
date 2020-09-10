@@ -1392,6 +1392,10 @@ The following filters are available:
 | beginDate    | Initial date to retrieve the report        |
 | endDate      | Limit date to retrieve the report.        |
 
+<aside class="notice">
+Note: By default the <i>beginDate</i> and <i>endDate</i> values are the current date.
+</aside>
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -2250,7 +2254,7 @@ Replace `{ticketId}` with the ticket id you want to get the messages.
 | **$skip** |The number of elements to be skipped.                                |    0    |
 | **$take** | Limit of total of items to be returned.                               |   100   |
 | **$ascending** | Sets ascending alphabetical order.                                |    true    |
-| **$getFromOwnerIfTunnel** | Get all messages from owner router.                                |    true    |
+| **$getFromOwnerIfTunnel** (required*) | Get all messages from owner router.                                |    true    |
 
 | Parameters | Example                              |
 |------------|--------------------------------------|
@@ -2258,6 +2262,10 @@ Replace `{ticketId}` with the ticket id you want to get the messages.
 
 <aside class="notice">
 Note: After the ticket is created, it <b>expires in a month</b>. In this situation, messages are accessible only by endpoint <a href="https://docs.blip.ai/#get-last-threads">Get last threads</a>.
+</aside>
+
+<aside class="notice">
+* Note: By default its value is <i>false</i>. If you are using a Router, it must be <i>true</i>
 </aside>
 
 
