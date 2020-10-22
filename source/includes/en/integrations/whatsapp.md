@@ -114,21 +114,32 @@ client.addMessageReceiver('text/plain', async (message) => {
     "id": "123e4567-e89b-12d3-a456-426655440002",
     "to": "5531998765432@wa.gw.msging.net",
     "type": "application/json",
-    "content": {
-        "type": "hsm",
-        "hsm": {
-        "namespace": "whatsapp:hsm:messaging:blip",
-        "element_name": "account_created",
-        "language": {
-                "policy": "deterministic",
-                "code": "pt_BR"
+    "content":{
+      "type":"template",
+      "template":{
+         "namespace":"{{NAMESPACE}}",
+         "name":"{{MESSAGE_TEMPLATE_NAME}}",
+         "language":{
+            "code":"pt_BR",
+            "policy":"deterministic"
          },
-        "localizable_params": [
+         "components":[
             {
-            "default": "BLiPPer"
+                "type": "body",
+                "parameters": [
+                    {
+                        "type": "text",
+                        "text": "value1"
+                    },
+                    {
+                       "Type":"text",
+                       "text":"value2"
+                    }
+                ]
             }
-        ]
+          ]
         }
+    }
     }});
 });
 ```
@@ -139,29 +150,42 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "123e4567-e89b-12d3-a456-426655440002",
-  "to": "5531998765432@wa.gw.msging.net",
-  "type": "application/json",
-  "content": {
-    "type": "hsm",
-    "hsm": {
-      "namespace": "whatsapp:hsm:messaging:blip",
-      "element_name": "account_created",
-      "language": {
-                "policy": "deterministic",
-                "code": "pt_BR"
-      },
-      "localizable_params": [
-        {
-          "default": "BLiPPer"
+   "id":"{{RANDOM_ID}}",
+   "to":"553175713755@wa.gw.msging.net",
+   "type":"application/json",
+   "content":{
+      "type":"template",
+      "template":{
+         "namespace":"{{NAMESPACE}}",
+         "name":"{{MESSAGE_TEMPLATE_NAME}}",
+         "language":{
+            "code":"pt_BR",
+            "policy":"deterministic"
+         },
+         "components":[
+            {
+                "type": "body",
+                "parameters": [
+                    {
+                        "type": "text",
+                        "text": "value1"
+                    },
+                    {
+                       "Type":"text",
+                       "text":"value2"
+                    }
+                ]
+            }
+          ]
         }
-      ]
     }
-  }
 }
+
 ```
 
 ### Creating a group
+
+<aside class="notice">According to the <a href="https://developers.facebook.com/docs/whatsapp/api/groups/">updates made by the Facebook team in July 2020</a>, it is no longer possible to use this feature</aside>
 
 Besides sending messages between customer and bot you are also able to send and receive messages in a group. 
 When your bot creates a group you are able to invite people, listen, and reply group messages.
@@ -189,6 +213,8 @@ Authorization: Key {YOUR_TOKEN}
 
 ### Creating a invite link to the group
 
+<aside class="notice">According to the <a href="https://developers.facebook.com/docs/whatsapp/api/groups/">updates made by the Facebook team in July 2020</a>, it is no longer possible to use this feature</aside>
+
 After to create a group you should invite people to join. The invitation is made by a link.
 In order to create a group invite link, make a request to BLiP's API as demostrated aside. Please, replace the `{{createdGroupIdentity}}` variable by your group name.
 
@@ -208,6 +234,8 @@ Authorization: Key {YOUR_TOKEN}
 Send this link to any customer you want invite to join the group.
 
 ### Receiving messages in a group
+
+<aside class="notice">According to the <a href="https://developers.facebook.com/docs/whatsapp/api/groups/">updates made by the Facebook team in July 2020</a>, it is no longer possible to use this feature</aside>
 
 Every message received by bot in a WhatsApp's group has the `from` node equals to `groups@wa.gw.msging.net`. Take a look at a sample:
 
