@@ -185,28 +185,6 @@ Content-Type: application/json
     "to": "demobot@msging.net",
 }
 ```
-
-### Check a link between contacts
-
-Check if a `contacIdentity` is linked with `linkedContactIdentity`.
-
-<aside  class="notice">
-Note: Returns <code>The linked contact was not found</code> if the contacts are not linked and a contact if they are.</aside>
-
-```http
-POST https://http.msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "1234564678789",
-  "to": "postmaster@msging.net",
-  "method": "get",
-  "uri": "/contacts/{contacIdentity}/linked/{linkedContactIdentity}"
-}
-
-```
-
 ### Delete a comment
 
 Delete a specific comment for a contact.
@@ -237,24 +215,6 @@ Content-Type: application/json
     "from": "postmaster@crm.msging.net/#az-iris3",
     "to": "demobot@msging.net",
 }
-```
-
-### Delete a link
-
-Delete a link between two contacts, `contacIdentity` and `linkedContactIdentity`.
-
-```http
-POST https://http.msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "15871441222",
-  "to": "postmaster@msging.net",
-  "method": "delete",
-  "uri": "/contacts/{contacIdentity}/linked/{linkedContactIdentity}"
-}
-
 ```
 
 ### Get comments
@@ -535,83 +495,6 @@ Note: You can also filter your query with one of the properties of the contact r
 
 <b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(substringof('John Doe'%2Cname))</b>
 </ul></aside>
-
-### Get linked contacts
-
-Get all contacts linked with a specific contact.
-
-```http
-POST https://http.msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "46791313212",
-  "to": "postmaster@msging.net",
-  "method": "get",
-  "uri": "/contacts/{contactIdentity}/linked",
-}
-```
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "type": "application/vnd.lime.collection+json",
-    "resource": {
-        "total": 2,
-        "itemType": "application/vnd.lime.contact+json",
-        "items": [
-            {
-                "name": "John Doe",
-                "identity": "346173a7-3f9e-0125588.demobot@0mn.io",
-                "extras": {
-                    "City": "San Diego"
-                },
-                "source": "0mn.io"
-            },
-            {
-                "name": "Mary",
-                "identity": "d29b6c19-4904-9628-10559@tunnel.msging.net",
-                "extras": {
-                    "tunnel.owner": "someRouterTunnel@msging.net"
-                },
-                "source": "WhatsApp"
-            }
-        ]
-    },
-    "method": "get",
-    "status": "success",
-    "id": "8d49c7c5-3b7e-46fb-bd5e-0a5f73efa460",
-    "from": "postmaster@crm.msging.net/#az-iris6",
-    "to": "demobot@msging.net"
-}
-```
-
-### Link contacts
-
-Set a contact linked with other, using a [Contact](/#contact) document.
-
-Replace the `<contactIdentity>` with the Identity of the contact you want to link with other.
-Replace the `<contactToBeLinkedWithIdentity>` with the Identity of the contact you want to be linked with the first one.
-
-```http
-POST https://http.msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "46791313212",
-  "to": "postmaster@msging.net",
-  "method": "set",
-  "uri": "/contacts/{contactIdentity}/linked",
-  "type": "application/vnd.lime.contact+json",
-  "resource": {
-  	"Identity": "{contactToBeLinkedWithIdentity}"
-  }
-}
-```
 
 ### Send message with contact name
 
