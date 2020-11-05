@@ -66,7 +66,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "1",
+  "id": "{{$guid}}",
   "method": "set",
   "uri": "/contacts",
   "type": "application/vnd.lime.contact+json",
@@ -156,7 +156,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "4567897123123",
+  "id": "{{$guid}}",
   "to": "postmaster@crm.msging.net",
   "method": "set",
   "uri": "/contacts/{contactIdentity}/comments",
@@ -197,7 +197,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "123456788881",
+  "id": "{{$guid}}",
   "to": "postmaster@crm.msging.net",
   "method": "delete",
   "uri": "/contacts/{contactIdentity}/comments/{commentId}"
@@ -233,7 +233,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "55711244",
+  "id": "{{$guid}}",
   "to": "postmaster@crm.msging.net",
   "method": "get",
   "uri": "/contacts/{contactIdentity}/comments"
@@ -289,7 +289,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "2",
+  "id": "{{$guid}}",
   "method": "get",
   "uri": "/contacts/11121023102013021@messenger.gw.msging.net"
 }
@@ -380,7 +380,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "3",
+  "id": "{{$guid}}",
   "method": "get",
   "uri": "/contacts?$skip=0&$take=3"
 }
@@ -518,7 +518,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "4",
+  "id": "{{$guid}}",
   "to": "11121023102013021@messenger.gw.msging.net",
   "type": "text/plain",
   "content": "Hello ${contact.name}, welcome to the ${contact.extras.plan} plan!",

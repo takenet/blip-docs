@@ -28,7 +28,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "4061c985-35ee-4e05-91a8-eb9dcb8bd8c5",
+  "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "get",
   "uri": "/delegations/postmaster@broadcast.msging.net?envelopeTypes=message"
@@ -82,7 +82,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "938aec47-4ff8-484f-b662-3190ffb1dcf2",
+  "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "get",
   "uri": "/account/keys"
@@ -142,7 +142,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "1",
+  "id": "{{$guid}}",
   "method": "set",
   "type": "application/vnd.lime.delegation+json",
   "uri": "/delegations",
@@ -216,7 +216,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "2",
+  "id": "{{$guid}}",
   "method": "delete",
   "uri": "/delegations/postmaster@broadcast.msging.net?envelopeTypes=message"
 }
@@ -288,7 +288,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "6b8bb25e-6a43-4ba8-b9b8-8933c9b2abbf",
+  "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "set",
   "uri": "/account/keys/",

@@ -52,7 +52,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "0094447a-2581-4597-be6a-a5dff33af156",
+  "id": "{{$guid}}",
   "method": "get",
   "uri": "/threads"
 }
@@ -141,10 +141,6 @@ The following uri filters are available to get chatbot's threads:
 | messageDate         | Initial date on the threads query                                        |
 | refreshExpiredMedia | Defines if the expired media links should be refreshed                   |
 
-<aside class="notice">
-Note: To recover all data, use the following uri iteratively <b>'/threads?messageId={lastMessageId}&$take=100'</b> always updating messageId with the value of the last message id obtained.
-</aside>
-
 ### Get last messages
 
 ```javascript
@@ -166,7 +162,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "0094447a-2581-4597-be6a-a5dff33af156",
+  "id": "{{$guid}}",
   "method": "get",
   "uri": "/threads/1180740631991418@messenger.gw.msging.net"
 }
@@ -289,7 +285,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "5467894123",
+  "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "get",
   "uri": "/messages/"
@@ -360,7 +356,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "12345645612",
+  "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "get",
   "uri": "/notifications"
@@ -450,7 +446,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "123456789123",
+  "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "get",
   "uri": "/notifications?id={messageId}"

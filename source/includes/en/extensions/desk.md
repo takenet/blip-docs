@@ -26,7 +26,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
-  "id": "75481236",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "set",
   "uri": "/attendants",
@@ -125,7 +125,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "4ar4b5a4-1b21ae4a",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "set",
   "uri": "/replies/{categoryId}",
@@ -216,7 +216,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "8d1f6a56-e287-4a0f-9030-6983c76ad26c",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "set",
   "uri": "/tickets/ba11b95c-7564-4685-b835-8cc76fae6fac/change-tags",
@@ -296,7 +296,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "fbfda48q962ac",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "set",
   "uri": "/tickets/change-status",
@@ -366,7 +366,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "fbfd62ac",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "set",
   "uri": "/tickets/change-status",
@@ -433,7 +433,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "fbfd62ac",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "set",
   "uri": "/tickets/change-status",
@@ -518,7 +518,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "487556",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "set",
   "uri": "/tickets",
@@ -599,7 +599,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "4rt-83atab-a712a",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "set",
   "uri": "/rules",
@@ -694,7 +694,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "89e18743",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "set",
   "uri": "/tickets/ba11b95c-7564-4685-b835-8cc76fae6fac.testehome1%400mn.io",
@@ -810,7 +810,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "14afasf8-as4das5d4-asda1s",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "delete",
   "uri": "/replies/{categoryId}"
@@ -862,7 +862,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "aabbccddee",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "delete",
   "uri": "/rules/{ruleId}"
@@ -918,7 +918,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "14857699",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "delete",
   "uri": "/attendants/{agentId}"
@@ -967,7 +967,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "123219310318",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "set",
   "uri": "/tickets/{ticketId}/close",
@@ -1027,7 +1027,7 @@ POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
-    "id": "2",
+    "id": "{{$guid}}",
     "to": "{user_identity}@desk.msging.net",
     "from": "{bot_identity}@msging.net/instance",
     "type": "text/plain",
@@ -1090,7 +1090,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-    "id": "1",
+    "id": "{{$guid}}",
     "from": "1654804277843415@messenger.gw.msging.net",
     "to": "bot@msging.net/instance",
     "type": "text/plain",
@@ -1175,7 +1175,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "asgba8744-aabas222a",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/replies/{categoryId}"
@@ -1249,7 +1249,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "as4a5w4az",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/analytics/reports/attendants"
@@ -1335,7 +1335,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "98t47axv",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/analytics/reports/attendancetime"
@@ -1402,7 +1402,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "98t47axv",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/analytics/reports/tags"
@@ -1484,7 +1484,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "as4a5w4az",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/analytics/reports/teams?beginDate=2019-04-15&endDate=2019-06-22"
@@ -1576,7 +1576,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "98t47axv",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/analytics/reports/timings"
@@ -1649,7 +1649,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "878855",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/analytics/reports/tickets"
@@ -1738,7 +1738,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "aabbccddee",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/rules/{ruleId}"
@@ -1803,7 +1803,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "74863215",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/ticket/{ticketId}"
@@ -1871,7 +1871,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "548753",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/monitoring/attendants?version=2"
@@ -1953,7 +1953,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "878855",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/analytics/reports/attendants/productivity"
@@ -2026,7 +2026,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "8541256",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/monitoring/tickets?version=2"
@@ -2099,7 +2099,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "123219310318",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/attendants"
@@ -2198,7 +2198,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
-  "id": "0125744",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/tickets?$filter=(CustomerIdentity%20eq%20'{customer_identity}')&$closed=true&$skip=0&$take=100"
@@ -2275,7 +2275,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "0258413",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/tickets/{ticketId}/messages"
@@ -2356,7 +2356,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "a1b2c33",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/teams"
@@ -2457,7 +2457,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "123219310318",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/tickets?$take=10"
@@ -2579,7 +2579,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "a1b2c33",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/rules"
@@ -2659,7 +2659,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "abced017458",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/replies"
@@ -2721,7 +2721,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "abced017458",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/teams/agents-online"
@@ -2788,7 +2788,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "548753",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/monitoring/open-tickets?version=2"
@@ -2866,7 +2866,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "875553",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/monitoring/teams?version=2"
@@ -2941,7 +2941,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "785423",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/monitoring/ticket-metrics?version=2"
@@ -3004,7 +3004,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "548753",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/monitoring/tickets?version=2"
@@ -3064,7 +3064,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "7865782",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/monitoring/tickets-per-hour?version=2"
@@ -3125,7 +3125,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "4965782",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/tickets?$filter=status%20eq%20'waiting'&$skip=0&$take=100"
@@ -3204,7 +3204,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "548753",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
   "uri": "/monitoring/waiting-tickets?version=2"
@@ -3307,7 +3307,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "8574536",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "set",
   "uri": "/attendance-history/send-by-email",
@@ -3376,7 +3376,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "1488774",
+  "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "set",
   "uri": "/tickets/{ticketId}/transfer",

@@ -75,7 +75,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "57",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "get",
   "uri": "/analysis"
@@ -232,7 +232,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "9",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/analysis",
@@ -312,7 +312,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "10",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/analysis",
@@ -431,7 +431,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "5",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/intentions/{intentId}/answers",
@@ -531,7 +531,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "4",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/intentions/{intentId}/questions",
@@ -667,7 +667,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-    "id": "10",
+    "id": "{{$guid}}",
     "to": "postmaster@ai.msging.net",
     "method": "set",
     "uri": "/analytics/confusion-matrix",
@@ -755,7 +755,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "1",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/entities",
@@ -881,7 +881,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "2",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/intentions",
@@ -996,7 +996,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-	"id": "10",
+	"id": "{{$guid}}",
 	"method": "delete",
 	"to": "postmaster@ai.msging.net",
 	"uri": "/analytics/confusion-matrix/{confusionMatrixId}",
@@ -1028,7 +1028,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "aa89s7da-b4as85da8as87",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "delete",
   "uri": "/entities"
@@ -1114,7 +1114,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "10",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "delete",
   "uri": "/intentions"
@@ -1162,7 +1162,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "10",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "delete",
   "uri": "/intentions/{intent_id}",
@@ -1270,7 +1270,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "10",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "delete",
   "uri": "/intentions/{intentId}/answers/{answerId}"
@@ -1344,7 +1344,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "10",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "delete",
   "uri": "/intentions/{intentId}/questions/{questionId}"
@@ -1418,7 +1418,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-    "id": "10",
+    "id": "{{$guid}}",
     "to": "postmaster@ai.msging.net",
     "method": "get",
     "uri": "/analytics/confusion-matrix/{confusionMatrixId}"
@@ -1471,7 +1471,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "774455",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "get",
   "uri": "/model/{modelId}"
@@ -1556,7 +1556,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "887744999",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "get",
   "uri": "/models/summary"
@@ -1665,7 +1665,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "12345674455",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "get",
   "uri": "/entities"
@@ -1773,7 +1773,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "12345674455",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "get",
   "uri": "/intentions"
@@ -1884,7 +1884,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "7",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "get",
   "uri": "/models"
@@ -1990,7 +1990,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "123561215",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "get",
   "uri": "/entities/{entityId}"
@@ -2083,7 +2083,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "123561215",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "get",
   "uri": "/intentions/{intentId}"
@@ -2215,7 +2215,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-    "id": "10",
+    "id": "{{$guid}}",
     "method": "get",
     "to": "postmaster@ai.msging.net",
     "uri": "/intentions/{intentId}/answers"
@@ -2307,7 +2307,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-    "id": "10",
+    "id": "{{$guid}}",
     "to": "postmaster@ai.msging.net",
     "method": "get",
     "uri": "/analytics/confusion-matrix"
@@ -2375,7 +2375,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-    "id": "10",
+    "id": "{{$guid}}",
     "to": "postmaster@ai.msging.net",
     "method": "get",
     "uri": "/analytics/confusion-matrix/{confusionMatrixId}"
@@ -2481,7 +2481,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "10",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "get",
   "uri": "/intentions/{intentId}/questions"
@@ -2546,7 +2546,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "11",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "get",
   "uri": "/analysis?$skip=0&$take=10"
@@ -2800,7 +2800,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "2",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "merge",
   "uri": "/intentions",
@@ -2860,7 +2860,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "8",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/models",
@@ -2943,7 +2943,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "13",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/analysis/{analyze_id}/feedback",
@@ -3032,7 +3032,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id":"12",
+  "id":"{{$guid}}",
   "to":"postmaster@ai.msging.net",
   "method":"set",
   "uri":"/analysis/{analyze_id}/feedback",
@@ -3158,7 +3158,7 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
-   "id":"10",
+   "id":"{{$guid}}",
    "method":"set",
    "resource":{  
       "email":"{email}",
@@ -3198,7 +3198,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "45678884444",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/analysis/feedback",
@@ -3307,7 +3307,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "6",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/models",
@@ -3358,8 +3358,6 @@ namespace Extension
 }
 ```
 
-### 
-
 ### Get all contents
 
 Getting all contents.
@@ -3378,7 +3376,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "5c8ddbff-952c-4a3b-b49f-431353a2276d",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "get",
   "uri": "/content"  
@@ -3541,7 +3539,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "ef031437-528a-4359-8b25-0b7a79860eb7",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/content/analysis",
@@ -3597,7 +3595,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "baacf121-e472-48a3-956c-d5f12df0484b"
+  "id": "{{$guid}}"
   "to": "postmaster@ai.msging.net"
   "method": "get"
   "uri": "/content/a11afe64-7bd0-4333-b22e-0171a2458562"
@@ -3761,7 +3759,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "f6b84179-fe30-4b18-a757-44c6d4f35efd",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "set",
   "uri": "/content/{id}",
@@ -3900,7 +3898,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id":"f6b84179-fe30-4b18-a757-44c6d4f35efd",
+  "id":"{{$guid}}",
   "to":"postmaster@ai.msging.net",
   "method":"set",
   "uri":"/content",
@@ -4007,7 +4005,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id":"e9df4092-54c5-4631-b367-be1f99f76d65",
+  "id":"{{$guid}}",
   "to":"postmaster@ai.msging.net",
   "method":"delete",
   "uri":"/content/1170f877-928b-42ec-902e-0171a4429437",
@@ -4042,7 +4040,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "aa89s7da-b4as85da8as87",
+  "id": "{{$guid}}",
   "to": "postmaster@ai.msging.net",
   "method": "delete",
   "uri": "/content"

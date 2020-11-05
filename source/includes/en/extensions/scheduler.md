@@ -33,7 +33,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "e7018403-55da-41b5-ad7e-505025a1e13a",
+  "id": "{{$guid}}",
   "to": "postmaster@scheduler.msging.net",
   "method": "delete",
   "uri": "/schedules/{messageId}",
@@ -121,7 +121,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "1",
+  "id": "{{$guid}}",
   "to": "postmaster@scheduler.msging.net",
   "method": "set",
   "uri": "/schedules",
@@ -217,7 +217,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "2",
+  "id": "{{$guid}}",
   "to": "postmaster@scheduler.msging.net",
   "method": "get",
   "uri": "/schedules/ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67"
@@ -285,3 +285,90 @@ namespace Extensions
 
 Getting an existing scheduled message with id `ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67`. Each scheduled message has tree possible `status` values: `scheduled`, `executed` and `canceled`. This values are returned when you search for a specific scheduled message.
 
+### Get all schedules
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    var scheduledMessage = await client.sendCommand({  
+        id: Lime.Guid(),
+        to: 'postmaster@scheduler.msging.net',
+        method: Lime.CommandMethod.GET,
+        uri: '/schedules/'
+    });
+    console.log(scheduledMessage);
+});
+```
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "{{guid}}",
+  "to": "postmaster@scheduler.msging.net",
+  "method": "get",
+  "uri": "/schedules"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 3,
+        "itemType": "application/vnd.iris.schedule+json",
+        "items": [
+            {
+                "name": "Campaign for Easter",
+                "when": "2020-02-21T17:08:41.920Z",
+                "message": {
+                    "type": "application/vnd.iris.content-unavailable",
+                    "content": null,
+                    "id": "992d1ae3-5449-4cbf-9e75-c07f1ed3d037",
+                    "to": "listaTelegram@broadcast.msging.net"
+                },
+                "status": "executed"
+            },
+            {
+                "name": "Lead Campaign",
+                "when": "2020-05-21T13:27:32.820Z",
+                "message": {
+                    "type": "application/vnd.iris.content-unavailable",
+                    "content": null,
+                    "id": "44b4cbf5-7849-4b0e-b132-340005fb8719",
+                    "to": "myemail2@broadcast.msging.net"
+                },
+                "status": "executed"
+            },
+            {
+                "name": "Xmas Campaign",
+                "when": "2020-05-21T13:29:07.140Z",
+                "message": {
+                    "type": "application/vnd.iris.content-unavailable",
+                    "content": null,
+                    "id": "f3d1e274-bf5d-4e1f-8d7e-cc06c461c678",
+                    "to": "myemail2@broadcast.msging.net"
+                },
+                "status": "executed"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "fb5d4669-f14a-4c4c-8051-764b3094644f",
+    "from": "postmaster@scheduler.msging.net/#iris-hosted-5",
+    "to": "demobot4@msging.net/!iris-hosted-6-smdmmbpm",
+    "metadata": {
+        "#command.uri": "lime://demobot4@msging.net/schedules",
+        "uber-trace-id": "90322227a57faf10%3A14d590093e4c35a0%3A90322227a57faf10%3A1"
+    }
+}
+```
+
+Get all schedules messages. 
+
+The response should be a [Schedule document](#schedules) list.

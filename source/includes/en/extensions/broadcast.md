@@ -71,7 +71,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "1",
+  "id": "{{$guid}}1",
   "to": "postmaster@broadcast.msging.net",
   "method": "set",
   "type": "application/vnd.iris.distribution-list+json",
@@ -145,7 +145,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "2",
+  "id": "{{$guid}}",
   "to": "postmaster@broadcast.msging.net",
   "method": "get",
   "uri": "/lists"
@@ -224,7 +224,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "3",
+  "id": "{{$guid}}",
   "to": "postmaster@broadcast.msging.net",
   "method": "delete",
   "uri": "/lists/{{distribution_list_name}}@broadcast.msging.net"
@@ -299,7 +299,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "3",
+  "id": "{{$guid}}",
   "to": "postmaster@broadcast.msging.net",
   "method": "set",
   "uri": "/lists/your_distributionList@broadcast.msging.net/recipients",
@@ -372,7 +372,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "4",
+  "id": "{{$guid}}",
   "to": "postmaster@broadcast.msging.net",
   "method": "delete",
   "uri": "/lists/your_distributionList@broadcast.msging.net/recipients/551100001111@0mn.io"
@@ -442,7 +442,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "5",
+  "id": "{{$guid}}",
   "to": "postmaster@broadcast.msging.net",
   "method": "get",
   "uri": "/lists/your_distributionList@broadcast.msging.net/recipients?$skip=0&$take=5"
@@ -530,7 +530,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "6",
+  "id": "{{$guid}}",
   "to": "your_distributionList@broadcast.msging.net",
   "type": "text/plain",
   "content": "Hello participants of this list!"
@@ -611,7 +611,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "7",
+  "id": "{{$guid}}",
   "to": "your_distributionList@broadcast.msging.net",
   "type": "text/plain",
   "content": "Hello ${contact.name}, come to check out our prices!"

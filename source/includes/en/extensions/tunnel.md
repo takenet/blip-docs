@@ -56,7 +56,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-    "id": "1",
+    "id": "{{$guid}}",
     "to": "operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net",
     "type": "text/plain",
     "content": "Hello, I would like to talk to an attendant."
@@ -80,7 +80,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-    "id": "1",
+    "id": "{{$guid}}",
     "from": "ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net",
     "to": "operator@msging.net",
     "type": "text/plain",
@@ -108,7 +108,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-    "id": "2",
+    "id": "{{$guid}}",
     "to": "ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net",
     "type": "text/plain",
     "content": "Hi, my name is Andre. How may I help you?"
@@ -132,7 +132,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-    "id": "2",
+    "id": "{{$guid}}",
     "from": "operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net",
     "to": "flow@msging.net/instance",
     "type": "text/plain",
@@ -158,7 +158,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-    "id": "2",
+    "id": "{{$guid}}",
     "to": "1654804277843415@messenger.gw.msging.net",
     "type": "text/plain",
     "content": "Hi, my name is Andre. How may I help you?"
@@ -186,7 +186,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "47c7e7e1-5e75-4ca4-a86b-2f8b06829160",
+  "id": "{{$guid}}",
   "to": "postmaster@tunnel.msging.net",
   "method": "get",
   "uri": "/tunnels/{tunnelId}"
@@ -244,7 +244,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-    "id": "3",
+    "id": "{{$guid}}",
     "to": "postmaster@tunnel.msging.net",
     "method":"get",
     "uri": "lime://tunnel.msging.net/accounts/ecb99cf5-fb5c-4376-8acd-4b478091de15"
@@ -268,7 +268,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-    "id": "3",
+    "id": "{{$guid}}",
     "to": "operator@msging.net/instance",
     "method":"get",
     "status": "success",

@@ -98,21 +98,24 @@ Here’s some example:
 
 As soon as your Message Template has been created you will receive two labels that identifie this message. These labels are called as `element_name` and `namespace`, you will need these informations to send the notification.
 
-#### Sending a welcome notification
+#### Sending a welcome notification (Text)
 
 In order to send a notification for your customer you will need:
 
-* Customer's identifier (get it in step 2), for instance `5531998765432@wa.gw.msging.net`
-* Element name of message template (get it in step 3), for instance `account_created`
-* Namespace of message template (get it in step 3), for instance `whatsapp:hsm:messaging:blip`
+* Customer's identifier (get it in step 2), for instance `{{customerIdentity}}`
+* Element name of message template (get it in step 3), for instance `{{MESSAGE_TEMPLATE_NAME}}`
+* Namespace of message template (get it in step 3), for instance `{{MESSAGE_TEMPLATE_NAME}}`
 
 Make a request to BLiP's API as demostrated aside.
+
+<aside class="notice">If you want to know how to send types other than text, please follow this <a href="https://help.blip.ai/docs/en/channels/whatsapp/enviar-notificacao-whatsapp-blip-api/">article in our Help Center</a></aside>
+
 
  ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
     await client.sendMessage({
     "id": "123e4567-e89b-12d3-a456-426655440002",
-    "to": "5531998765432@wa.gw.msging.net",
+    "to": "{{customerIdentity}}",
     "type": "application/json",
     "content":{
       "type":"template",
@@ -151,7 +154,7 @@ Authorization: Key {YOUR_TOKEN}
 
 {
    "id":"{{RANDOM_ID}}",
-   "to":"553175713755@wa.gw.msging.net",
+   "to":"{{customerIdentity}}",
    "type":"application/json",
    "content":{
       "type":"template",

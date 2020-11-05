@@ -38,7 +38,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "pwaxbha-asda78520",
+  "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "delete",
   "uri": "/profile/{propertyIdentifier}"
@@ -88,7 +88,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "4544aacab-adaa2t21920a",
+  "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "get",
   "uri": "/profile"
@@ -154,7 +154,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "absb1a24a8-a989-aca-wt",
+  "id": "{{$guid}}",
   "method": "get",
   "to": "postmaster@msging.net",
   "uri": "/profile/{propertyIdentifier}"  
@@ -208,7 +208,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "4",
+  "id": "{{$guid}}",
   "method": "set",
   "uri": "/profile/get-started",
   "type": "text/plain",
@@ -281,7 +281,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "4",
+  "id": "{{$guid}}",
   "method": "set",
   "uri": "/profile/get-started-label",
   "type": "text/plain",
@@ -364,7 +364,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "3",
+  "id": "{{$guid}}",
   "method": "set",
   "uri":"/profile/persistent-menu",
   "type":"application/vnd.lime.document-select+json",
@@ -702,7 +702,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "1",
+  "id": "{{$guid}}",
   "method": "set",
   "uri": "/profile/greeting",
   "type": "text/plain",
@@ -774,7 +774,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "2",
+  "id": "{{$guid}}",
   "method": "set",
   "uri":"/profile/persistent-menu",
   "type":"application/vnd.lime.document-select+json",

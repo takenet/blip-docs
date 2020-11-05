@@ -52,7 +52,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "1294447a-2581-4597-be6a-a5dff33af156",
+  "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "set",
   "uri": "/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400",
@@ -118,7 +118,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "3da135e5-7743-48d6-adad-d74ac38ba6ca",
+  "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "set",
   "uri": "/contexts/{identity}/{variableName}",
@@ -392,7 +392,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "0094447a-2581-4597-be6a-a5dff33af156",
+  "id": "{{$guid}}",
   "method": "set",
    "uri": "/buckets/blip_portal:builder_working_flow",
   "type": "application/json", 
@@ -631,7 +631,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "602fecc1-0339-419a-b5a9-080d2b6b816c",
+  "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "delete",
   "uri": "/contexts/{identity}/{variableName}"
@@ -686,7 +686,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "b2c483d8-2f00-4f02-9bb6-624386587960",
+  "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "get",
   "uri": "/contexts/"
@@ -764,7 +764,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "ca446b5f-ecea-4334-8e2c-ce281d9d99df",
+  "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "get",
   "uri": "/contexts/{identity}"
@@ -828,7 +828,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "c7985e8b-23d7-4982-95d8-8516d6237cfd",
+  "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "get",
   "uri": "/contexts/{identity}/{variableName}"
@@ -906,7 +906,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "1294447a-2581-4597-be6a-a5dff33af156",
+  "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "get",
   "uri": "/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest%400mn.io/stateid%400"
@@ -992,7 +992,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "0094447a-2581-4597-be6a-a5dff33af156",
+  "id": "{{$guid}}",
   "method": "delete",
   "uri": "/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400f2b4564-9063-43e4-b0ef-46406dea65a5"
 }

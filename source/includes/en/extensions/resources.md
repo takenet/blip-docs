@@ -45,7 +45,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "1",
+  "id": "{{$guid}}",
   "method": "set",
   "uri": "/resources/xyz1234",
   "type": "application/vnd.lime.media-link+json",
@@ -138,7 +138,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "2",
+  "id": "{{$guid}}",
   "method": "set",
   "uri": "/resources/help-message",
   "type": "text/plain",
@@ -216,7 +216,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "a07258fa-0137-4596-a67e-859a5c2ce38f",
+  "id": "{{$guid}}",
   "method": "delete",
   "uri": "/resources/xyz1234"
 }
@@ -285,7 +285,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "78981a10-d7a9-4fbb-84cf-1916a8ed93b8",
+  "id": "{{$guid}}",
   "method": "get",
   "uri": "/resources/xyz1234"
 }
@@ -365,7 +365,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "3cbdd83c-d7ad-4d1e-886a-a0dffb96fd37",
+  "id": "{{$guid}}",
   "method": "get",
   "uri": "/resources"
 }
@@ -451,7 +451,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "3",
+  "id": "{{$guid}}",
   "method": "set",
   "uri": "/resources/welcome-message",
   "type": "text/plain",

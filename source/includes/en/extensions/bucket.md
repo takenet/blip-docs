@@ -30,7 +30,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "1306d0bb-29f8-41c3-bdf2-c84dec02852c",
+  "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "delete",
   "uri": "/buckets/{documentKey}"
@@ -57,6 +57,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     });
 });
 ```
+
 ### Get a document
 
 ```javascript
@@ -75,7 +76,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "3",
+  "id": "{{$guid}}",
   "method": "get",
   "uri": "/buckets/xyz1234"
 }
@@ -141,7 +142,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "199591239123",
+  "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "get",
   "uri": "/buckets"
@@ -206,7 +207,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "2",
+  "id": "{{$guid}}",
   "method": "set",
   "uri": "/buckets/abcd9876?expiration=30000",
   "type": "application/x-my-type+json",
@@ -325,7 +326,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "1",
+  "id": "{{$guid}}",
   "method": "set",
   "uri": "/buckets/xyz1234",
   "type": "application/json",

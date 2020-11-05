@@ -25,7 +25,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "8765464213",
+  "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "set",
   "uri": "lime://<FQDN of the channel>/accounts/<Client identity>/key",
@@ -59,7 +59,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "1",
+  "id": "{{$guid}}",
   "to": "postmaster@messenger.gw.msging.net",
   "method": "get",
   "uri": "lime://messenger.gw.msging.net/accounts/1042221589186385"
@@ -138,7 +138,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "2",
+  "id": "{{$guid}}",
   "to": "postmaster@telegram.gw.msging.net",
   "method": "get",
   "uri": "lime://telegram.gw.msging.net/accounts/255600202"

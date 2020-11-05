@@ -26,7 +26,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "a43aa4d2-566a-4be0-bc51-38d43597eb58",
+  "id": "{{$guid}}",
   "to": "postmaster@analytics.msging.net",
   "method": "set",
   "uri": "/reports/{reportId}/charts",
@@ -128,7 +128,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "1",
+  "id": "{{$guid}}",
   "to": "postmaster@analytics.msging.net",
   "method": "set",
   "type": "application/vnd.iris.eventTrack+json",
@@ -194,7 +194,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "tgawe1231-abab486",
+  "id": "{{$guid}}",
   "to": "postmaster@analytics.msging.net",
   "method": "set",
   "uri": "/reports",
@@ -287,7 +287,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-    "id": "9494447a-2581-4597-be6a-a5dff33af156",
+    "id": "{{$guid}}",
     "to": "postmaster@analytics.msging.net",
     "method": "set",
     "type": "application/vnd.iris.eventTrack+json",
@@ -360,7 +360,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "50da3293-371b-4ab8-b264-6812aa40895d",
+  "id": "{{$guid}}",
   "to": "postmaster@analytics.msging.net",
   "method": "delete",
   "uri": "/reports/{reportId}/charts/{chartId}"
@@ -412,7 +412,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "25aad309-5336-4a1c-be26-4b69bfeef554",
+  "id": "{{$guid}}",
   "to": "postmaster@analytics.msging.net",
   "method": "delete",
   "uri": "/reports/{reportId}"
@@ -475,7 +475,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "6",
+  "id": "{{$guid}}",
   "to": "postmaster@analytics.msging.net",
   "method": "delete",
   "uri": "/event-track/{categoryName}"
@@ -541,7 +541,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "320c2b30-aaf3-4549-85fa-bddb3389022f",
+  "id": "{{$guid}}",
   "to": "postmaster@analytics.msging.net",
   "method": "get",
   "uri": "/metrics/active-messages/{interval}"
@@ -629,7 +629,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "aba9899-a4as4d5asd4-aaabb",
+  "id": "{{$guid}}",
   "to": "postmaster@analytics.msging.net",
   "method": "get",
   "uri": "/reports"
@@ -701,7 +701,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "ty8a9b4a-q98b1a5s-a9s0",
+  "id": "{{$guid}}",
   "to": "postmaster@analytics.msging.net",
   "method": "get",
   "uri": "/reports/{reportId}"
@@ -759,7 +759,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "880e6454-65e0-44ad-b2f4-7a4f3a5149c5",
+  "id": "{{$guid}}",
   "to": "postmaster@analytics.msging.net",
   "method": "get",
   "uri": "/metrics/active-identity/{interval}"
@@ -867,7 +867,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "3",
+  "id": "{{$guid}}",
   "to": "postmaster@analytics.msging.net",
   "method": "get",
   "uri": "/event-track"
@@ -953,7 +953,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "751a2c4b9a-5as68as8-b4a8w9q",
+  "id": "{{$guid}}",
   "to": "postmaster@analytics.msging.net",
   "method": "get",
   "uri": "/reports/{reportId}/charts"
@@ -1029,7 +1029,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "4",
+  "id": "{{$guid}}",
   "to": "postmaster@analytics.msging.net",
   "method": "get",
   "uri": "/event-track/payments?startDate=2019-06-21&endDate=2019-06-28&$take=10"
@@ -1131,7 +1131,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "5",
+  "id": "{{$guid}}",
   "to": "postmaster@analytics.msging.net",
   "method": "get",
   "uri": "/event-track/payments/success-order?startDate=2019-06-21&endDate=2019-06-28&$take=10"
@@ -1234,7 +1234,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "880e6454-65e0-44ad-b2f4-7a4f3a5149c5",
+  "id": "{{$guid}}",
   "to": "postmaster@analytics.msging.net",
   "method": "get",
   "uri": "/metrics/engaged-identity/{interval}"
@@ -1334,7 +1334,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "320c2b30-aaf3-4549-85fa-bddb3389022f",
+  "id": "{{$guid}}",
   "to": "postmaster@analytics.msging.net",
   "method": "get",
   "uri": "/metrics/received-messages/{interval}"
@@ -1419,7 +1419,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "320c2b30-aaf3-4549-85fa-bddb3389022f",
+  "id": "{{$guid}}",
   "to": "postmaster@analytics.msging.net",
   "method": "get",
   "uri": "/metrics/sent-messages/{interval}"
@@ -1520,7 +1520,7 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {  
-  "id": "a43aa4d2-566a-4be0-bc51-38d43597eb58",
+  "id": "{{$guid}}",
   "to": "postmaster@analytics.msging.net",
   "method": "set",
   "uri": "/reports/{reportId}/charts/{chartId}",
