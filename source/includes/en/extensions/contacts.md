@@ -30,6 +30,7 @@ A [contact object](/#contact) passed as a document `resource` has the following 
 | **timezone**   | **Optional** The client's timezone id (int).   | `-3` |
 | **culture**   | **Optional** The client's culture info (string).   | `"pt-br"` |
 | **extras**   | **Optional** The client's extra informations.         | `{"customerExternalId": "41231", "cpf": "00000000000" }` |
+| **source**   | **Optional** The client's source (channel) info (string).   | `"Facebook Messenger"` |
 
 For more information about the supported fields, please refer to the [Lime protocol](http://limeprotocol.org/resources.html#contact) documentation.
 
@@ -47,14 +48,15 @@ client.addMessageReceiver('text/plain', async (message) => {
         uri: '/contacts',
         type: 'application/vnd.lime.contact+json',
         resource: {
-            identity: '11121023102013021@messenger.gw.msging.net',
-            name: 'John Doe',
-            gender:'male',
-            group: 'friends',    
+            identity: '{{$user_identity}}',
+            name: '{{$user_name}}',
+            gender:'{{$user_gender}}',
+            group: '{{$user_groups}}',
             extras: {
                 plan: 'Gold',
-                code: '1111'      
-            }
+                code: '1111'
+            },
+            "source": "{{$user_channel_name}}"
         }
     });
 });
@@ -71,14 +73,15 @@ Authorization: Key {YOUR_TOKEN}
   "uri": "/contacts",
   "type": "application/vnd.lime.contact+json",
   "resource": {
-    "identity": "11121023102013021@messenger.gw.msging.net",
-    "name": "John Doe",
-    "gender":"male",
-    "group":"friends",    
+    "identity": "{{$user_identity}}",
+    "name": "{{$user_name}}",
+    "gender":"{{$user_gender}}",
+    "group":"{{$user_group}}",    
     "extras": {
       "plan":"Gold",
       "code":"1111"      
-    }
+    },
+    "source": "{{$user_channel_name}}"
   }
 }
 ```
@@ -135,7 +138,8 @@ namespace Extensions
                 {
                     {"plan", "gold" },
                     {"code", "1111" },
-                }
+                },
+                Source = "Facebook Messenger"
             };
 
             await _contactExtension.SetAsync(identity, contact, cancellationToken);
@@ -144,7 +148,29 @@ namespace Extensions
 }
 ```
 
-In order to store informations about a chatbot's client, it is possible to save and update data using **contacts extension**. This sample shows how to add a Messenger customer with identity `11121023102013021@messenger.gw.msging.net` to the chatbot's roster. 
+In order to store informations about a chatbot's client, it is possible to save and update data using **contacts extension**.
+
+It is necessary to send the requisition according to the [contact object](/#contact) with the following properties:
+
+| Property     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **identity** | The client identity in a specific channel.                         | `11121023102013021@messenger.gw.msging.net (Messenger user)` |
+| **name**   | **Optional** The client's name (string).  | `"Rafael Pacheco"` |
+| **gender** | **Optional** The client's gender (string).  | `"male"` |
+| **group**   | **Optional** The client's group tag (string).   | `"testers"` |
+| **address**   | **Optional** The client's address (string).   | `"83, Paraguassu Street"` |
+| **city**   | **Optional** The client's city (string).   | `"Belo Horizonte"` |
+| **email**   | **Optional** The client's email (string).   | `"rafaelpa@take.net"` |
+| **phoneNumber**   | **Optional** The client's phone number (string).   | `"5531000000000"` |
+| **cellPhoneNumber**   | **Optional** The client's cell phone number (string).   | `"5531999999999"` |
+| **timezone**   | **Optional** The client's timezone id (int).   | `-3` |
+| **culture**   | **Optional** The client's culture info (string).   | `"pt-br"` |
+| **extras**   | **Optional** The client's extra informations.         | `{"customerExternalId": "41231", "cpf": "00000000000" }` |
+| **source**   | **Optional** The client's source (channel) info (string). Check [here](/#channels).   | `"Facebook Messenger"` |
+
+<aside  class="notice">
+When updating a contact, not passing one of the existing parameters for the Contact in the request will delete it.<br><br><i>For example, if the Contact already has an Email parameter and you don't pass It in the requisition, the contact email information will be deleted.</i>
+</aside>
 
 ### Add a comment
 
