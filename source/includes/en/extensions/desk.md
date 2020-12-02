@@ -538,6 +538,7 @@ Content-Type: application/json
     "resource": {
         "id": "76f5bc38-b476-4895-a0c6-016ed1288ba0",
         "sequentialId": 138,
+        "sequentialSuffix": "SFX",
         "ownerIdentity": "demobot@msging.net",
         "customerIdentity": "2627641447@messenger.gw.msging.net",
         "customerDomain": "messenger.gw.msging.net",
@@ -549,7 +550,8 @@ Content-Type: application/json
         "team": "Default",
         "unreadMessages": 0,
         "closed": false,
-        "customerInput": {}
+        "customerInput": {},
+        "priority": 0 
     },
     "method": "set",
     "status": "success",
@@ -736,6 +738,7 @@ Content-Type: application/json
     "resource": {
         "id": "89e18743-ee13-498e-a8a8-de5e8a7da846",
         "sequentialId": 1,
+        "sequentialSuffix": "SFX",
         "ownerIdentity": "testehome1@msging.net",
         "customerIdentity": "ba11b95c-7564-4685-b835-8cc76fae6fac.testehome1@0mn.io",
         "customerDomain": "0mn.io",
@@ -746,7 +749,8 @@ Content-Type: application/json
         "rating": 0,
         "team": "Default",
         "unreadMessages": 0,
-        "closed": false
+        "closed": false,
+        "priority": 0 
     },
     "method": "set",
     "status": "success",
@@ -762,6 +766,7 @@ Content-Type: application/json
    {
      id: '89e18743-ee13-498e-a8a8-de5e8a7da846',
      sequentialId: 1,
+     sequentialSuffix: "SFX",
      ownerIdentity: 'testehome1@msging.net',
      customerIdentity: 'ba11b95c-7564-4685-b835-8cc76fae6fac.testehome1@0mn.io',
      customerDomain: '0mn.io',
@@ -772,7 +777,8 @@ Content-Type: application/json
      rating: 0,
      team: 'Default',
      unreadMessages: 0,
-     closed: false },
+     closed: false,
+     priority: 0  },
   method: 'set',
   status: 'success',
   id: 'a7ee981b-43fa-47a3-a5bc-a6a2b5d979ac',
@@ -794,6 +800,7 @@ result: {Lime.Protocol.Command}
     Resource [Document]: {Takenet.Iris.Messaging.Resources.Ticket}
         Status [TicketStatusEnum]: Waiting
         SequentialId [int]: 1
+        SequentialSuffix [string]: "SFX"
         Provider [string]: "Lime"
         OwnerIdentity [Identity]: {testehome1@msging.net}
 ```
@@ -1819,6 +1826,7 @@ Content-Type: application/json
     "resource": {
         "id": "76fed1288ba0",
         "sequentialId": 138,
+        "sequentialSuffix": "SFX",
         "ownerIdentity": "demobot@msging.net",
         "customerIdentity": "26247641447@messenger.gw.msging.net",
         "customerDomain": "messenger.gw.msging.net",
@@ -1829,7 +1837,8 @@ Content-Type: application/json
         "rating": 0,
         "team": "Default",
         "unreadMessages": 0,
-        "closed": false
+        "closed": false,
+        "priority": 0 
     },
     "method": "get",
     "status": "success",
@@ -2426,6 +2435,7 @@ To filter specific tickets you can use **$filter** parameter on query string wit
 |---------------------------------|--------------|
 | id    | Unique identifier of the ticket   |
 | sequentialId    | The ticket sequential id (by bot) |
+| sequentialSuffix    | The optional suffix of sequential id (if config) |
 | ownerIdentity | The identity of the bot ticket owner |
 | customerIdentity | The identity of the customer |
 | customerDomain    | The domain of the customer  |
@@ -2438,6 +2448,7 @@ To filter specific tickets you can use **$filter** parameter on query string wit
 | team | Ticket team |
 | unreadMessages | Gets or sets the number of unread messages of a ticket. Unread messages are messages without consumed notification. |
 | closed | The ticket is closed or not |
+| priority  | The ticket's priority level |
 
 *Ticket status can assume one of the following values*
 
@@ -2499,6 +2510,7 @@ Content-Type: application/json
             {
                 "id": "f1e95e10-2e21-4438-a076-71183b253981",
                 "sequentialId": 0,
+                "sequentialSuffix": "SFX",
                 "ownerIdentity": "testehome1@msging.net",
                 "customerIdentity": "ba11b95c-7564-4685-b835-8cc76fae6fac.testehome1@0mn.io",
                 "customerDomain": "0mn.io",
@@ -2510,7 +2522,8 @@ Content-Type: application/json
                 "rating": 0,
                 "team": "Default",
                 "unreadMessages": 0,
-                "closed": false
+                "closed": false,
+                "priority": 0 
             }
         ]
     },
@@ -3145,6 +3158,7 @@ Content-Type: application/json
             {
                 "id": "29af5ee0-e9cd-45bc-96e8-0170c01501c8",
                 "sequentialId": 67,
+                "sequentialSuffix": "SFX",
                 "ownerIdentity": "atendente@msging.net",
                 "customerIdentity": "09e6b554-fe22-495c-a2b7-307ce1ba3fde.atendente@0mn.io",
                 "customerDomain": "0mn.io",
@@ -3155,7 +3169,8 @@ Content-Type: application/json
                 "rating": 0,
                 "team": "Default",
                 "unreadMessages": 0,
-                "closed": false
+                "closed": false,
+                "priority": 0
             }
         ]
     },
@@ -3273,6 +3288,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
             "value": {
                 "id": "1654804277843415",
                 "sequentialId": 0,
+                "sequentialSuffix": "SFX",
                 "ownerIdentity": "bot@msging.net",
                 "customerIdentity": "1654804277843415@messenger.gw.msging.net",
                 "agentIdentity": "ravpacheco%40gmail.com@blip.ai",
@@ -3396,6 +3412,7 @@ Content-Type: application/json
     "resource": {
         "id": "9565cc61-d0f4-4af0-9c34-016ed2130a11",
         "sequentialId": 142,
+        "sequentialSuffix": "SFX",
         "ownerIdentity": "demobot4@msging.net",
         "customerIdentity": "255d0787b7b2bc.demobot@0mn.io",
         "customerDomain": "0mn.io",
@@ -3407,7 +3424,8 @@ Content-Type: application/json
         "team": "Default",
         "unreadMessages": 0,
         "closed": false,
-        "parentSequentialId": 140
+        "parentSequentialId": 140,
+        "priority": 1
     },
     "method": "set",
     "status": "success",

@@ -10,6 +10,7 @@ Represents an attendance ticket.
 |--------------------------|------------------------------------------------|-------------------|
 | id                       | the id of the ticket                           | string            |
 | sequentialId             | the ticket sequential id                       | int               |
+| sequentialSuffix         | the optional suffix of sequential id           | string            |
 | routingOwnerIdentity     | if present, used instead of ownerIdentity      | Identity          |
 | customerDomain           | the domain of customer                         | string            |
 | agentIdentity            | the agent identity                             | Identity          |
@@ -33,3 +34,4 @@ Represents an attendance ticket.
 | firstResponseDate        | time the agent take to send the first response | DateTimeOffset    |
 | parentSequentialId       | the ticket sequential if when transfered       | int               |
 | customerInput            | the customer input used to open the ticket     | DocumentContainer |
+| priority                 | The ticket's priority level                    | int               |
