@@ -9,3 +9,5 @@ Some extensions can require permission to send messages in name of the chatbot. 
 <aside class="notice">
 From <b>April 2020</b>, the BLiP HTTP endpoint will change from <b>https://msging.net</b> to <b>https://http.msging.net</b>. <br><br>We strongly advise users to start using the new endpoint as soon as possible.
 </aside>
+
+teste
