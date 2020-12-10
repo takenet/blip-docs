@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "7e75164f-c1aa-4512-a3db-cd76eb2fdf93",
-		"name": "BLiP",
+		"_postman_id": "1f1a11df-6368-4356-a1ff-b5dd6c2d9571",
+		"name": "BLiP 2",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -34,10 +34,9 @@
 									"raw": "{\r\n  \"id\": \"afasdd-as9d8a7sd987\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/buckets/blip_portal:builder_working_flow\",\r\n  \"type\": \"application/json\", \r\n  \"resource\":\r\n     \"{\r\n   \"onboarding\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"input\":{ \r\n               \"bypass\":false,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"a5f855b2-7344-44ad-bf8b-75bccd63d288\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Entrada do usuário\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":false,\r\n                  \"position\":\"right\"\r\n               },\r\n               \"$invalid\":false\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:9132\"\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n         { \r\n            \"stateId\":\"646ede55-1579-481d-87a9-c48463d7d190\",\r\n            \"$connId\":\"con_3\",\r\n            \"conditions\":[ \r\n               { \r\n                  \"source\":\"input\",\r\n                  \"comparison\":\"exists\",\r\n                  \"values\":[ \r\n\r\n                  ],\r\n                  \"$$hashKey\":\"object:814\"\r\n               }\r\n            ],\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:795\"\r\n         }\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"fallback\",\r\n         \"$invalid\":false\r\n      },\r\n      \"id\":\"onboarding\",\r\n      \"root\":true,\r\n      \"$position\":{ \r\n         \"top\":\"148px\",\r\n         \"left\":\"1126px\"\r\n      },\r\n      \"$title\":\"Início\",\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   },\r\n   \"fallback\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"input\":{ \r\n               \"bypass\":true,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"95b10ba8-e351-4d16-9b10-ce14961cb1fd\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Entrada do usuário\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":true,\r\n                  \"position\":\"right\"\r\n               },\r\n               \"$invalid\":false\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:8767\"\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n         { \r\n            \"stateId\":\"error\",\r\n            \"conditions\":[ \r\n               { \r\n                  \"source\":\"input\",\r\n                  \"comparison\":\"matches\",\r\n                  \"values\":[ \r\n                     \".*\"\r\n                  ],\r\n                  \"$$hashKey\":\"object:8812\"\r\n               }\r\n            ],\r\n            \"$connId\":\"con_8\",\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:8793\"\r\n         }\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"onboarding\",\r\n         \"$invalid\":false\r\n      },\r\n      \"id\":\"fallback\",\r\n      \"$position\":{ \r\n         \"top\":\"787px\",\r\n         \"left\":\"84px\"\r\n      },\r\n      \"$title\":\"Exceções\",\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   },\r\n   \"error\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"00000000-0000-0000-0000-000000000002\",\r\n                  \"type\":\"application/vnd.lime.chatstate+json\",\r\n                  \"content\":{ \r\n                     \"state\":\"composing\",\r\n                     \"interval\":1000\r\n                  }\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"00000000-0000-0000-0000-000000000002\",\r\n                     \"type\":\"application/vnd.lime.chatstate+json\",\r\n                     \"content\":{ \r\n                        \"state\":\"composing\",\r\n                        \"interval\":1000\r\n                     }\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4369\"\r\n         },\r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"00000000-0000-0000-0000-000000000003\",\r\n                  \"type\":\"text/plain\",\r\n                  \"content\":\"Desculpe, não consegui entender!\"\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"00000000-0000-0000-0000-000000000003\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Desculpe, não consegui entender!\"\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4370\"\r\n         },\r\n         { \r\n            \"input\":{ \r\n               \"bypass\":true,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"a1f34699-dd5c-43b6-8345-fde58dc32c0d\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Entrada do usuário\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":true,\r\n                  \"position\":\"right\"\r\n               },\r\n               \"$invalid\":false\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4371\"\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"onboarding\",\r\n         \"$invalid\":false\r\n      },\r\n      \"id\":\"error\",\r\n      \"$position\":{ \r\n         \"top\":\"787px\",\r\n         \"left\":\"432px\"\r\n      },\r\n      \"$title\":\"Erro padrão\",\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   },\r\n   \"646ede55-1579-481d-87a9-c48463d7d190\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"76d7a887-783d-4470-9636-59f4c0732f84\",\r\n                  \"type\":\"application/vnd.lime.chatstate+json\",\r\n                  \"content\":{ \r\n                     \"state\":\"composing\",\r\n                     \"interval\":1000\r\n                  }\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"76d7a887-783d-4470-9636-59f4c0732f84\",\r\n                     \"type\":\"application/vnd.lime.chatstate+json\",\r\n                     \"content\":{ \r\n                        \"state\":\"composing\",\r\n                        \"interval\":1000\r\n                     }\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4839\"\r\n         },\r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"e66d9771-5303-453b-9446-410ee47ac15f\",\r\n                  \"type\":\"text/plain\",\r\n                  \"content\":\"Some text\"\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"e66d9771-5303-453b-9446-410ee47ac15f\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Some text\"\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4840\"\r\n         },\r\n         { \r\n            \"input\":{ \r\n               \"bypass\":true,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"1cf3aaa9-6293-41a3-916f-c05a1a33ecbd\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"name\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":true,\r\n                  \"position\":\"right\",\r\n                  \"editing\":false\r\n               },\r\n               \"$invalid\":false,\r\n               \"variable\":\"name\"\r\n            },\r\n            \"$$hashKey\":\"object:9806\",\r\n            \"$invalid\":false\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n         { \r\n            \"stateId\":\"1d2f8b2a-051d-43f9-882e-c0f40302126d\",\r\n            \"$connId\":\"con_13\",\r\n            \"conditions\":[ \r\n               { \r\n                  \"source\":\"input\",\r\n                  \"comparison\":\"exists\",\r\n                  \"values\":[ \r\n\r\n                  ],\r\n                  \"$$hashKey\":\"object:26765\"\r\n               }\r\n            ],\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:26746\"\r\n         }\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n         { \r\n            \"type\":\"ExecuteScript\",\r\n            \"$title\":\"Executar script\",\r\n            \"$invalid\":false,\r\n            \"settings\":{ \r\n               \"function\":\"run\",\r\n               \"source\":\"/**\\n            * All input variables needs to be passed as function param;\\n            * Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\\n            * Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\\n            **/\\n      function run(offset) {\\n                 let now = new Date;\\n                 let utc_timestamp = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),\\n                 now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds(), now.getUTCMilliseconds());\\n\\n                 var date = new Date(utc_timestamp + offset * 3600 * 1000);\\n                \\n                return date.getHours();\\n            }\",\r\n               \"inputVariables\":[ \r\n                  \"config.dateTimeOffset\"\r\n               ],\r\n               \"outputVariable\":\"hora\"\r\n            },\r\n            \"conditions\":[ \r\n\r\n            ]\r\n         }\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"fallback\",\r\n         \"$invalid\":false\r\n      },\r\n      \"$tags\":[ \r\n\r\n      ],\r\n      \"id\":\"646ede55-1579-481d-87a9-c48463d7d190\",\r\n      \"root\":false,\r\n      \"$title\":\"Boas vindas\",\r\n      \"$position\":{ \r\n         \"top\":\"299px\",\r\n         \"left\":\"1127px\"\r\n      },\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   },\r\n   \"1d2f8b2a-051d-43f9-882e-c0f40302126d\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"9fb086c0-edb6-4016-a121-a5851656f682\",\r\n                  \"type\":\"application/vnd.lime.chatstate+json\",\r\n                  \"content\":{ \r\n                     \"state\":\"composing\",\r\n                     \"interval\":1000\r\n                  }\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"9fb086c0-edb6-4016-a121-a5851656f682\",\r\n                     \"type\":\"application/vnd.lime.chatstate+json\",\r\n                     \"content\":{ \r\n                        \"state\":\"composing\",\r\n                        \"interval\":1000\r\n                     }\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:26470\"\r\n         },\r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"ec227e2d-3892-4425-ae23-3fdfef58528e\",\r\n                  \"type\":\"text/plain\",\r\n                  \"content\":\"{{hora}}\"\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"ec227e2d-3892-4425-ae23-3fdfef58528e\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"{{hora}}\"\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:26471\"\r\n         },\r\n         { \r\n            \"input\":{ \r\n               \"bypass\":true,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"e58dab05-8f3f-4a2e-8386-03a24f0245c1\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Entrada do usuário\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":true,\r\n                  \"position\":\"right\",\r\n                  \"editing\":false\r\n               },\r\n               \"$invalid\":false\r\n            },\r\n            \"$$hashKey\":\"object:26151\",\r\n            \"$invalid\":false\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"fallback\",\r\n         \"$invalid\":false\r\n      },\r\n      \"$tags\":[ \r\n\r\n      ],\r\n      \"id\":\"1d2f8b2a-051d-43f9-882e-c0f40302126d\",\r\n      \"root\":false,\r\n      \"$title\":\"Novo bloco\",\r\n      \"$position\":{ \r\n         \"top\":\"499px\",\r\n         \"left\":\"1128px\"\r\n      },\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   }\r\n}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -71,10 +70,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"set\",\r\n  \"type\": \"application/vnd.iris.eventTrack+json\",\r\n  \"uri\": \"/event-track\",\r\n  \"resource\": {\r\n    \"category\": \"payments\",\r\n    \"action\": \"success-order\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -108,10 +106,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/reports\",\r\n  \"type\": \"application/vnd.iris.report+json\",\r\n  \"resource\": {\r\n    \"id\": \"{{$guid}}\",\r\n    \"name\": \"Testing\",\r\n    \"isPrivate\": true,\r\n    \"ownerUserIdentity\": \"jonh%40email.net@blip.ai\"\r\n  }\r\n}\r\n\r\n"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -145,10 +142,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n    \"method\": \"set\",\r\n    \"type\": \"application/vnd.iris.eventTrack+json\",\r\n    \"uri\": \"/event-track\",\r\n    \"resource\": {\r\n        \"category\": \"payments\",\r\n        \"action\": \"success-order\",\r\n        \"contact\": { \r\n            \"identity\": \"{{identity}}\"\r\n        }\r\n    }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -182,10 +178,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/reports/{{report_id}}/charts/{{chart_id}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -219,10 +214,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/reports/{{report_id}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -256,10 +250,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/event-track/{{category_name}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -293,10 +286,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/metrics/active-messages/{{interval}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -330,10 +322,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/reports\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -367,10 +358,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/reports/{{report_id}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -404,10 +394,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/metrics/active-identity/{{interval}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -441,10 +430,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/event-track\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -478,10 +466,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/reports/{{report_id}}/charts\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -515,10 +502,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/event-track/payments?startDate=2019-06-21&endDate=2019-06-28&$take=10\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -552,10 +538,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/event-track/payments/success-order?startDate=2019-06-21&endDate=2019-06-28&$take=10\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -589,10 +574,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/metrics/engaged-identity/{{interval}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -626,10 +610,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/metrics/received-messages/{{interval}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -663,10 +646,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/metrics/sent-messages/{{interval}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -700,10 +682,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/reports/{{report_id}}/charts/{{chart_id}}\",\r\n  \"type\": \"application/vnd.iris.chart+json\",\r\n  \"resource\": {\r\n        \"id\": \"{{chart_id}}\",\r\n        \"name\": \"My Users Metrics\",\r\n        \"chartType\": \"list\",\r\n        \"dimension\": \"users\",\r\n        \"category\": \"activeUsers\",\r\n        \"order\": 1\r\n   }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -721,7 +702,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "dc654ed8-1ef3-4d20-bba5-3094e93c6435",
+								"id": "2332ecb5-21e3-4594-a384-50842d0c60f1",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -731,7 +712,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "29df2ee9-8833-4815-8599-bfdc31599d16",
+								"id": "4bf62033-ec03-4ebf-8908-8c1c83f9f5e6",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -766,10 +747,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/analysis\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -802,10 +782,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/analysis\",\n    \"type\": \"application/vnd.iris.ai.analysis-request+json\",\n    \"resource\": {\n        \"text\": \"I want a pepperoni pizza\"\n    }\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -838,10 +817,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/analysis\",\r\n  \"type\": \"application/vnd.iris.ai.analysis-request+json\",\r\n  \"resource\": {\r\n    \"text\":\"I want a pepperoni pizza\",\r\n    \"modelId\": \"{{model_id}}\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -874,10 +852,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/intentions/{{intent_id}}/answers\",\r\n  \"type\": \"application/vnd.lime.collection+json\",\r\n  \"resource\": {\r\n    \"itemType\": \"application/vnd.iris.ai.answer+json\",\r\n    \"items\":[\r\n      {\r\n        \"type\":\"text/plain\",\r\n        \"value\":\"Which flavor do you want?\"\r\n      }\r\n    ]\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -910,10 +887,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/intentions/{{intent_id}}/questions\",\r\n  \"type\": \"application/vnd.lime.collection+json\",\r\n  \"resource\": {\r\n    \"itemType\": \"application/vnd.iris.ai.question+json\",\r\n    \"items\":[\r\n      {\r\n        \"text\": \"I want a pizza\"\r\n      },\r\n      {\r\n        \"text\": \"I wanna order a pizza\"\r\n      },\r\n      {\r\n        \"text\": \"Give me a pizza\"\r\n      }\r\n    ]\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -946,10 +922,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/analytics/confusion-matrix\",\n    \"type\": \"application/vnd.iris.ai.confusion-matrix+json\",\n    \"resource\": {\n        \"version\": \"{{version}}\",\n        \"sampleSize\": \"{{sample_size}}\"\n    }\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -982,10 +957,9 @@
 									"raw": "{\r\n  \"id\":\"{{$guid}}\",\r\n  \"to\":\"postmaster@ai.msging.net\",\r\n  \"method\":\"set\",\r\n  \"uri\":\"/entities\",\r\n  \"type\":\"application/vnd.iris.ai.entity+json\",\r\n  \"resource\":{\r\n    \"name\":\"Flavor\",\r\n    \"values\":[\r\n      {\r\n        \"name\":\"Pepperoni\",\r\n        \"synonymous\":[\r\n          \"Peperoni\",\r\n          \"Pepperonee\",\r\n          \"Pepperouni\",\r\n          \"Peperony\"\r\n        ]\r\n      },\r\n      {\r\n        \"name\":\"Mushrooms\",\r\n        \"synonymous\":[\r\n          \"Mashrooms\",\r\n          \"Mushroom\",\r\n          \"Mshrooms\"\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1018,10 +992,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/intentions\",\r\n  \"type\": \"application/vnd.iris.ai.intention+json\",\r\n  \"resource\": {\r\n      \"name\": \"Order pizza\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1055,10 +1028,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"delete\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"uri\": \"/analytics/confusion-matrix/{{confusion_matrix_id}}\",\n    \"from\": \"postmaster@ai.msging.net/#hmg-az-lx-iris1\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1092,10 +1064,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/entities\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1129,10 +1100,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/intentions\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1166,10 +1136,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/intentions/{{intent_id}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1203,10 +1172,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"method\": \"delete\",\n    \"uri\": \"/intentions/{{intent_id}}/answers/{{answer_id}}\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1240,10 +1208,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/intentions/{{intent_id}}/questions/{{question_id}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1277,10 +1244,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/analytics/confusion-matrix/{{confusion_matrix_id}}\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1313,10 +1279,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/model/{{model_id}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1349,10 +1314,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/models/summary\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1385,10 +1349,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/entities\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1421,10 +1384,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/intentions\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1456,10 +1418,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/models\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1492,10 +1453,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/entities/{{entity_id}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1528,10 +1488,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/intentions/{{intent_id}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1564,10 +1523,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"get\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"uri\": \"/intentions/{{intent_id}}/answers\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1600,10 +1558,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/analytics/confusion-matrix\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1636,10 +1593,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/intentions/{{intent_id}}/questions\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1672,10 +1628,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/analysis?$skip=0&$take=10\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1709,10 +1664,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"method\": \"merge\",\n    \"uri\": \"/intentions\",\n    \"type\": \"application/vnd.iris.ai.intention+json\",\n    \"resource\": {\n        \"name\": \"Order pizza\"\n    }\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1746,10 +1700,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/models\",\r\n  \"type\": \"application/vnd.iris.ai.model-publishing+json\",\r\n  \"resource\": {\r\n    \"id\":\"{{model_id}}\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1782,10 +1735,9 @@
 									"raw": "{\r\n  \"id\":\"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/analysis/{{analyze_id}}/feedback\",\r\n  \"type\": \"application/vnd.iris.ai.analysis-feedback+json\",\r\n  \"resource\": {\r\n    \"feedback\": \"rejected\",\r\n    \"intentionId\": \"{{other_intent_id}}\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1818,10 +1770,9 @@
 									"raw": "{\r\n  \"id\":\"{{$guid}}\",\r\n  \"to\":\"postmaster@ai.msging.net\",\r\n  \"method\":\"set\",\r\n  \"uri\":\"/analysis/{{analyse_id}}/feedback\",\r\n  \"type\":\"application/vnd.iris.ai.analysis-feedback+json\",\r\n  \"resource\":{\r\n    \"feedback\":\"approved\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1854,10 +1805,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"set\",\n    \"resource\": {\n        \"email\": \"{{email}}\",\n        \"filter\": \"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'\"\n    },\n    \"to\": \"postmaster@ai.msging.net\",\n    \"type\": \"application/json\",\n    \"uri\": \"/enhancement/send-by-email\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1890,10 +1840,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/analysis/feedback\",\n    \"type\": \"application/vnd.iris.ai.analysis-feedback+json\",\n    \"resource\": {\n        \"IntentionId\": \"{{intention_id}}\",\n        \"AnalysisId\": \"{{analysis_id}}\"\n    }\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1926,10 +1875,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/models\",\r\n  \"type\": \"application/vnd.iris.ai.model-training+json\",\r\n  \"resource\": {}\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -1947,7 +1895,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "8610e8b9-f905-45e0-b89b-93a7419f4bf0",
+								"id": "082d4053-9a58-4b4d-95bd-81920b4f1abc",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -1957,7 +1905,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ff20c585-18f9-4b3f-9e70-980b02ce1bf0",
+								"id": "b5136900-e290-465d-b487-771dc5203392",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -1992,10 +1940,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@broadcast.msging.net\",\r\n  \"method\": \"set\",\r\n  \"type\": \"application/vnd.iris.distribution-list+json\",\r\n  \"uri\": \"/lists\",\r\n  \"resource\": {  \r\n    \"identity\": \"{{distribution_list_name}}@broadcast.msging.net\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2028,10 +1975,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@broadcast.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/lists\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2064,10 +2010,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@broadcast.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/lists/{{distribution_list_name}}@broadcast.msging.net/recipients\",\r\n  \"type\": \"application/vnd.lime.identity\",\r\n  \"resource\": \"{{user_identity}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2100,10 +2045,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@broadcast.msging.net\",\n    \"method\": \"delete\",\n    \"uri\": \"/lists/{{distribution_list_name}}@broadcast.msging.net/recipients/{{user_identity}}\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2136,10 +2080,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n \"to\": \"postmaster@broadcast.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/lists/{{distribution_list_name}}@broadcast.msging.net/recipients?$skip=0&$take=5\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2172,10 +2115,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"{{distribution_list_name}}@broadcast.msging.net\",\r\n  \"type\": \"text/plain\",\r\n  \"content\": \"Hello participants of this list!\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2209,10 +2151,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"{{distribution_list_name}}@broadcast.msging.net\",\r\n  \"type\": \"text/plain\",\r\n  \"content\": \"Hello ${contact.name}, come to check out our prices!\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2223,6 +2164,41 @@
 								"description": "Note: To make your broadcast more personal, you can also replace contact variables in messages sent to a distribution list.\r\nFor more information, please check the documentation of the Contacts extension.\r\n\r\nFor more information, see https://docs.blip.ai/#send-message-with-replacement-variable"
 							},
 							"response": []
+						},
+						{
+							"name": "Delete a list",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@broadcast.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/lists/{{distribution_list_name}}@broadcast.msging.net\"\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "Delete a distribution list."
+							},
+							"response": []
 						}
 					],
 					"description": "\r\nThe **broadcast** extension allows creation and management of distribution lists and their members for sending messages to multiple destinations simultaneously. \r\n\r\nEach distribution list has a unique address in the format `list-name@broadcast.msging.net` in addition to the members, who are the recipients of messages sent to this list. Only the chatbot that created a remote list has permission to send messages to it.\r\n\r\nNotifications are forwarded to the chatbot when received by the extension.\r\n\r\nIn order to use **broadcast** extension features, you must send commands with the following properties:\r\n\r\n| Name | Description |\r\n|---------------------------------|--------------|\r\n| id    | Unique identifier of the command.   |\r\n| method    | The command verb  |\r\n| resource | The schedule document. |\r\n| type | **\"application/vnd.iris.distribution-list+json\"** |\r\n| uri    | **/lists**   |\r\n| to     | **postmaster@broadcast.msging.net** |\r\n\r\nThe command's properties `resource` and `method` can change according to the feature.\r\nAn schedule object passed as a document `resource` has the following properties:\r\n\r\n| Property     | Description                                                        | Example |\r\n|--------------|--------------------------------------------------------------------|---------|\r\n| **identity** | Identifier of a distribution list.                          | news@broadcast.msging.net |\r\n\r\n#### Default list\r\n\r\nBLiP automatically creates a distribution list with all clients that have already contacted your chatbot. Its address is `[bot-identifier]+senders@broadcast.msging.net` where `bot-identifier` is the identifier of your chatbot, which is used with the access key for authentication.\r\n\r\nFor example, for a chatbot with identifier `mychatbot`, this list address would be `mychatbot+senders@broadcast.msging.net`.\r\n\r\n#### Replacement variables\r\n\r\nIt is possible to use contact replacement variables in the sent messages. For more information, please check the documentation of the [**Contacts** extension](#contacts).\r\n\r\n#### Availability\r\n\r\nThe Broadcast service is available in the following domains:\r\n\r\n|Domain     |Available  |Observation                                            |\r\n|---\t      |---\t      |---                                                    |\r\n|Messenger  |x          |Needed initial user interaction with chatbot           |\r\n|BLiP Chat  |x          |Not necessary initial user interaction with chatbot    |\r\n|Skype      |x          |Needed initial user interaction with chatbot           |\r\n|SMS        |x          |Not necessary initial user interaction with chatbot    |\r\n|Telegram   |x          |Needed initial user interaction with chatbot           |\r\n|Workplace  |x          |Needed initial user interaction with chatbot           |\r\n\r\n",
@@ -2230,7 +2206,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "a19609b2-297e-4c1f-97dc-678e9d6ee54f",
+								"id": "8a5fcb24-4495-474d-9fab-26a228596205",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2240,7 +2216,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "df1d25ee-a29e-4590-b9c0-093fb14c2e10",
+								"id": "4ca45306-befd-473b-9499-d71718d7fd6e",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2275,10 +2251,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/buckets/{{document_key}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2311,10 +2286,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"get\",\n    \"uri\": \"/buckets/{{document_key}}\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2347,10 +2321,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/buckets\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2384,10 +2357,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/buckets/{{document_key}}?expiration=30000\",\r\n  \"type\": \"application/x-my-type+json\",\r\n  \"resource\": {  \r\n    \"myTypeKey1\": \"value1\",\r\n    \"myTypeKey2\": 2\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2420,10 +2392,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"set\",\n    \"uri\": \"/buckets/{{document_key}}\",\n    \"type\": \"application/json\",\n    \"resource\": {\n        \"key1\": \"value1\",\n        \"key2\": 2,\n        \"key3\": [\n            \"3a\",\n            \"3b\",\n            \"3c\"\n        ]\n    }\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2441,7 +2412,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "d8cf3b40-28f9-4edf-a520-67823645db8c",
+								"id": "791e634e-6191-45f4-83ce-53196929ad8b",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2451,7 +2422,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a7069cb1-12f0-4ede-987e-d6f7807e2112",
+								"id": "f8c44102-88cf-4dfd-8bd7-46cd6a5632e7",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2486,10 +2457,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/contexts/{{identity}}/stateid%400\",\n    \"type\": \"text/plain\",\n    \"resource\": \"{{state_id}}\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2522,10 +2492,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/contexts/{{identity}}/{{variable_name}}\",\n    \"type\": \"{{type}}\",\n    \"resource\": \"{{resource}}\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2558,10 +2527,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"delete\",\n    \"uri\": \"/contexts/{{identity}}/{{variable_name}}\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2594,10 +2562,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/contexts/\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2630,10 +2597,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/contexts/{{identity}}\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2666,10 +2632,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/contexts/{{identity}}/{{variableName}}\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2702,10 +2667,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/contexts/{{identity}}/stateid%400\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2738,10 +2702,9 @@
 									"raw": "{\n   \"id\": \"{{$guid}}\",\n   \"method\": \"set\",\n  \"uri\": \"/buckets/blip_portal:builder_working_flow\",\n  \"type\": \"application/json\", \n  \"resource\":{{your_json}}\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2774,10 +2737,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"delete\",\n    \"uri\": \"/contexts/{{identity}}/stateid%400\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2795,7 +2757,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "4f0d410a-6c68-4b18-91d2-4b9aebe874b0",
+								"id": "935ffa24-6cf0-4885-8ae7-912adf52d58e",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2805,7 +2767,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2f044701-c484-4b37-adc0-b1fa65a597b3",
+								"id": "48d82f19-b898-4215-805f-42eadcef3204",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2841,10 +2803,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/threads\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2878,10 +2839,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"get\",\n    \"uri\": \"/threads/{{user_identity}}\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2915,10 +2875,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/messages/\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2952,10 +2911,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/notifications\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -2989,10 +2947,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n  \"method\": \"get\",\n  \"uri\": \"/notifications?id={{message_id}}\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3010,7 +2967,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f52d12fc-e705-4360-98de-1dd089d4a7e0",
+								"id": "d365e107-b9b9-4b0b-848c-ca5e2995c9ce",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -3020,7 +2977,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b9fc678d-a8a0-44fa-81e3-5299878dae33",
+								"id": "291ac9aa-78ce-43a3-8dad-0a14ffc46376",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -3055,10 +3012,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"delete\",\n    \"uri\": \"/profile/{{property_identifier}}\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3091,10 +3047,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/profile\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3127,10 +3082,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"get\",\n    \"to\": \"postmaster@msging.net\",\n    \"uri\": \"/profile/{{property_identifier}}\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3163,10 +3117,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"set\",\n    \"uri\": \"/profile/get-started\",\n    \"type\": \"text/plain\",\n    \"resource\": \"Let's begin\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3200,10 +3153,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/profile/get-started\",\r\n  \"type\": \"text/plain\",\r\n  \"resource\": \"Start now\"\r\n}\r\n"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3236,10 +3188,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"set\",\r\n  \"uri\":\"/profile/persistent-menu\",\r\n  \"type\":\"application/vnd.lime.document-select+json\",\r\n    \"resource\":{\r\n      \"options\":[\r\n        {\r\n          \"label\":{\r\n            \"type\":\"application/vnd.lime.document-select+json\",\r\n            \"value\":{\r\n              \"header\":{\r\n                \"type\":\"text/plain\",\r\n                \"value\":\"Option 1\"\r\n              },\r\n              \"options\":[\r\n                {\r\n                  \"label\":{\r\n                    \"type\":\"text/plain\",\r\n                    \"value\":\"Option 1.1\"\r\n                  }\r\n                },\r\n                {\r\n                  \"label\":{\r\n                    \"type\":\"application/vnd.lime.web-link+json\",\r\n                  \"value\":{\r\n                    \"text\":\"Option 1.2\",\r\n                    \"uri\":\"https://address.com/option1.2\"\r\n                  }\r\n                }\r\n              },\r\n              {\r\n                \"label\":{\r\n                  \"type\":\"application/vnd.lime.document-select+json\",\r\n                  \"value\":{\r\n                    \"header\":{\r\n                      \"type\":\"text/plain\",\r\n                      \"value\":\"Option 1.3\"\r\n                    },\r\n                    \"options\":[\r\n                      {\r\n                        \"label\":{\r\n                          \"type\":\"text/plain\",\r\n                          \"value\":\"Option 1.3.1\"\r\n                        }\r\n                      },\r\n                      {\r\n                        \"label\":{\r\n                          \"type\":\"text/plain\",\r\n                          \"value\":\"Option 1.3.2\"\r\n                        }\r\n                      },\r\n                      {\r\n                        \"label\":{\r\n                          \"type\":\"text/plain\",\r\n                          \"value\":\"Option 1.3.3\"\r\n                        }\r\n                      }\r\n                    ]\r\n                  }\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"label\":{\r\n          \"type\":\"text/plain\",\r\n          \"value\":\"Option 2\"\r\n        }\r\n      },\r\n      {\r\n        \"label\":{\r\n          \"type\":\"application/vnd.lime.web-link+json\",\r\n          \"value\":{\r\n            \"text\":\"Option 3\",\r\n            \"uri\":\"https://address.com/option1.3\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3272,10 +3223,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/profile/greeting\",\r\n  \"type\": \"text/plain\",\r\n  \"resource\": \"Hello and welcome to our service!\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3308,10 +3258,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"set\",\r\n  \"uri\":\"/profile/persistent-menu\",\r\n  \"type\":\"application/vnd.lime.document-select+json\",\r\n  \"resource\": {\r\n    \"options\":[\r\n      {\r\n        \"label\":{\r\n          \"type\":\"text/plain\",\r\n          \"value\":\"Option 1\"\r\n        }\r\n      },\r\n      {\r\n        \"label\":{\r\n          \"type\":\"text/plain\",\r\n          \"value\":\"Option 2\"\r\n        }\r\n      },\r\n      {\r\n        \"label\":{\r\n          \"type\":\"text/plain\",\r\n          \"value\":\"Option 3\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}\r\n"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3329,7 +3278,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "94408cd7-84be-4f52-8408-9a4c1ae381c8",
+								"id": "9f9b2c66-b8b1-4b4b-90b4-592a195dfb5f",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -3339,7 +3288,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ff281dbc-140c-47ad-b068-2b3b2b407d0a",
+								"id": "9d0458ff-f598-4b78-9ad5-e400490e90ba",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -3375,10 +3324,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/contacts\",\r\n  \"type\": \"application/vnd.lime.contact+json\",\r\n  \"resource\": {\r\n    \"identity\": \"{{contact_identity}}\",\r\n    \"name\": \"John Doe\",\r\n    \"gender\":\"male\",\r\n    \"group\":\"friends\",    \r\n    \"extras\": {\r\n      \"plan\":\"Gold\",\r\n      \"code\":\"1111\"      \r\n    }\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3412,10 +3360,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@crm.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/contacts/{{contact_identity}}/comments\",\r\n  \"type\": \"application/vnd.iris.crm.comment+json\",\r\n  \"resource\": {\r\n    \"content\": \"This is a comment example\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3449,10 +3396,9 @@
 									"raw": "{  \n  \"id\": \"{{$guid}}\",\n   \"to\": \"postmaster@msging.net\",\n  \"method\": \"get\",\n  \"uri\": \"/contacts/{{contact_identity}}/linked/{{linked_contact_identity}}\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3486,10 +3432,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@crm.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/contacts/{{contact_identity}}/comments/{{comment_id}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3523,10 +3468,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/contacts/{{contact_identity}}/linked/{{linked_contact_identity}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3560,10 +3504,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@crm.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/contacts/{{contact_identity}}/comments\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3597,10 +3540,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/contacts/{{contact_identity}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3634,10 +3576,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/contacts?$skip=0&$take=3\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3671,10 +3612,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/contacts/{{contact_identity}}/linked\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3708,10 +3648,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/contacts/{{contact_identity}}/linked\",\r\n  \"type\": \"application/vnd.lime.contact+json\",\r\n  \"resource\": {\r\n    \"Identity\": \"{{contact_identity_to_be_linked}}\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3745,15 +3684,14 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"{{contact_identity}}\",\r\n  \"type\": \"text/plain\",\r\n  \"content\": \"Hello ${contact.name}, welcome to the ${contact.extras.plan} plan!\",\r\n  \"metadata\": \r\n  {\r\n    \"#message.replaceVariables\": \"true\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/messages",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
 									"path": [
-										"commands"
+										"messages"
 									]
 								},
 								"description": "If you have information of some client stored on the chatbot's roster, you can send a customized message using these values as message variables. To do this, add a metadata { \"#message.replaceVariables\": \"true\" } and use any property of the contact resource. This sample shows how to replace a contact name on a welcome message.\n\nFor more information, see https://docs.blip.ai/#send-message-with-contact-name"
@@ -3766,7 +3704,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b7fa875b-ac7c-42e7-b596-2d4deb80e73e",
+								"id": "4efca9bf-256a-4950-89b2-4a4f05616d73",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -3776,7 +3714,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ded98ba5-93d3-43e4-9818-771ba16833b6",
+								"id": "39423bf0-2add-42e5-be83-7dc3ce01bfd9",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -3809,10 +3747,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/attendants\",\n    \"type\": \"application/vnd.iris.desk.attendant+json\",\n    \"resource\": {\n        \"identity\": \"{{identity}}\",\n        \"email\": \"{{email}}\",\n        \"teams\": [\n            \"{{team}}\"\n        ]\n    }\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3843,10 +3780,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/replies/{{category_id}}\",\r\n  \"type\": \"application/vnd.lime.collection+json\",\r\n  \"resource\":{\r\n    \"itemType\": \"application/vnd.iris.desk.custom-reply+json\",\r\n    \"items\": [\r\n        {\r\n            \"category\": \"{{category_name}}\",\r\n            \"document\": \"{{content}}\",\r\n            \"id\": \"{{messageId}}\",\r\n            \"isDynamicContent\": false,\r\n            \"name\": \"{{reply_name}}\",\r\n            \"type\": \"{{reply_type}}\"\r\n        }\r\n    ]\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3877,10 +3813,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/tickets/{{ticket_id}}/change-tags\",\n    \"type\": \"application/vnd.iris.ticket+json\",\n    \"resource\": {\n        \"id\": \"ba11b95c-7564-4685-b835-8cc76fae6fac\",\n        \"tags\": [\n            \"tag1\",\n            \"tag2\",\n            \"tag3\"\n        ]\n    }\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3908,13 +3843,12 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/tickets/change-status\",\r\n  \"type\": \"application/vnd.iris.ticket+json\",\r\n  \"resource\": {\r\n    \"id\": \"{{ticket_id}}\",\r\n    \"status\": \"ClosedAttendant\"\r\n  }\r\n}"
+									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/tickets/change-status\",\r\n  \"type\": \"application/vnd.iris.ticket+json\",\r\n  \"resource\": {\r\n    \"id\": \"c1775a01-b715-4021-8673-01704545f207\",\r\n    \"status\": \"Open\",\r\n    \"agentIdentity\": \"brunoar@take.net\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3945,10 +3879,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/tickets/change-status\",\r\n  \"type\": \"application/vnd.iris.ticket+json\",\r\n  \"resource\": {\r\n    \"id\": \"{{ticket_id}}\",\r\n    \"status\": \"ClosedClient\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -3979,10 +3912,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/tickets\",\r\n  \"type\": \"application/vnd.iris.ticket+json\",\r\n  \"resource\": { \r\n    \"customerIdentity\": \"{{customer_identity}}\"\r\n  } \r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4013,10 +3945,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/rules\",\r\n  \"type\": \"application/vnd.iris.desk.rule+json\",\r\n  \"resource\": {\r\n    \"id\": \"rt5aax7a8a9-8as4da\",\r\n    \"isActive\": true,\r\n    \"property\": \"Contact.Extras.City\",\r\n    \"relation\": \"Equals\",\r\n    \"team\": \"Default\",\r\n    \"title\": \"City Rule \",\r\n    \"values\": [\r\n        \"Belo Horizonte\", \r\n        \"BH\", \r\n        \"Minas Gerais\", \r\n        \"MG\"\r\n        ]\r\n    }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4047,10 +3978,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/tickets/{{customer_identity}}\",\n    \"type\": \"text/plain\",\n    \"resource\": \"I need a human!\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4081,10 +4011,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/replies/{{category_id}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4115,10 +4044,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/rules/{{rule_id}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4149,10 +4077,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/attendants/{{agent_id}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4183,10 +4110,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/tickets/{{ticket_id}}/close\",\n    \"resource\": {\n        \"customerIdentity\": \"{{customer_identity}}\",\n        \"id\": \"dfd6a0e4-b109-41f1-8513-01673b93a669\",\n        \"ownerIdentity\": \"{{botIdentifier}}@msging.net\",\n        \"status\": \"ClosedClient\",\n        \"tags\": [\n            \"AtendimentoTeste\"\n        ]\n    }\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4217,15 +4143,14 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"from\": \"1654804277843415%40messenger.gw.msging.net@desk.msging.net\",\n    \"to\": \"bot@msging.net/instance\",\n    \"type\": \"text/plain\",\n    \"content\": \"Hello, here is a human being ;)\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/messages",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
 									"path": [
-										"commands"
+										"messages"
 									]
 								},
 								"description": "To forward a received message to the specific final user, the bot must decode the received message node so it knows where to respond {encoded-user-node}@desk.msging.net:\n\nFor more information, see https://docs.blip.ai/?http#forwarding-received-messages-from-a-human-agent-to-a-final-user"
@@ -4251,15 +4176,14 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"from\": \"1654804277843415@messenger.gw.msging.net\",\n    \"to\": \"bot@msging.net/instance\",\n    \"type\": \"text/plain\",\n    \"content\": \"Hello, I would like to talk to an attendant.\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/messages",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
 									"path": [
-										"commands"
+										"messages"
 									]
 								},
 								"description": "At first, the bot receives a message and decides if it must route the user to a human agent. Imagine for instance that the message \"Hello, I would like to talk to an attendant.\" is enough to send the user to an agent.\n\nFor more information, see https://docs.blip.ai/?http#forwarding-received-messages-to-a-human-agent"
@@ -4285,10 +4209,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/replies/{{category_id}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4319,10 +4242,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/analytics/reports/attendants\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4353,10 +4275,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/analytics/reports/attendancetime\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4387,10 +4308,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/analytics/reports/tags\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4421,10 +4341,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/analytics/reports/teams\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4455,10 +4374,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/analytics/reports/timings\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4489,10 +4407,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/analytics/reports/tickets\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4523,10 +4440,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/rules/{{rule_id}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4557,10 +4473,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/ticket/{{ticket_id}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4591,10 +4506,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/monitoring/attendants\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4625,10 +4539,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/analytics/reports/attendants/productivity\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4658,10 +4571,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/monitoring/tickets\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4692,10 +4604,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/attendants\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4723,13 +4634,12 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/tickets?$filter=(CustomerIdentity%20eq%20'{customer_identity}')&$closed=true&$skip=0&$take=100\"\r\n}"
+									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/tickets/{{customer_identity}}/closed\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4741,7 +4651,7 @@
 							"response": []
 						},
 						{
-							"name": "Get all messages in a ticket",
+							"name": "Get all messages from a customer by a ticket",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -4759,10 +4669,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/tickets/{{ticket_id}}/messages\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4770,7 +4679,7 @@
 										"commands"
 									]
 								},
-								"description": "Return all messages from a specific ticket.\r\n\r\nReplace {ticket_id} with the ticket id you want to get the messages.\r\n\r\nFor more information, see https://docs.blip.ai/?http#get-all-messages-in-a-ticket"
+								"description": "Return all messages from a specific ticket.\r\n\r\nReplace {ticket_id} with the ticket id you want to get the messages.\r\n\r\nFor more information, see https://docs.blip.ai/#get-all-messages-from-a-customer-by-a-ticket"
 							},
 							"response": []
 						},
@@ -4793,10 +4702,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/teams\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4827,10 +4735,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/tickets?$take=10\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4861,10 +4768,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/rules\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4895,10 +4801,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/replies\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4929,10 +4834,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/teams/agents-online\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4962,10 +4866,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/monitoring/open-tickets\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -4996,10 +4899,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/monitoring/teams\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5030,10 +4932,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/monitoring/ticket-metrics\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5064,10 +4965,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/monitoring/tickets\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5098,10 +4998,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/monitoring/tickets-per-hour\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5132,10 +5031,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/monitoring/tickets\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5166,10 +5064,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/monitoring/waiting-tickets\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5200,10 +5097,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/tickets/change-status\",\r\n  \"type\": \"application/vnd.iris.ticket+json\",\r\n  \"resource\": {\r\n    \"id\": \"{{ticket_id}}\",\r\n    \"status\": \"ClosedClient\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5234,10 +5130,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/attendance-history/send-by-email\",\r\n  \"type\": \"application/json\",\r\n  \"resource\": {\r\n    \"email\": \"{{email}}\",\r\n    \"filter\": \"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5268,10 +5163,9 @@
 									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/tickets/{{ticket_id}}/transfer\",\r\n  \"type\": \"application/vnd.iris.ticket+json\",\r\n  \"resource\": {\r\n    \"team\": \"{{team_name}}\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5289,7 +5183,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "57fa8a31-1f1c-4292-898a-304c7a0a367a",
+								"id": "3a730028-350c-45d4-be67-a11748030f18",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5299,7 +5193,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "070301cd-cb4a-42e9-b587-987b7b89cb69",
+								"id": "f06ce44c-6359-4f6e-b564-c6e59f6b7e63",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5335,10 +5229,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"set\",\n    \"uri\": \"/resources/{{resource_key}}\",\n    \"type\": \"application/vnd.lime.media-link+json\",\n    \"resource\": {\n        \"title\": \"Cat\",\n        \"text\": \"Here is a cat image for you!\",\n        \"type\": \"image/jpeg\",\n        \"uri\": \"http://2.bp.blogspot.com/-pATX0YgNSFs/VP-82AQKcuI/AAAAAAAALSU/Vet9e7Qsjjw/s1600/Cat-hd-wallpapers.jpg\",\n        \"size\": 227791,\n        \"previewUri\": \"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8qkelB28RstsNxLi7gbrwCLsBVmobPjb5IrwKJSuqSnGX4IzX\",\n        \"previewType\": \"image/jpeg\"\n    }\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5372,10 +5265,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"set\",\n    \"uri\": \"/resources/{{resource_key}}\",\n    \"type\": \"text/plain\",\n    \"resource\": \"To use our services, please send a text message.\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5409,10 +5301,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"delete\",\n    \"uri\": \"/resources/{{resource_key}}\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5446,10 +5337,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n\"method\": \"get\",\r\n  \"uri\": \"/resources/{{resource_key}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5483,10 +5373,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"get\",\n    \"uri\": \"/resources\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5520,10 +5409,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"set\",\n    \"uri\": \"/resources/welcome-message\",\n    \"type\": \"text/plain\",\n    \"resource\": \"Welcome to our service, ${contact.name}!\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5541,7 +5429,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "3bd2dc83-862a-4ef0-bf10-345187ae6456",
+								"id": "dae707b5-4afd-4ea3-96df-8527593c7709",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5551,7 +5439,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0af19d20-0afd-4271-b2fa-5880a5f0d53e",
+								"id": "74f6d568-453d-4945-a2fd-3e5a991d4e63",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5587,10 +5475,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@scheduler.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/schedules\",\r\n  \"type\": \"application/vnd.iris.schedule+json\",\r\n  \"resource\": {  \r\n    \"message\": {  \r\n      \"id\":  \"{{$guid}}\",\r\n      \"to\": \"destination@0mn.io\",\r\n      \"type\": \"text/plain\",\r\n      \"content\": \"Scheduling test.\"\r\n    },\r\n    \"when\": \"2016-07-25T17:50:00.000Z\",\r\n    \"name\": \"New Schedule\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5624,10 +5511,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@scheduler.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/schedules/{{scheduled_message_id}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5645,7 +5531,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "9fa519f1-8857-4785-bff1-3a326b4d0da8",
+								"id": "08ca621b-a8d3-44fb-bf0a-1ac098e62c6e",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5655,7 +5541,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f4594946-6d87-4ce8-82df-e613408c877b",
+								"id": "d6743e46-6bfe-4cdc-82a5-e7d7b1f2f61e",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5691,10 +5577,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/delegations/postmaster@broadcast.msging.net?envelopeTypes=message\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5728,10 +5613,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/account/keys\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5765,10 +5649,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"set\",\r\n  \"type\": \"application/vnd.lime.delegation+json\",\r\n  \"uri\": \"/delegations\",\r\n  \"resource\": {  \r\n    \"target\": \"postmaster@broadcast.msging.net\",\r\n    \"envelopeTypes\": [  \r\n      \"message\"\r\n    ]\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5802,10 +5685,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/delegations/postmaster@broadcast.msging.net?envelopeTypes=message\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5839,10 +5721,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/account/keys/\",\r\n  \"type\": \"application/vnd.iris.keyRequest+json\",\r\n  \"resource\": {\r\n    \"id\": \"{{id}}\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5860,7 +5741,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "26a0c54e-3ec6-464f-8211-3237e705008d",
+								"id": "c40325e3-9412-4e8c-880a-082cad8cd638",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5870,7 +5751,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "256edc7e-9e99-45fe-9f50-e655f1675f0f",
+								"id": "868a504b-0d24-485a-b1b2-dc39898477c6",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5906,10 +5787,9 @@
 									"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"from\": \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\n    \"to\": \"flow@msging.net/instance\",\n    \"type\": \"text/plain\",\n    \"content\": \"Hi, my name is Andre. How may I help you?\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -5917,7 +5797,7 @@
 										"commands"
 									]
 								},
-								"description": ">Imagine a scenario where there are two bots: **flow** and **operator**, where the first is responsible for presenting an automatic navigation and the second receiving the handover of an eventual manual attendance. Only the **flow** bot is published in *Messenger* and it needs, at a certain point in its flow, to forward the messages to the **operator** bot that controls the manual attendance.\r\n\r\nThe complete path of a message from this external channel to the service bot is:\r\n\r\n>The main bot receives a message from a Messenger user.\r\n\r\n```\r\n{\r\n    \"id\": \"1\",\r\n    \"from\": \"1654804277843415@messenger.gw.msging.net\",\r\n    \"to\": \"flow@msging.net/instance\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hello, I would like to talk to an attendant.\"\r\n}\r\n```\r\n\r\n>According to its internal rules, the flow bot decides to forward this message to the operator bot. To do this, it changes the recipient of the message and sends it as below:\r\n\r\n```http\r\nPOST https://http.msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"1\",\r\n    \"to\": \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hello, I would like to talk to an attendant.\"\r\n}\r\n```\r\n\r\n```javascript\r\nclient.sendMessage({\r\n        id: Lime.Guid(),\r\n        to: \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n        type: \"text/plain\",\r\n        content: \"Hello, I would like to talk to an attendant\"\r\n      })\r\n```\r\n\r\n>Internally, the server creates an **id** for the tunnel and forwards the message to the **operator** bot, which receives it as follows:\r\n\r\n```http\r\nPOST https://http.msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"1\",\r\n    \"from\": \"ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net\",\r\n    \"to\": \"operator@msging.net\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hello, I would like to talk to an attendant.\"\r\n}\r\n```\r\n\r\n```javascript\r\n    {\r\n        id: 1,\r\n        from: \"ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net\",\r\n        to: \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n        type: \"text/plain\",\r\n        content: \"Hello, I would like to talk to an attendant\"\r\n    }\r\n\r\n```\r\n\r\n\r\n>The operator bot generates a reply to the message and forwards it to the source address, **without differentiating a message received directly from a channel** (the same goes for received/consumed notifications):\r\n\r\n```http\r\nPOST https://http.msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"2\",\r\n    \"to\": \"ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hi, my name is Andre. How may I help you?\"\r\n}\r\n```\r\n\r\n```javascript\r\nclient.senMessage({\r\n        id: Lime.Guid(),\r\n        to: \"ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net\",\r\n        type: \"text/plain\",\r\n        content: \"Hi, my name is Andre. How may I help you?\"\r\n      })\r\n```\r\n\r\n>The server uses the tunnel **id** to change the address of the response message and forwards it to the **flow** bot:\r\n\r\n```http\r\nPOST https://http.msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"2\",\r\n    \"from\": \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n    \"to\": \"flow@msging.net/instance\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hi, my name is Andre. How may I help you?\"\r\n}\r\n```\r\n\r\n```javascript\r\nclient.sendMessage({\r\n        id: Lime.Guid(),\r\n        from: \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n        to: \"flow@msging.net/instance\",\r\n        type: \"text/plain\",\r\n        content: \"Hi, my name is Andre. How may I help you?\"\r\n      })\r\n```\r\n\r\n>The bot flow identifies the message received from a **receiver**, decodes the original address that is in **instance** and sends the message to the final recipient:\r\n\r\n```http\r\nPOST https://http.msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"2\",\r\n    \"to\": \"1654804277843415@messenger.gw.msging.net\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hi, my name is Andre. How may I help you?\"\r\n}\r\n```\r\n\r\n```javascript\r\n{\r\n    id: \"2\",\r\n    to: \"1654804277843415@messenger.gw.msging.net\",\r\n    type: \"text/plain\",\r\n    content: \"Hi, my name is Andre. How may I help you?\"\r\n}\r\n```\r\n\r\n### Get a tunnel info\r\n\r\nGet a specific [tunnel](/#tunnels) by id.\r\n\r\nReplace `{tunnelId}` with the tunnel id you want to get.\r\n\r\n```http\r\nPOST https://http.msging.net/commands HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{  \r\n  \"id\": \"47c7e7e1-5e75-4ca4-a86b-2f8b06829160\",\r\n  \"to\": \"postmaster@tunnel.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/tunnels/{tunnelId}\"\r\n}\r\n```\r\n\r\nFor more information, see https://docs.blip.ai/?http#creating-flow-bot-5-steps"
+								"description": ">Imagine a scenario where there are two bots: **flow** and **operator**, where the first is responsible for presenting an automatic navigation and the second receiving the handover of an eventual manual attendance. Only the **flow** bot is published in *Messenger* and it needs, at a certain point in its flow, to forward the messages to the **operator** bot that controls the manual attendance.\r\n\r\nThe complete path of a message from this external channel to the service bot is:\r\n\r\n>The main bot receives a message from a Messenger user.\r\n\r\n```\r\n{\r\n    \"id\": \"1\",\r\n    \"from\": \"1654804277843415@messenger.gw.msging.net\",\r\n    \"to\": \"flow@msging.net/instance\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hello, I would like to talk to an attendant.\"\r\n}\r\n```\r\n\r\n>According to its internal rules, the flow bot decides to forward this message to the operator bot. To do this, it changes the recipient of the message and sends it as below:\r\n\r\n```http\r\nPOST https://msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"1\",\r\n    \"to\": \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hello, I would like to talk to an attendant.\"\r\n}\r\n```\r\n\r\n```javascript\r\nclient.sendMessage({\r\n        id: Lime.Guid(),\r\n        to: \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n        type: \"text/plain\",\r\n        content: \"Hello, I would like to talk to an attendant\"\r\n      })\r\n```\r\n\r\n>Internally, the server creates an **id** for the tunnel and forwards the message to the **operator** bot, which receives it as follows:\r\n\r\n```http\r\nPOST https://msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"1\",\r\n    \"from\": \"ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net\",\r\n    \"to\": \"operator@msging.net\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hello, I would like to talk to an attendant.\"\r\n}\r\n```\r\n\r\n```javascript\r\n    {\r\n        id: 1,\r\n        from: \"ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net\",\r\n        to: \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n        type: \"text/plain\",\r\n        content: \"Hello, I would like to talk to an attendant\"\r\n    }\r\n\r\n```\r\n\r\n\r\n>The operator bot generates a reply to the message and forwards it to the source address, **without differentiating a message received directly from a channel** (the same goes for received/consumed notifications):\r\n\r\n```http\r\nPOST https://msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"2\",\r\n    \"to\": \"ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hi, my name is Andre. How may I help you?\"\r\n}\r\n```\r\n\r\n```javascript\r\nclient.senMessage({\r\n        id: Lime.Guid(),\r\n        to: \"ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net\",\r\n        type: \"text/plain\",\r\n        content: \"Hi, my name is Andre. How may I help you?\"\r\n      })\r\n```\r\n\r\n>The server uses the tunnel **id** to change the address of the response message and forwards it to the **flow** bot:\r\n\r\n```http\r\nPOST https://msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"2\",\r\n    \"from\": \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n    \"to\": \"flow@msging.net/instance\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hi, my name is Andre. How may I help you?\"\r\n}\r\n```\r\n\r\n```javascript\r\nclient.sendMessage({\r\n        id: Lime.Guid(),\r\n        from: \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n        to: \"flow@msging.net/instance\",\r\n        type: \"text/plain\",\r\n        content: \"Hi, my name is Andre. How may I help you?\"\r\n      })\r\n```\r\n\r\n>The bot flow identifies the message received from a **receiver**, decodes the original address that is in **instance** and sends the message to the final recipient:\r\n\r\n```http\r\nPOST https://msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"2\",\r\n    \"to\": \"1654804277843415@messenger.gw.msging.net\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hi, my name is Andre. How may I help you?\"\r\n}\r\n```\r\n\r\n```javascript\r\n{\r\n    id: \"2\",\r\n    to: \"1654804277843415@messenger.gw.msging.net\",\r\n    type: \"text/plain\",\r\n    content: \"Hi, my name is Andre. How may I help you?\"\r\n}\r\n```\r\n\r\n### Get a tunnel info\r\n\r\nGet a specific [tunnel](/#tunnels) by id.\r\n\r\nReplace `{tunnelId}` with the tunnel id you want to get.\r\n\r\n```http\r\nPOST https://msging.net/commands HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{  \r\n  \"id\": \"47c7e7e1-5e75-4ca4-a86b-2f8b06829160\",\r\n  \"to\": \"postmaster@tunnel.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/tunnels/{tunnelId}\"\r\n}\r\n```\r\n\r\nFor more information, see https://docs.blip.ai/?http#creating-flow-bot-5-steps"
 							},
 							"response": []
 						},
@@ -5943,6 +5823,41 @@
 									"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"from\": \"operator@msging.net/instance\",\r\n    \"to\": \"postmaster@tunnel.msging.net\",\r\n    \"method\":\"get\",\r\n    \"uri\": \"lime://tunnel.msging.net/accounts/ecb99cf5-fb5c-4376-8acd-4b478091de15\"\r\n}"
 								},
 								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "The **tunnel** extension also allows querying information from the message originator in the **directory**, as long as the information is stored in the contact roster of the **sender** bot. To use this feature, the bot just needs to send a common directory request:\r\n\r\n>Sending a command to the query in the directory using the tunnel **id**:\r\n\r\n```http\r\nPOST https://msging.net/commands HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"3\",\r\n    \"to\": \"postmaster@tunnel.msging.net\",\r\n    \"method\":\"get\",\r\n    \"uri\": \"lime://tunnel.msging.net/accounts/ecb99cf5-fb5c-4376-8acd-4b478091de15\"\r\n}\r\n```\r\n\r\n```javascript\r\nclient.sendCommand({\r\n        id: Lime.Guid(),\r\n        to: \"flow@msging.net/instance\",\r\n        type: \"text/plain\",\r\n        content: \"Hi, my name is Andre. How may I help you?\"\r\n      })\r\n```\r\n\r\n>The server identifies that the query is for a tunnel user and performs the query **on behalf of the sender** directly in its contacts roster and returns the information:\r\n\r\n```http\r\nPOST https://msging.net/commands HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"3\",\r\n    \"to\": \"operator@msging.net/instance\",\r\n    \"method\":\"get\",\r\n    \"status\": \"success\",\r\n    \"type\": \"application/vnd.lime.account+json\",\r\n    \"resource\": {\r\n        \"fullName\": \"John Deere\",\r\n        \"gender\": \"male\"\r\n    }\r\n}\r\n```\r\n\r\n```javascript\r\n{\r\n    id: \"3\",\r\n    to: \"operator@msging.net/instance\",\r\n    method:\"get\",\r\n    status: \"success\",\r\n    type: \"application/vnd.lime.account+json\",\r\n    resource: {\r\n        fullName: \"John Deere\",\r\n        gender: \"male\"\r\n    }\r\n}\r\n```\r\n\r\nFor more information about the contacts extension, please refer to the [extension documentation](https://docs.blip.ai/?http#contacts)."
+							},
+							"response": []
+						},
+						{
+							"name": "Get a tunnel info",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@tunnel.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/tunnels/{tunnelId}\"\r\n}"
+								},
+								"url": {
 									"raw": "https://http.msging.net/commands",
 									"protocol": "https",
 									"host": [
@@ -5954,7 +5869,7 @@
 										"commands"
 									]
 								},
-								"description": "The **tunnel** extension also allows querying information from the message originator in the **directory**, as long as the information is stored in the contact roster of the **sender** bot. To use this feature, the bot just needs to send a common directory request:\r\n\r\n>Sending a command to the query in the directory using the tunnel **id**:\r\n\r\n```http\r\nPOST https://http.msging.net/commands HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"3\",\r\n    \"to\": \"postmaster@tunnel.msging.net\",\r\n    \"method\":\"get\",\r\n    \"uri\": \"lime://tunnel.msging.net/accounts/ecb99cf5-fb5c-4376-8acd-4b478091de15\"\r\n}\r\n```\r\n\r\n```javascript\r\nclient.sendCommand({\r\n        id: Lime.Guid(),\r\n        to: \"flow@msging.net/instance\",\r\n        type: \"text/plain\",\r\n        content: \"Hi, my name is Andre. How may I help you?\"\r\n      })\r\n```\r\n\r\n>The server identifies that the query is for a tunnel user and performs the query **on behalf of the sender** directly in its contacts roster and returns the information:\r\n\r\n```http\r\nPOST https://http.msging.net/commands HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"3\",\r\n    \"to\": \"operator@msging.net/instance\",\r\n    \"method\":\"get\",\r\n    \"status\": \"success\",\r\n    \"type\": \"application/vnd.lime.account+json\",\r\n    \"resource\": {\r\n        \"fullName\": \"John Deere\",\r\n        \"gender\": \"male\"\r\n    }\r\n}\r\n```\r\n\r\n```javascript\r\n{\r\n    id: \"3\",\r\n    to: \"operator@msging.net/instance\",\r\n    method:\"get\",\r\n    status: \"success\",\r\n    type: \"application/vnd.lime.account+json\",\r\n    resource: {\r\n        fullName: \"John Deere\",\r\n        gender: \"male\"\r\n    }\r\n}\r\n```\r\n\r\nFor more information about the contacts extension, please refer to the [extension documentation](https://docs.blip.ai/?http#contacts)."
+								"description": "Get a specific tunnel by id.\r\n\r\nReplace {tunnelId} with the tunnel id you want to get."
 							},
 							"response": []
 						}
@@ -5964,7 +5879,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "d5edd159-a381-4357-b5f3-773f9c5c71df",
+								"id": "8110b1ff-e180-49fd-a1a9-d9a9cd0d746c",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5974,7 +5889,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "146b8695-917d-4fd7-a3fd-685fd667df62",
+								"id": "37767510-dd5f-42c0-bfaf-87e6a1c270db",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -6009,10 +5924,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"lime://<FQDN of the channel>/accounts/<Client identity>/key\",\r\n  \"type\": \"application/vnd.iris.keyRequest+json\",\r\n  \"resource\": {\r\n    \"alternativeAddress\": \"<alternative Client Identity>\",\r\n    \"purpose\": \"<Purpose>\",\r\n    \"temporary\": \"<true/false>\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -6045,10 +5959,9 @@
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@messenger.gw.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"lime://messenger.gw.msging.net/accounts/{{user-idenitity}}\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -6081,10 +5994,9 @@
 									"raw": "{  \n  \"id\": \"{{$guid}}\",\n  \"to\": \"postmaster@messenger.gw.msging.net\",\n  \"method\": \"get\",\n  \"uri\": \"lime://telegram.gw.msging.net/accounts/{{user-identity}}\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -6102,7 +6014,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ff4f5499-6891-49c3-88ec-b08a717534cf",
+								"id": "9cf7ba10-748d-4f1d-aabf-eab72ae66d5c",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -6112,7 +6024,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "3cd0b0da-9b4a-4ed4-ba0e-ba84e36e68aa",
+								"id": "3194c8ac-cde3-400b-8c56-cec2054b9229",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -6129,7 +6041,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "6ebd3e6a-cbd8-4b33-8b18-d9b48c8aaa75",
+						"id": "ab782f2e-815b-4beb-91e8-97128fb031f7",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -6139,7 +6051,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a3077574-7e84-4d1a-8823-87308ba4f611",
+						"id": "f3e866c5-9d32-4371-8993-cc92466360e9",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -6174,10 +6086,9 @@
 									"raw": "{  \r\n  \"id\": \"a456-42665544000-0123e4567-e89b-12d3\",\r\n  \"to\": \"postmaster@wa.gw.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"lime://wa.gw.msging.net/accounts/+5531986055572\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -6208,10 +6119,9 @@
 									"raw": "{\r\n  \"id\": \"123e4567-e89b-12d3-a456-426655440002\",\r\n  \"to\": \"553198271039@wa.gw.msging.net\",\r\n  \"type\": \"application/json\",\r\n  \"content\": {\r\n    \"type\": \"hsm\",\r\n    \"hsm\": {\r\n      \"namespace\": \"whatsapp:hsm:messaging:blip\",\r\n      \"element_name\": \"account_created\",\r\n      \"fallback_lg\": \"pt\",\r\n      \"fallback_lc\": \"BR\",\r\n      \"localizable_params\": [\r\n        {\r\n          \"default\": \"BLiPPer\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}\r\n"
 								},
 								"url": {
-									"raw": "https://http.msging.net/messages",
+									"raw": "https://msging.net/messages",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -6242,10 +6152,9 @@
 									"raw": "{\r\n  \"id\": \"21387123987128937123713\",\r\n  \"to\":\"postmaster@wa.gw.msging.net\",\r\n  \"method\": \"set\",\r\n  \"type\": \"application/vnd.lime.group+json\",\r\n  \"uri\":  \"/groups\",\r\n  \"resource\": {\r\n    \"name\": \"{{groupName}}\"\r\n  }\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -6276,10 +6185,9 @@
 									"raw": "{\n    \"id\": \"ABSLFYWLAASYSIOSSA\",\n    \"to\": \"postmaster@wa.gw.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/groups/{{createdGroupIdentity}}/invite-link\"\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/commands",
+									"raw": "https://msging.net/commands",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -6290,6 +6198,40 @@
 								"description": "Besides sending messages between customer and bot you are also able to send and receive messages in a group. \nWhen your bot creates a group you are able to invite people, listen, and reply group messages.\n\nBefore to start sending/receiving messages in a group, you must create the group. \n\nFor more information, see https://docs.blip.ai/#creating-a-group"
 							},
 							"response": []
+						},
+						{
+							"name": "Get WhatsApp Message templates",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Key Y2VsdWxhenVsdXJvdXRlcjp5VHZqZkgyVW1OZTVWckpYNUt5RA==",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{  \r\n  \"id\": \"a456-42665544000-0123e4567-e89b-12d3\",\r\n  \"to\": \"postmaster@wa.gw.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/message-templates\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"description": "| FQDN                     | Identifier type                  | \r\n|--------------------------|----------------------------------------|\r\n| @wa.gw.msging.net  | WhatsApp identifier (it's not necessarily the MSISDN)   |\r\n\r\n**WhatsApp** is the world’s most popular business messaging channel, with more than 1.5 billion global users and end-to-end encryption. The **WhatsApp Business API** is a fast, simple, secure, and reliable way for businesses to reach their customers all over the world. This guide will help businesses onboard and build their first official WhatsApp messaging experience using BLiP and WhatsApp Business API. \r\n\r\nThrought BLiP you are able to create groups, invite users to previously created groups and send and receive messages (peer to peer and inside a group). In order to get more information about WhatsApp Business API [access the Official WhatsApp docs](https://developers.facebook.com/docs/whatsapp/).\r\n\r\nBefore start using WhatsApp channel you should understand some basic concepts.\r\n\r\n* Messages - If your chatbot receives some message from a customer you get the possibility to send normal messages to this user (for free) during a 24h window. Every message sent by the user reset this window.\r\n* Notifications (or Active Messages) - messages sent by bot to a user who doesn't sent message in the last 24 hours (outside the 24h window) must be a Notification. **This kind of message must be approved by WhatsApp before be sent and will be charged**.\r\n\r\nYou can use BLiP's API to send messages and notifications for your customers. (Remember, for the first interaction or after de 24h window you should send only notifications).",
@@ -6297,7 +6239,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "6807393a-3548-49b4-990b-415f47d7bb22",
+								"id": "5b86285a-dd34-4c7b-bb16-65fa9eec3c54",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -6307,7 +6249,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d49b1714-1bfb-424b-b966-16b880e634ef",
+								"id": "8c8dd8ab-dec0-4703-9fb1-4e9e609c7258",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -6371,10 +6313,9 @@
 									"raw": "{\r\n    \"id\": \"batata\",\r\n    \"to\": \"5531998271039@tangram.com.br\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Do you beleive or not?\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/messages",
+									"raw": "https://msging.net/messages",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -6414,10 +6355,9 @@
 									"raw": "{\r\n    \"id\": \"teste1-info\",\r\n    \"to\": \"31998271039@infobip.gw.msging.net\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Do you beleive or not?\"\r\n}"
 								},
 								"url": {
-									"raw": "https://http.msging.net/messages",
+									"raw": "https://msging.net/messages",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -6463,10 +6403,9 @@
 									}
 								},
 								"url": {
-									"raw": "https://http.msging.net/messages",
+									"raw": "https://msging.net/messages",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -6513,10 +6452,9 @@
 									}
 								},
 								"url": {
-									"raw": "https://http.msging.net/messages",
+									"raw": "https://msging.net/messages",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -6555,10 +6493,9 @@
 									}
 								},
 								"url": {
-									"raw": "https://http.msging.net/messages",
+									"raw": "https://msging.net/messages",
 									"protocol": "https",
 									"host": [
-										"http",
 										"msging",
 										"net"
 									],
@@ -6598,10 +6535,9 @@
 					"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"set\",\r\n  \"type\": \"application/vnd.iris.eventTrack+json\",\r\n  \"uri\": \"/event-track\",\r\n  \"resource\": {\r\n    \"category\": \"payments\",\r\n    \"action\": \"success-order\"\r\n  }\r\n}"
 				},
 				"url": {
-					"raw": "https://http.msging.net/commands",
+					"raw": "https://msging.net/commands",
 					"protocol": "https",
 					"host": [
-						"http",
 						"msging",
 						"net"
 					],
@@ -6628,13 +6564,12 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"{{user-identity}}\",\r\n  \"type\": \"text/plain\",\r\n  \"content\": \"Hello, how can I help you?\"\r\n}"
+					"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"brunoar%40take.net@mailgun.gw.msging.net\",\r\n  \"type\": \"text/plain\",\r\n  \"content\": \"<html><b>Negrito</b> <h1>H1</h1> **Negrito com asterisco**<html>\"\r\n}"
 				},
 				"url": {
-					"raw": "https://http.msging.net/messages",
+					"raw": "https://msging.net/messages",
 					"protocol": "https",
 					"host": [
-						"http",
 						"msging",
 						"net"
 					],
@@ -6664,10 +6599,9 @@
 					"raw": "{\r\n  \"id\": \"{{message-id}}\",\r\n  \"to\": \"{{user-identity}}\",\r\n  \"event\": \"received\"\r\n}"
 				},
 				"url": {
-					"raw": "https://http.msging.net/notifications",
+					"raw": "https://msging.net/notifications",
 					"protocol": "https",
 					"host": [
-						"http",
 						"msging",
 						"net"
 					],
@@ -6683,7 +6617,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "48ac605f-de8a-403e-ab6e-3e66bfec3005",
+				"id": "59fa862c-c91b-4e96-a0ec-b41171b93705",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -6693,7 +6627,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "458abdef-b959-42ab-b1da-a4b644a0b072",
+				"id": "3c6433d2-d915-4f81-89c2-b702e6501c19",
 				"type": "text/javascript",
 				"exec": [
 					""
