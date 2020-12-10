@@ -2251,9 +2251,9 @@ client.sendCommand({
 })
 ```
 
-### Get all messages in a ticket
+### Get all messages from a customer by a ticket
 
-Return all [messages](/#messages) from a specific [ticket](/#ticket).
+Return all [messages](/#messages) from the specific owner [ticket](/#ticket) customer. The returned messages will not be just ticket messages, but all messages received and sent from the customer.
 
 Replace `{ticketId}` with the ticket id you want to get the messages.
 
