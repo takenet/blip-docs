@@ -31,13 +31,13 @@ $code-bg: $bp-color-onix !default;
 $code-annotation-bg: darken($bp-color-onix, 10%) !default;
 $nav-subitem-bg: $bp-color-white !default;
 $nav-search-results-bg: $bp-color-offwhite !default;
-$nav-active-bg: $bp-color-blip-light !default;
+$nav-active-bg: #E8F2FF !default;
 $nav-active-parent-bg: $bp-color-white !default; // parent links of the current section
 $lang-select-border: darken($bp-color-onix, 10%) !default;
 $lang-select-bg: darken($bp-color-onix, 10%) !default;
 $lang-select-active-bg: lighten($bp-color-suit, 10%) !default; // feel free to change this to blue or something
 $lang-select-pressed-bg: $bp-color-onix !default; // color of language tab bg when mouse is pressed
-$main-bg: $bp-color-white !default;
+$main-bg: #FFFFFF !default;
 $aside-notice-bg: $bp-color-sky !default;
 $aside-warning-bg: $bp-color-warning !default;
 $aside-success-bg: $bp-color-true !default;
@@ -50,8 +50,8 @@ $aside-code-bg: $bp-color-onix !default;
 $main-text: $bp-color-city !default; // main content text color
 $nav-text: $bp-color-rooftop !default;
 $search-results-text: $bp-color-rooftop !default;
-$search-color: $bp-color-time !default;
-$nav-active-text: $bp-color-white !default;
+$search-color: #8CA0B3 !default;
+$nav-active-text: #3F7DE8 !default;
 $nav-active-parent-text: $bp-color-onix !default; // parent links of the current section
 $lang-select-text: $bp-color-white !default; // color of unselected language tab text
 $lang-select-active-text: $bp-color-white !default; // color of selected language tab text

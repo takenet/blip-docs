@@ -83,12 +83,17 @@ html, body {
 
   &>.search {
     position: relative;
-    padding: 10px 30px;
+    padding: 9px 16px 9px 32px;
     margin: 10px -20px 20px;
-    background: #f6f8f8;
+    background: #F3F6FA;
 
     input {
       background: transparent;
+      font-family: Nunito Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 22px;
       border-width: 0 0 1px 0;
       border-color: $search-box-border-color;
       padding: 6px 0 6px 40px;
@@ -125,6 +130,10 @@ html, body {
 
   .logo {
     margin: $logo-margin auto;
+    padding-top: 56px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    width: 70%;
   }
 
   .search-results {
@@ -183,6 +192,11 @@ html, body {
     color: $nav-active-text;
     font-weight: normal;
     border-radius: 5px;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 22px;
   }
 
   // this is parent links of the currently selected ToC entry
