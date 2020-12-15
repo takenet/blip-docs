@@ -69,10 +69,15 @@
       if (!$best.hasClass("active")) {
         // .active is applied to the ToC link we're currently on, and its parent <ul>s selected by tocListSelector
         // .active-expanded is applied to the ToC links that are parents of this one
+        $toc.find(".active").find(".icon-folder").html("<use xlink:href='#folder'></use>");
+        console.log($toc.find(".active"));
         $toc.find(".active").removeClass("active");
+        $toc.find(".active-parent").find(".icon-folder").html("<use xlink:href='#folder'></use>");
         $toc.find(".active-parent").removeClass("active-parent");
         $best.addClass("active");
-        $best.parents(tocListSelector).addClass("active").siblings(tocLinkSelector).addClass('active-parent');
+        $best.children().html("<use xlink:href='#folder-parent'></use>");
+        $best.parents(tocListSelector).addClass("active").siblings(tocLinkSelector).addClass('active-parent').find(".icon-folder").html("<use xlink:href='#folder-parent'></use>");;
+        $best.parents(tocListSelector).siblings(tocLinkSelector).addClass('active-parent');
         $best.siblings(tocListSelector).addClass("active");
         $toc.find(tocListSelector).filter(":not(.active)").slideUp(150);
         $toc.find(tocListSelector).filter(".active").slideDown(150);

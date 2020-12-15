@@ -25,7 +25,8 @@ under the License.
 // GENERAL STUFF
 ////////////////////////////////////////////////////////////////////////////////
 
-html, body {
+html,
+body {
   color: $main-text;
   padding: 0;
   margin: 0;
@@ -34,14 +35,15 @@ html, body {
   @extend %default-font;
   background-color: $main-bg;
   height: 100%;
-  -webkit-text-size-adjust: none; /* Never autoresize text */
+  -webkit-text-size-adjust: none;
+  /* Never autoresize text */
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // TABLE OF CONTENTS
 ////////////////////////////////////////////////////////////////////////////////
 
-#toc > ul > li > a > span {
+#toc>ul>li>a>span {
   float: right;
   background-color: #2484FF;
   border-radius: 40px;
@@ -69,6 +71,7 @@ html, body {
   // language selector for mobile devices
   .lang-selector {
     display: none;
+
     a {
       padding-top: 0.5em;
       padding-bottom: 0.5em;
@@ -85,7 +88,7 @@ html, body {
     position: relative;
     padding: 9px 16px 9px 32px;
     margin: 10px -20px 20px;
-    background: #F3F6FA;
+    background: #0A0F1A;
 
     input {
       background: transparent;
@@ -101,18 +104,26 @@ html, body {
       width: $nav-width - 30;
       outline: none;
       color: $search-color;
-      border-radius: 0; /* ios has a default border radius */
+      border-radius: 0;
+      /* ios has a default border radius */
 
-      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      &::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
         color: $search-color;
       }
-      &::-moz-placeholder { /* Firefox 19+ */
+
+      &::-moz-placeholder {
+        /* Firefox 19+ */
         color: $search-color;
       }
-      &:-ms-input-placeholder { /* IE 10+ */
+
+      &:-ms-input-placeholder {
+        /* IE 10+ */
         color: $search-color;
       }
-      &:-moz-placeholder { /* Firefox 18- */
+
+      &:-moz-placeholder {
+        /* Firefox 18- */
         color: $search-color;
       }
     }
@@ -137,7 +148,7 @@ html, body {
   }
 
   .search-results {
-    margin-top: 0;
+    margin-top: -20px;
     box-sizing: border-box;
     height: 0;
     overflow-y: auto;
@@ -167,11 +178,24 @@ html, body {
     }
   }
 
+  .icon-folder {
+    width: 16px;
+    height: 14px;
+    margin-right: 10px;
+    fill: #D2DFE6;
+  }
+
+  .icon-folder-parent {
+    width: 16px;
+    height: 14px;
+    margin-right: 10px;
+  }
 
   // The Table of Contents is composed of multiple nested
   // unordered lists.  These styles remove the default
   // styling of an unordered list because it is ugly.
-  ul, li {
+  ul,
+  li {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -191,12 +215,15 @@ html, body {
     background-color: $nav-active-bg;
     color: $nav-active-text;
     font-weight: normal;
-    border-radius: 5px;
     font-family: Nunito Sans;
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
     line-height: 22px;
+  }
+
+  .toc-link.active .icon-folder {
+    fill: #E8F2FF;
   }
 
   // this is parent links of the currently selected ToC entry
@@ -208,51 +235,82 @@ html, body {
   .toc-list-h2 {
     display: none;
     background-color: $nav-subitem-bg;
-    margin-top: 0.8*$m;
   }
 
   .toc-list-h3 {
     display: none;
     background-color: $nav-subitem-bg;
-    margin-left: 3*$m;
+
+    .toc-link {
+      padding-left: 3*$m;
+    }
   }
 
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
-    font-size: 13px;
-    color: #667;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    color: #D2DFE6;
   }
 
   .toc-footer {
     padding: 1.6*$m 0;
     margin-top: 1.6*$m;
-    border-top: 1px dashed $nav-footer-border-color;
+    border-top: 1px solid $nav-footer-border-color;
 
-    li,a {
-      color: $nav-text;
+    li,
+    a {
+      font-family: Nunito Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 20px;
+      color: #D2DFE6;
       text-decoration: none;
     }
 
     a:hover {
-      text-decoration: underline;
+      color: #E8F2FF;
     }
 
     li {
+      padding: 0 $nav-padding 0 $nav-padding;
       font-size: 0.8em;
       line-height: $bp-lh-plus;
+      display: flex;
+      vertical-align: middle;
       text-decoration: none;
+      margin-bottom: 15px;
+    }
+
+    .icon-footer {
+      width: 16px;
+      height: 14px;
+      margin-right: 10px;
+      padding-top: 3px;
     }
   }
 }
 
-.toc-link, .toc-footer li {
+
+.toc-link {
   padding: 0 $nav-padding 0 $nav-padding;
   display: block;
   overflow-x: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   text-decoration: none;
-  color: #393434;
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  color: #D2DFE6;
+  height: 40px;
+  padding-top: 15px;
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms;
@@ -269,6 +327,7 @@ html, body {
     transform: rotate(-90deg) translate(-100%, 0);
     border-radius: 0 0 0 5px;
   }
+
   padding: 0 1.5em 5em 0; // increase touch size area
   display: none;
   position: fixed;
@@ -280,6 +339,7 @@ html, body {
   font-weight: bold;
   opacity: 0.7;
   line-height: 16px;
+
   img {
     height: 16px;
     vertical-align: bottom;
@@ -287,8 +347,13 @@ html, body {
 
   transition: left 0.3s ease-in-out;
 
-  &:hover { opacity: 1; }
-  &.open {left: $nav-width}
+  &:hover {
+    opacity: 1;
+  }
+
+  &.open {
+    left: $nav-width
+  }
 }
 
 
@@ -331,16 +396,18 @@ html, body {
   background-color: $lang-select-bg;
   width: 100%;
   font-weight: 300;
+
   a {
     display: block;
-    float:left;
+    float: left;
     color: $lang-select-text;
     text-decoration: none;
     padding: 0 15px;
     line-height: 48px;
     outline: 0;
 
-    &:active, &:focus {
+    &:active,
+    &:focus {
       background-color: $lang-select-pressed-bg;
       color: $lang-select-pressed-text;
     }
@@ -376,7 +443,18 @@ html, body {
     clear: both;
   }
 
-  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+  &>h1,
+  &>h2,
+  &>h3,
+  &>h4,
+  &>h5,
+  &>h6,
+  &>p,
+  &>table,
+  &>ul,
+  &>ol,
+  &>aside,
+  &>dl {
     margin-right: $examples-width;
     padding: 0 $content-padding;
     box-sizing: border-box;
@@ -385,13 +463,17 @@ html, body {
     @extend %left-col;
   }
 
-  &>ul, &>ol {
+  &>ul,
+  &>ol {
     padding-left: $content-padding + 4.2*$m;
   }
 
   // the div is the tocify hidden div for placeholding stuff
-  &>h1, &>h2, &>h3, &>div {
-    clear:both;
+  &>h1,
+  &>h2,
+  &>h3,
+  &>div {
+    clear: both;
   }
 
   h1 {
@@ -404,7 +486,8 @@ html, body {
     color: #666666;
   }
 
-  h1:first-child, div:first-child + h1 {
+  h1:first-child,
+  div:first-child+h1 {
     border-top-width: 0;
     margin-top: 0;
     padding-top: 50px;
@@ -423,12 +506,16 @@ html, body {
 
   // h2s right after h1s should bump right up
   // against the h1s.
-  h1 + h2, h1 + div + h2 {
+  h1+h2,
+  h1+div+h2 {
     margin-top: $h1-margin-bottom * -1;
     border-top: none;
   }
 
-  h3, h4, h5, h6 {
+  h3,
+  h4,
+  h5,
+  h6 {
     @extend %header-font;
     font-size: 18px;
     font-weight: 500;
@@ -436,7 +523,9 @@ html, body {
     margin-bottom: 0.8em;
   }
 
-  h4, h5, h6 {
+  h4,
+  h5,
+  h6 {
     font-size: 15px;
     font-weight: bold;
   }
@@ -460,7 +549,8 @@ html, body {
       border-bottom: 2px solid $table-head-bc;
     }
 
-    thead, tbody {
+    thead,
+    tbody {
       background-color: $table-bg;
     }
 
@@ -472,7 +562,8 @@ html, body {
       @include box-shadow(0, 2px, 12px, 0, #e1e7ee);
     }
 
-    th, td {
+    th,
+    td {
       text-align: left;
       vertical-align: inherit;
       line-height: $bp-lh-plus;
@@ -515,12 +606,15 @@ html, body {
     margin-left: 15px;
   }
 
-  p, li, dt, dd {
+  p,
+  li,
+  dt,
+  dd {
     line-height: $bp-lh-plus;
     margin-top: 0;
   }
 
-  li p > br {
+  li p>br {
     line-height: $bp-lh-double;
   }
 
@@ -600,21 +694,25 @@ html, body {
 // This is all the stuff that appears in the right half of the page
 
 .content {
-  pre, blockquote {
+
+  pre,
+  blockquote {
     background-color: $code-bg;
     color: #fff;
 
     margin: 0;
     width: $examples-width;
 
-    float:right;
-    clear:right;
+    float: right;
+    clear: right;
 
     box-sizing: border-box;
 
     @extend %right-col;
 
-    &>p { margin: 0; }
+    &>p {
+      margin: 0;
+    }
 
     a {
       color: #fff;
@@ -632,7 +730,7 @@ html, body {
     word-wrap: break-word;
   }
 
-  pre + pre {
+  pre+pre {
     padding-top: 0;
   }
 
@@ -696,16 +794,20 @@ html, body {
     float: none;
   }
 
-  %right-col + %left-col {
+  %right-col+%left-col {
     margin-top: $main-padding;
   }
 }
 
-.highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
+.highlight .c,
+.highlight .cm,
+.highlight .c1,
+.highlight .cs {
   color: #909090;
 }
 
-.highlight, .highlight .w {
+.highlight,
+.highlight .w {
   background-color: $code-bg;
 }
 
@@ -715,61 +817,142 @@ html, body {
   max-width: 960px;
   margin: 0 auto;
   padding: 0 20px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
+
 .column,
 .columns {
   width: 100%;
   float: left;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
-  .column:first-child,
-  .columns:first-child {
-    margin-left: 0; }
+.column:first-child,
+.columns:first-child {
+  margin-left: 0;
+}
 
-  .one.column,
-  .one.columns                    { width: 4.66666666667%; }
-  .two.columns                    { width: 13.3333333333%; }
-  .three.columns                  { width: 22%;            }
-  .four.columns                   { width: 30.6666666667%; }
-  .five.columns                   { width: 39.3333333333%; }
-  .six.columns                    { width: 48%;            }
-  .seven.columns                  { width: 56.6666666667%; }
-  .eight.columns                  { width: 65.3333333333%; }
-  .nine.columns                   { width: 74.0%;          }
-  .ten.columns                    { width: 82.6666666667%; }
-  .eleven.columns                 { width: 91.3333333333%; }
-  .twelve.columns                 { width: 100%; margin-left: 0; }
+.one.column,
+.one.columns {
+  width: 4.66666666667%;
+}
 
-  .one-half.column                { width: 48%; }
+.two.columns {
+  width: 13.3333333333%;
+}
 
-  /* Offsets */
-  .offset-by-one.column,
-  .offset-by-one.columns          { margin-left: 8.66666666667%; }
-  .offset-by-two.column,
-  .offset-by-two.columns          { margin-left: 17.3333333333%; }
-  .offset-by-three.column,
-  .offset-by-three.columns        { margin-left: 26%;            }
-  .offset-by-four.column,
-  .offset-by-four.columns         { margin-left: 34.6666666667%; }
-  .offset-by-five.column,
-  .offset-by-five.columns         { margin-left: 43.3333333333%; }
-  .offset-by-six.column,
-  .offset-by-six.columns          { margin-left: 52%;            }
-  .offset-by-seven.column,
-  .offset-by-seven.columns        { margin-left: 60.6666666667%; }
-  .offset-by-eight.column,
-  .offset-by-eight.columns        { margin-left: 69.3333333333%; }
-  .offset-by-nine.column,
-  .offset-by-nine.columns         { margin-left: 78.0%;          }
-  .offset-by-ten.column,
-  .offset-by-ten.columns          { margin-left: 86.6666666667%; }
-  .offset-by-eleven.column,
-  .offset-by-eleven.columns       { margin-left: 95.3333333333%; }
+.three.columns {
+  width: 22%;
+}
 
-  .offset-by-one-third.column,
-  .offset-by-one-third.columns    { margin-left: 34.6666666667%; }
-  .offset-by-two-thirds.column,
-  .offset-by-two-thirds.columns   { margin-left: 69.3333333333%; }
+.four.columns {
+  width: 30.6666666667%;
+}
 
-  .offset-by-one-half.column,
-  .offset-by-one-half.columns     { margin-left: 52%; }
+.five.columns {
+  width: 39.3333333333%;
+}
+
+.six.columns {
+  width: 48%;
+}
+
+.seven.columns {
+  width: 56.6666666667%;
+}
+
+.eight.columns {
+  width: 65.3333333333%;
+}
+
+.nine.columns {
+  width: 74.0%;
+}
+
+.ten.columns {
+  width: 82.6666666667%;
+}
+
+.eleven.columns {
+  width: 91.3333333333%;
+}
+
+.twelve.columns {
+  width: 100%;
+  margin-left: 0;
+}
+
+.one-half.column {
+  width: 48%;
+}
+
+/* Offsets */
+.offset-by-one.column,
+.offset-by-one.columns {
+  margin-left: 8.66666666667%;
+}
+
+.offset-by-two.column,
+.offset-by-two.columns {
+  margin-left: 17.3333333333%;
+}
+
+.offset-by-three.column,
+.offset-by-three.columns {
+  margin-left: 26%;
+}
+
+.offset-by-four.column,
+.offset-by-four.columns {
+  margin-left: 34.6666666667%;
+}
+
+.offset-by-five.column,
+.offset-by-five.columns {
+  margin-left: 43.3333333333%;
+}
+
+.offset-by-six.column,
+.offset-by-six.columns {
+  margin-left: 52%;
+}
+
+.offset-by-seven.column,
+.offset-by-seven.columns {
+  margin-left: 60.6666666667%;
+}
+
+.offset-by-eight.column,
+.offset-by-eight.columns {
+  margin-left: 69.3333333333%;
+}
+
+.offset-by-nine.column,
+.offset-by-nine.columns {
+  margin-left: 78.0%;
+}
+
+.offset-by-ten.column,
+.offset-by-ten.columns {
+  margin-left: 86.6666666667%;
+}
+
+.offset-by-eleven.column,
+.offset-by-eleven.columns {
+  margin-left: 95.3333333333%;
+}
+
+.offset-by-one-third.column,
+.offset-by-one-third.columns {
+  margin-left: 34.6666666667%;
+}
+
+.offset-by-two-thirds.column,
+.offset-by-two-thirds.columns {
+  margin-left: 69.3333333333%;
+}
+
+.offset-by-one-half.column,
+.offset-by-one-half.columns {
+  margin-left: 52%;
+}
