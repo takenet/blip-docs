@@ -27,7 +27,6 @@ under the License.
 
 html,
 body {
-  color: $main-text;
   padding: 0;
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -61,12 +60,10 @@ body {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  border-right: 1px solid #ccc;
   font-size: 13px;
   font-weight: bold;
 
-  @include scrollbar($bp-color-breeze);
-  @include box-shadow(0, 0, 12px, 0, #e1e7ee);
+  @include scrollbar(#1A2437);
 
   // language selector for mobile devices
   .lang-selector {
@@ -189,6 +186,7 @@ body {
     width: 16px;
     height: 14px;
     margin-right: 10px;
+    fill: #3F7DE8;
   }
 
   // The Table of Contents is composed of multiple nested
@@ -316,6 +314,7 @@ body {
   transition-duration: 130ms;
 }
 
+
 // button to show navigation on mobile devices
 #nav-button {
   span {
@@ -356,6 +355,21 @@ body {
   }
 }
 
+/* .toc-wrapper li:hover .toc-link{
+    color: $nav-active-text;
+}
+
+.toc-wrapper li:hover .icon-folder{
+  fill: $nav-active-text;
+}
+
+.toc-wrapper li .second:hover .toc-link{
+  color: $nav-text;
+}
+
+.toc-wrapper li .second:hover .icon-folder-parent{
+  fill: red;
+} */
 
 ////////////////////////////////////////////////////////////////////////////////
 // PAGE LAYOUT AND CODE SAMPLE BACKGROUND
@@ -376,7 +390,6 @@ body {
   // I know, it's hackish, but it's the simplist way to make the left
   // half of the content always this background color.
   .dark-box {
-    @include box-shadow(0px, 0, 12px, 0, #e1e7ee);
     width: $examples-width;
     background-color: $examples-bg;
     position: absolute;
@@ -388,7 +401,7 @@ body {
   .lang-selector {
     position: fixed;
     z-index: 50;
-    border-bottom: 5px solid $examples-bg;
+    top: 0;
   }
 }
 
@@ -400,21 +413,28 @@ body {
   a {
     display: block;
     float: left;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
     color: $lang-select-text;
-    text-decoration: none;
     padding: 0 15px;
     line-height: 48px;
     outline: 0;
+    text-decoration: none;
 
     &:active,
     &:focus {
       background-color: $lang-select-pressed-bg;
-      color: $lang-select-pressed-text;
+      color: $lang-select-active-text;
+      text-decoration: none;
     }
 
     &.active {
       background-color: $lang-select-active-bg;
       color: $lang-select-active-text;
+      text-decoration: none;
     }
   }
 
@@ -476,6 +496,15 @@ body {
     clear: both;
   }
 
+  p {
+    color: $main-text;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 14px;
+    line-height: 22px !important;
+  }
+
   h1 {
     @extend %header-font;
     font-size: $bp-fs-1;
@@ -483,7 +512,7 @@ body {
     padding-bottom: 1*$m;
     margin-bottom: $h1-margin-bottom;
     margin-top: 6*$m;
-    color: #666666;
+    color: #D2DFE6;
   }
 
   h1:first-child,
@@ -501,7 +530,7 @@ body {
     // border-top: 1px solid #ccc;
     padding-top: 1*$m;
     padding-bottom: 1*$m;
-    background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
+    color: #D2DFE6;
   }
 
   // h2s right after h1s should bump right up
@@ -521,6 +550,7 @@ body {
     font-weight: 500;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
+    color: #D2DFE6;
   }
 
   h4,
@@ -528,74 +558,13 @@ body {
   h6 {
     font-size: 15px;
     font-weight: bold;
+    color: #D2DFE6;
   }
 
   hr {
     margin: 2em 0;
     border-top: 2px solid $examples-bg;
     border-bottom: 2px solid $main-bg;
-  }
-
-  table {
-    padding-top: 1.2*$m;
-    padding-bottom: 1.2*$m;
-    margin-top: 1*$m;
-    margin-bottom: 1*$m;
-    overflow: auto;
-    @include scrollbar($bp-color-breeze);
-    color: $bp-color-desk;
-
-    thead {
-      border-bottom: 2px solid $table-head-bc;
-    }
-
-    thead,
-    tbody {
-      background-color: $table-bg;
-    }
-
-    thead {
-      @include box-shadow(0, -2px, 12px, 0, #e1e7ee);
-    }
-
-    tbody {
-      @include box-shadow(0, 2px, 12px, 0, #e1e7ee);
-    }
-
-    th,
-    td {
-      text-align: left;
-      vertical-align: inherit;
-      line-height: $bp-lh-plus;
-
-      &:first-child {
-        padding-left: 3*$m;
-      }
-
-      &:last-child {
-        padding-right: 3*$m;
-      }
-    }
-
-    th {
-      padding: 1.6*$m 1*$m;
-      vertical-align: bottom;
-      color: $bp-color-desk;
-      font-weight: $bp-fw-extra-bold;
-    }
-
-
-    td {
-      padding: 1*$m 1*$m;
-    }
-
-    tr:nth-child(odd)>td {
-      background-color: $table-row-odd-bg;
-    }
-
-    tr:nth-child(even)>td {
-      background-color: $table-row-even-bg;
-    }
   }
 
   dt {
@@ -612,6 +581,12 @@ body {
   dd {
     line-height: $bp-lh-plus;
     margin-top: 0;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px !important;
+    color: #D2DFE6;
   }
 
   li p>br {
@@ -626,9 +601,12 @@ body {
     @extend %link;
   }
 
-  code {
-    background-color: $aside-code-bg;
-    color: $aside-code-text;
+  p>code {
+    background-color: none;
+    color: #fb5a8b;
+    border: 1px solid #D2DFE6;
+    box-sizing: border-box;
+    white-space: nowrap;
     padding: 0.3*$m 0.6*$m;
     border-radius: 3px;
     @extend %break-words;
@@ -651,6 +629,16 @@ body {
     margin-bottom: 2.4*$m;
     background: $aside-notice-bg;
     line-height: $bp-lh-plus;
+    margin-left: -25px;
+
+    aside>#text {
+      font-family: Nunito Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 22px;
+      color: black;
+    }
 
     &.warning {
       background-color: $aside-warning-bg;
@@ -686,6 +674,12 @@ body {
     border: 1px solid #F7E633;
     background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
   }
+}
+
+.page-wrapper .content table{
+  border-radius: 8px 8px 8px 8px;
+  background: red;
+  
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -736,9 +730,14 @@ body {
 
   blockquote {
     &>p {
+      font-family: Nunito Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 22px;
+      color: #FFFFFF;
       background-color: $code-annotation-bg;
       padding: $code-annotation-padding 2em;
-      color: #eee;
     }
   }
 }

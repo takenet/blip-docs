@@ -61,8 +61,8 @@ under the License.
   </svg>
 
   <svg width="0" height="0" class="hidden">
-  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 15" id="folder-parent">
-    <path d="M15.092 2.933H9.675V2.55A2.05 2.05 0 007.625.5H2.717a2.05 2.05 0 00-2.05 2.05v10.183a2.05 2.05 0 002.05 2.05h12.375a2.05 2.05 0 002.041-2.05V4.975a2.042 2.042 0 00-2.041-2.042z" fill="#3F7DE8"></path>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 15" id="folder-parent">
+    <path d="M15.092 2.933H9.675V2.55A2.05 2.05 0 007.625.5H2.717a2.05 2.05 0 00-2.05 2.05v10.183a2.05 2.05 0 002.05 2.05h12.375a2.05 2.05 0 002.041-2.05V4.975a2.042 2.042 0 00-2.041-2.042z"></path>
   </symbol>
   </svg>
 
@@ -96,10 +96,10 @@ under the License.
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="images/favicon.ico" rel="icon" type="image/ico">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
-    <title><%= current_page.data.title || "API Documentation" %></title>
+    <title> Blip Docs | API Reference </title>
 
     <style>
-      <%= Rouge::Themes::MonokaiSublime.render(:scope => '.highlight') %>
+      <%= Rouge::Themes::Monokai.render(:scope => '.highlight') %>
     </style>
     <%= stylesheet_link_tag :screen, media: :screen %>
     <%= stylesheet_link_tag :print, media: :print %>
@@ -145,12 +145,12 @@ under the License.
             <% if h1[:children].length > 0 %>
               <ul class="toc-list-h2">
                 <% h1[:children].each do |h2| %>
-                  <li>
+                  <li class="second">
                     <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h1[:content] %>"><svg class="icon-folder-parent"><use xlink:href="#folder-parent"></use></svg><%= h2[:content] %></a>
                     <% if h2[:children].length > 0 %>
                       <ul class="toc-list-h3">
                         <% h2[:children].each do |h3| %>
-                          <li>
+                          <li class="third">
                             <a href="#<%= h3[:id] %>" class="toc-h3 toc-link" data-title="<%= h1[:content] %>"><%= h3[:content] %></a>
                           
                           </li>
