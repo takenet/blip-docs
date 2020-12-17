@@ -221,13 +221,17 @@ body {
   }
 
   .toc-link.active .icon-folder {
-    fill: #E8F2FF;
+    fill: #3F7DE8;
   }
 
   // this is parent links of the currently selected ToC entry
   .toc-link.active-parent {
     background-color: $nav-active-parent-bg;
     color: $nav-active-parent-text;
+  }
+
+  .toc-link.active-parent .icon-folder-parent {
+    fill: $nav-active-text;
   }
 
   .toc-list-h2 {
