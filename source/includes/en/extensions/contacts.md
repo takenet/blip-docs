@@ -384,7 +384,6 @@ For the same contact `11121023102013021@messenger.gw.msging.net`, it is possible
 
 
 ### Get contacts
-### <a name="get-contacts-with-paging" style="display:none">Get Contacts with Paging</a>
 
 
 ```javascript
