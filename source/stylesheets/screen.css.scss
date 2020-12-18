@@ -680,10 +680,86 @@ body {
   }
 }
 
-.page-wrapper .content table{
-  border-radius: 8px 8px 8px 8px;
-  background: red;
-  
+.page-wrapper .content table {
+  padding-top: 1.2*$m;
+  padding-bottom: 1.2*$m;
+  margin-top: 1*$m;
+  margin-bottom: 1*$m;
+  overflow: auto;
+  @include scrollbar($bp-color-breeze);
+  color: #D2DFE6;
+
+
+  thead {
+    border-bottom: 2px solid $table-head-bc;
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 8px 8px 0px 0px;
+  }
+
+  thead, tbody {
+    background-color: $table-bg;
+  }
+
+  thead {
+    border-bottom: 1px solid #233049;
+  }
+
+  tbody {
+    -moz-box-shadow:0 5px 12px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  th, td {
+    text-align: left;
+    vertical-align: inherit;
+    line-height: $bp-lh-plus;
+
+    &:first-child {
+      padding-left: 3*$m;
+    }
+
+    &:last-child {
+      padding-right: 3*$m;
+    }
+  }
+
+  th {
+    padding: 1.6*$m 1*$m;
+    vertical-align: bottom;
+    color: #D2DFE6;
+    font-weight: $bp-fw-extra-bold;
+    
+
+    &:first-child{
+      border-radius: 8px 0px 0px 0px;
+    }
+
+    &:last-child{
+      border-radius: 0px 8px 0px 0px;
+    }
+  }
+
+
+  td {
+    padding: 1*$m 1*$m;
+  }
+
+  tr:nth-child(odd)>td {
+    background-color: $table-row-odd-bg;
+  }
+
+  tr:nth-child(even)>td {
+    background-color: $table-row-even-bg;
+  }
+
+  tr:last-child{
+    border-radius: 0px 0px 8px 8px;
+  }
+}
+
+.highlight .err{
+  color: white !important;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

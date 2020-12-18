@@ -70,7 +70,6 @@
         // .active is applied to the ToC link we're currently on, and its parent <ul>s selected by tocListSelector
         // .active-expanded is applied to the ToC links that are parents of this one
         $toc.find(".active").find(".icon-folder").html("<use xlink:href='#folder'></use>");
-        console.log($toc.find(".active"));
         $toc.find(".active").removeClass("active");
         $toc.find(".active-parent").find(".icon-folder").html("<use xlink:href='#folder'></use>");
         $toc.find(".active-parent").removeClass("active-parent");
@@ -86,7 +85,7 @@
           window.history.pushState(null, "", best);
         }
         // TODO remove classnames
-        document.title = $best.data("title") + " – " + originalTitle;
+        //document.title = $best.data("title") + " – " + originalTitle;
       }
     };
 
