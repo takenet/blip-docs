@@ -24,21 +24,21 @@ under the License.
 
 // BACKGROUND COLORS
 ////////////////////
-$nav-bg: $bp-color-white !default;
-$examples-bg: $bp-color-suit !default;
+$nav-bg: #1A2437 !default;
+$examples-bg: #1A2437 !default;
 //$code-bg: #1E2224 !default;
-$code-bg: $bp-color-onix !default;
-$code-annotation-bg: darken($bp-color-onix, 10%) !default;
-$nav-subitem-bg: $bp-color-white !default;
-$nav-search-results-bg: $bp-color-offwhite !default;
-$nav-active-bg: $bp-color-blip-light !default;
-$nav-active-parent-bg: $bp-color-white !default; // parent links of the current section
+$code-bg: #505F79 !default;
+$code-annotation-bg: #3A4A65 !default;
+$nav-subitem-bg: #111724 !default;
+$nav-search-results-bg: #111724 !default;
+$nav-active-bg: #E8F2FF !default;
+$nav-active-parent-bg:  #111724 !default; // parent links of the current section
 $lang-select-border: darken($bp-color-onix, 10%) !default;
-$lang-select-bg: darken($bp-color-onix, 10%) !default;
-$lang-select-active-bg: lighten($bp-color-suit, 10%) !default; // feel free to change this to blue or something
-$lang-select-pressed-bg: $bp-color-onix !default; // color of language tab bg when mouse is pressed
-$main-bg: $bp-color-white !default;
-$aside-notice-bg: $bp-color-sky !default;
+$lang-select-bg: #202c44 !default;
+$lang-select-active-bg:  #1A2437 !default; // feel free to change this to blue or something
+$lang-select-pressed-bg: #1A2437; // color of language tab bg when mouse is pressed
+$main-bg: #202c44 !default;
+$aside-notice-bg: #00C6D7 !default;
 $aside-warning-bg: $bp-color-warning !default;
 $aside-success-bg: $bp-color-true !default;
 $search-notice-bg: $bp-color-warning !default;
@@ -47,14 +47,14 @@ $aside-code-bg: $bp-color-onix !default;
 
 // TEXT COLORS
 ////////////////////
-$main-text: $bp-color-city !default; // main content text color
+$main-text: #D2DFE6 !default; // main content text color
 $nav-text: $bp-color-rooftop !default;
 $search-results-text: $bp-color-rooftop !default;
-$search-color: $bp-color-time !default;
-$nav-active-text: $bp-color-white !default;
-$nav-active-parent-text: $bp-color-onix !default; // parent links of the current section
-$lang-select-text: $bp-color-white !default; // color of unselected language tab text
-$lang-select-active-text: $bp-color-white !default; // color of selected language tab text
+$search-color: #6E7B91 !default;
+$nav-active-text: #3F7DE8 !default;
+$nav-active-parent-text: #D2DFE6 !default; // parent links of the current section
+$lang-select-text: #6E7B91 !default; // color of unselected language tab text
+$lang-select-active-text: #FFFFFF !default; // color of selected language tab text
 $lang-select-pressed-text: $bp-color-white !default; // color of language tab text when mouse is pressed
 $aside-code-text: $bp-color-white !default;
 
@@ -95,14 +95,14 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 //Tables
 $table-text: $bp-color-desk;
 $table-head-bc: $bp-color-offwhite;
-$table-bg: $bp-color-white;
-$table-row-odd-bg: $bp-color-white;
-$table-row-even-bg: $bp-color-offwhite;
+$table-bg: #233049;
+$table-row-odd-bg: #233049;
+$table-row-even-bg: #202C44;
 
 
 // OTHER
 ////////////////////
-$nav-footer-border-color: $bp-color-rooftop !default;
+$nav-footer-border-color: #505F79 !default;
 $search-box-border-color: transparent !default;
 
 
@@ -117,11 +117,10 @@ $search-box-border-color: transparent !default;
 }
 
 %link {
-  text-decoration: none;
   font-weight: $bp-fw-bold;
 
   &:link, &:visited, &:active {
-    color: $bp-color-blip-light;
+    color: #3f7de8;
   }
 
   &:visited {
@@ -129,6 +128,6 @@ $search-box-border-color: transparent !default;
   }
 
   &:hover {
-    color: $bp-color-blip-dark;
+    color: #4082f5;
   }
 }

@@ -36,3 +36,8 @@
   @extend %icon;
   content: "\e607";
 }
+
+%folder{
+  @extend %icon;
+  content: "\e901";
+}

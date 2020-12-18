@@ -1,4 +1,3 @@
-### <a name="event-analysis" style="display:none">Event Analysis</a>
 
 ## Analytics
 

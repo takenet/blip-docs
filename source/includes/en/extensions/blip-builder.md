@@ -167,7 +167,6 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 ```
 
 ### Change Builder flow
-### <a name="publish-flow" style="display:none">Pubish flow</a>
 
 In order to change the JSON file of your flow, send a command with the following properties:
 
