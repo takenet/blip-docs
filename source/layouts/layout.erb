@@ -30,7 +30,7 @@ under the License.
 %>
 
 <!doctype html>
-<html>
+<html id='html'>
   <head>
     
   <script>
@@ -118,8 +118,17 @@ under the License.
       </span>
     </a>
     <div class="toc-wrapper">
-      <a href="http://docs.blip.ai" target="_blank">
-        <%= image_tag "LogoL.svg", class: 'logo' %>
+    
+    <div class="theme-switch-wrapper">
+    <label class="theme-switch" for="checkbox" id="checkbox-label">
+        <input type="checkbox" id="checkbox" onclick="toggleMode()"/>
+        <div class="slider round"></div>
+      </label>
+    </div>
+
+    
+      <a href="http://docs.blip.ai" >
+        <%= image_tag "Logo.svg", class: 'logo', id: 'logo' %>
       </a>
       <% if language_tabs.any? %>
         <div class="lang-selector">

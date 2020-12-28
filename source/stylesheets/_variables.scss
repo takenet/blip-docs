@@ -22,11 +22,11 @@ under the License.
 
 @import 'blip-toolkit-variables/module';
 
-// BACKGROUND COLORS
+// BACKGROUND COLORS DARK MODE
 ////////////////////
 $nav-bg: #1A2437 !default;
 $examples-bg: #1A2437 !default;
-//$code-bg: #1E2224 !default;
+$search-bg: #0A0F1A !default;
 $code-bg: #505F79 !default;
 $code-annotation-bg: #3A4A65 !default;
 $nav-subitem-bg: #111724 !default;
@@ -44,8 +44,29 @@ $aside-success-bg: $bp-color-true !default;
 $search-notice-bg: $bp-color-warning !default;
 $aside-code-bg: $bp-color-onix !default;
 
+// BACKGROUND COLORS LIGHT MODE
+////////////////////
+$nav-bgL: #ffffff !default;
+$examples-bgL: #1A2437 !default;
+$search-bgL: #f3f6fa !default;
+$code-bgL: #505F79 !default;
+$code-annotation-bgL: #3A4A65 !default;
+$nav-subitem-bgL: #f3f6fa !default;
+$nav-search-results-bgL: #f3f6fa !default;
+$nav-active-bgL: #e8f2ff !default;
+$nav-active-parent-bgL: #f3f6fa !default; // parent links of the current section
+$lang-select-borderL: darken($bp-color-onix, 10%) !default;
+$lang-select-bgL: #202c44 !default;
+$lang-select-active-bgL:  #1A2437 !default; // feel free to change this to blue or something
+$lang-select-pressed-bgL: #1A2437; // color of language tab bg when mouse is pressed
+$main-bgL: #ffffff !default;
+$aside-notice-bgL: #00C6D7 !default;
+$aside-warning-bgL: $bp-color-warning !default;
+$aside-success-bgL: $bp-color-true !default;
+$search-notice-bgL: $bp-color-warning !default;
+$aside-code-bgL: $bp-color-onix !default;
 
-// TEXT COLORS
+// TEXT COLORS DARK MODE
 ////////////////////
 $main-text: #D2DFE6 !default; // main content text color
 $nav-text: $bp-color-rooftop !default;
@@ -58,6 +79,19 @@ $lang-select-active-text: #FFFFFF !default; // color of selected language tab te
 $lang-select-pressed-text: $bp-color-white !default; // color of language tab text when mouse is pressed
 $aside-code-text: $bp-color-white !default;
 
+
+// TEXT COLORS LIGHT MODE
+////////////////////
+$main-textL: #505F79 !default; // main content text color
+$nav-textL: #505F79 !default;
+$search-results-textL: #505F79 !default;
+$search-colorL: #6E7B91 !default;
+$nav-active-textL: #3F7DE8 !default;
+$nav-active-parent-textL: #505F79 !default; // parent links of the current section
+$lang-select-textL: #6E7B91 !default; // color of unselected language tab text
+$lang-select-active-textL: #505F79 !default; // color of selected language tab text
+$lang-select-pressed-textL: $bp-color-white !default; // color of language tab text when mouse is pressed
+$aside-code-textL: $bp-color-white !default;
 
 // SIZES
 ////////////////////
@@ -102,8 +136,12 @@ $table-row-even-bg: #202C44;
 
 // OTHER
 ////////////////////
+//DARK MODE
 $nav-footer-border-color: #505F79 !default;
 $search-box-border-color: transparent !default;
+//LIGHT MODE
+$nav-footer-border-colorL: #505F79 !default;
+$search-box-border-colorL: transparent !default;
 
 
 ////////////////////////////////////////////////////////////////////////////////
