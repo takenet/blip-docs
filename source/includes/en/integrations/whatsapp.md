@@ -7,6 +7,9 @@
 
 Throught Blip you are able to create groups, invite users to previously created groups and send and receive messages (peer to peer and inside a group). In order to get more information about WhatsApp Business API [access the Official WhatsApp docs](https://developers.facebook.com/docs/whatsapp/).
 
+
+<aside class="warning">According to the updates made by the Facebook team in July 2020, it is no longer possible to use the group feature</aside>
+
 Before start using WhatsApp channel you should understand some basic concepts.
 
 * Messages - If your chatbot receives some message from a customer you get the possibility to send normal messages to this user (for free) during a 24h window. Every message sent by the user reset this window.
@@ -114,7 +117,7 @@ Make a request to Blip's API as demostrated aside.
  ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
     await client.sendMessage({
-    "id": "123e4567-e89b-12d3-a456-426655440002",
+    "id": "{{$guid}}",
     "to": "{{customerIdentity}}",
     "type": "application/json",
     "content":{
@@ -135,7 +138,7 @@ client.addMessageReceiver('text/plain', async (message) => {
                         "text": "value1"
                     },
                     {
-                       "Type":"text",
+                       "type":"text",
                        "text":"value2"
                     }
                 ]
@@ -174,7 +177,7 @@ Authorization: Key {YOUR_TOKEN}
                         "text": "value1"
                     },
                     {
-                       "Type":"text",
+                       "type":"text",
                        "text":"value2"
                     }
                 ]
@@ -184,70 +187,4 @@ Authorization: Key {YOUR_TOKEN}
     }
 }
 
-```
-
-### Creating a group
-
-<aside class="notice">According to the <a href="https://developers.facebook.com/docs/whatsapp/api/groups/">updates made by the Facebook team in July 2020</a>, it is no longer possible to use this feature</aside>
-
-Besides sending messages between customer and bot you are also able to send and receive messages in a group. 
-When your bot creates a group you are able to invite people, listen, and reply group messages.
-
-Before to start sending/receiving messages in a group, you must create the group. 
-
-Make a request to Blip's API as demostrated aside. Please, replace the `{{groupName}}` variable by your group name.
-
-```http
-POST https://http.msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "21387123987128937123713",
-  "to":"postmaster@wa.gw.msging.net",
-  "method": "set",
-  "type": "application/vnd.lime.group+json",
-  "uri":  "/groups",
-  "resource": {
-    "name": "{{groupName}}"
-  }
-}
-```
-
-### Creating a invite link to the group
-
-<aside class="notice">According to the <a href="https://developers.facebook.com/docs/whatsapp/api/groups/">updates made by the Facebook team in July 2020</a>, it is no longer possible to use this feature</aside>
-
-After to create a group you should invite people to join. The invitation is made by a link.
-In order to create a group invite link, make a request to Blip's API as demostrated aside. Please, replace the `{{createdGroupIdentity}}` variable by your group name.
-
-```http
-POST https://http.msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "ABSLFYWLAASYSIOSSA",
-  "to":"postmaster@wa.gw.msging.net",
-  "method": "get",
-  "uri":  "/groups/{{createdGroupIdentity}}/invite-link"
-}
-```
-
-Send this link to any customer you want invite to join the group.
-
-### Receiving messages in a group
-
-<aside class="notice">According to the <a href="https://developers.facebook.com/docs/whatsapp/api/groups/">updates made by the Facebook team in July 2020</a>, it is no longer possible to use this feature</aside>
-
-Every message received by bot in a WhatsApp's group has the `from` node equals to `groups@wa.gw.msging.net`. Take a look at a sample:
-
-```
-{
-  "id": "65603604-fe19-479c-c885-3195b196fe8e",
-  "from": "groups@wa.gw.msging.net",
-  "to": "bot@msging.net",
-  "type": "text/plain",
-  "content": "Hello Group!!"
-}
 ```
