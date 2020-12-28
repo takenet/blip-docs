@@ -3,16 +3,16 @@
 |--------------------------|----------------------------------------|
 | @wa.gw.msging.net  | WhatsApp identifier (it's not necessarily the MSISDN)   |
 
-**WhatsApp** is the world’s most popular business messaging channel, with more than 1.5 billion global users and end-to-end encryption. The **WhatsApp Business API** is a fast, simple, secure, and reliable way for businesses to reach their customers all over the world. This guide will help businesses onboard and build their first official WhatsApp messaging experience using BLiP and WhatsApp Business API. 
+**WhatsApp** is the world’s most popular business messaging channel, with more than 1.5 billion global users and end-to-end encryption. The **WhatsApp Business API** is a fast, simple, secure, and reliable way for businesses to reach their customers all over the world. This guide will help businesses onboard and build their first official WhatsApp messaging experience using Blip and WhatsApp Business API. 
 
-Throught BLiP you are able to create groups, invite users to previously created groups and send and receive messages (peer to peer and inside a group). In order to get more information about WhatsApp Business API [access the Official WhatsApp docs](https://developers.facebook.com/docs/whatsapp/).
+Throught Blip you are able to create groups, invite users to previously created groups and send and receive messages (peer to peer and inside a group). In order to get more information about WhatsApp Business API [access the Official WhatsApp docs](https://developers.facebook.com/docs/whatsapp/).
 
 Before start using WhatsApp channel you should understand some basic concepts.
 
 * Messages - If your chatbot receives some message from a customer you get the possibility to send normal messages to this user (for free) during a 24h window. Every message sent by the user reset this window.
 * Notifications (or Active Messages) - messages sent by bot to a user who doesn't sent message in the last 24 hours (outside the 24h window) must be a Notification. **This kind of message must be approved by WhatsApp before be sent and will be charged**.
 
-You can use BLiP's API to send messages and notifications for your customers. (Remember, for the first interaction or after de 24h window you should send only notifications).
+You can use Blip's API to send messages and notifications for your customers. (Remember, for the first interaction or after de 24h window you should send only notifications).
 
 ### Sending a notification
 
@@ -29,7 +29,7 @@ A user must first consent to receive messages in WhatsApp by opting into them vi
 
 ##### 2. Verify the customer identifier
 
-Before send a notification to a WhatsApp's customer you should get their identifier. Using the customer MSISDN, make a request to BLiP's API as demostrated aside. For instance, a Brazillian customer should be verified using a MSISDN like `+5531998765432`.
+Before send a notification to a WhatsApp's customer you should get their identifier. Using the customer MSISDN, make a request to Blip's API as demostrated aside. For instance, a Brazillian customer should be verified using a MSISDN like `+5531998765432`.
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -80,7 +80,7 @@ The meessage template is a message content (text, image, document, quick reply, 
 Note: This type of message is paid.
 </aside>
 
-Nowadays, **Message Templates** are created directly on the BLiP portal, manually. Therefore, if you need to add a new message template to your bot, just access the `Content > Message Template` menu, containing the following information:
+Nowadays, **Message Templates** are created directly on the Blip portal, manually. Therefore, if you need to add a new message template to your bot, just access the `Content > Message Template` menu, containing the following information:
 
 * The ontent of your message
 * All translations desired
@@ -106,7 +106,7 @@ In order to send a notification for your customer you will need:
 * Element name of message template (get it in step 3), for instance `{{MESSAGE_TEMPLATE_NAME}}`
 * Namespace of message template (get it in step 3), for instance `{{MESSAGE_TEMPLATE_NAME}}`
 
-Make a request to BLiP's API as demostrated aside.
+Make a request to Blip's API as demostrated aside.
 
 <aside class="notice">If you want to know how to send types other than text, please follow this <a href="https://help.blip.ai/docs/en/channels/whatsapp/enviar-notificacao-whatsapp-blip-api/">article in our Help Center</a></aside>
 
@@ -195,7 +195,7 @@ When your bot creates a group you are able to invite people, listen, and reply g
 
 Before to start sending/receiving messages in a group, you must create the group. 
 
-Make a request to BLiP's API as demostrated aside. Please, replace the `{{groupName}}` variable by your group name.
+Make a request to Blip's API as demostrated aside. Please, replace the `{{groupName}}` variable by your group name.
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -219,7 +219,7 @@ Authorization: Key {YOUR_TOKEN}
 <aside class="notice">According to the <a href="https://developers.facebook.com/docs/whatsapp/api/groups/">updates made by the Facebook team in July 2020</a>, it is no longer possible to use this feature</aside>
 
 After to create a group you should invite people to join. The invitation is made by a link.
-In order to create a group invite link, make a request to BLiP's API as demostrated aside. Please, replace the `{{createdGroupIdentity}}` variable by your group name.
+In order to create a group invite link, make a request to Blip's API as demostrated aside. Please, replace the `{{createdGroupIdentity}}` variable by your group name.
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1

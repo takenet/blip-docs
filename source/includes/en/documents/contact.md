@@ -1,6 +1,6 @@
 ## Contact
 
-Represents an contact saved in BLiP.
+Represents an contact saved in Blip.
 
 | MIME type                                 |
 |-------------------------------------------|

@@ -1,15 +1,15 @@
 
 #Introduction
 
-Welcome to **Blip Docs**😊!
+Welcome to **Blip Docs**!
 
 The main goal of **Blip Docs** is to provide **technical development knowledge** on the Blip platform and present various **code samples**. These are the minimum necessary concepts for who wants to explore all power of Blip.
 
 <aside class="notice">
-If you are <b>not</b> interested in technical programming information, please access <a href="https://help.blip.ai">Blip's Help Center</a>.
+If you are <b>not</b> interested in technical programming information, please access our<a href="https://help.blip.ai"> Help Center</a>.
 </aside>
 
-Here, you will find code samples on the **right side** for each subject. The samples are presented in C\#, JavaScript and as a generic HTTP request that you can use in your favorite programming language. In the **left side menu**, you will find a step-by-step guide for each big subject on Blip.
+Here you will find code samples on the **right side** for each subject. The samples are presented in C\#, JavaScript and as a generic HTTP request that you can use in your favorite programming language. In the **left side menu**, you will find a step-by-step guide for each big subject on Blip.
 
 **Essential information:**
 
@@ -50,7 +50,7 @@ This documentation is organized in sections. Each section go deep in a specific 
 If you need more information about Blip take a look in one of the following links:
 
 - [Forum to report issues, questions and news](http://forum.blip.ai/)
-<br/>Please use the forum if you need any assistance 😉.
+<br/>Please use the forum if you need any assistance.
 
 - [Help Center](https://help.blip.ai)
 <br/>Use Blip's Help Center to discover all [Blip's Portal](https://portal.blip.ai) features. <b>Help Center isn't focused on technical programming features.</b>

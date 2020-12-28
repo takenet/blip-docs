@@ -5,13 +5,13 @@ If you want to see all content-types working, clone our SDK sample project:
 github.com/takenet/blip-sdk-csharp/tree/master/src/Samples/MessageTypes
 ```
 
-**BLiP** uses message content types defined by LIME protocol and performs the conversion of these types to the most adequate format for each destination channel. For more details, check the [LIME protocol content types](http://limeprotocol.org/content-types.html) specification.
+**Blip** uses message content types defined by LIME protocol and performs the conversion of these types to the most adequate format for each destination channel. For more details, check the [LIME protocol content types](http://limeprotocol.org/content-types.html) specification.
 
 Besides that, it's possible to send **native contents** to some channels - like Messenger -, which allows the usage of the channel capabilities without restrictions. See more details on **Native contents** item on the left menu.
 
 #### Metadata
 
-Messages received from some channels may have unique **metadata** information coming from the channel. This information is included in the `metadata` property of the BLiP messages.
+Messages received from some channels may have unique **metadata** information coming from the channel. This information is included in the `metadata` property of the Blip messages.
 
 An example of a message received from Messenger:
 

@@ -1,7 +1,7 @@
 ### Human Attendance Forward
 
-In some situations can be necessary use human interventions on chatbot. At this cases is possible use the [BLiP Web](https://web.blip.ai/) to receive and reply messages that came from the chatbots' clients.
-All messages replied from BLiP Web will be delivered to the clients as if was sent by the chatbot transparently. 
+In some situations can be necessary use human interventions on chatbot. At this cases is possible use the [Blip Web](https://web.blip.ai/) to receive and reply messages that came from the chatbots' clients.
+All messages replied from Blip Web will be delivered to the clients as if was sent by the chatbot transparently. 
 Obviously it's necessary that some huma reply all messages. This human will be identified as a attendant from now.
 
 To forward any received message to the attendant use the [AttendanceExtension](https://github.com/takenet/blip-sdk-csharp/tree/master/src/Take.Blip.Client/Extensions/AttendanceForwarding/IAttendanceExtension.cs) extension.

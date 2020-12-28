@@ -127,7 +127,7 @@ Sending a payment receipt to a Messenger user:
 
 | Channel              | Type                    |
 |--------------------|-------------------------|
-| BLiP Chat          | Not supported yet       |
+| Blip Chat          | Not supported yet       |
 | Messenger          | [Receipt template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/receipt-template)|
 | Whatsapp           | Text         |
 | SMS                | Text         |

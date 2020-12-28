@@ -204,7 +204,7 @@ Allows sending of a list of different documents on a single message. It's also p
 
 | Channel              | Type                    |
 |--------------------|---------------------------|
-| BLiP Chat          | Not supported yet         |
+| Blip Chat          | Not supported yet         |
 | Messenger          | [List template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/list-template)|
 | Whatsapp           | Text                   |
 | SMS                | Text                   |

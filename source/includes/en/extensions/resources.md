@@ -13,7 +13,7 @@ To manage all resources programmatically, use **resources** extension sending a 
 | uri    | **/resources**   |
 | to     | **postmaster@msging.net** (not required). |
 
-The **BLiP** portal offers a resource management interface which helps with the edition of content, avoiding the need to update the code on the application side in case of changes in the chatbot.
+The **Blip** portal offers a resource management interface which helps with the edition of content, avoiding the need to update the code on the application side in case of changes in the chatbot.
 
 In order to send a resource message, the developer must use the [**resource** content type](#resource).
 

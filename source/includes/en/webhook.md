@@ -10,7 +10,7 @@ The message data must be sent on the request `body`. The message must be a *JSON
 
 Example
 
-Imagine a chatbot with a **blipmessaginghubapp** identifier. To send a message from this bot to a BLiP user, use:
+Imagine a chatbot with a **blipmessaginghubapp** identifier. To send a message from this bot to a Blip user, use:
 
 ```
 POST https://http.msging.net/messages HTTP/1.1
@@ -86,7 +86,7 @@ Content-Length: 131
 
 5. Sending commands
 
-In order to use BLiP's [extensions]() (like schedule and directory), it is necessary to send commands. To do that, a `HTTP POST` request on `/commands` URL must be made.
+In order to use Blip's [extensions]() (like schedule and directory), it is necessary to send commands. To do that, a `HTTP POST` request on `/commands` URL must be made.
 
 For instance, send a command to schedule some message:
 
@@ -146,5 +146,5 @@ Content-Length: 131
 
 | Name                          | Description                                                                   |
 |-------------------------------|-------------------------------------------------------------------------------|
-| Url to receive messages       | Endpoint where BLiP will post the messages                                    |
-| Url to receive notification   | Endpoint where BLiP will post the notifications                               |
+| Url to receive messages       | Endpoint where Blip will post the messages                                    |
+| Url to receive notification   | Endpoint where Blip will post the notifications                               |

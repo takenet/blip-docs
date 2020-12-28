@@ -1,6 +1,6 @@
 ### Message Types
 
-**BLiP** define message types (**cannonical types**) that are automatically parsed to the best available representation on each channel. For more details check the *Concepts > Messages* section of documentation.
+**Blip** define message types (**cannonical types**) that are automatically parsed to the best available representation on each channel. For more details check the *Concepts > Messages* section of documentation.
 
 ### Text Message (PlainText)
 
@@ -153,7 +153,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 }
 ```
 **Important:**
-- Before to send a payment request you must enable the PagSeguro payment channel for your chatbot on **BLiP Portal**.
+- Before to send a payment request you must enable the PagSeguro payment channel for your chatbot on **Blip Portal**.
 
 When PagSeguro payment channel receive a payment request it send a link to the client. If the client finalize or cancel the payment a message of InvoiceStatus type will be delivered to your chatbot. To receive this message your chatbot must have a *Receiver* for `application/vnd.lime.invoice-status+json` MediaType registered on `application.json`, as follow:
 

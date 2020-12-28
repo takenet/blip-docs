@@ -1,6 +1,6 @@
 ## Addressing
 
-All the [envelopes](http://limeprotocol.org/#envelope) (messages, notifications and commands) exchanged between **bots** and their **customers** in **BLiP** have *from* and *to* addresses.
+All the [envelopes](http://limeprotocol.org/#envelope) (messages, notifications and commands) exchanged between **bots** and their **customers** in **Blip** have *from* and *to* addresses.
 
 The address (also called as **Node**) is presented in the format `name@domain/instance`, where:
 
@@ -14,7 +14,7 @@ The address (also called as **Node**) is presented in the format `name@domain/in
   //WhatsApp Node - where '551199991111' is the user identifier
   "551199991111@wa.gw.msging.net"
 
-  //BLiP Chat Node - where '0mn.io' is the BLiP Chat domain identifier
+  //Blip Chat Node - where '0mn.io' is the Blip Chat domain identifier
   "df83582a-87b9-45b4-9e76-d4a4a743e2a6@0mn.io"
 
   //Messenger Node

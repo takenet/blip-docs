@@ -1,6 +1,6 @@
 ## Account
 
-Represents an user account information. An account is an interaction with BLiP. Builder saves all account that sends a message as a [Contact](#contact) automatically.
+Represents an user account information. An account is an interaction with Blip. Builder saves all account that sends a message as a [Contact](#contact) automatically.
 
 | MIME type                                 |
 |-------------------------------------------|

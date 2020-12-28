@@ -1,6 +1,6 @@
 ### Human operator
 
-The **human operator** template is a service that redirect all messages received to an attendant. This attendant can use one of this applications to reply the messages: e-mail, Zendesk [BLiP Web](https://web.blip.ai) or using [BLiP Mensagens](https://play.google.com/store/apps/details?id=net.take.omni) android app.
+The **human operator** template is a service that redirect all messages received to an attendant. This attendant can use one of this applications to reply the messages: e-mail, Zendesk [Blip Web](https://web.blip.ai) or using [Blip Mensagens](https://play.google.com/store/apps/details?id=net.take.omni) android app.
 
 For the attendant is created a thread for each client and the attendance is individual.
 

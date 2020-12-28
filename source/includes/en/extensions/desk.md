@@ -1,10 +1,10 @@
 ## Desk
 
-The **desk** extension allows routing and exchange of messages and notifications between bot users and human agents. The human agents can reply the messages using any BLiP supported help desk application ([BLiP Desk](https://desk.blip.ai) for instance). Hence, a bot can forward received messages from users to a **human agent** on the chosen help desk application and vice versa, in a transparent way.
+The **desk** extension allows routing and exchange of messages and notifications between bot users and human agents. The human agents can reply the messages using any Blip supported help desk application ([Blip Desk](https://desk.blip.ai) for instance). Hence, a bot can forward received messages from users to a **human agent** on the chosen help desk application and vice versa, in a transparent way.
 
 This feature is useful for **enabling humans to reply some complex or unhandled messages as the bot**. For example, imagine that you want a chatbot that knows a lot about soccer teams, but for some reason it doesn't know exactly the tickets prices for some matchs. In this scenario, you can use a human to help the bot answer only when users ask about ticket prices.
 
-*Note: BLiP offers [BLiP Desk](https://desk.blip.ai), a free and powerful desk application to enable humans to reply messages sent by a bot.*
+*Note: Blip offers [Blip Desk](https://desk.blip.ai), a free and powerful desk application to enable humans to reply messages sent by a bot.*
 
 Before using this extension, check if you have already properly set a customer service tool (help desk application) on the Portal and if you already have at least one available human agent to receive and reply to messages.
 
@@ -2092,7 +2092,7 @@ client.sendCommand({
 
 ### Get all bot's agents
 
-In order to get all attendants of some bot send a command with `GET` method to `postmaster@desk.msging.net` and URI `/attendants` . This feature is usefull to know if there are any available attendant to answer customers questions. By default, BLiP will return 20 agents.
+In order to get all attendants of some bot send a command with `GET` method to `postmaster@desk.msging.net` and URI `/attendants` . This feature is usefull to know if there are any available attendant to answer customers questions. By default, Blip will return 20 agents.
 
 
 | QueryString     | Description                                                        | Example |

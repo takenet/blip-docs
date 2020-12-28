@@ -24,4 +24,4 @@ In this way, any response that has a correspondence with an intention of the mod
 
 <img width="600px" src="https://github.com/takenet/messaginghub-docs/raw/develop/docs/en/templates/faq4.png" />
 
-From there, you need to define and train the artificial intelligence model to begin receiving customer responses. See this [BLiP blog post](https://translate.google.com.br/translate?sl=pt&tl=en&js=y&prev=_t&hl=pt-BR&ie=UTF-8&u=http%3A%2F%2Fblog.blip.ai%2F2017%2F07%2F20%2Fnovidades-plataforma.html&edit-text=&act=url) to learn more about setting up your model. Finally, just publish the chatbot on the preference channel to start receiving messages from your customers.
+From there, you need to define and train the artificial intelligence model to begin receiving customer responses. See this [Blip blog post](https://translate.google.com.br/translate?sl=pt&tl=en&js=y&prev=_t&hl=pt-BR&ie=UTF-8&u=http%3A%2F%2Fblog.blip.ai%2F2017%2F07%2F20%2Fnovidades-plataforma.html&edit-text=&act=url) to learn more about setting up your model. Finally, just publish the chatbot on the preference channel to start receiving messages from your customers.

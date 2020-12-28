@@ -19,9 +19,9 @@ The current supported profile properties are:
 
 | Name             | Identifier        | Document type     | Supported channels  |
 |------------------|-------------------|-------------------|---------------------|
-| Start button     | `get-started`     | Text              | Messenger, BLiP Chat           |
-| Start button label     | `get-started-label`     | Text              | Messenger, BLiP Chat           |
-| Greeting message | `greeting`        | Text              | Messenger, BLiP Chat           |
+| Start button     | `get-started`     | Text              | Messenger, Blip Chat           |
+| Start button label     | `get-started-label`     | Text              | Messenger, Blip Chat           |
+| Greeting message | `greeting`        | Text              | Messenger, Blip Chat           |
 | Persistent menu  | `persistent-menu` | Multimedia menu   | Messenger           |
 
 Note: In Messenger, the value of `get-started` must be defined before the value of `persistent-menu`.

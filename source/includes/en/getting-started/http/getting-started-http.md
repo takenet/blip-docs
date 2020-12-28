@@ -1,28 +1,28 @@
 ## Using HTTP
 
-**Webhook** enables an integration between your bot and BLiP via **HTTP endpoints** to exchange messages, notifications and commands.
-If you are not able to create your chatbot using C\# or Javascript languages you must use BLiP's HTTP API agnostic for any language.
+**Webhook** enables an integration between your bot and Blip via **HTTP endpoints** to exchange messages, notifications and commands.
+If you are not able to create your chatbot using C\# or Javascript languages you must use Blip's HTTP API agnostic for any language.
 
-The diagram below shows the messages flow between BLiP and your endpoint (API).
+The diagram below shows the messages flow between Blip and your endpoint (API).
 
 <!--![Diagram HTTP message flow](images/http.png)-->
 
 **Requirements**
 
-* You **must have some available and public enpoint** in order to receive any BLiP's request. Is necessary at least one endpoint to receive messages and notifications but you can choice different endpoint for each one.
+* You **must have some available and public enpoint** in order to receive any Blip's request. Is necessary at least one endpoint to receive messages and notifications but you can choice different endpoint for each one.
 Please use [RequestBin](https://requestbin.fullcontact.com/) or [Ngrok](https://ngrok.com/) tools if you want just test the integration.
 
 **Before start**
 
 <aside class="notice">
-From <b>April 2020</b>, the BLiP HTTP endpoint will change from <b>https://msging.net</b> to <b>https://http.msging.net</b>. <br><br>We strongly advise users to start using the new endpoint as soon as possible.
+From <b>April 2020</b>, the Blip HTTP endpoint will change from <b>https://msging.net</b> to <b>https://http.msging.net</b>. <br><br>We strongly advise users to start using the new endpoint as soon as possible.
 </aside>
 
-Get the `Authorization` token of your bot to be able to connect to the BLiP. To get them:
+Get the `Authorization` token of your bot to be able to connect to the Blip. To get them:
 
 ![imagem](images/http-token.png)
 
-* Access the [BLiP Portal](https://portal.blip.ai).
+* Access the [Blip Portal](https://portal.blip.ai).
 * Click in **Create chatbot** button and choose **Create from scratch** mode. *If you already have your bot created just access them*.
 * After your chatbot has been created click in **Configurations** and choose **Conection information** option in left side menu.
 * Go to **Enpoints HTTP** and get the `Authorization` token.
@@ -44,13 +44,13 @@ Any message will be delivered as a `HTTP POST` request on the configured chatbot
 
 ### 2. Sending messages
 
-To send messages, it is necessary to make a `HTTP POST` request to BLiP using the URL `https://http.msging.net/messages`.
-The request must contain an authorization header (`Authorization`) with `Key` type, as showed on chatbot settings. To know more about BLiP authentication process [click here](#authentication).
+To send messages, it is necessary to make a `HTTP POST` request to Blip using the URL `https://http.msging.net/messages`.
+The request must contain an authorization header (`Authorization`) with `Key` type, as showed on chatbot settings. To know more about Blip authentication process [click here](#authentication).
 
 The message data must be sent on the request `body` as a *JSON* following the LIME protocol format.
 For more details go to [Content Types](#content-types) section.
 
-Imagine a chatbot with an Authorization token `Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=`. To send a message from this bot to a BLiP user, use:
+Imagine a chatbot with an Authorization token `Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=`. To send a message from this bot to a Blip user, use:
 
 ```
 POST https://http.msging.net/messages HTTP/1.1
@@ -108,7 +108,7 @@ Content-Length: 131
 
 ### 5. Sending commands
 
-In order to use BLiP's [extensions](#extensions) (like schedule and directory), it is necessary to send commands. To do that, a `HTTP POST` request on `/commands` URL must be made.
+In order to use Blip's [extensions](#extensions) (like schedule and directory), it is necessary to send commands. To do that, a `HTTP POST` request on `/commands` URL must be made.
 
 For instance, send a command to schedule some message:
 
@@ -168,7 +168,7 @@ Content-Type: application/json
 
 | Name                          | Description                                                                   |
 |-------------------------------|-------------------------------------------------------------------------------|
-| Url to receive messages       | Endpoint where BLiP will post the messages                                    |
-| Url to receive notification   | Endpoint where BLiP will post the notifications                               |
+| Url to receive messages       | Endpoint where Blip will post the messages                                    |
+| Url to receive notification   | Endpoint where Blip will post the notifications                               |
 
 

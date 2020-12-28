@@ -1,7 +1,7 @@
 
 ## Analytics
 
-The **analytics** extension allows chatabot's metrics and event tracking in order to create analytics reports in the BLiP portal. The reports, metrics and graphs can be generated through the [portal](https://portal.blip.ai), in the *Panel* -> *Analytics* option.
+The **analytics** extension allows chatabot's metrics and event tracking in order to create analytics reports in the Blip portal. The reports, metrics and graphs can be generated through the [portal](https://portal.blip.ai), in the *Panel* -> *Analytics* option.
 
 To use any feature of **analytics** extension, send a command with the following properties:
 

@@ -146,7 +146,7 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 
 | Channel              | Type                    |
 |--------------------|-------------------------|
-| BLiP Chat          | Media Link         |
+| Blip Chat          | Media Link         |
 | Messenger          | [Attachments](https://developers.facebook.com/docs/messenger-platform/send-api-reference/image-attachment) (image/audio/video/file, depending of MIME type)  |
 | Whatsapp           | Media Link          |
 | SMS                | Text with link          |

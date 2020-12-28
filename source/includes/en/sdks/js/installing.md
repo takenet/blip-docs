@@ -2,7 +2,7 @@
 
 #### Node.js
 
-If you are using `node.js` (or `webpack`), it's necessary install `messaginghub-client` package (via npm) to access the BLiP MessagingHub server.
+If you are using `node.js` (or `webpack`), it's necessary install `messaginghub-client` package (via npm) to access the Blip MessagingHub server.
 
     npm install --save messaginghub-client lime-transport-websocket
 

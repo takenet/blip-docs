@@ -1,21 +1,21 @@
 # Authentication
 
-If you need to build your chatbot using one of the SDKs or using HTTP or if you need to access any BLiP internal API (for extensions and integrations) **you must to be authenticated**. This section explain how to authenticate your chatbot in order to use BLiP.
+If you need to build your chatbot using one of the SDKs or using HTTP or if you need to access any Blip internal API (for extensions and integrations) **you must to be authenticated**. This section explain how to authenticate your chatbot in order to use Blip.
 
 ### SDKs
 
-On both `C# and Javascript`, you will need an `identifier` and an `access key` to be able to connect to the BLiP. To get them:
+On both `C# and Javascript`, you will need an `identifier` and an `access key` to be able to connect to the Blip. To get them:
 
 ![imagem](images/csharp1.png)
 
-* Access the [BLiP Portal](https://portal.blip.ai).
+* Access the [Blip Portal](https://portal.blip.ai).
 * Click in **Create chatbot** button and choose **Create from scratch** mode. *If you already have your bot created just access them*.
 * After your chatbot has been created click in **Configurations** and choose **Conection information** option in left side menu.
 * Enable the SDK connection and get the `identifier` and `access key` informations.
 
 ### HTTP
 
-On `HTTP`, whatever request made (messages/notifications/commands) must contain an authorization header (`Authorization`) with a Key type, as showed on [BLiP Portal](https://portal.blip.ai/#/application) chatbot configurations.
+On `HTTP`, whatever request made (messages/notifications/commands) must contain an authorization header (`Authorization`) with a Key type, as showed on [Blip Portal](https://portal.blip.ai/#/application) chatbot configurations.
 
 ![imagem](images/http-token.png)
 
@@ -26,7 +26,7 @@ Use the code sidebar at right to see samples for C#, Javascript and HTTP.
 </aside>
 
 <blockquote class="lang-specific http">
-<p>Imagine a chatbot with an Authorization 'Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ='. To send a message from this bot to a BLiP user, use:</p>
+<p>Imagine a chatbot with an Authorization 'Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ='. To send a message from this bot to a Blip user, use:</p>
 </blockquote>
 
 ```http

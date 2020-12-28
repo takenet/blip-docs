@@ -549,7 +549,7 @@ Authorization: Key {YOUR_TOKEN}
 
 | Channel            | Type                    |
 |--------------------|-------------------------|
-| BLiP Chat          | Document select         |
+| Blip Chat          | Document select         |
 | Messenger          | [Generic template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/generic-template)|
 | Whatsapp           | Text                   |
 | SMS                | Text                   |

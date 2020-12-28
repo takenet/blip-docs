@@ -166,7 +166,7 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 
 | Channel              | Type                    |
 |--------------------|-------------------------|
-| BLiP Chat          | Location             |
+| Blip Chat          | Location             |
 | <s>Messenger</s>          | Starting August 15, 2019, updated versions of the Messenger app will no longer render Location quick reply.|
 | Whatsapp           | Text with link          |
 | SMS                | Text with link          |

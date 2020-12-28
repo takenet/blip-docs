@@ -4,7 +4,7 @@
 |---------------------------------|
 | postmaster@msging.net           |
 
-**Builder** is a visual tool for create any type of bots with no code. Behind the scenes Builder is a state machine fully integrated with the others BLiP's components.
+**Builder** is a visual tool for create any type of bots with no code. Behind the scenes Builder is a state machine fully integrated with the others Blip's components.
 
 **The Builder** extension allows change some Builder's behaviors programmaticaly. You can **change, get or reset a user state** with a command. In addition, the extension can be used to manage the whole bot flow.
 

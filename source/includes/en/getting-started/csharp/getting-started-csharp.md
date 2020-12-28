@@ -1,7 +1,7 @@
 ## Using SDK CSharp
 
 Besides Builder is possible to create a bot using only code.
-BLiP **C\# SDK** is a set of Nuget packages based on [.NET Core](https://dot.net/core), which allows the creation of multiplatform chatbots.
+Blip **C\# SDK** is a set of Nuget packages based on [.NET Core](https://dot.net/core), which allows the creation of multiplatform chatbots.
 You can check the SDK source code in [Github](https://github.com/takenet/blip-sdk-csharp/) and the documentation on our [Wiki](https://github.com/takenet/blip-sdk-csharp/wiki)
 
 **Requirements**
@@ -37,11 +37,11 @@ There are available the following templates:
 
 After installed and created the project template, open the `MyBot.csproj` file and build the project. Note that all the necessary files for your bot are already created.
 
-You will need an `identifier` and an `access key` to be able to connect to the BLiP. To get them:
+You will need an `identifier` and an `access key` to be able to connect to the Blip. To get them:
 
 ![imagem](images/csharp1.png)
 
-* Access the [BLiP Portal](https://portal.blip.ai).
+* Access the [Blip Portal](https://portal.blip.ai).
 * Click in **Create chatbot** button and choose **Create from scratch** mode. *If you already have your bot created just access them*.
 * After your chatbot has been created click in **Configurations** and choose **Conection information** option in left side menu.
 * Enable the SDK connection and get the `identifier` and `access key` informations.
@@ -181,7 +181,7 @@ If you need to send any other message content type [click here](#content-types)
 
 ### 4. Sending a command
 
-A **command** allows querying and manipulation of server resources and the consumption of **BLiP** extensions and integrations. To see more details about what are the commands [click here](#commands).
+A **command** allows querying and manipulation of server resources and the consumption of **Blip** extensions and integrations. To see more details about what are the commands [click here](#commands).
 
 There are two possibilities to send commands. Using the method **SendCommand** of `ISender` interface or using one of the available `IExtension` extensions.
 

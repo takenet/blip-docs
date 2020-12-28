@@ -342,7 +342,7 @@ Authorization: Key {YOUR_TOKEN}
 |--------------------------------------|
 | application/json                     |
 
-Allows sending of a native content of some channel using JSON format. It is possible to use any channel's available resource, even if this content is not yet supported as a BLiP canonical type.
+Allows sending of a native content of some channel using JSON format. It is possible to use any channel's available resource, even if this content is not yet supported as a Blip canonical type.
 
 Note that, for a **multi channel** chatbot, it is the chatbot developer's responsibility to send the correct content type to each channel.
 
@@ -350,7 +350,7 @@ Note that, for a **multi channel** chatbot, it is the chatbot developer's respon
 
 | Channel              | Type                    |
 |--------------------|-------------------------|
-| BLiP App           | Does not support           |
+| Blip App           | Does not support           |
 | Messenger          | Supported (the property `content` refers to `message` element of Messenger [Send API](https://developers.facebook.com/docs/messenger-platform/send-api-reference/)  |
 | Whatsapp           | Does not support           |
 | SMS                | Does not support           |

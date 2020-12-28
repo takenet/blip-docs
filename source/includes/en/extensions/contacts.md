@@ -1,6 +1,6 @@
 ## Contacts
 
-The **contacts** extension allows the management of the chatbot's roster, which can be used to store data of the chatbot's clients. It is possible to save information like name, address, gender and other generic information, using the `extras` property. It is also possible to use the contacts fields as variables of the messages sent by the chatbot. This property only allows `string` values and does not allows complex objects. You can also set the `group` property for contacts organization. Events where the `identity` property is from a special group called 'testers' will be ignored on BLiP events dashboard.
+The **contacts** extension allows the management of the chatbot's roster, which can be used to store data of the chatbot's clients. It is possible to save information like name, address, gender and other generic information, using the `extras` property. It is also possible to use the contacts fields as variables of the messages sent by the chatbot. This property only allows `string` values and does not allows complex objects. You can also set the `group` property for contacts organization. Events where the `identity` property is from a special group called 'testers' will be ignored on Blip events dashboard.
 
 To use any feature of **contacts** extension send a command with the following properties:
 
@@ -246,7 +246,7 @@ Content-Type: application/json
 ### Get comments
 
 
-Get all comments for a contact ( `contactIdentity` ). By default, BLiP will return the last 100 comments.
+Get all comments for a contact ( `contactIdentity` ). By default, Blip will return the last 100 comments.
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|

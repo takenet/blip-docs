@@ -51,12 +51,12 @@ For ease of use, the SDK includes some *receivers* for common actions, such as s
       "content": "ajuda",
       "response": {
         "mediaType": "text/plain",
-        "plainContent": "Olá, seja bem-vindo ao serviço de ajuda do BLiP."
+        "plainContent": "Olá, seja bem-vindo ao serviço de ajuda do Blip."
       }
     }
   ]
 ```
-In this way, if the client sends the word `help`, it will receive a message of type `text/plain` with content `Hello, welcome to the help BLiP's service.`. If we want to include other words for the activation of the command, simply change the `content` property and include other words in the regular filter expression, as follows:
+In this way, if the client sends the word `help`, it will receive a message of type `text/plain` with content `Hello, welcome to the help Blip's service.`. If we want to include other words for the activation of the command, simply change the `content` property and include other words in the regular filter expression, as follows:
 
 ```http
   "messageReceivers": [
@@ -65,7 +65,7 @@ In this way, if the client sends the word `help`, it will receive a message of t
       "content": "^(inicio|iniciar|começar|ajuda)$",
       "response": {
         "mediaType": "text/plain",
-        "plainContent": "Olá, seja bem-vindo ao serviço de ajuda do BLiP."
+        "plainContent": "Olá, seja bem-vindo ao serviço de ajuda do Blip."
       }
     }
   ]
@@ -80,7 +80,7 @@ We can return, instead of a plain text, a complex message type such as a ** Sele
       "response": {
         "mediaType": "application/vnd.lime.select+json",
         "jsonContent": {
-          "text": "Olá, seja bem-vindo ao serviço de ajuda do BLiP. Escolha o que você deseja receber:",
+          "text": "Olá, seja bem-vindo ao serviço de ajuda do Blip. Escolha o que você deseja receber:",
           "options": [
             {
               "order": 1,

@@ -72,7 +72,7 @@ Note: Some channels may have a character limit per message.
 
 | Channel              | Type                    |
 |----------------------|-------------------------|
-| BLiP Chat            | Text                   |
+| Blip Chat            | Text                   |
 | Messenger            | [Text message](https://developers.facebook.com/docs/messenger-platform/send-api-reference/text-message)|
 | Whatsapp             | Text                   |
 | SMS                  | Text                   |

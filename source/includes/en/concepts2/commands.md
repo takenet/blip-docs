@@ -87,7 +87,7 @@ Content-Type: application/json
 } 
 ```
 
-A **command** allows querying and manipulation of server resources and the consumption of **BLiP** extensions. It provides a request-response interface similar to HTTP, with verbs and URIs.
+A **command** allows querying and manipulation of server resources and the consumption of **Blip** extensions. It provides a request-response interface similar to HTTP, with verbs and URIs.
 
 Each command has:
 

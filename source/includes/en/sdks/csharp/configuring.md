@@ -19,16 +19,16 @@ Check a example of how to set your `application.json` file:
 
 For this case the client was configured to use a chatbot with `xpto` identifier with `cXkzT1Rp` accessKey. Besides that was registered a **MessageReceiver** with name `PlainTextMessageReceiver` and a filter for messages with `text/plain` **media type**.
 
-Through of `application.json` file the developer can realize a tranparent run of the application. All the other tasks are managed by `mhh.exe` BLiP tool, installed with the template package.
+Through of `application.json` file the developer can realize a tranparent run of the application. All the other tasks are managed by `mhh.exe` Blip tool, installed with the template package.
 
 All possible properties of the `application.json` file:
 
 | Property | Description                                                                        | Example                 | Default Value |
 |-------------|----------------------------------------------------------------------------------|-------------------------|--------------|
-| identifier     | Chatbot identifier. Found this property on [BLiP Portal](http://portal.blip.ai). | myapplication           | null |
+| identifier     | Chatbot identifier. Found this property on [Blip Portal](http://portal.blip.ai). | myapplication           | null |
 | domain      | The **lime** domain to connect. Now only `msging.net` is supported.| msging.net              | msging.net |
-| hostName    | The host addres to connect with BLiP server.                                  | msging.net              | msging.net |
-| accessKey   | The access key for authentication (using token mode), on **base64** format. Found this property on [BLiP Portal](http://portal.blip.ai).         | MTIzNDU2                 |null |
+| hostName    | The host addres to connect with Blip server.                                  | msging.net              | msging.net |
+| accessKey   | The access key for authentication (using token mode), on **base64** format. Found this property on [Blip Portal](http://portal.blip.ai).         | MTIzNDU2                 |null |
 | password    | The password for authentication (using password mode), on **base64** format.                   | MTIzNDU2                 | null |
 | sendTimeout | The timeout value to send messages (in milliseconds).                              | 30000                   | 20000 |
 | sessionEncryption | Enchryptation mode.                              | None/TLS                   | TLS |

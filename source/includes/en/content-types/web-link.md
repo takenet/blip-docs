@@ -89,7 +89,7 @@ In some channels, it is possible to define how the webpage will be displayed (on
 
 | Channel            | Type                    |
 |--------------------|-------------------------|
-| BLiP Chat          | Web Link                |
+| Blip Chat          | Web Link                |
 | Messenger          | [Generic template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/generic-template) or [Button](https://developers.facebook.com/docs/messenger-platform/send-api-reference/buttons) (if used with the [Multimedia Menu](https://blip.ai/portal/#/docs/content-types/document-select)). |
 | Whatsapp           | Media Link          |
 | SMS                | Text with link          |

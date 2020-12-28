@@ -4,7 +4,7 @@
 
 If you don't know **api.ai** access this [getting starter](https://docs.api.ai/v17/docs/apiai-in-2-minutes-1).
 
-For each *api.ai* created flow you can get an *Access Token* to use in a BLiP's chatbot. For more informations about api.ai authentication check the [documention]((https://docs.api.ai/docs/authentication)).
+For each *api.ai* created flow you can get an *Access Token* to use in a Blip's chatbot. For more informations about api.ai authentication check the [documention]((https://docs.api.ai/docs/authentication)).
 
 ### Settings
 

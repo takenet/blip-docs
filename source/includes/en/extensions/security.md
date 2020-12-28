@@ -1,6 +1,6 @@
 ## Security
 
-The **security** extension allows the chatbot to work with account keys and give permissions (delegation) to other **BLiP** identities - like another chatbots - to execute actions *on its behalf*, like sending messages. The delegation can be required by some extensions. It is required to be executed only once for each delegated identity.
+The **security** extension allows the chatbot to work with account keys and give permissions (delegation) to other **Blip** identities - like another chatbots - to execute actions *on its behalf*, like sending messages. The delegation can be required by some extensions. It is required to be executed only once for each delegated identity.
 
 To use the **security** extension, send a command with the following properties:
 

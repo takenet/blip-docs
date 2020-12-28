@@ -130,7 +130,7 @@ namespace Extensions
 }
 ```
 
-Getting the last chatbot's [threads](/#thread). By default, BLiP returns the last 50 threads.
+Getting the last chatbot's [threads](/#thread). By default, Blip returns the last 50 threads.
 
 The following uri filters are available to get chatbot's threads:
 
@@ -244,7 +244,7 @@ namespace Extensions
 }
 ```
 
-Getting the last chatbot's [messages](/#messages) in a specific [thread](/#thread). The thread is identified by a client identity (for example: `1180740631991418@messenger.gw.msging.net`). By default, BLiP will return the last 20 thread messages.
+Getting the last chatbot's [messages](/#messages) in a specific [thread](/#thread). The thread is identified by a client identity (for example: `1180740631991418@messenger.gw.msging.net`). By default, Blip will return the last 20 thread messages.
 
 The following uri filters are available to get a chatbot's thread:
 
@@ -271,7 +271,7 @@ If you want to paginate your query to get more than 100 results, you must use th
 
 ### Get logged messages
 
-Get all logged [messages](/#messages). By default, BLiP returns the last 100 logged messages.
+Get all logged [messages](/#messages). By default, Blip returns the last 100 logged messages.
 
 
 | QueryString  | Description                                                              |
@@ -343,7 +343,7 @@ Content-Type: application/json
 
 ### Get logged notifications
 
-Get all logged [notifications](/#notifications). By default, BLiP returns the last 100 logged notifications.
+Get all logged [notifications](/#notifications). By default, Blip returns the last 100 logged notifications.
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|

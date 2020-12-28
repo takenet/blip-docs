@@ -75,7 +75,7 @@ Content-Length: 393
 }
 ```
 
-In order to use the BLiP's extensions (like schedule and directory), it is necessary to send commands. 
+In order to use the Blip's extensions (like schedule and directory), it is necessary to send commands. 
 
 REQUEST
 

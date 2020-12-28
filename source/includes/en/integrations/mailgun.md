@@ -9,7 +9,7 @@
 
 ### Send e-mail
 
-Sending an e-mail is a common task for anyone developing a bot. Alerts or confirmation of information are some of the common scenarios for this demand. BLiP abstracts the whole process of sending and receiving e-mails to your bot.
+Sending an e-mail is a common task for anyone developing a bot. Alerts or confirmation of information are some of the common scenarios for this demand. Blip abstracts the whole process of sending and receiving e-mails to your bot.
 
 | Name | Description |
 |---------------------------------|--------------|

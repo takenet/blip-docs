@@ -26,7 +26,7 @@ An schedule object passed as a document `resource` has the following properties:
 
 #### Default list
 
-BLiP automatically creates a distribution list with all clients that have already contacted your chatbot. Its address is `[bot-identifier]+senders@broadcast.msging.net` where `bot-identifier` is the identifier of your chatbot, which is used with the access key for authentication.
+Blip automatically creates a distribution list with all clients that have already contacted your chatbot. Its address is `[bot-identifier]+senders@broadcast.msging.net` where `bot-identifier` is the identifier of your chatbot, which is used with the access key for authentication.
 
 For example, for a chatbot with identifier `mychatbot`, this list address would be `mychatbot+senders@broadcast.msging.net`.
 
@@ -41,7 +41,7 @@ The Broadcast service is available in the following domains:
 |Domain     |Available  |Observation                                            |
 |---	      |---	      |---                                                    |
 |Messenger  |x          |Needed initial user interaction with chatbot           |
-|BLiP Chat  |x          |Not necessary initial user interaction with chatbot    |
+|Blip Chat  |x          |Not necessary initial user interaction with chatbot    |
 |Skype      |x          |Needed initial user interaction with chatbot           |
 |SMS        |x          |Not necessary initial user interaction with chatbot    |
 |Telegram   |x          |Needed initial user interaction with chatbot           |

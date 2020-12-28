@@ -169,7 +169,7 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 
 | Channel              | Type                         |
 |--------------------|--------------------------------|
-| BLiP Chat          | User input (for Location type only) |
+| Blip Chat          | User input (for Location type only) |
 | Messenger          | [Location](https://developers.facebook.com/docs/messenger-platform/send-api-reference/quick-replies) |
 | Whatsapp           | Text                   |
 | SMS                | Text                   |
