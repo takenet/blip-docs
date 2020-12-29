@@ -293,6 +293,7 @@ under the License.
         height: 14px;
         margin-right: 10px;
         padding-top: 3px;
+        fill: $nav-textL;
       }
     }
   }
@@ -395,7 +396,7 @@ under the License.
     // half of the content always this background color.
     .dark-box {
       width: $examples-width;
-      background-color: $examples-bg;
+      background-color: $examples-bgL;
       position: absolute;
       right: 0;
       top: 0;
@@ -410,7 +411,7 @@ under the License.
   }
 
   .lang-selector {
-    background-color: $lang-select-bg;
+    background-color: $lang-select-bgL;
     width: 100%;
     font-weight: 300;
 
@@ -422,7 +423,7 @@ under the License.
       font-weight: 600;
       font-size: 16px;
       line-height: 24px;
-      color: $lang-select-text;
+      color: $lang-select-textL;
       padding: 0 15px;
       line-height: 48px;
       outline: 0;
@@ -430,14 +431,14 @@ under the License.
 
       &:active,
       &:focus {
-        background-color: $lang-select-pressed-bg;
-        color: $lang-select-active-text;
+        background-color: $lang-select-pressed-bgL;
+        color: $lang-select-active-textL;
         text-decoration: none;
       }
 
       &.active {
-        background-color: $lang-select-active-bg;
-        color: $lang-select-active-text;
+        background-color: $lang-select-active-bgL;
+        color: $lang-select-active-textL;
         text-decoration: none;
       }
     }
@@ -501,7 +502,7 @@ under the License.
     }
 
     p {
-      color: $main-text;
+      color: $main-textL;
       font-family: Nunito Sans;
       font-style: normal;
       font-weight: lighter;
@@ -516,7 +517,7 @@ under the License.
       padding-bottom: 1*$m;
       margin-bottom: $h1-margin-bottom;
       margin-top: 6*$m;
-      color: #D2DFE6;
+      color: $main-textL;
     }
 
     h1:first-child,
@@ -534,7 +535,7 @@ under the License.
       // border-top: 1px solid #ccc;
       padding-top: 1*$m;
       padding-bottom: 1*$m;
-      color: #D2DFE6;
+      color: $main-textL;
     }
 
     // h2s right after h1s should bump right up
@@ -554,7 +555,7 @@ under the License.
       font-weight: 500;
       margin-top: 2.5em;
       margin-bottom: 0.8em;
-      color: #D2DFE6;
+      color: $main-textL;
     }
 
     h4,
@@ -562,13 +563,13 @@ under the License.
     h6 {
       font-size: 15px;
       font-weight: bold;
-      color: #D2DFE6;
+      color: $main-textL;
     }
 
     hr {
       margin: 2em 0;
-      border-top: 2px solid $examples-bg;
-      border-bottom: 2px solid $main-bg;
+      border-top: 2px solid $examples-bgL;
+      border-bottom: 2px solid $main-bgL;
     }
 
     dt {
@@ -590,7 +591,7 @@ under the License.
       font-weight: normal;
       font-size: 14px;
       line-height: 22px !important;
-      color: #D2DFE6;
+      color: $main-textL;
     }
 
     li p>br {
@@ -608,6 +609,7 @@ under the License.
     p>code {
       background-color: none;
       color: #fb5a8b;
+      font-weight: bold;
       border: 1px solid #D2DFE6;
       box-sizing: border-box;
       white-space: nowrap;
@@ -631,7 +633,7 @@ under the License.
       padding-bottom: 1.6*$m;
       margin-top: 2.4*$m;
       margin-bottom: 2.4*$m;
-      background: $aside-notice-bg;
+      background: $aside-notice-bgL;
       line-height: $bp-lh-plus;
       margin-left: -25px;
 
@@ -641,15 +643,15 @@ under the License.
         font-weight: normal;
         font-size: 14px;
         line-height: 22px;
-        color: black;
+        color: $main-textL;
       }
 
       &.warning {
-        background-color: $aside-warning-bg;
+        background-color: $aside-warning-bgL;
       }
 
       &.success {
-        background-color: $aside-success-bg;
+        background-color: $aside-success-bgL;
       }
     }
 
@@ -680,6 +682,10 @@ under the License.
     }
   }
 
+  .highlight .o{
+    color: white !important;
+  }
+
   .page-wrapper .content table {
     padding-top: 1.2*$m;
     padding-bottom: 1.2*$m;
@@ -691,24 +697,24 @@ under the License.
 
 
     thead {
-      border-bottom: 2px solid $table-head-bc;
-      box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.15);
+      border-bottom: 2px solid $table-head-bcL;
+      box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.05);
       border-radius: 8px 8px 0px 0px;
     }
 
     thead,
     tbody {
-      background-color: $table-bg;
+      background-color: $table-bgL;
     }
 
     thead {
-      border-bottom: 1px solid #233049;
+      border-bottom: 1px solid $nav-active-parent-bgL
     }
 
     tbody {
-      -moz-box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
-      -webkit-box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
-      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0 5px 12px rgba(0, 0, 0, 0.00);
+      -webkit-box-shadow: 0 5px 12px rgba(0, 0, 0, 0.10);
+      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.10);
     }
 
     th,
@@ -716,6 +722,7 @@ under the License.
       text-align: left;
       vertical-align: inherit;
       line-height: $bp-lh-plus;
+      color: $table-textL;
 
       &:first-child {
         padding-left: 3*$m;
@@ -729,7 +736,7 @@ under the License.
     th {
       padding: 1.6*$m 1*$m;
       vertical-align: bottom;
-      color: #D2DFE6;
+      color: $table-textL;
       font-weight: $bp-fw-extra-bold;
 
 
@@ -748,11 +755,13 @@ under the License.
     }
 
     tr:nth-child(odd)>td {
-      background-color: $table-row-odd-bg;
+      background-color: $table-row-odd-bgL;
+      color: $table-textL;
     }
 
     tr:nth-child(even)>td {
-      background-color: $table-row-even-bg;
+      background-color: $table-row-even-bgL;
+      color: $table-textL;
     }
 
     tr:last-child {
@@ -1622,6 +1631,7 @@ under the License.
     p>code {
       background-color: none;
       color: #fb5a8b;
+      font-weight: bold;
       border: 1px solid #D2DFE6;
       box-sizing: border-box;
       white-space: nowrap;
@@ -1693,6 +1703,12 @@ under the License.
       background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
     }
   }
+
+
+  .highlight .o{
+    color: white !important;
+  }
+
 
   .page-wrapper .content table {
     padding-top: 1.2*$m;

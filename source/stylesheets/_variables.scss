@@ -47,7 +47,7 @@ $aside-code-bg: $bp-color-onix !default;
 // BACKGROUND COLORS LIGHT MODE
 ////////////////////
 $nav-bgL: #ffffff !default;
-$examples-bgL: #1A2437 !default;
+$examples-bgL: #F3F6FA !default;
 $search-bgL: #f3f6fa !default;
 $code-bgL: #505F79 !default;
 $code-annotation-bgL: #3A4A65 !default;
@@ -56,9 +56,9 @@ $nav-search-results-bgL: #f3f6fa !default;
 $nav-active-bgL: #e8f2ff !default;
 $nav-active-parent-bgL: #f3f6fa !default; // parent links of the current section
 $lang-select-borderL: darken($bp-color-onix, 10%) !default;
-$lang-select-bgL: #202c44 !default;
-$lang-select-active-bgL:  #1A2437 !default; // feel free to change this to blue or something
-$lang-select-pressed-bgL: #1A2437; // color of language tab bg when mouse is pressed
+$lang-select-bgL: #ffffff !default;
+$lang-select-active-bgL:  #f3f6fa !default; // feel free to change this to blue or something
+$lang-select-pressed-bgL: #f3f6fa; // color of language tab bg when mouse is pressed
 $main-bgL: #ffffff !default;
 $aside-notice-bgL: #00C6D7 !default;
 $aside-warning-bgL: $bp-color-warning !default;
@@ -89,7 +89,7 @@ $search-colorL: #6E7B91 !default;
 $nav-active-textL: #3F7DE8 !default;
 $nav-active-parent-textL: #505F79 !default; // parent links of the current section
 $lang-select-textL: #6E7B91 !default; // color of unselected language tab text
-$lang-select-active-textL: #505F79 !default; // color of selected language tab text
+$lang-select-active-textL: #3F7DE8 !default; // color of selected language tab text
 $lang-select-pressed-textL: $bp-color-white !default; // color of language tab text when mouse is pressed
 $aside-code-textL: $bp-color-white !default;
 
@@ -126,12 +126,19 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
   line-height: $bp-lh-plus;
 }
 
-//Tables
+//Tables DARK MODE
 $table-text: $bp-color-desk;
 $table-head-bc: $bp-color-offwhite;
 $table-bg: #233049;
 $table-row-odd-bg: #233049;
 $table-row-even-bg: #202C44;
+
+//Tables LIGHT MODE
+$table-textL: #505F79;
+$table-head-bcL: #505F79;
+$table-bgL: #f3f6fae1;
+$table-row-odd-bgL: #ffffff;
+$table-row-even-bgL: #F3F6FA;
 
 
 // OTHER
@@ -140,7 +147,7 @@ $table-row-even-bg: #202C44;
 $nav-footer-border-color: #505F79 !default;
 $search-box-border-color: transparent !default;
 //LIGHT MODE
-$nav-footer-border-colorL: #505F79 !default;
+$nav-footer-border-colorL: #D2DFE6 !default;
 $search-box-border-colorL: transparent !default;
 
 
