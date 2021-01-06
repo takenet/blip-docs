@@ -64,10 +64,10 @@ Content-Type: application/json
 }
 ```
 
-Before sending a notification to a WhatsApp's customer you should get its identifier. Using the customer MSISDN (complete phone number), make a request to Take Blip's API as demostrated aside. For instance, a Brazillian customer should be verified using a MSISDN like `+5531988889999`. This request will verify if the MSISDN is registered on WhatsApp and will retrieve its identifier if yes.
+Before sending a notification to a WhatsApp's customers you should get theirs identifier. Using the customer MSISDN (complete phone number), make a request to Take Blip's API as demostrated aside. For instance, a Brazillian customer should be verified using a MSISDN like `+5531988889999`. This request will verify if the MSISDN is registered on WhatsApp and will retrieve its identifier if yes.
 
 <aside class="warning">
-If you verify too many phone numbers without sending messages to them, you will be banned from WhatsApp.
+If you verify too many phone numbers without sending notifications to them, you will be banned from WhatsApp.
 </aside>
 
 **Attention**, WhatsApp only retrieves the identifier if the MSISDN is in **complete form**. If you don't put the `+` before phone number, all results will indicate success, even if the MSISDN is not registered on WhatsApp. **Do not forget to put the** `+` **before the phone number.**
