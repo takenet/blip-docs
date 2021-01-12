@@ -38,7 +38,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     var lastThreads = await client.sendCommand({  
         id: Lime.Guid(),
         method: Lime.CommandMethod.GET,
-        uri: '/threads'
+        uri: '/threads?refreshExpiredMedia=true'
     });
     lastThreads.resource.items.forEach(function (item) {
         console.log(item);
@@ -54,7 +54,7 @@ Authorization: Key {YOUR_TOKEN}
 {  
   "id": "{{$guid}}",
   "method": "get",
-  "uri": "/threads"
+  "uri": "/threads?refreshExpiredMedia=true"
 }
 ```
 
@@ -148,7 +148,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     var lastMessages = await client.sendCommand({  
         id: Lime.Guid(),
         method: Lime.CommandMethod.GET,
-        uri: '/threads/destination@0mn.io'
+        uri: '/threads/{{user_identity}}?refreshExpiredMedia=true'
     });
     lastMessages.resource.items.forEach(function (item) {
         console.log(item);
@@ -164,7 +164,7 @@ Authorization: Key {YOUR_TOKEN}
 {  
   "id": "{{$guid}}",
   "method": "get",
-  "uri": "/threads/1180740631991418@messenger.gw.msging.net"
+  "uri": "/threads/{{user_identity}}?refreshExpiredMedia=true"
 }
 ```
 

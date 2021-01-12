@@ -30,7 +30,7 @@ Authorization: Key {YOUR_TOKEN}
   "method": "set",
   "uri": "/refresh-media-uri",
   "type": "text/plain",
-  "resource": "URI_WITH_EXPIRED_TOKEN"
+  "resource": "{{expiredMediaLinkUri}}"
 }
 ```
 
