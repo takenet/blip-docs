@@ -2262,7 +2262,7 @@ Replace `{ticketId}` with the ticket id you want to get the messages.
 |--------------|--------------------------------------------------------------------|---------|
 | **$take** | Limit of total of items to be returned.                               |   100   |
 | **$ascending** | Sets ascending alphabetical order.                                |    true    |
-| **$getFromOwnerIfTunnel** (required*) | Get all messages from owner router.                                |    true    |
+| **getFromOwnerIfTunnel** (required*) | Get all messages from owner router.                                |    true    |
 
 | Parameters | Example                              |
 |------------|--------------------------------------|
@@ -2273,7 +2273,7 @@ Note: After the ticket is created, it <b>expires in a month</b>. In this situati
 </aside>
 
 <aside class="notice">
-* Note: By default its value is <i>false</i>. If you are using a Router, it must be <i>true</i>
+* Note: By default its value is <i>false</i>. If you are using a Router, it must be <i>true</i> otherwise it can be ommited or false. 
 </aside>
 
 
