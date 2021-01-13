@@ -2260,7 +2260,6 @@ Replace `{ticketId}` with the ticket id you want to get the messages.
 
 | QueryString     | Description                                                        | Example |
 |--------------|--------------------------------------------------------------------|---------|
-| **$skip** |The number of elements to be skipped.                                |    0    |
 | **$take** | Limit of total of items to be returned.                               |   100   |
 | **$ascending** | Sets ascending alphabetical order.                                |    true    |
 | **$getFromOwnerIfTunnel** (required*) | Get all messages from owner router.                                |    true    |
