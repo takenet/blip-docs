@@ -2427,10 +2427,10 @@ In order to get any ticket of some bot send a command with `GET` method to `post
 To filter specific tickets you can use **$filter** parameter on query string with the following properties:
 
 
-| **$filter**  | Description                                                                       | Example |
-|--------------|-----------------------------------------------------------------------------------|---------|
-| **skip**     | The number of elements to be skipped                                              | 0 |
-| **take**     | The number of elements to be returned. The maximum value of this parameter is 100 | 10 |
+| **$filter**  | Description                                                                        | Example |
+|--------------|------------------------------------------------------------------------------------|---------|
+| **skip**     | The number of elements to be skipped                                               | 0 |
+| **take**     | The number of elements to be returned. The maximum value of this parameter is 100. | 10 |
 
 | Name | Description |
 |---------------------------------|--------------|
