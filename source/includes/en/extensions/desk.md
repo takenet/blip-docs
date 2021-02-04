@@ -2202,6 +2202,8 @@ Returns all closed [tickets](/#ticket).
 
 Replace `{customerIdentity}` with the customer id you want to get.
 
+The maximum value of `take` parameter is 100.
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -2425,10 +2427,10 @@ In order to get any ticket of some bot send a command with `GET` method to `post
 To filter specific tickets you can use **$filter** parameter on query string with the following properties:
 
 
-| **$filter**     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **skip** | The number of elements to be skipped                           | 0 |
-| **take** | The number of elements to be returned                          | 10 |
+| **$filter**  | Description                                                                       | Example |
+|--------------|-----------------------------------------------------------------------------------|---------|
+| **skip**     | The number of elements to be skipped                                              | 0 |
+| **take**     | The number of elements to be returned. The maximum value of this parameter is 100 | 10 |
 
 | Name | Description |
 |---------------------------------|--------------|
@@ -3131,6 +3133,8 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Returns all waiting [tickets](/#ticket).
 
+The maximum value of `take` parameter is 100.
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -3452,7 +3456,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Set,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/tickets/{ticketId/transfer"),
+    Uri = new LimeUri("/tickets/{ticketId}/transfer"),
     Resource = new Ticket{
         Team = "{teamName}"
     }
