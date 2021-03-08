@@ -617,6 +617,37 @@ Content-Type: application/json
 Note 2: Remember to replace the resource content with your flow.
 </aside>
 
+### Check connectivity
+
+Allows the bot to test the network connectivity.
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "{{$guid}}",
+  "to": "postmaster@msging.net",
+  "method": "get",
+  "uri": "/ping"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.ping+json",
+    "resource": {},
+    "method": "get",
+    "status": "success",
+    "id": "54388b6a-deea-48a6-a817-bbeb31859629",
+    "from": "postmaster@msging.net/#iris-hosted-2"
+}
+```
+
 ### Delete a context variable
 
 Delete a specific context variable for a specific user.
@@ -1038,3 +1069,4 @@ namespace Extensions
     }
 }
 ```
+
