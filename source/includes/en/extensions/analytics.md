@@ -612,6 +612,92 @@ Your interval must have one of this statistics interval:
 <code>/metrics/active-messages/D?startDate=2019-12-12T03%3A00%3A00.000Z&endDate=2019-12-14T03%3A00%3A00.000Z</code>
 </aside>
 
+### Get active messages per domain
+
+Get the [metrics](/#metricindicators) of active messages per domain by an interval.
+
+Replace `{interval}` with the date interval you want to get the metrics.
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "{{$guid}}",
+  "to": "postmaster@analytics.msging.net",
+  "method": "get",
+  "uri": "/metrics/active-messages-per-domain/{interval}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 2,
+        "itemType": "application/vnd.iris.analytics.metric-indicators+json",
+        "items": [
+            {
+                "intervalStart": "2021-03-01T03:00:00.000Z",
+                "intervalEnd": "2021-03-05T03:00:00.000Z",
+                "count": 43,
+                "domain": "messenger.gw.msging.net"
+            },
+            {
+                "intervalStart": "2021-03-01T03:00:00.000Z",
+                "intervalEnd": "2021-03-05T03:00:00.000Z",
+                "count": 100,
+                "domain": "wa.gw.msging.net"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "541a4c6a-77c5-4928-a0e3-af79cfc77ad3",
+    "from": "postmaster@analytics.msging.net/#az-iris7",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@analytics.msging.net",
+    method: "get",
+    uri: "/metrics/active-messages-per-domain/{interval}"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postmaster@analytics.msging.net",
+    Uri = new LimeUri("/metrics/active-messages-per-domain/{interval}")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+Your interval must have one of this statistics interval:
+
+| Interval   | Description                           | QueryString                                       |
+|------------|---------------------------------------|---------------------------------------------------|
+| Daily      | Statistics collected at each day      | D?startDate=**DATE**&endDate=**DATE**           |
+| Monthly    | Statistics collected at each month    | M?startDate=**DATE**&endDate=**DATE**           |
+| NoInterval | Statistics collected with no interval | NI?startDate=**DATE**&endDate=**DATE**          |
+
+<aside clas="notice">
+<i>Example: If you want to get a <b>Daily</b> metric, starting from march 01 to march 05:</i>
+
+<br><br>
+<code>/metrics/active-messages-per-domain/D?startDate=2021-03-01T03%3A00%3A00.000Z&endDate=2021-03-05T03%3A00%3A00.000Z</code>
+</aside>
+
 ### Get all reports
 
 Get a collection of [reports](/#report).
