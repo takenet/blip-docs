@@ -372,3 +372,8 @@ Content-Type: application/json
 Get all schedules messages. 
 
 The response should be a [Schedule document](#schedules) list.
+
+
+<aside class="notice">
+From April 2021, this method will have a return <b>limit of 1000 scheduled messages</b>.
+</aside>
