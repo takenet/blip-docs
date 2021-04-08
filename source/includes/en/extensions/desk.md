@@ -586,6 +586,85 @@ var command = new Command(){
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 ```
+### Create an attendance queue
+
+Set a new attendance queue.
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "{{$guid}}",
+  "to": "postmaster@desk.msging.net",
+  "method": "set",
+  "uri": "/attendance-queues",
+  "type": "application/vnd.iris.desk.attendancequeue+json",
+  "resource": {
+  	  "ownerIdentity": "demobot@msging.net",
+      "name": "Queue name",
+      "isActive": true,
+      "Priority": 0
+	}
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "type": "application/vnd.iris.desk.attendancequeue+json",
+  "resource": {
+    "id": "queuename",
+    "ownerIdentity": "demobot@msging.net",
+    "name": "Queue name",
+    "isActive": true,
+    "storageDate": "2021-04-07T14:01:07.034Z",
+    "Priority": 0
+  },
+  "method": "set",
+  "status": "success",
+  "id": "198e5ce6-2b57-4e00-b5fa-a90ebe7a184e",
+  "from": "postmaster@desk.msging.net/!note-mc62",
+  "to": "demobot@msging.net/default-634",
+  "metadata": {
+    "#command.uri": "lime://demobot@msging.net/attendance-queues"
+  }
+}
+```
+
+```javascript
+client.sendCommand({
+  id: Lime.Guid(),
+  to: "postmaster@desk.msging.net",
+  method: Lime.CommandMethod.SET,
+  uri: "/attendance-queues",
+  type: "application/vnd.iris.desk.attendancequeue+json",
+  resource: {
+  	isActive: true,
+	ownerIdentity: "demobot@msging.net",
+	Priority: 0
+  }
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Set,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/attendance-queues"),
+    Type: "application/vnd.iris.desk.attendancequeue+json",
+    Resource = new Rule{
+        isActive: true,
+	    ownerIdentity: "demobot@msging.net",
+	    Priority: 0
+    }
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
 
 ### Create an attendance rule
 
@@ -1731,6 +1810,83 @@ var command = new Command(){
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
+```
+### Get a attendanceQueue
+
+Get a specific [attendance queue](/#attendance-queues).
+Replace `{queueId}`with the queue id you want to get.
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "{{$guid}}",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/attendance-queues/{queueId}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+    "total": 2,
+    "itemType": "application/vnd.iris.desk.attendancequeue+json",
+    "items": [
+      {
+        "id": "queueclientbasic",
+        "ownerIdentity": "demobot@msging.net",
+        "name": "Queue Client Basic",
+        "isActive": true,
+        "storageDate": "2021-04-06T15:01:33.240Z",
+        "Priority": 0
+      },
+      {
+        "id": "queueclientbeta",
+        "ownerIdentity": "demobot@msging.net",
+        "name": "Queue Client Beta",
+        "isActive": true,
+        "storageDate": "2021-04-06T14:59:28.830Z",
+        "Priority": 0
+      }
+    ]
+  },
+  "method": "get",
+  "status": "success",
+  "id": "55ab5ef8-6556-46ee-8328-5c4966393f50",
+  "from": "postmaster@desk.msging.net/!hmg-az-iris1",
+  "to": "demobot@msging.net/default",
+  "metadata": {
+    "#command.uri": "lime://demobot@msging.net/attendance-queues",
+    "uber-trace-id": "840b1d9131b1182f%3A2389284ea498272b%3A8401234531b1182f%3A1"
+  }
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.GET,
+    uri: "/attendance-queues/{queueId}"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/attendance-queues/{queueId}"),
+};
+
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 ```
 
 ### Get a rule
