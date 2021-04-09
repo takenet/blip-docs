@@ -3960,6 +3960,39 @@
 							"response": []
 						},
 						{
+							"name": "Create an attendance queue",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/attendance-queues\",\r\n  \"type\": \"application/vnd.iris.desk.attendancequeue+json\",\r\n  \"resource\": {\r\n    \"isActive\": true,\r\n    \"name\": \"Queue name\",\r\n    \"ownerIdentity\": \"demobot@msging.net\",\r\n    \"Priority\": \"0\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "Set a new attendance queue.\r\n\r\nYou must send a queue document with your conditions.\r\n\r\nFor more information, see https://docs.blip.ai/?http#create-an-attendance-queue"
+							},
+							"response": []
+						},
+						{
 							"name": "Create a ticket for an attendance",
 							"request": {
 								"method": "POST",
@@ -4055,6 +4088,39 @@
 									]
 								},
 								"description": "Delete a specific attendance rule.\r\n\r\nReplace {rule_id}with the rule id you want to delete.\r\n\r\nFor more information, see https://docs.blip.ai/?http#delete-a-rule"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a queue",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/attendance-queues/{{queue_id}}\"\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "Delete a specific attendance queue.\r\n\r\nReplace {queue_id}with the queue id you want to delete.\r\n\r\nFor more information, see https://docs.blip.ai/?http#delete-a-queue"
 							},
 							"response": []
 						},
