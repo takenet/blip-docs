@@ -1322,7 +1322,7 @@ Get a report about [agents](/#attendant).
 
 Returns a [Attendant Summary](/#attendantticketssummary) document.
 
-The following filters are available:
+The following filters are **required**:
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|
@@ -1338,7 +1338,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/analytics/reports/attendants"
+  "uri": "/analytics/reports/attendants?beginDate=2019-04-15&endDate=2019-06-22"
 }
 ```
 
@@ -1387,7 +1387,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/analytics/reports/attendants"
+    uri: "/analytics/reports/attendants?beginDate=2019-04-15&endDate=2019-06-22"
 })
 ```
 
@@ -1396,7 +1396,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/analytics/reports/attendants")
+    Uri = new LimeUri("/analytics/reports/attendants?beginDate=2019-04-15&endDate=2019-06-22")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -1408,11 +1408,11 @@ Get a report about attendance time.
 
 Returns a [Attendance Time Summary](/#attendancetimesummary) document.
 
-The following filters are available:
+The following filters are **required**:
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|
-| beginDate    | Initial date to retrieve the report        |
+| beginDate    | Initial date to retrieve the report       |
 | endDate      | Limit date to retrieve the report.        |
 
 ```http
@@ -1424,7 +1424,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/analytics/reports/attendancetime"
+  "uri": "/analytics/reports/attendancetime?beginDate=2019-04-15&endDate=2019-06-22"
 }
 ```
 
@@ -1450,7 +1450,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/analytics/reports/attendancetime"
+    uri: "/analytics/reports/attendancetime?beginDate=2019-04-15&endDate=2019-06-22"
 })
 ```
 
@@ -1459,7 +1459,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/analytics/reports/attendancetime")
+    Uri = new LimeUri("/analytics/reports/attendancetime?beginDate=2019-04-15&endDate=2019-06-22")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -1471,7 +1471,7 @@ Get a report about tags.
 
 Returns a [Tag Ticket Summary](/#tagticketssummary) document.
 
-The following filters are available:
+The following filters are **required**:
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|
@@ -1491,7 +1491,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/analytics/reports/tags"
+  "uri": "/analytics/reports/tags?beginDate=2019-04-15&endDate=2019-06-22"
 }
 ```
 
@@ -1536,7 +1536,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/analytics/reports/tags"
+    uri: "/analytics/reports/tags?beginDate=2019-04-15&endDate=2019-06-22"
 })
 ```
 
@@ -1545,7 +1545,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/analytics/reports/tags")
+    Uri = new LimeUri("/analytics/reports/tags?beginDate=2019-04-15&endDate=2019-06-22")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -1628,7 +1628,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/analytics/reports/teams"
+    uri: "/analytics/reports/teams?beginDate=2019-04-15&endDate=2019-06-22"
 })
 ```
 
@@ -1637,7 +1637,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/analytics/reports/teams")
+    Uri = new LimeUri("/analytics/reports/teams?beginDate=2019-04-15&endDate=2019-06-22")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -1649,7 +1649,7 @@ Get a report about the tickets timing.
 
 Returns a [Ticket Metrics Summary](/#ticketsmetricssummary) document.
 
-The following filters are available:
+The following filters are **required**:
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|
@@ -1665,7 +1665,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/analytics/reports/timings"
+  "uri": "/analytics/reports/timings?beginDate=2019-04-15&endDate=2019-06-22"
 }
 ```
 
@@ -1701,7 +1701,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/analytics/reports/timings"
+    uri: "/analytics/reports/timings?beginDate=2019-04-15&endDate=2019-06-22"
 })
 ```
 
@@ -1710,7 +1710,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/analytics/reports/timings)
+    Uri = new LimeUri("/analytics/reports/timings?beginDate=2019-04-15&endDate=2019-06-22)
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -1722,7 +1722,7 @@ Get a report about [tickets](/#ticket).
 
 Returns a [Tickets Summary](/#ticketssummary) document.
 
-The following filters are available:
+The following filters are **required**:
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|
@@ -1738,7 +1738,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/analytics/reports/tickets"
+  "uri": "/analytics/reports/tickets?beginDate=2019-04-15&endDate=2019-06-22"
 }
 ```
 
@@ -1797,7 +1797,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/analytics/reports/tickets"
+    uri: "/analytics/reports/tickets?beginDate=2019-04-15&endDate=2019-06-22"
 })
 ```
 
@@ -1806,7 +1806,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/analytics/reports/tickets")
+    Uri = new LimeUri("/analytics/reports/tickets?beginDate=2019-04-15&endDate=2019-06-22")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -2105,7 +2105,7 @@ Get a report about [attendants](/#attendant) productivity.
 
 Returns a [Agent Productivity Summary](/#agentproductivitysummary) document.
 
-The following filters are available:
+The following filters are **required**:
 
 | QueryString  | Description                               |
 |--------------|-------------------------------------------|
@@ -2121,7 +2121,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/analytics/reports/attendants/productivity"
+  "uri": "/analytics/reports/attendants/productivity?beginDate=2019-04-15&endDate=2019-06-22"
 }
 ```
 
@@ -2166,7 +2166,7 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/analytics/reports/attendants/productivity"
+    uri: "/analytics/reports/attendants/productivity?beginDate=2019-04-15&endDate=2019-06-22"
 })
 ```
 
@@ -2175,7 +2175,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/analytics/reports/attendants/productivity")
+    Uri = new LimeUri("/analytics/reports/attendants/productivity?beginDate=2019-04-15&endDate=2019-06-22")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
