@@ -1029,7 +1029,7 @@ Replace `{reportId}` with the report id you want to get the charts in.
 | QueryString     | Description                                                        | Example |
 |--------------|--------------------------------------------------------------------|---------|
 | **$skip** |The number of elements to be skipped.                                |    0    |
-| **$take** | Limit of total of items to be returned. The maximum allowed value is 1000. If the value is greater than the allowed value, an error will be returned.                               |   100   |
+| **$take** | Limit of total of items to be returned. Values between 0 and 1000 are allowed. If the value is not allowed, an error will be returned.                               |   100   |
 | **$ascending** | Sets ascending alphabetical order.                                |    true    |
 
 ```http
