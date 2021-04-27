@@ -248,14 +248,14 @@ Getting the last chatbot's [messages](/#messages) in a specific [thread](/#threa
 
 The following uri filters are available to get a chatbot's thread:
 
-| QueryString         | Description                               |
-|---------------------|-------------------------------------------|
-| $skip               | The number of elements to be skipped                           |
-| $take               | Limit of total of items to be returned. The maximum value allowed is 100 |
-| messageId           | Initial message id for the thread messages query        |
-| storageDate         | The reference date to search. Example: `2020-01-08T15:59:07.086Z` |
+| QueryString         | Description                                                                                                                                                                                                            |
+|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| $skip               | The number of elements to be skipped                                                                                                                                                                                   |
+| $take               | Limit of total of items to be returned. The maximum value allowed is 100                                                                                                                                               |
+| messageId           | Initial message id for the thread messages query                                                                                                                                                                       |
+| storageDate         | The reference date to search. Example: `2020-01-08T15:59:07.086Z`                                                                                                                                                      |
 | direction           | Possible values: `asc` and `desc`. Define whether messages will be returned after(in ascending order) or before(in descending order) a date, respectively. <i>Needs **storageDate** or **messageId** to be defined</i> |
-| refreshExpiredMedia | Defines if the expired media links should be refreshed |
+| refreshExpiredMedia | Defines if the expired media links should be refreshed                                                                                                                                                                 |
 
 <aside class="notice">
 Note: Both <b>storageDate</b> filter and <b>date</b> response parameter uses <b>ISO 8601</b> format. However, the return information is always at <b>GMT 00:00</b>.
@@ -274,10 +274,10 @@ If you want to paginate your query to get more than 100 results, you must use th
 Get all logged [messages](/#messages). By default, Blip returns the last 100 logged messages.
 
 
-| QueryString  | Description                                                              |
-|--------------|--------------------------------------------------------------------------|
-| $skip        | The number of elements to be skipped                                     |
-| $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
+| QueryString | Description                                                              |
+|-------------|--------------------------------------------------------------------------|
+| $skip       | The number of elements to be skipped                                     |
+| $take       | Limit of total of items to be returned. The maximum value allowed is 100 |
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -345,10 +345,16 @@ Content-Type: application/json
 
 Get all logged [notifications](/#notifications). By default, Blip returns the last 100 logged notifications.
 
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| $skip | The number of elements to be skipped                           |
-| $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
+| QueryString | Description                                                              |
+|-------------|--------------------------------------------------------------------------|
+| event       | The event type to filter                                                 |
+| id          | The notification id to filter                                            |
+| $skip       | The number of elements to be skipped                                     |
+| $take       | Limit of total of items to be returned. The maximum value allowed is 100 |
+
+<aside class="notice">
+Note: You can get notifications of a message after a <b>maximum period of 3 days from the current date</b>. All message notifications after that date are inaccessible and will not bet returned.
+</aside>
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -429,16 +435,90 @@ Content-Type: application/json
 }
 ```
 
+### Get notifications by event type
+
+Get all logged [notifications](#notifications) of a specific event type.
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "{{$guid}}",
+  "to": "postmaster@msging.net",
+  "method": "get",
+  "uri": "/notifications?event=received"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 4,
+        "itemType": "application/vnd.lime.notification+json",
+        "items": [
+            {
+                "event": "received",
+                "id": "fffc5c3c-a31e-43d6-b6a6-319f250f5248",
+                "from": "d8adfb9b@tunnel.msging.net",
+                "to": "demobot@msging.net",
+                "metadata": {
+                    "#envelope.timestamp": "1574943680445",
+                    "#tunnel.owner": "postmaster@msging.net",
+                    "#envelope.storageDate": "2019-11-28T12:21:20.000Z"
+                }
+            },
+            {
+                "event": "received",
+                "id": "fffc5c3c-a31e-43d6-b6a6-319f250f5248",
+                "from": "25b4b51ed4@tunnel.msging.net",
+                "to": "demobot@msging.net",
+                "metadata": {
+                    "#envelope.timestamp": "1574943680461",
+                    "#envelope.storageDate": "2019-11-28T12:21:20.000Z"
+                }
+            },
+            {
+                "event": "received",
+                "id": "fffc5c3c-a31e-43d6-b6a6-319f250f5248",
+                "from": "25bc1ed4@tunnel.msging.net",
+                "to": "demobot4@msging.net",
+                "metadata": {
+                    "#envelope.timestamp": "1574943680456",
+                    "#envelope.storageDate": "2019-11-28T12:21:20.000Z"
+                }
+            },
+            {
+                "event": "received",
+                "id": "fffc5c3c-a31e-43d6-b6a6-319f250f5248",
+                "from": "postmaster@msging.net/#az-iris6",
+                "to": "demobot@msging.net/msging-application-builderwqfh",
+                "metadata": {
+                    "#envelope.timestamp": "1574943680410",
+                    "#message.to": "cb37a4@tunnel.msging.net",
+                    "#envelope.storageDate": "2019-11-28T12:21:20.000Z"
+                }
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "8602b1e6-dc76-45c6-a0ef-04c7a1050fed",
+    "from": "postmaster@msging.net/#az-iris6",
+    "to": "demobot4@msging.net"
+}
+```
+
 ### Get notifications of a message
 
 Get all logged [notifications](#notifications) of a specific [message](/#messages).
 
 Replace `{messageId}` with the message id.
-
-
-<aside class="notice">
-Note: You can get notifications of a message after a <b>maximum period of 3 days from the current date</b>. All message notifications after that date are inaccessible and will not bet returned.
-</aside>
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
