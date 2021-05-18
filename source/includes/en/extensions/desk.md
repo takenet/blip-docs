@@ -698,7 +698,22 @@ Authorization: Key {YOUR_TOKEN}
 		"Minas Gerais",
 		"MG"
 		]
-	}
+	"conditions":[
+        {
+            "property":"Contact.Extras.City",
+            "relation":"Equals",
+            "values":[
+                "Belo Horizonte",
+                "BH",
+                "Minas Gerais",
+                "MG"
+            ]
+        }
+    ],
+    "operator":"Or",
+    "priority":3,
+    "storageDate":"2021-01-19T15:13:03.340Z"
+    },
 }
 ```
 
@@ -1923,8 +1938,22 @@ Content-Type: application/json
         "relation": "Equals",
         "isActive": true,
         "values": [
+            "Belo Horizonte",
             "BH"
-        ]
+        ],
+        "conditions":[
+            {
+               "property":"Contact.Extras.Cidade",
+               "relation":"Equals",
+               "values":[
+                    "Belo Horizonte",
+                    "BH"
+                ]
+            }
+        ],
+        "operator":"Or",
+        "priority":3,
+        "storageDate":"2021-01-19T15:13:03.340Z"
     },
     "method": "get",
     "status": "success",
@@ -2778,6 +2807,19 @@ Content-Type: application/json
                     "Belo Horizonte",
                     "BH"
                 ]
+                "conditions":[
+                    {
+                        "property":"Contact.Extras.Cidade",
+                        "relation":"Equals",
+                        "values":[
+                            "Belo Horizonte",
+                            "BH"
+                        ]
+                    }
+                ],
+            "operator":"Or",
+            "priority":3,
+            "storageDate":"2021-01-19T15:13:03.340Z"
             }
         ]
     },
