@@ -553,6 +553,42 @@
 							"response": []
 						},
 						{
+							"name": "Get active messages per domain",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/metrics/active-messages-per-domain/{{interval}}\"\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "Get the metrics of active messages per domain by an interval.\r\n\r\nReplace {interval} with the date interval you want to get the metrics.\r\n\r\nFor more information, see \r\nhttps://docs.blip.ai/#get-active-messages-per-domain"
+							},
+							"response": []
+						},
+						{
 							"name": "Get active users",
 							"request": {
 								"method": "POST",
