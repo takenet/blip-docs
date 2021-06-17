@@ -409,7 +409,7 @@
 							"response": []
 						},
 						{
-							"name": "Get categories",
+							"name": "Get event categories",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -481,7 +481,7 @@
 							"response": []
 						},
 						{
-							"name": "Get counters",
+							"name": "Get event counters",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -517,7 +517,7 @@
 							"response": []
 						},
 						{
-							"name": "Get details",
+							"name": "Get event details",
 							"request": {
 								"method": "POST",
 								"header": [
