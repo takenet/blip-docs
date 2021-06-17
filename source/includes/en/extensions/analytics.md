@@ -364,11 +364,12 @@ namespace Extensions
 
 To retrieve all counters of a category, add the category name to the command uri (for instance **/event-track/payments**). Those counters represent the number of events tracked in a specific pair of action and categories grouped by days. It is also possible to add *query strings* parameters as request filters. The following filters are available:
 
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| $take        | Limit of total of items to be returned. Values between 1 and 10000 are allowed. If the value is not allowed, an error will be returned.   |
-| startDate    | Initial date to search for events.        |
-| endDate      | Limit date to retrieve the events.        |
+| QueryString  | Description                               | <div style="min-width:6em">Example</div> |
+|--------------|-------------------------------------------|--------------|
+| **$take**        | Limit of total of items to be returned. Values between 1 and 10000 are allowed. If the value is not allowed, an error will be returned.   | 100 |
+| **$skip** |The number of elements to be skipped.         | 0 |
+| **startDate**    | Initial date to search for events.        | 2019-06-21 |
+| **endDate**      | Limit date to retrieve the events.        | 2019-06-28 |
 
 ### Get event details
 
@@ -472,12 +473,12 @@ namespace Extensions
 
 Retrieves all events tracked with a specific pair of action and categories. The following filters are available as possible *query strings*:
 
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| $skip        | Number of items to be skipped for paging. |
-| $take        | Limit of total of items to be returned. Values between 1 and 500 are allowed. If the value is not allowed, an error will be returned.   |
-| startDate    | Initial date to search for events.        |
-| endDate      | Limit date to retrieve the events.        |
+| QueryString  | Description                               | <div style="min-width:6em">Example</div> |
+|--------------|-------------------------------------------|---------|
+| **$skip**         | Number of items to be skipped for paging. | 0 |
+| **$take**        | Limit of total of items to be returned. Values between 1 and 500 are allowed. If the value is not allowed, an error will be returned.   | 100 |
+| **startDate**    | Initial date to search for events.        | 2019-06-21 |
+| **endDate**      | Limit date to retrieve the events.        | 2019-06-28 |
 
 <aside class="notice">
 By default, the request returns <b>only today's data</b>. Use the filters to increase the date range.
