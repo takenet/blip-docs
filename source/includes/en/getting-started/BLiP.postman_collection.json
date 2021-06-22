@@ -13,42 +13,6 @@
 					"name": "Analytics",
 					"item": [
 						{
-							"name": "Create a chart in a report",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"type": "text",
-										"value": "{{Authorization}}"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"afasdd-as9d8a7sd987\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/buckets/blip_portal:builder_working_flow\",\r\n  \"type\": \"application/json\", \r\n  \"resource\":\r\n     \"{\r\n   \"onboarding\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"input\":{ \r\n               \"bypass\":false,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"a5f855b2-7344-44ad-bf8b-75bccd63d288\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Entrada do usuário\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":false,\r\n                  \"position\":\"right\"\r\n               },\r\n               \"$invalid\":false\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:9132\"\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n         { \r\n            \"stateId\":\"646ede55-1579-481d-87a9-c48463d7d190\",\r\n            \"$connId\":\"con_3\",\r\n            \"conditions\":[ \r\n               { \r\n                  \"source\":\"input\",\r\n                  \"comparison\":\"exists\",\r\n                  \"values\":[ \r\n\r\n                  ],\r\n                  \"$$hashKey\":\"object:814\"\r\n               }\r\n            ],\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:795\"\r\n         }\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"fallback\",\r\n         \"$invalid\":false\r\n      },\r\n      \"id\":\"onboarding\",\r\n      \"root\":true,\r\n      \"$position\":{ \r\n         \"top\":\"148px\",\r\n         \"left\":\"1126px\"\r\n      },\r\n      \"$title\":\"Início\",\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   },\r\n   \"fallback\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"input\":{ \r\n               \"bypass\":true,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"95b10ba8-e351-4d16-9b10-ce14961cb1fd\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Entrada do usuário\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":true,\r\n                  \"position\":\"right\"\r\n               },\r\n               \"$invalid\":false\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:8767\"\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n         { \r\n            \"stateId\":\"error\",\r\n            \"conditions\":[ \r\n               { \r\n                  \"source\":\"input\",\r\n                  \"comparison\":\"matches\",\r\n                  \"values\":[ \r\n                     \".*\"\r\n                  ],\r\n                  \"$$hashKey\":\"object:8812\"\r\n               }\r\n            ],\r\n            \"$connId\":\"con_8\",\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:8793\"\r\n         }\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"onboarding\",\r\n         \"$invalid\":false\r\n      },\r\n      \"id\":\"fallback\",\r\n      \"$position\":{ \r\n         \"top\":\"787px\",\r\n         \"left\":\"84px\"\r\n      },\r\n      \"$title\":\"Exceções\",\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   },\r\n   \"error\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"00000000-0000-0000-0000-000000000002\",\r\n                  \"type\":\"application/vnd.lime.chatstate+json\",\r\n                  \"content\":{ \r\n                     \"state\":\"composing\",\r\n                     \"interval\":1000\r\n                  }\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"00000000-0000-0000-0000-000000000002\",\r\n                     \"type\":\"application/vnd.lime.chatstate+json\",\r\n                     \"content\":{ \r\n                        \"state\":\"composing\",\r\n                        \"interval\":1000\r\n                     }\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4369\"\r\n         },\r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"00000000-0000-0000-0000-000000000003\",\r\n                  \"type\":\"text/plain\",\r\n                  \"content\":\"Desculpe, não consegui entender!\"\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"00000000-0000-0000-0000-000000000003\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Desculpe, não consegui entender!\"\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4370\"\r\n         },\r\n         { \r\n            \"input\":{ \r\n               \"bypass\":true,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"a1f34699-dd5c-43b6-8345-fde58dc32c0d\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Entrada do usuário\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":true,\r\n                  \"position\":\"right\"\r\n               },\r\n               \"$invalid\":false\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4371\"\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"onboarding\",\r\n         \"$invalid\":false\r\n      },\r\n      \"id\":\"error\",\r\n      \"$position\":{ \r\n         \"top\":\"787px\",\r\n         \"left\":\"432px\"\r\n      },\r\n      \"$title\":\"Erro padrão\",\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   },\r\n   \"646ede55-1579-481d-87a9-c48463d7d190\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"76d7a887-783d-4470-9636-59f4c0732f84\",\r\n                  \"type\":\"application/vnd.lime.chatstate+json\",\r\n                  \"content\":{ \r\n                     \"state\":\"composing\",\r\n                     \"interval\":1000\r\n                  }\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"76d7a887-783d-4470-9636-59f4c0732f84\",\r\n                     \"type\":\"application/vnd.lime.chatstate+json\",\r\n                     \"content\":{ \r\n                        \"state\":\"composing\",\r\n                        \"interval\":1000\r\n                     }\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4839\"\r\n         },\r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"e66d9771-5303-453b-9446-410ee47ac15f\",\r\n                  \"type\":\"text/plain\",\r\n                  \"content\":\"Some text\"\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"e66d9771-5303-453b-9446-410ee47ac15f\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Some text\"\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4840\"\r\n         },\r\n         { \r\n            \"input\":{ \r\n               \"bypass\":true,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"1cf3aaa9-6293-41a3-916f-c05a1a33ecbd\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"name\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":true,\r\n                  \"position\":\"right\",\r\n                  \"editing\":false\r\n               },\r\n               \"$invalid\":false,\r\n               \"variable\":\"name\"\r\n            },\r\n            \"$$hashKey\":\"object:9806\",\r\n            \"$invalid\":false\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n         { \r\n            \"stateId\":\"1d2f8b2a-051d-43f9-882e-c0f40302126d\",\r\n            \"$connId\":\"con_13\",\r\n            \"conditions\":[ \r\n               { \r\n                  \"source\":\"input\",\r\n                  \"comparison\":\"exists\",\r\n                  \"values\":[ \r\n\r\n                  ],\r\n                  \"$$hashKey\":\"object:26765\"\r\n               }\r\n            ],\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:26746\"\r\n         }\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n         { \r\n            \"type\":\"ExecuteScript\",\r\n            \"$title\":\"Executar script\",\r\n            \"$invalid\":false,\r\n            \"settings\":{ \r\n               \"function\":\"run\",\r\n               \"source\":\"/**\\n            * All input variables needs to be passed as function param;\\n            * Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\\n            * Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\\n            **/\\n      function run(offset) {\\n                 let now = new Date;\\n                 let utc_timestamp = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),\\n                 now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds(), now.getUTCMilliseconds());\\n\\n                 var date = new Date(utc_timestamp + offset * 3600 * 1000);\\n                \\n                return date.getHours();\\n            }\",\r\n               \"inputVariables\":[ \r\n                  \"config.dateTimeOffset\"\r\n               ],\r\n               \"outputVariable\":\"hora\"\r\n            },\r\n            \"conditions\":[ \r\n\r\n            ]\r\n         }\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"fallback\",\r\n         \"$invalid\":false\r\n      },\r\n      \"$tags\":[ \r\n\r\n      ],\r\n      \"id\":\"646ede55-1579-481d-87a9-c48463d7d190\",\r\n      \"root\":false,\r\n      \"$title\":\"Boas vindas\",\r\n      \"$position\":{ \r\n         \"top\":\"299px\",\r\n         \"left\":\"1127px\"\r\n      },\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   },\r\n   \"1d2f8b2a-051d-43f9-882e-c0f40302126d\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"9fb086c0-edb6-4016-a121-a5851656f682\",\r\n                  \"type\":\"application/vnd.lime.chatstate+json\",\r\n                  \"content\":{ \r\n                     \"state\":\"composing\",\r\n                     \"interval\":1000\r\n                  }\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"9fb086c0-edb6-4016-a121-a5851656f682\",\r\n                     \"type\":\"application/vnd.lime.chatstate+json\",\r\n                     \"content\":{ \r\n                        \"state\":\"composing\",\r\n                        \"interval\":1000\r\n                     }\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:26470\"\r\n         },\r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"ec227e2d-3892-4425-ae23-3fdfef58528e\",\r\n                  \"type\":\"text/plain\",\r\n                  \"content\":\"{{hora}}\"\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"ec227e2d-3892-4425-ae23-3fdfef58528e\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"{{hora}}\"\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:26471\"\r\n         },\r\n         { \r\n            \"input\":{ \r\n               \"bypass\":true,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"e58dab05-8f3f-4a2e-8386-03a24f0245c1\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Entrada do usuário\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":true,\r\n                  \"position\":\"right\",\r\n                  \"editing\":false\r\n               },\r\n               \"$invalid\":false\r\n            },\r\n            \"$$hashKey\":\"object:26151\",\r\n            \"$invalid\":false\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"fallback\",\r\n         \"$invalid\":false\r\n      },\r\n      \"$tags\":[ \r\n\r\n      ],\r\n      \"id\":\"1d2f8b2a-051d-43f9-882e-c0f40302126d\",\r\n      \"root\":false,\r\n      \"$title\":\"Novo bloco\",\r\n      \"$position\":{ \r\n         \"top\":\"499px\",\r\n         \"left\":\"1128px\"\r\n      },\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   }\r\n}\"\r\n}"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								},
-								"description": "Add a charts in a specific report.\r\n\r\nReplace {{report_id}} with the report id you want to add a chart into.\r\n\r\nFor more information, see\r\nhttps://docs.blip.ai/#create-a-chart-in-a-report"
-							},
-							"response": []
-						},
-						{
 							"name": "Create an event",
 							"request": {
 								"method": "POST",
@@ -81,42 +45,6 @@
 									]
 								},
 								"description": "Imagine that your chatbot must track the number of payment orders realized and show this data on a real time report. To make this possible you can register every single success order as an action of the payments category, creating an Event Track.\n\nFor more information, see \n\nhttps://docs.blip.ai/#create-an-event"
-							},
-							"response": []
-						},
-						{
-							"name": "Create a report",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"type": "text",
-										"value": "{{Authorization}}"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/reports\",\r\n  \"type\": \"application/vnd.iris.report+json\",\r\n  \"resource\": {\r\n    \"id\": \"{{$guid}}\",\r\n    \"name\": \"Testing\",\r\n    \"isPrivate\": true,\r\n    \"ownerUserIdentity\": \"jonh%40email.net@blip.ai\"\r\n  }\r\n}\r\n\r\n"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								},
-								"description": "Create a new report.\r\n\r\nYou must send a report document, informing your data."
 							},
 							"response": []
 						},
@@ -157,7 +85,7 @@
 							"response": []
 						},
 						{
-							"name": "Delete a chart",
+							"name": "Get event categories",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -175,7 +103,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/reports/{{report_id}}/charts/{{chart_id}}\"\r\n}"
+									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/event-track\"\r\n}"
 								},
 								"url": {
 									"raw": "https://msging.net/commands",
@@ -188,12 +116,48 @@
 										"commands"
 									]
 								},
-								"description": "Delete a specific chart from a specific report.\r\n\r\nReplace {{report_id}} with the report id you want to delete the chart from. Replace {{chart_id}} with the chart id you want to delete.\r\n\r\nFor more information, see \r\nhttps://docs.blip.ai/#delete-a-chart"
+								"description": "Retrieves all tracked categories.\n\nFor more information, see https://docs.blip.ai/#get-categories"
 							},
 							"response": []
 						},
 						{
-							"name": "Delete a report",
+							"name": "Get event counters",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{Authorization}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/event-track/payments?startDate=2019-06-21&endDate=2019-06-28&$take=10\"\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "To retrieve all counters of a category, add the category name to the command uri (for instance /event-track/payments). Those counters represent the number of events tracked in a specific pair of action and categories grouped by days. It is also possible to add query strings parameters as request filters.\n\nFor more information, see https://docs.blip.ai/#get-counters"
+							},
+							"response": []
+						},
+						{
+							"name": "Get event details",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -211,7 +175,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/reports/{{report_id}}\"\r\n}"
+									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/event-track/payments/success-order?startDate=2019-06-21&endDate=2019-06-28&$take=10\"\r\n}"
 								},
 								"url": {
 									"raw": "https://msging.net/commands",
@@ -224,7 +188,7 @@
 										"commands"
 									]
 								},
-								"description": "If you need to delete a specific report use the following command.\r\n\r\nRemember to replace {{report_id}} variable for the report id that you want delete.\r\n\r\nFor more information, see \r\nhttps://docs.blip.ai/#delete-a-report"
+								"description": "Retrieves all events tracked with a specific pair of action and categories. \n\nFor more information, see https://docs.blip.ai/#get-details"
 							},
 							"response": []
 						},
@@ -265,25 +229,25 @@
 							"response": []
 						},
 						{
-							"name": "Get active messages",
+							"name": "Create a report",
 							"request": {
 								"method": "POST",
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{Authorization}}",
-										"type": "text"
+										"type": "text",
+										"value": "{{Authorization}}"
 									},
 									{
 										"key": "Content-Type",
 										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
+										"type": "text",
+										"value": "application/json"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/metrics/active-messages/{{interval}}\"\r\n}"
+									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/reports\",\r\n  \"type\": \"application/vnd.iris.report+json\",\r\n  \"resource\": {\r\n    \"id\": \"{{$guid}}\",\r\n    \"name\": \"Testing\",\r\n    \"isPrivate\": true,\r\n    \"ownerUserIdentity\": \"jonh%40email.net@blip.ai\"\r\n  }\r\n}\r\n\r\n"
 								},
 								"url": {
 									"raw": "https://msging.net/commands",
@@ -296,7 +260,43 @@
 										"commands"
 									]
 								},
-								"description": "Get the metrics of active messages by an interval.\r\n\r\nReplace {interval} with the date interval you want to get the metrics.\r\n\r\nFor more information, see \r\nhttps://docs.blip.ai/#get-active-messages"
+								"description": "Create a new report.\r\n\r\nYou must send a report document, informing your data."
+							},
+							"response": []
+						},
+						{
+							"name": "Create a chart in a report",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{Authorization}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"afasdd-as9d8a7sd987\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/buckets/blip_portal:builder_working_flow\",\r\n  \"type\": \"application/json\", \r\n  \"resource\":\r\n     \"{\r\n   \"onboarding\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"input\":{ \r\n               \"bypass\":false,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"a5f855b2-7344-44ad-bf8b-75bccd63d288\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Entrada do usuário\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":false,\r\n                  \"position\":\"right\"\r\n               },\r\n               \"$invalid\":false\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:9132\"\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n         { \r\n            \"stateId\":\"646ede55-1579-481d-87a9-c48463d7d190\",\r\n            \"$connId\":\"con_3\",\r\n            \"conditions\":[ \r\n               { \r\n                  \"source\":\"input\",\r\n                  \"comparison\":\"exists\",\r\n                  \"values\":[ \r\n\r\n                  ],\r\n                  \"$$hashKey\":\"object:814\"\r\n               }\r\n            ],\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:795\"\r\n         }\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"fallback\",\r\n         \"$invalid\":false\r\n      },\r\n      \"id\":\"onboarding\",\r\n      \"root\":true,\r\n      \"$position\":{ \r\n         \"top\":\"148px\",\r\n         \"left\":\"1126px\"\r\n      },\r\n      \"$title\":\"Início\",\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   },\r\n   \"fallback\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"input\":{ \r\n               \"bypass\":true,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"95b10ba8-e351-4d16-9b10-ce14961cb1fd\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Entrada do usuário\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":true,\r\n                  \"position\":\"right\"\r\n               },\r\n               \"$invalid\":false\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:8767\"\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n         { \r\n            \"stateId\":\"error\",\r\n            \"conditions\":[ \r\n               { \r\n                  \"source\":\"input\",\r\n                  \"comparison\":\"matches\",\r\n                  \"values\":[ \r\n                     \".*\"\r\n                  ],\r\n                  \"$$hashKey\":\"object:8812\"\r\n               }\r\n            ],\r\n            \"$connId\":\"con_8\",\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:8793\"\r\n         }\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"onboarding\",\r\n         \"$invalid\":false\r\n      },\r\n      \"id\":\"fallback\",\r\n      \"$position\":{ \r\n         \"top\":\"787px\",\r\n         \"left\":\"84px\"\r\n      },\r\n      \"$title\":\"Exceções\",\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   },\r\n   \"error\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"00000000-0000-0000-0000-000000000002\",\r\n                  \"type\":\"application/vnd.lime.chatstate+json\",\r\n                  \"content\":{ \r\n                     \"state\":\"composing\",\r\n                     \"interval\":1000\r\n                  }\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"00000000-0000-0000-0000-000000000002\",\r\n                     \"type\":\"application/vnd.lime.chatstate+json\",\r\n                     \"content\":{ \r\n                        \"state\":\"composing\",\r\n                        \"interval\":1000\r\n                     }\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4369\"\r\n         },\r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"00000000-0000-0000-0000-000000000003\",\r\n                  \"type\":\"text/plain\",\r\n                  \"content\":\"Desculpe, não consegui entender!\"\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"00000000-0000-0000-0000-000000000003\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Desculpe, não consegui entender!\"\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4370\"\r\n         },\r\n         { \r\n            \"input\":{ \r\n               \"bypass\":true,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"a1f34699-dd5c-43b6-8345-fde58dc32c0d\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Entrada do usuário\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":true,\r\n                  \"position\":\"right\"\r\n               },\r\n               \"$invalid\":false\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4371\"\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"onboarding\",\r\n         \"$invalid\":false\r\n      },\r\n      \"id\":\"error\",\r\n      \"$position\":{ \r\n         \"top\":\"787px\",\r\n         \"left\":\"432px\"\r\n      },\r\n      \"$title\":\"Erro padrão\",\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   },\r\n   \"646ede55-1579-481d-87a9-c48463d7d190\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"76d7a887-783d-4470-9636-59f4c0732f84\",\r\n                  \"type\":\"application/vnd.lime.chatstate+json\",\r\n                  \"content\":{ \r\n                     \"state\":\"composing\",\r\n                     \"interval\":1000\r\n                  }\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"76d7a887-783d-4470-9636-59f4c0732f84\",\r\n                     \"type\":\"application/vnd.lime.chatstate+json\",\r\n                     \"content\":{ \r\n                        \"state\":\"composing\",\r\n                        \"interval\":1000\r\n                     }\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4839\"\r\n         },\r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"e66d9771-5303-453b-9446-410ee47ac15f\",\r\n                  \"type\":\"text/plain\",\r\n                  \"content\":\"Some text\"\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"e66d9771-5303-453b-9446-410ee47ac15f\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Some text\"\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4840\"\r\n         },\r\n         { \r\n            \"input\":{ \r\n               \"bypass\":true,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"1cf3aaa9-6293-41a3-916f-c05a1a33ecbd\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"name\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":true,\r\n                  \"position\":\"right\",\r\n                  \"editing\":false\r\n               },\r\n               \"$invalid\":false,\r\n               \"variable\":\"name\"\r\n            },\r\n            \"$$hashKey\":\"object:9806\",\r\n            \"$invalid\":false\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n         { \r\n            \"stateId\":\"1d2f8b2a-051d-43f9-882e-c0f40302126d\",\r\n            \"$connId\":\"con_13\",\r\n            \"conditions\":[ \r\n               { \r\n                  \"source\":\"input\",\r\n                  \"comparison\":\"exists\",\r\n                  \"values\":[ \r\n\r\n                  ],\r\n                  \"$$hashKey\":\"object:26765\"\r\n               }\r\n            ],\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:26746\"\r\n         }\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n         { \r\n            \"type\":\"ExecuteScript\",\r\n            \"$title\":\"Executar script\",\r\n            \"$invalid\":false,\r\n            \"settings\":{ \r\n               \"function\":\"run\",\r\n               \"source\":\"/**\\n            * All input variables needs to be passed as function param;\\n            * Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\\n            * Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\\n            **/\\n      function run(offset) {\\n                 let now = new Date;\\n                 let utc_timestamp = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),\\n                 now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds(), now.getUTCMilliseconds());\\n\\n                 var date = new Date(utc_timestamp + offset * 3600 * 1000);\\n                \\n                return date.getHours();\\n            }\",\r\n               \"inputVariables\":[ \r\n                  \"config.dateTimeOffset\"\r\n               ],\r\n               \"outputVariable\":\"hora\"\r\n            },\r\n            \"conditions\":[ \r\n\r\n            ]\r\n         }\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"fallback\",\r\n         \"$invalid\":false\r\n      },\r\n      \"$tags\":[ \r\n\r\n      ],\r\n      \"id\":\"646ede55-1579-481d-87a9-c48463d7d190\",\r\n      \"root\":false,\r\n      \"$title\":\"Boas vindas\",\r\n      \"$position\":{ \r\n         \"top\":\"299px\",\r\n         \"left\":\"1127px\"\r\n      },\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   },\r\n   \"1d2f8b2a-051d-43f9-882e-c0f40302126d\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"9fb086c0-edb6-4016-a121-a5851656f682\",\r\n                  \"type\":\"application/vnd.lime.chatstate+json\",\r\n                  \"content\":{ \r\n                     \"state\":\"composing\",\r\n                     \"interval\":1000\r\n                  }\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"9fb086c0-edb6-4016-a121-a5851656f682\",\r\n                     \"type\":\"application/vnd.lime.chatstate+json\",\r\n                     \"content\":{ \r\n                        \"state\":\"composing\",\r\n                        \"interval\":1000\r\n                     }\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:26470\"\r\n         },\r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"ec227e2d-3892-4425-ae23-3fdfef58528e\",\r\n                  \"type\":\"text/plain\",\r\n                  \"content\":\"{{hora}}\"\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"ec227e2d-3892-4425-ae23-3fdfef58528e\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"{{hora}}\"\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:26471\"\r\n         },\r\n         { \r\n            \"input\":{ \r\n               \"bypass\":true,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"e58dab05-8f3f-4a2e-8386-03a24f0245c1\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Entrada do usuário\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":true,\r\n                  \"position\":\"right\",\r\n                  \"editing\":false\r\n               },\r\n               \"$invalid\":false\r\n            },\r\n            \"$$hashKey\":\"object:26151\",\r\n            \"$invalid\":false\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"fallback\",\r\n         \"$invalid\":false\r\n      },\r\n      \"$tags\":[ \r\n\r\n      ],\r\n      \"id\":\"1d2f8b2a-051d-43f9-882e-c0f40302126d\",\r\n      \"root\":false,\r\n      \"$title\":\"Novo bloco\",\r\n      \"$position\":{ \r\n         \"top\":\"499px\",\r\n         \"left\":\"1128px\"\r\n      },\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   }\r\n}\"\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "Add a charts in a specific report.\r\n\r\nReplace {{report_id}} with the report id you want to add a chart into.\r\n\r\nFor more information, see\r\nhttps://docs.blip.ai/#create-a-chart-in-a-report"
 							},
 							"response": []
 						},
@@ -373,78 +373,6 @@
 							"response": []
 						},
 						{
-							"name": "Get active users",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"type": "text",
-										"value": "{{Authorization}}"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/metrics/active-identity/{{interval}}\"\r\n}"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								},
-								"description": "Get the metrics of active users by an interval.\r\n\r\nReplace {{interval}} with the date interval you want to get the metrics.\r\n\r\nFor more information, see https://docs.blip.ai/#get-active-users"
-							},
-							"response": []
-						},
-						{
-							"name": "Get categories",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{Authorization}}",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/event-track\"\r\n}"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								},
-								"description": "Retrieves all tracked categories.\n\nFor more information, see https://docs.blip.ai/#get-categories"
-							},
-							"response": []
-						},
-						{
 							"name": "Get charts in a report",
 							"request": {
 								"method": "POST",
@@ -481,43 +409,7 @@
 							"response": []
 						},
 						{
-							"name": "Get counters",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"type": "text",
-										"value": "{{Authorization}}"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/event-track/payments?startDate=2019-06-21&endDate=2019-06-28&$take=10\"\r\n}"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								},
-								"description": "To retrieve all counters of a category, add the category name to the command uri (for instance /event-track/payments). Those counters represent the number of events tracked in a specific pair of action and categories grouped by days. It is also possible to add query strings parameters as request filters.\n\nFor more information, see https://docs.blip.ai/#get-counters"
-							},
-							"response": []
-						},
-						{
-							"name": "Get details",
+							"name": "Update a chart in a report",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -535,7 +427,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/event-track/payments/success-order?startDate=2019-06-21&endDate=2019-06-28&$take=10\"\r\n}"
+									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/reports/{{report_id}}/charts/{{chart_id}}\",\r\n  \"type\": \"application/vnd.iris.chart+json\",\r\n  \"resource\": {\r\n        \"id\": \"{{chart_id}}\",\r\n        \"name\": \"My Users Metrics\",\r\n        \"chartType\": \"list\",\r\n        \"dimension\": \"users\",\r\n        \"category\": \"activeUsers\",\r\n        \"order\": 1\r\n   }\r\n}"
 								},
 								"url": {
 									"raw": "https://msging.net/commands",
@@ -548,7 +440,187 @@
 										"commands"
 									]
 								},
-								"description": "Retrieves all events tracked with a specific pair of action and categories. \n\nFor more information, see https://docs.blip.ai/#get-details"
+								"description": "You can update a specific chart in a report.\r\n\r\nReplace {{report_id}} with the report id you want to update the chart into. Replace {{chart_id}} with the chart id you want to update.\r\n\r\nFor more information, see  https://docs.blip.ai/#update-a-chart-in-a-report"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a chart",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/reports/{{report_id}}/charts/{{chart_id}}\"\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "Delete a specific chart from a specific report.\r\n\r\nReplace {{report_id}} with the report id you want to delete the chart from. Replace {{chart_id}} with the chart id you want to delete.\r\n\r\nFor more information, see \r\nhttps://docs.blip.ai/#delete-a-chart"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a report",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/reports/{{report_id}}\"\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "If you need to delete a specific report use the following command.\r\n\r\nRemember to replace {{report_id}} variable for the report id that you want delete.\r\n\r\nFor more information, see \r\nhttps://docs.blip.ai/#delete-a-report"
+							},
+							"response": []
+						},
+						{
+							"name": "Get active messages",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/metrics/active-messages/{{interval}}\"\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "Get the metrics of active messages by an interval.\r\n\r\nReplace {interval} with the date interval you want to get the metrics.\r\n\r\nFor more information, see \r\nhttps://docs.blip.ai/#get-active-messages"
+							},
+							"response": []
+						},
+						{
+							"name": "Get active messages per domain",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/metrics/active-messages-per-domain/{{interval}}\"\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "Get the metrics of active messages per domain by an interval.\r\n\r\nReplace {interval} with the date interval you want to get the metrics.\r\n\r\nFor more information, see \r\nhttps://docs.blip.ai/#get-active-messages-per-domain"
+							},
+							"response": []
+						},
+						{
+							"name": "Get active users",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{Authorization}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/metrics/active-identity/{{interval}}\"\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "Get the metrics of active users by an interval.\r\n\r\nReplace {{interval}} with the date interval you want to get the metrics.\r\n\r\nFor more information, see https://docs.blip.ai/#get-active-users"
 							},
 							"response": []
 						},
@@ -657,42 +729,6 @@
 									]
 								},
 								"description": "Get the metrics of sent messages by an interval.\r\n\r\nReplace {interval} with the date interval you want to get the metrics.\r\n\r\nFor more information, see https://docs.blip.ai/#get-sent-messages"
-							},
-							"response": []
-						},
-						{
-							"name": "Update a chart in a report",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{Authorization}}",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/reports/{{report_id}}/charts/{{chart_id}}\",\r\n  \"type\": \"application/vnd.iris.chart+json\",\r\n  \"resource\": {\r\n        \"id\": \"{{chart_id}}\",\r\n        \"name\": \"My Users Metrics\",\r\n        \"chartType\": \"list\",\r\n        \"dimension\": \"users\",\r\n        \"category\": \"activeUsers\",\r\n        \"order\": 1\r\n   }\r\n}"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								},
-								"description": "You can update a specific chart in a report.\r\n\r\nReplace {{report_id}} with the report id you want to update the chart into. Replace {{chart_id}} with the chart id you want to update.\r\n\r\nFor more information, see  https://docs.blip.ai/#update-a-chart-in-a-report"
 							},
 							"response": []
 						}
