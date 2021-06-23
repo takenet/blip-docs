@@ -12,6 +12,15 @@ var notification = new Notification
 };
 ```
 
+```python
+notification = Notification(
+  id='65603604-fe19-479c-c885-3195b196fe8e',
+  from_n='551199991111@0mn.io/182310923192',
+  to='mycontact@msging.net',
+  event='received'
+)
+```
+
 ```javascript
 var notification = {
   id: "65603604-fe19-479c-c885-3195b196fe8e",
