@@ -25,6 +25,16 @@ var message = {
 }
 ```
 
+```python
+message = Message(
+  id="65603604-fe19-479c-c885-3195b196fe8e",
+  from_n="551199991111@0mn.io/182310923192",
+  to="mycontact@msging.net",
+  type_n="text/plain",
+  content="Hello World"
+)
+```
+
 ```json
 {
   "id": "65603604-fe19-479c-c885-3195b196fe8e",

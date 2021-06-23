@@ -47,6 +47,22 @@ client.sendMessage({
     });
 ```
 
+```python
+client.send_message(
+  Message.from_json(
+    {
+      'id': '1',
+      'to': '1334448251684655@messenger.gw.msging.net',
+      'type': 'application/vnd.lime.sensitive+json',
+      'content': {
+        'type': 'text/plain',
+        'value': 'Your password is 123456'
+      }
+    }
+  )
+)
+```
+
 ```http
 POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
@@ -118,6 +134,25 @@ client.sendMessage({
     });
 ```
 
+```python
+client.send_message(
+  Message.from_json(
+    {
+      'id': '2',
+      'to': '1334448251684655@messenger.gw.msging.net',
+      'type': 'application/vnd.lime.sensitive+json',
+      'content': {
+        'type': 'application/vnd.lime.web-link+json',
+        'value': {
+          'text': 'Please follow this link for the checkout',
+          'uri': 'https://mystore.com/checkout?ID=A8DJS1JFV98AJKS9'
+        }
+      }
+    }
+  )
+)
+```
+
 ```http
 POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
@@ -139,9 +174,9 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 
-| MIME type                            |
-|--------------------------------------|
-| application/vnd.lime.sensitive+json  |
+| MIME type                           |
+|-------------------------------------|
+| application/vnd.lime.sensitive+json |
 
 Wraps a message content in order to signal that the information is confidential or sensitive. In this case, the server will not store the message content in any moment. The wrapped content can be of any available Blip type.
 

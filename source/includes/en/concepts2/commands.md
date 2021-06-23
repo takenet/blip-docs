@@ -29,6 +29,34 @@ var command = {
 } 
 ```
 
+```python
+command = Command(
+  id='1',
+  to='postmaster@broadcast.msging.net',
+  method='set',
+  uri='/lists',
+  type_n='application/vnd.iris.distribution-list+json',
+  resource={
+    'identity':  'list@broadcast.msging.net'
+  }
+) 
+
+# Or using the .from_json static method
+
+command = Command.from_json(
+  {
+    'id':  '1',
+    'to': 'postmaster@broadcast.msging.net',
+    'method': 'set',
+    'uri': '/lists',
+    'type': 'application/vnd.iris.distribution-list+json',
+    'resource': {
+      'identity':  'list@broadcast.msging.net'
+    }
+  }
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json

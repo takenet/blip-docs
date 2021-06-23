@@ -49,6 +49,21 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '1',
+            'to': '1042221589186385@messenger.gw.msging.net',
+            'type': 'application/vnd.iris.resource+json',
+            'content': {
+                'key': 'welcome-message'
+            }
+        }
+    )
+)
+```
+
 ```javascript
 client.sendMessage({
     id: Lime.Guid(),
@@ -75,6 +90,19 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '1',
+            'to': '1042221589186385@messenger.gw.msging.net',
+            'type': 'text/plain',
+            'content': 'Welcome to our service'
+        }
+    )
+)
+```
+
 ```javascript
 {
     id: "1",
@@ -84,9 +112,9 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-| MIME type                            |
-|--------------------------------------|
-| application/vnd.iris.resource+json   |
+| MIME type                          |
+|------------------------------------|
+| application/vnd.iris.resource+json |
 
 Allows sending of a message where the content is a **resource** stored in the server. The resource should be stored through the [**resources** extension](https://portal.blip.ai/#/docs/extensions/resources). The server automatically replaces the content with the stored resource, in case the resource **key** already exists for the caller chatbot.
 
@@ -153,6 +181,24 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '1',
+            'to': '1042221589186385@messenger.gw.msging.net',
+            'type': 'application/vnd.iris.resource+json',
+            'content': {
+                'key': 'welcome-message',
+                'variables': {
+                    'name': 'John Doe'
+                }
+            }
+        } 
+    )
+)
+```
+
 ```javascript
 client.sendMessage({
     id: Lime.Guid(),
@@ -182,6 +228,19 @@ Authorization: Key {YOUR_TOKEN}
     "type": "text/plain",
     "content": "Welcome to our service, John Doe!"
 }
+```
+
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '1',
+            'to': '1042221589186385@messenger.gw.msging.net',
+            'type': 'text/plain',
+            'content': 'Welcome to our service, John Doe!'
+        }
+    )
+)
 ```
 
 ```javascript

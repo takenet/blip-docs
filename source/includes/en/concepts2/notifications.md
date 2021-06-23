@@ -63,6 +63,31 @@ var notification = {
 }
 ```
 
+```python
+notification = Notification(
+  id='65603604-fe19-479c-c885-3195b196fe8e',
+  from_n='postmaster@msging.net/server1',
+  to='mycontact@msging.net',
+  event='failed',
+  reason= Reason(42, 'Destination not found')
+)
+
+# or with .from_json
+
+notification = Notification.from_json(
+  {
+    'id': '65603604-fe19-479c-c885-3195b196fe8e',
+    'from': 'postmaster@msging.net/server1',
+    'to': 'mycontact@msging.net',
+    'event': 'failed',
+    'reason': {
+      'code': 42,
+      'description': 'Destination not found'
+    }
+  }
+)
+```
+
 ```http
 POST https://your.endpoint/notifications HTTP/1.1
 Content-Type: application/json

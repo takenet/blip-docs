@@ -38,6 +38,24 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 }
 ```
 
+```python
+client.send_message(
+  Message.from_json(
+    {
+      'id': 'dsads',
+      'type': 'application/vnd.lime.location+json',
+      'to': '128271320123982@messenger.gw.msging.net',
+      'content': {
+        'latitude': -19.918899,
+        'longitude': -43.959275,
+        'altitude': 853,
+        'text': 'Take\'s place'
+      }
+    }
+  )
+)
+```
+
 ```javascript
     client.sendMessage({
       id: Lime.Guid(),
@@ -88,6 +106,26 @@ Authorization: Key {YOUR_TOKEN}
         }
       }
     });
+```
+
+```python
+client.send_message(
+  Message(
+    id='1',
+    type_n='application/vnd.lime.input+json',
+    to='128271320123982@messenger.gw.msging.net',
+    content={
+      'label': {
+        'type': 'text/plain',
+        'value': 'Send your location please!'
+      },
+      'validation': {
+        'rule': 'type',
+        'type': 'application/vnd.lime.location+json'
+      }
+    }
+  )
+)
 ```
 
 ```csharp
@@ -153,8 +191,8 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-| MIME type                            |
-|--------------------------------------|
+| MIME type                          |
+|------------------------------------|
 | application/vnd.lime.location+json |
 
 Allows sending and receiving of geographic information.
@@ -164,14 +202,14 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 
 #### Channel mapping
 
-| Channel              | Type                    |
-|--------------------|-------------------------|
-| Blip Chat          | Location             |
-| <s>Messenger</s>          | Starting August 15, 2019, updated versions of the Messenger app will no longer render Location quick reply.|
-| Whatsapp           | Text with link          |
-| SMS                | Text with link          |
-| Skype              | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1)|
-| Telegram           | [Location](https://core.telegram.org/bots/api#location)|
+| Channel          | Type                                                                                                        |
+|------------------|-------------------------------------------------------------------------------------------------------------|
+| Blip Chat        | Location                                                                                                    |
+| <s>Messenger</s> | Starting August 15, 2019, updated versions of the Messenger app will no longer render Location quick reply. |
+| Whatsapp         | Text with link                                                                                              |
+| SMS              | Text with link                                                                                              |
+| Skype            | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1)                              |
+| Telegram         | [Location](https://core.telegram.org/bots/api#location)                                                     |
 
 
 

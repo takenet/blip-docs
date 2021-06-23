@@ -47,6 +47,22 @@ client.sendMessage({
     });
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '1',
+            'to': '128271320123982@messenger.gw.msging.net',
+            'type': 'application/vnd.lime.media-link+json',
+            'content': {
+                'type': 'image/gif',
+                'uri': 'http://i.giphy.com/14aUO0Mf7dWDXW.gif'
+            }
+        }
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
@@ -67,6 +83,6 @@ Authorization: Key {YOUR_TOKEN}
 
 You can send gifs by uploading them or sharing a URL using the [Media Link](/#media-link) content type.
 
-| Messenger                         | BLiPChat                                   |
-|-----------------------------------|--------------------------------------------|
-| ![imagem](images/gif_mssngr.png) | ![imagem](images/gifBlipChat.png)           |
+| Messenger                        | BLiPChat                          |
+|----------------------------------|-----------------------------------|
+| ![imagem](images/gif_mssngr.png) | ![imagem](images/gifBlipChat.png) |

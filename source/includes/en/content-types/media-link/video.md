@@ -45,6 +45,21 @@ client.sendMessage({
     });
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '1',
+            'to': '553199991111@0mn.io',
+            'type': 'application/vnd.lime.media-link+json',
+            'content': {
+                'uri': 'http://techslides.com/demos/sample-videos/small.mp4',
+                'type': 'video/mp4'
+            }
+        }
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/messages HTTP/1.1
@@ -65,6 +80,6 @@ Authorization: Key {YOUR_TOKEN}
 
 You can send videos by uploading them or sharing a URL using the [Media Link](/#media-link) content type.
 
-| Messenger                         | BLiPChat                              |
-|-----------------------------------|---------------------------------------|
-|![imagem](images/mp4_mssngr.png)   |![imagem](images/isComingVideo.png)    |
+| Messenger                        | BLiPChat                            |
+|----------------------------------|-------------------------------------|
+| ![imagem](images/mp4_mssngr.png) | ![imagem](images/isComingVideo.png) |

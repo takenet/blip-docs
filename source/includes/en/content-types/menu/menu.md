@@ -99,6 +99,40 @@ client.sendMessage({
       }
     });
 ```
+
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id':'311F87C0-F938-4FF3-991A-7C5AEF7771A5',
+            'to':'1042221589186385@messenger.gw.msging.net',
+            'type':'application/vnd.lime.select+json',
+            'content':{
+                'text':'Choose an option',
+                'options':[
+                    {
+                        'text':'First option'
+                    },
+                    {
+                        'order':2,
+                        'text':'Second option'
+                    },
+                    {
+                        'order':3,
+                        'text':'Third option',
+                        'type':'application/json',
+                        'value':{
+                            'key1':'value1',
+                            'key2':2
+                        }
+                    }
+                ]
+            }
+        }
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
@@ -131,8 +165,8 @@ Authorization: Key {YOUR_TOKEN}
     }
 }
 ```
-| MIME type                                 |
-|-------------------------------------------|
+| MIME type                        |
+|----------------------------------|
 | application/vnd.lime.select+json |
 
 Allows sending of a text menu to customers to make a choice. It is possible to define a document that may be delivered to the chatbot when the customer selects an option - depending on the channel support. The options can also be numbered, if needed.
@@ -142,9 +176,9 @@ Some channels support the options scope limitation, which determines for how muc
 BLiP uses `Select` content type to send **persistent** or **immediate** menus.
 For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#select) specification.
 
-| Messenger                         | BLiPChat                                   |
-|-----------------------------------|--------------------------------------------|
-| ![imagem](images/menu_mssngr.png) | ![imagem](images/selectBlipChat.png)       |
+| Messenger                         | BLiPChat                             |
+|-----------------------------------|--------------------------------------|
+| ![imagem](images/menu_mssngr.png) | ![imagem](images/selectBlipChat.png) |
 
 ### Menu with numbered options
 
@@ -171,6 +205,20 @@ Authorization: Key {YOUR_TOKEN}
       to: "blipcontact@msging.net",
       content: "First option"
     });
+```
+
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': 'f8cf7a7a-be4f-473a-8516-60d55534b5a6',
+            'from': '1042221589186385@messenger.gw.msging.net',
+            'to': 'blipcontact@msging.net',
+            'type': 'text/plain',
+            'content': 'First option'
+        }     
+    )
+)
 ```
 
 ```http
@@ -210,6 +258,20 @@ client.sendMessage({
       to: "blipcontact@msging.net",
       content: "Second option"
     });
+```
+
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '76CB408D-39E6-4212-8AA1-7435B42A6993',
+            'from': '1042221589186385@messenger.gw.msging.net',
+            'to': 'blipcontact@msging.net',
+            'type': 'text/plain',
+            'content': 'Second option'
+        }
+    )
+)
 ```
 
 ```http
@@ -257,6 +319,23 @@ client.sendMessage({
     });
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '035E675C-D25B-437D-80BD-057AD6F70671',
+            'from': '1042221589186385@messenger.gw.msging.net',
+            'to': 'blipcontact@msging.net',
+            'type': 'application/json',
+            'content': {
+                'key1':'value1',
+                'key2':2
+            }
+        }     
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
@@ -289,11 +368,11 @@ The return message *type* will always be the same as the chosen option. When a v
 
 #### Channel mapping
 
-| Channel              | Type                    |
-|--------------------|-------------------------|
-| BLiP Chat           | Select  |
-| Messenger          | [Button template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/button-template) (on default scope) and [Quick replies](https://developers.facebook.com/docs/messenger-platform/send-api-reference/quick-replies) (on *immediate* scope)|
-| Whatsapp           | [Quick reply and Call to Actions](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates/interactive-message-templates/) as Message template                 |
-| SMS                | Text                  |
-| Skype              | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1)|
-| Telegram           | [Message](https://core.telegram.org/bots/api#message)|
+| Channel   | Type                                                                                                                                                                                                                                                                  |
+|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| BLiP Chat | Select                                                                                                                                                                                                                                                                |
+| Messenger | [Button template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/button-template) (on default scope) and [Quick replies](https://developers.facebook.com/docs/messenger-platform/send-api-reference/quick-replies) (on *immediate* scope) |
+| Whatsapp  | [Quick reply and Call to Actions](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates/interactive-message-templates/) as Message template                                                                                                    |
+| SMS       | Text                                                                                                                                                                                                                                                                  |
+| Skype     | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1)                                                                                                                                                                                        |
+| Telegram  | [Message](https://core.telegram.org/bots/api#message)                                                                                                                                                                                                                 |
