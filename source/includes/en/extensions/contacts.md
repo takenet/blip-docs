@@ -154,7 +154,7 @@ It is necessary to send the requisition according to the [contact object](/#cont
 
 | Property     | Description                                                        | Example |
 |--------------|--------------------------------------------------------------------|---------|
-| **identity** | The client identity in a specific channel.<br/>**It is strongly advised to encode the Identity before setting a contact.**<br/>By not enconding the field contact information may not be retrivied.                         | `11121023102013021@messenger.gw.msging.net (Messenger user)` |
+| **identity** | The client identity in a specific channel.                         | `11121023102013021@messenger.gw.msging.net (Messenger user)` |
 | **name**   | **Optional** The client's name (string).  | `"Rafael Pacheco"` |
 | **gender** | **Optional** The client's gender (string).  | `"male"` |
 | **group**   | **Optional** The client's group tag (string).   | `"testers"` |
