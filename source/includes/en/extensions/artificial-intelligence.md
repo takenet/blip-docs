@@ -284,7 +284,7 @@ Content-Type: application/json
 
 ### Analyze a sentence with a specific model
 
-It is possible to analyze a sentence with a specific model, to improve the model. 
+It is possible to analyze a sentence with a specific model, to improve the model.
 
 <aside class="notice">
 Note: Remember to replace the variable <b>modelId</b> for the model identifier you want to use (for instance: <b>12345</b>).
@@ -1086,11 +1086,11 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-	"id": "{{$guid}}",
-	"method": "delete",
-	"to": "postmaster@ai.msging.net",
-	"uri": "/analytics/confusion-matrix/{confusionMatrixId}",
-	"from": "postmaster@ai.msging.net/#hmg-az-lx-iris1"
+  "id": "{{$guid}}",
+  "method": "delete",
+  "to": "postmaster@ai.msging.net",
+  "uri": "/analytics/confusion-matrix/{confusionMatrixId}",
+  "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1"
 }
 ```
 
@@ -1100,10 +1100,10 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-	"id": "10",
-	"method": "delete",
-	"status": "success",
-	"to": "test.net/portal-test%40take.net"
+  "id": "10",
+  "method": "delete",
+  "status": "success",
+  "to": "test.net/portal-test%40take.net"
 }
 
 ```
@@ -1901,7 +1901,6 @@ The following uri filters are available to get a chatbot's intents:
 | **skip**      | The number of intents to be skipped.  | 0       |
 | **take**      | The number of intents to be returned. | 100     |
 | **ascending** | Sets ascending alphabetical order.    | true    |
-
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -3517,6 +3516,10 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.ai_extension.train_model_async()
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -3604,36 +3607,36 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "type": "application/vnd.lime.collection+json",
-    "resource": {
-        "total": 1,
-        "itemType": "application/vnd.iris.ai.content-result+json",
-        "items": [
-            {
-                "id": "0059b633-9713-43c8-8f54-017189ae6745",
-                "name": "Content Title",
-                "result": {
-					"type": "text/plain", 
-					"content": "content"
-				},
-                "combinations": [
-                    {
-						"intent": "new_intent",
-						"entities": ["entity"],
-						"minEntityMatch": 1
-                    }
-				]
-            }			
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+    "total": 1,
+    "itemType": "application/vnd.iris.ai.content-result+json",
+    "items": [
+      {
+        "id": "0059b633-9713-43c8-8f54-017189ae6745",
+        "name": "Content Title",
+        "result": {
+          "type": "text/plain", 
+          "content": "content"
+        },
+        "combinations": [
+          {
+            "intent": "new_intent",
+            "entities": ["entity"],
+            "minEntityMatch": 1
+          }
         ]
-    },
-    "method": "get",
-    "status": "success",
-    "id": "34e0cb67-d56b-4b5c-aeb1-6c81e9784f67",
-    "from": "postmaster@ai.msging.net/#az-iris2",
-    "to": "demobot@msging.net",
-    "metadata": {
-        "#command.uri": "lime://demobot@msging.net/content"
-    }
+      }
+    ]
+  },
+  "method": "get",
+  "status": "success",
+  "id": "34e0cb67-d56b-4b5c-aeb1-6c81e9784f67",
+  "from": "postmaster@ai.msging.net/#az-iris2",
+  "to": "demobot@msging.net",
+  "metadata": {
+      "#command.uri": "lime://demobot@msging.net/content"
+  }
 }
 ```
 
@@ -3646,7 +3649,11 @@ client.addMessageReceiver('text/plain', async (message) => {
     uri: '/content'
   });
 });
-``` 
+```
+
+```python
+result = await client.ai_extension.get_contents_async()
+```
 
 ```csharp
 using System.Threading;
@@ -3749,6 +3756,16 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.ai_extension.analyse_content_async(
+  {
+    'intent': '{intent}',
+    'entities': ['{entity}'],
+    'minEntityMatch': 1
+  }
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -3800,7 +3817,6 @@ Content-Type: application/json
 }
 ```
 
-
 ### Get a content
 
 Getting a content by its id.
@@ -3851,6 +3867,10 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.ai_extension.get_content_async('{id}')
+```
+
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
@@ -3860,7 +3880,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     uri: '/content/{id}'
   });
 });
-``` 
+```
 
 ```csharp
 using System.Threading;
@@ -3883,7 +3903,7 @@ namespace Extensions
 
         public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
         {            
-		    var contentResultId = "a11afe64-7bd0-4333-b22e-0171a2458562";
+            var contentResultId = "a11afe64-7bd0-4333-b22e-0171a2458562";
             await _artificialIntelligenceExtension.GetContentResultAsync(contentResultId, cancellationToken);
         }
     }
@@ -3940,6 +3960,28 @@ namespace Extension
         }           
     }
 }
+```
+
+```python
+result = await client.ai_extension.set_content_result_async(
+  '{id}',
+  {
+    'id': 'a11afe64-7bd0-4333-b22e-0171a2458562',
+    'name': 'new content',
+    'result': {
+      'type': 'text/plain',
+      'content': 'description'
+    },
+    'combinations': [
+      {
+        'intent': 'intent',
+        'entities': ['entity'],
+        'minEntityMatch': 1,
+        'intentName': 'intent'
+      }
+    ]
+  }
+)
 ```
 
 ```javascript
@@ -4081,6 +4123,27 @@ namespace Extension
 }
 ```
 
+```python
+result = await client.ai_extension.set_content_async(
+  {
+    'id': 'a11afe64-7bd0-4333-b22e-0171a2458562',
+    'name': 'new content',
+    'result': {
+      'type': 'text/plain',
+      'content': 'description'
+    },
+    'combinations': [
+      {
+        'intent': 'intent',
+        'entities': ['entity'],
+        'minEntityMatch': 1,
+        'intentName': 'intent'
+      }
+    ]
+  }
+)
+```
+
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
@@ -4194,7 +4257,7 @@ namespace Extension
             var command = new Command{
                 Id = EnvelopeId.NewId(),
                 Method = CommandMethod.Delete,
-                Uri = new LimeUri("/content/1170f877-928b-42ec-902e-0171a4429437")
+                Uri = new LimeUri("/content/{id}")
             };
            
            await _sender.SendCommandAsync(command, cancellationToken);     
@@ -4203,13 +4266,17 @@ namespace Extension
 }
 ```
 
+```python
+result = await client.ai_extension.delete_content_async('{id}')
+```
+
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
     id: Lime.Guid(),
     to: 'postmaster@ai.msging.net',
     method: Lime.CommandMethod.DELETE,
-    uri: '/content/1170f877-928b-42ec-902e-0171a4429437'    
+    uri: '/content/{id}'    
   });
 });
 ```
@@ -4224,7 +4291,7 @@ Authorization: Key {YOUR_TOKEN}
   "id":"{{$guid}}",
   "to":"postmaster@ai.msging.net",
   "method":"delete",
-  "uri":"/content/1170f877-928b-42ec-902e-0171a4429437",
+  "uri":"/content/{id}",
   
 }
 ```
@@ -4240,7 +4307,7 @@ Content-Type: application/json
   "id":"e9df4092-54c5-4631-b367-be1f99f76d65",
   "from":"postmaster@ai.msging.net/#az-iris1",
   "to":"demobot@msging.net/":{
-    "#command.uri":"lime://bot14@msging.net/content/1170f877-928b-42ec-902e-0171a4429437"
+    "#command.uri":"lime://bot14@msging.net/content/{id}"
   }
 }
 
@@ -4277,6 +4344,10 @@ Content-Type: application/json
         "#command.uri": "lime://botname@msging.net/content"
     }
 }
+```
+
+```python
+result = await client.ai_extension.delete_contents_async()
 ```
 
 ```javascript
