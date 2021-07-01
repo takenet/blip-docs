@@ -70,7 +70,7 @@ The following uri filters are available to get an analysis:
 | **ascending** | Sets ascending alphabetical order.     | true    |
 
 ```python
-result = await client.ai_extension.analytics.get_analysis_async()
+result = await client.ai_extension.get_analysis_async()
 ```
 
 ```http
@@ -231,7 +231,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.analytics.analyse_async('I want a pepperoni pizza')
+result = await client.ai_extension.analyse_async('I want a pepperoni pizza')
 ```
 
 ```http
@@ -315,7 +315,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.analytics.analyse_async('I want a pepperoni pizza', '12345')
+result = await client.ai_extension.analyse_async('I want a pepperoni pizza', '12345')
 ```
 
 ```http
@@ -438,7 +438,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.intents.set_intent_answers_async(
+result = await client.ai_extension.set_intent_answers_async(
   '{intentId}',
   [
     {
@@ -550,7 +550,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.intents.set_intent_questions_async(
+result = await client.ai_extension.set_intent_questions_async(
   '{intentId}',
   [
     {
@@ -666,7 +666,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.analytics.set_confusion_matrix_async(
+result = await client.ai_extension.set_confusion_matrix_async(
   {
     'version': 'test',
     'sampleSize': 2
@@ -800,7 +800,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.entities.set_entity_async(
+result = await client.ai_extension.set_entity_async(
   {
     'name': 'Flavor',
     'values': [
@@ -952,7 +952,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.intents.set_intent_async(
+result = await client.ai_extension.set_intent_async(
   {
     'name': 'Order pizza'
   }
@@ -1063,7 +1063,7 @@ namespace Extension
 ```
 
 ```python
-result = await client.ai_extension.analytics.delete_confusion_matrix_async(
+result = await client.ai_extension.delete_confusion_matrix_async(
   '{confusionMatrixId}'
 )
 ```
@@ -1137,7 +1137,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.entities.delete_entities_async()
+result = await client.ai_extension.delete_entities_async()
 ```
 
 ```csharp
@@ -1190,7 +1190,7 @@ namespace Extension
 ```
 
 ```python
-result = await client.ai_extension.intents.delete_intents_async()
+result = await client.ai_extension.delete_intents_async()
 ```
 
 ```javascript
@@ -1255,7 +1255,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.intents.delete_intent_async('{intent_id}')
+result = await client.ai_extension.delete_intent_async('{intent_id}')
 ```
 
 ```http
@@ -1336,7 +1336,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.intents.delete_intent_answers_async(
+result = await client.ai_extension.delete_intent_answers_async(
   '{intentId}',
   '{answerId}'
 )
@@ -1417,7 +1417,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.intents.delete_intent_question_async(
+result = await client.ai_extension.delete_intent_question_async(
   '{intentId}',
   '{questionId}'
 )
@@ -1498,7 +1498,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.analytics.get_confusion_matrix_async(
+result = await client.ai_extension.get_confusion_matrix_async(
   '{confusionMatrixId}'
 )
 ```
@@ -1625,7 +1625,7 @@ Content-Type: application/json
 ```
 
 ```python
-result = await client.ai_extension.models.get_model_async(
+result = await client.ai_extension.get_model_async(
   '{modelId}'
 )
 ```
@@ -1733,7 +1733,7 @@ Content-Type: application/json
 ```
 
 ```python
-result = await client.ai_extension.models.get_model_summary_async()
+result = await client.ai_extension.get_model_summary_async()
 ```
 
 ```csharp
@@ -1845,7 +1845,7 @@ Content-Type: application/json
 ```
 
 ```python
-result = await client.ai_extension.entities.get_entities_async()
+result = await client.ai_extension.get_entities_async()
 ```
 
 ```javascript
@@ -1962,7 +1962,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.intents.get_intents_async()
+result = await client.ai_extension.get_intents_async()
 ```
 
 ```csharp
@@ -2019,7 +2019,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.models.get_models_async()
+result = await client.ai_extension.get_models_async()
 ```
 
 ```http
@@ -2176,7 +2176,7 @@ Content-Type: application/json
 ```
 
 ```python
-result = await client.ai_extension.entities.get_entity_async(
+result = await client.ai_extension.get_entity_async(
   '{entityId}'
 )
 ```
@@ -2262,7 +2262,7 @@ Content-Type: application/json
 ```
 
 ```python
-result = await client.ai_extension.intents.get_intent_async(
+result = await client.ai_extension.get_intent_async(
   '{intentId}'
 )
 ```
@@ -2354,7 +2354,7 @@ namespace Extensions
 ```
 
 ```python
-result = await client.ai_extension.intents.get_intent_answers_async(
+result = await client.ai_extension.get_intent_answers_async(
   '{intentId}'
 )
 ```
@@ -2432,7 +2432,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.analytics.get_confusion_matrix_async()
+result = await client.ai_extension.get_confusion_matrix_async()
 ```
 
 ```csharp
@@ -2607,7 +2607,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.intents.get_intent_questions_async(
+result = await client.ai_extension.get_intent_questions_async(
   '{intentId}'
 )
 ```
@@ -2710,7 +2710,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.anlytics.get_analysis_async(take=10)
+result = await client.ai_extension.get_analysis_async(take=10)
 ```
 
 ```http
@@ -2967,7 +2967,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.intents.merge_intent_async(
+result = await client.ai_extension.merge_intent_async(
   {
     'name': 'Order pizza'
   }
@@ -3035,7 +3035,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.models.publish_model_async(
+result = await client.ai_extension.publish_model_async(
   '{your_model_id}'
 )
 ```
@@ -3124,10 +3124,10 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.analytics.set_analysis_feedback_async(
-  'reject',
+result = await client.ai_extension.set_analysis_feedback_async(
   '{analyze_id}',
-  '{other_intent_id}'
+  '{other_intent_id}',
+  'reject'
 )
 ```
 
@@ -3221,9 +3221,9 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```python
-result = await client.ai_extension.analytics.set_analysis_feedback_async(
-  'approved',
-  '{analyze_id}'
+result = await client.ai_extension.set_analysis_feedback_async(
+  '{analyze_id}',
+  feedback='approved'
 )
 ```
 
@@ -3318,6 +3318,14 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.ai_extension.send_analysis_by_email_async(
+  '{email}',
+  begin_date = '2019-04-29T16:31:00.000Z',
+  end_date = '2019-05-30T16:31:00.000Z'
+)
+```
+
 ```csharp
 using System.Threading;
 using System.Threading.Tasks;
@@ -3392,6 +3400,13 @@ Content-Type: application/json
 To submit one or more [feedbacks](/#analysisfeedback) into [analysis](/#analysis), it is necessary to enter the id of the [intent](/#intention) for the case and the id of the analysis you want to send a feedback.
 
 Replace `{intentionId}` with the intent Id and `{analysisId}` with the analysis Id.
+
+```python
+result = await client.ai_extension.set_analysis_feedback_async(
+  '{analysisId}',
+  '{intentionId}'
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
