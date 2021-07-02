@@ -4,12 +4,12 @@ The **security** extension allows the chatbot to work with account keys and give
 
 To use the **security** extension, send a command with the following properties:
 
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| method    | The command verb  |
-| type | The document type |
-| uri    | **/delegations** and **/accounts**   |
+| Name   | Description                              |
+|--------|------------------------------------------|
+| id     | Unique identifier of the command.        |
+| method | The command verb                         |
+| type   | The document type                        |
+| uri    | **/delegations** and **/accounts**       |
 | to     | **postmaster@msging.net** (not required) |
 
 ### Get a permission
@@ -57,6 +57,15 @@ client.sendCommand({
     method: Lime.CommandMethod.GET,
     uri: "/delegations/postmaster@broadcast.msging.net?envelopeTypes=message"
 })
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/delegations/postmaster@broadcast.msging.net?envelopeTypes=message'
+    )
+)
 ```
 
 ```csharp
@@ -121,6 +130,15 @@ client.sendCommand({
 })
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/accounts/keys'
+    )
+)
+```
+
 ```csharp
 var command = new Command(){
     Id = EnvelopeId.NewId(),
@@ -152,6 +170,7 @@ Authorization: Key {YOUR_TOKEN}
   }
 }
 ```
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -163,6 +182,20 @@ Content-Type: application/json
   "from": "postmaster@msging.net/#irismsging1",
   "to": "contact@msging.net/default"
 }
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/delegations',
+        'application/vnd.lime.delegation+json',
+        {
+            'target': 'postmaster@broadcast.msging.net',
+            'envelopeTypes': ['message']
+        }
+    )
+)
 ```
 
 ```csharp
@@ -231,6 +264,15 @@ Content-Type: application/json
   "from": "postmaster@msging.net/#irismsging1",
   "to": "contact@msging.net/default"
 }
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.DELETE,
+        '/delegations/postmaster@broadcast.msging.net?envelopeTypes=message'
+    )
+)
 ```
 
 ```csharp
@@ -329,6 +371,19 @@ client.sendCommand({
         "id": "{id}"
     }
 })
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/account/keys',
+        'application/vnd.iris.keyRequest+json',
+        {
+            'id': '{id}'
+        }
+    )
+)
 ```
 
 ```csharp
