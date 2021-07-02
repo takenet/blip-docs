@@ -605,8 +605,8 @@ Note: You can also filter your query with one of the properties of the contact r
 ### Send message with contact name
 
 ```python
-async def message_receiver_async(message: Message) -> None:
-    result = await client.process_command_async(
+def message_receiver(message: Message) -> None:
+    client.sendMessage(
         Message(
             'text/plain',
             'Hello ${contact.name}, welcome to the ${contact.extras.plan} plan!',
@@ -618,7 +618,7 @@ async def message_receiver_async(message: Message) -> None:
         )
     )
 
-client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message_receiver_async))
+client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message_receiver))
 ```
 
 ```javascript
