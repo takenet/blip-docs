@@ -241,7 +241,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 
 ```python
 async def message_receiver_async(message: Message) -> None:
-    await client.process_command_async(
+    result = await client.process_command_async(
         Command.from_json(
             {  
                 'id': '{{$guid}}',
@@ -380,7 +380,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 
 ```python
 async def message_receiver_async(message: Message) -> None:
-    await client.process_command_async(
+    result = await client.process_command_async(
         Command.from_json(
             {  
                 'id': '{{$guid}}',

@@ -4,33 +4,33 @@ The **contacts** extension allows the management of the chatbot's roster, which 
 
 To use any feature of **contacts** extension send a command with the following properties:
 
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| method    | The command verb  |
-| resource | The contact document. |
-| type | **"application/vnd.lime.contact+json"** |
-| uri    | **/contacts**   |
-| to     | **postmaster@msging.net** (not required) |
+| Name     | Description                              |
+|----------|------------------------------------------|
+| id       | Unique identifier of the command.        |
+| method   | The command verb                         |
+| resource | The contact document.                    |
+| type     | **"application/vnd.lime.contact+json"**  |
+| uri      | **/contacts**                            |
+| to       | **postmaster@msging.net** (not required) |
 
 The command's properties `resource` and `method` can change according to the feature.
 A [contact object](/#contact) passed as a document `resource` has the following properties:
 
-| Property     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **identity** | The client identity in a specific channel. <br/>**It is strongly advised to encode the Identity before setting a contact.**<br/>By not enconding the field contact information may not be retrivied.                         | `11121023102013021@messenger.gw.msging.net (Messenger user)` |
-| **name**   | **Optional** The client's name (string).  | `"Rafael Pacheco"` |
-| **gender** | **Optional** The client's gender (string).  | `"male"` |
-| **group**   | **Optional** The client's group tag (string).   | `"testers"` |
-| **address**   | **Optional** The client's address (string).   | `"83, Paraguassu Street"` |
-| **city**   | **Optional** The client's city (string).   | `"Belo Horizonte"` |
-| **email**   | **Optional** The client's email (string).   | `"rafaelpa@take.net"` |
-| **phoneNumber**   | **Optional** The client's phone number (string).   | `"5531000000000"` |
-| **cellPhoneNumber**   | **Optional** The client's cell phone number (string).   | `"5531999999999"` |
-| **timezone**   | **Optional** The client's timezone id (int).   | `-3` |
-| **culture**   | **Optional** The client's culture info (string).   | `"pt-br"` |
-| **extras**   | **Optional** The client's extra informations.         | `{"customerExternalId": "41231", "cpf": "00000000000" }` |
-| **source**   | **Optional** The client's source (channel) info (string).   | `"Facebook Messenger"` |
+| Property            | Description                                                                                                                                                                                          | Example                                                      |
+|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| **identity**        | The client identity in a specific channel. <br/>**It is strongly advised to encode the Identity before setting a contact.**<br/>By not enconding the field contact information may not be retrivied. | `11121023102013021@messenger.gw.msging.net (Messenger user)` |
+| **name**            | **Optional** The client's name (string).                                                                                                                                                             | `"Rafael Pacheco"`                                           |
+| **gender**          | **Optional** The client's gender (string).                                                                                                                                                           | `"male"`                                                     |
+| **group**           | **Optional** The client's group tag (string).                                                                                                                                                        | `"testers"`                                                  |
+| **address**         | **Optional** The client's address (string).                                                                                                                                                          | `"83, Paraguassu Street"`                                    |
+| **city**            | **Optional** The client's city (string).                                                                                                                                                             | `"Belo Horizonte"`                                           |
+| **email**           | **Optional** The client's email (string).                                                                                                                                                            | `"rafaelpa@take.net"`                                        |
+| **phoneNumber**     | **Optional** The client's phone number (string).                                                                                                                                                     | `"5531000000000"`                                            |
+| **cellPhoneNumber** | **Optional** The client's cell phone number (string).                                                                                                                                                | `"5531999999999"`                                            |
+| **timezone**        | **Optional** The client's timezone id (int).                                                                                                                                                         | `-3`                                                         |
+| **culture**         | **Optional** The client's culture info (string).                                                                                                                                                     | `"pt-br"`                                                    |
+| **extras**          | **Optional** The client's extra informations.                                                                                                                                                        | `{"customerExternalId": "41231", "cpf": "00000000000" }`     |
+| **source**          | **Optional** The client's source (channel) info (string).                                                                                                                                            | `"Facebook Messenger"`                                       |
 
 For more information about the supported fields, please refer to the [Lime protocol](http://limeprotocol.org/resources.html#contact) documentation.
 
@@ -60,6 +60,30 @@ client.addMessageReceiver('text/plain', async (message) => {
         }
     });
 });
+```
+
+```python
+async def message_receiver_async(message: Message) -> None:
+    result = await client.process_command_async(
+        Command(
+            CommandMethod.SET,
+            '/contacts',
+            'application/vnd.lime.contact+json',
+            {
+                'identity': '{{$user_identity}}',
+                'name': '{{$user_name}}',
+                'gender':'{{$user_gender}}',
+                'group': '{{$user_groups}}',
+                'extras': {
+                    'plan': 'Gold',
+                    'code': '1111'
+                },
+                "source": "{{$user_channel_name}}"
+            }
+        )
+    )
+
+client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message_receiver_async))
 ```
 
 ```http
@@ -152,21 +176,21 @@ In order to store informations about a chatbot's client, it is possible to save 
 
 It is necessary to send the requisition according to the [contact object](/#contact) with the following properties:
 
-| Property     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **identity** | The client identity in a specific channel.<br/>**It is strongly advised to encode the Identity before setting a contact.**<br/>By not enconding the field contact information may not be retrivied.                         | `11121023102013021@messenger.gw.msging.net (Messenger user)` |
-| **name**   | **Optional** The client's name (string).  | `"Rafael Pacheco"` |
-| **gender** | **Optional** The client's gender (string).  | `"male"` |
-| **group**   | **Optional** The client's group tag (string).   | `"testers"` |
-| **address**   | **Optional** The client's address (string).   | `"83, Paraguassu Street"` |
-| **city**   | **Optional** The client's city (string).   | `"Belo Horizonte"` |
-| **email**   | **Optional** The client's email (string).   | `"rafaelpa@take.net"` |
-| **phoneNumber**   | **Optional** The client's phone number (string).   | `"5531000000000"` |
-| **cellPhoneNumber**   | **Optional** The client's cell phone number (string).   | `"5531999999999"` |
-| **timezone**   | **Optional** The client's timezone id (int).   | `-3` |
-| **culture**   | **Optional** The client's culture info (string).   | `"pt-br"` |
-| **extras**   | **Optional** The client's extra informations.         | `{"customerExternalId": "41231", "cpf": "00000000000" }` |
-| **source**   | **Optional** The client's source (channel) info (string). Check [here](/#channels).   | `"Facebook Messenger"` |
+| Property            | Description                                                                                                                                                                                         | Example                                                      |
+|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| **identity**        | The client identity in a specific channel.<br/>**It is strongly advised to encode the Identity before setting a contact.**<br/>By not enconding the field contact information may not be retrivied. | `11121023102013021@messenger.gw.msging.net (Messenger user)` |
+| **name**            | **Optional** The client's name (string).                                                                                                                                                            | `"Rafael Pacheco"`                                           |
+| **gender**          | **Optional** The client's gender (string).                                                                                                                                                          | `"male"`                                                     |
+| **group**           | **Optional** The client's group tag (string).                                                                                                                                                       | `"testers"`                                                  |
+| **address**         | **Optional** The client's address (string).                                                                                                                                                         | `"83, Paraguassu Street"`                                    |
+| **city**            | **Optional** The client's city (string).                                                                                                                                                            | `"Belo Horizonte"`                                           |
+| **email**           | **Optional** The client's email (string).                                                                                                                                                           | `"rafaelpa@take.net"`                                        |
+| **phoneNumber**     | **Optional** The client's phone number (string).                                                                                                                                                    | `"5531000000000"`                                            |
+| **cellPhoneNumber** | **Optional** The client's cell phone number (string).                                                                                                                                               | `"5531999999999"`                                            |
+| **timezone**        | **Optional** The client's timezone id (int).                                                                                                                                                        | `-3`                                                         |
+| **culture**         | **Optional** The client's culture info (string).                                                                                                                                                    | `"pt-br"`                                                    |
+| **extras**          | **Optional** The client's extra informations.                                                                                                                                                       | `{"customerExternalId": "41231", "cpf": "00000000000" }`     |
+| **source**          | **Optional** The client's source (channel) info (string). Check [here](/#channels).                                                                                                                 | `"Facebook Messenger"`                                       |
 
 <aside  class="notice">
 When updating a contact, not passing one of the existing parameters for the Contact in the request will delete it.<br><br><i>For example, if the Contact already has an Email parameter and you don't pass It in the requisition, the contact email information will be deleted.</i>
@@ -175,6 +199,20 @@ When updating a contact, not passing one of the existing parameters for the Cont
 ### Add a comment
 
 Add a new comment for a contact ( `contactIdentity` ), using a [Comment](/#comment) document.
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/contacts/{contactIdentity}/comments',
+        'application/vnd.iris.crm.comment+json',
+        {
+            'content': 'This is a comment example'
+        },
+        id='{{$guid}}'
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -188,7 +226,7 @@ Authorization: Key {YOUR_TOKEN}
   "uri": "/contacts/{contactIdentity}/comments",
   "type": "application/vnd.iris.crm.comment+json",
   "resource": {
-  	"content": "This is a comment example"
+    "content": "This is a comment example"
   }
 }
 ```
@@ -211,11 +249,22 @@ Content-Type: application/json
     "to": "demobot@msging.net",
 }
 ```
+
 ### Delete a comment
 
 Delete a specific comment for a contact.
 
 Replace `commentId` with the comment Id.
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.DELETE,
+        '/contacts/{contactIdentity}/comments/{commentId}',
+        id='{{$guid}}'
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -245,13 +294,22 @@ Content-Type: application/json
 
 ### Get comments
 
-
 Get all comments for a contact ( `contactIdentity` ). By default, Blip will return the last 100 comments.
 
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| $skip | The number of elements to be skipped                           |
-| $take        | Limit of total of items to be returned. The maximum value allowed is 100 |
+| QueryString | Description                                                              |
+|-------------|--------------------------------------------------------------------------|
+| $skip       | The number of elements to be skipped                                     |
+| $take       | Limit of total of items to be returned. The maximum value allowed is 100 |
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/contacts/{contactIdentity}/comments',
+        id='{{$guid}}'
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -297,6 +355,19 @@ Content-Type: application/json
 ```
 
 ### Get contact
+
+```python
+async def message_receiver_async(message: Message) -> None:
+    result = await client.process_command_async(
+        Command(
+            CommandMethod.GET,
+            '/contacts/11121023102013021@messenger.gw.msging.net',
+            id='{{$guid}}'
+        )
+    )
+
+client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message_receiver_async))
+```
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
@@ -382,9 +453,20 @@ namespace Extensions
 
 For the same contact `11121023102013021@messenger.gw.msging.net`, it is possible to get all of its information using a `GET` contact command.
 
-
 ### Get contacts
 
+```python
+async def message_receiver_async(message: Message) -> None:
+    result = await client.process_command_async(
+        Command(
+            CommandMethod.GET,
+            '/contacts?$skip=0&$take=3',
+            id='{{$guid}}'
+        )
+    )
+
+client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message_receiver_async))
+```
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
@@ -422,24 +504,24 @@ Content-Type: application/json
         "itemType": "application/vnd.lime.contact+json",
         "items": [
             {
-				"identity": "11121023102013021@messenger.gw.msging.net",
-				"name": "John Doe",
-				"gender":"male", 
-				"group":"friends", 
-				"extras":{
-					"plan":"Gold",
-					"code":"1111"
-				}
-			},
-			{
-				"identity": "213121@telegram.gw.msging.net",
-				"name": "Joseph from Telegram",
-				"email":"ze@gmail.com"
-			},
-			{
-				"identity": "5511999990000@take.io",
-				"name": "Mary"
-			}
+                "identity": "11121023102013021@messenger.gw.msging.net",
+                "name": "John Doe",
+                "gender":"male", 
+                "group":"friends", 
+                "extras":{
+                    "plan":"Gold",
+                    "code":"1111"
+                }
+             },
+             {
+                "identity": "213121@telegram.gw.msging.net",
+                "name": "Joseph from Telegram",
+                "email":"ze@gmail.com"
+             },
+             {
+                "identity": "5511999990000@take.io",
+                "name": "Mary"
+             }
         ]
     },
     "method": "get",
@@ -460,7 +542,6 @@ using System.Threading.Tasks;
 using Lime.Protocol;
 using Take.Blip.Client;
 using Take.Blip.Client.Extensions.Contacts;
-using teste_documentacao;
 
 namespace Extensions
 {
@@ -523,9 +604,26 @@ Note: You can also filter your query with one of the properties of the contact r
 
 ### Send message with contact name
 
+```python
+async def message_receiver_async(message: Message) -> None:
+    result = await client.process_command_async(
+        Message(
+            'text/plain',
+            'Hello ${contact.name}, welcome to the ${contact.extras.plan} plan!',
+            to='11121023102013021@messenger.gw.msging.net',
+            metadata={
+                '#message.replaceVariables': 'true'
+            },
+            id='{{$guid}}'
+        )
+    )
+
+client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message_receiver_async))
+```
+
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-    await client.sendCommand({  
+    await client.sendMessage({  
         id: Lime.Guid(),
         to: '11121023102013021@messenger.gw.msging.net',
         type: 'text/plain',

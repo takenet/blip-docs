@@ -48,7 +48,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 
 ```python
 async def message_receiver_async(message: Message) -> None:
-    await client.chat_extension.get_threads_async(refresh_expired_media=True)
+    result = await client.chat_extension.get_threads_async(refresh_expired_media=True)
 
 client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message_receiver_async))
 ```
@@ -165,7 +165,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 
 ```python
 async def message_receiver_async(message: Message) -> None:
-    await client.chat_extension.get_thread_async(
+    result = await client.chat_extension.get_thread_async(
         '{{user_identity}}',
         refresh_expired_media=True
     )
