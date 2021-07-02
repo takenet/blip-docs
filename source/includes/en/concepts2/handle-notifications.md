@@ -35,7 +35,7 @@ client.sendNotification(notification);
 await client.connect_async()
     
 # Sending "received" notification
-var notification = Notification.from_json(
+notification = Notification.from_json(
     {
         'id': 'ef16284d-09b2-4d91-8220-74008f3a5788',
         'to': '553199990000@0mn.io',
