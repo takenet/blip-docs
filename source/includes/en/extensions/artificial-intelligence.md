@@ -1,8 +1,8 @@
 ## Artificial Intelligence
 
-| Address                         |
-|---------------------------------|
-| postmaster@ai.msging.net        |
+| Address                  |
+|--------------------------|
+| postmaster@ai.msging.net |
 
 The  **Artificial Intelligence** extension allows the creation, training and publication of artificial intelligence models in the providers associated with the chatbot, besides performing sentence analysis to identify intents and entities. The configuration of the chatbot providers is done through the **Artificial Intelligence**  menu in the [Blip portal] (https://portal.blip.ai).
 
@@ -14,48 +14,48 @@ All manipulation of the model can be done through the portal of the Blip, and th
 
 **API Resources**
 
-| URI                               | Method   | Description                                |
-|-----------------------------------|----------|--------------------------------------------|
-| `/intentions`                     | `set`    | Creates a new intent. The `id` of the intent is returned in the command response. |
-| `/intentions`                     | `get`    | Search in all intents that are associated to the chatbot. It is possible to paginate the request using `$skip` and `$take` arguments. |
-| `/intentions/{id}`                | `get`    | Retrieves an intent by its `id`.           |
-| `/entities`                       | `set`    | Creates a new entity. The `id` of the entity is returned in the command response. |
-| `/entities`                       | `get`    | Search in all entities that are associated to the chatbot. It is possible to paginate the request using `$skip` and `$take` arguments. |
-| `/entities/{id}`                  | `get`    | Retrieves an entity by its `id`.           |
-| `/intentions/{id}/questions`      | `set`    | Create questions associated to the intent `id`. |
-| `/intentions/{id}/questions`      | `get`    | Search in all questions that are associated to the intent `id`. It is possible to paginate the request using `$skip` and `$take` arguments. |
-| `/intentions/{id}/questions/{qid}`| `delete` | Removes the question with id `qid`.          |
-| `/intentions/{id}/answers`        | `set`    | Create answers associated to the intent `id`. |
-| `/intentions/{id}/answers`        | `get`    | Search in all answers that are associated to the intent `id`. It is possible to paginate the request using `$skip` and `$take` arguments. |
-| `/intentions/{id}/answers/{aid}`  | `delete` | Removes the answer with id `aid`.          |
-| `/models`                         | `set`    | Executes the training or publishing of the model. The action depends of the type of the resource (see the table below). |
-| `/models`                         | `get`    | Search in all trained and/or published models. |
-| `/analysis`                       | `set`    | Analyzes an user sentence using a published model. |
-| `/analysis`                       | `get`    | Retrieves the history of performed analysis. It is possible to paginate the request using using `$skip` and `$take` arguments and filter with `$filter`, using the [OData syntax](http://www.odata.org/documentation/odata-version-2-0/uri-conventions/#FilterSystemQueryOption). |
-| `/analysis/{id}/feedback`         | `set`    | Provides feedback to a performed analysis and suggest an intent to improve the model. |
-| `/content`                        | `get`    | Search in all contents that are assosiated to the chatbot. It is possible to paginate the request using `$skip` and `$take` arguments. |
-| `/content/analysis`               | `set`    | Creates a new content analisys. |
-| `/content/{id}`                   | `get`    | Retrieves a content by its `id`. |
-| `/content/{id}`                   | `set`    | Creates a new content with a specified `id`. |
-| `/content/{id}`                   | `delete` | Removes a content with id {id}. |
-| `/content`                        | `set`    | Creates a new content. |
-| `/content`                        | `delete` | Removes multiple contents that are associated to the chatbot. |
+| URI                                | Method   | Description                                                                                                                                                                                                                                                                       |
+|------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `/intentions`                      | `set`    | Creates a new intent. The `id` of the intent is returned in the command response.                                                                                                                                                                                                 |
+| `/intentions`                      | `get`    | Search in all intents that are associated to the chatbot. It is possible to paginate the request using `$skip` and `$take` arguments.                                                                                                                                             |
+| `/intentions/{id}`                 | `get`    | Retrieves an intent by its `id`.                                                                                                                                                                                                                                                  |
+| `/entities`                        | `set`    | Creates a new entity. The `id` of the entity is returned in the command response.                                                                                                                                                                                                 |
+| `/entities`                        | `get`    | Search in all entities that are associated to the chatbot. It is possible to paginate the request using `$skip` and `$take` arguments.                                                                                                                                            |
+| `/entities/{id}`                   | `get`    | Retrieves an entity by its `id`.                                                                                                                                                                                                                                                  |
+| `/intentions/{id}/questions`       | `set`    | Create questions associated to the intent `id`.                                                                                                                                                                                                                                   |
+| `/intentions/{id}/questions`       | `get`    | Search in all questions that are associated to the intent `id`. It is possible to paginate the request using `$skip` and `$take` arguments.                                                                                                                                       |
+| `/intentions/{id}/questions/{qid}` | `delete` | Removes the question with id `qid`.                                                                                                                                                                                                                                               |
+| `/intentions/{id}/answers`         | `set`    | Create answers associated to the intent `id`.                                                                                                                                                                                                                                     |
+| `/intentions/{id}/answers`         | `get`    | Search in all answers that are associated to the intent `id`. It is possible to paginate the request using `$skip` and `$take` arguments.                                                                                                                                         |
+| `/intentions/{id}/answers/{aid}`   | `delete` | Removes the answer with id `aid`.                                                                                                                                                                                                                                                 |
+| `/models`                          | `set`    | Executes the training or publishing of the model. The action depends of the type of the resource (see the table below).                                                                                                                                                           |
+| `/models`                          | `get`    | Search in all trained and/or published models.                                                                                                                                                                                                                                    |
+| `/analysis`                        | `set`    | Analyzes an user sentence using a published model.                                                                                                                                                                                                                                |
+| `/analysis`                        | `get`    | Retrieves the history of performed analysis. It is possible to paginate the request using using `$skip` and `$take` arguments and filter with `$filter`, using the [OData syntax](http://www.odata.org/documentation/odata-version-2-0/uri-conventions/#FilterSystemQueryOption). |
+| `/analysis/{id}/feedback`          | `set`    | Provides feedback to a performed analysis and suggest an intent to improve the model.                                                                                                                                                                                             |
+| `/content`                         | `get`    | Search in all contents that are assosiated to the chatbot. It is possible to paginate the request using `$skip` and `$take` arguments.                                                                                                                                            |
+| `/content/analysis`                | `set`    | Creates a new content analisys.                                                                                                                                                                                                                                                   |
+| `/content/{id}`                    | `get`    | Retrieves a content by its `id`.                                                                                                                                                                                                                                                  |
+| `/content/{id}`                    | `set`    | Creates a new content with a specified `id`.                                                                                                                                                                                                                                      |
+| `/content/{id}`                    | `delete` | Removes a content with id {id}.                                                                                                                                                                                                                                                   |
+| `/content`                         | `set`    | Creates a new content.                                                                                                                                                                                                                                                            |
+| `/content`                         | `delete` | Removes multiple contents that are associated to the chatbot.                                                                                                                                                                                                                     |
 
 The resource types are:
 
-| Name              | MIME Type                                       | Description                                      |
-|-------------------|-------------------------------------------------|--------------------------------------------------|
-| Intent            | `application/vnd.iris.ai.intention+json`        | Intent expressed through a sentence.                |
-| Entity            | `application/vnd.iris.ai.entity+json`           | Entity identified in an intent, with its synonyms.  |
-| Question          | `application/vnd.iris.ai.question+json`         | A user's question that is associated with an intent for model training. |
-| Answer            | `application/vnd.iris.ai.answer+json`           | Response that can be sent in case a user's intent is identified. |
-| Training          | `application/vnd.iris.ai.model-training+json`   | Model training request. |
-| Publishing        | `application/vnd.iris.ai.model-publishing+json` | Model publishing request, to make it available for use. |
-| Analysis request  | `application/vnd.iris.ai.analysis-request+json` | Sentence analysis request. |
-| Analysis response | `application/vnd.iris.ai.analysis-response+json`| Sentence analysis response with the identified intents and entities. |
-| Analysis          | `application/vnd.iris.ai.analysis+json`         | History information about a performed analysis.  |
-| Analysis feedback | `application/vnd.iris.ai.analysis-feedback+json`| Feedback information about a performed analysis. |
-| Content result    | `application/vnd.iris.ai.content-result+json`   | The content created. |
+| Name              | MIME Type                                        | Description                                                             |
+|-------------------|--------------------------------------------------|-------------------------------------------------------------------------|
+| Intent            | `application/vnd.iris.ai.intention+json`         | Intent expressed through a sentence.                                    |
+| Entity            | `application/vnd.iris.ai.entity+json`            | Entity identified in an intent, with its synonyms.                      |
+| Question          | `application/vnd.iris.ai.question+json`          | A user's question that is associated with an intent for model training. |
+| Answer            | `application/vnd.iris.ai.answer+json`            | Response that can be sent in case a user's intent is identified.        |
+| Training          | `application/vnd.iris.ai.model-training+json`    | Model training request.                                                 |
+| Publishing        | `application/vnd.iris.ai.model-publishing+json`  | Model publishing request, to make it available for use.                 |
+| Analysis request  | `application/vnd.iris.ai.analysis-request+json`  | Sentence analysis request.                                              |
+| Analysis response | `application/vnd.iris.ai.analysis-response+json` | Sentence analysis response with the identified intents and entities.    |
+| Analysis          | `application/vnd.iris.ai.analysis+json`          | History information about a performed analysis.                         |
+| Analysis feedback | `application/vnd.iris.ai.analysis-feedback+json` | Feedback information about a performed analysis.                        |
+| Content result    | `application/vnd.iris.ai.content-result+json`    | The content created.                                                    |
 
 ### Analyze a model
 
@@ -63,11 +63,15 @@ Retrieves the history of performed analysis. It will return an [analysis](/#anal
 
 The following uri filters are available to get an analysis:
 
-| QueryString     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **skip** | The number of analysis to be skipped.                                |    0    |
-| **take** | The number of analysis to be returned.                               |   100   |
-| **ascending** | Sets ascending alphabetical order.                                |    true    |
+| QueryString   | Description                            | Example |
+|---------------|----------------------------------------|---------|
+| **skip**      | The number of analysis to be skipped.  | 0       |
+| **take**      | The number of analysis to be returned. | 100     |
+| **ascending** | Sets ascending alphabetical order.     | true    |
+
+```python
+result = await client.ai_extension.get_analysis_async()
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -226,6 +230,10 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.ai_extension.analyse_async('I want a pepperoni pizza')
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -276,7 +284,7 @@ Content-Type: application/json
 
 ### Analyze a sentence with a specific model
 
-It is possible to analyze a sentence with a specific model, to improve the model. 
+It is possible to analyze a sentence with a specific model, to improve the model.
 
 <aside class="notice">
 Note: Remember to replace the variable <b>modelId</b> for the model identifier you want to use (for instance: <b>12345</b>).
@@ -304,6 +312,10 @@ client.addMessageReceiver('text/plain', async (message) => {
     console.log(entity);
   });
 });
+```
+
+```python
+result = await client.ai_extension.analyse_async('I want a pepperoni pizza', '12345')
 ```
 
 ```http
@@ -425,6 +437,18 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.ai_extension.set_intent_answers_async(
+  '{intentId}',
+  [
+    {
+      'type': 'text/plain',
+      'value': 'Which flavor do you want?'
+    }
+  ]
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -525,6 +549,23 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.ai_extension.set_intent_questions_async(
+  '{intentId}',
+  [
+    {
+      'text': 'I want a pizza'
+    },
+    {
+      'text': 'I wanna order a pizza'
+    },
+    {
+      'text': 'Give me a pizza'
+    }
+  ]
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -622,6 +663,15 @@ client.addMessageReceiver('text/plain', async (message) => {
     }
   });
 });
+```
+
+```python
+result = await client.ai_extension.set_confusion_matrix_async(
+  {
+    'version': 'test',
+    'sampleSize': 2
+  }
+)
 ```
 
 ```csharp
@@ -749,6 +799,33 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.ai_extension.set_entity_async(
+  {
+    'name': 'Flavor',
+    'values': [
+      {
+        'name': 'Pepperoni',
+        'synonymous': [
+          'Peperoni',
+          'Pepperonee',
+          'Pepperouni',
+          'Peperony'
+        ]
+      },
+      {
+        'name': 'Mushrooms',
+        'synonymous': [
+          'Mashrooms',
+          'Mushroom',
+          'Mshrooms'
+        ]
+      }
+    ]
+  }
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -859,7 +936,6 @@ namespace Extensions
 
 The set intent command creates a new [intent](/#intention), or set of intents, **and cleans the old intents on the knowledge base**.
 
-
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
@@ -873,6 +949,14 @@ client.addMessageReceiver('text/plain', async (message) => {
     }
   });
 });
+```
+
+```python
+result = await client.ai_extension.set_intent_async(
+  {
+    'name': 'Order pizza'
+  }
+)
 ```
 
 ```http
@@ -978,6 +1062,12 @@ namespace Extension
 }
 ```
 
+```python
+result = await client.ai_extension.delete_confusion_matrix_async(
+  '{confusionMatrixId}'
+)
+```
+
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
@@ -996,11 +1086,11 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-	"id": "{{$guid}}",
-	"method": "delete",
-	"to": "postmaster@ai.msging.net",
-	"uri": "/analytics/confusion-matrix/{confusionMatrixId}",
-	"from": "postmaster@ai.msging.net/#hmg-az-lx-iris1"
+  "id": "{{$guid}}",
+  "method": "delete",
+  "to": "postmaster@ai.msging.net",
+  "uri": "/analytics/confusion-matrix/{confusionMatrixId}",
+  "from": "postmaster@ai.msging.net/#hmg-az-lx-iris1"
 }
 ```
 
@@ -1010,10 +1100,10 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-	"id": "10",
-	"method": "delete",
-	"status": "success",
-	"to": "test.net/portal-test%40take.net"
+  "id": "10",
+  "method": "delete",
+  "status": "success",
+  "to": "test.net/portal-test%40take.net"
 }
 
 ```
@@ -1044,6 +1134,10 @@ client.addMessageReceiver('text/plain', async (message) => {
     uri: '/entities'
   });
 });
+```
+
+```python
+result = await client.ai_extension.delete_entities_async()
 ```
 
 ```csharp
@@ -1093,6 +1187,10 @@ namespace Extension
         }           
     }
 }
+```
+
+```python
+result = await client.ai_extension.delete_intents_async()
 ```
 
 ```javascript
@@ -1154,6 +1252,10 @@ client.addMessageReceiver('text/plain', async (message) => {
     uri: '/intentions/{intent_id}',
   });
 });
+```
+
+```python
+result = await client.ai_extension.delete_intent_async('{intent_id}')
 ```
 
 ```http
@@ -1233,6 +1335,13 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.ai_extension.delete_intent_answers_async(
+  '{intentId}',
+  '{answerId}'
+)
+```
+
 ```csharp
 using System.Threading;
 using System.Threading.Tasks;
@@ -1307,6 +1416,13 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.ai_extension.delete_intent_question_async(
+  '{intentId}',
+  '{questionId}'
+)
+```
+
 ```csharp
 using System.Threading;
 using System.Threading.Tasks;
@@ -1366,7 +1482,7 @@ Content-Type: application/json
 
 ### Get a confusion matrix
 
-Getting a [confusion matrix](/#confusionmatrix). 
+Getting a [confusion matrix](/#confusionmatrix).
 
 Replace `{confusionMatrixId}` with the id of the Confusion Matrix you want to get.
 
@@ -1379,6 +1495,12 @@ client.addMessageReceiver('text/plain', async (message) => {
     uri: '/analytics/confusion-matrix/{confusionMatrixId}'
   });
 });
+```
+
+```python
+result = await client.ai_extension.get_confusion_matrix_async(
+  '{confusionMatrixId}'
+)
 ```
 
 ```csharp
@@ -1502,6 +1624,12 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.ai_extension.get_model_async(
+  '{modelId}'
+)
+```
+
 ```csharp
 using System.Threading;
 using System.Threading.Tasks;
@@ -1604,6 +1732,10 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.ai_extension.get_model_summary_async()
+```
+
 ```csharp
 using System.Threading;
 using System.Threading.Tasks;
@@ -1653,11 +1785,11 @@ Getting all [entities](/#entity) from a model.
 
 The following uri filters are available to get a chatbot's entities:
 
-| QueryString     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **skip** | The number of entities to be skipped.                                |    0    |
-| **take** | The number of entities to be returned.                               |   100   |
-| **ascending** | Sets ascending alphabetical order.                                |    true    |
+| QueryString   | Description                            | Example |
+|---------------|----------------------------------------|---------|
+| **skip**      | The number of entities to be skipped.  | 0       |
+| **take**      | The number of entities to be returned. | 100     |
+| **ascending** | Sets ascending alphabetical order.     | true    |
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -1712,6 +1844,10 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.ai_extension.get_entities_async()
+```
+
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
@@ -1721,7 +1857,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     uri: '/entities'
   });
 });
-``` 
+```
 
 ```csharp
 using System.Threading;
@@ -1760,12 +1896,11 @@ Getting all [intents](/#intention) from a model.
 
 The following uri filters are available to get a chatbot's intents:
 
-| QueryString     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **skip** | The number of intents to be skipped.                                |    0    |
-| **take** | The number of intents to be returned.                               |   100   |
-| **ascending** | Sets ascending alphabetical order.                                |    true    |
-
+| QueryString   | Description                           | Example |
+|---------------|---------------------------------------|---------|
+| **skip**      | The number of intents to be skipped.  | 0       |
+| **take**      | The number of intents to be returned. | 100     |
+| **ascending** | Sets ascending alphabetical order.    | true    |
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -1825,6 +1960,10 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.ai_extension.get_intents_async()
+```
+
 ```csharp
 using System.Threading;
 using System.Threading.Tasks;
@@ -1862,11 +2001,11 @@ Search in all trained and/or published [models](/#model).
 
 The following uri filters are available to get the models:
 
-| Property     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **skip** | The number of models to be skipped.                                    |    0    |
-| **take** | The number of models to be returned.                                   |   100   |
-| **ascending** | Sets ascending alphabetical order.                                |    -    |
+| Property      | Description                          | Example |
+|---------------|--------------------------------------|---------|
+| **skip**      | The number of models to be skipped.  | 0       |
+| **take**      | The number of models to be returned. | 100     |
+| **ascending** | Sets ascending alphabetical order.   | -       |
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
@@ -1876,6 +2015,10 @@ client.addMessageReceiver('text/plain', async (message) => {
     method: Lime.CommandMethod.GET,
     uri: '/models',
   });
+```
+
+```python
+result = await client.ai_extension.get_models_async()
 ```
 
 ```http
@@ -2031,6 +2174,12 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.ai_extension.get_entity_async(
+  '{entityId}'
+)
+```
+
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
@@ -2111,6 +2260,12 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.ai_extension.get_intent_async(
+  '{intentId}'
+)
+```
+
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
@@ -2159,11 +2314,11 @@ Replace `{intentId}` for the itent id you want to get the answers.
 
 The following uri filters are available to get intent's answer:
 
-| QueryString     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **skip** | The number of answers to be skipped.                                |    0    |
-| **take** | The number of answers to be returned.                               |   100   |
-| **ascending** | Sets ascending alphabetical order.                                |    true    |
+| QueryString   | Description                           | Example |
+|---------------|---------------------------------------|---------|
+| **skip**      | The number of answers to be skipped.  | 0       |
+| **take**      | The number of answers to be returned. | 100     |
+| **ascending** | Sets ascending alphabetical order.    | true    |
 
 ```csharp
 using System.Threading;
@@ -2195,7 +2350,12 @@ namespace Extensions
         }
     }
 }
+```
 
+```python
+result = await client.ai_extension.get_intent_answers_async(
+  '{intentId}'
+)
 ```
 
 ```javascript
@@ -2253,11 +2413,11 @@ Get all [confusion matrices](/#confusionmatrix) from your model.
 
 The following uri filters are available to get the confusion matrices:
 
-| QueryString     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **skip** | The number of confusion matrices to be skipped.                                |    0    |
-| **take** | The number of confusion matrices to be returned.                               |   100   |
-| **ascending** | Sets ascending alphabetical order.                                |    true    |
+| QueryString   | Description                                      | Example |
+|---------------|--------------------------------------------------|---------|
+| **skip**      | The number of confusion matrices to be skipped.  | 0       |
+| **take**      | The number of confusion matrices to be returned. | 100     |
+| **ascending** | Sets ascending alphabetical order.               | true    |
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
@@ -2268,6 +2428,10 @@ client.addMessageReceiver('text/plain', async (message) => {
     uri: '/analytics/confusion-matrix'
   });
 });
+```
+
+```python
+result = await client.ai_extension.get_confusion_matrix_async()
 ```
 
 ```csharp
@@ -2367,8 +2531,6 @@ Content-Type: application/json
 }
 ```
 
-
-
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -2426,11 +2588,11 @@ Replace `{intentId}` for the itent id you want to get the questions.
 
 The following uri filters are available to get intent's answer:
 
-| QueryString     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **skip** | The number of questions to be skipped.                                |    0    |
-| **take** | The number of questions to be returned.                               |   100   |
-| **ascending** | Sets ascending alphabetical order.                                |    true    |
+| QueryString   | Description                             | Example |
+|---------------|-----------------------------------------|---------|
+| **skip**      | The number of questions to be skipped.  | 0       |
+| **take**      | The number of questions to be returned. | 100     |
+| **ascending** | Sets ascending alphabetical order.      | true    |
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
@@ -2441,6 +2603,12 @@ client.addMessageReceiver('text/plain', async (message) => {
     uri: '/intentions/{intentId}/questions'
   });
 });
+```
+
+```python
+result = await client.ai_extension.get_intent_questions_async(
+  '{intentId}'
+)
 ```
 
 ```csharp
@@ -2520,10 +2688,10 @@ Content-Type: application/json
 
 Getting the last 10 analysis given by the artificial intelligence provider for user phrases.
 
-| Property     | Description                                                          | Example |
-|--------------|----------------------------------------------------------------------|---------|
-| **skip** | The number of analysis to be skipped.                                    |    0    |
-| **take** | The number of analysis to be returned.                                   |   100   |
+| Property | Description                            | Example |
+|----------|----------------------------------------|---------|
+| **skip** | The number of analysis to be skipped.  | 0       |
+| **take** | The number of analysis to be returned. | 100     |
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
@@ -2538,6 +2706,10 @@ client.addMessageReceiver('text/plain', async (message) => {
     console.log(item);
   });
 });
+```
+
+```python
+result = await client.ai_extension.get_analysis_async(take=10)
 ```
 
 ```http
@@ -2778,7 +2950,6 @@ namespace Extension
 The merge intent command creates a new [intent](/#intention), or set of intents, and merges them into the knowledge base without deleting the old intents.
 Note that there is currently no implementation for this method using the C# SDK.
 
-
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
@@ -2792,6 +2963,14 @@ client.addMessageReceiver('text/plain', async (message) => {
     }
   });
 });
+```
+
+```python
+result = await client.ai_extension.merge_intent_async(
+  {
+    'name': 'Order pizza'
+  }
+)
 ```
 
 ```http
@@ -2852,6 +3031,12 @@ client.addMessageReceiver('text/plain', async (message) => {
     }
   });
 });
+```
+
+```python
+result = await client.ai_extension.publish_model_async(
+  '{your_model_id}'
+)
 ```
 
 ```http
@@ -2935,6 +3120,14 @@ client.addMessageReceiver('text/plain', async (message) => {
     }
   });
 });
+```
+
+```python
+result = await client.ai_extension.set_analysis_feedback_async(
+  '{analyze_id}',
+  '{other_intent_id}',
+  'reject'
+)
 ```
 
 ```http
@@ -3024,6 +3217,13 @@ client.addMessageReceiver('text/plain', async (message) => {
     }
   });
 });
+```
+
+```python
+result = await client.ai_extension.set_analysis_feedback_async(
+  '{analyze_id}',
+  feedback='approved'
+)
 ```
 
 ```http
@@ -3117,6 +3317,14 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.ai_extension.send_analysis_by_email_async(
+  '{email}',
+  begin_date = '2019-04-29T16:31:00.000Z',
+  end_date = '2019-05-30T16:31:00.000Z'
+)
+```
+
 ```csharp
 using System.Threading;
 using System.Threading.Tasks;
@@ -3192,6 +3400,13 @@ To submit one or more [feedbacks](/#analysisfeedback) into [analysis](/#analysis
 
 Replace `{intentionId}` with the intent Id and `{analysisId}` with the analysis Id.
 
+```python
+result = await client.ai_extension.set_analysis_feedback_async(
+  '{analysisId}',
+  '{intentionId}'
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -3204,10 +3419,10 @@ Authorization: Key {YOUR_TOKEN}
   "uri": "/analysis/feedback",
   "type": "application/vnd.iris.ai.analysis-feedback+json",
   "resource":
-	{
-  		"IntentionId": "{intentionId}",
-  		"AnalysisId": "{analysisId}"
-  	}
+  {
+    "IntentionId": "{intentionId}",
+    "AnalysisId": "{analysisId}"
+  }
 }
 ```
 
@@ -3301,6 +3516,10 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.ai_extension.train_model_async()
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -3364,11 +3583,11 @@ Getting all contents.
 
 The following uri filters are available to get a chatbot's contents:
 
-| QueryString     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **skip** | The number of entities to be skipped.                                |    0    |
-| **take** | The number of entities to be returned.                               |   100   |
-| **ascending** | Sets ascending alphabetical order.                                |    true    |
+| QueryString   | Description                            | Example |
+|---------------|----------------------------------------|---------|
+| **skip**      | The number of entities to be skipped.  | 0       |
+| **take**      | The number of entities to be returned. | 100     |
+| **ascending** | Sets ascending alphabetical order.     | true    |
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -3388,36 +3607,36 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "type": "application/vnd.lime.collection+json",
-    "resource": {
-        "total": 1,
-        "itemType": "application/vnd.iris.ai.content-result+json",
-        "items": [
-            {
-                "id": "0059b633-9713-43c8-8f54-017189ae6745",
-                "name": "Content Title",
-                "result": {
-					"type": "text/plain", 
-					"content": "content"
-				},
-                "combinations": [
-                    {
-						"intent": "new_intent",
-						"entities": ["entity"],
-						"minEntityMatch": 1
-                    }
-				]
-            }			
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+    "total": 1,
+    "itemType": "application/vnd.iris.ai.content-result+json",
+    "items": [
+      {
+        "id": "0059b633-9713-43c8-8f54-017189ae6745",
+        "name": "Content Title",
+        "result": {
+          "type": "text/plain", 
+          "content": "content"
+        },
+        "combinations": [
+          {
+            "intent": "new_intent",
+            "entities": ["entity"],
+            "minEntityMatch": 1
+          }
         ]
-    },
-    "method": "get",
-    "status": "success",
-    "id": "34e0cb67-d56b-4b5c-aeb1-6c81e9784f67",
-    "from": "postmaster@ai.msging.net/#az-iris2",
-    "to": "demobot@msging.net",
-    "metadata": {
-        "#command.uri": "lime://demobot@msging.net/content"
-    }
+      }
+    ]
+  },
+  "method": "get",
+  "status": "success",
+  "id": "34e0cb67-d56b-4b5c-aeb1-6c81e9784f67",
+  "from": "postmaster@ai.msging.net/#az-iris2",
+  "to": "demobot@msging.net",
+  "metadata": {
+      "#command.uri": "lime://demobot@msging.net/content"
+  }
 }
 ```
 
@@ -3430,7 +3649,11 @@ client.addMessageReceiver('text/plain', async (message) => {
     uri: '/content'
   });
 });
-``` 
+```
+
+```python
+result = await client.ai_extension.get_contents_async()
+```
 
 ```csharp
 using System.Threading;
@@ -3533,6 +3756,16 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.ai_extension.analyse_content_async(
+  {
+    'intent': '{intent}',
+    'entities': ['{entity}'],
+    'minEntityMatch': 1
+  }
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -3584,7 +3817,6 @@ Content-Type: application/json
 }
 ```
 
-
 ### Get a content
 
 Getting a content by its id.
@@ -3635,6 +3867,10 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.ai_extension.get_content_async('{id}')
+```
+
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
@@ -3644,7 +3880,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     uri: '/content/{id}'
   });
 });
-``` 
+```
 
 ```csharp
 using System.Threading;
@@ -3667,7 +3903,7 @@ namespace Extensions
 
         public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
         {            
-		    var contentResultId = "a11afe64-7bd0-4333-b22e-0171a2458562";
+            var contentResultId = "a11afe64-7bd0-4333-b22e-0171a2458562";
             await _artificialIntelligenceExtension.GetContentResultAsync(contentResultId, cancellationToken);
         }
     }
@@ -3724,6 +3960,28 @@ namespace Extension
         }           
     }
 }
+```
+
+```python
+result = await client.ai_extension.set_content_result_async(
+  '{id}',
+  {
+    'id': 'a11afe64-7bd0-4333-b22e-0171a2458562',
+    'name': 'new content',
+    'result': {
+      'type': 'text/plain',
+      'content': 'description'
+    },
+    'combinations': [
+      {
+        'intent': 'intent',
+        'entities': ['entity'],
+        'minEntityMatch': 1,
+        'intentName': 'intent'
+      }
+    ]
+  }
+)
 ```
 
 ```javascript
@@ -3865,6 +4123,27 @@ namespace Extension
 }
 ```
 
+```python
+result = await client.ai_extension.set_content_async(
+  {
+    'id': 'a11afe64-7bd0-4333-b22e-0171a2458562',
+    'name': 'new content',
+    'result': {
+      'type': 'text/plain',
+      'content': 'description'
+    },
+    'combinations': [
+      {
+        'intent': 'intent',
+        'entities': ['entity'],
+        'minEntityMatch': 1,
+        'intentName': 'intent'
+      }
+    ]
+  }
+)
+```
+
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
@@ -3978,7 +4257,7 @@ namespace Extension
             var command = new Command{
                 Id = EnvelopeId.NewId(),
                 Method = CommandMethod.Delete,
-                Uri = new LimeUri("/content/1170f877-928b-42ec-902e-0171a4429437")
+                Uri = new LimeUri("/content/{id}")
             };
            
            await _sender.SendCommandAsync(command, cancellationToken);     
@@ -3987,13 +4266,17 @@ namespace Extension
 }
 ```
 
+```python
+result = await client.ai_extension.delete_content_async('{id}')
+```
+
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
   await client.sendCommand({
     id: Lime.Guid(),
     to: 'postmaster@ai.msging.net',
     method: Lime.CommandMethod.DELETE,
-    uri: '/content/1170f877-928b-42ec-902e-0171a4429437'    
+    uri: '/content/{id}'    
   });
 });
 ```
@@ -4008,7 +4291,7 @@ Authorization: Key {YOUR_TOKEN}
   "id":"{{$guid}}",
   "to":"postmaster@ai.msging.net",
   "method":"delete",
-  "uri":"/content/1170f877-928b-42ec-902e-0171a4429437",
+  "uri":"/content/{id}",
   
 }
 ```
@@ -4024,7 +4307,7 @@ Content-Type: application/json
   "id":"e9df4092-54c5-4631-b367-be1f99f76d65",
   "from":"postmaster@ai.msging.net/#az-iris1",
   "to":"demobot@msging.net/":{
-    "#command.uri":"lime://bot14@msging.net/content/1170f877-928b-42ec-902e-0171a4429437"
+    "#command.uri":"lime://bot14@msging.net/content/{id}"
   }
 }
 
@@ -4061,6 +4344,10 @@ Content-Type: application/json
         "#command.uri": "lime://botname@msging.net/content"
     }
 }
+```
+
+```python
+result = await client.ai_extension.delete_contents_async()
 ```
 
 ```javascript

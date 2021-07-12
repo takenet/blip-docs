@@ -46,6 +46,13 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+async def message_receiver_async(message: Message) -> None:
+    result = await client.chat_extension.get_threads_async(refresh_expired_media=True)
+
+client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message_receiver_async))
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -154,6 +161,16 @@ client.addMessageReceiver('text/plain', async (message) => {
         console.log(item);
     });  
 });
+```
+
+```python
+async def message_receiver_async(message: Message) -> None:
+    result = await client.chat_extension.get_thread_async(
+        '{{user_identity}}',
+        refresh_expired_media=True
+    )
+
+client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message_receiver_async))
 ```
 
 ```http
@@ -273,11 +290,23 @@ If you want to paginate your query to get more than 100 results, you must use th
 
 Get all logged [messages](/#messages). By default, Blip returns the last 100 logged messages.
 
-
 | QueryString | Description                                                              |
 |-------------|--------------------------------------------------------------------------|
 | $skip       | The number of elements to be skipped                                     |
 | $take       | Limit of total of items to be returned. The maximum value allowed is 100 |
+
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {
+            'id': '{{$guid}}',
+            'to': 'postmaster@msging.net',
+            'method': 'get',
+            'uri': '/messages'
+        }
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -288,7 +317,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "get",
-  "uri": "/messages/"
+  "uri": "/messages"
 }
 ```
 
@@ -355,6 +384,19 @@ Get all logged [notifications](/#notifications). By default, Blip returns the la
 <aside class="notice">
 Note: You can get notifications of a message after a <b>maximum period of 3 days from the current date</b>. All message notifications after that date are inaccessible and will not bet returned.
 </aside>
+
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {
+            'id': '{{$guid}}',
+            'to': 'postmaster@msging.net',
+            'method': 'get',
+            'uri': '/notifications'
+        }
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -439,6 +481,19 @@ Content-Type: application/json
 
 Get all logged [notifications](#notifications) of a specific event type.
 
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {
+            'id': '{{$guid}}',
+            'to': 'postmaster@msging.net',
+            'method': 'get',
+            'uri': '/notifications?event=received'
+        }
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -519,6 +574,19 @@ Content-Type: application/json
 Get all logged [notifications](#notifications) of a specific [message](/#messages).
 
 Replace `{messageId}` with the message id.
+
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {
+            'id': '{{$guid}}',
+            'to': 'postmaster@msging.net',
+            'method': 'get',
+            'uri': '/notifications?id={messageId}'
+        }
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1

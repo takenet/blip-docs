@@ -46,6 +46,20 @@ client.sendMessage({
     });
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'to':'104222@telegram.gw.msging.net',
+            'type':'application/vnd.lime.chatstate+json',
+            'content': {
+                'state': 'composing'
+            }
+        }
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
@@ -60,29 +74,29 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-| MIME type                                 |
-|-------------------------------------------|
+| MIME type                           |
+|-------------------------------------|
 | application/vnd.lime.chatstate+json |
 
 Allows sending and receiving information about the conversation's current status. Possible status are:
 
-| State        | Description                          |
-|---------------|------------------------------------|
-| *starting*    | Initiating new conversation |
-| *composing*   | Typing/preparing a message  |
-| *paused*      | New message typing interrupted, message not sent   |
-| *deleting*    | Deleting message (which was being prepared) |
-| *gone*        | Exit/Conversation finished  |
+| State       | Description                                      |
+|-------------|--------------------------------------------------|
+| *starting*  | Initiating new conversation                      |
+| *composing* | Typing/preparing a message                       |
+| *paused*    | New message typing interrupted, message not sent |
+| *deleting*  | Deleting message (which was being prepared)      |
+| *gone*      | Exit/Conversation finished                       |
 
 In general, there is no need to receive delivery notifications messages with this content, thus it is recommended to omit the *Id* in these messages. For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#chatstate) specification.
 
 #### Channel mapping
 
-| Channel              | Type      | Supported states      |
-|----------------------|-----------|-------------------------|
-| Blip Chat            | Chat State | All |
-| Messenger            | [Sender Actions](https://developers.facebook.com/docs/messenger-platform/send-api-reference/sender-actions) and [Referral](https://developers.facebook.com/docs/messenger-platform/webhook-reference/referral) | *composing* and *paused* (sending only) and *starting* (referral of an existing thread)|
-| Whatsapp           | - | None |
-| SMS                | - | None |
-| Skype              | - | None |
-| Telegram           | [SendChatAction](https://core.telegram.org/bots/api#sendchataction) | *composing* (sending only) |
+| Channel   | Type                                                                                                                                                                                                           | Supported states                                                                        |
+|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
+| Blip Chat | Chat State                                                                                                                                                                                                     | All                                                                                     |
+| Messenger | [Sender Actions](https://developers.facebook.com/docs/messenger-platform/send-api-reference/sender-actions) and [Referral](https://developers.facebook.com/docs/messenger-platform/webhook-reference/referral) | *composing* and *paused* (sending only) and *starting* (referral of an existing thread) |
+| Whatsapp  | -                                                                                                                                                                                                              | None                                                                                    |
+| SMS       | -                                                                                                                                                                                                              | None                                                                                    |
+| Skype     | -                                                                                                                                                                                                              | None                                                                                    |
+| Telegram  | [SendChatAction](https://core.telegram.org/bots/api#sendchataction)                                                                                                                                            | *composing* (sending only)                                                              |

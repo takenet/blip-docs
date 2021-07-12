@@ -73,6 +73,33 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
     });
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '1',
+            'to': '1042221589186385%40messenger.gw.msging.net@pagseguro.gw.msging.net',
+            'type': 'application/vnd.lime.invoice+json',
+            'content': {
+                'created':'2016-08-26T19:03:37.024Z',
+                'dueTo':'2016-08-27T19:03:37.024Z',
+                'currency':'BRL',
+                'total':10.85,
+                'items':[
+                    {
+                        'quantity':1.0,
+                        'unit':10.85,
+                        'currency':'BRL',
+                        'total':10.85,
+                        'description':'Subscription for product: Hit'
+                    }
+                ]
+            }
+        }
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
@@ -101,8 +128,8 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 
-| MIME type                            |
-|--------------------------------------|
+| MIME type                         |
+|-----------------------------------|
 | application/vnd.lime.invoice+json |
 
 Allows sending of a payment request to a payment channel.

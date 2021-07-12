@@ -4,25 +4,25 @@ The **profile** extension allows the configuration of chatbot profile properties
 
 To manage chatbot's profile information, send commands with the following properties:
 
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| method    | The command verb  |
-| resource | The profile property document. |
-| type | The resource document type  |
-| uri    | **/profile**   |
-| to     | **postmaster@msging.net** (not required) |
+| Name     | Description                              |
+|----------|------------------------------------------|
+| id       | Unique identifier of the command.        |
+| method   | The command verb                         |
+| resource | The profile property document.           |
+| type     | The resource document type               |
+| uri      | **/profile**                             |
+| to       | **postmaster@msging.net** (not required) |
 
 The command's properties `resource` and `method` can change according to the feature.
 
 The current supported profile properties are:
 
-| Name             | Identifier        | Document type     | Supported channels  |
-|------------------|-------------------|-------------------|---------------------|
-| Start button     | `get-started`     | Text              | Messenger, Blip Chat           |
-| Start button label     | `get-started-label`     | Text              | Messenger, Blip Chat           |
-| Greeting message | `greeting`        | Text              | Messenger, Blip Chat           |
-| Persistent menu  | `persistent-menu` | Multimedia menu   | Messenger           |
+| Name               | Identifier          | Document type   | Supported channels   |
+|--------------------|---------------------|-----------------|----------------------|
+| Start button       | `get-started`       | Text            | Messenger, Blip Chat |
+| Start button label | `get-started-label` | Text            | Messenger, Blip Chat |
+| Greeting message   | `greeting`          | Text            | Messenger, Blip Chat |
+| Persistent menu    | `persistent-menu`   | Multimedia menu | Messenger            |
 
 Note: In Messenger, the value of `get-started` must be defined before the value of `persistent-menu`.
 
@@ -65,6 +65,16 @@ client.sendCommand({
   method: Lime.CommandMethod.DELETE,
   uri: "/profile/{propertyIdentifier}"
 })
+```
+
+```python
+result = await client.process_command_async(
+  Command(
+    CommandMethod.DELETE,
+    '/profile/{propertyIdentifier}',
+    to='postmaster@msging.net'
+  )
+)
 ```
 
 ```csharp
@@ -118,6 +128,16 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+  Command(
+    CommandMethod.GET,
+    '/profile',
+    to='postmaster@msging.net'
+  )
+)
+```
+
 ```javascript
 client.sendCommand({
   id: Lime.Guid(),
@@ -143,7 +163,8 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 Get a message for each profile property.
 
 Replace `{propertyIdentifier}` with one of the possible properties:  
-* get-started  
+
+* get-started
 * get-started-label  
 * greeting  
 * persistent-menu  
@@ -175,6 +196,16 @@ Content-Type: application/json
   "type": "text/plain",
   "resource": "Hello and welcome to our service!"
 }
+```
+
+```python
+result = await client.process_command_async(
+  Command(
+    CommandMethod.GET,
+    '/profile/{propertyIdentifier}',
+    to='postmaster@msging.net'
+  )
+)
 ```
 
 ```javascript
@@ -228,6 +259,17 @@ Content-Type: application/json
   "method": "set",
   "status": "success"
 }
+```
+
+```python
+result = await client.process_command_async(
+  Command(
+    CommandMethod.SET,
+    '/profile/get-started',
+    'text/plain',
+    'Let\'s begin'
+  )
+)
 ```
 
 ```javascript
@@ -301,6 +343,17 @@ Content-Type: application/json
   "method": "set",
   "status": "success"
 }
+```
+
+```python
+result = await client.process_command_async(
+  Command(
+    CommandMethod.SET,
+    '/profile/get-started-label',
+    'text/plain',
+    'Start now'
+  )
+)
 ```
 
 ```javascript
@@ -461,6 +514,94 @@ Content-Type: application/json
   "method": "set",
   "status": "success"
 }
+```
+
+```python
+result = await client.process_command_async(
+  Command(
+    CommandMethod.SET,
+    '/profile/get-started',
+    'application/vnd.lime.document-select+json',
+    {
+      'options': [
+        {
+          'label': {
+            'type': 'application/vnd.lime.document-select+json',
+            'value': {
+              'header': {
+                'type': 'text/plain',
+                'value': 'Option 1'
+              },
+              'options': [
+                {
+                  'label': {
+                    'type': 'text/plain',
+                    'value': 'Option 1.1'
+                  }
+                },
+                {
+                  'label': {
+                    'type': 'application/vnd.lime.web-link+json',
+                    'value': {
+                      'text': 'Option 1.2',
+                      'uri': 'https://address.com/option1.2'
+                    }
+                  }
+                },
+                {
+                  'label': {
+                    'type': 'application/vnd.lime.document-select+json',
+                    'value': {
+                      'header': {
+                        'type': 'text/plain',
+                        'value': 'Option 1.3'
+                      },
+                      'options': [
+                        {
+                          'label': {
+                            'type': 'text/plain',
+                            'value': 'Option 1.3.1'
+                          }
+                        },
+                        {
+                          'label': {
+                            'type': 'text/plain',
+                            'value': 'Option 1.3.2'
+                          }
+                        },
+                        {
+                          'label': {
+                            'type': 'text/plain',
+                            'value': 'Option 1.3.3'
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          'label': {
+            'type': 'text/plain',
+            'value': 'Option 2'
+          }
+        },
+        {
+          'label': {
+            'type': 'application/vnd.lime.web-link+json',
+            'value': {
+              'text': 'Option 3',
+              'uri': 'https://address.com/option1.3'
+            }
+          }
+        }
+      ]
+    }
+  )
+)
 ```
 
 ```javascript
@@ -723,6 +864,17 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+  Command(
+    CommandMethod.SET,
+    '/profile/greeting',
+    'text/plain',
+    'Hello and welcome to our service!'
+  )
+)
+```
+
 ```javascript
 client.sendCommand({
   id: Lime.Guid(),
@@ -846,7 +998,39 @@ client.sendCommand({
         ]
     }
 })
-``` 
+```
+
+```python
+result = await client.process_command_async(
+  Command(
+    CommandMethod.SET,
+    '/profile/persistent-menu',
+    'application/vnd.lime.document-select+json',
+    {
+        'options': [
+        {
+            'label': {
+              'type': 'text/plain',
+              'value': 'Option 1'
+            }
+        },
+        {
+            'label': {
+              'type': 'text/plain',
+              'value': 'Option 2'
+            }
+        },
+        {
+            'label': {
+              'type': 'text/plain',
+              'value': 'Option 3'
+            }
+        }
+      ]
+    }
+  )
+)
+```
 
 ```csharp
 using System.Threading;

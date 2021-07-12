@@ -11,6 +11,7 @@ To create a tunnel between two *chatbots*, the **sender** needs to send a messag
 ```
 [receiver-identifier]@tunnel.msging.net/[originator-address]
 ```
+
 Where:
 
 - **receiver-identifier** - The identifier of the bot that should receive the forwarded message
@@ -22,15 +23,16 @@ The receiver receives messages, sends notifications and response messages to an 
 ```
 [tunnel-id]@tunnel.msging.net
 ```
+
 Where:
 
 - **tunnel-id** - Unique tunnel id, which represents the **sender**, **receiver** and **originator** (original address of who sent the message) addresses.
 
-|Address                      | Base URI      |
-|------------------------------|---------------|
-| postmaster@tunnel.msging.net | N/A           |
+| Address                      | Base URI |
+|------------------------------|----------|
+| postmaster@tunnel.msging.net | N/A      |
 
-###Creating Flow Bot(5 steps)
+### Creating Flow Bot(5 steps)
 
 Imagine a scenario where there are two bots: **flow** and **operator**, where the first is responsible for presenting an automatic navigation and the second receiving the handover of an eventual manual attendance. Only the **flow** bot is published in *Messenger* and it needs, at a certain point in its flow, to forward the messages to the **operator** bot that controls the manual attendance.
 
@@ -65,11 +67,21 @@ Authorization: Key {YOUR_TOKEN}
 
 ```javascript
 client.sendMessage({
-        id: Lime.Guid(),
-        to: "operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net",
-        type: "text/plain",
-        content: "Hello, I would like to talk to an attendant"
-      })
+    id: Lime.Guid(),
+    to: "operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net",
+    type: "text/plain",
+    content: "Hello, I would like to talk to an attendant"
+})
+```
+
+```python
+client.send_message(
+    Message(
+        'text/plain',
+        'Hello, I would like to talk to an attendant',
+        to='operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net'
+    )
+)
 ```
 
 Internally, the server creates an **id** for the tunnel and forwards the message to the **operator** bot, which receives it as follows:
@@ -89,16 +101,24 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 ```javascript
-    {
-        id: 1,
-        from: "ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net",
-        to: "operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net",
-        type: "text/plain",
-        content: "Hello, I would like to talk to an attendant"
-    }
-
+{
+    id: 1,
+    from: "ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net",
+    to: "operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net",
+    type: "text/plain",
+    content: "Hello, I would like to talk to an attendant"
+}
 ```
 
+```python
+{
+    'id': 1,
+    'from': "ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net",
+    'to': "operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net",
+    'type': "text/plain",
+    'content': "Hello, I would like to talk to an attendant"
+}
+```
 
 The operator bot generates a reply to the message and forwards it to the source address, **without differentiating a message received directly from a channel** (the same goes for received/consumed notifications):
 
@@ -116,12 +136,22 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 ```javascript
-client.senMessage({
-        id: Lime.Guid(),
-        to: "ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net",
-        type: "text/plain",
-        content: "Hi, my name is Andre. How may I help you?"
-      })
+client.sendMessage({
+    id: Lime.Guid(),
+    to: "ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net",
+    type: "text/plain",
+    content: "Hi, my name is Andre. How may I help you?"
+})
+```
+
+```python
+client.send_message(
+    Message(
+        'text/plain',
+        'Hi, my name is Andre. How may I help you?',
+        to='ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net'
+    )
+)
 ```
 
 The server uses the tunnel **id** to change the address of the response message and forwards it to the **flow** bot:
@@ -142,12 +172,23 @@ Authorization: Key {YOUR_TOKEN}
 
 ```javascript
 client.sendMessage({
-        id: Lime.Guid(),
-        from: "operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net",
-        to: "flow@msging.net/instance",
-        type: "text/plain",
-        content: "Hi, my name is Andre. How may I help you?"
-      })
+    id: Lime.Guid(),
+    from: "operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net",
+    to: "flow@msging.net/instance",
+    type: "text/plain",
+    content: "Hi, my name is Andre. How may I help you?"
+})
+```
+
+```python
+client.send_message(
+    Message(
+        'text/plain',
+        'Hi, my name is Andre. How may I help you?',
+        from_n='operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net',
+        to='flow@msging.net/instance'
+    )
+)
 ```
 
 The bot flow identifies the message received from a **receiver**, decodes the original address that is in **instance** and sends the message to the final recipient:
@@ -171,6 +212,15 @@ Authorization: Key {YOUR_TOKEN}
     to: "1654804277843415@messenger.gw.msging.net",
     type: "text/plain",
     content: "Hi, my name is Andre. How may I help you?"
+}
+```
+
+```python
+{
+    'id': "2",
+    'to': "1654804277843415@messenger.gw.msging.net",
+    'type': "text/plain",
+    'content': "Hi, my name is Andre. How may I help you?"
 }
 ```
 
@@ -221,6 +271,16 @@ client.sendCommand({
 })
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/tunnes/{tunnelId}',
+        to='postmaster@tunnel.msging.net'
+    )
+)
+```
+
 ```csharp
 var command = new Command(){
     Id = EnvelopeId.NewId(),
@@ -229,7 +289,6 @@ var command = new Command(){
     Uri = new LimeUri("/tunnels/{tunnelId}")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
-}
 ```
 
 ### Querying information
@@ -253,11 +312,20 @@ Authorization: Key {YOUR_TOKEN}
 
 ```javascript
 client.sendCommand({
-        id: Lime.Guid(),
-        to: "flow@msging.net/instance",
-        type: "text/plain",
-        content: "Hi, my name is Andre. How may I help you?"
-      })
+    id: Lime.Guid(),
+    method: Lime.CommandMethod.GET,
+    to: "postmaster@tunnel.msging.net",
+    uri: "lime://tunnel.msging.net/accounts/ecb99cf5-fb5c-4376-8acd-4b478091de15"
+})
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        'lime://tunnel.msging.net/accounts/ecb99cf5-fb5c-4376-8acd-4b478091de15'
+    )
+)
 ```
 
 The server identifies that the query is for a tunnel user and performs the query **on behalf of the sender** directly in its contacts roster and returns the information:
@@ -292,6 +360,20 @@ Authorization: Key {YOUR_TOKEN}
         gender: "male"
     }
 }
+```
+
+```python
+<class='Command'
+    'id': '3'
+    'to': 'operator@msging.net/instance'
+    'method':'get'
+    'status': 'success'
+    'type_n': 'application/vnd.lime.account+json'
+    'resource': <class='dict'
+        'fullName': 'John Deere'
+        'gender': 'male'
+    >
+>
 ```
 
 For more information about the contacts extension, please refer to the [extension documentation](https://docs.blip.ai/?http#contacts).

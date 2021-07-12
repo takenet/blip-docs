@@ -124,6 +124,53 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '1',
+            'to': '1042221589186385@messenger.gw.msging.net',
+            'type': 'application/vnd.lime.document-select+json',
+            'content': {
+                'header': {
+                    'type': 'application/vnd.lime.media-link+json',
+                    'value': {
+                        'title': 'Welcome to mad hatter',
+                        'text': 'Here we have the best hats for your head.',
+                        'type': 'image/jpeg',
+                        'uri': 'http://petersapparel.parseapp.com/img/item100-thumb.png',
+                        'aspectRatio': '1:1'
+                    }
+                },
+                'options': [
+                    {
+                        'label': {
+                            'type': 'application/vnd.lime.web-link+json',
+                            'value': {
+                                'text': 'Go to our site',
+                                'uri': 'https://petersapparel.parseapp.com/view_item?item_id=100'
+                            }
+                        }
+                    },
+                    {
+                        'label': {
+                            'type': 'text/plain',
+                            'value': 'Show stock'
+                        },
+                        'value': {
+                            'type': 'application/json',
+                            'value': {
+                                'action': 'show-items'
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    )
+)
+```
+
 ```javascript
     client.sendMessage({
       id: Lime.Guid(),
@@ -435,6 +482,108 @@ namespace MessageTypes
         }
     });
 ```
+
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '5',
+            'to': '1042221589186385@messenger.gw.msging.net',
+            'type': 'application/vnd.lime.collection+json',
+            'content': {
+                'itemType': 'application/vnd.lime.document-select+json',
+                'items': [
+                    {
+                        'header': {
+                            'type': 'application/vnd.lime.media-link+json',
+                            'value': {
+                                'title': 'Title',
+                                'text': 'This is a first item',
+                                'type': 'image/jpeg',
+                                'uri': 'http://www.isharearena.com/wp-content/uploads/2012/12/wallpaper-281049.jpg'
+                            }
+                        },
+                        'options': [
+                            {
+                                'label': {
+                                    'type': 'application/vnd.lime.web-link+json',
+                                    'value': {
+                                        'title': 'Link',
+                                        'uri': 'http://www.adoteumgatinho.org.br'
+                                    }
+                                }
+                            },
+                            {
+                                'label': {
+                                    'type': 'text/plain',
+                                    'value': 'Text 1'
+                                },
+                                'value': {
+                                    'type': 'application/json',
+                                    'value': {
+                                        'key1': 'value1',
+                                        'key2': '2'
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        'header': {
+                            'type': 'application/vnd.lime.media-link+json',
+                            'value': {
+                                'title': 'Title 2',
+                                'text': 'This is another item',
+                                'type': 'image/jpeg',
+                                'uri': 'http://www.freedigitalphotos.net/images/img/homepage/87357.jpg'
+                            }
+                        },
+                        'options': [
+                            {
+                                'label': {
+                                    'type': 'application/vnd.lime.web-link+json',
+                                    'value': {
+                                        'title': 'Second link',
+                                        'text': 'Weblink',
+                                        'uri': 'https://pt.dreamstime.com/foto-de-stock-brinquedo-pl%C3%A1stico-amarelo-do-pato-image44982058'
+                                    }
+                                }
+                            },
+                            {
+                                'label': {
+                                    'type': 'text/plain',
+                                    'value': 'Second text'
+                                },
+                                'value': {
+                                    'type': 'application/json',
+                                    'value': {
+                                        'key3': 'value3',
+                                        'key4': '4'
+                                    }
+                                }
+                            },
+                            {
+                                'label': {
+                                    'type': 'text/plain',
+                                    'value': 'More one text'
+                                },
+                                'value': {
+                                    'type': 'application/json',
+                                    'value': {
+                                        'key5': 'value5',
+                                        'key6': '6'
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
@@ -536,22 +685,22 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-| Messenger                              |                                              |
-|----------------------------------------|----------------------------------------------|
-| ![imagem](images/carrosel_mssngr.png)  | ![imagem](images/carrosel2_mssngr.png)       |
+| Messenger                             |                                        |
+|---------------------------------------|----------------------------------------|
+| ![imagem](images/carrosel_mssngr.png) | ![imagem](images/carrosel2_mssngr.png) |
 
-| BLiPChat                                  |                                           |
-|-------------------------------------------|-------------------------------------------|
-| ![imagem](images/carrossel_blipchat2.png) | ![imagem](images/carrossel_blipchat.png)  |
+| BLiPChat                                  |                                          |
+|-------------------------------------------|------------------------------------------|
+| ![imagem](images/carrossel_blipchat2.png) | ![imagem](images/carrossel_blipchat.png) |
 
 
 ### Multimedia Menu Channel mapping
 
-| Channel            | Type                    |
-|--------------------|-------------------------|
-| Blip Chat          | Document select         |
-| Messenger          | [Generic template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/generic-template)|
-| Whatsapp           | Text                   |
-| SMS                | Text                   |
-| Skype              | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1)|
-| Telegram           | [Message](https://core.telegram.org/bots/api#message)|
+| Channel   | Type                                                                                                            |
+|-----------|-----------------------------------------------------------------------------------------------------------------|
+| Blip Chat | Document select                                                                                                 |
+| Messenger | [Generic template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/generic-template) |
+| Whatsapp  | Text                                                                                                            |
+| SMS       | Text                                                                                                            |
+| Skype     | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1)                                  |
+| Telegram  | [Message](https://core.telegram.org/bots/api#message)                                                           |

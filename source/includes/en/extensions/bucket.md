@@ -8,14 +8,14 @@ Each document has an **identifier** which is provided during the write operation
 
 To use the **bucket** extension, send a command with the following properties:
 
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| method    | The command verb  |
-| resource | The document to be stored. |
-| type | The document type |
-| uri    | **/buckets**   |
-| to     | **postmaster@msging.net** (not required) |
+| Name     | Description                              |
+|----------|------------------------------------------|
+| id       | Unique identifier of the command.        |
+| method   | The command verb                         |
+| resource | The document to be stored.               |
+| type     | The document type                        |
+| uri      | **/buckets**                             |
+| to       | **postmaster@msging.net** (not required) |
 
 The command's properties `resource` and `method` can change according to the feature.
 The document to be stored must be passed on the `resource` property.
@@ -48,6 +48,19 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {
+            'id': '{{$guid}}',
+            'to': 'postmaster@msging.net',
+            'method': 'delete',
+            'uri': '/buckets/{documentKey}'
+        }
+    )
+)
+```
+
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({  
@@ -68,6 +81,18 @@ client.addMessageReceiver('text/plain', async (message) => {
         uri: '/buckets/xyz1234'
     });
 });
+```
+
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {  
+            'id': '{{$guid}}',
+            'method': 'get',
+            'uri': '/buckets/xyz1234'
+        }
+    )
+)
 ```
 
 ```http
@@ -174,6 +199,19 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {
+            'id': '{{$guid}}',
+            'to': 'postmaster@msging.net',
+            'method': 'get',
+            'uri': '/buckets'
+        }
+    )
+)
+```
+
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({
@@ -199,6 +237,26 @@ client.addMessageReceiver('text/plain', async (message) => {
         }
     });
 });
+```
+
+```python
+async def message_receiver_async(message: Message) -> None:
+    result = await client.process_command_async(
+        Command.from_json(
+            {  
+                'id': '{{$guid}}',
+                'method': 'set',
+                'uri': '/buckets/abcd9876?expiration=30000',
+                'type': 'application/x-my-type+json',
+                'resource': {  
+                    'myTypeKey1': 'value1',
+                    'myTypeKey2': 2
+                }
+            }
+        )
+    )
+
+client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message_receiver_async))
 ```
 
 ```http
@@ -318,6 +376,29 @@ client.addMessageReceiver('text/plain', async (message) => {
         }
     });
 });
+```
+
+```python
+async def message_receiver_async(message: Message) -> None:
+    result = await client.process_command_async(
+        Command.from_json(
+            {  
+                'id': '{{$guid}}',
+                'method': 'set',
+                'uri': '/buckets/xyz1234',
+                'type': 'application/json',
+                'resource': {  
+                    'key1': 'value1',
+                    'key2': 2,
+                    'key3': [  
+                    '3a', '3b', '3c'
+                    ]
+                }
+            }
+        )
+    )
+
+client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message_receiver_async))
 ```
 
 ```http

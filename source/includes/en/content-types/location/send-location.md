@@ -48,6 +48,24 @@ client.sendMessage({
     });
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '1',
+            'type': 'application/vnd.lime.location+json',
+            'to': '128271320123982@messenger.gw.msging.net',
+            'content': {
+                'latitude': -19.919715,
+                'longitude': -43.959753,
+                'altitude': 853,
+                'text': 'Take\'s place'
+            }
+        }
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
@@ -70,6 +88,6 @@ You can send a location by using [location](/#location).
 
 Sending a location with latitude, longitude and altitude:
 
-| Messenger                         | BLiPChat                                           |
-|-----------------------------------|----------------------------------------------------|
-| ![imagem](images/location_request_mssngr.png) | ![imagem](sendLocationBLipChat.png)    |
+| Messenger                                     | BLiPChat                            |
+|-----------------------------------------------|-------------------------------------|
+| ![imagem](images/location_request_mssngr.png) | ![imagem](sendLocationBLipChat.png) |

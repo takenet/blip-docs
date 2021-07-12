@@ -38,6 +38,7 @@ namespace MessageTypes
     }
 }
 ```
+
 ```javascript
 client.sendMessage({
       id: Lime.Guid(),
@@ -54,6 +55,28 @@ client.sendMessage({
         }
       }
     });
+```
+
+```python
+client.send_message(
+  Message.from_json(
+    {
+      'id': '1',
+      'type': 'application/vnd.lime.input+json',
+      'to': '128271320123982@messenger.gw.msging.net',
+      'content': {
+        'label': {
+          'type': 'text/plain',
+          'value': 'Send your location please!'
+        },
+        'validation': {
+          'rule': 'type',
+          'type': 'application/vnd.lime.location+json'
+        }
+      }
+    }
+  )
+)
 ```
 
 ```http
@@ -83,8 +106,8 @@ You can send a location request by using [input](/#user-input) content-type
 
 Sending a location request:
 
-| Messenger                         | BLiPChat                                          |
-|-----------------------------------|---------------------------------------------------|
-| ![imagem](images/input_location_mssngr.png) | ![imagem](inputLocationBlipCHat.png)    |
+| Messenger                                   | BLiPChat                             |
+|---------------------------------------------|--------------------------------------|
+| ![imagem](images/input_location_mssngr.png) | ![imagem](inputLocationBlipCHat.png) |
 
 

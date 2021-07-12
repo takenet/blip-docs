@@ -158,17 +158,17 @@ Content-Type: application/json
 
 * Result codes for requests
 
-| Code                | Description                                                                               |
-|---------------------|-----------------------------------------------------------------------------------------  |
-| 202 (Accepted)      | Envelope was accepted by the server                                                       |
-| 400 (Bad Request)   | Alert to some problem with format or fields of sent envelope.                             |
-| 401 (Unauthorized)  | Alert to some problem or *Authorization* header missing                                   |
+| Code               | Description                                                   |
+|--------------------|---------------------------------------------------------------|
+| 202 (Accepted)     | Envelope was accepted by the server                           |
+| 400 (Bad Request)  | Alert to some problem with format or fields of sent envelope. |
+| 401 (Unauthorized) | Alert to some problem or *Authorization* header missing       |
 
 * Required Settings
 
-| Name                          | Description                                                                   |
-|-------------------------------|-------------------------------------------------------------------------------|
-| Url to receive messages       | Endpoint where Blip will post the messages                                    |
-| Url to receive notification   | Endpoint where Blip will post the notifications                               |
+| Name                        | Description                                     |
+|-----------------------------|-------------------------------------------------|
+| Url to receive messages     | Endpoint where Blip will post the messages      |
+| Url to receive notification | Endpoint where Blip will post the notifications |
 
 

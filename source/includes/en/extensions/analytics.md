@@ -5,14 +5,13 @@ The **analytics** extension allows chatbot's metrics and event tracking in order
 
 To use any feature of **analytics** extension, send a command with the following properties:
 
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| method    | The command verb.  |
-| resource | The analytics document. |
-| uris    | **/event-track**, **/reports**, **/metrics** or **/statistics**   |
-| to     | **postmaster@analytics.msging.net** |
-
+| Name     | Description                                                     |
+|----------|-----------------------------------------------------------------|
+| id       | Unique identifier of the command.                               |
+| method   | The command verb.                                               |
+| resource | The analytics document.                                         |
+| uris     | **/event-track**, **/reports**, **/metrics** or **/statistics** |
+| to       | **postmaster@analytics.msging.net**                             |
 
 ### Create an event
 
@@ -31,6 +30,13 @@ client.addMessageReceiver('text/plain', async (message) => {
     }
   });
 });
+```
+
+```python
+await client.analytics_extension.create_event_track_async(
+    'billing',
+    'payment'
+)
 ```
 
 ```http
@@ -113,6 +119,14 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+await client.analytics_extension.create_event_track_async(
+    'billing',
+    'payment',
+    '123456@messenger.gw.msging.net'
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -179,7 +193,6 @@ namespace Extensions
 It is possible to associate a specific contact in an event. You can use this to ignore events of a tester user for example.
 If your bot has a `123456@messenger.gw.msging.net` contact identity as a tester user, you can ignore all of its tracked events by adding this identity to the event resource object.
 
-
 ### Get event categories
 
 ```javascript
@@ -193,6 +206,13 @@ client.addMessageReceiver('text/plain', async (message) => {
         console.log(item);
   });
 });
+```
+
+```python
+categories = await client.analytics_extension.get_categories_async()
+
+for category in categories.resource['items']:
+    print(category)
 ```
 
 ```http
@@ -264,10 +284,10 @@ namespace Extensions
 
 Retrieves all tracked categories.
 
-| QueryString     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **$skip** |The number of elements to be skipped.                                |    0    |
-| **$take** | Limit of total of items to be returned. Values between 1 and 10000 are allowed. If the value is not allowed, an error will be returned. |   100   |
+| QueryString | Description                                                                                                                             | Example |
+|-------------|-----------------------------------------------------------------------------------------------------------------------------------------|---------|
+| **$skip**   | The number of elements to be skipped.                                                                                                   | 0       |
+| **$take**   | Limit of total of items to be returned. Values between 1 and 10000 are allowed. If the value is not allowed, an error will be returned. | 100     |
 
 ### Get event counters
 
@@ -282,6 +302,18 @@ client.addMessageReceiver('text/plain', async (message) => {
     console.log(item);
   });
 });
+```
+
+```python
+actions = await client.analytics_extension.get_category_actions_counter_async(
+    'payments',
+    '2019-06-21',
+    '2019-06-28',
+    10
+)
+
+for action in actions.resource['items']:
+    print(action)
 ```
 
 ```http
@@ -364,12 +396,12 @@ namespace Extensions
 
 To retrieve all counters of a category, add the category name to the command uri (for instance **/event-track/payments**). Those counters represent the number of events tracked in a specific pair of action and categories grouped by days. It is also possible to add *query strings* parameters as request filters. The following filters are available:
 
-| QueryString  | Description                               | <div style="min-width:6em">Example</div> |
-|--------------|-------------------------------------------|--------------|
-| **$take**        | Limit of total of items to be returned. Values between 1 and 10000 are allowed. If the value is not allowed, an error will be returned.   | 100 |
-| **$skip** |The number of elements to be skipped.         | 0 |
-| **startDate**    | Initial date to search for events.        | 2019-06-21 |
-| **endDate**      | Limit date to retrieve the events.        | 2019-06-28 |
+| QueryString   | Description                                                                                                                             | <div style="min-width:6em">Example</div> |
+|---------------|-----------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
+| **$take**     | Limit of total of items to be returned. Values between 1 and 10000 are allowed. If the value is not allowed, an error will be returned. | 100                                      |
+| **$skip**     | The number of elements to be skipped.                                                                                                   | 0                                        |
+| **startDate** | Initial date to search for events.                                                                                                      | 2019-06-21                               |
+| **endDate**   | Limit date to retrieve the events.                                                                                                      | 2019-06-28                               |
 
 ### Get event details
 
@@ -385,6 +417,19 @@ client.addMessageReceiver('text/plain', async (message) => {
     console.log(item);
   });
 });
+```
+
+```python
+events = await client.analytics_extension.get_event_details_async(
+    'payments',
+    'success-order',
+    '2019-06-21',
+    '2019-06-28',
+    10
+)
+
+for event in events.resource['items']:
+    print(event)
 ```
 
 ```http
@@ -473,12 +518,12 @@ namespace Extensions
 
 Retrieves all events tracked with a specific pair of action and categories. The following filters are available as possible *query strings*:
 
-| QueryString  | Description                               | <div style="min-width:6em">Example</div> |
-|--------------|-------------------------------------------|---------|
-| **$skip**         | Number of items to be skipped for paging. | 0 |
-| **$take**        | Limit of total of items to be returned. Values between 1 and 500 are allowed. If the value is not allowed, an error will be returned.   | 100 |
-| **startDate**    | Initial date to search for events.        | 2019-06-21 |
-| **endDate**      | Limit date to retrieve the events.        | 2019-06-28 |
+| QueryString   | Description                                                                                                                           | <div style="min-width:6em">Example</div> |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
+| **$skip**     | Number of items to be skipped for paging.                                                                                             | 0                                        |
+| **$take**     | Limit of total of items to be returned. Values between 1 and 500 are allowed. If the value is not allowed, an error will be returned. | 100                                      |
+| **startDate** | Initial date to search for events.                                                                                                    | 2019-06-21                               |
+| **endDate**   | Limit date to retrieve the events.                                                                                                    | 2019-06-28                               |
 
 <aside class="notice">
 By default, the request returns <b>only today's data</b>. Use the filters to increase the date range.
@@ -498,6 +543,10 @@ client.addMessageReceiver('text/plain', async (message) => {
        uri: "/event-track/{categoryName}"
     });
 });
+```
+
+```python
+await client.analytics_extension.delete_category_async('categoryName')
 ```
 
 ```http
@@ -565,6 +614,26 @@ namespace Extensions
 Create a new report.
 
 You must send a [report](/#report) document, informing your data.
+
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {  
+            'id': '{{$guid}}',
+            'to': 'postmaster@analytics.msging.net',
+            'method': CommandMethod.SET,
+            'uri': '/reports',
+            'type': 'application/vnd.iris.report+json',
+            'resource': {
+                'id': 'd0b4f58a-664c-4c46-8d07-016ef5d5788ec',
+                'name': 'Testing',
+                'isPrivate': True,
+                'ownerUserIdentity': 'jonh%40email.net@blip.ai'
+            }
+        }
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -645,6 +714,28 @@ Add a [charts](/#chart) in a specific [report](/#report).
 
 Replace `{reportId}` with the report id you want to add a chart into.
 
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {  
+            'id': '{{$guid}}',
+            'to': 'postmaster@analytics.msging.net',
+            'method': CommandMethod.SET,
+            'uri': '/reports/{reportId}/charts',
+            'type': 'application/vnd.iris.chart+json',
+            'resource': {
+                'id': '14444-2995-492b-ab18-016ef01055e55',
+                'name': 'My Users Metrics',
+                'chartType': 'pie',
+                'dimension': 'users',
+                'category': 'activeUsers',
+                'order': 1
+            }
+        }
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -689,7 +780,6 @@ Content-Type: application/json
 }
 ```
 
-
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
@@ -732,11 +822,24 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Get a collection of [reports](/#report).
 
-| QueryString     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **$skip** |The number of elements to be skipped.                                |    0    |
-| **$take** | Limit of total of items to be returned.                               |   100   |
-| **$ascending** | Sets ascending alphabetical order.                                |    true    |
+| QueryString    | Description                             | Example |
+|----------------|-----------------------------------------|---------|
+| **$skip**      | The number of elements to be skipped.   | 0       |
+| **$take**      | Limit of total of items to be returned. | 100     |
+| **$ascending** | Sets ascending alphabetical order.      | true    |
+
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {  
+            'id': '{{$guid}}',
+            'to': 'postmaster@analytics.msging.net',
+            'method': CommandMethod.GET,
+            'uri': '/reports'
+        }
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -810,6 +913,19 @@ Get a specific [report](/#report) by id.
 
 Replace `{reportId}` with the report id you want to get.
 
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {  
+            'id': '{{$guid}}',
+            'to': 'postmaster@analytics.msging.net',
+            'method': CommandMethod.GET,
+            'uri': '/reports/{reportId}'
+        }   
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -868,11 +984,24 @@ Get a collection of [charts](/#chart) in a [report](/#report).
 
 Replace `{reportId}` with the report id you want to get the charts in.
 
-| QueryString     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **$skip** |The number of elements to be skipped.                                |    0    |
-| **$take** | Limit of total of items to be returned. Values between 1 and 1000 are allowed. If the value is not allowed, an error will be returned.                               |   100   |
-| **$ascending** | Sets ascending alphabetical order.                                |    true    |
+| QueryString    | Description                                                                                                                            | Example |
+|----------------|----------------------------------------------------------------------------------------------------------------------------------------|---------|
+| **$skip**      | The number of elements to be skipped.                                                                                                  | 0       |
+| **$take**      | Limit of total of items to be returned. Values between 1 and 1000 are allowed. If the value is not allowed, an error will be returned. | 100     |
+| **$ascending** | Sets ascending alphabetical order.                                                                                                     | true    |
+
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {  
+            'id': '{{$guid}}',
+            'to': 'postmaster@analytics.msging.net',
+            'method': CommandMethod.GET,
+            'uri': '/reports/{reportId}/charts'
+        }
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -923,7 +1052,6 @@ client.sendCommand({
 })
 ```
 
-
 ```csharp
 var command = new Command(){
     Id = EnvelopeId.NewId(),
@@ -941,6 +1069,28 @@ You can update a specific [chart](/#chart) in a [report](/#report).
 
 Replace `{reportId}` with the report id you want to update the chart into.
 Replace `{chartId}` with the chart id you want to update.
+
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {  
+            'id': '{{$guid}}',
+            'to': 'postmaster@analytics.msging.net',
+            'method': CommandMethod.SET,
+            'uri': '/reports/{reportId}/charts/{chartId}',
+            'type': 'application/vnd.iris.chart+json',
+            'resource': {
+                'id': '{chartId}',
+                'name': 'My Users Metrics',
+                'chartType': 'list',
+                'dimension': 'users',
+                'category': 'activeUsers',
+                'order': 1
+            }
+        }
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -1022,6 +1172,19 @@ Delete a specific [chart](/#chart) from a specific [report](/#report).
 Replace `{reportId}` with the report id you want to delete the chart from.
 Replace `{chartId}` with the chart id you want to delete.
 
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {  
+            'id': '{{$guid}}',
+            'to': 'postmaster@analytics.msging.net',
+            'method': CommandMethod.DELETE,
+            'uri': '/reports/{reportId}/charts/{chartId}'
+        }
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -1074,6 +1237,19 @@ If you need to delete a specific [report](/#report) use the following command.
 
 Remember to replace `{reportId}` with the report id you want delete.
 
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {
+            'id': '{{$guid}}',
+            'to': 'postmaster@analytics.msging.net',
+            'method': CommandMethod.DELETE,
+            'uri': '/reports/{reportId}'
+        }  
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -1109,7 +1285,6 @@ client.sendCommand({
 })
 ```
 
-
 ```csharp
 var command = new Command(){
     Id = EnvelopeId.NewId(),
@@ -1126,6 +1301,19 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 Get the [metrics](/#metricindicators) of active messages by an interval.
 
 Replace `{interval}` with the date interval you want to get the metrics.
+
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {  
+            'id': '{{$guid}}',
+            'to': 'postmaster@analytics.msging.net',
+            'method': CommandMethod.GET,
+            'uri': '/metrics/active-messages/{interval}'
+        }
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -1192,11 +1380,11 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Your interval must have one of this statistics interval:
 
-| Interval   | Description                           | QueryString                                       |
-|------------|---------------------------------------|---------------------------------------------------|
-| Daily      | Statistics collected at each day      | D?startDate=**DATE**&endDate=**DATE**           |
-| Monthly    | Statistics collected at each month    | M?startDate=**DATE**&endDate=**DATE**           |
-| NoInterval | Statistics collected with no interval | NI?startDate=**DATE**&endDate=**DATE**          |
+| Interval   | Description                           | QueryString                            |
+|------------|---------------------------------------|----------------------------------------|
+| Daily      | Statistics collected at each day      | D?startDate=**DATE**&endDate=**DATE**  |
+| Monthly    | Statistics collected at each month    | M?startDate=**DATE**&endDate=**DATE**  |
+| NoInterval | Statistics collected with no interval | NI?startDate=**DATE**&endDate=**DATE** |
 
 <aside clas="notice">
 <i>Example: If you want to get a <b>Daily</b> metric, starting from december 12 to december 14:</i>
@@ -1210,6 +1398,19 @@ Your interval must have one of this statistics interval:
 Get the [metrics](/#metricindicators) of active messages per domain by an interval.
 
 Replace `{interval}` with the date interval you want to get the metrics.
+
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {  
+            'id': '{{$guid}}',
+            'to': 'postmaster@analytics.msging.net',
+            'method': CommandMethod.GET,
+            'uri': '/metrics/active-messages-per-domain/{interval}'
+        }
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -1278,11 +1479,11 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Your interval must have one of this statistics interval:
 
-| Interval   | Description                           | QueryString                                       |
-|------------|---------------------------------------|---------------------------------------------------|
-| Daily      | Statistics collected at each day      | D?startDate=**DATE**&endDate=**DATE**           |
-| Monthly    | Statistics collected at each month    | M?startDate=**DATE**&endDate=**DATE**           |
-| NoInterval | Statistics collected with no interval | NI?startDate=**DATE**&endDate=**DATE**          |
+| Interval   | Description                           | QueryString                            |
+|------------|---------------------------------------|----------------------------------------|
+| Daily      | Statistics collected at each day      | D?startDate=**DATE**&endDate=**DATE**  |
+| Monthly    | Statistics collected at each month    | M?startDate=**DATE**&endDate=**DATE**  |
+| NoInterval | Statistics collected with no interval | NI?startDate=**DATE**&endDate=**DATE** |
 
 <aside clas="notice">
 <i>Example: If you want to get a <b>Daily</b> metric, starting from march 01 to march 05:</i>
@@ -1296,6 +1497,19 @@ Your interval must have one of this statistics interval:
 Get the [metrics](/#metricindicators) of active users by an interval.
 
 Replace `{interval}` with the date interval you want to get the metrics.
+
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {  
+            'id': '{{$guid}}',
+            'to': 'postmaster@analytics.msging.net',
+            'method': CommandMethod.GET,
+            'uri': '/metrics/active-identity/{interval}'
+        }
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -1377,11 +1591,11 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Your interval must have one of this statistics interval:
 
-| Interval   | Description                           | QueryString                                       |
-|------------|---------------------------------------|---------------------------------------------------|
-| Daily      | Statistics collected at each day      | D?startDate=**DATE**&endDate=**DATE**           |
-| Monthly    | Statistics collected at each month    | M?startDate=**DATE**&endDate=**DATE**           |
-| NoInterval | Statistics collected with no interval | NI?startDate=**DATE**&endDate=**DATE**          |
+| Interval   | Description                           | QueryString                            |
+|------------|---------------------------------------|----------------------------------------|
+| Daily      | Statistics collected at each day      | D?startDate=**DATE**&endDate=**DATE**  |
+| Monthly    | Statistics collected at each month    | M?startDate=**DATE**&endDate=**DATE**  |
+| NoInterval | Statistics collected with no interval | NI?startDate=**DATE**&endDate=**DATE** |
 
 <aside clas="notice">
 <i>Example: If you want to get a <b>Daily</b> metric, starting from december 12 to december 14:</i>
@@ -1395,6 +1609,19 @@ Your interval must have one of this statistics interval:
 Get the [metrics](/#metricindicators) of engaged users by an interval.
 
 Replace `{interval}` with the date interval you want to get the metrics.
+
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {  
+            'id': '{{$guid}}',
+            'to': 'postmaster@analytics.msging.net',
+            'method': CommandMethod.GET,
+            'uri': '/metrics/engaged-identity/{interval}'
+        }
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -1463,7 +1690,6 @@ client.sendCommand({
 })
 ```
 
-
 ```csharp
 var command = new Command(){
     Id = EnvelopeId.NewId(),
@@ -1477,11 +1703,11 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Your interval must have one of this statistics interval:
 
-| Interval   | Description                           | QueryString                                       |
-|------------|---------------------------------------|---------------------------------------------------|
-| Daily      | Statistics collected at each day      | D?startDate=**DATE**&endDate=**DATE**           |
-| Monthly    | Statistics collected at each month    | M?startDate=**DATE**&endDate=**DATE**           |
-| NoInterval | Statistics collected with no interval | NI?startDate=**DATE**&endDate=**DATE**          |
+| Interval   | Description                           | QueryString                            |
+|------------|---------------------------------------|----------------------------------------|
+| Daily      | Statistics collected at each day      | D?startDate=**DATE**&endDate=**DATE**  |
+| Monthly    | Statistics collected at each month    | M?startDate=**DATE**&endDate=**DATE**  |
+| NoInterval | Statistics collected with no interval | NI?startDate=**DATE**&endDate=**DATE** |
 
 <aside clas="notice">
 <i>Example: If you want to get a <b>Daily</b> metric, starting from december 12 to december 14:</i>
@@ -1495,6 +1721,19 @@ Your interval must have one of this statistics interval:
 Get the [metrics](/#metricindicators) of received messages by an interval.
 
 Replace `{interval}` with the date interval you want to get the metrics.
+
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {  
+            'id': '{{$guid}}',
+            'to': 'postmaster@analytics.msging.net',
+            'method': CommandMethod.GET,
+            'uri': '/metrics/received-messages/{interval}'
+        }
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -1548,7 +1787,6 @@ client.sendCommand({
 })
 ```
 
-
 ```csharp
 var command = new Command(){
     Id = EnvelopeId.NewId(),
@@ -1562,11 +1800,11 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Your interval must have one of this statistics interval:
 
-| Interval   | Description                           | QueryString                                       |
-|------------|---------------------------------------|---------------------------------------------------|
-| Daily      | Statistics collected at each day      | D?startDate=**DATE**&endDate=**DATE**           |
-| Monthly    | Statistics collected at each month    | M?startDate=**DATE**&endDate=**DATE**           |
-| NoInterval | Statistics collected with no interval | NI?startDate=**DATE**&endDate=**DATE**          |
+| Interval   | Description                           | QueryString                            |
+|------------|---------------------------------------|----------------------------------------|
+| Daily      | Statistics collected at each day      | D?startDate=**DATE**&endDate=**DATE**  |
+| Monthly    | Statistics collected at each month    | M?startDate=**DATE**&endDate=**DATE**  |
+| NoInterval | Statistics collected with no interval | NI?startDate=**DATE**&endDate=**DATE** |
 
 <aside clas="notice">
 <i>Example: If you want to get a <b>Monthly</b> metric, starting from november 05 to december 09:</i>
@@ -1580,6 +1818,19 @@ Your interval must have one of this statistics interval:
 Get the [metrics](/#metricindicators) of sent messages by an interval.
 
 Replace `{interval}` with the date interval you want to get the metrics.
+
+```python
+result = await client.process_command_async(
+    Command.from_json(
+        {  
+            'id': '{{$guid}}',
+            'to': 'postmaster@analytics.msging.net',
+            'method': CommandMethod.GET,
+            'uri': '/metrics/sent-messages/{interval}'
+        }
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -1648,7 +1899,6 @@ client.sendCommand({
 })
 ```
 
-
 ```csharp
 var command = new Command(){
     Id = EnvelopeId.NewId(),
@@ -1662,11 +1912,11 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Your interval must have one of this statistics interval:
 
-| Interval   | Description                           | QueryString                                       |
-|------------|---------------------------------------|---------------------------------------------------|
-| Daily      | Statistics collected at each day      | D?startDate=**DATE**&endDate=**DATE**           |
-| Monthly    | Statistics collected at each month    | M?startDate=**DATE**&endDate=**DATE**           |
-| NoInterval | Statistics collected with no interval | NI?startDate=**DATE**&endDate=**DATE**          |
+| Interval   | Description                           | QueryString                            |
+|------------|---------------------------------------|----------------------------------------|
+| Daily      | Statistics collected at each day      | D?startDate=**DATE**&endDate=**DATE**  |
+| Monthly    | Statistics collected at each month    | M?startDate=**DATE**&endDate=**DATE**  |
+| NoInterval | Statistics collected with no interval | NI?startDate=**DATE**&endDate=**DATE** |
 
 <aside clas="notice">
 <i>Example: If you want to get a <b>Daily</b> metric, starting from december 12 to december 14:</i>

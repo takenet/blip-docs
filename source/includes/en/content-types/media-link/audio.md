@@ -46,6 +46,23 @@ client.sendMessage({
     });
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '1',
+            'type': 'application/vnd.lime.media-link+json',
+            'to': '128271320123982@messenger.gw.msging.net',
+            'content': {
+                'type': 'audio/mp3',
+                'uri': 'http://blaamandagjazzband.dk/jazz/mp3/basin_street_blues.mp3',
+                'size': 3124123
+            }
+        }
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
@@ -67,6 +84,6 @@ You can send sounds by uploading them or sharing a URL using the [Media Link](/#
 
 <!-- ![imagem](images/audio_mssngr.png) -->
 
-| Messenger                         | BLiPChat                              |
-|-----------------------------------|---------------------------------------|
-| ![imagem](images/audio_mssngr.png)|![imagem](images/isComing.png)    |
+| Messenger                          | BLiPChat                       |
+|------------------------------------|--------------------------------|
+| ![imagem](images/audio_mssngr.png) | ![imagem](images/isComing.png) |

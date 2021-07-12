@@ -4,6 +4,7 @@ title: API Reference
 language_tabs: # must be one of https://git.io/vQNgJ
   - csharp: C#
   - javascript: JavaScript
+  - python: Python
   - http: HTTP  
 
 toc_footers:
@@ -33,7 +34,8 @@ includes:
   - en/getting-started/builder/getting-started-builder
   - en/getting-started/csharp/getting-started-csharp
   - en/getting-started/js/getting-started-js
-  - en/getting-started/http/getting-started-http  
+  - en/getting-started/python/getting-started-python
+  - en/getting-started/http/getting-started-http
   - en/getting-started/postman-collection  
 
 # Add a content type keeping the order

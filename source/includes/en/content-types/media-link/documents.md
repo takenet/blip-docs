@@ -53,6 +53,24 @@ client.sendMessage({
     });
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '1',
+            'type': 'application/vnd.lime.media-link+json',
+            'to': '128271320123982@messenger.gw.msging.net',
+            'content': {
+                'title': 'pdf_open_parameters.pdf',
+                'uri': 'https://gradcollege.okstate.edu/sites/default/files/PDF_linking.pdf',
+                'type': 'application/pdf',
+                'size': 5540
+            }
+        }
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
@@ -73,6 +91,6 @@ Authorization: Key {YOUR_TOKEN}
 
 You can send documents like PDF's by uploading them or sharing a URL using the [Media Link](/#media-link) content type.
 
-| Messenger                         | BLiPChat                                   |
-|-----------------------------------|--------------------------------------------|
-| ![imagem](images/pdf_mssngr.png)  | ![imagem](images/pdfBlipChat.png)          |
+| Messenger                        | BLiPChat                          |
+|----------------------------------|-----------------------------------|
+| ![imagem](images/pdf_mssngr.png) | ![imagem](images/pdfBlipChat.png) |

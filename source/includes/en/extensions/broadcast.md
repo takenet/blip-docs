@@ -1,6 +1,6 @@
 ## Broadcast
 
-The **broadcast** extension allows creation and management of distribution lists and their members for sending messages to multiple destinations simultaneously. 
+The **broadcast** extension allows creation and management of distribution lists and their members for sending messages to multiple destinations simultaneously.
 
 Each distribution list has a unique address in the format `list-name@broadcast.msging.net` in addition to the members, who are the recipients of messages sent to this list. Only the chatbot that created a remote list has permission to send messages to it.
 
@@ -9,7 +9,7 @@ Notifications are forwarded to the chatbot when received by the extension.
 In order to use **broadcast** extension features, you must send commands with the following properties:
 
 | Name     | Description                                       |
-| -------- | ------------------------------------------------- |
+|----------|---------------------------------------------------|
 | id       | Unique identifier of the command.                 |
 | method   | The command verb                                  |
 | resource | The schedule document.                            |
@@ -21,7 +21,7 @@ The command's properties `resource` and `method` can change according to the fea
 An schedule object passed as a document `resource` has the following properties:
 
 | Property     | Description                        | Example                   |
-| ------------ | ---------------------------------- | ------------------------- |
+|--------------|------------------------------------|---------------------------|
 | **identity** | Identifier of a distribution list. | news@broadcast.msging.net |
 
 #### Default list
@@ -38,15 +38,14 @@ It is possible to use contact replacement variables in the sent messages. For mo
 
 The Broadcast service is available in the following domains:
 
-|Domain     |Available  |Observation                                            |
-|---	      |---	      |---                                                    |
-|Messenger  |x          |Needed initial user interaction with chatbot           |
-|Blip Chat  |x          |Not necessary initial user interaction with chatbot    |
-|Skype      |x          |Needed initial user interaction with chatbot           |
-|SMS        |x          |Not necessary initial user interaction with chatbot    |
-|Telegram   |x          |Needed initial user interaction with chatbot           |
-|Workplace  |x          |Needed initial user interaction with chatbot           |
-
+| Domain    | Available | Observation                                         |
+|-----------|-----------|-----------------------------------------------------|
+| Messenger | x         | Needed initial user interaction with chatbot        |
+| Blip Chat | x         | Not necessary initial user interaction with chatbot |
+| Skype     | x         | Needed initial user interaction with chatbot        |
+| SMS       | x         | Not necessary initial user interaction with chatbot |
+| Telegram  | x         | Needed initial user interaction with chatbot        |
+| Workplace | x         | Needed initial user interaction with chatbot        |
 
 ### Create a list
 
@@ -63,6 +62,23 @@ client.addMessageReceiver('text/plain', async (message) => {
     }
   });
 });
+```
+
+```python
+result = await client.process_command_async(
+  Command.from_json(
+    {  
+      'id': '{{$guid}}1',
+      'to': 'postmaster@broadcast.msging.net',
+      'method': 'set',
+      'type': 'application/vnd.iris.distribution-list+json',
+      'uri': '/lists',
+      'resource': {  
+        'identity': 'your_distributionList@broadcast.msging.net'
+      }
+    }
+  )
+)
 ```
 
 ```http
@@ -139,6 +155,19 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.process_command_async(
+  Command.from_json(
+    {  
+      'id': '{{$guid}}',
+      'to': 'postmaster@broadcast.msging.net',
+      'method': 'get',
+      'uri': '/lists'
+    }
+  )
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -206,6 +235,7 @@ namespace Extensions
 To get all distribution lists associated with your chatbot, you must send a command with `GET` method.
 
 ### Delete a list
+
 Delete a distribution lists.
 
 ```javascript
@@ -216,6 +246,19 @@ client.addMessageReceiver('text/plain', async (message) => {
         uri: '/lists/{{distribution_list_name}}@broadcast.msging.net'
     });
 });
+```
+
+```python
+result = await client.process_command_async(
+  Command.from_json(
+    {  
+      'id': '{{$guid}}',
+      'to': 'postmaster@broadcast.msging.net',
+      'method': 'delete',
+      'uri': '/lists/{{distribution_list_name}}@broadcast.msging.net'
+    }
+  )
+)
 ```
 
 ```http
@@ -293,6 +336,21 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.process_command_async(
+  Command.from_json(
+    {  
+      'id': '{{$guid}}',
+      'to': 'postmaster@broadcast.msging.net',
+      'method': 'set',
+      'uri': '/lists/your_distributionList@broadcast.msging.net/recipients',
+      'type': 'application/vnd.lime.identity',
+      'resource': '551100001111@0mn.io'
+    }
+  )
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -366,6 +424,19 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.process_command_async(
+  Command.from_json(
+    {  
+      'id': '{{$guid}}',
+      'to': 'postmaster@broadcast.msging.net',
+      'method': 'delete',
+      'uri': '/lists/your_distributionList@broadcast.msging.net/recipients/551100001111@0mn.io'
+    }
+  )
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -434,6 +505,19 @@ client.addMessageReceiver('text/plain', async (message) => {
     uri: "/lists/your_distributionList@broadcast.msging.net/recipients?$skip=0&$take=5"
   });
 });
+```
+
+```python
+result = await client.process_command_async(
+  Command.from_json(
+    {  
+      'id': '{{$guid}}',
+      'to': 'postmaster@broadcast.msging.net',
+      'method': 'get',
+      'uri': '/lists/your_distributionList@broadcast.msging.net/recipients?$skip=0&$take=5'
+    }
+  )
+)
 ```
 
 ```http
@@ -506,12 +590,11 @@ namespace Extensions
 To get all members of a distribution list, you must send a command with `GET` method and command URI with the list identifier (`/lists/your_distributionList@broadcast.msging.net/recipients`)
 
 | Property | Description                          | Example |
-| -------- | ------------------------------------ | ------- |
+|----------|--------------------------------------|---------|
 | **skip** | The number of members to be skipped  | 0       |
 | **take** | The number of members to be returned | 100     |
 
-
-###Send message
+### Send message
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
@@ -522,6 +605,19 @@ client.addMessageReceiver('text/plain', async (message) => {
     content: 'Hello participants of this list!'
   });
 });
+```
+
+```python
+def message_receiver(message: Message) -> None:
+  client.send_message(
+    Message(
+      'text/plain',
+      'Hello participants of this list!',
+      to='your_distributionList@broadcast.msging.net'
+    )
+  )
+
+client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message_receiver))
 ```
 
 ```http
@@ -605,6 +701,19 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+def message_receiver(message: Message) -> None:
+  client.send_message(
+    Message(
+      'text/plain',
+      'Hello ${contact.name}, come to check out our prices!',
+      to='your_distributionList@broadcast.msging.net'
+    )
+  )
+
+client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message_receiver))
+```
+
 ```http
 POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
@@ -649,7 +758,7 @@ namespace Extensions
 ```
 
 <aside class="notice">
-Note: To make your broadcast more personal, you can also replace contact variables in messages sent to a distribution list. 
+Note: To make your broadcast more personal, you can also replace contact variables in messages sent to a distribution list.
 </aside>
 
 For more information, please check the documentation of the [**Contacts** extension](#contacts).

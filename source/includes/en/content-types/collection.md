@@ -66,22 +66,41 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
     });
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'to': '553199990000@0mn.io',
+            'type': 'application/vnd.lime.collection+json',
+            'content': {
+                'itemType': 'text/plain',
+                'items': [
+                    'Text 1',
+                    'Text 2',
+                    'Text 3'
+                ]
+            }   
+        }
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-	"to": "553199990000@0mn.io",
-	"type": "application/vnd.lime.collection+json",
-	"content": {
-		"itemType": "text/plain",
-		"items": [
+    "to": "553199990000@0mn.io",
+    "type": "application/vnd.lime.collection+json",
+    "content": {
+        "itemType": "text/plain",
+        "items": [
             "Text 1",
             "Text 2",
             "Text 3"
-		]
-	}
+        ]
+    }   
 }
 ```
 
@@ -188,43 +207,83 @@ client.sendMessage({
 });
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'to': '553199990000@0mn.io',
+            'type': 'application/vnd.lime.collection+json',
+            'content': {
+            'itemType': 'application/vnd.lime.container+json',
+            'items': [
+                {
+                    'type': 'application/vnd.lime.media-link+json',
+                    'value': {
+                        'text': 'Welcome to our store!',
+                        'type': 'image/jpeg',
+                        'uri': 'http://www.petshoplovers.com/wp-content/uploads/2014/03/CUIDADOS-B%C3%81SICOS-PARA-CRIAR-COELHOS.jpg'
+                    }
+                },
+                {
+                    'type': 'application/vnd.lime.select+json',
+                    'value': {
+                        'text': 'Choose what you need',
+                        'options': [
+                            {
+                                'order': 1,
+                                'text': 'See our stock'
+                            },
+                            {
+                                'order': 2,
+                                'text': 'Follow an order'
+                            }
+                        ]
+                    }
+                }
+            ]
+            }
+        }
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-	"to": "553199990000@0mn.io",
-	"type": "application/vnd.lime.collection+json",
-	"content": {
-		"itemType": "application/vnd.lime.container+json",
-		"items": [
-			{
-				"type": "application/vnd.lime.media-link+json",
-				"value": {
-					"text": "Welcome to our store!",
-					"type": "image/jpeg",
-					"uri": "http://www.petshoplovers.com/wp-content/uploads/2014/03/CUIDADOS-B%C3%81SICOS-PARA-CRIAR-COELHOS.jpg"
-				}
-			},
-			{
-				"type": "application/vnd.lime.select+json",
-				"value": {
-					"text": "Choose what you need",
-					"options": [
-					    {
-					        "order": 1,
-					        "text": "See our stock"
-					    },
-					    {
-					        "order": 2,
-					        "text": "Follow an order"
-					    }
-					]
-				}
-			}
-		]
-	}
+    "to": "553199990000@0mn.io",
+    "type": "application/vnd.lime.collection+json",
+    "content": {
+       "itemType": "application/vnd.lime.container+json",
+       "items": [
+           {
+               "type": "application/vnd.lime.media-link+json",
+               "value": {
+                   "text": "Welcome to our store!",
+                   "type": "image/jpeg",
+                   "uri": "http://www.petshoplovers.com/wp-content/uploads/2014/03/CUIDADOS-B%C3%81SICOS-PARA-CRIAR-COELHOS.jpg"
+               }
+           },
+           {
+               "type": "application/vnd.lime.select+json",
+               "value": {
+                   "text": "Choose what you need",
+                   "options": [
+                       {
+                           "order": 1,
+                           "text": "See our stock"
+                       },
+                       {
+                           "order": 2,
+                           "text": "Follow an order"
+                       }
+                   ]
+               }
+           }
+       ]
+    }
 }
 
 ```
@@ -477,6 +536,107 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
     });
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '5',
+            'to': '1042221589186385@messenger.gw.msging.net',
+            'type': 'application/vnd.lime.collection+json',
+            'content': {
+                'itemType': 'application/vnd.lime.document-select+json',
+                'items': [
+                    {
+                        'header': {
+                            'type': 'application/vnd.lime.media-link+json',
+                            'value': {
+                                'title': 'Title',
+                                'text': 'This is a first item',
+                                'type': 'image/jpeg',
+                                'uri': 'http://www.isharearena.com/wp-content/uploads/2012/12/wallpaper-281049.jpg'
+                            }
+                        },
+                        'options': [
+                            {
+                                'label': {
+                                    'type': 'application/vnd.lime.web-link+json',
+                                    'value': {
+                                        'title': 'Link',
+                                        'uri': 'http://www.adoteumgatinho.org.br'
+                                    }
+                                }
+                            },
+                            {
+                                'label': {
+                                    'type': 'text/plain',
+                                    'value': 'Text 1'
+                                },
+                                'value': {
+                                    'type': 'application/json',
+                                    'value': {
+                                        'key1': 'value1',
+                                        'key2': 2
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        'header': {
+                            'type': 'application/vnd.lime.media-link+json',
+                            'value': {
+                                'title': 'Title 2',
+                                'text': 'This is another item',
+                                'type': 'image/jpeg',
+                                'uri': 'http://www.freedigitalphotos.net/images/img/homepage/87357.jpg'
+                            }
+                        },
+                        'options': [
+                            {
+                                'label': {
+                                    'type': 'application/vnd.lime.web-link+json',
+                                    'value': {
+                                        'title': 'Second link',
+                                        'text': 'Weblink',
+                                        'uri': 'https://pt.dreamstime.com/foto-de-stock-brinquedo-pl%C3%A1stico-amarelo-do-pato-image44982058'
+                                    }
+                                }
+                            },
+                            {
+                                'label': {
+                                    'type': 'text/plain',
+                                    'value': 'Second text'
+                                },
+                                'value': {
+                                    'type': 'application/json',
+                                    'value': {
+                                        'key3': 'value3',
+                                        'key4': 4
+                                    }
+                                }
+                            },
+                            {
+                                'label': {
+                                    'type': 'text/plain',
+                                    'value': 'More one text'
+                                },
+                                'value': {
+                                    'type': 'application/json',
+                                    'value': {
+                                        'key5': 'value5',
+                                        'key6': 6
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
@@ -578,9 +738,9 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
-| MIME type                            | C#                                 |
-|--------------------------------------|------------------------------------|
-| application/vnd.lime.collection+json | [Lime.Protocol.DocumentCollection](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Protocol/DocumentCollection.cs)|
+| MIME type                            | C#                                                                                                                             |
+|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| application/vnd.lime.collection+json | [Lime.Protocol.DocumentCollection](https://github.com/takenet/lime-csharp/blob/master/src/Lime.Protocol/DocumentCollection.cs) |
 
 Allows sending **multiple contents** of the same type in a single message. Some channels support this type of aggregation with special layouts (for example, in Facebook Messenger a **multimedia menu** collection is displayed as a *carousel*). In other channels, multiple messages are sent instead.
 
@@ -590,11 +750,11 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 
 #### Channel mapping
 
-| Channel              | Type                    |
-|--------------------|---------------------------|
-| Blip Chat           | Collection               |
-| Messenger          | Multiple messages / [Generic template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/generic-template) (if is a **multimedia menu** collection)|
-| WhatsApp           | Text (multiple lines) |
-| SMS                | Text (multiple lines) |
-| Skype              | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1) (multiple lines)|
-| Telegram           | [Message](https://core.telegram.org/bots/api#message) (multiple lines)|
+| Channel   | Type                                                                                                                                                                         |
+|-----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Blip Chat | Collection                                                                                                                                                                   |
+| Messenger | Multiple messages / [Generic template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/generic-template) (if is a **multimedia menu** collection) |
+| WhatsApp  | Text (multiple lines)                                                                                                                                                        |
+| SMS       | Text (multiple lines)                                                                                                                                                        |
+| Skype     | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1) (multiple lines)                                                                              |
+| Telegram  | [Message](https://core.telegram.org/bots/api#message) (multiple lines)                                                                                                       |

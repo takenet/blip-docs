@@ -41,6 +41,19 @@ client.connect()
     });
 ```
 
+```python
+message = Message(
+    id='1',
+    type_n='text/plain',
+    content='Hello, world',
+    to='553199990000@0mn.io'
+)
+
+await client.connect_async()
+
+client.send_message(message)
+```
+
 <blockquote class="lang-specific http">
 <p>For this sample bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ is a valid Key. You must to change this key</p>
 </blockquote>
@@ -64,13 +77,13 @@ The process of sending message is asynchronous and the status of sent messages i
 
 For more information about messages, check the [messages section](#messages) or the [supported content types specification](#content-types).
 
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the message   |
-| from   | Originator’s address   |
-| to     | Recipient’s address  |
-| type   | Statement with content type, in the MIME format |
-| content  | Message content   |
+| Name    | Description                                     |
+|---------|-------------------------------------------------|
+| id      | Unique identifier of the message                |
+| from    | Originator’s address                            |
+| to      | Recipient’s address                             |
+| type    | Statement with content type, in the MIME format |
+| content | Message content                                 |
 
 ### Receiving messages
 
@@ -121,6 +134,24 @@ var removeJsonReceiver = client.addMessageReceiver("application/json", handleJso
 // ...
 removeJsonReceiver();
 ```
+
+```python
+def message_processor(message: Message) -> None:
+    # Process received message
+    pass
+
+# Add simple message receiver example
+client.add_message_receiver(Receiver(True, message_processor))
+
+# Example of message receiver with filter of originator
+client.add_message_receiver(Receiver(lambda m: m.from == '553199990000@0mn.io', message_processor))
+
+# Each registration of receivers return a `handler` that can be used to cancell the registration:
+remove_json_receiver = client.add_message_receiver(Receiver(lambda m: m.type_n == 'application/json', lambda m: print(m)))
+# ...
+remove_json_receiver()
+```
+
 <blockquote class="lang-specific http">
 <p>All messages will be delivered as a HTTP POST request on configured chatbot messages URL. A sample of received message is presented below.</p>
 </blockquote>

@@ -59,6 +59,28 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
     });
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '1',
+            'type': 'application/vnd.lime.media-link+json',
+            'to': '128271320123982@messenger.gw.msging.net',
+            'content': {
+                'title': 'Cat',
+                'text': 'Here is a cat image for you!',
+                'type': 'image/jpeg',
+                'uri': 'http://2.bp.blogspot.com/-pATX0YgNSFs/VP-82AQKcuI/AAAAAAAALSU/Vet9e7Qsjjw/s1600/Cat-hd-wallpapers.jpg',
+                'aspectRatio': '1:1',
+                'size': 227791,
+                'previewUri': 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8qkelB28RstsNxLi7gbrwCLsBVmobPjb5IrwKJSuqSnGX4IzX',
+                'previewType': 'image/jpeg'
+            }
+        }
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
@@ -82,6 +104,6 @@ Authorization: Key {YOUR_TOKEN}
 ```
 You can send images by uploading them or sharing a URL using the [Media Link](/#media-link) content type. Supported formats are jpg, png and gif.
 
-| Messenger                         | BLiPChat                                   |
-|-----------------------------------|--------------------------------------------|
-| ![imagem](img_mssngr.png) | ![imagem](imageBlipChat.png)                       |
+| Messenger                 | BLiPChat                     |
+|---------------------------|------------------------------|
+| ![imagem](img_mssngr.png) | ![imagem](imageBlipChat.png) |

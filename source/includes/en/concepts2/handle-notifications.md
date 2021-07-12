@@ -27,6 +27,24 @@ let notification = {
 client.sendNotification(notification);
 ```
 
+<blockquote class="lang-specific python">
+<p>We send a notification using a client object with method <em>send_notification</em></p>
+</blockquote>
+
+```python
+await client.connect_async()
+    
+# Sending "received" notification
+notification = Notification.from_json(
+    {
+        'id': 'ef16284d-09b2-4d91-8220-74008f3a5788',
+        'to': '553199990000@0mn.io',
+        'event': lime_python.NotificationEvent.RECEIVED
+    }
+)
+client.send_notification(notification)
+```
+
 ```csharp
 public class PlainTextMessageReceiver : IMessageReceiver
 {
@@ -76,12 +94,12 @@ For each message processed, a notification must be sent with the consumed event.
 
 REQUEST
 
-| Name | Description |
-|---------------------------------|--------------|
-|  id    | Identifier of the related message   |
-| from   | Notification originator’s address   |
-| to     | Notification recipient’s address  |
-| event  | Event related to the message |
+| Name   | Description                                                            |
+|--------|------------------------------------------------------------------------|
+| id     | Identifier of the related message                                      |
+| from   | Notification originator’s address                                      |
+| to     | Notification recipient’s address                                       |
+| event  | Event related to the message                                           |
 | reason | In case of failed events, represents the reason of the message failure |
 
 
@@ -100,6 +118,18 @@ client.addNotificationReceiver("received", function(notification) {
 client.addNotificationReceiver(() => true, function(message) {
   // Process received notifications
 });
+```
+
+<blockquote class="lang-specific python">
+<p>The next sample shows how to add a notification receiver with filter to the `received` event type:</p>
+</blockquote>
+
+```python
+def notification_processor(notification: Notification) -> None:
+    # Process received notifications
+    pass
+
+client.add_notification_receiver(Receiver(lambda n: n.event == 'received', notification_processor))
 ```
 
 <blockquote class="lang-specific csharp">

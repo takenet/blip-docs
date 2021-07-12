@@ -49,6 +49,21 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '1',
+            'to': '54f1dd2e-42d2-43f2-9100-68fbbabb9c83@tunnel.msging.net',
+            'type': 'application/vnd.lime.redirect+json',
+            'content': {
+                'address': 'attendance'
+            }
+        }
+    )
+)
+```
+
 ```javascript
 client.sendMessage({
     id: Lime.Guid(),
@@ -120,6 +135,25 @@ Authorization: Key {YOUR_TOKEN}
 }
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '2',
+            'to': '54f1dd2e-42d2-43f2-9100-68fbbabb9c83@tunnel.msging.net',
+            'type': 'application/vnd.lime.redirect+json',
+            'content': {
+                'address': 'mysdkbot@msging.net',
+                'context': {
+                    'type': 'text/plain',
+                    'value': 'Get started'
+                }
+            }
+        }
+    )
+)
+```
+
 ```javascript
 client.sendMessage({
     id: Lime.Guid(),
@@ -149,6 +183,20 @@ Authorization: Key {YOUR_TOKEN}
     "type": "text/plain",
     "content": "Get started"
 }
+```
+
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '3',
+            'from': '2bdcd8d0-9e69-484f-a88a-d5a529708864@tunnel.msging.net',
+            'to': 'mysdkbot@msging.net',
+            'type': 'text/plain',
+            'content': 'Get started'
+        }
+    )
+)
 ```
 
 ```javascript

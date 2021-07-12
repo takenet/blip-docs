@@ -1,4 +1,5 @@
 ## WhatsApp
+
 | FQDN              | Identifier type                                       |
 |-------------------|-------------------------------------------------------|
 | @wa.gw.msging.net | WhatsApp identifier (it's not necessarily the MSISDN) |
@@ -15,6 +16,7 @@ You can use Take Blip's API to send messages and notifications for your customer
 ### Sending a notification (active message)
 
 ##### Prerequisites
+
 ##### 1. Opt-in
 
 An user must first consent to receive messages in WhatsApp by opting into them via a third-party channel. This can be any channel your business uses to communicate with people today — your website, app, email, SMS, retail location, etc.
@@ -62,6 +64,16 @@ Content-Type: application/json
         "#command.uri": "lime://wa.gw.msging.net/accounts/+5531988889999"
     }
 }
+```
+
+```python
+result = await client.process_comand_async(
+    Command(
+        CommandMethod.GET,
+        'lime://wa.gw.msging.net/accounts/+5531988889999',
+        to='postmaster@wa.gw.msging.net'
+    )
+)
 ```
 
 Before sending a notification to a WhatsApp's customers you should get theirs identifier. Using the customer MSISDN (complete phone number), make a request to Take Blip's API as demostrated aside. For instance, a Brazillian customer should be verified using a MSISDN like `+5531988889999`. This request will verify if the MSISDN is registered on WhatsApp and will retrieve its identifier if yes.
@@ -132,6 +144,41 @@ client.connect().then(function(session) {
         }
     });
 });
+```
+
+```python
+client.send_message(
+    Message(
+        'application/json',
+        {
+            'type': 'template',
+            'template': {
+                'namespace': '{{NAMESPACE}}',
+                'name': '{{MESSAGE_TEMPLATE_NAME}}',
+                'language': {
+                    'code': 'pt_BR',
+                    'policy': 'deterministic'
+                },
+                'components': [
+                    {
+                        'type': 'body',
+                        'parameters': [
+                            {
+                                'type': 'text',
+                                'text': 'value1'
+                            },
+                            {
+                                'type': 'text',
+                                'text': 'value2'
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        to='{{customerIdentity}}'
+    )
+)
 ```
 
 ```http

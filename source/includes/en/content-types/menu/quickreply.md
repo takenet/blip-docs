@@ -88,6 +88,40 @@ client.sendMessage({
     });
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id':'311F87C0-F938-4FF3-991A-7C5AEF7771A5',
+            'to':'1042221589186385@messenger.gw.msging.net',
+            'type':'application/vnd.lime.select+json',
+            'content':{
+                'scope':'immediate',
+                'text':'Choose an option',
+                'options':[
+                    {
+                        'text':'First option'
+                    },
+                    {
+                        'order':2,
+                        'text':'Second option'
+                    },
+                    {
+                        'order':3,
+                        'text':'Third option',
+                        'type':'application/json',
+                        'value':{
+                            'key1':'value1',
+                            'key2':2
+                        }
+                    }
+                ]
+            }
+        }
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/messages HTTP/1.1
 Content-Type: application/json
@@ -129,6 +163,6 @@ Quick replies provide a way to present a set of up to 11 buttons in-conversation
 You can send quick replies by using [Select](/#select). To switch between menu and quick reply you only need to change the **scope** attribute. Quick replies requires scope to be **'immediate'**.
 
 
-| Messenger                         | BLiPChat                                   |
-|-----------------------------------|--------------------------------------------|
-| ![imagem](images/quickreply_mssgnr.png) | ![imagem](quickReplyBlipChat.png)    |
+| Messenger                               | BLiPChat                          |
+|-----------------------------------------|-----------------------------------|
+| ![imagem](images/quickreply_mssgnr.png) | ![imagem](quickReplyBlipChat.png) |
