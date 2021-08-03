@@ -340,6 +340,84 @@ Content-Type: application/json
       }
 ```
 
+
+### Get tags
+The `Tags` used to close a [ticket](/#ticket) that can be defined on Tag Manager or on Automatic Closing of Tickets.
+To get all the active tags setted on Desk send a command with `GET` method to `postmaster@desk.msging.net` and URI `/tags/active`.
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "{{$guid}}",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/tags/active"
+}
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/tags/active',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.GET,
+    uri: "/tags/active"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/tags/active"),
+};
+
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
+Server responds with actives tag list
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "get",
+    "status": "success",
+    "id": "8d1f6a56-e287-4a0f-9030-6983c76ad26c",
+    "from": "postmaster@desk.msging.net/#az-iris6",
+    "to": "amt@msging.net/portal-user%40take.net",
+    "type": "application/vnd.lime.collection+json",
+    "metadata": {
+        "#command.uri": "lime://amt@msging.net/tags/active"
+    },
+    "resource": {
+        "total": 1,
+        "itemType": "application/vnd.iris.desk.tag-tickets-summary+json",
+        "items": [
+            {
+              "name": "tag1", 
+              "closedTickets": 0, 
+              "ticketsCount": 0
+            }
+        ]
+    },
+}
+```
+
 ### Assign a ticket to an agent
 
 You can assign a [ticket](/#ticket) to a specific agent to give him the attendance.
