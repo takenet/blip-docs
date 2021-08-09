@@ -453,15 +453,15 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "{{$guid}}",
-  "to": "postmaster@desk.msging.net",
-  "method": "set",
-  "uri": "/tickets/change-status",
-  "type": "application/vnd.iris.ticket+json",
-  "resource": {
-    "id": "{ticketId}",
-    "status": "ClosedAttendant"
-  }
+    "id": "{{$guid}}",
+    "to": "postmaster@desk.msging.net",
+    "method": "set",
+    "uri": "/tickets/change-status",
+    "type": "application/vnd.iris.ticket+json",
+    "resource": {
+        "id": "{ticketId}",
+        "status": "ClosedAttendant"
+    }
 }
 ```
 
@@ -473,8 +473,8 @@ client.sendCommand({
     uri: "/tickets/change-status",
     type: "application/vnd.iris.ticket+json",
     resource: {
-    id: "{ticketId}",
-    status: "ClosedAttendant"
+        id: "{ticketId}",
+        status: "ClosedAttendant"
     }
 });
 ```
@@ -555,8 +555,8 @@ client.sendCommand({
     uri: "/tickets/change-status",
     type: "application/vnd.iris.ticket+json",
     resource: {
-    id: "ba11b95c-7564-4685-b835-8cc76fae6fac",
-    status: "ClosedClient"
+        id: "ba11b95c-7564-4685-b835-8cc76fae6fac",
+        status: "ClosedClient"
     }
 });
 ```
@@ -1261,7 +1261,11 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 ### Finishing a tickets previously closed by customer
 
-The proccess of close a ticket is the last thing to do during an attendance. If a [ticket](/#ticket) is closed by the customer is possible close permanently to unable any data update. In order to finalize permanently a ticket send a command with `SET` method to `postmaster@desk.msging.net` and URI `/tickets/{ticketId}/close` .
+The process of close a ticket is the last thing to do during attendance. Close the ticket using the '[Close a ticket as attendant](/#close-a-ticket-as-user)' or '[Close a ticket as user](/#close-a-ticket-as-user)' commands before using this command. 
+
+If a [ticket](/#ticket) is closed by the customer is possible to close permanently to disable any data update. To permanently finalize a ticket, send a command with the `SET` method to `postmaster@desk.msging.net` and URI `/tickets/{ticketId}/close`.
+
+Replace the variable `{ticketId}` with the ticket id you want to finish.
 
 ```python
 result = await client.process_command_async(
@@ -1270,11 +1274,10 @@ result = await client.process_command_async(
         '/tickets/{ticketId}/close',
         'application/vnd.iris.ticket+json',
         {
-            'customerIdentity': '{customerIdentity}',
-            'id': '{ticketId}',
-            'ownerIdentity': '{botIdentifier}@msging.net',
-            'status': 'ClosedClient',
-            'tags': ['AtendimentoTeste']
+            'closedBy': 'agent%40email.net@blip.ai',
+            'tags': [
+                'TestTag'
+            ]
         },
         to='postmaster@desk.msging.net'
     )
@@ -1287,31 +1290,32 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "{{$guid}}",
-  "to": "postmaster@desk.msging.net",
-  "method": "set",
-  "uri": "/tickets/{ticketId}/close",
-  "resource": {
-    "customerIdentity": "{customerIdentity}",
-    "id": "dfd6a0e4-b109-41f1-8513-01673b93a669",
-    "ownerIdentity": "{botIdentifier}@msging.net",
-    "status": "ClosedClient",
-    "tags": ["AtendimentoTeste"]
-  }
+    "id": "{{$guid}}",
+    "method": "set",
+    "to": "postmaster@desk.msging.net",
+    "uri": "/tickets/{ticketId}/close",
+    "type": "application/vnd.iris.ticket+json",
+    "resource": {
+        "closedBy": "agent%40email.net@blip.ai",
+        "tags": [
+        	"TestTag"
+        ]
+    }
 }
 ```
 
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
+    method: "set",
     to: "postmaster@desk.msging.net",
-    uri: "/tickets/ba11b95c-7564-4685-b835-8cc76fae6fac/close",
+    uri: "/tickets/{ticketId}/close",
+    type: "application/vnd.iris.ticket+json",
     resource: {
-        customerIdentity: "1654804277843415@messenger.gw.msging.net",
-        id: "ba11b95c-7564-4685-b835-8cc76fae6fac",
-        ownerIdentity: "testehome1@msging.net",
-        status: "ClosedClient",
-        tags: ["AtendimentoTeste"]
+        closedBy: "agent%40email.net@blip.ai",
+        tags: [
+            "TestTag"
+        ]
     }
 })
 ```
@@ -1321,19 +1325,20 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Set,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/tickets/change-status"),
-    Resource = new Ticket{
-        CustomerIdentity = "1654804277843415@messenger.gw.msging.net",
-        Id =  "ba11b95c-7564-4685-b835-8cc76fae6fac",
-        OwnerIdentity = "testehome1@msging.net",
-        Status = TicketStatusEnum.ClosedClient,
-        Tags = ["AtendimentoTeste"]
+    Uri = new LimeUri("/tickets/{ticketId}/close"),
+    Type = "application/vnd.iris.ticket+json",
+    Resource = new Ticket
+    {
+        ClosedBy = "agent%40email.net@blip.ai",
+        Tags = [
+            "TestTag"
+        ]
     }
 };
 ```
 
 <aside class="notice">
-Note: The `tags` property can be hide if you didn't set the Tags configurations in Portal.
+Notes: 1) The `tags` property can be hidden if you didn't set the Tags configurations in Portal. 2) If you omit the `ClosedBy` property, we'll use the bot identity to identify the responsible to finish the ticket. 
 </aside>
 
 ### Forwarding received messages from a human agent to a final user
