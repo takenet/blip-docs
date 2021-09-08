@@ -607,8 +607,6 @@ Note: There are some examples about how to filter your query with one of the pro
 <code>filter=(substringof('{value}',{propertyName}))</code><br><br>
 
 <b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(substringof('John Doe'%2Cname))</b>
-
-
 </ul></aside>
 
 ### Send message with contact name
