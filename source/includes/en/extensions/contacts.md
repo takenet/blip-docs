@@ -585,7 +585,7 @@ If you need to get more than one chatbot's contact, you can use a query paginati
 | **$filter**   | Filter to refine a search by contact's properties                                                                                       | $filter=(startswith(name%2C'John'))      |
 
 <aside class="notice">
-Note: There are some examples about how to filter your query with one of the properties of the contact resource, using the <code>filter</code> property:
+Note: Here are some examples about how to filter your query with one of the properties of the contact resource, using the <code>filter</code> property:
 
 <ul>
 <li><h4>StartsWith</h4></li>
