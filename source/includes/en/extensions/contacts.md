@@ -578,8 +578,15 @@ namespace Extensions
 
 If you need to get more than one chatbot's contact, you can use a query pagination. This sample shows how to take the **three first roaster's contacts**.
 
-<aside  class="notice">
-Note: You can also filter your query with one of the properties of the contact resource, using the <code>filter</code> property:
+| QueryString   | Description                                                                                                                             | <div style="min-width:6em">Example</div> |
+|---------------|-----------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
+| **$skip**     | Number of items to be skipped for paging.                                                                                               | 0                                        |
+| **$take**     | Limit of total of items to be returned. Values between 1 and 30000 are allowed. If the value is not allowed, an error will be returned. | 100                                      |
+| **$filter**   | Filter to refine a search by contact's properties                                                                                       | (startswith(name%2C'John'))              |
+
+<aside class="notice">
+Note: Here are some examples about how to filter your query with one of the properties of the contact resource, using the <code>filter</code> property:
+
 <ul>
 <li><h4>StartsWith</h4></li>
 
