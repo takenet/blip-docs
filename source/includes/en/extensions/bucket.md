@@ -2,7 +2,8 @@
 
 The **bucket** extension allows the storage of documents in the server on an isolated chatbot's container. This extension is useful to store information about clients that have interacted with the chatbot, like preferences and navigation state.
 
-Each document has an **identifier** which is provided during the write operation and this identifier should be used for retrieving the value later. It is possible to set an optional **expiration date** for the document. Both the identifier and the expiration date are specified in the **URI** of the command which is sent to the extension.
+Each document has an **identifier** which is provided during the write operation and this identifier should be used for retrieving the value later. This **identifier** should be URI encoded.
+It is possible to set an optional **expiration date** for the document. Both the identifier and the expiration date are specified in the **URI** of the command which is sent to the extension.
 
 **Note: If expiration date is not provided, the document will never expire.**
 
@@ -22,7 +23,7 @@ The document to be stored must be passed on the `resource` property.
 
 ### Delete a Document
 
-Delete a specific document command. Remember to replace `{documentKey}` variable for the document Key that you want delete.
+Delete a specific document identified by the `abcdé 1234` key.
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -33,7 +34,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "delete",
-  "uri": "/buckets/{documentKey}"
+  "uri": "/buckets/abcd%c3%a9%201234"
 }
 ```
 
@@ -55,7 +56,7 @@ result = await client.process_command_async(
             'id': '{{$guid}}',
             'to': 'postmaster@msging.net',
             'method': 'delete',
-            'uri': '/buckets/{documentKey}'
+            'uri': '/buckets/abcd%c3%a9%201234'
         }
     )
 )
@@ -66,7 +67,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({  
         id: Lime.Guid(),
         method: Lime.CommandMethod.DELETE,
-        uri: '/buckets/xyz1234'
+        uri: '/buckets/abcd%c3%a9%201234'
     });
 });
 ```
@@ -78,7 +79,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({  
         id: Lime.Guid(),
         method: Lime.CommandMethod.GET,
-        uri: '/buckets/xyz1234'
+        uri: '/buckets/abcd%c3%a9%201234'
     });
 });
 ```
@@ -89,7 +90,7 @@ result = await client.process_command_async(
         {  
             'id': '{{$guid}}',
             'method': 'get',
-            'uri': '/buckets/xyz1234'
+            'uri': '/buckets/abcd%c3%a9%201234'
         }
     )
 )
@@ -103,7 +104,7 @@ Authorization: Key {YOUR_TOKEN}
 {  
   "id": "{{$guid}}",
   "method": "get",
-  "uri": "/buckets/xyz1234"
+  "uri": "/buckets/abcd%c3%a9%201234"
 }
 ```
 
@@ -149,13 +150,13 @@ namespace Extensions
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
-            var document = await _bucketExtension.GetAsync<JsonDocument>("xyz1234", cancellationToken);
+            var document = await _bucketExtension.GetAsync<JsonDocument>("abcd%c3%a9%201234", cancellationToken);
         }
     }
 }
 ```
 
-Retrieving a JSON document identified by `xyz1234` key.
+Retrieving a JSON document identified by `abcdé 1234` key.
 
 ### Get a document collection
 
@@ -185,7 +186,7 @@ Content-Type: application/json
         "itemType": "text/plain",
         "items": [
             "abcd9876",
-            "xyz1234"
+            "abcdé 1234"
         ]
     },
     "method": "get",
@@ -365,7 +366,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({
         id: Lime.Guid(),
         method: Lime.CommandMethod.SET,
-        uri: '/buckets/xyz1234',
+        uri: '/buckets/abcd%c3%a9%201234',
         type: 'application/json',
         resource: {  
             'key1': 'value1',
@@ -385,7 +386,7 @@ async def message_receiver_async(message: Message) -> None:
             {  
                 'id': '{{$guid}}',
                 'method': 'set',
-                'uri': '/buckets/xyz1234',
+                'uri': '/buckets/abcd%c3%a9%201234',
                 'type': 'application/json',
                 'resource': {  
                     'key1': 'value1',
@@ -409,7 +410,7 @@ Authorization: Key {YOUR_TOKEN}
 {  
   "id": "{{$guid}}",
   "method": "set",
-  "uri": "/buckets/xyz1234",
+  "uri": "/buckets/abcd%c3%a9%201234",
   "type": "application/json",
   "resource": {  
     "key1": "value1",
@@ -461,10 +462,10 @@ namespace Extensions
             jsonDocument.Add("key2", 2);
             jsonDocument.Add("key3", new string[] { "3a", "3b", "3c"} );
 
-            await _bucketExtension.SetAsync("xyz1234", jsonDocument);
+            await _bucketExtension.SetAsync("abcd%c3%a9%201234", jsonDocument);
         }
     }
 }
 ```
 
-Storing a JSON object `{"key1": "value1", "key2": 2, "key3": ["3a", "3b", "3c"]}` identified by `xyz1234` key.
+Storing a JSON object `{"key1": "value1", "key2": 2, "key3": ["3a", "3b", "3c"]}` identified by `abcdé 1234` key.

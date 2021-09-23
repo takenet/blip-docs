@@ -2,6 +2,8 @@
 
 The **resources** extension allows the storage of documents in the server in an isolated space for each chatbot, similar to the **bucket** extension. The main difference is that these documents can be mapped as **contents** for messages sent to the chatbot destinations, through the resource **key**. This means that the chatbot developer can choose to **store the content of its messages in the server** instead of keeping them on the chatbot code side.
 
+**Note: The resource key should always be URI encoded**
+
 To manage all resources programmatically, use **resources** extension sending a command with the following properties:
 
 | Name     | Description                               |
@@ -24,7 +26,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({  
         id: Lime.Guid(),
         method: Lime.CommandMethod.SET,
-        uri: '/resources/xyz1234',
+        uri: '/resources/abcd%c3%a9%201234',
         type: 'application/vnd.lime.media-link+json',
         resource: {
             title: 'Cat',
@@ -44,7 +46,7 @@ async def message_processor_async(message: Message) -> None:
     result = await client.process_command_async(
         Command(
             CommandMethod.SET,
-            '/resources/xyz1234',
+            '/resources/abcd%c3%a9%201234',
             'application/vnd.lime.media-link+json',
             {
                 'title': 'Cat',
@@ -69,7 +71,7 @@ Authorization: Key {YOUR_TOKEN}
 {  
   "id": "{{$guid}}",
   "method": "set",
-  "uri": "/resources/xyz1234",
+  "uri": "/resources/abcd%c3%a9%201234",
   "type": "application/vnd.lime.media-link+json",
   "resource": {
     "title": "Cat",
@@ -94,7 +96,7 @@ Content-Type: application/json
     "from": "postmaster@msging.net/#az-iris3",
     "to": "contact@msging.net",
     "metadata": {
-        "#command.uri": "lime://contact@msging.net/resources/xyz1234"
+        "#command.uri": "lime://contact@msging.net/resources/abcd%c3%a9%201234"
     }
 }
 ```
@@ -132,13 +134,13 @@ namespace Extensions
                 PreviewUri = new Uri("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8qkelB28RstsNxLi7gbrwCLsBVmobPjb5IrwKJSuqSnGX4IzX")
             };
 
-            await _resourceExtension.SetAsync<MediaLink>("xyz1234", mediaLink);
+            await _resourceExtension.SetAsync<MediaLink>("abcd%c3%a9%201234", mediaLink);
         }
     }
 }
 ```
 
-Storing a `media link` document with `xyz1234` key.
+Storing a `media link` document with `abcdé 1234` key.
 
 ### Add a **text/plain** resource
 
@@ -147,7 +149,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({  
         id: Lime.Guid(),
         method: Lime.CommandMethod.SET,
-        uri: '/resources/help-message',
+        uri: '/resources/abcd%c3%a9%201234',
         type: 'text/plain',
         resource: 'To use our services, please send a text message.'
     });
@@ -159,7 +161,7 @@ async def message_processor_async(message: Message) -> None:
     result = await client.process_command_async(
         Command(
             CommandMethod.SET,
-            '/resources/help-message',
+            '/resources/abcd%c3%a9%201234',
             'text/plain',
             'To use our services, please send a text message.'
         )
@@ -176,7 +178,7 @@ Authorization: Key {YOUR_TOKEN}
 {  
   "id": "{{$guid}}",
   "method": "set",
-  "uri": "/resources/help-message",
+  "uri": "/resources/abcd%c3%a9%201234",
   "type": "text/plain",
   "resource": "To use our services, please send a text message."
 }
@@ -193,7 +195,7 @@ Content-Type: application/json
     "from": "postmaster@msging.net/#az-iris6",
     "to": "contact@msging.net",
     "metadata": {
-        "#command.uri": "lime://contact@msging.net/resources/help-message"
+        "#command.uri": "lime://contact@msging.net/resources/abcd%c3%a9%201234"
     }
 }
 ```
@@ -226,13 +228,13 @@ namespace Extensions
                 Text = "To use our services, please send a text message."
             };
 
-            await _resourceExtension.SetAsync<PlainText>("help-message", plainText);   
+            await _resourceExtension.SetAsync<PlainText>("abcd%c3%a9%201234", plainText);   
         }
     }
 }
 ```
 
-Storing a `text plain` document with `help-message` key.
+Storing a `text plain` document with `abcdé 1234` key.
 
 ### Delete a specific resource
 
@@ -241,7 +243,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({  
         id: Lime.Guid(),
         method: Lime.CommandMethod.DELETE,
-        uri: '/resources/xyz1234'
+        uri: '/resources/abcd%c3%a9%201234'
     });
 });
 ```
@@ -251,7 +253,7 @@ async def message_processor_async(message: Message) -> None:
     result = await client.process_command_async(
         Command(
             CommandMethod.DELETE,
-            '/resources/xyz1234'
+            '/resources/abcd%c3%a9%201234'
         )
     )
 
@@ -266,7 +268,7 @@ Authorization: Key {YOUR_TOKEN}
 {  
   "id": "{{$guid}}",
   "method": "delete",
-  "uri": "/resources/xyz1234"
+  "uri": "/resources/abcd%c3%a9%201234"
 }
 ```
 
@@ -281,7 +283,7 @@ Content-Type: application/json
     "from": "postmaster@msging.net/#az-iris1",
     "to": "docstest@msging.net",
     "metadata": {
-        "#command.uri": "lime://docstest@msging.net/resources/xyz1234"
+        "#command.uri": "lime://docstest@msging.net/resources/abcd%c3%a9%201234"
     }
 }
 ```
@@ -306,7 +308,7 @@ namespace Extensions
 
         public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
         {
-            await _resourceExtension.DeleteAsync("xyz1234", cancellationToken);
+            await _resourceExtension.DeleteAsync("abcd%c3%a9%201234", cancellationToken);
         }
     }
 }
@@ -321,7 +323,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     var resource = await client.sendCommand({  
         id: Lime.Guid(),
         method: Lime.CommandMethod.GET,
-        uri: '/resources/xyz1234'
+        uri: '/resources/abcd%c3%a9%201234'
     });
     console.log(resource);
 });
@@ -332,7 +334,7 @@ async def message_processor_async(message: Message) -> None:
     result = await client.process_command_async(
         Command(
             CommandMethod.GET,
-            '/resources/xyz1234'
+            '/resources/abcd%c3%a9%201234'
         )
     )
 
@@ -347,7 +349,7 @@ Authorization: Key {YOUR_TOKEN}
 {  
   "id": "{{$guid}}",
   "method": "get",
-  "uri": "/resources/xyz1234"
+  "uri": "/resources/abcd%c3%a9%201234"
 }
 ```
 
@@ -372,7 +374,7 @@ Content-Type: application/json
     "from": "postmaster@msging.net/#az-iris6",
     "to": "docstest@msging.net",
     "metadata": {
-        "#command.uri": "lime://docstest@msging.net/resources/xyz1234"
+        "#command.uri": "lime://docstest@msging.net/resources/abcd%c3%a9%201234"
     }
 }
 ```
@@ -398,7 +400,7 @@ namespace Extensions
 
         public async Task ReceiveAsync(Message envelope, CancellationToken cancellationToken)
         {
-            var resource = await _resourceExtension.GetAsync<MediaLink>("xyz1234", cancellationToken);
+            var resource = await _resourceExtension.GetAsync<MediaLink>("abcd%c3%a9%201234", cancellationToken);
         }
     }
 }
@@ -454,7 +456,7 @@ Content-Type: application/json
         "itemType": "text/plain",
         "items": [
             "help-message",
-            "xyz1234"
+            "abcdé 1234"
         ]
     },
     "method": "get",
@@ -510,7 +512,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({  
         id: Lime.Guid(),
         method: Lime.CommandMethod.SET,
-        uri: '/resources/welcome-message',
+        uri: '/resources/abcd%c3%a9%201234',
         type: 'text/plain',
         resource: 'Welcome to our service, ${contact.name}!'
     });
@@ -522,7 +524,7 @@ async def message_processor_async(message: Message) -> None:
     result = await client.process_command_async(
         Command(
             CommandMethod.SET,
-            '/resources/welcome-message',
+            '/resources/abcd%c3%a9%201234',
             'text/plain',
             'Welcome to our service, ${contact.name}!'
         )
@@ -539,7 +541,7 @@ Authorization: Key {YOUR_TOKEN}
 {  
   "id": "{{$guid}}",
   "method": "set",
-  "uri": "/resources/welcome-message",
+  "uri": "/resources/abcd%c3%a9%201234",
   "type": "text/plain",
   "resource": "Welcome to our service, ${contact.name}!"
 }
@@ -556,7 +558,7 @@ Content-Type: application/json
     "from": "postmaster@msging.net/#az-iris2",
     "to": "contact@msging.net",
     "metadata": {
-        "#command.uri": "lime://contact@msging.net/resources/welcome-message"
+        "#command.uri": "lime://contact@msging.net/resources/abcd%c3%a9%201234"
     }
 }
 ```
@@ -589,12 +591,12 @@ namespace Extensions
                 Text = "Welcome to our service, ${contact.name}!"
             };
 
-            await _resourceExtension.SetAsync<PlainText>("welcome-message", plainText);            
+            await _resourceExtension.SetAsync<PlainText>("abcd%c3%a9%201234", plainText);            
         }
     }
 }
 ```
 
-Storing a `text plain` document with `welcome-message` key using replacement variables.
+Storing a `text plain` document with `abcdé 1234` key using replacement variables.
 
 It is possible to use contact replacement variables in the created resources, just as in this example. For more information, please check the documentation of the [**Contacts** extension](#contacts).
