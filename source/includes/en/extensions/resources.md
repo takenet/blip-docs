@@ -4,14 +4,14 @@ The **resources** extension allows the storage of documents in the server in an 
 
 To manage all resources programmatically, use **resources** extension sending a command with the following properties:
 
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| method    | The command verb.  |
-| resource | The resource document. |
-| type | The type of the resource document. |
-| uri    | **/resources**   |
-| to     | **postmaster@msging.net** (not required). |
+| Name     | Description                               |
+|----------|-------------------------------------------|
+| id       | Unique identifier of the command.         |
+| method   | The command verb.                         |
+| resource | The resource document.                    |
+| type     | The type of the resource document.        |
+| uri      | **/resources**                            |
+| to       | **postmaster@msging.net** (not required). |
 
 The **Blip** portal offers a resource management interface which helps with the edition of content, avoiding the need to update the code on the application side in case of changes in the chatbot.
 
@@ -37,6 +37,28 @@ client.addMessageReceiver('text/plain', async (message) => {
         }
     });
 });
+```
+
+```python
+async def message_processor_async(message: Message) -> None:
+    result = await client.process_command_async(
+        Command(
+            CommandMethod.SET,
+            '/resources/xyz1234',
+            'application/vnd.lime.media-link+json',
+            {
+                'title': 'Cat',
+                'text': 'Here is a cat image for you!',
+                'type': 'image/jpeg',
+                'uri': 'http://2.bp.blogspot.com/-pATX0YgNSFs/VP-82AQKcuI/AAAAAAAALSU/Vet9e7Qsjjw/s1600/Cat-hd-wallpapers.jpg',
+                'size': 227791,
+                'previewUri': 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8qkelB28RstsNxLi7gbrwCLsBVmobPjb5IrwKJSuqSnGX4IzX',
+                'previewType': 'image/jpeg'
+            }
+        )
+    )
+
+client.add_message_receiver(Receiver(True, message_processor_async))
 ```
 
 ```http
@@ -132,6 +154,20 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+async def message_processor_async(message: Message) -> None:
+    result = await client.process_command_async(
+        Command(
+            CommandMethod.SET,
+            '/resources/help-message',
+            'text/plain',
+            'To use our services, please send a text message.'
+        )
+    )
+
+client.add_message_receiver(Receiver(True, message_processor_async))
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -210,6 +246,18 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+async def message_processor_async(message: Message) -> None:
+    result = await client.process_command_async(
+        Command(
+            CommandMethod.DELETE,
+            '/resources/xyz1234'
+        )
+    )
+
+client.add_message_receiver(Receiver(True, message_processor_async))
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -277,6 +325,18 @@ client.addMessageReceiver('text/plain', async (message) => {
     });
     console.log(resource);
 });
+```
+
+```python
+async def message_processor_async(message: Message) -> None:
+    result = await client.process_command_async(
+        Command(
+            CommandMethod.GET,
+            '/resources/xyz1234'
+        )
+    )
+
+client.add_message_receiver(Receiver(True, message_processor_async))
 ```
 
 ```http
@@ -359,6 +419,18 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+async def message_processor_async(message: Message) -> None:
+    result = await client.process_command_async(
+        Command(
+            CommandMethod.GET,
+            '/resources'
+        )
+    )
+
+client.add_message_receiver(Receiver(True, message_processor_async))
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -426,10 +498,10 @@ namespace Extensions
 
 Getting all bot resources.
 
-| Property     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **skip** | The number of resources to be skipped.                                   | 0 |
-| **take** | The number of resources to be returned.                                  | 100 |
+| Property | Description                             | Example |
+|----------|-----------------------------------------|---------|
+| **skip** | The number of resources to be skipped.  | 0       |
+| **take** | The number of resources to be returned. | 100     |
 
 ### Store a **text/plain** resource with replacement variable
 
@@ -443,6 +515,20 @@ client.addMessageReceiver('text/plain', async (message) => {
         resource: 'Welcome to our service, ${contact.name}!'
     });
 });
+```
+
+```python
+async def message_processor_async(message: Message) -> None:
+    result = await client.process_command_async(
+        Command(
+            CommandMethod.SET,
+            '/resources/welcome-message',
+            'text/plain',
+            'Welcome to our service, ${contact.name}!'
+        )
+    )
+
+client.add_message_receiver(Receiver(True, message_processor_async))
 ```
 
 ```http
@@ -509,6 +595,6 @@ namespace Extensions
 }
 ```
 
-Storing a `text plain` document with `welcome-message` key using replacement variables. 
+Storing a `text plain` document with `welcome-message` key using replacement variables.
 
 It is possible to use contact replacement variables in the created resources, just as in this example. For more information, please check the documentation of the [**Contacts** extension](#contacts).

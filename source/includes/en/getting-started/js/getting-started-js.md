@@ -37,7 +37,7 @@ You will need an `identifier` and an `access key` to be able to connect to the B
 * After your chatbot has been created click in **Configurations** and choose **Conection information** option in left side menu.
 * Enable the SDK connection and get the `identifier` and `access key` informations.
 
-> Create a `index.js` file add the code below and replace the variables IDENTIFIER and ACCESS_KEY with informations of your bot.
+> Create a `index.js` file, add the code below and replace the variables IDENTIFIER and ACCESS_KEY with informations of your bot.
 
 ```javascript
 import * as BlipSdk from 'blip-sdk';

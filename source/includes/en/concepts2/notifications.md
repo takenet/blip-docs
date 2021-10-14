@@ -12,6 +12,15 @@ var notification = new Notification
 };
 ```
 
+```python
+notification = Notification(
+  id='65603604-fe19-479c-c885-3195b196fe8e',
+  from_n='551199991111@0mn.io/182310923192',
+  to='mycontact@msging.net',
+  event='received'
+)
+```
+
 ```javascript
 var notification = {
   id: "65603604-fe19-479c-c885-3195b196fe8e",
@@ -61,6 +70,31 @@ var notification = {
     description: "Destination not found"
   }
 }
+```
+
+```python
+notification = Notification(
+  id='65603604-fe19-479c-c885-3195b196fe8e',
+  from_n='postmaster@msging.net/server1',
+  to='mycontact@msging.net',
+  event='failed',
+  reason= Reason(42, 'Destination not found')
+)
+
+# or with .from_json
+
+notification = Notification.from_json(
+  {
+    'id': '65603604-fe19-479c-c885-3195b196fe8e',
+    'from': 'postmaster@msging.net/server1',
+    'to': 'mycontact@msging.net',
+    'event': 'failed',
+    'reason': {
+      'code': 42,
+      'description': 'Destination not found'
+    }
+  }
+)
 ```
 
 ```http

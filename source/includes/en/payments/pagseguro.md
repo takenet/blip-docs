@@ -1,7 +1,7 @@
 ### PagSeguro
-| FQDN                     | Type of identifier                                         | 
-|--------------------------|---------------------------------------------------------------|
-| @pagseguro.gw.msging.net | Identity ([originator channel's name and domain](./#/docs/concepts/addressing)) in [URL encoded](http://www.w3schools.com/tags/ref_urlencode.asp) format | 
+| FQDN                     | Type of identifier                                                                                                                                       |
+|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| @pagseguro.gw.msging.net | Identity ([originator channel's name and domain](./#/docs/concepts/addressing)) in [URL encoded](http://www.w3schools.com/tags/ref_urlencode.asp) format |
 
 **PagSeguro** channel is [UOL's](https://pagseguro.uol.com.br/) payment channel to receive and send payments with flexibility and security. 
 
@@ -25,6 +25,7 @@ In order to provide permissions requested by extension, it is necessary to send 
   }
 }
 ```
+
 Answer on success case:
 
 ```http

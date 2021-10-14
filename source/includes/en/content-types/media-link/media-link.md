@@ -83,6 +83,28 @@ Authorization: Key {YOUR_TOKEN}
     });
 ```
 
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '1',
+            'type': 'application/vnd.lime.media-link+json',
+            'to': '128271320123982@messenger.gw.msging.net',
+            'content': {
+                'title': 'Cat',
+                'text': 'Here is a cat image for you!',
+                'type': 'image/jpeg',
+                'uri': 'http://2.bp.blogspot.com/-pATX0YgNSFs/VP-82AQKcuI/AAAAAAAALSU/Vet9e7Qsjjw/s1600/Cat-hd-wallpapers.jpg',
+                'aspectRatio': '1:1',
+                'size': 227791,
+                'previewUri': 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8qkelB28RstsNxLi7gbrwCLsBVmobPjb5IrwKJSuqSnGX4IzX',
+                'previewType': 'image/jpeg'
+            }
+        }
+    )
+)
+```
+
 > Sending an audio link: (For more details, check the [LIME protocol](http://limeprotocol.org/content-types.html#media-link) specification)
 
 ```csharp
@@ -96,6 +118,23 @@ var audioMediaLink = new MediaLink
 };
 
 await _sender.SendMessageAsync(audioMediaLink, message.From, cancellationToken);
+```
+
+```python
+client.send_message(
+    Message.from_json(
+        {
+            'id': '2',
+            'to': '553199991111@0mn.io',
+            'type': 'application/vnd.lime.media-link+json',
+            'content': {
+                'type': 'audio/mp3',
+                'uri': 'http://blaamandagjazzband.dk/jazz/mp3/basin_street_blues.mp3',
+                'size': 3124123
+            }
+        }
+    )
+)
 ```
 
 ```http
@@ -144,12 +183,12 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 
 #### Channel mapping
 
-| Channel              | Type                    |
-|--------------------|-------------------------|
-| Blip Chat          | Media Link         |
-| Messenger          | [Attachments](https://developers.facebook.com/docs/messenger-platform/send-api-reference/image-attachment) (image/audio/video/file, depending of MIME type)  |
-| Whatsapp           | Media Link          |
-| SMS                | Text with link          |
-| Skype              | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1)|
-| Telegram           | [Message](https://core.telegram.org/bots/api#message)|
+| Channel   | Type                                                                                                                                                        |
+|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Blip Chat | Media Link                                                                                                                                                  |
+| Messenger | [Attachments](https://developers.facebook.com/docs/messenger-platform/send-api-reference/image-attachment) (image/audio/video/file, depending of MIME type) |
+| Whatsapp  | Media Link                                                                                                                                                  |
+| SMS       | Text with link                                                                                                                                              |
+| Skype     | [Activity](https://docs.botframework.com/en-us/skype/chat/#sending-messages-1)                                                                              |
+| Telegram  | [Message](https://core.telegram.org/bots/api#message)                                                                                                       |
 

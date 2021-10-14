@@ -1,8 +1,8 @@
 ## Builder
 
-| Address                         |
-|---------------------------------|
-| postmaster@msging.net           |
+| Address               |
+|-----------------------|
+| postmaster@msging.net |
 
 **Builder** is a visual tool for create any type of bots with no code. Behind the scenes Builder is a state machine fully integrated with the others Blip's components.
 
@@ -12,14 +12,14 @@
 
 In order to change a user state, send a command with the following properties:
 
-| Name     | Description                                                   |
-| -------- | ------------------------------------------------------------- |
-| id       | Unique identifier of the command.                             |
-| method   | **set**                                                       |
-| uri      | **/contexts/{{user-identity}}/stateid%40{{flow-identifier}}** |
-| to       | **postmaster@msging.net** (not required)                      |
-| type     | **text/plain**                                                |
-| resource | **{{state-id}}**                                              |
+| Name     | Description                                                 |
+|----------|-------------------------------------------------------------|
+| id       | Unique identifier of the command.                           |
+| method   | **set**                                                     |
+| uri      | **/contexts/{{user-identity}}/stateid@{{flow-identifier}}** |
+| to       | **postmaster@msging.net** (not required)                    |
+| type     | **text/plain**                                              |
+| resource | **{{state-id}}**                                            |
 
 Access the portal, go to Builder and click on the block contextual menu to get its ID (as picture below).
 
@@ -30,20 +30,35 @@ To get the flow identifier, click in Builder's settings and go to Flow Identifie
 ![image](flow_id.png)
 
 <aside class="notice">
-Note: Remember to replace the variable {{user-identity}} for the user identity you want to reset (for instance: <b>30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io</b>). You must also define what is the new state you want to send the user, replacing the {{state-id}} variable (for instance: <b>state-one</b>).
+Note: Remember to replace the variable {{user-identity}} for the user identity you want to reset (for instance: <b>30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io</b>) and the variable {{flow-identifier}} with the target flow identifier. You must also define what is the new state you want to send the user, replacing the {{state-id}} variable (for instance: <b>state-one</b>).
 </aside>
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-    await client.sendCommand({  
-        id: Lime.Guid(),
-        to: 'postmaster@msging.net',
-        method: Lime.CommandMethod.SET,
-        uri: '/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400',
-        type: 'text/plain',
-        resource: 'state-one'
-    });
+  await client.sendCommand({  
+      id: Lime.Guid(),
+      to: 'postmaster@msging.net',
+      method: Lime.CommandMethod.SET,
+      uri: '/contexts/{{user-identity}}/stateid@{{flow-identifier}}',
+      type: 'text/plain',
+      resource: '{{state-id}}'
+  });
 });
+```
+
+```python
+result = await client.process_command_async(
+  Command.from_json(
+     {
+      'id': '{{$guid}}',
+      'to': 'postmaster@msging.net',
+      'method': 'set',
+      'uri': '/contexts/{{user-identity}}/stateid@{{flow-identifier}}',
+      'type': 'text/plain',
+      'resource': '{{state-id}}'
+    }
+  )
+)
 ```
 
 ```http
@@ -55,9 +70,9 @@ Authorization: Key {YOUR_TOKEN}
   "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "set",
-  "uri": "/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400",
+  "uri": "/contexts/{{user-identity}}/stateid@{{flow-identifier}}",
   "type": "text/plain",
-  "resource": "state-one"
+  "resource": "{{state-id}}"
 }
 ```
 
@@ -72,7 +87,7 @@ Content-Type: application/json
     "from": "postmaster@msging.net/#az-iris3",
     "to": "docstest@msging.net",
     "metadata": {
-        "#command.uri": "lime://docstest@msging.net/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400"
+        "#command.uri": "lime://docstest@msging.net/contexts/{{user-identity}}/stateid@{{flow-identifier}}"
     }
 }
 ```
@@ -97,7 +112,7 @@ namespace Extensions
         
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
-            await _stateManager.SetStateAsync(message.From, "state-one", cancellationToken);
+            await _stateManager.SetStateAsync(message.From, "{{state-id}}", cancellationToken);
         }
     }
 }
@@ -142,6 +157,21 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+  Command.from_json(
+    {
+      'id': '{{$guid}}',
+      'to': 'postmaster@msging.net',
+      'method': 'set',
+      'uri': '/contexts/{identity}/{variableName}',
+      'type': '{type}',
+      'resource': '{resource}'
+    }
+  )
+)
+```
+
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
@@ -171,14 +201,13 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 In order to change the JSON file of your flow, send a command with the following properties:
 
 | Name     | Description                                   |
-| -------- | --------------------------------------------- |
+|----------|-----------------------------------------------|
 | id       | Unique identifier of the command.             |
 | method   | **set**                                       |
 | uri      | **/buckets/blip_portal:builder_working_flow** |
 | type     | **application/json**                          |
 | resource | **Your JSON**                                 |
-|
-
+|          |                                               |
 
 <aside  class="notice">
 Note 1: This command only changes JSON in the flow, but you still need to go to Builder and publish it manually.
@@ -385,6 +414,211 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.process_command_async(
+  Command.from_json(
+    {  
+      "id": "{{$guid}}",
+      "method": "set",
+      "uri": "/buckets/blip_portal:builder_working_flow",
+      "type": "application/json", 
+      "resource":{
+        "onboarding": {
+          "$contentActions": [
+            {
+              "input": {
+                "bypass": False,
+                "$cardContent": {
+                  "document": {
+                    "id": "a5f855b2-7344-44ad-bf8b-75bccd63d288",
+                    "type": "text/plain",
+                    "content": "Entrada do usuário"
+                  },
+                  "editable": False,
+                  "deletable": False,
+                  "position": "right"
+                },
+                "$invalid": False
+              },
+              "$invalid": False,
+              "$$hashKey": "object:9132"
+            }
+          ],
+          "$conditionOutputs": [
+            {
+              "stateId": "646ede55-1579-481d-87a9-c48463d7d190",
+              "$connId": "con_3",
+              "conditions": [
+                {
+                  "source": "input",
+                  "comparison": "exists",
+                  "values": [],
+                  "$$hashKey": "object:814"
+                }
+              ],
+              "$invalid": False,
+              "$$hashKey": "object:795"
+            }
+          ],
+          "$enteringCustomActions": [],
+          "$leavingCustomActions": [],
+          "$inputSuggestions": [],
+          "$defaultOutput": {
+            "stateId": "fallback",
+            "$invalid": False
+          },
+          "id": "onboarding",
+          "root": true,
+          "$position": {
+            "top": "148px",
+            "left": "1126px"
+          },
+          "$title": "Início",
+          "$invalidContentActions": False,
+          "$invalidOutputs": False,
+          "$invalidCustomActions": False,
+          "$invalid": False
+        },
+        "fallback": {
+          "$contentActions": [
+            {
+              "input": {
+                "bypass": True,
+                "$cardContent": {
+                  "document": {
+                    "id": "95b10ba8-e351-4d16-9b10-ce14961cb1fd",
+                    "type": "text/plain",
+                    "content": "Entrada do usuário"
+                  },
+                  "editable": False,
+                  "deletable": True,
+                  "position": "right"
+                },
+                "$invalid": False
+              },
+              "$invalid": False,
+              "$$hashKey": "object:8767"
+            }
+          ],
+          "$conditionOutputs": [],
+          "$enteringCustomActions": [],
+          "$leavingCustomActions": [],
+          "$inputSuggestions": [],
+          "$defaultOutput": {
+            "stateId": "onboarding",
+            "$invalid": False
+          },
+          "id": "fallback",
+          "$position": {
+            "top": "787px",
+            "left": "84px"
+          },
+          "$title": "Exceções",
+          "$invalidContentActions": False,
+          "$invalidOutputs": False,
+          "$invalidCustomActions": False,
+          "$invalid": False
+        },
+        "646ede55-1579-481d-87a9-c48463d7d190": {
+          "$contentActions": [
+            {
+              "action": {
+                "type": "SendMessage",
+                "settings": {
+                  "id": "76d7a887-783d-4470-9636-59f4c0732f84",
+                  "type": "application/vnd.lime.chatstate+json",
+                  "content": {
+                    "state": "composing",
+                    "interval": 1000
+                  }
+                },
+                "$cardContent": {
+                  "document": {
+                    "id": "76d7a887-783d-4470-9636-59f4c0732f84",
+                    "type": "application/vnd.lime.chatstate+json",
+                    "content": {
+                      "state": "composing",
+                      "interval": 1000
+                    }
+                  },
+                  "editable": True,
+                  "deletable": True,
+                  "position": "left"
+                }
+              },
+              "$invalid": False,
+              "$$hashKey": "object:4839"
+            },
+            {
+              "action": {
+                "type": "SendMessage",
+                "settings": {
+                  "id": "e66d9771-5303-453b-9446-410ee47ac15f",
+                  "type": "text/plain",
+                  "content": "Some text"
+                },
+                "$cardContent": {
+                  "document": {
+                    "id": "e66d9771-5303-453b-9446-410ee47ac15f",
+                    "type": "text/plain",
+                    "content": "Some text"
+                  },
+                  "editable": True,
+                  "deletable": True,
+                  "position": "left"
+                }
+              },
+              "$invalid": False,
+              "$$hashKey": "object:4840"
+            },
+            {
+              "input": {
+                "bypass": True,
+                "$cardContent": {
+                  "document": {
+                    "id": "1cf3aaa9-6293-41a3-916f-c05a1a33ecbd",
+                    "type": "text/plain",
+                    "content": "name"
+                  },
+                  "editable": False,
+                  "deletable": True,
+                  "position": "right",
+                  "editing": False
+                },
+                "$invalid": False,
+                "variable": "name"
+              },
+              "$$hashKey": "object:9806",
+              "$invalid": False
+            }
+          ],
+          "$conditionOutputs": [],
+          "$enteringCustomActions": [],
+          "$leavingCustomActions": [],
+          "$inputSuggestions": [],
+          "$defaultOutput": {
+            "stateId": "fallback",
+            "$invalid": False
+          },
+          "$tags": [],
+          "id": "646ede55-1579-481d-87a9-c48463d7d190",
+          "root": False,
+          "$title": "Boas vindas",
+          "$position": {
+            "top": "299px",
+            "left": "1127px"
+          },
+          "$invalidContentActions": False,
+          "$invalidOutputs": False,
+          "$invalidCustomActions": False,
+          "$invalid": False
+        }
+      }
+    }
+  )
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -396,117 +630,108 @@ Authorization: Key {YOUR_TOKEN}
    "uri": "/buckets/blip_portal:builder_working_flow",
   "type": "application/json", 
   "resource":{
-  	"onboarding": {
-    "$contentActions": [
-      {
-        "input": {
-          "bypass": false,
-          "$cardContent": {
-            "document": {
-              "id": "a5f855b2-7344-44ad-bf8b-75bccd63d288",
-              "type": "text/plain",
-              "content": "Entrada do usuário"
+    "onboarding": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": false,
+            "$cardContent": {
+              "document": {
+                "id": "a5f855b2-7344-44ad-bf8b-75bccd63d288",
+                "type": "text/plain",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": false,
+              "position": "right"
             },
-            "editable": false,
-            "deletable": false,
-            "position": "right"
+            "$invalid": false
           },
-          "$invalid": false
-        },
-        "$invalid": false,
-        "$$hashKey": "object:9132"
-      }
-    ],
-    "$conditionOutputs": [
-      {
-        "stateId": "646ede55-1579-481d-87a9-c48463d7d190",
-        "$connId": "con_3",
-        "conditions": [
-          {
-            "source": "input",
-            "comparison": "exists",
-            "values": [],
-            "$$hashKey": "object:814"
-          }
-        ],
-        "$invalid": false,
-        "$$hashKey": "object:795"
-      }
-    ],
-    "$enteringCustomActions": [],
-    "$leavingCustomActions": [],
-    "$inputSuggestions": [],
-    "$defaultOutput": {
-      "stateId": "fallback",
-      "$invalid": false
-    },
-    "id": "onboarding",
-    "root": true,
-    "$position": {
-      "top": "148px",
-      "left": "1126px"
-    },
-    "$title": "Início",
-    "$invalidContentActions": false,
-    "$invalidOutputs": false,
-    "$invalidCustomActions": false,
-    "$invalid": false
-  },
-  "fallback": {
-    "$contentActions": [
-      {
-        "input": {
-          "bypass": true,
-          "$cardContent": {
-            "document": {
-              "id": "95b10ba8-e351-4d16-9b10-ce14961cb1fd",
-              "type": "text/plain",
-              "content": "Entrada do usuário"
-            },
-            "editable": false,
-            "deletable": true,
-            "position": "right"
-          },
-          "$invalid": false
-        },
-        "$invalid": false,
-        "$$hashKey": "object:8767"
-      }
-    ],
-    "$conditionOutputs": [],
-    "$enteringCustomActions": [],
-    "$leavingCustomActions": [],
-    "$inputSuggestions": [],
-    "$defaultOutput": {
-      "stateId": "onboarding",
-      "$invalid": false
-    },
-    "id": "fallback",
-    "$position": {
-      "top": "787px",
-      "left": "84px"
-    },
-    "$title": "Exceções",
-    "$invalidContentActions": false,
-    "$invalidOutputs": false,
-    "$invalidCustomActions": false,
-    "$invalid": false
-  },
-  "646ede55-1579-481d-87a9-c48463d7d190": {
-    "$contentActions": [
-      {
-        "action": {
-          "type": "SendMessage",
-          "settings": {
-            "id": "76d7a887-783d-4470-9636-59f4c0732f84",
-            "type": "application/vnd.lime.chatstate+json",
-            "content": {
-              "state": "composing",
-              "interval": 1000
+          "$invalid": false,
+          "$$hashKey": "object:9132"
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "stateId": "646ede55-1579-481d-87a9-c48463d7d190",
+          "$connId": "con_3",
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "exists",
+              "values": [],
+              "$$hashKey": "object:814"
             }
+          ],
+          "$invalid": false,
+          "$$hashKey": "object:795"
+        }
+      ],
+      "$enteringCustomActions": [],
+      "$leavingCustomActions": [],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "fallback",
+        "$invalid": false
+      },
+      "id": "onboarding",
+      "root": true,
+      "$position": {
+        "top": "148px",
+        "left": "1126px"
+      },
+      "$title": "Início",
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false
+    },
+    "fallback": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "95b10ba8-e351-4d16-9b10-ce14961cb1fd",
+                "type": "text/plain",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right"
+            },
+            "$invalid": false
           },
-          "$cardContent": {
-            "document": {
+          "$invalid": false,
+          "$$hashKey": "object:8767"
+        }
+      ],
+      "$conditionOutputs": [],
+      "$enteringCustomActions": [],
+      "$leavingCustomActions": [],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "onboarding",
+        "$invalid": false
+      },
+      "id": "fallback",
+      "$position": {
+        "top": "787px",
+        "left": "84px"
+      },
+      "$title": "Exceções",
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false
+    },
+    "646ede55-1579-481d-87a9-c48463d7d190": {
+      "$contentActions": [
+        {
+          "action": {
+            "type": "SendMessage",
+            "settings": {
               "id": "76d7a887-783d-4470-9636-59f4c0732f84",
               "type": "application/vnd.lime.chatstate+json",
               "content": {
@@ -514,78 +739,87 @@ Authorization: Key {YOUR_TOKEN}
                 "interval": 1000
               }
             },
-            "editable": true,
-            "deletable": true,
-            "position": "left"
-          }
-        },
-        "$invalid": false,
-        "$$hashKey": "object:4839"
-      },
-      {
-        "action": {
-          "type": "SendMessage",
-          "settings": {
-            "id": "e66d9771-5303-453b-9446-410ee47ac15f",
-            "type": "text/plain",
-            "content": "Some text"
+            "$cardContent": {
+              "document": {
+                "id": "76d7a887-783d-4470-9636-59f4c0732f84",
+                "type": "application/vnd.lime.chatstate+json",
+                "content": {
+                  "state": "composing",
+                  "interval": 1000
+                }
+              },
+              "editable": true,
+              "deletable": true,
+              "position": "left"
+            }
           },
-          "$cardContent": {
-            "document": {
+          "$invalid": false,
+          "$$hashKey": "object:4839"
+        },
+        {
+          "action": {
+            "type": "SendMessage",
+            "settings": {
               "id": "e66d9771-5303-453b-9446-410ee47ac15f",
               "type": "text/plain",
               "content": "Some text"
             },
-            "editable": true,
-            "deletable": true,
-            "position": "left"
-          }
-        },
-        "$invalid": false,
-        "$$hashKey": "object:4840"
-      },
-      {
-        "input": {
-          "bypass": true,
-          "$cardContent": {
-            "document": {
-              "id": "1cf3aaa9-6293-41a3-916f-c05a1a33ecbd",
-              "type": "text/plain",
-              "content": "name"
-            },
-            "editable": false,
-            "deletable": true,
-            "position": "right",
-            "editing": false
+            "$cardContent": {
+              "document": {
+                "id": "e66d9771-5303-453b-9446-410ee47ac15f",
+                "type": "text/plain",
+                "content": "Some text"
+              },
+              "editable": true,
+              "deletable": true,
+              "position": "left"
+            }
           },
           "$invalid": false,
-          "variable": "name"
+          "$$hashKey": "object:4840"
         },
-        "$$hashKey": "object:9806",
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "1cf3aaa9-6293-41a3-916f-c05a1a33ecbd",
+                "type": "text/plain",
+                "content": "name"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false,
+            "variable": "name"
+          },
+          "$$hashKey": "object:9806",
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [],
+      "$enteringCustomActions": [],
+      "$leavingCustomActions": [],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "fallback",
         "$invalid": false
-      }
-    ],
-    "$conditionOutputs": [],
-    "$enteringCustomActions": [],
-    "$leavingCustomActions": [],
-    "$inputSuggestions": [],
-    "$defaultOutput": {
-      "stateId": "fallback",
+      },
+      "$tags": [],
+      "id": "646ede55-1579-481d-87a9-c48463d7d190",
+      "root": false,
+      "$title": "Boas vindas",
+      "$position": {
+        "top": "299px",
+        "left": "1127px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
       "$invalid": false
-    },
-    "$tags": [],
-    "id": "646ede55-1579-481d-87a9-c48463d7d190",
-    "root": false,
-    "$title": "Boas vindas",
-    "$position": {
-      "top": "299px",
-      "left": "1127px"
-    },
-    "$invalidContentActions": false,
-    "$invalidOutputs": false,
-    "$invalidCustomActions": false,
-    "$invalid": false
-  }
+    }
   }
 }
 ```
@@ -616,6 +850,50 @@ Content-Type: application/json
 <aside class="notice">
 Note 2: Remember to replace the resource content with your flow.
 </aside>
+
+### Check connectivity
+
+Allows the bot to test the network connectivity.
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "{{$guid}}",
+  "to": "postmaster@msging.net",
+  "method": "get",
+  "uri": "/ping"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.ping+json",
+    "resource": {},
+    "method": "get",
+    "status": "success",
+    "id": "54388b6a-deea-48a6-a817-bbeb31859629",
+    "from": "postmaster@msging.net/#iris-hosted-2"
+}
+```
+
+```python
+result = await client.process_command_async(
+  Command.from_json(
+    {
+      'id': '{{$guid}}',
+      'to': 'postmaster@msging.net',
+      'method': 'get',
+      'uri': '/ping'
+    }
+  )
+)
+```
 
 ### Delete a context variable
 
@@ -650,6 +928,19 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+  Command.from_json(
+    {
+      'id': '{{$guid}}',
+      'to': 'postmaster@msging.net',
+      'method': 'delete',
+      'uri': '/contexts/{identity}/{variableName}'
+    }
+  )
+)
+```
+
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
@@ -674,10 +965,10 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Get all bot's context variables (Builder's behaviors). It will return all available variables, represented by users' Identities.
 
-| QueryString     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **$skip** |The number of elements to be skipped.                                |    0    |
-| **$take** | Limit of total of items to be returned.                               |   100   |
+| QueryString | Description                             | Example |
+|-------------|-----------------------------------------|---------|
+| **$skip**   | The number of elements to be skipped.   | 0       |
+| **$take**   | Limit of total of items to be returned. | 100     |
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -688,7 +979,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "get",
-  "uri": "/contexts/"
+  "uri": "/contexts"
 }
 ```
 
@@ -731,12 +1022,25 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+  Command.from_json(
+    {
+      'id': '{{$guid}}',
+      'to': 'postmaster@msging.net',
+      'method': 'get',
+      'uri': '/contexts'
+    } 
+  )
+)
+```
+
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@msging.net",
     method: "get",
-    uri: "/contexts/"
+    uri: "/contexts"
 })
 ```
 
@@ -745,7 +1049,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postmaster@msging.net",
-    Uri = new LimeUri("/contexts/")
+    Uri = new LimeUri("/contexts")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -794,6 +1098,19 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+  Command.from_json(
+    {
+      'id': '{{$guid}}',
+      'to': 'postmaster@msging.net',
+      'method': 'get',
+      'uri': '/contexts/{identity}'
+    }
+  )
+)
+```
+
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
@@ -809,6 +1126,88 @@ var command = new Command(){
     Method = CommandMethod.Get,
     To = "postmaster@msging.net",
     Uri = new LimeUri("/contexts/{identity}")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+### Get all user's context variables with values
+
+Get all user's context variables with their respective values.
+
+Replace `{identity}` with the user identity you want to get the contexts variables.
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "{{$guid}}",
+  "to": "postmaster@msging.net",
+  "method": "get",
+  "uri": "/contexts/{identity}?withContextValues=true"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 4,
+        "itemType": "text/plain",
+        "items": [
+            {
+                "name": "counterexceptionmenu",
+                "type": "text/plain",
+                "value": "0"
+            },
+            {
+                "name": "name",
+                "type": "text/plain",
+                "value": "Gabriel"
+            }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "ca446b5f-ecea-4334-8e2c-ce281d9d99df",
+    "from": "postmaster@msging.net/#az-iris7",
+    "to": "demobot@msging.net"
+}
+```
+
+```python
+result = await client.process_command_async(
+  Command.from_json(
+    {
+      'id': '{{$guid}}',
+      'to': 'postmaster@msging.net',
+      'method': 'get',
+      'uri': '/contexts/{identity}?withContextValues=true'
+    }
+  )
+)
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@msging.net",
+    method: "get",
+    uri: "/contexts/{identity}?withContextValues=true"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postmaster@msging.net",
+    Uri = new LimeUri("/contexts/{identity}?withContextValues=true")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -849,6 +1248,19 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+  Command.from_json(
+    {
+      'id': '{{$guid}}',
+      'to': 'postmaster@msging.net',
+      'method': 'get',
+      'uri': '/contexts/{identity}/{variableName}'
+    }
+  )
+)
+```
+
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
@@ -874,7 +1286,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 In order to get a user state, send a command with the following properties:
 
 | Name   | Description                                                   |
-| ------ | ------------------------------------------------------------- |
+|--------|---------------------------------------------------------------|
 | id     | Unique identifier of the command.                             |
 | to     | **postmaster@msging.net** (not required)                      |
 | method | **get**                                                       |
@@ -885,7 +1297,7 @@ To get the flow identifier, click in Builder's settings and go to Flow Identifie
 ![image](flow_id.png)
 
 <aside class="notice">
-Note: Remember to replace the variable {{user-identity}} for the user identity you want to get (for instance: <b>30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io</b>).
+Note: Remember to replace the variable {{user-identity}} for the user identity you want to get (for instance: <b>30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io</b>) and the variable {{flow-identifier}} with the target flow identifier.
 </aside>
 
 ```javascript
@@ -894,7 +1306,7 @@ client.addMessageReceiver('text/plain', async (message) => {
         id: Lime.Guid(),
         to: 'postmaster@msging.net',
         method: Lime.CommandMethod.GET,
-        uri: '/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest%400mn.io/stateid%400'        
+        uri: '/contexts/{{user-identity}}/stateid@{{flow-identifier}}'        
     });
 });
 ```
@@ -908,7 +1320,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "{{$guid}}",
   "to": "postmaster@msging.net",
   "method": "get",
-  "uri": "/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest%400mn.io/stateid%400"
+  "uri": "/contexts/{{user-identity}}/stateid@{{flow-identifier}}"
 }
 ```
 
@@ -925,9 +1337,22 @@ Content-Type: application/json
     "from": "postmaster@msging.net/#az-iris4",
     "to": "docstest@msging.net",
     "metadata": {
-        "#command.uri": "lime://docstest@msging.net/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest%400mn.io/stateid%400"
+        "#command.uri": "lime://docstest@msging.net/contexts/{{user-identity}}/stateid@{{flow-identifier}}"
     }
 }
+```
+
+```python
+result = await client.process_command_async(
+  Command.from_json(
+    {
+      'id': '{{$guid}}',
+      'to': 'postmaster@msging.net',
+      'method': 'get',
+      'uri': '/contexts/{{user-identity}}/stateid@{{flow-identifier}}'
+    }
+  )
+)
 ```
 
 ```csharp
@@ -961,7 +1386,7 @@ namespace Extensions
 In order to reset a user state, send a command with the following properties:
 
 | Name   | Description                                                   |
-| ------ | ------------------------------------------------------------- |
+|--------|---------------------------------------------------------------|
 | id     | Unique identifier of the command.                             |
 | method | **delete**                                                    |
 | uri    | **/contexts/{{user-identity}}/stateid%40{{flow-identifier}}** |
@@ -972,7 +1397,7 @@ To get the flow identifier, click in Builder's settings and go to Flow Identifie
 ![image](flow_id.png)
 
 <aside class="notice">
-Note: Remember to replace the variable {{user-identity}} for the user identity you want to reset (for instance: <b>30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io</b>)
+Note: Remember to replace the variable {{user-identity}} for the user identity you want to reset (for instance: <b>30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io</b>) and the variable {{flow-identifier}} with the target flow identifier.
 </aside>
 
 ```javascript
@@ -980,7 +1405,7 @@ client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({  
         id: Lime.Guid(),
         method: Lime.CommandMethod.DELETE,
-        uri: '/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400f2b4564-9063-43e4-b0ef-46406dea65a5'
+        uri: '/contexts/{{user-identity}}/stateid@{{flow-identifier}}'
     });
 });
 ```
@@ -993,7 +1418,7 @@ Authorization: Key {YOUR_TOKEN}
 {  
   "id": "{{$guid}}",
   "method": "delete",
-  "uri": "/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400f2b4564-9063-43e4-b0ef-46406dea65a5"
+  "uri": "/contexts/{{user-identity}}/stateid@{{flow-identifier}}"
 }
 ```
 
@@ -1008,9 +1433,21 @@ Content-Type: application/json
     "from": "postmaster@msging.net/#az-iris1",
     "to": "docstest@msging.net",
     "metadata": {
-        "#command.uri": "lime://docstest@msging.net/contexts/30e26f51-25e5-4dfc-b2bf-6c0ba80027a8.docstest@0mn.io/stateid%400f2b4564-9063-43e4-b0ef-46406dea65a5"
+        "#command.uri": "lime://docstest@msging.net/contexts/{{user-identity}}/stateid@{{flow-identifier}}"
     }
 }
+```
+
+```python
+result = await client.process_command_async(
+  Command.from_json(
+    {  
+      'id': '{{$guid}}',
+      'method': 'delete',
+      'uri': '/contexts/{{user-identity}}/stateid@{{flow-identifier}}'
+    }
+  )
+)
 ```
 
 ```csharp

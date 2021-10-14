@@ -15,8 +15,10 @@ The following channels are available in **Blip** platform:
 | Blip Chat          | 0mn.io                  |
 | Tangram (SMS)      | tangram.com.br  (**deprecated**) |
 | Take.IO (SMS)      | take.io                 |
-| Facebook Messenger | messenger.gw.msging.net |
+| Messenger | messenger.gw.msging.net |
+| Instagram          | instagram.gw.msging.net |
 | WhatsApp           | wa.gw.msging.net        |
+| AzureBotService (Microsoft Teams)           | abs.gw.msging.net        |
 | Google Business Messages | businessmessages.gw.msging.net |
 | Skype              | skype.gw.msging.net     |
 | Telegram           | telegram.gw.msging.net  |

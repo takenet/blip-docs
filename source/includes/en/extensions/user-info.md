@@ -8,16 +8,15 @@ The result of directory queries are automatically stored in the **chatbot's rost
 
 To get information about a customer, send a command with the following properties:
 
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| method    | **GET**  |
-| uri    | **/lime://&lt;FQDN of the channel&gt;/accounts/&lt;Client identity&gt;**   |
-| to     | **postmaster@&lt;FQDN of the channel&gt;** |
+| Name   | Description                                                              |
+|--------|--------------------------------------------------------------------------|
+| id     | Unique identifier of the command.                                        |
+| method | **GET**                                                                  |
+| uri    | **/lime://&lt;FQDN of the channel&gt;/accounts/&lt;Client identity&gt;** |
+| to     | **postmaster@&lt;FQDN of the channel&gt;**                               |
 
 ### Create an alternative address
 To create an accessKey for an alternative address, using an [AccountKeyRequest](/#accountkeyrequest) document, send a command to the Uri `lime://<FQDN of the channel>/accounts/<Client identity>/key`.
-
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -31,9 +30,9 @@ Authorization: Key {YOUR_TOKEN}
   "uri": "lime://<FQDN of the channel>/accounts/<Client identity>/key",
   "type": "application/vnd.iris.keyRequest+json",
   "resource": {
-  	"alternativeAddress": "<alternative Client Identity>",
-  	"purpose": "<Purpose>",
-  	"temporary": "<true/false>"
+    "alternativeAddress": "<alternative Client Identity>",
+    "purpose": "<Purpose>",
+    "temporary": "<true/false>"
   }
 }
 ```
@@ -44,13 +43,26 @@ Authorization: Key {YOUR_TOKEN}
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-        await client.sendCommand({  
-            id: Lime.Guid(),
-            method: Lime.CommandMethod.GET,
-            to: 'postmaster@messenger.gw.msging.net',
-            uri: 'lime://messenger.gw.msging.net/accounts/1042221589186385'
-        });
-    });
+  await client.sendCommand({  
+    id: Lime.Guid(),
+    method: Lime.CommandMethod.GET,
+    to: 'postmaster@messenger.gw.msging.net',
+    uri: 'lime://messenger.gw.msging.net/accounts/1042221589186385'
+  });
+});
+```
+
+```python
+async def message_processor_async(message: Message) -> None:
+  result = await client.process_command_async(
+    Command(
+      CommandMethod.GET,
+      'lime://messenger.gw.msging.net/accounts/1042221589186385',
+      to='postmaster@messenger.gw.msging.net'
+    )
+  )
+
+client.add_message_receiver(Receiver(True, message_processor_async))
 ```
 
 ```http
@@ -117,19 +129,32 @@ namespace Extensions
 }
 ```
 
-###Get client info (**Telegram**)
+### Get client info (**Telegram**)
 
 * Telegram FQDN: `telegram.gw.msging.net`
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
-    await client.sendCommand({  
-        id: Lime.Guid(),
-        method: Lime.CommandMethod.GET,
-        to: 'postmaster@telegram.gw.msging.net',
-        uri: 'lime://telegram.gw.msging.net/accounts/255600202'
-    });
+  await client.sendCommand({  
+    id: Lime.Guid(),
+    method: Lime.CommandMethod.GET,
+    to: 'postmaster@telegram.gw.msging.net',
+    uri: 'lime://telegram.gw.msging.net/accounts/255600202'
+  });
 });
+```
+
+```python
+async def message_processor_async(message: Message) -> None:
+  result = await client.process_command_async(
+    Command(
+      CommandMethod.GET,
+      'lime://telegram.gw.msging.net/accounts/255600202',
+      to='postmaster@telegram.gw.msging.net'
+    )
+  )
+
+client.add_message_receiver(Receiver(True, message_processor_async))
 ```
 
 ```http

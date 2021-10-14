@@ -4,22 +4,22 @@ The **scheduler** extension allows the chatbot to schedule messages to be sent i
 
 To use **scheduler** extension features, send a command with the following properties:
 
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| method    | The command verb  |
-| resource | The schedule document. |
-| type | **"application/vnd.iris.schedule+json"** |
-| uri    | **/schedules**   |
-| to     | **postmaster@scheduler.msging.net** |
+| Name     | Description                              |
+|----------|------------------------------------------|
+| id       | Unique identifier of the command.        |
+| method   | The command verb                         |
+| resource | The schedule document.                   |
+| type     | **"application/vnd.iris.schedule+json"** |
+| uri      | **/schedules**                           |
+| to       | **postmaster@scheduler.msging.net**      |
 
 The command's properties `resource` and `method` can change according to the feature.
 A schedule object passed as a document `resource` has the following properties:
 
-| Property     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **message** | A complete message object to be scheduled.                          | { "id": "1", "to": "destination@0mn.io", "type": "text/plain", "content": "Hi" } |
-| **when**   | The scheduled time (in the GMT timezone)  | "2017-07-25T17:50:00.000Z" |
+| Property    | Description                                | Example                                                                          |
+|-------------|--------------------------------------------|----------------------------------------------------------------------------------|
+| **message** | A complete message object to be scheduled. | { "id": "1", "to": "destination@0mn.io", "type": "text/plain", "content": "Hi" } |
+| **when**    | The scheduled time (in the GMT timezone)   | "2017-07-25T17:50:00.000Z"                                                       |
 
 ### Cancel a scheduling
 
@@ -51,6 +51,16 @@ Content-Type: application/json
     "from": "postmaster@scheduler.msging.net/#az-iris5",
     "to": "demobot@msging.net",
 }
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.DELETE,
+        '/schedules/{messageId}',
+        to='postmaster@scheduler.msging.net'
+    )
+)
 ```
 
 ```javascript
@@ -113,6 +123,27 @@ client.addMessageReceiver('text/plain', async (message) => {
         }
     });
 });
+```
+
+```python
+result = await client.process_command_async(
+    date = datetime() # from datetime import datetime
+    Command(
+        CommandMethod.SET,
+        '/schedules',
+        'application/vnd.iris.schedule+json',
+        {
+            'message': {
+                'id': '{{$guid}}',
+                'to': 'destination@0mn.io',
+                'type': 'text/plain',
+                'content': 'Scheduling test.'
+            },
+            'when': date.isoformat()
+        },
+        to='postmaster@scheduler.msging.net'
+    )
+)
 ```
 
 ```http
@@ -211,6 +242,16 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/schedules/ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67',
+        to='postmaster@scheduler.msging.net'
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -299,6 +340,16 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/schedules',
+        to='postmaster@scheduler.msging.net'
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -369,6 +420,10 @@ Content-Type: application/json
 }
 ```
 
-Get all schedules messages. 
+Get all schedules messages.
 
 The response should be a [Schedule document](#schedules) list.
+
+<aside class="notice">
+From April 2021, this method will have a return <b>limit of 1000 scheduled messages</b>.
+</aside>

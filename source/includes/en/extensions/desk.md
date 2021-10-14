@@ -21,22 +21,39 @@ For each attendant sent that already haven't an account on Blip, that endpoint w
 Note: The identity must be in the form <b>jhonny%40email.com@blip.ai</b>.
 </aside>
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/attendants',
+        'application/vnd.iris.desk.attendant+json',
+        {
+            'identity': '{identity}',
+            'teams': [
+                '{team1}'
+            ]
+        },
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
-  "id": "{{$guid}}",
-  "to": "postmaster@desk.msging.net",
-  "method": "set",
-  "uri": "/attendants",
-  "type": "application/vnd.iris.desk.attendant+json",
-  "resource": {
-    "identity": "{identity}",
-    "teams": [
-        "{team1}"
-    ]
-  }
+    "id": "{{$guid}}",
+    "to": "postmaster@desk.msging.net",
+    "method": "set",
+    "uri": "/attendants",
+    "type": "application/vnd.iris.desk.attendant+json",
+    "resource": {
+        "identity": "{identity}",
+        "teams": [
+            "{team1}"
+        ]
+    }
 }
 ```
 
@@ -45,23 +62,23 @@ POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
-  "id": "75481236",
-  "to": "postmaster@desk.msging.net",
-  "method": "set",
-  "uri": "/attendants",
-  "type": "application/vnd.lime.collection+json",
-  "resource":
-  {
-	"total": 1,
-	"itemType": "application/vnd.iris.desk.attendant+json",
-	"items":
-	[{
-		"identity": "{identity}"
-        "teams": [
-            "{team1}"
+    "id": "75481236",
+    "to": "postmaster@desk.msging.net",
+    "method": "set",
+    "uri": "/attendants",
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 1,
+        "itemType": "application/vnd.iris.desk.attendant+json",
+        "items": [
+            {
+                "identity": "{identity}",
+                "teams": [
+                    "{team1}"
+                ]
+            }
         ]
-	}]
-  }
+    }
 }
 ```
 
@@ -86,11 +103,11 @@ client.sendCommand({
     uri: "/attendants",
     type: "application/vnd.iris.desk.attendant+json",
     resource: {
-    identity: "{identity}",
-    teams: [
-    "{team1}"
-    ]
-  }
+        identity: "{identity}",
+        teams: [
+            "{team1}"
+        ]
+    }
 })
 ```
 
@@ -119,30 +136,54 @@ Replace `{categoryId}` with the category id you want to add custom replies to.
 You can also create a new category, just informing a new category id.
 </aside>
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/replies/{categoryId}',
+        'application/vnd.lime.collection+json',
+        {
+            'itemType': 'application/vnd.iris.desk.custom-reply+json',
+            'items': [
+                {
+                    'category': '{categoryName}',
+                    'document': '{content}',
+                    'id': '{messageId}',
+                    'isDynamicContent': {True/False},
+                    'name': '{replyName}',
+                    'type': '{replyType}'
+                }
+            ]
+        },
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "{{$guid}}",
-  "to": "postmaster@desk.msging.net",
-  "method": "set",
-  "uri": "/replies/{categoryId}",
-  "type": "application/vnd.lime.collection+json",
-  "resource":{
-  	"itemType": "application/vnd.iris.desk.custom-reply+json",
-  	"items": [
-  		{
-		  	"category": "{categoryName}",
-			"document": "{content}",
-			"id": "{messageId}",
-			"isDynamicContent": {true/false},
-			"name": "{replyName}",
-			"type": "{replyType}"
-	  	}
-  	]
-  }
+    "id": "{{$guid}}",
+    "to": "postmaster@desk.msging.net",
+    "method": "set",
+    "uri": "/replies/{categoryId}",
+    "type": "application/vnd.lime.collection+json",
+    "resource":{
+        "itemType": "application/vnd.iris.desk.custom-reply+json",
+        "items": [
+            {
+                "category": "{categoryName}",
+                "document": "{content}",
+                "id": "{messageId}",
+                "isDynamicContent": {true/false},
+                "name": "{replyName}",
+                "type": "{replyType}"
+            }
+        ]
+    }
 }
 ```
 
@@ -167,18 +208,18 @@ client.sendCommand({
     uri: "/replies/{categoryId}",
     type: "application/vnd.lime.collection+json",
     resource:{
-  	itemType: "application/vnd.iris.desk.custom-reply+json",
-  	items: [
-  		{
-		  	category: "{categoryName}",
-			document: "{content}",
-			id: "{messageId}",
-			isDynamicContent: "{true/false}",
-			name: "{replyName}",
-			type: "{replyType}"
-	  	}
-  	]
-  }
+        itemType: "application/vnd.iris.desk.custom-reply+json",
+        items: [
+         {
+               category: "{categoryName}",
+               document: "{content}",
+               id: "{messageId}",
+               isDynamicContent: "{true/false}",
+               name: "{replyName}",
+               type: "{replyType}"
+           }
+        ]
+    }
 })
 ```
 
@@ -209,6 +250,21 @@ var command = new Command(){
 
 Each [ticket](/#ticket) has an optional parameter called `Tags`. A tag is a label to identify important things in a ticket.
 To add tags in a specifc ticket send a command with `SET` method to `postmaster@desk.msging.net` and URI `/tickets/{ticketId}/change-tags`, where `ticketId` is the ticket identifier to be updated. Use the `resource` property to send tags informations.
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/tickets/ba11b95c-7564-4685-b835-8cc76fae6fac/change-tags',
+        'application/vnd.iris.ticket+json',
+        {
+            'id': 'ba11b95c-7564-4685-b835-8cc76fae6fac',
+            'tags': ['tag1', 'tag2', 'tag3']
+        },
+        to='postmaster@desk.msging.net'
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -284,11 +340,105 @@ Content-Type: application/json
       }
 ```
 
+
+### Get tags
+The `Tags` used to close a [ticket](/#ticket) that can be defined on Tag Manager or on Automatic Closing of Tickets.
+To get all the active tags setted on Desk send a command with `GET` method to `postmaster@desk.msging.net` and URI `/tags/active`.
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "{{$guid}}",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/tags/active"
+}
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/tags/active',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.GET,
+    uri: "/tags/active"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/tags/active"),
+};
+
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
+Server responds with actives tag list
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "get",
+    "status": "success",
+    "id": "8d1f6a56-e287-4a0f-9030-6983c76ad26c",
+    "from": "postmaster@desk.msging.net/#az-iris6",
+    "to": "amt@msging.net/portal-user%40take.net",
+    "type": "application/vnd.lime.collection+json",
+    "metadata": {
+        "#command.uri": "lime://amt@msging.net/tags/active"
+    },
+    "resource": {
+        "total": 1,
+        "itemType": "application/vnd.iris.desk.tag-tickets-summary+json",
+        "items": [
+            {
+              "name": "tag1", 
+              "closedTickets": 0, 
+              "ticketsCount": 0
+            }
+        ]
+    },
+}
+```
+
 ### Assign a ticket to an agent
 
 You can assign a [ticket](/#ticket) to a specific agent to give him the attendance.
 
 To make this possible send a command with `SET` method to `postmaster@desk.msging.net` URI `/tickets/change-status` and resource with ticket `id`, `status` with **Open** and `agentIdentity` with the **agent identity**.
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/tickets/change-status',
+        'application/vnd.iris.ticket+json',
+        {
+            'id': '{ticketId}',
+            'status': 'Open',
+            'agentIdentity': '{agentIdentity}'
+        },
+        to='postmaster@desk.msging.net'
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -360,21 +510,36 @@ Closing a [ticket](/#ticket) as the attendant.
 
 To make this possible send a command with `SET` method to `postmaster@desk.msging.net` URI `/tickets/change-status` and resource with ticket `id` and `status` with **ClosedAttendant**.
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/tickets/change-status',
+        'application/vnd.iris.ticket+json',
+        {
+            'id': '{ticketId}',
+            'status': 'ClosedAttendant'
+        },
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "{{$guid}}",
-  "to": "postmaster@desk.msging.net",
-  "method": "set",
-  "uri": "/tickets/change-status",
-  "type": "application/vnd.iris.ticket+json",
-  "resource": {
-    "id": "{ticketId}",
-    "status": "ClosedAttendant"
-  }
+    "id": "{{$guid}}",
+    "to": "postmaster@desk.msging.net",
+    "method": "set",
+    "uri": "/tickets/change-status",
+    "type": "application/vnd.iris.ticket+json",
+    "resource": {
+        "id": "{ticketId}",
+        "status": "ClosedAttendant"
+    }
 }
 ```
 
@@ -386,8 +551,8 @@ client.sendCommand({
     uri: "/tickets/change-status",
     type: "application/vnd.iris.ticket+json",
     resource: {
-    id: "{ticketId}",
-    status: "ClosedAttendant"
+        id: "{ticketId}",
+        status: "ClosedAttendant"
     }
 });
 ```
@@ -427,21 +592,36 @@ Content-Type: application/json
 
 Sometimes may be interesting allow the users close the [ticket](/#ticket) when they want. To make this possible send a command with `SET` method to `postmaster@desk.msging.net` URI `/tickets/change-status` and resource with ticket `id` and `status` with **ClosedClient**.
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/ticket/change-status',
+        'application/vnd.iris.ticket+json',
+        {
+            'id': 'fbfd62ac-1dcc-404b-b174-a8f60ccf8659',
+            'status': 'ClosedClient'
+        },
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "{{$guid}}",
-  "to": "postmaster@desk.msging.net",
-  "method": "set",
-  "uri": "/tickets/change-status",
-  "type": "application/vnd.iris.ticket+json",
-  "resource": {
-  	"id": "fbfd62ac-1dcc-404b-b174-a8f60ccf8659",
-  	"status": "ClosedClient"
-  }
+    "id": "{{$guid}}",
+    "to": "postmaster@desk.msging.net",
+    "method": "set",
+    "uri": "/tickets/change-status",
+    "type": "application/vnd.iris.ticket+json",
+    "resource": {
+        "id": "fbfd62ac-1dcc-404b-b174-a8f60ccf8659",
+        "status": "ClosedClient"
+    }
 }
 ```
 
@@ -453,8 +633,8 @@ client.sendCommand({
     uri: "/tickets/change-status",
     type: "application/vnd.iris.ticket+json",
     resource: {
-    id: "ba11b95c-7564-4685-b835-8cc76fae6fac",
-    status: "ClosedClient"
+        id: "ba11b95c-7564-4685-b835-8cc76fae6fac",
+        status: "ClosedClient"
     }
 });
 ```
@@ -512,6 +692,20 @@ result: {Lime.Protocol.Command}
 
 To create a new ticket, you must submit a [ticket](/#ticket) document, with at least a `customerIdentity`.
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/tickets',
+        'application/vnd.iris.ticket+json',
+        {
+            'customerIdentity': '{customerIdentity}'
+        },
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -524,7 +718,7 @@ Authorization: Key {YOUR_TOKEN}
   "uri": "/tickets",
   "type": "application/vnd.iris.ticket+json",
   "resource": {
-  	"customerIdentity": "{customerIdentity}"
+    "customerIdentity": "{customerIdentity}"
   }
 }
 ```
@@ -587,6 +781,103 @@ var command = new Command(){
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 ```
 
+### Create an attendance queue
+
+Set a new attendance queue.
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/attendance-queues',
+        'application/vnd.iris.desk.attendancequeue+json',
+        {
+            'ownerIdentity': 'demobot@msging.net',
+            'name': 'Queue name',
+            'isActive': True,
+            'Priority': 0
+        },
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "{{$guid}}",
+    "to": "postmaster@desk.msging.net",
+    "method": "set",
+    "uri": "/attendance-queues",
+    "type": "application/vnd.iris.desk.attendancequeue+json",
+    "resource": {
+        "ownerIdentity": "demobot@msging.net",
+        "name": "Queue name",
+        "isActive": true,
+        "Priority": 0
+    }
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "type": "application/vnd.iris.desk.attendancequeue+json",
+  "resource": {
+    "id": "queuename",
+    "ownerIdentity": "demobot@msging.net",
+    "name": "Queue name",
+    "isActive": true,
+    "storageDate": "2021-04-07T14:01:07.034Z",
+    "Priority": 0
+  },
+  "method": "set",
+  "status": "success",
+  "id": "198e5ce6-2b57-4e00-b5fa-a90ebe7a184e",
+  "from": "postmaster@desk.msging.net/!note-mc62",
+  "to": "demobot@msging.net/default-634",
+  "metadata": {
+    "#command.uri": "lime://demobot@msging.net/attendance-queues"
+  }
+}
+```
+
+```javascript
+client.sendCommand({
+  id: Lime.Guid(),
+  to: "postmaster@desk.msging.net",
+  method: Lime.CommandMethod.SET,
+  uri: "/attendance-queues",
+  type: "application/vnd.iris.desk.attendancequeue+json",
+  resource: {
+    isActive: true,
+    ownerIdentity: "demobot@msging.net",
+    Priority: 0
+  }
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Set,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/attendance-queues"),
+    Type: "application/vnd.iris.desk.attendancequeue+json",
+    Resource = new Rule{
+        isActive: true,
+        ownerIdentity: "demobot@msging.net",
+        Priority: 0
+    }
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
 ### Create an attendance rule
 
 Set a new attendance rule.
@@ -601,25 +892,40 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "{{$guid}}",
-  "to": "postmaster@desk.msging.net",
-  "method": "set",
-  "uri": "/rules",
-  "type": "application/vnd.iris.desk.rule+json",
-  "resource": {
-  	"id": "rt5aax7a8a9-8as4da",
-  	"isActive": true,
-	"property": "Contact.Extras.City",
-	"relation": "Equals",
-	"team": "Default",
-	"title": "City Rule ",
-	"values": [
-		"Belo Horizonte",
-		"BH",
-		"Minas Gerais",
-		"MG"
-		]
-	}
+    "id": "{{$guid}}",
+    "to": "postmaster@desk.msging.net",
+    "method": "set",
+    "uri": "/rules",
+    "type": "application/vnd.iris.desk.rule+json",
+    "resource": {
+        "id": "rt5aax7a8a9-8as4da",
+        "isActive": true,
+        "property": "Contact.Extras.City",
+        "relation": "Equals",
+        "team": "Default",
+        "title": "City Rule ",
+        "values": [
+            "Belo Horizonte",
+            "BH",
+            "Minas Gerais",
+            "MG"
+        ]
+        "conditions":[
+            {
+                "property":"Contact.Extras.City",
+                "relation":"Equals",
+                "values":[
+                    "Belo Horizonte",
+                    "BH",
+                    "Minas Gerais",
+                    "MG"
+                ]
+            }
+        ],
+        "operator":"Or",
+        "priority":3,
+        "storageDate":"2021-01-19T15:13:03.340Z"
+    },
 }
 ```
 
@@ -636,27 +942,52 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/rules',
+        'application/vnd.iris.desk.rules+json',
+        {
+            'id': 'rt5aax7a8a9-8as4da',
+            'isActive': True,
+            'property': 'Contact.Extras.City',
+            'relation': 'Equals',
+            'team': 'Default',
+            'title': 'City Rule ',
+            'values': [
+                'Belo Horizonte',
+                'BH',
+                'Minas Gerais',
+                'MG'
+            ]
+        },
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```javascript
 client.sendCommand({
-  id: Lime.Guid(),
-  to: "postmaster@desk.msging.net",
-  method: Lime.CommandMethod.SET,
-  uri: "/rules",
-  type: "application/vnd.iris.desk.rule+json",
-  resource: {
-    id: "rt5aax7a8a9-8as4da",
-  	isActive: true,
-	property: "Contact.Extras.City",
-	relation: "Equals",
-	team: "Default",
-	title: "City Rule ",
-	values: [
-		"Belo Horizonte",
-		"BH",
-		"Minas Gerais",
-		"MG"
-		]
-	}
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.SET,
+    uri: "/rules",
+    type: "application/vnd.iris.desk.rule+json",
+    resource: {
+        id: "rt5aax7a8a9-8as4da",
+        isActive: true,
+        property: "Contact.Extras.City",
+        relation: "Equals",
+        team: "Default",
+        title: "City Rule ",
+        values: [
+           "Belo Horizonte",
+           "BH",
+           "Minas Gerais",
+           "MG"
+        ]
+    }
 })
 ```
 
@@ -699,10 +1030,22 @@ Authorization: Key {YOUR_TOKEN}
   "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "set",
-  "uri": "/tickets/ba11b95c-7564-4685-b835-8cc76fae6fac.testehome1%400mn.io",
+  "uri": "/tickets/{customerIdentity}",
   "type": "text/plain",
   "resource": "I need a human!"
 }
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/tickets/{customerIdentity}',
+        'text/plain',
+        'I need a Human!',
+        to='postmaster@desk.msging.net'
+    )
+)
 ```
 
 ```javascript
@@ -710,7 +1053,7 @@ client.sendCommand({
   id: Lime.Guid(),
   to: "postmaster@desk.msging.net",
   method: Lime.CommandMethod.SET,
-  uri: "/tickets/ba11b95c-7564-4685-b835-8cc76fae6fac.testehome1%400mn.io",
+  uri: "/tickets/{customerIdentity}",
   type: "text/plain",
   resource: "I need a human!"
 })
@@ -721,7 +1064,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Set,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/tickets/ba11b95c-7564-4685-b835-8cc76fae6fac.testehome1%400mn.io"),
+    Uri = new LimeUri("/tickets/{customerIdentity}"),
     Resource = "I need a human!"
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
@@ -740,7 +1083,7 @@ Content-Type: application/json
         "sequentialId": 1,
         "sequentialSuffix": "SFX",
         "ownerIdentity": "testehome1@msging.net",
-        "customerIdentity": "ba11b95c-7564-4685-b835-8cc76fae6fac.testehome1@0mn.io",
+        "customerIdentity": "{customerIdentity}",
         "customerDomain": "0mn.io",
         "provider": "Lime",
         "status": "Waiting",
@@ -768,7 +1111,7 @@ Content-Type: application/json
      sequentialId: 1,
      sequentialSuffix: "SFX",
      ownerIdentity: 'testehome1@msging.net',
-     customerIdentity: 'ba11b95c-7564-4685-b835-8cc76fae6fac.testehome1@0mn.io',
+     customerIdentity: '{customerIdentity}',
      customerDomain: '0mn.io',
      provider: 'Lime',
      status: 'Waiting',
@@ -786,7 +1129,7 @@ Content-Type: application/json
   to: 'testehome1@msging.net/default',
   metadata:
    { '#command.uri':
-      'lime://testehome1@msging.net/tickets/ba11b95c-7564-4685-b835-8cc76fae6fac.testehome1%400mn.io' }
+      'lime://testehome1@msging.net/tickets/{customerIdentity}' }
 }
 ```
 
@@ -796,7 +1139,7 @@ result: {Lime.Protocol.Command}
     Id [string]: "065f1579-b220-45dc-be69-3a6c844016c3"
     Metadata [IDictionary]: Count = 1
         Key [string]: "#command.uri"
-        Value [string]: "lime://testehome1@msging.net/tickets/ba11b95c-7564-4685-b835-8cc76fae6fac.testehome1%400mn.io"
+        Value [string]: "lime://testehome1@msging.net/tickets/{customerIdentity}"
     Resource [Document]: {Takenet.Iris.Messaging.Resources.Ticket}
         Status [TicketStatusEnum]: Waiting
         SequentialId [int]: 1
@@ -810,6 +1153,16 @@ result: {Lime.Protocol.Command}
 Delete a category of [custom replies](#customreply).
 
 Replace `{categoryId}` with the category id you want to delete.
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.DELETE,
+        '/replies/{categoryId}',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -862,6 +1215,16 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 Delete a specific [attendance rule](/#rule).
 
 Replace `{ruleId}`with the rule id you want to delete.
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.DELETE,
+        '/rules/{ruleId}',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -919,6 +1282,16 @@ Replace `{agentId}` with the agent Id you want to delete.
 Note: The identity must be in the form <b>jonh%2540email.com@blip.ai</b> for an identity <b>jonh%40email.com</b>
 </aside>
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.DELETE,
+        '/attendants/{agentId}',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -966,7 +1339,28 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 ### Finishing a tickets previously closed by customer
 
-The proccess of close a ticket is the last thing to do during an attendance. If a [ticket](/#ticket) is closed by the customer is possible close permanently to unable any data update. In order to finalize permanently a ticket send a command with `SET` method to `postmaster@desk.msging.net` and URI `/tickets/{ticketId}/close` .
+The process of close a ticket is the last thing to do during attendance. Close the ticket using the '[Close a ticket as attendant](/#close-a-ticket-as-user)' or '[Close a ticket as user](/#close-a-ticket-as-user)' commands before using this command. 
+
+If a [ticket](/#ticket) is closed by the customer is possible to close permanently to disable any data update. To permanently finalize a ticket, send a command with the `SET` method to `postmaster@desk.msging.net` and URI `/tickets/{ticketId}/close`.
+
+Replace the variable `{ticketId}` with the ticket id you want to finish.
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/tickets/{ticketId}/close',
+        'application/vnd.iris.ticket+json',
+        {
+            'closedBy': 'agent%40email.net@blip.ai',
+            'tags': [
+                'TestTag'
+            ]
+        },
+        to='postmaster@desk.msging.net'
+    )
+)
+```
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -974,31 +1368,32 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "{{$guid}}",
-  "to": "postmaster@desk.msging.net",
-  "method": "set",
-  "uri": "/tickets/{ticketId}/close",
-  "resource": {
-    "customerIdentity": "{customerIdentity}",
-    "id": "dfd6a0e4-b109-41f1-8513-01673b93a669",
-    "ownerIdentity": "{botIdentifier}@msging.net",
-    "status": "ClosedClient",
-    "tags": ["AtendimentoTeste"]
-  }
+    "id": "{{$guid}}",
+    "method": "set",
+    "to": "postmaster@desk.msging.net",
+    "uri": "/tickets/{ticketId}/close",
+    "type": "application/vnd.iris.ticket+json",
+    "resource": {
+        "closedBy": "agent%40email.net@blip.ai",
+        "tags": [
+        	"TestTag"
+        ]
+    }
 }
 ```
 
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
+    method: "set",
     to: "postmaster@desk.msging.net",
-    uri: "/tickets/ba11b95c-7564-4685-b835-8cc76fae6fac/close",
+    uri: "/tickets/{ticketId}/close",
+    type: "application/vnd.iris.ticket+json",
     resource: {
-        customerIdentity: "1654804277843415@messenger.gw.msging.net",
-        id: "ba11b95c-7564-4685-b835-8cc76fae6fac",
-        ownerIdentity: "testehome1@msging.net",
-        status: "ClosedClient",
-        tags: ["AtendimentoTeste"]
+        closedBy: "agent%40email.net@blip.ai",
+        tags: [
+            "TestTag"
+        ]
     }
 })
 ```
@@ -1008,19 +1403,20 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Set,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/tickets/change-status"),
-    Resource = new Ticket{
-        CustomerIdentity = "1654804277843415@messenger.gw.msging.net",
-        Id =  "ba11b95c-7564-4685-b835-8cc76fae6fac",
-        OwnerIdentity = "testehome1@msging.net",
-        Status = TicketStatusEnum.ClosedClient,
-        Tags = ["AtendimentoTeste"]
+    Uri = new LimeUri("/tickets/{ticketId}/close"),
+    Type = "application/vnd.iris.ticket+json",
+    Resource = new Ticket
+    {
+        ClosedBy = "agent%40email.net@blip.ai",
+        Tags = [
+            "TestTag"
+        ]
     }
 };
 ```
 
 <aside class="notice">
-Note: The `tags` property can be hide if you didn't set the Tags configurations in Portal.
+Notes: 1) The `tags` property can be hidden if you didn't set the Tags configurations in Portal. 2) If you omit the `ClosedBy` property, we'll use the bot identity to identify the responsible to finish the ticket. 
 </aside>
 
 ### Forwarding received messages from a human agent to a final user
@@ -1048,6 +1444,14 @@ client.addMessageReceiver(true, function(message) {
 })
 ```
 
+```python
+def message_processor(message: Message) -> None:
+    # Process received message
+    pass
+
+client.add_message_receiver(Receiver(True, message_processor))
+```
+
 ```csharp
 
 ```
@@ -1064,6 +1468,16 @@ Content-Type: application/json
     "type": "text/plain",
     "content": "Hello, here is a human being ;)"
 }
+```
+
+```python
+client.send_message(
+    Message(
+        'text/plain',
+        'Hello, here is a human being ;)',
+        to='1654804277843415@messenger.gw.msging.net'
+    )
+)
 ```
 
 ```javascript
@@ -1111,6 +1525,14 @@ client.addMessageReceiver(true, function(message) {
 });
 ```
 
+```python
+def message_processor(message: Message) -> None:
+    # Process received message
+    pass
+
+client.add_message_receiver(Receiver(True, message_processor))
+```
+
 To foward a received message to an agent, send the message to **{encoded-user-node}@desk.msging.net**, where
 
 **{encoded-user-node}** is the ASCII-encoded messages' emmiter node.
@@ -1125,6 +1547,16 @@ Content-Type: application/json
     "type": "text/plain",
     "content": "Hello, I would like to talk to an attendant."
 }
+```
+
+```python
+client.send_message(
+    Message(
+        'text/plain',
+        'Hello, I would like to talk to an attendant.',
+        to='1654804277843415%40messenger.gw.msging.net@desk.msging.net'
+    )
+)
 ```
 
 ```javascript
@@ -1217,6 +1649,16 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/replies/{categoryId}',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
@@ -1243,12 +1685,12 @@ Get a report about [agents](/#attendant).
 
 Returns a [Attendant Summary](/#attendantticketssummary) document.
 
-The following filters are available:
+The following filters are **required**:
 
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| beginDate    | Initial date to retrieve the report        |
-| endDate      | Limit date to retrieve the report.        |
+| QueryString | Description                         |
+|-------------|-------------------------------------|
+| beginDate   | Initial date to retrieve the report |
+| endDate     | Limit date to retrieve the report.  |
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -1259,7 +1701,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/analytics/reports/attendants"
+  "uri": "/analytics/reports/attendants?beginDate=2019-04-15&endDate=2019-06-22"
 }
 ```
 
@@ -1303,12 +1745,22 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/analytics/reports/attendants?beginDate=2019-04-15&endDate=2019-06-22',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/analytics/reports/attendants"
+    uri: "/analytics/reports/attendants?beginDate=2019-04-15&endDate=2019-06-22"
 })
 ```
 
@@ -1317,7 +1769,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/analytics/reports/attendants")
+    Uri = new LimeUri("/analytics/reports/attendants?beginDate=2019-04-15&endDate=2019-06-22")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -1329,12 +1781,12 @@ Get a report about attendance time.
 
 Returns a [Attendance Time Summary](/#attendancetimesummary) document.
 
-The following filters are available:
+The following filters are **required**:
 
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| beginDate    | Initial date to retrieve the report        |
-| endDate      | Limit date to retrieve the report.        |
+| QueryString | Description                         |
+|-------------|-------------------------------------|
+| beginDate   | Initial date to retrieve the report |
+| endDate     | Limit date to retrieve the report.  |
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -1345,7 +1797,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/analytics/reports/attendancetime"
+  "uri": "/analytics/reports/attendancetime?beginDate=2019-04-15&endDate=2019-06-22"
 }
 ```
 
@@ -1366,12 +1818,22 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/analytics/reports/attendancetime?beginDate=2019-04-15&endDate=2019-06-22',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/analytics/reports/attendancetime"
+    uri: "/analytics/reports/attendancetime?beginDate=2019-04-15&endDate=2019-06-22"
 })
 ```
 
@@ -1380,7 +1842,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/analytics/reports/attendancetime")
+    Uri = new LimeUri("/analytics/reports/attendancetime?beginDate=2019-04-15&endDate=2019-06-22")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -1392,12 +1854,12 @@ Get a report about tags.
 
 Returns a [Tag Ticket Summary](/#tagticketssummary) document.
 
-The following filters are available:
+The following filters are **required**:
 
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| beginDate    | Initial date to retrieve the report        |
-| endDate      | Limit date to retrieve the report.        |
+| QueryString | Description                         |
+|-------------|-------------------------------------|
+| beginDate   | Initial date to retrieve the report |
+| endDate     | Limit date to retrieve the report.  |
 
 <aside class="notice">
 Note: By default the <i>beginDate</i> and <i>endDate</i> values are the current date.
@@ -1412,7 +1874,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/analytics/reports/tags"
+  "uri": "/analytics/reports/tags?beginDate=2019-04-15&endDate=2019-06-22"
 }
 ```
 
@@ -1457,8 +1919,18 @@ client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/analytics/reports/tags"
+    uri: "/analytics/reports/tags?beginDate=2019-04-15&endDate=2019-06-22"
 })
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/analytics/reports/tags?beginDate=2019-04-15&endDate=2019-06-22',
+        to='postmaster@desk.msging.net'
+    )
+)
 ```
 
 ```csharp
@@ -1466,7 +1938,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/analytics/reports/tags")
+    Uri = new LimeUri("/analytics/reports/tags?beginDate=2019-04-15&endDate=2019-06-22")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -1480,10 +1952,10 @@ Returns a [Team Ticket Summary](/#teamticketssummary) document.
 
 The following filters are **required**:
 
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| beginDate    | Initial date to retrieve the report        |
-| endDate      | Limit date to retrieve the report.        |
+| QueryString | Description                         |
+|-------------|-------------------------------------|
+| beginDate   | Initial date to retrieve the report |
+| endDate     | Limit date to retrieve the report.  |
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -1544,12 +2016,22 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/analytics/reports/teams?beginDate=2019-04-15&endDate=2019-06-22',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/analytics/reports/teams"
+    uri: "/analytics/reports/teams?beginDate=2019-04-15&endDate=2019-06-22"
 })
 ```
 
@@ -1558,7 +2040,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/analytics/reports/teams")
+    Uri = new LimeUri("/analytics/reports/teams?beginDate=2019-04-15&endDate=2019-06-22")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -1570,12 +2052,12 @@ Get a report about the tickets timing.
 
 Returns a [Ticket Metrics Summary](/#ticketsmetricssummary) document.
 
-The following filters are available:
+The following filters are **required**:
 
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| beginDate    | Initial date to retrieve the report        |
-| endDate      | Limit date to retrieve the report.        |
+| QueryString | Description                         |
+|-------------|-------------------------------------|
+| beginDate   | Initial date to retrieve the report |
+| endDate     | Limit date to retrieve the report.  |
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -1586,7 +2068,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/analytics/reports/timings"
+  "uri": "/analytics/reports/timings?beginDate=2019-04-15&endDate=2019-06-22"
 }
 ```
 
@@ -1617,12 +2099,22 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/analytics/reports/timings?beginDate=2019-04-15&endDate=2019-06-22',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/analytics/reports/timings"
+    uri: "/analytics/reports/timings?beginDate=2019-04-15&endDate=2019-06-22"
 })
 ```
 
@@ -1631,7 +2123,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/analytics/reports/timings)
+    Uri = new LimeUri("/analytics/reports/timings?beginDate=2019-04-15&endDate=2019-06-22)
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -1643,12 +2135,12 @@ Get a report about [tickets](/#ticket).
 
 Returns a [Tickets Summary](/#ticketssummary) document.
 
-The following filters are available:
+The following filters are **required**:
 
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| beginDate    | Initial date to retrieve the report        |
-| endDate      | Limit date to retrieve the report.        |
+| QueryString | Description                         |
+|-------------|-------------------------------------|
+| beginDate   | Initial date to retrieve the report |
+| endDate     | Limit date to retrieve the report.  |
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -1659,7 +2151,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/analytics/reports/tickets"
+  "uri": "/analytics/reports/tickets?beginDate=2019-04-15&endDate=2019-06-22"
 }
 ```
 
@@ -1713,12 +2205,22 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/analytics/reports/tickets?beginDate=2019-04-15&endDate=2019-06-22',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/analytics/reports/tickets"
+    uri: "/analytics/reports/tickets?beginDate=2019-04-15&endDate=2019-06-22"
 })
 ```
 
@@ -1727,10 +2229,98 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/analytics/reports/tickets")
+    Uri = new LimeUri("/analytics/reports/tickets?beginDate=2019-04-15&endDate=2019-06-22")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
+```
+
+### Get a attendanceQueue
+
+Get a specific [attendance queue](/#attendance-queues).
+Replace `{queueId}`with the queue id you want to get.
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "{{$guid}}",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/attendance-queues/{queueId}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "type": "application/vnd.lime.collection+json",
+  "resource": {
+    "total": 2,
+    "itemType": "application/vnd.iris.desk.attendancequeue+json",
+    "items": [
+      {
+        "id": "queueclientbasic",
+        "ownerIdentity": "demobot@msging.net",
+        "name": "Queue Client Basic",
+        "isActive": true,
+        "storageDate": "2021-04-06T15:01:33.240Z",
+        "Priority": 0
+      },
+      {
+        "id": "queueclientbeta",
+        "ownerIdentity": "demobot@msging.net",
+        "name": "Queue Client Beta",
+        "isActive": true,
+        "storageDate": "2021-04-06T14:59:28.830Z",
+        "Priority": 0
+      }
+    ]
+  },
+  "method": "get",
+  "status": "success",
+  "id": "55ab5ef8-6556-46ee-8328-5c4966393f50",
+  "from": "postmaster@desk.msging.net/!hmg-az-iris1",
+  "to": "demobot@msging.net/default",
+  "metadata": {
+    "#command.uri": "lime://demobot@msging.net/attendance-queues",
+    "uber-trace-id": "840b1d9131b1182f%3A2389284ea498272b%3A8401234531b1182f%3A1"
+  }
+}
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/attendance-queues/{queueId}',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.GET,
+    uri: "/attendance-queues/{queueId}"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/attendance-queues/{queueId}"),
+};
+
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 ```
 
 ### Get a rule
@@ -1767,8 +2357,22 @@ Content-Type: application/json
         "relation": "Equals",
         "isActive": true,
         "values": [
+            "Belo Horizonte",
             "BH"
-        ]
+        ],
+        "conditions":[
+            {
+               "property":"Contact.Extras.Cidade",
+               "relation":"Equals",
+               "values":[
+                    "Belo Horizonte",
+                    "BH"
+                ]
+            }
+        ],
+        "operator":"Or",
+        "priority":3,
+        "storageDate":"2021-01-19T15:13:03.340Z"
     },
     "method": "get",
     "status": "success",
@@ -1776,6 +2380,16 @@ Content-Type: application/json
     "from": "postmaster@desk.msging.net/#az-iris5",
     "to": "demobot@msging.net"
 }
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/rules/{ruleId}',
+        to='postmaster@desk.msging.net'
+    )
+)
 ```
 
 ```javascript
@@ -1846,6 +2460,16 @@ Content-Type: application/json
     "from": "postmaster@desk.msging.net/#az-iris7",
     "to": "demobot@msging.net",
 }
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/ticket/{ticketId}',
+        to='postmaster@desk.msging.net'
+    )
+)
 ```
 
 ```javascript
@@ -1923,6 +2547,16 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/monitoring/attendants?version=2',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
@@ -1949,12 +2583,12 @@ Get a report about [attendants](/#attendant) productivity.
 
 Returns a [Agent Productivity Summary](/#agentproductivitysummary) document.
 
-The following filters are available:
+The following filters are **required**:
 
-| QueryString  | Description                               |
-|--------------|-------------------------------------------|
-| beginDate    | Initial date to retrieve the report        |
-| endDate      | Limit date to retrieve the report.        |
+| QueryString | Description                         |
+|-------------|-------------------------------------|
+| beginDate   | Initial date to retrieve the report |
+| endDate     | Limit date to retrieve the report.  |
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -1965,7 +2599,7 @@ Authorization: Key {YOUR_TOKEN}
   "id": "{{$guid}}",
   "to": "postmaster@desk.msging.net",
   "method": "get",
-  "uri": "/analytics/reports/attendants/productivity"
+  "uri": "/analytics/reports/attendants/productivity?beginDate=2019-04-15&endDate=2019-06-22"
 }
 ```
 
@@ -2005,12 +2639,22 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/analytics/reports/attendants/productivity?beginDate=2019-04-15&endDate=2019-06-22',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
     to: "postmaster@desk.msging.net",
     method: "get",
-    uri: "/analytics/reports/attendants/productivity"
+    uri: "/analytics/reports/attendants/productivity?beginDate=2019-04-15&endDate=2019-06-22"
 })
 ```
 
@@ -2019,7 +2663,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/analytics/reports/attendants/productivity")
+    Uri = new LimeUri("/analytics/reports/attendants/productivity?beginDate=2019-04-15&endDate=2019-06-22")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
@@ -2070,6 +2714,16 @@ Content-Type: application/json
 
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/monitoring/tickets?version=2',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```csharp
 var command = new Command(){
     Id = EnvelopeId.NewId(),
@@ -2094,13 +2748,11 @@ client.sendCommand({
 
 In order to get all attendants of some bot send a command with `GET` method to `postmaster@desk.msging.net` and URI `/attendants` . This feature is usefull to know if there are any available attendant to answer customers questions. By default, Blip will return 20 agents.
 
-
-| QueryString     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **$skip** |The number of elements to be skipped.                                |    0    |
-| **$take** | Limit of total of items to be returned.                               |   100   |
-| **$ascending** | Sets ascending alphabetical order.                                |    true    |
-
+| QueryString    | Description                             | Example |
+|----------------|-----------------------------------------|---------|
+| **$skip**      | The number of elements to be skipped.   | 0       |
+| **$take**      | Limit of total of items to be returned. | 100     |
+| **$ascending** | Sets ascending alphabetical order.      | true    |
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -2113,6 +2765,16 @@ Authorization: Key {YOUR_TOKEN}
   "method": "get",
   "uri": "/attendants"
 }
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/attendants',
+        to='postmaster@desk.msging.net'
+    )
+)
 ```
 
 ```javascript
@@ -2202,6 +2864,8 @@ Returns all closed [tickets](/#ticket).
 
 Replace `{customerIdentity}` with the customer id you want to get.
 
+The maximum value of `take` parameter is 100.
+
 ```http
 POST https://http.msging.net/commands HTTP/1.1
 Content-Type: application/json
@@ -2213,6 +2877,7 @@ Authorization: Key {YOUR_TOKEN}
   "uri": "/tickets?$filter=(CustomerIdentity%20eq%20'{customer_identity}')&$closed=true&$skip=0&$take=100"
 }
 ```
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -2242,6 +2907,16 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        "/tickets?filter=(CustomerIdentity%20eq%20'{customer_identity}')&$closed=true&$skip=0&$take=100",
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
@@ -2257,16 +2932,15 @@ Return all [messages](/#messages) from the specific owner [ticket](/#ticket) cus
 
 Replace `{ticketId}` with the ticket id you want to get the messages.
 
+| QueryString                          | Description                             | Example |
+|--------------------------------------|-----------------------------------------|---------|
+| **$take**                            | Limit of total of items to be returned. | 100     |
+| **$ascending**                       | Sets ascending alphabetical order.      | true    |
+| **getFromOwnerIfTunnel** (required*) | Get all messages from owner router.     | true    |
 
-| QueryString     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **$take** | Limit of total of items to be returned.                               |   100   |
-| **$ascending** | Sets ascending alphabetical order.                                |    true    |
-| **getFromOwnerIfTunnel** (required*) | Get all messages from owner router.                                |    true    |
-
-| Parameters | Example                              |
-|------------|--------------------------------------|
-| **ticketId**   | f1e95e10-2e21-4438-a076-71183b253981 |
+| Parameters   | Example                              |
+|--------------|--------------------------------------|
+| **ticketId** | f1e95e10-2e21-4438-a076-71183b253981 |
 
 <aside class="notice">
 Note: After the ticket is created, it <b>expires in a month</b>. In this situation, messages are accessible only by endpoint <a href="https://docs.blip.ai/#get-last-threads">Get last threads</a>.
@@ -2275,7 +2949,6 @@ Note: After the ticket is created, it <b>expires in a month</b>. In this situati
 <aside class="notice">
 * Note: By default its value is <i>false</i>. If you are using a Router, it must be <i>true</i> otherwise it can be ommited or false. 
 </aside>
-
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -2332,6 +3005,16 @@ Content-Type: application/json
     "from": "postmaster@desk.msging.net/#az-iris7",
     "to": "demobot@msging.net"
 }
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/tickets/{ticketId}/messages',
+        to='postmaster@desk.msging.net'
+    )
+)
 ```
 
 ```javascript
@@ -2399,6 +3082,16 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/teams',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
@@ -2424,42 +3117,41 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 In order to get any ticket of some bot send a command with `GET` method to `postmaster@desk.msging.net` and URI `/tickets` .
 To filter specific tickets you can use **$filter** parameter on query string with the following properties:
 
+| **$filter** | Description                                                                        | Example |
+|-------------|------------------------------------------------------------------------------------|---------|
+| **skip**    | The number of elements to be skipped                                               | 0       |
+| **take**    | The number of elements to be returned. The maximum value of this parameter is 100. | 10      |
 
-| **$filter**     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **skip** | The number of elements to be skipped                           | 0 |
-| **take** | The number of elements to be returned                          | 10 |
-
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the ticket   |
-| sequentialId    | The ticket sequential id (by bot) |
-| sequentialSuffix    | The optional suffix of sequential id (if config) |
-| ownerIdentity | The identity of the bot ticket owner |
-| customerIdentity | The identity of the customer |
-| customerDomain    | The domain of the customer  |
-| agentIdentity     | The identity of the agent |
-| provider | The name of the agent provider for ticket |
-| status | The ticket status* |
-| storageDate | The ticket creation date |
-| externalId | The provider's ticked id |
-| rating | Ticket rating for the agent identity |
-| team | Ticket team |
-| unreadMessages | Gets or sets the number of unread messages of a ticket. Unread messages are messages without consumed notification. |
-| closed | The ticket is closed or not |
-| priority  | The ticket's priority level |
+| Name             | Description                                                                                                         |
+|------------------|---------------------------------------------------------------------------------------------------------------------|
+| id               | Unique identifier of the ticket                                                                                     |
+| sequentialId     | The ticket sequential id (by bot)                                                                                   |
+| sequentialSuffix | The optional suffix of sequential id (if config)                                                                    |
+| ownerIdentity    | The identity of the bot ticket owner                                                                                |
+| customerIdentity | The identity of the customer                                                                                        |
+| customerDomain   | The domain of the customer                                                                                          |
+| agentIdentity    | The identity of the agent                                                                                           |
+| provider         | The name of the agent provider for ticket                                                                           |
+| status           | The ticket status*                                                                                                  |
+| storageDate      | The ticket creation date                                                                                            |
+| externalId       | The provider's ticked id                                                                                            |
+| rating           | Ticket rating for the agent identity                                                                                |
+| team             | Ticket team                                                                                                         |
+| unreadMessages   | Gets or sets the number of unread messages of a ticket. Unread messages are messages without consumed notification. |
+| closed           | The ticket is closed or not                                                                                         |
+| priority         | The ticket's priority level                                                                                         |
 
 *Ticket status can assume one of the following values*
 
-| Ticket Status | Description |
-|---------------|-------------|
-| None | Not defined |
-| Waiting | The ticket is waiting for an agent |
-| Open | The ticket was claimed by an agent |
-| ClosedAttendant | The ticket was closed by the agent |
-| ClosedClient | The ticket was closed by the client |
-| Transferred | The ticket was transferred |
-| Assigned | The ticket is assigned to an agent and is waiting for the consumed notification from them |
+| Ticket Status   | Description                                                                               |
+|-----------------|-------------------------------------------------------------------------------------------|
+| None            | Not defined                                                                               |
+| Waiting         | The ticket is waiting for an agent                                                        |
+| Open            | The ticket was claimed by an agent                                                        |
+| ClosedAttendant | The ticket was closed by the agent                                                        |
+| ClosedClient    | The ticket was closed by the client                                                       |
+| Transferred     | The ticket was transferred                                                                |
+| Assigned        | The ticket is assigned to an agent and is waiting for the consumed notification from them |
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -2472,6 +3164,16 @@ Authorization: Key {YOUR_TOKEN}
   "method": "get",
   "uri": "/tickets?$take=10"
 }
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/tickets?$take=10',
+        to='postmaster@desk.msging.net'
+    )
+)
 ```
 
 ```javascript
@@ -2579,11 +3281,11 @@ Get all [attendance rules](/#rule).
 
 The following uri filters are available to get rules:
 
-| QueryString     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **skip** | The number of rules to be skipped.                                |    0    |
-| **take** | The number of rules to be returned.                               |   100   |
-| **ascending** | Sets ascending alphabetical order.                                |    true    |
+| QueryString   | Description                         | Example |
+|---------------|-------------------------------------|---------|
+| **skip**      | The number of rules to be skipped.  | 0       |
+| **take**      | The number of rules to be returned. | 100     |
+| **ascending** | Sets ascending alphabetical order.  | true    |
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -2620,6 +3322,19 @@ Content-Type: application/json
                     "Belo Horizonte",
                     "BH"
                 ]
+                "conditions":[
+                    {
+                        "property":"Contact.Extras.Cidade",
+                        "relation":"Equals",
+                        "values":[
+                            "Belo Horizonte",
+                            "BH"
+                        ]
+                    }
+                ],
+            "operator":"Or",
+            "priority":3,
+            "storageDate":"2021-01-19T15:13:03.340Z"
             }
         ]
     },
@@ -2633,6 +3348,16 @@ Content-Type: application/json
         "uber-trace-id": "364c11dba2c5f82d%3A364c11dba2c5f82d%3A0%3A1"
     }
 }
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/rules',
+        to='postmaster@desk.msging.net'
+    )
+)
 ```
 
 ```javascript
@@ -2659,11 +3384,11 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 
 Get the [custom replies](/#customreply) from your attendance model.
 
-| QueryString     | Description                                                        | Example |
-|--------------|--------------------------------------------------------------------|---------|
-| **$skip** |The number of elements to be skipped.                                |    0    |
-| **$take** | Limit of total of items to be returned.                               |   100   |
-| **$ascending** | Sets ascending alphabetical order.                                |    true    |
+| QueryString    | Description                             | Example |
+|----------------|-----------------------------------------|---------|
+| **$skip**      | The number of elements to be skipped.   | 0       |
+| **$take**      | Limit of total of items to be returned. | 100     |
+| **$ascending** | Sets ascending alphabetical order.      | true    |
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -2701,6 +3426,16 @@ Content-Type: application/json
     "from": "postmaster@desk.msging.net/#az-iris3",
     "to": "demobot@msging.net"
 }
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/replies',
+        to='postmaster@desk.msging.net'
+    )
+)
 ```
 
 ```javascript
@@ -2766,6 +3501,16 @@ Content-Type: application/json
     "from": "postmaster@desk.msging.net/#az-iris1",
     "to": "demobot@msging.net"
 }
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/monitoring/open-tickets?version=2',
+        to='postmaster@desk.msging.net'
+    )
+)
 ```
 
 ```javascript
@@ -2845,6 +3590,16 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/monitoring/open-tickets?version=2',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
@@ -2870,7 +3625,6 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 Get attendance [teams](/#teamticketssummary) metrics and informations.
 
 The endpoint returns only data related to the current day.
-
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -2919,6 +3673,16 @@ Content-Type: application/json
     "from": "postmaster@desk.msging.net/#az-iris7",
     "to": "demobot@msging.net"
 }
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/monitoring/teams?version=2',
+        to='postmaster@desk.msging.net'
+    )
+)
 ```
 
 ```javascript
@@ -2984,6 +3748,16 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/monitoring/ticket-metrics?version=2',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
@@ -3044,6 +3818,16 @@ Content-Type: application/json
     "from": "postmaster@desk.msging.net/#az-iris7",
     "to": "demobot4@msging.net"
 }
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/monitoring/tickets?version=2',
+        to='postmaster@desk.msging.net'
+    )
+)
 ```
 
 ```javascript
@@ -3107,6 +3891,16 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/monitoring/tickets-per-hour?version=2',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```javascript
 client.sendCommand({
     id: Lime.Guid(),
@@ -3130,6 +3924,8 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 ### Get waiting tickets
 
 Returns all waiting [tickets](/#ticket).
+
+The maximum value of `take` parameter is 100.
 
 ```http
 POST https://http.msging.net/commands HTTP/1.1
@@ -3184,6 +3980,16 @@ Content-Type: application/json
     }
 }
 
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        "/tickets?$filter=status%20eq%20'waiting'&$skip=0&$take=100",
+        to='postmaster@desk.msging.net'
+    )
+)
 ```
 
 ```javascript
@@ -3250,6 +4056,16 @@ Content-Type: application/json
     "from": "postmaster@desk.msging.net/#az-iris7",
     "to": "demobot@msging.net"
 }
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/monitoring/waiting-tickets?version=2',
+        to='postmaster@desk.msging.net'
+    )
+)
 ```
 
 ```javascript
@@ -3363,6 +4179,24 @@ client.addMessageReceiver('text/plain', async (message) => {
 });
 ```
 
+```python
+def message_processor(message: Message) -> None:
+    result = await client.process_command_async(
+        Command(
+            CommandMethod.SET,
+            '/enhancement/send-by-email',
+            'application/json',
+            {
+                'email': '{email}',
+                'filter': "requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'"
+            },
+            to='postmaster@desk.msging.net'
+        )
+    )
+
+client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message_processor))
+```
+
 ```csharp
 var command = new Command(){
     Id = EnvelopeId.NewId(),
@@ -3397,7 +4231,7 @@ Authorization: Key {YOUR_TOKEN}
   "uri": "/tickets/{ticketId}/transfer",
   "type": "application/vnd.iris.ticket+json",
   "resource": {
-  	"team": "{teamName}"
+    "team": "{teamName}"
   }
 }
 ```
@@ -3434,6 +4268,20 @@ Content-Type: application/json
 }
 ```
 
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/tickets/{ticketId}/transfer',
+        'application/vnd.iris.ticket+json',
+        {
+            'team': '{teamName}'
+        },
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
 ```javascript
 client.sendCommand({
   id: Lime.Guid(),
@@ -3452,7 +4300,7 @@ var command = new Command(){
     Id = EnvelopeId.NewId(),
     Method = CommandMethod.Set,
     To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/tickets/{ticketId/transfer"),
+    Uri = new LimeUri("/tickets/{ticketId}/transfer"),
     Resource = new Ticket{
         Team = "{teamName}"
     }

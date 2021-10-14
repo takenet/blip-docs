@@ -50,6 +50,20 @@ messagingHubClient
 
 ```
 
+```python
+command = Command.from_json(
+    {
+        'id': '1',
+        'method': 'get',
+        'uri': '/ping'
+    }
+)
+
+response = await client.process_command_async(command)
+# or sync
+# response = client.process_command(command)
+```
+
 ```http
 
 POST https://http.msging.net/commands HTTP/1.1
@@ -79,26 +93,26 @@ In order to use the Blip's extensions (like schedule and directory), it is neces
 
 REQUEST
 
-| Name | Description |
-|---------------------------------|--------------|
-| id     | Unique command identifier   |
-| from   | Command originator address   |
-| to     | Command recipient address  |
-| uri    | The path at the recipient the command refers to |
-| method | Method for resource manipulation defined at the uri. This value is mandatory |
-| type | Declaration of the resource value type, in the MIME format |
-| resource | JSON resource representation |
-| status | Indicates the command processing result, it is mandatory in the answers |
-| reason | Indicates the command processing failure reason |
+| Name     | Description                                                                  |
+|----------|------------------------------------------------------------------------------|
+| id       | Unique command identifier                                                    |
+| from     | Command originator address                                                   |
+| to       | Command recipient address                                                    |
+| uri      | The path at the recipient the command refers to                              |
+| method   | Method for resource manipulation defined at the uri. This value is mandatory |
+| type     | Declaration of the resource value type, in the MIME format                   |
+| resource | JSON resource representation                                                 |
+| status   | Indicates the command processing result, it is mandatory in the answers      |
+| reason   | Indicates the command processing failure reason                              |
 
 Obs: The **uri** value is mandatory in the requests and can be omitted in the responses. A response command may have status and reason properties.
 
 #### Result codes for requests
 
-| Code                | Description                                                                               |
-|---------------------|-----------------------------------------------------------------------------------------  |
-| 202 (Accepted)      | Envelope was accepted by the server                                                       |
-| 400 (Bad Request)   | Alert to some problem with the format or fields of sent envelope.                         |
-| 401 (Unauthorized)  | Alert to some problem or *Authorization* header missing                                   |
+| Code               | Description                                                       |
+|--------------------|-------------------------------------------------------------------|
+| 202 (Accepted)     | Envelope was accepted by the server                               |
+| 400 (Bad Request)  | Alert to some problem with the format or fields of sent envelope. |
+| 401 (Unauthorized) | Alert to some problem or *Authorization* header missing           |
 
 

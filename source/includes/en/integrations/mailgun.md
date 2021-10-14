@@ -1,7 +1,8 @@
 ## E-mail
-| FQDN                     | Identifier type                                         | 
-|--------------------------|---------------------------------------------------------------|
-| @mailgun.gw.msging.net   | E-mail address on [URL encoded](http://www.w3schools.com/tags/ref_urlencode.asp) format  |
+
+| FQDN                   | Identifier type                                                                         |
+|------------------------|-----------------------------------------------------------------------------------------|
+| @mailgun.gw.msging.net | E-mail address on [URL encoded](http://www.w3schools.com/tags/ref_urlencode.asp) format |
 
 **E-mail** channel allows sending and receiving messages through e-mail messages. Each chatbot has an unique address automatically created by the platform. To know exactly what is the email of your bot access the Portal <b>Channels > Email</b> module, as below image:
 
@@ -11,12 +12,12 @@
 
 Sending an e-mail is a common task for anyone developing a bot. Alerts or confirmation of information are some of the common scenarios for this demand. Blip abstracts the whole process of sending and receiving e-mails to your bot.
 
-| Name | Description |
-|---------------------------------|--------------|
-| id    | Unique identifier of the command.   |
-| to     | **{{e-mail}}@mailgun.gw.msging.net**  |
-| type   | **text/plain** |
-| content | **{{message}}** |
+| Name    | Description                          |
+|---------|--------------------------------------|
+| id      | Unique identifier of the command.    |
+| to      | **{{e-mail}}@mailgun.gw.msging.net** |
+| type    | **text/plain**                       |
+| content | **{{message}}**                      |
 
 <aside class="notice">
 Note: Remember to replace the variable {{e-mail}} for the email you want to send a message (for instance: <b> xpto%40xpto.com</b>). Since every LIME node has the @ character, it is required to sign @ the email by its corresponding ASCII code (%40). You must also define message you want to send the user, replacing the {{message}} variable according to the LIME protocol (for instance: <b>Welcome to our service! How can I help you?</b>).
@@ -29,6 +30,16 @@ client.sendMessage({
     to: "xpto%40xpto.com@mailgun.gw.msging.net",
     content: "Welcome to our service! How can I help you?"
 });
+```
+
+```python
+client.send_message(
+    Message(
+        'text/plain',
+        'Welcome to our service! How can I help you?',
+        to='xpto%40xpto.com@mailgun.gw.msging.net'
+    )
+)
 ```
 
 ```http
