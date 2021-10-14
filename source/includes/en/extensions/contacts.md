@@ -31,6 +31,7 @@ A [contact object](/#contact) passed as a document `resource` has the following 
 | **culture**   | **Optional** The client's culture info (string).   | `"pt-br"` |
 | **extras**   | **Optional** The client's extra informations.         | `{"customerExternalId": "41231", "cpf": "00000000000" }` |
 | **source**   | **Optional** The client's source (channel) info (string).   | `"Facebook Messenger"` |
+| **lastMessageDate**   | **Optional** The client's last interaction (datetimeoffset).   | `2021-09-30T13:38:00.000Z` |
 
 For more information about the supported fields, please refer to the [Lime protocol](http://limeprotocol.org/resources.html#contact) documentation.
 
@@ -519,6 +520,18 @@ Note: You can also filter your query with one of the properties of the contact r
 <code>filter=(substringof('{value}',{propertyName}))</code><br><br>
 
 <b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(substringof('John Doe'%2Cname))</b>
+
+<li><h4>Less than or equal</h4></li>
+
+<code>filter=(lastmessagedate le datetimeoffset'{date}T{hour}:{minute}:{second}.{milisecond}Z')</code><br><br>
+
+<b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(lastmessagedate%20le%20datetimeoffset'2021-09-01T13%3A38%3A00.000Z')</b>
+
+<li><h4>Greater than or equal</h4></li>
+
+<code>filter=(lastmessagedate ge datetimeoffset'{date}T{hour}:{minute}:{second}.{milisecond}Z')</code><br><br>
+
+<b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(lastmessagedate%20ge%20datetimeoffset'2021-09-01T13%3A38%3A00.000Z')</b>
 </ul></aside>
 
 ### Send message with contact name
