@@ -16,21 +16,22 @@ To use any feature of **contacts** extension send a command with the following p
 The command's properties `resource` and `method` can change according to the feature.
 A [contact object](/#contact) passed as a document `resource` has the following properties:
 
-| Property            | Description                                                                                                                                                                                          | Example                                                      |
-|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
-| **identity**        | The client identity in a specific channel. <br/>**It is strongly advised to encode the Identity before setting a contact.**<br/>By not enconding the field contact information may not be retrivied. | `11121023102013021@messenger.gw.msging.net (Messenger user)` |
-| **name**            | **Optional** The client's name (string).                                                                                                                                                             | `"Rafael Pacheco"`                                           |
-| **gender**          | **Optional** The client's gender (string).                                                                                                                                                           | `"male"`                                                     |
-| **group**           | **Optional** The client's group tag (string).                                                                                                                                                        | `"testers"`                                                  |
-| **address**         | **Optional** The client's address (string).                                                                                                                                                          | `"83, Paraguassu Street"`                                    |
-| **city**            | **Optional** The client's city (string).                                                                                                                                                             | `"Belo Horizonte"`                                           |
-| **email**           | **Optional** The client's email (string).                                                                                                                                                            | `"rafaelpa@take.net"`                                        |
-| **phoneNumber**     | **Optional** The client's phone number (string).                                                                                                                                                     | `"5531000000000"`                                            |
-| **cellPhoneNumber** | **Optional** The client's cell phone number (string).                                                                                                                                                | `"5531999999999"`                                            |
-| **timezone**        | **Optional** The client's timezone id (int).                                                                                                                                                         | `-3`                                                         |
-| **culture**         | **Optional** The client's culture info (string).                                                                                                                                                     | `"pt-br"`                                                    |
-| **extras**          | **Optional** The client's extra informations.                                                                                                                                                        | `{"customerExternalId": "41231", "cpf": "00000000000" }`     |
-| **source**          | **Optional** The client's source (channel) info (string).                                                                                                                                            | `"Facebook Messenger"`                                       |
+| Property     | Description                                                        | Example |
+|--------------|--------------------------------------------------------------------|---------|
+| **identity** | The client identity in a specific channel.                         | `11121023102013021@messenger.gw.msging.net (Messenger user)` |
+| **name**   | **Optional** The client's name (string).  | `"Rafael Pacheco"` |
+| **gender** | **Optional** The client's gender (string).  | `"male"` |
+| **group**   | **Optional** The client's group tag (string).   | `"testers"` |
+| **address**   | **Optional** The client's address (string).   | `"83, Paraguassu Street"` |
+| **city**   | **Optional** The client's city (string).   | `"Belo Horizonte"` |
+| **email**   | **Optional** The client's email (string).   | `"rafaelpa@take.net"` |
+| **phoneNumber**   | **Optional** The client's phone number (string).   | `"5531000000000"` |
+| **cellPhoneNumber**   | **Optional** The client's cell phone number (string).   | `"5531999999999"` |
+| **timezone**   | **Optional** The client's timezone id (int).   | `-3` |
+| **culture**   | **Optional** The client's culture info (string).   | `"pt-br"` |
+| **extras**   | **Optional** The client's extra informations.         | `{"customerExternalId": "41231", "cpf": "00000000000" }` |
+| **source**   | **Optional** The client's source (channel) info (string).   | `"Facebook Messenger"` |
+| **lastMessageDate**   | **Optional** The client's last interaction (datetimeoffset).   | `2021-09-30T13:38:00.000Z` |
 
 For more information about the supported fields, please refer to the [Lime protocol](http://limeprotocol.org/resources.html#contact) documentation.
 
@@ -607,6 +608,18 @@ Note: Here are some examples about how to filter your query with one of the prop
 <code>filter=(substringof('{value}',{propertyName}))</code><br><br>
 
 <b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(substringof('John Doe'%2Cname))</b>
+
+<li><h4>Less than or equal</h4></li>
+
+<code>filter=(lastmessagedate le datetimeoffset'{date}T{hour}:{minute}:{second}.{milisecond}Z')</code><br><br>
+
+<b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(lastmessagedate%20le%20datetimeoffset'2021-09-01T13%3A38%3A00.000Z')</b>
+
+<li><h4>Greater than or equal</h4></li>
+
+<code>filter=(lastmessagedate ge datetimeoffset'{date}T{hour}:{minute}:{second}.{milisecond}Z')</code><br><br>
+
+<b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(lastmessagedate%20ge%20datetimeoffset'2021-09-01T13%3A38%3A00.000Z')</b>
 </ul></aside>
 
 ### Send message with contact name
