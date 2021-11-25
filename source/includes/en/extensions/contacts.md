@@ -32,6 +32,7 @@ A [contact object](/#contact) passed as a document `resource` has the following 
 | **extras**   | **Optional** The client's extra informations.         | `{"customerExternalId": "41231", "cpf": "00000000000" }` |
 | **source**   | **Optional** The client's source (channel) info (string).   | `"Facebook Messenger"` |
 | **lastMessageDate**   | **Optional** The client's last interaction (datetimeoffset).   | `2021-09-30T13:38:00.000Z` |
+| **taxDocument** | **Optional** the client's identification document code (string). | `"00000000000"`|
 
 For more information about the supported fields, please refer to the [Lime protocol](http://limeprotocol.org/resources.html#contact) documentation.
 
@@ -582,8 +583,8 @@ If you need to get more than one chatbot's contact, you can use a query paginati
 | QueryString   | Description                                                                                                                             | <div style="min-width:6em">Example</div> |
 |---------------|-----------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
 | **$skip**     | Number of items to be skipped for paging.                                                                                               | 0                                        |
-| **$take**     | Limit of total of items to be returned. Values between 1 and 30000 are allowed. If the value is not allowed, an error will be returned. | 100                                      |
-| **$filter**   | Filter to refine a search by contact's properties                                                                                       | (startswith(name%2C'John'))              |
+| **$take**     | Limit of the total of items to be returned. When **not** using filters, values between 1 and 30000 are allowed. When not provided on the request, the default take value will 100. If the used values are not contained on the specified range, thus not allowed, an error will be returned. | 100                                      |
+| **$filter**   | Filter to refine a search by contact's properties. When using **$take** and **$skip** along with **$filter** the adition between skip and take values must be lesser or equal to 10000. E.g. skip = 5000 and take = 5000 where the values combined result in 10000.                                                                                     | (startswith(name%2C'John'))              |
 
 <aside class="notice">
 Note: Here are some examples about how to filter your query with one of the properties of the contact resource, using the <code>filter</code> property:
