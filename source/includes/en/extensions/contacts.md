@@ -44,7 +44,7 @@ The contacts fields can be used to replace variables on messages sent by the cha
 client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({  
         id: Lime.Guid(),
-        method: Lime.CommandMethod.SET,
+        method: Lime.CommandMethod.MERGE,
         uri: '/contacts',
         type: 'application/vnd.lime.contact+json',
         resource: {
@@ -66,7 +66,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 async def message_receiver_async(message: Message) -> None:
     result = await client.process_command_async(
         Command(
-            CommandMethod.SET,
+            CommandMethod.MERGE,
             '/contacts',
             'application/vnd.lime.contact+json',
             {
@@ -93,7 +93,7 @@ Authorization: Key {YOUR_TOKEN}
 
 {  
   "id": "{{$guid}}",
-  "method": "set",
+  "method": "merge",
   "uri": "/contacts",
   "type": "application/vnd.lime.contact+json",
   "resource": {
@@ -115,7 +115,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "method": "set",
+    "method": "merge",
     "status": "success",
     "id": "1",
     "from": "postmaster@crm.msging.net/#az-iris5",
@@ -166,7 +166,7 @@ namespace Extensions
                 Source = "Facebook Messenger"
             };
 
-            await _contactExtension.SetAsync(identity, contact, cancellationToken);
+            await _contactExtension.MergeAsync(identity, contact, cancellationToken);
         }
     }
 }
