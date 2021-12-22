@@ -16,21 +16,22 @@ To use any feature of **contacts** extension send a command with the following p
 The command's properties `resource` and `method` can change according to the feature.
 A [contact object](/#contact) passed as a document `resource` has the following properties:
 
-| Property            | Description                                                                                                                                                                                          | Example                                                      |
-|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
-| **identity**        | The client identity in a specific channel. <br/>**It is strongly advised to encode the Identity before setting a contact.**<br/>By not enconding the field contact information may not be retrivied. | `11121023102013021@messenger.gw.msging.net (Messenger user)` |
-| **name**            | **Optional** The client's name (string).                                                                                                                                                             | `"Rafael Pacheco"`                                           |
-| **gender**          | **Optional** The client's gender (string).                                                                                                                                                           | `"male"`                                                     |
-| **group**           | **Optional** The client's group tag (string).                                                                                                                                                        | `"testers"`                                                  |
-| **address**         | **Optional** The client's address (string).                                                                                                                                                          | `"83, Paraguassu Street"`                                    |
-| **city**            | **Optional** The client's city (string).                                                                                                                                                             | `"Belo Horizonte"`                                           |
-| **email**           | **Optional** The client's email (string).                                                                                                                                                            | `"rafaelpa@take.net"`                                        |
-| **phoneNumber**     | **Optional** The client's phone number (string).                                                                                                                                                     | `"5531000000000"`                                            |
-| **cellPhoneNumber** | **Optional** The client's cell phone number (string).                                                                                                                                                | `"5531999999999"`                                            |
-| **timezone**        | **Optional** The client's timezone id (int).                                                                                                                                                         | `-3`                                                         |
-| **culture**         | **Optional** The client's culture info (string).                                                                                                                                                     | `"pt-br"`                                                    |
-| **extras**          | **Optional** The client's extra informations.                                                                                                                                                        | `{"customerExternalId": "41231", "cpf": "00000000000" }`     |
-| **source**          | **Optional** The client's source (channel) info (string).                                                                                                                                            | `"Facebook Messenger"`                                       |
+| Property            | Description                                                                         | Example                                                      |
+|---------------------|-------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| **identity**        | The client identity in a specific channel.                                          | `11121023102013021@messenger.gw.msging.net (Messenger user)` |
+| **name**            | **Optional** The client's name (string).                                            | `"Rafael Pacheco"`                                           |
+| **gender**          | **Optional** The client's gender (string).                                          | `"male"`                                                     |
+| **group**           | **Optional** The client's group tag (string).                                       | `"testers"`                                                  |
+| **address**         | **Optional** The client's address (string).                                         | `"83, Paraguassu Street"`                                    |
+| **city**            | **Optional** The client's city (string).                                            | `"Belo Horizonte"`                                           |
+| **email**           | **Optional** The client's email (string).                                           | `"rafaelpa@take.net"`                                        |
+| **phoneNumber**     | **Optional** The client's phone number (string).                                    | `"5531000000000"`                                            |
+| **cellPhoneNumber** | **Optional** The client's cell phone number (string).                               | `"5531999999999"`                                            |
+| **timezone**        | **Optional** The client's timezone id (int).                                        | `-3`                                                         |
+| **culture**         | **Optional** The client's culture info (string).                                    | `"pt-br"`                                                    |
+| **extras**          | **Optional** The client's extra information.                                        | `{"customerExternalId": "41231", "cpf": "00000000000" }`     |
+| **source**          | **Optional** The client's source (channel) info (string). Check [here](/#channels). | `"Facebook Messenger"`                                       |
+
 
 For more information about the supported fields, please refer to the [Lime protocol](http://limeprotocol.org/resources.html#contact) documentation.
 
@@ -38,7 +39,156 @@ For more information about the supported fields, please refer to the [Lime proto
 
 The contacts fields can be used to replace variables on messages sent by the chatbot. To make a replacement in a message, the `metadata` key `#message.replaceVariables` should be present with the value `true` and the message text should have variables in the `${contact.<propertyName>}` format, where `<propertyName>` is the contact property for replacement. It is possible to use all fields from the contact, including the keys in the `extras` property. In this case, is only required to use the `${contact.extras.<extraPropertyName>}` convention, where `<extraPropertyName>` is the value for replacement. If the value is not available, it is only removed from the message.
 
-### Add (or update) a contact
+### Add a contact
+
+```javascript
+client.addMessageReceiver('text/plain', async (message) => {
+    await client.sendCommand({  
+        id: Lime.Guid(),
+        method: Lime.CommandMethod.SET,
+        uri: '/contacts',
+        type: 'application/vnd.lime.contact+json',
+        resource: {
+            identity: '{{$user_identity}}',
+            name: '{{$user_name}}',
+            gender:'{{$user_gender}}',
+            group: '{{$user_groups}}',
+            extras: {
+                plan: 'Gold',
+                code: '1111'
+            },
+            "source": "{{$user_channel_name}}"
+        }
+    });
+});
+```
+
+```python
+async def message_receiver_async(message: Message) -> None:
+    result = await client.process_command_async(
+        Command(
+            CommandMethod.SET,
+            '/contacts',
+            'application/vnd.lime.contact+json',
+            {
+                'identity': '{{$user_identity}}',
+                'name': '{{$user_name}}',
+                'gender':'{{$user_gender}}',
+                'group': '{{$user_groups}}',
+                'extras': {
+                    'plan': 'Gold',
+                    'code': '1111'
+                },
+                "source": "{{$user_channel_name}}"
+            }
+        )
+    )
+
+client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message_receiver_async))
+```
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{  
+  "id": "{{$guid}}",
+  "method": "set",
+  "uri": "/contacts",
+  "type": "application/vnd.lime.contact+json",
+  "resource": {
+    "identity": "{{$user_identity}}",
+    "name": "{{$user_name}}",
+    "gender":"{{$user_gender}}",
+    "group":"{{$user_group}}",    
+    "extras": {
+      "plan":"Gold",
+      "code":"1111"      
+    },
+    "source": "{{$user_channel_name}}"
+  }
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "set",
+    "status": "success",
+    "id": "1",
+    "from": "postmaster@crm.msging.net/#az-iris5",
+    "to": "contact@msging.net",
+    "metadata": {
+        "#command.uri": "lime://contact@msging.net/contacts"
+    }
+}
+```
+
+```csharp
+using System.Threading;
+using System.Threading.Tasks;
+using Lime.Protocol;
+using Take.Blip.Client;
+using Take.Blip.Client.Extensions.Contacts;
+using Lime.Messaging.Resources;
+using System.Collections.Generic;
+
+namespace Extensions
+{
+    public class ContactMessageReceiver : IMessageReceiver
+    {
+        private readonly ISender _sender;
+        private readonly Settings _settings;
+        private readonly IContactExtension _contactExtension;
+
+        public ContactMessageReceiver(ISender sender, Settings settings, IContactExtension contactExtension)
+        {
+            _sender = sender;
+            _settings = settings;
+            _contactExtension = contactExtension;
+        }
+
+        public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
+        {
+            var identity = new Identity("11121023102013021", "messenger.gw.msging.net");
+            var contact = new Contact
+            {
+                Name = "John Doe",
+                Gender = Gender.Male,
+                Group = "friends",
+                Extras = new Dictionary<string, string>
+                {
+                    {"plan", "gold" },
+                    {"code", "1111" },
+                },
+                Source = "Facebook Messenger"
+            };
+
+            await _contactExtension.SetAsync(identity, contact, cancellationToken);
+        }
+    }
+}
+```
+
+In order to store information about a chatbot's client, it is possible to save and update data using **contacts extension**.
+For contact's resource properties examples, please refer to the [table](/#contacts) in the beginning of this section.
+
+
+<aside  class="notice">
+When updating a contact using the <strong>SET</strong> command, not passing one of the contact's existing property in the request will delete it.
+<br><br>
+
+Examples: 
+<br>If the contact already has the <i>address</i> property and you don't pass It in the request, the contact's <i>adress</i> information <strong>is going to be deleted.</strong>
+<br>If the contact has (or has not) the <i>name</i> property and you send It in the request, the contact's <i>name</i> value <strong>will be updated.</strong>
+
+</aside>
+
+
+### Update a contact
 
 ```javascript
 client.addMessageReceiver('text/plain', async (message) => {
@@ -172,28 +322,17 @@ namespace Extensions
 }
 ```
 
-In order to store informations about a chatbot's client, it is possible to save and update data using **contacts extension**.
-
-It is necessary to send the requisition according to the [contact object](/#contact) with the following properties:
-
-| Property            | Description                                                                         | Example                                                      |
-|---------------------|-------------------------------------------------------------------------------------|--------------------------------------------------------------|
-| **identity**        | The client identity in a specific channel.                                          | `11121023102013021@messenger.gw.msging.net (Messenger user)` |
-| **name**            | **Optional** The client's name (string).                                            | `"Rafael Pacheco"`                                           |
-| **gender**          | **Optional** The client's gender (string).                                          | `"male"`                                                     |
-| **group**           | **Optional** The client's group tag (string).                                       | `"testers"`                                                  |
-| **address**         | **Optional** The client's address (string).                                         | `"83, Paraguassu Street"`                                    |
-| **city**            | **Optional** The client's city (string).                                            | `"Belo Horizonte"`                                           |
-| **email**           | **Optional** The client's email (string).                                           | `"rafaelpa@take.net"`                                        |
-| **phoneNumber**     | **Optional** The client's phone number (string).                                    | `"5531000000000"`                                            |
-| **cellPhoneNumber** | **Optional** The client's cell phone number (string).                               | `"5531999999999"`                                            |
-| **timezone**        | **Optional** The client's timezone id (int).                                        | `-3`                                                         |
-| **culture**         | **Optional** The client's culture info (string).                                    | `"pt-br"`                                                    |
-| **extras**          | **Optional** The client's extra informations.                                       | `{"customerExternalId": "41231", "cpf": "00000000000" }`     |
-| **source**          | **Optional** The client's source (channel) info (string). Check [here](/#channels). | `"Facebook Messenger"`                                       |
+In order to update information about a chatbot's client, it is possible to save and update data using **contacts extension**.
+For contact's resource properties examples, please refer to the [table](/#contacts) in the beginning of this section.
 
 <aside  class="notice">
-When updating a contact, not passing one of the existing parameters for the Contact in the request will delete it.<br><br><i>For example, if the Contact already has an Email parameter and you don't pass It in the requisition, the contact email information will be deleted.</i>
+When updating a contact using the <strong>MERGE</strong> command, it's  going to update only properties that are present in the request. Missing properties are going to remain unchanged.
+<br><br>
+
+Examples: 
+<br>If the contact already has an <i>phoneNumber</i> property and you don't send It in the request, the contact's <i>phoneNumber</i> information <strong>is not going to change.</strong>
+<br>If the contact has (or has not) an <i>email</i> property and you send It in the request, the contact's <i>email</i> value <strong>will be updated.</strong>
+
 </aside>
 
 ### Add a comment
