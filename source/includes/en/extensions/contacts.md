@@ -31,7 +31,11 @@ A [contact object](/#contact) passed as a document `resource` has the following 
 | **culture**         | **Optional** The client's culture info (string).                                    | `"pt-br"`                                                    |
 | **extras**          | **Optional** The client's extra information.                                        | `{"customerExternalId": "41231", "cpf": "00000000000" }`     |
 | **source**          | **Optional** The client's source (channel) info (string). Check [here](/#channels). | `"Facebook Messenger"`                                       |
-
+| **lastMessageDate** | **Optional** The client's last interaction (datetimeoffset).                        | `2021-09-30T13:38:00.000Z`                                   |
+| **taxDocument**     | **Optional** the client's identification document code (string).                    | `"12345678910"`                                              |
+| **isPending**       | **Optional** Determines if the contact is pending for acceptance by the roster owner. (boolean) | `false` |
+| **sharePresence**   | **Optional** Indicates if the roster owner wants to share presence information with the contact.(boolean)| `true` |
+| **shareAccountInfo**| **Optional** Indicates if the roster owner wants to share account information with the contact. (boolean)   | `true` |
 
 For more information about the supported fields, please refer to the [Lime protocol](http://limeprotocol.org/resources.html#contact) documentation.
 
@@ -178,13 +182,16 @@ For contact's resource properties examples, please refer to the [table](/#contac
 
 
 <aside  class="notice">
+The <strong>SET</strong> command is recommended to add new contacts. 
 When updating a contact using the <strong>SET</strong> command, not passing one of the contact's existing property in the request will delete it.
 <br><br>
 
-Examples: 
-<br>If the contact already has the <i>address</i> property and you don't pass It in the request, the contact's <i>adress</i> information <strong>is going to be deleted.</strong>
-<br>If the contact has (or has not) the <i>name</i> property and you send It in the request, the contact's <i>name</i> value <strong>will be updated.</strong>
-
+Examples:
+<br>
+If the contact already has the <i>address</i> property and you don't pass It in the request, the contact's <i>adress</i> information <strong>is going to be deleted.</strong>
+<br>
+<br>
+If the contact has (or has not) the <i>name</i> property and you send It in the request, the contact's <i>name</i> value <strong>will be updated.</strong>
 </aside>
 
 
@@ -331,6 +338,8 @@ When updating a contact using the <strong>MERGE</strong> command, it's  going to
 
 Examples: 
 <br>If the contact already has an <i>phoneNumber</i> property and you don't send It in the request, the contact's <i>phoneNumber</i> information <strong>is not going to change.</strong>
+<br>
+<br>
 <br>If the contact has (or has not) an <i>email</i> property and you send It in the request, the contact's <i>email</i> value <strong>will be updated.</strong>
 
 </aside>
