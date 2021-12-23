@@ -1,7 +1,7 @@
 ## Using HTTP
 
-**Webhook** enables an integration between your bot and Blip via **HTTP endpoints** to exchange messages, notifications and commands.
-If you are not able to create your chatbot using C\# or Javascript languages you must use Blip's HTTP API agnostic for any language.
+You can integrate your bot and Blip via **HTTP endpoints** to exchange messages, notifications and commands.
+If you are not able to create your chatbot using C\# or Javascript languages, you must use Blip's HTTP API agnostic for any language.
 
 The diagram below shows the messages flow between Blip and your endpoint (API).
 
@@ -13,10 +13,6 @@ The diagram below shows the messages flow between Blip and your endpoint (API).
 Please use [RequestBin](https://requestbin.fullcontact.com/) or [Ngrok](https://ngrok.com/) tools if you want just test the integration.
 
 **Before start**
-
-<aside class="notice">
-From <b>April 2020</b>, the Blip HTTP endpoint will change from <b>https://msging.net</b> to <b>https://http.msging.net</b>. <br><br>We strongly advise users to start using the new endpoint as soon as possible.
-</aside>
 
 Get the `Authorization` token of your bot to be able to connect to the Blip. To get them:
 
@@ -153,16 +149,18 @@ Content-Type: application/json
   }
 }
 ```
+The timeout for the server to deliver the command response to your request is 60 seconds.
 
 ### Aditional informations
 
 * Result codes for requests
 
-| Code               | Description                                                   |
-|--------------------|---------------------------------------------------------------|
-| 202 (Accepted)     | Envelope was accepted by the server                           |
-| 400 (Bad Request)  | Alert to some problem with format or fields of sent envelope. |
-| 401 (Unauthorized) | Alert to some problem or *Authorization* header missing       |
+| Code                  | Description                                                   |
+|-----------------------|---------------------------------------------------------------|
+| 202 (Accepted)        | Envelope was accepted by the server                           |
+| 400 (Bad Request)     | Alert to some problem with format or fields of sent envelope. |
+| 401 (Unauthorized)    | Alert to some problem or *Authorization* header missing       |
+| 504 (Gateway Timeout) | The server was unable to return a response within 60 seconds. |
 
 * Required Settings
 

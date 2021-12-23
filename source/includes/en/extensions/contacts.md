@@ -726,8 +726,15 @@ namespace Extensions
 
 If you need to get more than one chatbot's contact, you can use a query pagination. This sample shows how to take the **three first roaster's contacts**.
 
-<aside  class="notice">
-Note: You can also filter your query with one of the properties of the contact resource, using the <code>filter</code> property:
+| QueryString   | Description                                                                                                                             | <div style="min-width:6em">Example</div> |
+|---------------|-----------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
+| **$skip**     | Number of items to be skipped for paging.                                                                                               | 0                                        |
+| **$take**     | Limit of the total of items to be returned. When **not** using filters, values between 1 and 30000 are allowed. When not provided on the request, the default take value will 100. If the used values are not contained on the specified range, thus not allowed, an error will be returned. | 100                                      |
+| **$filter**   | Filter to refine a search by contact's properties. When using **$take** and **$skip** along with **$filter** the adition between skip and take values must be lesser or equal to 10000. E.g. skip = 5000 and take = 5000 where the values combined result in 10000.                                                                                     | (startswith(name%2C'John'))              |
+
+<aside class="notice">
+Note: Here are some examples about how to filter your query with one of the properties of the contact resource, using the <code>filter</code> property:
+
 <ul>
 <li><h4>StartsWith</h4></li>
 
@@ -748,6 +755,18 @@ Note: You can also filter your query with one of the properties of the contact r
 <code>filter=(substringof('{value}',{propertyName}))</code><br><br>
 
 <b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(substringof('John Doe'%2Cname))</b>
+
+<li><h4>Less than or equal</h4></li>
+
+<code>filter=(lastmessagedate le datetimeoffset'{date}T{hour}:{minute}:{second}.{milisecond}Z')</code><br><br>
+
+<b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(lastmessagedate%20le%20datetimeoffset'2021-09-01T13%3A38%3A00.000Z')</b>
+
+<li><h4>Greater than or equal</h4></li>
+
+<code>filter=(lastmessagedate ge datetimeoffset'{date}T{hour}:{minute}:{second}.{milisecond}Z')</code><br><br>
+
+<b>Example</b>: /contacts?$skip=0&$take=20<b>&$filter=(lastmessagedate%20ge%20datetimeoffset'2021-09-01T13%3A38%3A00.000Z')</b>
 </ul></aside>
 
 ### Send message with contact name

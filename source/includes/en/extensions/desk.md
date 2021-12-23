@@ -1016,6 +1016,157 @@ var command = new Command(){
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 ```
 
+### Create an attendance priority rule
+
+Set a new attendance rule.
+
+You must send a [priority-rule](/#priorityRule) document with your conditions.
+
+<aside class="notice">For example, if you want to scale the priority for tickets to a Team according to their parametres, do the following:</aside>
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "{{$guid}}",
+    "to": "postmaster@desk.msging.net",
+    "method": "set",
+    "uri": "/priority-rules",
+    "type": "application/vnd.iris.desk.priority-rules+json",
+    "resource": {
+        "ownerIdentity": "mybot@msging.net",
+        "id": "837d926f-5890-4a87-9e74-0deb2223a028",
+        "queueId": "4DR00045-64EB-4580-B8B8-DEAD81808682",
+        "title": "regra com prioridade ",
+        "conditions": [
+            {
+                "property": "Message",
+                "relation": "Contains",
+                "values": [
+                    "Prioridade 1"
+                ]
+            }
+        ],
+        "isActive": true,
+        "opened": false,
+        "operator": "Or",
+        "repeatConditionsBody": false,
+	    "urgency": 1000,
+        "valuesEmpty": false
+    },
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "set",
+    "status": "success",
+    "id": "54ba657c-cefa-4414-bc32-7a7f25390551",
+    "from": "postmaster@desk.msging.net/#az-iris2",
+    "to": "demobot@msging.net"
+}
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/priority-rules',
+        'application/vnd.iris.desk.priority-rules+json',
+        {
+            'id': '837d926f-5890-4a87-9e74-0deb2223a028',
+            'ownerIdentity': 'mybot@msging.net',
+            'queueId': '4DR00045-64EB-4580-B8B8-DEAD81808682',
+            'title': 'regra com prioridade ',
+            'conditions': [
+                {
+                    'property': 'Message',
+                    'relation': 'Contains',
+                    'values': [
+                        'Prioridade 1'
+                    ]
+                }
+            ],
+            'isActive': true,
+            'opened': false,
+            'operator': 'Or',
+            'repeatConditionsBody': false,
+            'urgency': 1000,
+            'valuesEmpty': false
+        },
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.SET,
+    uri: "/priority-rules",
+    type: "application/vnd.iris.desk.priority-rules+json",
+    resource: {
+        id: '837d926f-5890-4a87-9e74-0deb2223a028',
+        ownerIdentity: 'mybot@msging.net',
+        queueId: '4DR00045-64EB-4580-B8B8-DEAD81808682',
+        title: 'regra com prioridade ',
+        conditions: [
+            {
+                property: 'Message',
+                relation: 'Contains',
+                values: [
+                    'Prioridade 1'
+                ]
+            }
+        ],
+        isActive: true,
+        opened: false,
+        operator: 'Or',
+        repeatConditionsBody: false,
+        urgency: 1000,
+        valuesEmpty: false
+    }
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Set,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/priority-rules"),
+    Type: "application/vnd.iris.desk.priority-rules+json",
+    Resource = new Rule{
+        id = '837d926f-5890-4a87-9e74-0deb2223a028',
+        ownerIdentity = 'mybot@msging.net',
+        queueId = '4DR00045-64EB-4580-B8B8-DEAD81808682',
+        title = 'regra com prioridade ',
+        conditions = [
+            {
+                property = 'Message',
+                relation = 'Contains',
+                values = [
+                    'Prioridade 1'
+                ]
+            }
+        ],
+        isActive = true,
+        opened = false,
+        operator = 'Or',
+        repeatConditionsBody = false,
+        urgency = 1000,
+        valuesEmpty = false
+    }
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
 ### Create a ticket for an attendance
 
 Before start to attendance some user is necessary first open a [ticket](/#ticket).
@@ -1271,6 +1422,69 @@ var command = new Command(){
 
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 ```
+
+### Delete a priority rule
+
+Delete a specific [attendance priority rule](/#priorityRule).
+
+Replace `{prioritypriorityRuleId}`with the priority rule id you want to delete.
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.DELETE,
+        '/priority-rules/{priorityRuleId}',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "{{$guid}}",
+  "to": "postmaster@desk.msging.net",
+  "method": "delete",
+  "uri": "/priority-rules/{priorityRuleId}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "status": "success",
+    "id": "1a407581-7a55-484e-b269-ceb04f354cb3",
+    "from": "postmaster@desk.msging.net/#az-iris2",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.DELETE,
+    uri: "/priority-rules/{priorityRuleId}"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Delete,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/priority-rules/{priorityRuleId}"),
+};
+
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
 
 ### Delete an agent
 
@@ -2412,6 +2626,90 @@ var command = new Command(){
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 ```
 
+### Get a priority rule
+
+Get a specific [attendance priority rule](/#priorityRule).
+
+Replace `{priorityRuleId}`with the priority rule id you want to get.
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "{{$guid}}",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/priority-rules/{priorityRuleId}"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.desk.rule+json",
+    "resource": {
+        "ownerIdentity": "mybot@msging.net",
+        "id": "837d926f-5890-4a87-9e74-0deb2223a028",
+        "queueId": "4DR00045-64EB-4580-B8B8-DEAD81808682",
+        "title": "regra com prioridade ",
+        "conditions": [
+            {
+                "property": "Message",
+                "relation": "Contains",
+                "values": [
+                    "Prioridade 1"
+                ]
+            }
+        ],
+        "isActive": true,
+        "opened": false,
+        "operator": "Or",
+        "repeatConditionsBody": false,
+	    "urgency": 1000,
+        "valuesEmpty": false
+    },
+    "method": "get",
+    "status": "success",
+    "id": "e105ecfe-e89c-458f-ac7b-983aecc8954d",
+    "from": "postmaster@desk.msging.net/#az-iris5",
+    "to": "demobot@msging.net"
+}
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/priority-rules/{priorityRuleId}',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.GET,
+    uri: "/priority-rules/{priorityRuleId}"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/priority-rules/{priorityRuleId}"),
+};
+
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
 ### Get a ticket
 
 Get a specific [ticket](/#ticket).
@@ -3375,6 +3673,106 @@ var command = new Command(){
     Method = CommandMethod.Get,
     To = "postsmaster@desk.msging.net",
     Uri = new LimeUri("/rules")
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+}
+```
+
+### Get attendance priority rules
+
+Get all [attendance priority rules](/#priorityRule).
+
+The following uri filters are available to get priority rules:
+
+| QueryString   | Description                         | Example |
+|---------------|-------------------------------------|---------|
+| **skip**      | The number of rules to be skipped.  | 0       |
+| **take**      | The number of rules to be returned. | 100     |
+| **ascending** | Sets ascending alphabetical order.  | true    |
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "{{$guid}}",
+  "to": "postmaster@desk.msging.net",
+  "method": "get",
+  "uri": "/priority-rules"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.lime.collection+json",
+    "resource": {
+        "total": 1,
+        "itemType": "application/vnd.iris.desk.rule+json",
+        "items": [
+                {
+                "ownerIdentity": "mybot@msging.net",
+                "id": "837d926f-5890-4a87-9e74-0deb2223a028",
+                "queueId": "4DR00045-64EB-4580-B8B8-DEAD81808682",
+                "title": "regra com prioridade ",
+                "conditions": [
+                    {
+                        "property": "Message",
+                        "relation": "Contains",
+                        "values": [
+                            "Prioridade 1"
+                        ]
+                    }
+                ],
+                "isActive": true,
+                "opened": false,
+                "operator": "Or",
+                "repeatConditionsBody": false,
+                "urgency": 1000,
+                "valuesEmpty": false
+        }
+        ]
+    },
+    "method": "get",
+    "status": "success",
+    "id": "897a7301-81f1-434d-8447-85c776d33875",
+    "from": "postmaster@desk.msging.net/#az-iris1",
+    "to": "demobot4@msging.net",
+    "metadata": {
+        "#command.uri": "lime://demobot4@msging.net/priority-rules",
+        "uber-trace-id": "364c11dba2c5f82d%3A364c11dba2c5f82d%3A0%3A1"
+    }
+}
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.GET,
+        '/priority-rules',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: "get",
+    uri: "/priority-rules"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Get,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/priority-rules")
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 }

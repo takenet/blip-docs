@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0b7c30e9-fa89-45a6-949d-3d6e2e7fc471",
+		"_postman_id": "3d5db21a-168f-4e80-be7e-d0012e525bc0",
 		"name": "Blip",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -738,7 +738,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "dc654ed8-1ef3-4d20-bba5-3094e93c6435",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -748,16 +747,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "29df2ee9-8833-4815-8599-bfdc31599d16",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "ArtificialIntelligence",
@@ -1931,7 +1927,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "8610e8b9-f905-45e0-b89b-93a7419f4bf0",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -1941,16 +1936,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ff20c585-18f9-4b3f-9e70-980b02ce1bf0",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Broadcast",
@@ -2242,7 +2234,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "a19609b2-297e-4c1f-97dc-678e9d6ee54f",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2252,16 +2243,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "df1d25ee-a29e-4590-b9c0-093fb14c2e10",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Bucket",
@@ -2448,7 +2436,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "d8cf3b40-28f9-4edf-a520-67823645db8c",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2458,16 +2445,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a7069cb1-12f0-4ede-987e-d6f7807e2112",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Builder",
@@ -2793,7 +2777,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "4f0d410a-6c68-4b18-91d2-4b9aebe874b0",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2803,16 +2786,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2f044701-c484-4b37-adc0-b1fa65a597b3",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "ChatHistory",
@@ -3003,7 +2983,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f52d12fc-e705-4360-98de-1dd089d4a7e0",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -3013,16 +2992,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b9fc678d-a8a0-44fa-81e3-5299878dae33",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "ChatbotProfile",
@@ -3314,7 +3290,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "94408cd7-84be-4f52-8408-9a4c1ae381c8",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -3324,16 +3299,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ff281dbc-140c-47ad-b068-2b3b2b407d0a",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Contacts",
@@ -3411,42 +3383,6 @@
 							"response": []
 						},
 						{
-							"name": "Check a link between contacts",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{Authorization}}",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{  \n  \"id\": \"{{$guid}}\",\n   \"to\": \"postmaster@msging.net\",\n  \"method\": \"get\",\n  \"uri\": \"/contacts/{{contact_identity}}/linked/{{linked_contact_identity}}\"\n}"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								},
-								"description": "Check if a contact_identity is linked with linked_contact_identity.\r\n\r\n Note: Returns The linked contact was not found if the contacts are not linked and a contact if they are.\r\n \r\n For more information, see https://docs.blip.ai/#check-a-link-between-contacts"
-							},
-							"response": []
-						},
-						{
 							"name": "Delete a comment",
 							"request": {
 								"method": "POST",
@@ -3479,42 +3415,6 @@
 									]
 								},
 								"description": "Delete a specific comment for a contact.\r\n\r\nReplace comment_id with the comment Id.\r\n\r\nFor more information, see https://docs.blip.ai/#delete-a-comment"
-							},
-							"response": []
-						},
-						{
-							"name": "Delete a link",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{Authorization}}",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/contacts/{{contact_identity}}/linked/{{linked_contact_identity}}\"\r\n}"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								},
-								"description": "Delete a link between two contacts, contact_identity and linked_contact_identity.\n\nFor more information, see https://docs.blip.ai/#delete-a-link"
 							},
 							"response": []
 						},
@@ -3627,78 +3527,6 @@
 							"response": []
 						},
 						{
-							"name": "Get linked contacts",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"type": "text",
-										"value": "{{Authorization}}"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/contacts/{{contact_identity}}/linked\"\r\n}"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								},
-								"description": "Get all contacts linked with a specific contact.\n\nFor more information, see https://docs.blip.ai/#get-linked-contacts"
-							},
-							"response": []
-						},
-						{
-							"name": "Link contacts",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{Authorization}}",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/contacts/{{contact_identity}}/linked\",\r\n  \"type\": \"application/vnd.lime.contact+json\",\r\n  \"resource\": {\r\n    \"Identity\": \"{{contact_identity_to_be_linked}}\"\r\n  }\r\n}"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								},
-								"description": "Set a contact linked with other, using a Contact document.\r\n\r\nReplace the <contactIdentity> with the Identity of the contact you want to link with other. Replace the <contactToBeLinkedWithIdentity> with the Identity of the contact you want to be linked with the first one.\r\n\r\nFor more information, see https://docs.blip.ai/#link-contacts"
-							},
-							"response": []
-						},
-						{
 							"name": "Send message with contact name",
 							"request": {
 								"method": "POST",
@@ -3740,7 +3568,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b7fa875b-ac7c-42e7-b596-2d4deb80e73e",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -3750,16 +3577,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ded98ba5-93d3-43e4-9818-771ba16833b6",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Desk",
@@ -5285,7 +5109,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "57fa8a31-1f1c-4292-898a-304c7a0a367a",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5295,16 +5118,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "070301cd-cb4a-42e9-b587-987b7b89cb69",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Resources",
@@ -5531,7 +5351,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "3bd2dc83-862a-4ef0-bf10-345187ae6456",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5541,16 +5360,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0af19d20-0afd-4271-b2fa-5880a5f0d53e",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Schedule",
@@ -5645,7 +5461,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "9fa519f1-8857-4785-bff1-3a326b4d0da8",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5655,16 +5470,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f4594946-6d87-4ce8-82df-e613408c877b",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Security",
@@ -5855,7 +5667,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "26a0c54e-3ec6-464f-8211-3237e705008d",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5865,16 +5676,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "256edc7e-9e99-45fe-9f50-e655f1675f0f",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Tunnel",
@@ -5993,7 +5801,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "d5edd159-a381-4357-b5f3-773f9c5c71df",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -6003,16 +5810,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "146b8695-917d-4fd7-a3fd-685fd667df62",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "UserInfo",
@@ -6128,7 +5932,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ff4f5499-6891-49c3-88ec-b08a717534cf",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -6138,16 +5941,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "3cd0b0da-9b4a-4ed4-ba0e-ba84e36e68aa",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Media",
@@ -6188,9 +5988,7 @@
 							"response": []
 						}
 					],
-					"description": "The media extension allows to manipulate the chatbots medias",
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					"description": "The media extension allows to manipulate the chatbots medias"
 				}
 			],
 			"description": "Requests for any BLiP's extension",
@@ -6198,7 +5996,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "6ebd3e6a-cbd8-4b33-8b18-d9b48c8aaa75",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -6208,15 +6005,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a3077574-7e84-4d1a-8823-87308ba4f611",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Integrations",
@@ -6396,7 +6191,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "6807393a-3548-49b4-990b-415f47d7bb22",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -6406,16 +6200,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d49b1714-1bfb-424b-b966-16b880e634ef",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Skype",
@@ -6442,9 +6233,7 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Tangram",
@@ -6484,9 +6273,7 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Infobip",
@@ -6526,9 +6313,7 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "E-mail",
@@ -6575,9 +6360,7 @@
 							"response": []
 						}
 					],
-					"description": "| FQDN                     | Identifier type                                         | \r\n|--------------------------|---------------------------------------------------------------|\r\n| @mailgun.gw.msging.net   | E-mail address on [URL encoded](http://www.w3schools.com/tags/ref_urlencode.asp) format  |\r\n\r\n**E-mail** channel allows sending and receiving messages through e-mail messages. Each chatbot has an unique address automatically created by the platform. To know exactly what is the email of your bot access the Portal <b>Channels > Email</b> module, as below image:\r\n",
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					"description": "| FQDN                     | Identifier type                                         | \r\n|--------------------------|---------------------------------------------------------------|\r\n| @mailgun.gw.msging.net   | E-mail address on [URL encoded](http://www.w3schools.com/tags/ref_urlencode.asp) format  |\r\n\r\n**E-mail** channel allows sending and receiving messages through e-mail messages. Each chatbot has an unique address automatically created by the platform. To know exactly what is the email of your bot access the Portal <b>Channels > Email</b> module, as below image:\r\n"
 				},
 				{
 					"name": "PagSeguro (Payments)",
@@ -6665,13 +6448,10 @@
 							"response": []
 						}
 					],
-					"description": "\r\n| FQDN                     | Identifier type                  | \r\n|--------------------------|----------------------------------------|\r\n| @pagseguro.gw.msging.net | Identity ([name and original channel domain]|(./#/docs/concepts/addressing)) on [URL encoded] format\r\n(http://www.w3schools.com/tags/ref_urlencode.asp) |                           |\r\n\r\n\r\n**PagSeguro** is the [UOL's payments channel](https://pagseguro.uol.com.br/) to receive and send payments with flexibility and safety.\r\n\r\nPayment channels are integrations with payment suppliers connected to Blip Messaging Hub, in which the contacts may receive/send payment from/to customers. Each channel has one identifier that is utilized in the addressing, located before the @ of the address.\r\n\r\nIn order to receive or send payments to a channel, the contact must be configured on it. Configuration is made through the portal, where some specific channel information, such as the APIs’ tokens for example, will be requested. It is necessary to fullfill a previous registration form on each channel, normally through the supplier’s site.\r\n",
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					"description": "\r\n| FQDN                     | Identifier type                  | \r\n|--------------------------|----------------------------------------|\r\n| @pagseguro.gw.msging.net | Identity ([name and original channel domain]|(./#/docs/concepts/addressing)) on [URL encoded] format\r\n(http://www.w3schools.com/tags/ref_urlencode.asp) |                           |\r\n\r\n\r\n**PagSeguro** is the [UOL's payments channel](https://pagseguro.uol.com.br/) to receive and send payments with flexibility and safety.\r\n\r\nPayment channels are integrations with payment suppliers connected to Blip Messaging Hub, in which the contacts may receive/send payment from/to customers. Each channel has one identifier that is utilized in the addressing, located before the @ of the address.\r\n\r\nIn order to receive or send payments to a channel, the contact must be configured on it. Configuration is made through the portal, where some specific channel information, such as the APIs’ tokens for example, will be requested. It is necessary to fullfill a previous registration form on each channel, normally through the supplier’s site.\r\n"
 				}
 			],
-			"description": "All requests for any BLiP's extension",
-			"protocolProfileBehavior": {}
+			"description": "All requests for any BLiP's extension"
 		},
 		{
 			"name": "Send a Command",
@@ -6774,7 +6554,6 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "48ac605f-de8a-403e-ab6e-3e66bfec3005",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -6784,7 +6563,6 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "458abdef-b959-42ab-b1da-a4b644a0b072",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -6794,11 +6572,9 @@
 	],
 	"variable": [
 		{
-			"id": "cce16fc8-3117-45a1-9b8e-1769e6f8245b",
 			"key": "Authorization",
 			"value": "<your-chatbot-api-key>",
 			"type": "string"
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
