@@ -177,13 +177,13 @@ namespace Extensions
 }
 ```
 
-In order to store information about a chatbot's client, it is possible to save and update data using **contacts extension**.
+In order to store information about a chatbot's client, it is possible to save and update data using **contacts extension's** `set` command.
 For contact's resource properties examples, please refer to the [table](/#contacts) in the beginning of this section.
 
 
 <aside  class="notice">
 The <strong>SET</strong> command is recommended to add new contacts. 
-When updating a contact using the <strong>SET</strong> command, not passing one of the contact's existing property in the request will delete it.
+When updating a contact using the <strong>SET</strong> command, not passing one of the contact's existing properties in the request will delete it.
 <br><br>
 
 Examples:
@@ -329,7 +329,7 @@ namespace Extensions
 }
 ```
 
-In order to update information about a chatbot's client, it is possible to save and update data using **contacts extension**.
+To update client's information it is possible to save and update data using **contacts extension's** `merge` command, however this action is different from saving and updating with `set` command.
 For contact's resource properties examples, please refer to the [table](/#contacts) in the beginning of this section.
 
 <aside  class="notice">
