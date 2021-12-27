@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3d5db21a-168f-4e80-be7e-d0012e525bc0",
+		"_postman_id": "c0f40e97-aa4e-4e74-8eab-c84a1f2f7c73",
 		"name": "Blip",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -3311,7 +3311,7 @@
 					"name": "Contacts",
 					"item": [
 						{
-							"name": "Add (or update) a contact",
+							"name": "Add a contact",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -3330,6 +3330,42 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/contacts\",\r\n  \"type\": \"application/vnd.lime.contact+json\",\r\n  \"resource\": {\r\n    \"identity\": \"{{contact_identity}}\",\r\n    \"name\": \"John Doe\",\r\n    \"gender\":\"male\",\r\n    \"group\":\"friends\",    \r\n    \"extras\": {\r\n      \"plan\":\"Gold\",\r\n      \"code\":\"1111\"      \r\n    }\r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "In order to store informations about a chatbot's client, it is possible to save and update data using contacts extension. \n\nFor more information, see https://docs.blip.ai/#add-or-update-a-contact"
+							},
+							"response": []
+						},
+						{
+							"name": "Update a contact",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{Authorization}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"merge\",\r\n  \"uri\": \"/contacts\",\r\n  \"type\": \"application/vnd.lime.contact+json\",\r\n  \"resource\": {\r\n    \"identity\": \"{{contact_identity}}\",\r\n    \"name\": \"John Doe\",\r\n    \"gender\":\"male\",\r\n    \"group\":\"best friends\",    \r\n    \"extras\": {\r\n      \"plan\":\"Gold\",\r\n      \"code\":\"1111\"      \r\n    }\r\n  }\r\n}"
 								},
 								"url": {
 									"raw": "https://msging.net/commands",
