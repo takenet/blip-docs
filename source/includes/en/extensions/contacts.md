@@ -191,7 +191,7 @@ Examples:
 If the contact already has the <i>address</i> property and you don't pass it in the request, the contact's <i>adress</i> information <strong>is going to be deleted.</strong>
 <br>
 <br>
-If the contact has (or has not) the <i>name</i> property and you send it in the request, the contact's <i>name</i> value <strong>will be updated.</strong>
+Regardless of wheter the contact has the <i>name</i> property, if you send it in the request, the contact's <i>name</i> value <strong>will be updated.</strong>
 </aside>
 
 
@@ -340,7 +340,7 @@ Examples:
 <br>If the contact already has an <i>phoneNumber</i> property and you don't send it in the request, the contact's <i>phoneNumber</i> information <strong>is not going to change.</strong>
 <br>
 <br>
-<br>If the contact has (or has not) an <i>email</i> property and you send it in the request, the contact's <i>email</i> value <strong>will be updated.</strong>
+<br>Regardless wether the contact has the <i>email</i> property, if you send it in the request, the contact's <i>email</i> value <strong>will be updated.</strong>
 
 </aside>
 
