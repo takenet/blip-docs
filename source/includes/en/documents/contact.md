@@ -26,5 +26,5 @@ Represents an contact saved in Blip.
 | shareAccountInfo | Indicates if the roster owner wants to share account information with the contact. If  true, the server provides a  get delegation permission to the contact identity into the roster owner  account resource. The default value is  true.   | boolean |
 | group            | The contact's group name.                                                                                                                                                                                                             | boolean |
 | lastMessageDate            | The contact's last interaction.                                                                                                                                                                                                             | datetimeoffset |
-| taxDocument | The contact's identification document code. | string |
+| taxDocument | The contact's identification document number. | string |
 | source           | The contact's source (channel). Check [here](/#channels).                                                                                                                                                                                  | string  |

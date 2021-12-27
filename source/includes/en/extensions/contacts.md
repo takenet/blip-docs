@@ -32,7 +32,7 @@ A [contact object](/#contact) passed as a document `resource` has the following 
 | **extras**          | **Optional** The contact's extra information.                                        | `{"customerExternalId": "41231", "cpf": "00000000000" }`     |
 | **source**          | **Optional** The contact's source (channel) info (string). Check [here](/#channels). | `"Facebook Messenger"`                                       |
 | **lastMessageDate** | **Optional** The contact's last interaction (datetimeoffset).                        | `2021-09-30T13:38:00.000Z`                                   |
-| **taxDocument**     | **Optional** the contact's identification document code (string).                    | `"12345678910"`                                              |
+| **taxDocument**     | **Optional** the contact's identification document number (string).                    | `"12345678910"`                                              |
 | **isPending**       | **Optional** Determines if the contact is pending for acceptance by the roster owner. (boolean) | `false` |
 | **sharePresence**   | **Optional** Indicates if the roster owner wants to share presence information with the contact.(boolean)| `true` |
 | **shareAccountInfo**| **Optional** Indicates if the roster owner wants to share account information with the contact. (boolean)   | `true` |
