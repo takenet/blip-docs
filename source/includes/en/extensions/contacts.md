@@ -19,20 +19,20 @@ A [contact object](/#contact) passed as a document `resource` has the following 
 | Property            | Description                                                                         | Example                                                      |
 |---------------------|-------------------------------------------------------------------------------------|--------------------------------------------------------------|
 | **identity**        | The client identity in a specific channel.                                          | `11121023102013021@messenger.gw.msging.net (Messenger user)` |
-| **name**            | **Optional** The client's name (string).                                            | `"Rafael Pacheco"`                                           |
-| **gender**          | **Optional** The client's gender (string).                                          | `"male"`                                                     |
-| **group**           | **Optional** The client's group tag (string).                                       | `"testers"`                                                  |
-| **address**         | **Optional** The client's address (string).                                         | `"83, Paraguassu Street"`                                    |
-| **city**            | **Optional** The client's city (string).                                            | `"Belo Horizonte"`                                           |
-| **email**           | **Optional** The client's email (string).                                           | `"rafaelpa@take.net"`                                        |
-| **phoneNumber**     | **Optional** The client's phone number (string).                                    | `"5531000000000"`                                            |
-| **cellPhoneNumber** | **Optional** The client's cell phone number (string).                               | `"5531999999999"`                                            |
-| **timezone**        | **Optional** The client's timezone id (int).                                        | `-3`                                                         |
-| **culture**         | **Optional** The client's culture info (string).                                    | `"pt-br"`                                                    |
-| **extras**          | **Optional** The client's extra information.                                        | `{"customerExternalId": "41231", "cpf": "00000000000" }`     |
-| **source**          | **Optional** The client's source (channel) info (string). Check [here](/#channels). | `"Facebook Messenger"`                                       |
-| **lastMessageDate** | **Optional** The client's last interaction (datetimeoffset).                        | `2021-09-30T13:38:00.000Z`                                   |
-| **taxDocument**     | **Optional** the client's identification document code (string).                    | `"12345678910"`                                              |
+| **name**            | **Optional** The contact's name (string).                                            | `"Rafael Pacheco"`                                           |
+| **gender**          | **Optional** The contact's gender (string).                                          | `"male"`                                                     |
+| **group**           | **Optional** The contact's group tag (string).                                       | `"testers"`                                                  |
+| **address**         | **Optional** The contact's address (string).                                         | `"83, Paraguassu Street"`                                    |
+| **city**            | **Optional** The contact's city (string).                                            | `"Belo Horizonte"`                                           |
+| **email**           | **Optional** The contact's email (string).                                           | `"rafaelpa@take.net"`                                        |
+| **phoneNumber**     | **Optional** The contact's phone number (string).                                    | `"5531000000000"`                                            |
+| **cellPhoneNumber** | **Optional** The contact's cell phone number (string).                               | `"5531999999999"`                                            |
+| **timezone**        | **Optional** The contact's timezone id (int).                                        | `-3`                                                         |
+| **culture**         | **Optional** The contact's culture info (string).                                    | `"pt-br"`                                                    |
+| **extras**          | **Optional** The contact's extra information.                                        | `{"customerExternalId": "41231", "cpf": "00000000000" }`     |
+| **source**          | **Optional** The contact's source (channel) info (string). Check [here](/#channels). | `"Facebook Messenger"`                                       |
+| **lastMessageDate** | **Optional** The contact's last interaction (datetimeoffset).                        | `2021-09-30T13:38:00.000Z`                                   |
+| **taxDocument**     | **Optional** the contact's identification document code (string).                    | `"12345678910"`                                              |
 | **isPending**       | **Optional** Determines if the contact is pending for acceptance by the roster owner. (boolean) | `false` |
 | **sharePresence**   | **Optional** Indicates if the roster owner wants to share presence information with the contact.(boolean)| `true` |
 | **shareAccountInfo**| **Optional** Indicates if the roster owner wants to share account information with the contact. (boolean)   | `true` |
