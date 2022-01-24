@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c0f40e97-aa4e-4e74-8eab-c84a1f2f7c73",
+		"_postman_id": "8906417a-1fa9-4a45-8d00-b1ad1b16ade5",
 		"name": "Blip",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -3311,7 +3311,7 @@
 					"name": "Contacts",
 					"item": [
 						{
-							"name": "Add a contact",
+							"name": "Add (or update) a contact",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -3330,42 +3330,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/contacts\",\r\n  \"type\": \"application/vnd.lime.contact+json\",\r\n  \"resource\": {\r\n    \"identity\": \"{{contact_identity}}\",\r\n    \"name\": \"John Doe\",\r\n    \"gender\":\"male\",\r\n    \"group\":\"friends\",    \r\n    \"extras\": {\r\n      \"plan\":\"Gold\",\r\n      \"code\":\"1111\"      \r\n    }\r\n  }\r\n}"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								},
-								"description": "In order to store informations about a chatbot's client, it is possible to save and update data using contacts extension. \n\nFor more information, see https://docs.blip.ai/#add-or-update-a-contact"
-							},
-							"response": []
-						},
-						{
-							"name": "Update a contact",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"type": "text",
-										"value": "{{Authorization}}"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"merge\",\r\n  \"uri\": \"/contacts\",\r\n  \"type\": \"application/vnd.lime.contact+json\",\r\n  \"resource\": {\r\n    \"identity\": \"{{contact_identity}}\",\r\n    \"name\": \"John Doe\",\r\n    \"gender\":\"male\",\r\n    \"group\":\"best friends\",    \r\n    \"extras\": {\r\n      \"plan\":\"Gold\",\r\n      \"code\":\"1111\"      \r\n    }\r\n  }\r\n}"
 								},
 								"url": {
 									"raw": "https://msging.net/commands",
@@ -3419,6 +3383,42 @@
 							"response": []
 						},
 						{
+							"name": "Check a link between contacts",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{  \n  \"id\": \"{{$guid}}\",\n   \"to\": \"postmaster@msging.net\",\n  \"method\": \"get\",\n  \"uri\": \"/contacts/{{contact_identity}}/linked/{{linked_contact_identity}}\"\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "Check if a contact_identity is linked with linked_contact_identity.\r\n\r\n Note: Returns The linked contact was not found if the contacts are not linked and a contact if they are.\r\n \r\n For more information, see https://docs.blip.ai/#check-a-link-between-contacts"
+							},
+							"response": []
+						},
+						{
 							"name": "Delete a comment",
 							"request": {
 								"method": "POST",
@@ -3451,6 +3451,42 @@
 									]
 								},
 								"description": "Delete a specific comment for a contact.\r\n\r\nReplace comment_id with the comment Id.\r\n\r\nFor more information, see https://docs.blip.ai/#delete-a-comment"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a link",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/contacts/{{contact_identity}}/linked/{{linked_contact_identity}}\"\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "Delete a link between two contacts, contact_identity and linked_contact_identity.\n\nFor more information, see https://docs.blip.ai/#delete-a-link"
 							},
 							"response": []
 						},
@@ -3559,6 +3595,78 @@
 									]
 								},
 								"description": "If you need to get more than one chatbot's contact, you can use a query pagination. This sample shows how to take the three first roaster's contacts.\r\n\r\n Note: You can also filter your query with one of the properties of the contact resource, using the filter property:\r\n\r\nfilter=(substringof('{value}',{propertyName}))\r\n\r\nExample: /contacts?$skip=0&$take=20&$filter=(substringof('John Doe',name))\r\n\r\nFor more information, see https://docs.blip.ai/#get-contacts-with-paging"
+							},
+							"response": []
+						},
+						{
+							"name": "Get linked contacts",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{Authorization}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/contacts/{{contact_identity}}/linked\"\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "Get all contacts linked with a specific contact.\n\nFor more information, see https://docs.blip.ai/#get-linked-contacts"
+							},
+							"response": []
+						},
+						{
+							"name": "Link contacts",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/contacts/{{contact_identity}}/linked\",\r\n  \"type\": \"application/vnd.lime.contact+json\",\r\n  \"resource\": {\r\n    \"Identity\": \"{{contact_identity_to_be_linked}}\"\r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								},
+								"description": "Set a contact linked with other, using a Contact document.\r\n\r\nReplace the <contactIdentity> with the Identity of the contact you want to link with other. Replace the <contactToBeLinkedWithIdentity> with the Identity of the contact you want to be linked with the first one.\r\n\r\nFor more information, see https://docs.blip.ai/#link-contacts"
 							},
 							"response": []
 						},
@@ -6485,6 +6593,283 @@
 						}
 					],
 					"description": "\r\n| FQDN                     | Identifier type                  | \r\n|--------------------------|----------------------------------------|\r\n| @pagseguro.gw.msging.net | Identity ([name and original channel domain]|(./#/docs/concepts/addressing)) on [URL encoded] format\r\n(http://www.w3schools.com/tags/ref_urlencode.asp) |                           |\r\n\r\n\r\n**PagSeguro** is the [UOL's payments channel](https://pagseguro.uol.com.br/) to receive and send payments with flexibility and safety.\r\n\r\nPayment channels are integrations with payment suppliers connected to Blip Messaging Hub, in which the contacts may receive/send payment from/to customers. Each channel has one identifier that is utilized in the addressing, located before the @ of the address.\r\n\r\nIn order to receive or send payments to a channel, the contact must be configured on it. Configuration is made through the portal, where some specific channel information, such as the APIs’ tokens for example, will be requested. It is necessary to fullfill a previous registration form on each channel, normally through the supplier’s site.\r\n"
+				},
+				{
+					"name": "Stripe",
+					"item": [
+						{
+							"name": "Create a Session",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"set\",\r\n    \"type\": \"application/json\",\r\n    \"uri\": \"/payment/{{contactIdentity}}/session\",\r\n    \"resource\": {\r\n        \"paymentMethodTypes\": [\r\n        \"card\",\r\n        \"boleto\"\r\n    ],\r\n    \"lineItems\": [\r\n    {\r\n        \"amount\": 50000,\r\n        \"currency\": \"brl\",\r\n        \"description\": \"Curso do Blip - Fornecido pela Take Blip\",\r\n        \"images\": [           \r\n            \"https://www.take.net/files/themes/blank_theme/assets/img/take-og-image.png\"\r\n        ],\r\n        \"name\": \"Curso do Blip - Módulo de Pagamentos\",\r\n        \"quantity\": 1\r\n    }],\r\n        \"successUrl\": \"https://www.take.net\",\r\n        \"cancelUrl\": \"https://www.take.net\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a Payment Intent",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"set\",\r\n    \"uri\": \"/payment/{{contactIdentity}}/payment-intent\",\r\n    \"type\": \"application/json\",\r\n    \"resource\": {\r\n        \"customer\": \"{{stripeCustomerId}}\",\r\n        \"PaymentMethodTypes\": [\"card\"],\r\n        \"amount\":1000,\r\n        \"currency\":\"BRL\",\r\n        \"confirm\":\"true\",\r\n        \"paymentMethod\":\"{{stripePaymentMethod}}\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirm a Payment Intent",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"set\",\r\n    \"uri\": \"/payment/{{contactIdentity}}/confirm-payment-intent\",\r\n    \"type\": \"application/json\",\r\n    \"resource\": {\r\n        \"PaymentIntentId\":\"{{stripePaymentIntentId}}\",\r\n        \"options\":{\r\n            \"paymentMethod\": \"{{stripePaymentMethod}}\"\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Payment Methods",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"get\",\r\n    \"uri\": \"/payment-methods?customer={{stripeCustomerId}}\"\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get payment intent history",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\":  \"{{$guid}}\",\r\n    \"to\":  \"postmaster@stripe.msging.net\",\r\n    \"method\":  \"get\",\r\n    \"uri\":  \"/payment/{{contactIdentity}}/payment-intent-history\" \r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get session history",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\":  \"{{$guid}}\",\r\n    \"to\":  \"postmaster@stripe.msging.net\",\r\n    \"method\":  \"get\",\r\n    \"uri\":  \"/payment/{{contactIdentity}}/session-history\" \r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get payment intent events",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"get\",\r\n    \"uri\": \"/payment-intents/{{stripePaymentIntentId}}/events\"\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get session events",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"get\",\r\n    \"uri\": \"/sessions/{{stripeSessionId}}/events\"\r\n}"
+								},
+								"url": {
+									"raw": "https://msging.net/commands",
+									"protocol": "https",
+									"host": [
+										"msging",
+										"net"
+									],
+									"path": [
+										"commands"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			],
 			"description": "All requests for any BLiP's extension"
@@ -6609,7 +6994,31 @@
 	"variable": [
 		{
 			"key": "Authorization",
-			"value": "<your-chatbot-api-key>",
+			"value": "<your-chatbot-api-key>"
+		},
+		{
+			"key": "contactIdentity",
+			"value": "<contact-Identity>",
+			"type": "string"
+		},
+		{
+			"key": "stripeCustomerId",
+			"value": "<stripe-customer-Id>",
+			"type": "string"
+		},
+		{
+			"key": "stripePaymentIntentId",
+			"value": "<stripe-payment-Intent-Id>",
+			"type": "string"
+		},
+		{
+			"key": "stripeSessionId",
+			"value": "<stripe-session-Id>",
+			"type": "string"
+		},
+		{
+			"key": "stripePaymentMethod",
+			"value": "<stripe-payment-method>",
 			"type": "string"
 		}
 	]
