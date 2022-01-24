@@ -1,3 +1,5 @@
+## Stripe
+
 The Stripe integration allows you to connect Smart Contact to the Stripe payment provider, making it easy to generate payment links (credit card and boleto) or Card On File payment directly in the chatbot flow. 
 
 To use it properly is necessary to understand some important concepts:
