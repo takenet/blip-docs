@@ -9,6 +9,6 @@ Represents Stripe payment intent confirm.
 | Name                       | Description                                              | Type                         |
 |----------------------------|----------------------------------------------------------|------------------------------|
 | paymentIntentId            | Stripe PaymentIntent id                                  | string                       |
-| customerId                 | Stripe customer’s id.                                    | string                       |
+| customerId                 | Stripe customer id.                                      | string                       |
 | status                     | Payment status                                           | string                       |
 | options                    | Payment intent confirmation options.                     | PaymentIntentConfirmOptions  |

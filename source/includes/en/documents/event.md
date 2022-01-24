@@ -2,9 +2,9 @@
 
 Represents Stripe event.
 
-| MIME type                                 |
-|-------------------------------------------|
-| application/vnd.iris.ai.entity+json       |
+| MIME type                                    |
+|----------------------------------------------|
+| application/vnd.iris.stripe.event+json       |
 
 | Name                     | Description                                    | Type                         |
 |--------------------------|------------------------------------------------|------------------------------|

@@ -10,6 +10,6 @@ Represents Stripe payment intent.
 |----------------------------|----------------------------------------------------------|------------------------------|
 | id                         | Application internal id                                  | guid                         |
 | stripePaymentIntentId      | Stripe PaymentIntent id                                  | string                       |
-| stripeCustomerId           | Stripe customer’s id.                                    | string                       |
+| stripeCustomerId           | Stripe customer id.                                      | string                       |
 | status                     | Payment status                                           | string                       |
 | stripeCardId               | Stripe Card id.                                          | string                       |

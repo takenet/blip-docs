@@ -1,5 +1,5 @@
 
-## Stripee
+## Stripe
 
 The **Stripe** extension allows chatbots to perform payments through a webpage or a direct payment using CardOnFile method.
 
@@ -21,7 +21,7 @@ To use any feature of stripe extension, send a command with the following proper
 | `/payment-methods`                                  | `set`    | Get all payment methods from Stripe custumerId.|
 | `/payment/{contactIdentity}/payment-intent-history` | `get`    | Get all payment intents for this contact.      |
 | `/payment/{contactIdentity}/session-history`        | `get`    | Get all sessions for this contact.             |
-| `/payment-intents/{stripePaymentIntentId}/events`         | `set`    | Get events for this payment intent.            |
+| `/payment-intents/{stripePaymentIntentId}/events`   | `set`    | Get events for this payment intent.            |
 | `/sessions/{sessionId}/events`                      | `get`    | Get events for this session.                   |
 
 The resource types are:
