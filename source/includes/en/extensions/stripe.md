@@ -1,5 +1,5 @@
 
-## Stripe
+## Stripee
 
 The **Stripe** extension allows chatbots to perform payments through a webpage or a direct payment using CardOnFile method.
 
