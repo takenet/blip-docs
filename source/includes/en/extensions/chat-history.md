@@ -376,7 +376,6 @@ Get all logged [notifications](/#notifications). By default, Blip returns the la
 
 | QueryString | Description                                                              |
 |-------------|--------------------------------------------------------------------------|
-| event       | The event type to filter                                                 |
 | id          | The notification id to filter                                            |
 | $skip       | The number of elements to be skipped                                     |
 | $take       | Limit of total of items to be returned. The maximum value allowed is 100 |
@@ -476,99 +475,6 @@ Content-Type: application/json
     "to": "demobot4@msging.net"
 }
 ```
-
-### Get notifications by event type
-
-Get all logged [notifications](#notifications) of a specific event type.
-
-```python
-result = await client.process_command_async(
-    Command.from_json(
-        {
-            'id': '{{$guid}}',
-            'to': 'postmaster@msging.net',
-            'method': 'get',
-            'uri': '/notifications?event=received'
-        }
-    )
-)
-```
-
-```http
-POST https://http.msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "{{$guid}}",
-  "to": "postmaster@msging.net",
-  "method": "get",
-  "uri": "/notifications?event=received"
-}
-```
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "type": "application/vnd.lime.collection+json",
-    "resource": {
-        "total": 4,
-        "itemType": "application/vnd.lime.notification+json",
-        "items": [
-            {
-                "event": "received",
-                "id": "fffc5c3c-a31e-43d6-b6a6-319f250f5248",
-                "from": "d8adfb9b@tunnel.msging.net",
-                "to": "demobot@msging.net",
-                "metadata": {
-                    "#envelope.timestamp": "1574943680445",
-                    "#tunnel.owner": "postmaster@msging.net",
-                    "#envelope.storageDate": "2019-11-28T12:21:20.000Z"
-                }
-            },
-            {
-                "event": "received",
-                "id": "fffc5c3c-a31e-43d6-b6a6-319f250f5248",
-                "from": "25b4b51ed4@tunnel.msging.net",
-                "to": "demobot@msging.net",
-                "metadata": {
-                    "#envelope.timestamp": "1574943680461",
-                    "#envelope.storageDate": "2019-11-28T12:21:20.000Z"
-                }
-            },
-            {
-                "event": "received",
-                "id": "fffc5c3c-a31e-43d6-b6a6-319f250f5248",
-                "from": "25bc1ed4@tunnel.msging.net",
-                "to": "demobot4@msging.net",
-                "metadata": {
-                    "#envelope.timestamp": "1574943680456",
-                    "#envelope.storageDate": "2019-11-28T12:21:20.000Z"
-                }
-            },
-            {
-                "event": "received",
-                "id": "fffc5c3c-a31e-43d6-b6a6-319f250f5248",
-                "from": "postmaster@msging.net/#az-iris6",
-                "to": "demobot@msging.net/msging-application-builderwqfh",
-                "metadata": {
-                    "#envelope.timestamp": "1574943680410",
-                    "#message.to": "cb37a4@tunnel.msging.net",
-                    "#envelope.storageDate": "2019-11-28T12:21:20.000Z"
-                }
-            }
-        ]
-    },
-    "method": "get",
-    "status": "success",
-    "id": "8602b1e6-dc76-45c6-a0ef-04c7a1050fed",
-    "from": "postmaster@msging.net/#az-iris6",
-    "to": "demobot4@msging.net"
-}
-```
-
 ### Get notifications of a message
 
 Get all logged [notifications](#notifications) of a specific [message](/#messages).
