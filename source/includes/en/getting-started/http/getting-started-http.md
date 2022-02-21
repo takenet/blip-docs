@@ -31,6 +31,8 @@ Note that only authentication through the [Client Credentials Grant](https://dat
 You can also instruct Blip to send custom headers when sending requests to the `message` and `notification` **URLs**.
 To do that, click on the **Add header** button under the **Custom Headers** section and set the `key` and `value` fields with the header name and value respectively.
 
+If OAuth authentication is enabled, an Authorization header defined as a custom header won't be sent, the OAuth Authorization header take precedence over custom headers.
+
 ### 1. Receiving messages
 
 Any message will be delivered as a `HTTP POST` request on the configured chatbot's message URL. These messages have a JSON format as defined on [Content Types](#content-types) section. A sample of a received text message is presented below.
