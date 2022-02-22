@@ -26,7 +26,6 @@ includes:
   - en/concepts2/handle-notifications
   - en/concepts2/commands
   - en/concepts2/handle-commands
-  - en/concepts2/stripe
   - en/concepts2/throughput
   
   - en/authentication
@@ -97,7 +96,6 @@ includes:
   - en/documents/distributionListMessage
   - en/documents/distributionListNotification
   - en/documents/entity
-  - en/documents/event
   - en/documents/eventTrack
   - en/documents/httpContentDocument
   - en/documents/identityPerDay
@@ -111,10 +109,6 @@ includes:
   - en/documents/modelSummary
   - en/documents/OAuthToken
   - en/documents/openTicketSummary
-  - en/documents/paymentIntent
-  - en/documents/paymentIntentConfirm
-  - en/documents/paymentIntentConfirmOptions
-  - en/documents/paymentMethod
   - en/documents/plan
   - en/documents/question
   - en/documents/report
@@ -125,7 +119,6 @@ includes:
   - en/documents/rule
   - en/documents/schedules
   - en/documents/serviceTimeSummary
-  - en/documents/session
   - en/documents/subscription (plan)
   - en/documents/subscription (resource)
   - en/documents/subscriptionEvent
@@ -166,7 +159,6 @@ includes:
   - en/extensions/resources
   - en/extensions/scheduler
   - en/extensions/security
-  - en/extensions/stripe  
   - en/extensions/tunnel
   - en/extensions/user-info
   - en/extensions/utils  
