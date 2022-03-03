@@ -9,20 +9,29 @@ The diagram below shows the messages flow between Blip and your endpoint (API).
 
 **Requirements**
 
-* You **must have some available and public enpoint** in order to receive any Blip's request. Is necessary at least one endpoint to receive messages and notifications but you can choice different endpoint for each one.
-Please use [RequestBin](https://requestbin.fullcontact.com/) or [Ngrok](https://ngrok.com/) tools if you want just test the integration.
+* You **must have an available and public HTTPS endpoint** in order to receive any Blip's request. You must set at least one endpoint to receive messages and/or notifications but you can choose a different endpoint for each one.
+You can use [RequestBin](https://requestbin.fullcontact.com/) or [Ngrok](https://ngrok.com/) tools in order to test the integration.
 
-**Before start**
+**Before starting**
 
 Get the `Authorization` token of your bot to be able to connect to the Blip. To get them:
 
 ![imagem](images/http-token.png)
 
 * Access the [Blip Portal](https://portal.blip.ai).
-* Click in **Create chatbot** button and choose **Create from scratch** mode. *If you already have your bot created just access them*.
-* After your chatbot has been created click in **Configurations** and choose **Conection information** option in left side menu.
-* Go to **Enpoints HTTP** and get the `Authorization` token.
-* Enable the HTTP connection and set the `message` and `notification` **URLs** as discussed before on **Requirements** section.
+* Click on the **Create chatbot** button and choose **Create from scratch** mode. *If you already have your bot created, skip this step*.
+* On the chatbot screen, click in **Configurations** (gearwheel icon) and choose **Conection information** option in left side menu.
+* Go to **HTTP Endpoints** and get the `Authorization` token.
+* Enable the HTTP connection and set the `message` and `notification` **URLs** as discussed before on the **Requirements** section.
+ 
+Optionally you can enable OAuth 2.0 authentication on the `message` and `notification` **URLs**; That way, when calling the provided URLs, Blip will use OAuth authentication.
+In order to enable it, open the **OAuth 2.0** section and fill the provided fields.
+Note that only authentication through the [Client Credentials Grant](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4) is supported.
+
+You can also instruct Blip to send custom headers when sending requests to the `message` and `notification` **URLs**.
+To do that, click on the **Add header** button under the **Custom Headers** section and set the `key` and `value` fields with the header name and value respectively.
+
+If OAuth authentication is enabled, an Authorization header defined as a custom header won't be sent, the OAuth Authorization header take precedence over custom headers.
 
 ### 1. Receiving messages
 
@@ -46,7 +55,7 @@ The request must contain an authorization header (`Authorization`) with `Key` ty
 The message data must be sent on the request `body` as a *JSON* following the LIME protocol format.
 For more details go to [Content Types](#content-types) section.
 
-Imagine a chatbot with an Authorization token `Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=`. To send a message from this bot to a Blip user, use:
+For instance, given a chatbot with an Authorization token `Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=`, you would send a message from this bot to a Blip user like this:
 
 ```
 POST https://http.msging.net/messages HTTP/1.1
