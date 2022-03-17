@@ -781,6 +781,248 @@ var command = new Command(){
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 ```
 
+### Create a new ticket for an attendance
+
+Before starting a user attendance, it's necessary to open a ticket first.
+
+To open a ticket send a command with `SET` method to `postmaster@desk.msging.net` and URI `/tickets/{customerIdentity}`, where `customerIdentity` is the customer identity to be attended.  
+Use the `resource` property to delivery a context for the ticket.
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+  "id": "{{$guid}}",
+  "to": "postmaster@desk.msging.net",
+  "method": "set",
+  "uri": "/tickets/{customerIdentity}",
+  "type": "text/plain",
+  "resource": "I need a human!"
+}
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/tickets/{customerIdentity}',
+        'text/plain',
+        'I need a Human!',
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
+```javascript
+client.sendCommand({
+  id: Lime.Guid(),
+  to: "postmaster@desk.msging.net",
+  method: Lime.CommandMethod.SET,
+  uri: "/tickets/{customerIdentity}",
+  type: "text/plain",
+  resource: "I need a human!"
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Set,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/tickets/{customerIdentity}"),
+    Resource = "I need a human!"
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
+Successful server response with ticket created.
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ticket+json",
+    "resource": {
+        "id": "89e18743-ee13-498e-a8a8-de5e8a7da846",
+        "sequentialId": 1,
+        "sequentialSuffix": "SFX",
+        "ownerIdentity": "testehome1@msging.net",
+        "customerIdentity": "{customerIdentity}",
+        "customerDomain": "0mn.io",
+        "provider": "Lime",
+        "status": "Waiting",
+        "storageDate": "2018-07-05T18:55:59.660Z",
+        "externalId": "89e18743-ee13-498e-a8a8-de5e8a7da846",
+        "rating": 0,
+        "team": "Default",
+        "unreadMessages": 0,
+        "closed": false,
+        "priority": 0 
+    },
+    "method": "set",
+    "status": "success",
+    "id": "89e18743",
+    "from": "postmaster@desk.msging.net/#az-iris1",
+    "to": "testehome1@msging.net"
+}
+```
+
+```javascript
+{type: 'application/vnd.iris.ticket+json',
+  resource:
+   {
+     id: '89e18743-ee13-498e-a8a8-de5e8a7da846',
+     sequentialId: 1,
+     sequentialSuffix: "SFX",
+     ownerIdentity: 'testehome1@msging.net',
+     customerIdentity: '{customerIdentity}',
+     customerDomain: '0mn.io',
+     provider: 'Lime',
+     status: 'Waiting',
+     storageDate: '2018-07-05T18:55:59.660Z',
+     externalId: '89e18743-ee13-498e-a8a8-de5e8a7da846',
+     rating: 0,
+     team: 'Default',
+     unreadMessages: 0,
+     closed: false,
+     priority: 0  },
+  method: 'set',
+  status: 'success',
+  id: 'a7ee981b-43fa-47a3-a5bc-a6a2b5d979ac',
+  from: 'postmaster@desk.msging.net/#az-iris4',
+  to: 'testehome1@msging.net/default',
+  metadata:
+   { '#command.uri':
+      'lime://testehome1@msging.net/tickets/{customerIdentity}' }
+}
+```
+
+```csharp
+result: {Lime.Protocol.Command}
+    From [Node]: {postmaster@desk.msging.net/#az-iris6}
+    Id [string]: "065f1579-b220-45dc-be69-3a6c844016c3"
+    Metadata [IDictionary]: Count = 1
+        Key [string]: "#command.uri"
+        Value [string]: "lime://testehome1@msging.net/tickets/{customerIdentity}"
+    Resource [Document]: {Takenet.Iris.Messaging.Resources.Ticket}
+        Status [TicketStatusEnum]: Waiting
+        SequentialId [int]: 1
+        SequentialSuffix [string]: "SFX"
+        Provider [string]: "Lime"
+        OwnerIdentity [Identity]: {testehome1@msging.net}
+```
+
+### Create a new ticket directly to an agent and team
+
+**ATTENTION**: This feature only works for bots using **REDIS** as distribution type.
+
+Create a new [ticket](/#ticket) to a specific agent and team.
+
+Replace `{teamName}` with the team name you want to create a new ticket.  
+Replace `{agentIdentity}` with the agent identity you want to create a new ticket.  
+Replace `{customerIdentity}` with the customer identity you want to create a new ticket.  
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/tickets',
+        'application/vnd.iris.ticket+json',
+        {
+            'customerIdentity': '{customerIdentity}',
+            'agentIdentity': '{agentIdentity}',
+            'team': '{teamName}'
+        },
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "{{$guid}}",
+    "to": "postmaster@desk.msging.net",
+    "method": "set",
+    "uri": "/tickets",
+    "type": "application/vnd.iris.ticket+json",
+    "resource": {
+        "customerIdentity": "{customerIdentity}",
+        "agentIdentity": "{agentIdentity}",
+        "team": "{teamName}"
+    }
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ticket+json",
+    "resource": {
+        "id": "76f5bc38-b476-4895-a0c6-016ed1288ba0",
+        "sequentialId": 138,
+        "sequentialSuffix": "SFX",
+        "ownerIdentity": "demobot@msging.net",
+        "customerIdentity": "5bdf8386-30a2-4916-9456-cc00779b7c5f.demobot@0mn.io",
+        "agentIdentity": "agent%40demobot.com@blip.ai",
+        "customerDomain": "0mn.io",
+        "provider": "Lime",
+        "status": "Waiting",
+        "storageDate": "2022-07-17T08:00:00.000Z",
+        "externalId": "76f5bc38-b476-4895-a0c6-016ed1288ba0",
+        "rating": 0,
+        "team": "Default",
+        "unreadMessages": 0,
+        "closed": false,
+        "customerInput": {},
+        "priority": 0 
+    },
+    "method": "set",
+    "status": "success",
+    "id": "5bdf8386-30a2-4916-9456-cc00779b7c5f",
+    "from": "postmaster@desk.msging.net/#az-iris2",
+    "to": "demobot@msging.net"
+}
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.SET,
+    uri: "/tickets/",
+    type: "application/vnd.iris.ticket+json",
+    resource: {
+        customerIdentity: "{customerIdentity}",
+        agentIdentity: "{agentIdentity}",
+        team: "{teamName}"
+    }
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Set,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/tickets"),
+    Resource = new Ticket{
+        CustomerIdentity = "{customerIdentity}",
+        AgentIdentity: "{agentIdentity}",
+        Team: "{teamName}"
+    }
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
 ### Create an attendance queue
 
 Set a new attendance queue.
@@ -1165,138 +1407,6 @@ var command = new Command(){
     }
 };
 var result = await _sender.ProcessCommandAsync(command, cancellationToken);
-```
-
-### Create a ticket for an attendance
-
-Before start to attendance some user is necessary first open a [ticket](/#ticket).
-To open a ticket send a command with `SET` method to `postmaster@desk.msging.net` and URI `/tickets/{customerIdentity}`, where `customerIdentity` is the customer identity to be attended. Use the `resource` property to delivery a context for the ticket.
-
-```http
-POST https://http.msging.net/commands HTTP/1.1
-Content-Type: application/json
-Authorization: Key {YOUR_TOKEN}
-
-{
-  "id": "{{$guid}}",
-  "to": "postmaster@desk.msging.net",
-  "method": "set",
-  "uri": "/tickets/{customerIdentity}",
-  "type": "text/plain",
-  "resource": "I need a human!"
-}
-```
-
-```python
-result = await client.process_command_async(
-    Command(
-        CommandMethod.SET,
-        '/tickets/{customerIdentity}',
-        'text/plain',
-        'I need a Human!',
-        to='postmaster@desk.msging.net'
-    )
-)
-```
-
-```javascript
-client.sendCommand({
-  id: Lime.Guid(),
-  to: "postmaster@desk.msging.net",
-  method: Lime.CommandMethod.SET,
-  uri: "/tickets/{customerIdentity}",
-  type: "text/plain",
-  resource: "I need a human!"
-})
-```
-
-```csharp
-var command = new Command(){
-    Id = EnvelopeId.NewId(),
-    Method = CommandMethod.Set,
-    To = "postsmaster@desk.msging.net",
-    Uri = new LimeUri("/tickets/{customerIdentity}"),
-    Resource = "I need a human!"
-};
-var result = await _sender.ProcessCommandAsync(command, cancellationToken);
-```
-
-Server responds with ticked created
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "type": "application/vnd.iris.ticket+json",
-    "resource": {
-        "id": "89e18743-ee13-498e-a8a8-de5e8a7da846",
-        "sequentialId": 1,
-        "sequentialSuffix": "SFX",
-        "ownerIdentity": "testehome1@msging.net",
-        "customerIdentity": "{customerIdentity}",
-        "customerDomain": "0mn.io",
-        "provider": "Lime",
-        "status": "Waiting",
-        "storageDate": "2018-07-05T18:55:59.660Z",
-        "externalId": "89e18743-ee13-498e-a8a8-de5e8a7da846",
-        "rating": 0,
-        "team": "Default",
-        "unreadMessages": 0,
-        "closed": false,
-        "priority": 0 
-    },
-    "method": "set",
-    "status": "success",
-    "id": "89e18743",
-    "from": "postmaster@desk.msging.net/#az-iris1",
-    "to": "testehome1@msging.net"
-}
-```
-
-```javascript
-{type: 'application/vnd.iris.ticket+json',
-  resource:
-   {
-     id: '89e18743-ee13-498e-a8a8-de5e8a7da846',
-     sequentialId: 1,
-     sequentialSuffix: "SFX",
-     ownerIdentity: 'testehome1@msging.net',
-     customerIdentity: '{customerIdentity}',
-     customerDomain: '0mn.io',
-     provider: 'Lime',
-     status: 'Waiting',
-     storageDate: '2018-07-05T18:55:59.660Z',
-     externalId: '89e18743-ee13-498e-a8a8-de5e8a7da846',
-     rating: 0,
-     team: 'Default',
-     unreadMessages: 0,
-     closed: false,
-     priority: 0  },
-  method: 'set',
-  status: 'success',
-  id: 'a7ee981b-43fa-47a3-a5bc-a6a2b5d979ac',
-  from: 'postmaster@desk.msging.net/#az-iris4',
-  to: 'testehome1@msging.net/default',
-  metadata:
-   { '#command.uri':
-      'lime://testehome1@msging.net/tickets/{customerIdentity}' }
-}
-```
-
-```csharp
-result: {Lime.Protocol.Command}
-    From [Node]: {postmaster@desk.msging.net/#az-iris6}
-    Id [string]: "065f1579-b220-45dc-be69-3a6c844016c3"
-    Metadata [IDictionary]: Count = 1
-        Key [string]: "#command.uri"
-        Value [string]: "lime://testehome1@msging.net/tickets/{customerIdentity}"
-    Resource [Document]: {Takenet.Iris.Messaging.Resources.Ticket}
-        Status [TicketStatusEnum]: Waiting
-        SequentialId [int]: 1
-        SequentialSuffix [string]: "SFX"
-        Provider [string]: "Lime"
-        OwnerIdentity [Identity]: {testehome1@msging.net}
 ```
 
 ### Delete a custom reply category
@@ -4623,14 +4733,14 @@ Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
 {
-  "id": "{{$guid}}",
-  "to": "postmaster@desk.msging.net",
-  "method": "set",
-  "uri": "/tickets/{ticketId}/transfer",
-  "type": "application/vnd.iris.ticket+json",
-  "resource": {
-    "team": "{teamName}"
-  }
+    "id": "{{$guid}}",
+    "to": "postmaster@desk.msging.net",
+    "method": "set",
+    "uri": "/tickets/{ticketId}/transfer",
+    "type": "application/vnd.iris.ticket+json",
+    "resource": {
+        "team": "{teamName}"
+    }
 }
 ```
 
@@ -4700,6 +4810,110 @@ var command = new Command(){
     To = "postsmaster@desk.msging.net",
     Uri = new LimeUri("/tickets/{ticketId}/transfer"),
     Resource = new Ticket{
+        Team = "{teamName}"
+    }
+};
+var result = await _sender.ProcessCommandAsync(command, cancellationToken);
+```
+
+### Transfer a ticket directly to an agent and team
+
+This endpoint only works for bots using **REDIS** as distribution type.
+
+Transfer a specfic [ticket](/#ticket) to a specific agent and team.
+
+Replace `{ticketId}` with the ticket id you want to transfer.  
+Replace `{teamName}` with the team name you want to transfer to.  
+Replace `{agentIdentity}` with the agent identity you want to transfer to.  
+
+```http
+POST https://http.msging.net/commands HTTP/1.1
+Content-Type: application/json
+Authorization: Key {YOUR_TOKEN}
+
+{
+    "id": "{{$guid}}",
+    "to": "postmaster@desk.msging.net",
+    "method": "set",
+    "uri": "/tickets/{ticketId}/transfer",
+    "type": "application/vnd.iris.ticket+json",
+    "resource": {
+        "agentIdentity": "{agentIdentity}",
+        "team": "{teamName}"
+    }
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "type": "application/vnd.iris.ticket+json",
+    "resource": {
+        "id": "9565cc61-d0f4-4af0-9c34-016ed2130a11",
+        "sequentialId": 145,
+        "sequentialSuffix": "SFX",
+        "ownerIdentity": "demobot@msging.net",
+        "customerIdentity": "255d0787b7b2bc.demobot@0mn.io",
+        "customerDomain": "0mn.io",
+        "agentIdentity": "agent%40demobot.com@blip.ai",
+        "provider": "Lime",
+        "status": "Waiting",
+        "storageDate": "2022-03-17T08:00:00.000Z",
+        "externalId": "9565cc61-d0f4-4af0-9c34-016ed2130a11",
+        "rating": 0,
+        "team": "Default",
+        "unreadMessages": 0,
+        "closed": false,
+        "parentSequentialId": 144,
+        "priority": 1
+    },
+    "method": "set",
+    "status": "success",
+    "id": "6b69c390-5660-483a-8b4e-1ef30c1088ae",
+    "from": "postmaster@desk.msging.net/#az-iris1",
+    "to": "demobot@msging.net"
+}
+```
+
+```python
+result = await client.process_command_async(
+    Command(
+        CommandMethod.SET,
+        '/tickets/{ticketId}/transfer',
+        'application/vnd.iris.ticket+json',
+        {
+            'agentIdentity': '{agentIdentity}',
+            'team': '{teamName}'
+        },
+        to='postmaster@desk.msging.net'
+    )
+)
+```
+
+```javascript
+client.sendCommand({
+    id: Lime.Guid(),
+    to: "postmaster@desk.msging.net",
+    method: Lime.CommandMethod.SET,
+    uri: "/tickets/{ticketId}/transfer",
+    type: "application/vnd.iris.ticket+json",
+    resource: {
+        agentIdentity: "{agentIdentity}",
+        team: "{teamName}"
+    }
+})
+```
+
+```csharp
+var command = new Command(){
+    Id = EnvelopeId.NewId(),
+    Method = CommandMethod.Set,
+    To = "postsmaster@desk.msging.net",
+    Uri = new LimeUri("/tickets/{ticketId}/transfer"),
+    Resource = new Ticket{
+        AgentIdentity: "{agentIdentity}",
         Team = "{teamName}"
     }
 };
