@@ -1,5 +1,5 @@
 
-## Stripe
+## Payments (Stripe)
 
 The **Stripe** extension allows chatbots to perform payments through a webpage or a direct payment using CardOnFile method.
 
@@ -91,9 +91,9 @@ Content-Type: application/json
         "stripeCustomerId": null,
         "status": "created",
         "stripeCardId": null,
-        "id": "6982172c-49a1-4d11-b34c-8e8c87a4a50a"
+        "id": 123
       },
-      "id": "ff9d6654-b86c-4ab2-b398-35d4d113f4d6"
+      "id": 45
     },
     "method": "set",
     "status": "success",
@@ -159,7 +159,7 @@ Content-Type: application/json
       "stripeCustomerId": "pi_3KGlMWAPY5jzkF511qb44Tmx",
       "status": "succeeded",
       "stripeCardId": "card_1JAJVLAPY5jzkF510JNLqwGL",
-      "id": "02117402-edda-4f0b-b492-500c22d4deb0"
+      "id": 543
     },
     "method": "set",
     "status": "success",
@@ -192,7 +192,7 @@ Authorization: Key {YOUR_TOKEN}
    "uri": "/payment/{contactIdentity}/confirm-payment-intent",
    "type": "application/json",
    "resource": {
-    "PaymentIntentId":"{stripePaymentIntentId}",
+    "paymentIntentId":"{stripePaymentIntentId}",
     "options":{
        "paymentMethod": "{stripePaymentMethod}",
     }
@@ -211,7 +211,7 @@ Content-Type: application/json
       "stripeCustomerId": "cus_Jnv5r6M9lU1ptU",
       "status": "succeeded",
       "stripeCardId": null,
-      "id": "6fc15d6f-b558-4792-a140-2a49a3a7103c"
+      "id": 432
     },
     "method": "set",
     "status": "success",
@@ -311,7 +311,7 @@ Content-Type: application/json
       "itemType": "application/vnd.iris.stripe.payment-intent+json",
       "items": [
         {
-          "id": "6fc5fdea-9c46-4a93-b78d-03f264553e12",
+          "id": 546,
           "stripePaymentIntentId": "pi_3K9AA4APY5jzkF512B8G0NoY",
           "stripeCustomerId": "cus_Jnv5r6M9lU1ptU",
           "status": "requires_confirmation"
@@ -357,13 +357,13 @@ Content-Type: application/json
       "itemType": "application/vnd.iris.stripe.session+json",
       "items": [
         {
-          "id": "c893243e-832d-49c9-bff8-0121bbcc5da2",
+          "id": 45,
           "stripeSessionId": "cs_test_b11F5BdMtxmf54seLfeJcRoLIR58ddumq8c2Lt1MWQBTuRlizciHXeGtca",
           "method": "card",
           "url": "https://checkout.stripe.com/pay/cs_test_b11F5BdMtxmf54seLfeJcRoLIR58ddumq8c2Lt1MWQBTuRlizciHXeGtca#fidkdWxOYHwnPyd1blpxYHZxWjA0TFNsVGNEVVwwb39uQzA0R1VObDFhcG19RENAN3Q9d3x8dkJXfG1HNnNjc2doR0FLX3NRTjJTVUlpNEI1SmA0MWJhMEdIX21NNU1JRHFidm5KfEtJYT1sNTVBZGZzNGNDTicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl",
           "status": "unpaid",
           "expirationDate": "2022-01-07T13:52:48.000Z",
-          "paymentIntentId": "00d9c6cc-226b-42f7-8b35-ed7e8897d05e",
+          "paymentIntentId": 87,
           "stripePaymentIntentId": "pi_3KEwObAPY5jzkF511F2qEGQs"
         }]
     },
@@ -596,7 +596,7 @@ Content-Type: application/json
     "from": "postmaster@stripe.msging.net/#node",
     "to": "botdemo@msging.net/default-965",
     "metadata": {
-      "#command.uri": "lime://botdemo@msging.net/payment-intents/{stripePaymentIntentId}/events"
+      "#command.uri": "lime://botdemo@msging.net/payment-intents/pi_3K9A2QAPY5jzkF511dKvCQz6/events"
     }
 }
 ```
@@ -637,7 +637,7 @@ Content-Type: application/json
       "itemType": "application/vnd.iris.stripe.event+json",
       "items": [
         {
-          "stripeSessionId": "{stripeSessionId}",
+          "stripeSessionId": "cs_test_a13S3VWdjGPI4FSfI4kHjUbzGaotPPlTuFxRnSP1T1AnccJlNfqdneARPE",
           "stripeEventCode": "payment_intent.succeeded",
           "json": {
             "id": "evt_3KC7SAAPY5jzkF513hVfgxFp",
@@ -819,7 +819,7 @@ Content-Type: application/json
     "from": "postmaster@stripe.msging.net/#node",
     "to": "botdemo@msging.net/default-965",
     "metadata": {
-      "#command.uri": "lime://botdemo@msging.net/sessions/{stripeSessionId}/events"
+      "#command.uri": "lime://botdemo@msging.net/sessions/cs_test_a13S3VWdjGPI4FSfI4kHjUbzGaotPPlTuFxRnSP1T1AnccJlNfqdneARPE/events"
     }
 }
 ```

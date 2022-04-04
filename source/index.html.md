@@ -26,6 +26,7 @@ includes:
   - en/concepts2/handle-notifications
   - en/concepts2/commands
   - en/concepts2/handle-commands
+  - en/concepts2/payments
   - en/concepts2/throughput
   
   - en/authentication
@@ -58,8 +59,8 @@ includes:
   - en/content-types/menu/quickreply
   - en/content-types/multimedia-menu
   - en/content-types/native
-  - en/content-types/payment-invoice
-  - en/content-types/payment-receipt
+  # - en/content-types/payment-invoice
+  # - en/content-types/payment-receipt
   - en/content-types/text
   - en/content-types/redirect  
   - en/content-types/resource
@@ -96,6 +97,7 @@ includes:
   - en/documents/distributionListMessage
   - en/documents/distributionListNotification
   - en/documents/entity
+  - en/documents/event
   - en/documents/eventTrack
   - en/documents/httpContentDocument
   - en/documents/identityPerDay
@@ -109,6 +111,10 @@ includes:
   - en/documents/modelSummary
   - en/documents/OAuthToken
   - en/documents/openTicketSummary
+  - en/documents/paymentIntent
+  - en/documents/paymentIntentConfirm
+  - en/documents/paymentIntentConfirmOptions
+  - en/documents/paymentMethod
   - en/documents/plan
   - en/documents/question
   - en/documents/report
@@ -119,6 +125,7 @@ includes:
   - en/documents/rule
   - en/documents/schedules
   - en/documents/serviceTimeSummary
+  - en/documents/session
   - en/documents/subscription (plan)
   - en/documents/subscription (resource)
   - en/documents/subscriptionEvent
@@ -159,6 +166,7 @@ includes:
   - en/extensions/resources
   - en/extensions/scheduler
   - en/extensions/security
+  - en/extensions/payments
   - en/extensions/tunnel
   - en/extensions/user-info
   - en/extensions/utils  
@@ -169,7 +177,7 @@ includes:
   - en/integrations/blip-chat
   - en/integrations/mailgun
   - en/integrations/messenger
-  - en/integrations/payment
+  # - en/integrations/payment
   - en/integrations/skype
   - en/integrations/takeio
   - en/integrations/tangram

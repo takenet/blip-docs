@@ -13,7 +13,7 @@ There are basically 3 differents ways to create a chatbot using Blip.
 <br/>If you aren't available to create your bot using Builder or one of the SDKs, you can use Blip HTTP **Webhooks**, the simplest and fastest way to send and receive messages and notifications. In this case, you will basically need to create an API to receive (and send) HTTP requests.
 <br/>Besides sending and receiving messages, your chatbot will probably need integrations and aditional tools to create the best experience for your customers. To help you with that, Blip has inumerous **extensions** and **integrations**.
 
-**Integrations** are external APIs connected to Blip in order to reduce your work to use these applications. Some of Blip's integrations include: *Chatbase*, *RD Station* and *PagSeguro*([click here to see all available integrations](.#integrations)).
+**Integrations** are external APIs connected to Blip in order to reduce your work to use these applications. Some of Blip's integrations include: *Chatbase*, *RD Station*([click here to see all available integrations](.#integrations)).
 
 **Extensions** are internal APIs that encapsulate common functionalities used in message applications. Some of Blip's extensions include: *broadcasting*, *scheduling*, *simple databases*, *chat history* and many others ([click here to see all available extensions](.#extensions)).
 

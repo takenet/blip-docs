@@ -24,7 +24,6 @@ The following channels are available in **Blip** platform:
 | Telegram           | telegram.gw.msging.net  |
 | Workplace          | workplace.gw.msging.net |
 | Email              | mailgun.gw.msging.net   |
-| PagSeguro          | pagseguro.gw.msging.net |
 
 <!---| Google Assistant   | assistant.gw.msging.net (**soon**)|
 | Skype for Business | abs.gw.msging.net  (**soon**)     |
