@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8906417a-1fa9-4a45-8d00-b1ad1b16ade5",
+		"_postman_id": "eaab501c-49e7-4639-89ca-af141a32ce62",
 		"name": "Blip",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -6133,6 +6133,656 @@
 						}
 					],
 					"description": "The media extension allows to manipulate the chatbots medias"
+				},
+				{
+					"name": "Payments",
+					"item": [
+						{
+							"name": "Stripe",
+							"item": [
+								{
+									"name": "Create a Session",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{Authorization}}",
+												"type": "default"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"set\",\r\n    \"type\": \"application/json\",\r\n    \"uri\": \"/payment/{{contactIdentity}}/session\",\r\n    \"resource\": {\r\n        \"paymentMethodTypes\": [\r\n        \"card\",\r\n        \"boleto\"\r\n    ],\r\n    \"lineItems\": [\r\n    {\r\n        \"amount\": 50000,\r\n        \"currency\": \"brl\",\r\n        \"description\": \"Curso do Blip - Fornecido pela Take Blip\",\r\n        \"images\": [           \r\n            \"https://www.take.net/files/themes/blank_theme/assets/img/take-og-image.png\"\r\n        ],\r\n        \"name\": \"Curso do Blip - Módulo de Pagamentos\",\r\n        \"quantity\": 1\r\n    }],\r\n        \"successUrl\": \"https://www.take.net\",\r\n        \"cancelUrl\": \"https://www.take.net\"\r\n    }\r\n}"
+										},
+										"url": {
+											"raw": "https://msging.net/commands",
+											"protocol": "https",
+											"host": [
+												"msging",
+												"net"
+											],
+											"path": [
+												"commands"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "200 Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "{{Authorization}}",
+														"type": "default"
+													},
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"set\",\r\n    \"type\": \"application/json\",\r\n    \"uri\": \"/payment/0dc6c5e9-cf69-4f35-a281-dfbf19cd6e2b.botid@0mn.io/session\",\r\n    \"resource\": {\r\n        \"paymentMethodTypes\": [\r\n        \"card\",\r\n        \"boleto\"\r\n    ],\r\n    \"lineItems\": [\r\n    {\r\n        \"amount\": 50000,\r\n        \"currency\": \"brl\",\r\n        \"description\": \"Curso do Blip - Fornecido pela Take Blip\",\r\n        \"images\": [           \r\n            \"https://www.take.net/files/themes/blank_theme/assets/img/take-og-image.png\"\r\n        ],\r\n        \"name\": \"Curso do Blip - Módulo de Pagamentos\",\r\n        \"quantity\": 1\r\n    }],\r\n        \"successUrl\": \"https://www.take.net\",\r\n        \"cancelUrl\": \"https://www.take.net\"\r\n    }\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://msging.net/commands",
+													"protocol": "https",
+													"host": [
+														"msging",
+														"net"
+													],
+													"path": [
+														"commands"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": null,
+											"cookie": [],
+											"body": "{\r\n  \"type\": \"application/json\",\r\n  \"resource\": {\r\n    \"stripeSessionId\": \"cs_test_b1RRBHFvavsCkT9znEdzt9bEUu4WhK0GV2BL9yhB4RJmCK0PMbtcsTxNco\",\r\n    \"method\": \"card\",\r\n    \"url\": \"https://checkout.stripe.com/pay/cs_test_b1RRBHFvavsCkT9znEdzt9bEUu4WhK0GV2BL9yhB44RJmCK0PMbtcsTxNco#fidkdWxOYHwnPyd1blpxYHZxWjA0TFNsVGNEVVwwb39uQzA0R1VObDFhcG19RENAN3Q9d3x8dkJXfG1HNnNjc2doR0FLX3NRTjJTVUlpNEI1SmA0MWJhMEdIX21NNU1JRHFidm5KfEtJYT1sNTVBZGZzNGNDTicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCdUl\",\r\n    \"status\": \"unpaid\",\r\n    \"expirationDate\": \"2021-11-23T20:21:10.000Z\",\r\n    \"id\": \"7a45a865-4d46-4acf-be13-50b0f865f56f\",\r\n    \"paymentIntent\": {\r\n      \"id\": \"1d5648f6-4760-4136-b97e-6b024f15faa5\",\r\n      \"status\": \"created\",\r\n      \"stripeCardId\": null,\r\n      \"stripeCustomerId\": \"cus_KPmi9hY5mtPd2x\",\r\n      \"stripePaymentIntentId\": \"pi_3Jyj0kAPY5jzkF51165Oym64\"\r\n    }\r\n  },\r\n  \"method\": \"set\",\r\n  \"status\": \"success\",\r\n  \"id\": \"cbce73e9-a113-48d1-a414-c3444c98c128\",\r\n  \"from\": \"postmaster@stripe.msging.net/#note-mc417\",\r\n  \"to\": \"bart@msging.net/default\",\r\n  \"metadata\": {\r\n    \"#command.uri\": \"lime://bart@msging.net/payment/0dc6c5e9-cf69-4f35-a281-dfbf19cd6e2b.botid@0mn.io/session\"\r\n  }\r\n}"
+										}
+									]
+								},
+								{
+									"name": "Create a Payment Intent",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{Authorization}}",
+												"type": "default"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"set\",\r\n    \"uri\": \"/payment/{{contactIdentity}}/payment-intent\",\r\n    \"type\": \"application/json\",\r\n    \"resource\": {\r\n        \"customer\": \"{{stripeCustomerId}}\",\r\n        \"PaymentMethodTypes\": [\"card\"],\r\n        \"amount\":1000,\r\n        \"currency\":\"BRL\",\r\n        \"confirm\":\"true\",\r\n        \"paymentMethod\":\"{{stripePaymentMethod}}\"\r\n    }\r\n}"
+										},
+										"url": {
+											"raw": "https://msging.net/commands",
+											"protocol": "https",
+											"host": [
+												"msging",
+												"net"
+											],
+											"path": [
+												"commands"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "200 Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "{{Authorization}}",
+														"type": "default"
+													},
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"set\",\r\n    \"uri\": \"/payment/1656325099@telegram.gw.msging.net/payment-intent\",\r\n    \"type\": \"application/json\",\r\n    \"resource\": {\r\n        \"customer\": \"cus_dsasd22s455sa\",\r\n        \"PaymentMethodTypes\": [\"card\"],\r\n        \"amount\":1000,\r\n        \"currency\":\"BRL\",\r\n        \"confirm\":\"true\",\r\n        \"paymentMethod\":\"card_1JAJVLAPY5jzkF510JNLqwGL\"\r\n    }\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://msging.net/commands",
+													"protocol": "https",
+													"host": [
+														"msging",
+														"net"
+													],
+													"path": [
+														"commands"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": null,
+											"cookie": [],
+											"body": "{\r\n    \"type\": \"application/json\",\r\n    \"resource\": {\r\n      \"stripePaymentIntentId\": \"pi_3KGlMWAPY5jzkF511qb44Tmx\",\r\n      \"stripeCustomerId\": \"cus_dsasd22s455sa\",\r\n      \"status\": \"succeeded\",\r\n      \"stripeCardId\": \"card_1JAJVLAPY5jzkF510JNLqwGL\",\r\n      \"id\": 543\r\n    },\r\n    \"method\": \"set\",\r\n    \"status\": \"success\",\r\n    \"id\": \"a58fcb0d-cfed-4bcb-8a06-fcc44919f394\",\r\n    \"from\": \"postmaster@stripe.msging.net/#node\",\r\n    \"to\": \"botdemo@msging.net/default-965\",\r\n    \"metadata\": {\r\n      \"#command.uri\": \"lime://botdemo@msging.net/payment/1656325099@telegram.gw.msging.net/payment-intent\"\r\n    }\r\n}"
+										}
+									]
+								},
+								{
+									"name": "Confirm a Payment Intent",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{Authorization}}",
+												"type": "default"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"set\",\r\n    \"uri\": \"/payment/{{contactIdentity}}/confirm-payment-intent\",\r\n    \"type\": \"application/json\",\r\n    \"resource\": {\r\n        \"PaymentIntentId\":\"{{stripePaymentIntentId}}\",\r\n        \"options\":{\r\n            \"paymentMethod\": \"{{stripePaymentMethod}}\"\r\n        }\r\n    }\r\n}"
+										},
+										"url": {
+											"raw": "https://msging.net/commands",
+											"protocol": "https",
+											"host": [
+												"msging",
+												"net"
+											],
+											"path": [
+												"commands"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "200 Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "{{Authorization}}",
+														"type": "default"
+													},
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"set\",\r\n    \"uri\": \"/payment/1656325099@telegram.gw.msging.net/confirm-payment-intent\",\r\n    \"type\": \"application/json\",\r\n    \"resource\": {\r\n        \"paymentIntentId\":\"pi_3KGlhyAPY5jzkF510DSnBlnb\",\r\n        \"options\":{\r\n            \"paymentMethod\": \"card_1JAJVLAPY5jzkF510JNLqwGL\"\r\n        }\r\n    }\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://msging.net/commands",
+													"protocol": "https",
+													"host": [
+														"msging",
+														"net"
+													],
+													"path": [
+														"commands"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": null,
+											"cookie": [],
+											"body": "{\r\n    \"type\": \"application/json\",\r\n    \"resource\": {\r\n      \"stripePaymentIntentId\": \"pi_3KGlhyAPY5jzkF510DSnBlnb\",\r\n      \"stripeCustomerId\": \"cus_Jnv5r6M9lU1ptU\",\r\n      \"status\": \"succeeded\",\r\n      \"stripeCardId\": null,\r\n      \"id\": 432\r\n    },\r\n    \"method\": \"set\",\r\n    \"status\": \"success\",\r\n    \"id\": \"a58fcb0d-cfed-4bcb-8a06-fcc44919f394\",\r\n    \"from\": \"postmaster@stripe.msging.net/#node\",\r\n    \"to\": \"botdemo@msging.net/default-965\",\r\n    \"metadata\": {\r\n      \"#command.uri\": \"lime://botdemo@msging.net/payment/1656325099@telegram.gw.msging.net/confirm-payment-intent\"\r\n    }\r\n}"
+										}
+									]
+								},
+								{
+									"name": "Get Payment Methods",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{Authorization}}",
+												"type": "default"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"get\",\r\n    \"uri\": \"/payment-methods?customer={{stripeCustomerId}}\"\r\n}"
+										},
+										"url": {
+											"raw": "https://msging.net/commands",
+											"protocol": "https",
+											"host": [
+												"msging",
+												"net"
+											],
+											"path": [
+												"commands"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "200 Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "{{Authorization}}",
+														"type": "default"
+													},
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"get\",\r\n    \"uri\": \"/payment-methods?customer=cus_dsasd22s455sa\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://msging.net/commands",
+													"protocol": "https",
+													"host": [
+														"msging",
+														"net"
+													],
+													"path": [
+														"commands"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": null,
+											"cookie": [],
+											"body": "{\n    \"type\": \"application/vnd.lime.collection+json\",\n    \"resource\": {\n        \"total\": 1,\n        \"itemType\": \"application/vnd.iris.stripe.payment-method+json\",\n        \"items\": [\n            {\n                \"id\": \"pm_1Jk8xPAPY5jzkF51Sf7m1WFk\",\n                \"brand\": \"visa\",\n                \"country\": \"US\",\n                \"expirationMonth\": 10,\n                \"expirationYear\": 2022,\n                \"funding\": \"credit\",\n                \"last4Digits\": \"4242\"\n            }\n        ]\n    },\n    \"method\": \"get\",\n    \"status\": \"success\",\n    \"id\": \"a58fcb0d-cfed-4bcb-8a06-fcc44919f394\",\n    \"from\": \"postmaster@stripe.msging.net/#node\",\n    \"to\": \"botdemo@msging.net/default-965\",\n    \"metadata\": {\n        \"#command.uri\": \"lime://botdemo@msging.net/payment-methods?customer=cus_dsasd22s455sa\"\n    }\n}"
+										}
+									]
+								},
+								{
+									"name": "Get payment intent history",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{Authorization}}",
+												"type": "default"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\":  \"{{$guid}}\",\r\n    \"to\":  \"postmaster@stripe.msging.net\",\r\n    \"method\":  \"get\",\r\n    \"uri\":  \"/payment/{{contactIdentity}}/payment-intent-history\" \r\n}"
+										},
+										"url": {
+											"raw": "https://msging.net/commands",
+											"protocol": "https",
+											"host": [
+												"msging",
+												"net"
+											],
+											"path": [
+												"commands"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "200 Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "{{Authorization}}",
+														"type": "default"
+													},
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"id\":  \"{{$guid}}\",\r\n    \"to\":  \"postmaster@stripe.msging.net\",\r\n    \"method\":  \"get\",\r\n    \"uri\":  \"/payment/1656325099@telegram.gw.msging.net/payment-intent-history\" \r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://msging.net/commands",
+													"protocol": "https",
+													"host": [
+														"msging",
+														"net"
+													],
+													"path": [
+														"commands"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": null,
+											"cookie": [],
+											"body": "{\r\n    \"type\": \"application/vnd.lime.collection+json\",\r\n    \"resource\": {\r\n      \"total\": 1,\r\n      \"itemType\": \"application/vnd.iris.stripe.payment-intent+json\",\r\n      \"items\": [\r\n        {\r\n          \"id\": 546,\r\n          \"stripePaymentIntentId\": \"pi_3K9AA4APY5jzkF512B8G0NoY\",\r\n          \"stripeCustomerId\": \"cus_Jnv5r6M9lU1ptU\",\r\n          \"status\": \"requires_confirmation\"\r\n        }]\r\n    },\r\n    \"method\": \"get\",\r\n    \"status\": \"success\",\r\n    \"id\": \"a58fcb0d-cfed-4bcb-8a06-fcc44919f394\",\r\n    \"from\": \"postmaster@stripe.msging.net/#node\",\r\n    \"to\": \"botdemo@msging.net/default-965\",\r\n    \"metadata\": {\r\n        \"#command.uri\": \"lime://botdemo@msging.net/payment/1656325099@telegram.gw.msging.net/payment-intent-history\"\r\n    }\r\n}"
+										}
+									]
+								},
+								{
+									"name": "Get session history",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{Authorization}}",
+												"type": "default"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\":  \"{{$guid}}\",\r\n    \"to\":  \"postmaster@stripe.msging.net\",\r\n    \"method\":  \"get\",\r\n    \"uri\":  \"/payment/{{contactIdentity}}/session-history\" \r\n}"
+										},
+										"url": {
+											"raw": "https://msging.net/commands",
+											"protocol": "https",
+											"host": [
+												"msging",
+												"net"
+											],
+											"path": [
+												"commands"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "200 Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "{{Authorization}}",
+														"type": "default"
+													},
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"id\":  \"{{$guid}}\",\r\n    \"to\":  \"postmaster@stripe.msging.net\",\r\n    \"method\":  \"get\",\r\n    \"uri\":  \"/payment/1656325099@telegram.gw.msging.net/session-history\" \r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://msging.net/commands",
+													"protocol": "https",
+													"host": [
+														"msging",
+														"net"
+													],
+													"path": [
+														"commands"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": null,
+											"cookie": [],
+											"body": "{\r\n    \"type\": \"application/vnd.lime.collection+json\",\r\n    \"resource\": {\r\n      \"total\": 1,\r\n      \"itemType\": \"application/vnd.iris.stripe.session+json\",\r\n      \"items\": [\r\n        {\r\n          \"id\": 45,\r\n          \"stripeSessionId\": \"cs_test_b11F5BdMtxmf54seLfeJcRoLIR58ddumq8c2Lt1MWQBTuRlizciHXeGtca\",\r\n          \"method\": \"card\",\r\n          \"url\": \"https://checkout.stripe.com/pay/cs_test_b11F5BdMtxmf54seLfeJcRoLIR58ddumq8c2Lt1MWQBTuRlizciHXeGtca#fidkdWxOYHwnPyd1blpxYHZxWjA0TFNsVGNEVVwwb39uQzA0R1VObDFhcG19RENAN3Q9d3x8dkJXfG1HNnNjc2doR0FLX3NRTjJTVUlpNEI1SmA0MWJhMEdIX21NNU1JRHFidm5KfEtJYT1sNTVBZGZzNGNDTicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl\",\r\n          \"status\": \"unpaid\",\r\n          \"expirationDate\": \"2022-01-07T13:52:48.000Z\",\r\n          \"paymentIntentId\": 87,\r\n          \"stripePaymentIntentId\": \"pi_3KEwObAPY5jzkF511F2qEGQs\"\r\n        }]\r\n    },\r\n    \"method\": \"get\",\r\n    \"status\": \"success\",\r\n    \"id\": \"a58fcb0d-cfed-4bcb-8a06-fcc44919f394\",\r\n    \"from\": \"postmaster@stripe.msging.net/#node\",\r\n    \"to\": \"botdemo@msging.net/default-965\",\r\n    \"metadata\": {\r\n      \"#command.uri\": \"lime://botdemo@msging.net/payment/1656325099@telegram.gw.msging.net/session-history\"\r\n    }\r\n}"
+										}
+									]
+								},
+								{
+									"name": "Get payment intent events",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{Authorization}}",
+												"type": "default"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"get\",\r\n    \"uri\": \"/payment-intents/{{stripePaymentIntentId}}/events\"\r\n}"
+										},
+										"url": {
+											"raw": "https://msging.net/commands",
+											"protocol": "https",
+											"host": [
+												"msging",
+												"net"
+											],
+											"path": [
+												"commands"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "200 Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "{{Authorization}}",
+														"type": "default"
+													},
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"get\",\r\n    \"uri\": \"/payment-intents/pi_3K9A2QAPY5jzkF511dKvCQz6/events\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://msging.net/commands",
+													"protocol": "https",
+													"host": [
+														"msging",
+														"net"
+													],
+													"path": [
+														"commands"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": null,
+											"cookie": [],
+											"body": "{\n    \"type\": \"application/vnd.lime.collection+json\",\n    \"resource\": {\n        \"total\": 1,\n        \"itemType\": \"application/vnd.iris.stripe.event+json\",\n        \"items\": [\n            {\n                \"stripePaymentIntentId\": \"pi_3K9A2QAPY5jzkF511dKvCQz6\",\n                \"stripeEventCode\": \"payment_intent.succeeded\",\n                \"json\": {\n                    \"id\": \"evt_3K9A2QAPY5jzkF511q73JeZV\",\n                    \"object\": \"event\",\n                    \"api_version\": \"2020-08-27\",\n                    \"created\": 1640099643,\n                    \"data\": {\n                        \"object\": {\n                            \"id\": \"pi_3K9A2QAPY5jzkF511dKvCQz6\",\n                            \"object\": \"payment_intent\",\n                            \"amount\": 1000,\n                            \"amount_capturable\": 0,\n                            \"amount_received\": 1000,\n                            \"application\": null,\n                            \"application_fee_amount\": null,\n                            \"automatic_payment_methods\": null,\n                            \"canceled_at\": null,\n                            \"cancellation_reason\": null,\n                            \"capture_method\": \"automatic\",\n                            \"charges\": {\n                                \"object\": \"list\",\n                                \"data\": [\n                                    {\n                                        \"id\": \"ch_3K9A2QAPY5jzkF511QmwggMt\",\n                                        \"object\": \"charge\",\n                                        \"amount\": 1000,\n                                        \"amount_captured\": 1000,\n                                        \"amount_refunded\": 0,\n                                        \"application\": null,\n                                        \"application_fee\": null,\n                                        \"application_fee_amount\": null,\n                                        \"balance_transaction\": \"txn_3K9A2QAPY5jzkF511liS1JcO\",\n                                        \"billing_details\": {\n                                            \"address\": {\n                                                \"city\": null,\n                                                \"country\": null,\n                                                \"line1\": null,\n                                                \"line2\": null,\n                                                \"postal_code\": null,\n                                                \"state\": null\n                                            },\n                                            \"email\": null,\n                                            \"name\": null,\n                                            \"phone\": null\n                                        },\n                                        \"calculated_statement_descriptor\": \"TAKE BLIP\",\n                                        \"captured\": true,\n                                        \"created\": 1640099643,\n                                        \"currency\": \"usd\",\n                                        \"customer\": \"cus_Jnv5r6M9lU1ptU\",\n                                        \"description\": null,\n                                        \"destination\": null,\n                                        \"dispute\": null,\n                                        \"disputed\": false,\n                                        \"failure_code\": null,\n                                        \"failure_message\": null,\n                                        \"fraud_details\": {},\n                                        \"invoice\": null,\n                                        \"livemode\": false,\n                                        \"metadata\": {},\n                                        \"on_behalf_of\": null,\n                                        \"order\": null,\n                                        \"outcome\": {\n                                            \"network_status\": \"approved_by_network\",\n                                            \"reason\": null,\n                                            \"risk_level\": \"normal\",\n                                            \"risk_score\": 54,\n                                            \"seller_message\": \"Payment complete.\",\n                                            \"type\": \"authorized\"\n                                        },\n                                        \"paid\": true,\n                                        \"payment_intent\": \"pi_3K9A2QAPY5jzkF511dKvCQz6\",\n                                        \"payment_method\": \"card_1JAJVLAPY5jzkF510JNLqwGL\",\n                                        \"payment_method_details\": {\n                                            \"card\": {\n                                                \"brand\": \"mastercard\",\n                                                \"checks\": {\n                                                    \"address_line1_check\": null,\n                                                    \"address_postal_code_check\": null,\n                                                    \"cvc_check\": null\n                                                },\n                                                \"country\": \"US\",\n                                                \"exp_month\": 2,\n                                                \"exp_year\": 2070,\n                                                \"fingerprint\": \"LYnbum1NRsdHFGdL\",\n                                                \"funding\": \"credit\",\n                                                \"installments\": null,\n                                                \"last4\": \"4444\",\n                                                \"network\": \"mastercard\",\n                                                \"three_d_secure\": null,\n                                                \"wallet\": null\n                                            },\n                                            \"type\": \"card\"\n                                        },\n                                        \"receipt_email\": \"email@email.com\",\n                                        \"receipt_number\": null,\n                                        \"receipt_url\": \"https://pay.stripe.com/receipts/acct_1IViQfAPY5jzkF51/ch_3K9A2QAPY5jzkF511QmwggMt/rcpt_KondECSltrBIZ2lUGLpE3xMztehh5SB\",\n                                        \"refunded\": false,\n                                        \"refunds\": {\n                                            \"object\": \"list\",\n                                            \"data\": [],\n                                            \"has_more\": false,\n                                            \"total_count\": 0,\n                                            \"url\": \"/v1/charges/ch_3K9A2QAPY5jzkF511QmwggMt/refunds\"\n                                        },\n                                        \"review\": null,\n                                        \"shipping\": null,\n                                        \"source\": null,\n                                        \"source_transfer\": null,\n                                        \"statement_descriptor\": null,\n                                        \"statement_descriptor_suffix\": null,\n                                        \"status\": \"succeeded\",\n                                        \"transfer_data\": null,\n                                        \"transfer_group\": null\n                                    }\n                                ],\n                                \"has_more\": false,\n                                \"total_count\": 1,\n                                \"url\": \"/v1/charges?payment_intent=pi_3K9A2QAPY5jzkF511dKvCQz6\"\n                            },\n                            \"client_secret\": \"pi_3K9A2QAPY5jzkF511dKvCQz6_secret_iRH29AglHPmc6mlfpnI6J6W1T\",\n                            \"confirmation_method\": \"automatic\",\n                            \"created\": 1640099642,\n                            \"currency\": \"usd\",\n                            \"customer\": \"cus_Jnv5r6M9lU1ptU\",\n                            \"description\": null,\n                            \"invoice\": null,\n                            \"last_payment_error\": null,\n                            \"livemode\": false,\n                            \"metadata\": {},\n                            \"next_action\": null,\n                            \"on_behalf_of\": null,\n                            \"payment_method\": \"card_1JAJVLAPY5jzkF510JNLqwGL\",\n                            \"payment_method_options\": {\n                                \"card\": {\n                                    \"installments\": null,\n                                    \"network\": null,\n                                    \"request_three_d_secure\": \"automatic\"\n                                }\n                            },\n                            \"payment_method_types\": [\n                                \"card\"\n                            ],\n                            \"processing\": null,\n                            \"receipt_email\": \"email@email.com\",\n                            \"review\": null,\n                            \"setup_future_usage\": \"on_session\",\n                            \"shipping\": null,\n                            \"source\": null,\n                            \"statement_descriptor\": null,\n                            \"statement_descriptor_suffix\": null,\n                            \"status\": \"succeeded\",\n                            \"transfer_data\": null,\n                            \"transfer_group\": null\n                        }\n                    },\n                    \"livemode\": false,\n                    \"pending_webhooks\": 6,\n                    \"request\": {\n                        \"id\": \"req_ViPoylXrIiRjKR\",\n                        \"idempotency_key\": \"608821ff-7814-4a31-b4eb-9ad824fe004d\"\n                    },\n                    \"type\": \"payment_intent.succeeded\"\n                }\n            }\n        ]\n    },\n    \"method\": \"get\",\n    \"status\": \"success\",\n    \"id\": \"a58fcb0d-cfed-4bcb-8a06-fcc44919f394\",\n    \"from\": \"postmaster@stripe.msging.net/#node\",\n    \"to\": \"botdemo@msging.net/default-965\",\n    \"metadata\": {\n        \"#command.uri\": \"lime://botdemo@msging.net/payment-intents/pi_3K9A2QAPY5jzkF511dKvCQz6/events\"\n    }\n}"
+										}
+									]
+								},
+								{
+									"name": "Get session events",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{Authorization}}",
+												"type": "default"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "default"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"get\",\r\n    \"uri\": \"/sessions/{{stripeSessionId}}/events\"\r\n}"
+										},
+										"url": {
+											"raw": "https://msging.net/commands",
+											"protocol": "https",
+											"host": [
+												"msging",
+												"net"
+											],
+											"path": [
+												"commands"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "200 Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "{{Authorization}}",
+														"type": "default"
+													},
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"get\",\r\n    \"uri\": \"/sessions/cs_test_a13S3VWdjGPI4FSfI4kHjUbzGaotPPlTuFxRnSP1T1AnccJlNfqdneARPE/events\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://msging.net/commands",
+													"protocol": "https",
+													"host": [
+														"msging",
+														"net"
+													],
+													"path": [
+														"commands"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": null,
+											"cookie": [],
+											"body": "{\n    \"type\": \"application/vnd.lime.collection+json\",\n    \"resource\": {\n        \"total\": 1,\n        \"itemType\": \"application/vnd.iris.stripe.event+json\",\n        \"items\": [\n            {\n                \"stripeSessionId\": \"cs_test_a13S3VWdjGPI4FSfI4kHjUbzGaotPPlTuFxRnSP1T1AnccJlNfqdneARPE\",\n                \"stripeEventCode\": \"payment_intent.succeeded\",\n                \"json\": {\n                    \"id\": \"evt_3KC7SAAPY5jzkF513hVfgxFp\",\n                    \"object\": \"event\",\n                    \"api_version\": \"2020-08-27\",\n                    \"created\": 1640804726,\n                    \"data\": {\n                        \"object\": {\n                            \"id\": \"pi_3KC7SAAPY5jzkF513H0WmZLe\",\n                            \"object\": \"payment_intent\",\n                            \"amount\": 400100,\n                            \"amount_capturable\": 0,\n                            \"amount_received\": 400100,\n                            \"application\": null,\n                            \"application_fee_amount\": null,\n                            \"automatic_payment_methods\": null,\n                            \"canceled_at\": null,\n                            \"cancellation_reason\": null,\n                            \"capture_method\": \"automatic\",\n                            \"charges\": {\n                                \"object\": \"list\",\n                                \"data\": [\n                                    {\n                                        \"id\": \"ch_3KC7SAAPY5jzkF513VgS1oUh\",\n                                        \"object\": \"charge\",\n                                        \"amount\": 400100,\n                                        \"amount_captured\": 400100,\n                                        \"amount_refunded\": 0,\n                                        \"application\": null,\n                                        \"application_fee\": null,\n                                        \"application_fee_amount\": null,\n                                        \"balance_transaction\": \"txn_3KC7SAAPY5jzkF513yIdhhv8\",\n                                        \"billing_details\": {\n                                            \"address\": {\n                                                \"city\": null,\n                                                \"country\": \"BR\",\n                                                \"line1\": null,\n                                                \"line2\": null,\n                                                \"postal_code\": null,\n                                                \"state\": null\n                                            },\n                                            \"email\": \"email@email.com\",\n                                            \"name\": \"aasdasd\",\n                                            \"phone\": null\n                                        },\n                                        \"calculated_statement_descriptor\": \"TAKE BLIP\",\n                                        \"captured\": true,\n                                        \"created\": 1640804725,\n                                        \"currency\": \"brl\",\n                                        \"customer\": \"cus_KPmi9hY5mtPd2x\",\n                                        \"description\": null,\n                                        \"destination\": null,\n                                        \"dispute\": null,\n                                        \"disputed\": false,\n                                        \"failure_code\": null,\n                                        \"failure_message\": null,\n                                        \"fraud_details\": {},\n                                        \"invoice\": null,\n                                        \"livemode\": false,\n                                        \"metadata\": {},\n                                        \"on_behalf_of\": null,\n                                        \"order\": null,\n                                        \"outcome\": {\n                                            \"network_status\": \"approved_by_network\",\n                                            \"reason\": null,\n                                            \"risk_level\": \"normal\",\n                                            \"risk_score\": 61,\n                                            \"seller_message\": \"Payment complete.\",\n                                            \"type\": \"authorized\"\n                                        },\n                                        \"paid\": true,\n                                        \"payment_intent\": \"pi_3KC7SAAPY5jzkF513H0WmZLe\",\n                                        \"payment_method\": \"pm_1KC7SiAPY5jzkF51JmJuD2zV\",\n                                        \"payment_method_details\": {\n                                            \"card\": {\n                                                \"brand\": \"visa\",\n                                                \"checks\": {\n                                                    \"address_line1_check\": null,\n                                                    \"address_postal_code_check\": null,\n                                                    \"cvc_check\": \"pass\"\n                                                },\n                                                \"country\": \"US\",\n                                                \"exp_month\": 1,\n                                                \"exp_year\": 2033,\n                                                \"fingerprint\": \"xXLkPuubNbOL173d\",\n                                                \"funding\": \"credit\",\n                                                \"installments\": null,\n                                                \"last4\": \"4242\",\n                                                \"network\": \"visa\",\n                                                \"three_d_secure\": null,\n                                                \"wallet\": null\n                                            },\n                                            \"type\": \"card\"\n                                        },\n                                        \"receipt_email\": \"email@email.com\",\n                                        \"receipt_number\": null,\n                                        \"receipt_url\": \"https://pay.stripe.com/receipts/acct_421IViQfAPY5jzkF51/ch_3KC7SAAPY5jzkF513VgS1oUh/rcpt_KrrBh4xM6KPovETK40bc72MpKBs93PL\",\n                                        \"refunded\": false,\n                                        \"refunds\": {\n                                            \"object\": \"list\",\n                                            \"data\": [],\n                                            \"has_more\": false,\n                                            \"total_count\": 0,\n                                            \"url\": \"/v1/charges/ch_3KC7SAAPY5jzkF513VgS1oUh/refunds\"\n                                        },\n                                        \"review\": null,\n                                        \"shipping\": null,\n                                        \"source\": null,\n                                        \"source_transfer\": null,\n                                        \"statement_descriptor\": null,\n                                        \"statement_descriptor_suffix\": null,\n                                        \"status\": \"succeeded\",\n                                        \"transfer_data\": null,\n                                        \"transfer_group\": null\n                                    }\n                                ],\n                                \"has_more\": false,\n                                \"total_count\": 1,\n                                \"url\": \"/v1/charges?payment_intent=pi_3KC7SAAPY5jzkF513H0WmZLe\"\n                            },\n                            \"client_secret\": \"pi_3KC7SAAPY5jzkF513H0WmZLe_secret_MgpjaasdsadsadasdUzxQMwJqInAza1yoK08vH\",\n                            \"confirmation_method\": \"automatic\",\n                            \"created\": 1640804690,\n                            \"currency\": \"brl\",\n                            \"customer\": \"cus_KPmi9hY5mtPd2x\",\n                            \"description\": null,\n                            \"invoice\": null,\n                            \"last_payment_error\": null,\n                            \"livemode\": false,\n                            \"metadata\": {},\n                            \"next_action\": null,\n                            \"on_behalf_of\": null,\n                            \"payment_method\": \"pm_1KC7SiAPY5jzkF51JmJuD2zV\",\n                            \"payment_method_options\": {\n                                \"card\": {\n                                    \"installments\": null,\n                                    \"network\": null,\n                                    \"request_three_d_secure\": \"automatic\"\n                                }\n                            },\n                            \"payment_method_types\": [\n                                \"card\"\n                            ],\n                            \"processing\": null,\n                            \"receipt_email\": \"email@email.com\",\n                            \"review\": null,\n                            \"setup_future_usage\": null,\n                            \"shipping\": null,\n                            \"source\": null,\n                            \"statement_descriptor\": null,\n                            \"statement_descriptor_suffix\": null,\n                            \"status\": \"succeeded\",\n                            \"transfer_data\": null,\n                            \"transfer_group\": null\n                        }\n                    },\n                    \"livemode\": false,\n                    \"pending_webhooks\": 5,\n                    \"request\": {\n                        \"id\": \"req_lxOFqaHO0jnFYx\",\n                        \"idempotency_key\": \"9dc604a3-b834-4e1c-a86d-2b62437bd1b0\"\n                    },\n                    \"type\": \"payment_intent.succeeded\"\n                }\n            }\n        ]\n    },\n    \"method\": \"get\",\n    \"status\": \"success\",\n    \"id\": \"6bff894f-7331-4e47-abb4-154f2f6b5a15\",\n    \"from\": \"postmaster@stripe.msging.net/#node\",\n    \"to\": \"botdemo@msging.net/default-965\",\n    \"metadata\": {\n        \"#command.uri\": \"lime://botdemo@msging.net/sessions/cs_test_a13S3VWdjGPI4FSfI4kHjUbzGaotPPlTuFxRnSP1T1AnccJlNfqdneARPE/events\"\n    }\n}"
+										}
+									]
+								}
+							]
+						}
+					]
 				}
 			],
 			"description": "Requests for any BLiP's extension",
@@ -6505,371 +7155,6 @@
 						}
 					],
 					"description": "| FQDN                     | Identifier type                                         | \r\n|--------------------------|---------------------------------------------------------------|\r\n| @mailgun.gw.msging.net   | E-mail address on [URL encoded](http://www.w3schools.com/tags/ref_urlencode.asp) format  |\r\n\r\n**E-mail** channel allows sending and receiving messages through e-mail messages. Each chatbot has an unique address automatically created by the platform. To know exactly what is the email of your bot access the Portal <b>Channels > Email</b> module, as below image:\r\n"
-				},
-				{
-					"name": "PagSeguro (Payments)",
-					"item": [
-						{
-							"name": "Payment Request",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"type": "text",
-										"value": "{{Authorization}}"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"2\",\r\n    \"to\": \"1042221589186385%40messenger.gw.msging.net@pagseguro.gw.msging.net\",\r\n    \"type\": \"application/vnd.lime.invoice+json\",\r\n    \"content\": {\r\n        \"created\": \"2016-08-26T19:03:37.024Z\",\r\n        \"dueTo\": \"2016-08-27T19:03:37.024Z\",\r\n        \"currency\": \"BRL\",\r\n        \"total\": 10.85,\r\n        \"items\": [{\r\n                \"quantity\": 1.0,\r\n                \"unit\": 10.85,\r\n                \"currency\": \"BRL\",\r\n                \"total\" :10.85,\r\n                \"description\": \"Item 1\"\r\n            }\r\n        ]\r\n    }\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://msging.net/messages",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"messages"
-									]
-								},
-								"description": "Example of how to send a payment request to a Facebook Messenger user using PagSeguro."
-							},
-							"response": []
-						},
-						{
-							"name": "Payment Status",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"type": "text",
-										"value": "{{Authorization}}"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"2\",\r\n    \"to\": \"1042221589186385%40messenger.gw.msging.net@pagseguro.gw.msging.net\",\r\n    \"type\": \"application/vnd.lime.invoice+json\",\r\n    \"content\": {\r\n        \"created\": \"2016-08-26T19:03:37.024Z\",\r\n        \"dueTo\": \"2016-08-27T19:03:37.024Z\",\r\n        \"currency\": \"BRL\",\r\n        \"total\": 10.85,\r\n        \"items\": [{\r\n                \"quantity\": 1.0,\r\n                \"unit\": 10.85,\r\n                \"currency\": \"BRL\",\r\n                \"total\" :10.85,\r\n                \"description\": \"Item 1\"\r\n            }\r\n        ]\r\n    }\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://msging.net/messages",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"messages"
-									]
-								},
-								"description": "When there is payment status change (for example: user has payed), a [payment status](./#/docs/content-types/invoice-status) message will be sent to the chatbot, the message identifier will be the same as the original payment request’s."
-							},
-							"response": []
-						}
-					],
-					"description": "\r\n| FQDN                     | Identifier type                  | \r\n|--------------------------|----------------------------------------|\r\n| @pagseguro.gw.msging.net | Identity ([name and original channel domain]|(./#/docs/concepts/addressing)) on [URL encoded] format\r\n(http://www.w3schools.com/tags/ref_urlencode.asp) |                           |\r\n\r\n\r\n**PagSeguro** is the [UOL's payments channel](https://pagseguro.uol.com.br/) to receive and send payments with flexibility and safety.\r\n\r\nPayment channels are integrations with payment suppliers connected to Blip Messaging Hub, in which the contacts may receive/send payment from/to customers. Each channel has one identifier that is utilized in the addressing, located before the @ of the address.\r\n\r\nIn order to receive or send payments to a channel, the contact must be configured on it. Configuration is made through the portal, where some specific channel information, such as the APIs’ tokens for example, will be requested. It is necessary to fullfill a previous registration form on each channel, normally through the supplier’s site.\r\n"
-				},
-				{
-					"name": "Stripe",
-					"item": [
-						{
-							"name": "Create a Session",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{Authorization}}",
-										"type": "default"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "default"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"set\",\r\n    \"type\": \"application/json\",\r\n    \"uri\": \"/payment/{{contactIdentity}}/session\",\r\n    \"resource\": {\r\n        \"paymentMethodTypes\": [\r\n        \"card\",\r\n        \"boleto\"\r\n    ],\r\n    \"lineItems\": [\r\n    {\r\n        \"amount\": 50000,\r\n        \"currency\": \"brl\",\r\n        \"description\": \"Curso do Blip - Fornecido pela Take Blip\",\r\n        \"images\": [           \r\n            \"https://www.take.net/files/themes/blank_theme/assets/img/take-og-image.png\"\r\n        ],\r\n        \"name\": \"Curso do Blip - Módulo de Pagamentos\",\r\n        \"quantity\": 1\r\n    }],\r\n        \"successUrl\": \"https://www.take.net\",\r\n        \"cancelUrl\": \"https://www.take.net\"\r\n    }\r\n}"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create a Payment Intent",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{Authorization}}",
-										"type": "default"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "default"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"set\",\r\n    \"uri\": \"/payment/{{contactIdentity}}/payment-intent\",\r\n    \"type\": \"application/json\",\r\n    \"resource\": {\r\n        \"customer\": \"{{stripeCustomerId}}\",\r\n        \"PaymentMethodTypes\": [\"card\"],\r\n        \"amount\":1000,\r\n        \"currency\":\"BRL\",\r\n        \"confirm\":\"true\",\r\n        \"paymentMethod\":\"{{stripePaymentMethod}}\"\r\n    }\r\n}"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Confirm a Payment Intent",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{Authorization}}",
-										"type": "default"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "default"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"set\",\r\n    \"uri\": \"/payment/{{contactIdentity}}/confirm-payment-intent\",\r\n    \"type\": \"application/json\",\r\n    \"resource\": {\r\n        \"PaymentIntentId\":\"{{stripePaymentIntentId}}\",\r\n        \"options\":{\r\n            \"paymentMethod\": \"{{stripePaymentMethod}}\"\r\n        }\r\n    }\r\n}"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Payment Methods",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{Authorization}}",
-										"type": "default"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "default"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"get\",\r\n    \"uri\": \"/payment-methods?customer={{stripeCustomerId}}\"\r\n}"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get payment intent history",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{Authorization}}",
-										"type": "default"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "default"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"id\":  \"{{$guid}}\",\r\n    \"to\":  \"postmaster@stripe.msging.net\",\r\n    \"method\":  \"get\",\r\n    \"uri\":  \"/payment/{{contactIdentity}}/payment-intent-history\" \r\n}"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get session history",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{Authorization}}",
-										"type": "default"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "default"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"id\":  \"{{$guid}}\",\r\n    \"to\":  \"postmaster@stripe.msging.net\",\r\n    \"method\":  \"get\",\r\n    \"uri\":  \"/payment/{{contactIdentity}}/session-history\" \r\n}"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get payment intent events",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{Authorization}}",
-										"type": "default"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "default"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"get\",\r\n    \"uri\": \"/payment-intents/{{stripePaymentIntentId}}/events\"\r\n}"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get session events",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{Authorization}}",
-										"type": "default"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "default"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"get\",\r\n    \"uri\": \"/sessions/{{stripeSessionId}}/events\"\r\n}"
-								},
-								"url": {
-									"raw": "https://msging.net/commands",
-									"protocol": "https",
-									"host": [
-										"msging",
-										"net"
-									],
-									"path": [
-										"commands"
-									]
-								}
-							},
-							"response": []
-						}
-					]
 				}
 			],
 			"description": "All requests for any BLiP's extension"
