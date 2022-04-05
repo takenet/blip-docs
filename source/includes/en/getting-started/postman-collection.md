@@ -12,7 +12,7 @@ To get started, [download](https://www.getpostman.com/apps) and install Postman.
 
 After installed click on the `Run in Postman` button download and import the collection into your app.
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/31338870af92e3e0b12c)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/15bfcad98d8099be8880?action=collection%2Fimport)
 
 ### Configure
 
