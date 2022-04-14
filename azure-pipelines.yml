@@ -1,0 +1,39 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: Windows-2019
+
+variables:
+- group: test-sample-variables
+
+resources:
+  repositories:   
+  - repository: templates
+    type: git
+    name: Operações/template-take-blip
+    ref: feature/add-ruby
+
+extends:
+  template: template-pipeline.yml@templates    
+  parameters:    
+    packagename: BlipDocs
+    type: ruby
+    to: octopus
+    rubyVersion: "2.4.x"
+    skipSonarBranch: true
+    octopusArtifactName: "Blip.Docs"
+    octopuspackagename: "Projects-27"
+    dockerBuildPush: false
+    createZipPackage: true
+    octopusPackageFormat: "zip"
+    buildArtifactsDir: "build"
+    rubyCmds:
+    - gem install bundler:1.16.0
+    - bundle install
+    - bundle exec middleman build --verbose
