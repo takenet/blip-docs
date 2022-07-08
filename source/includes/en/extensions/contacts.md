@@ -11,7 +11,7 @@ To use any feature of **contacts** extension send a command with the following p
 | resource | The contact document.                    |
 | type     | **"application/vnd.lime.contact+json"**  |
 | uri      | **/contacts**                            |
-| to       | **postmaster@msging.net** (not required) |
+| to       | **postmaster@crm.msging.net**            |
 
 The command's properties `resource` and `method` can change according to the feature.
 A [contact object](/#contact) passed as a document `resource` has the following properties:
@@ -49,6 +49,7 @@ The contacts fields can be used to replace variables on messages sent by the cha
 client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({  
         id: Lime.Guid(),
+        to: 'postmaster@crm.msging.net',
         method: Lime.CommandMethod.SET,
         uri: '/contacts',
         type: 'application/vnd.lime.contact+json',
@@ -84,7 +85,8 @@ async def message_receiver_async(message: Message) -> None:
                     'code': '1111'
                 },
                 "source": "{{$user_channel_name}}"
-            }
+            },
+            to='postmaster@crm.msging.net'
         )
     )
 
@@ -98,6 +100,7 @@ Authorization: Key {YOUR_TOKEN}
 
 {  
   "id": "{{$guid}}",
+  "to": "postmaster@crm.msging.net",
   "method": "set",
   "uri": "/contacts",
   "type": "application/vnd.lime.contact+json",
@@ -201,6 +204,7 @@ Regardless of wheter the contact has the <i>name</i> property, if you send it in
 client.addMessageReceiver('text/plain', async (message) => {
     await client.sendCommand({  
         id: Lime.Guid(),
+        to: 'postmaster@crm.msging.net',
         method: Lime.CommandMethod.MERGE,
         uri: '/contacts',
         type: 'application/vnd.lime.contact+json',
@@ -236,7 +240,8 @@ async def message_receiver_async(message: Message) -> None:
                     'code': '1111'
                 },
                 "source": "{{$user_channel_name}}"
-            }
+            },
+            to='postmaster@crm.msging.net'
         )
     )
 
@@ -250,6 +255,7 @@ Authorization: Key {YOUR_TOKEN}
 
 {  
   "id": "{{$guid}}",
+  "to": "postmaster@crm.msging.net",
   "method": "merge",
   "uri": "/contacts",
   "type": "application/vnd.lime.contact+json",
@@ -357,7 +363,8 @@ result = await client.process_command_async(
         {
             'content': 'This is a comment example'
         },
-        id='{{$guid}}'
+        id='{{$guid}}',
+        to='postmaster@crm.msging.net'
     )
 )
 ```
@@ -409,7 +416,8 @@ result = await client.process_command_async(
     Command(
         CommandMethod.DELETE,
         '/contacts/{contactIdentity}/comments/{commentId}',
-        id='{{$guid}}'
+        id='{{$guid}}',
+        to='postmaster@crm.msging.net'
     )
 )
 ```
@@ -454,7 +462,8 @@ result = await client.process_command_async(
     Command(
         CommandMethod.GET,
         '/contacts/{contactIdentity}/comments',
-        id='{{$guid}}'
+        id='{{$guid}}',
+        to='postmaster@crm.msging.net'
     )
 )
 ```
@@ -510,7 +519,8 @@ async def message_receiver_async(message: Message) -> None:
         Command(
             CommandMethod.GET,
             '/contacts/11121023102013021@messenger.gw.msging.net',
-            id='{{$guid}}'
+            id='{{$guid}}',
+            to='postmaster@crm.msging.net'
         )
     )
 
@@ -521,6 +531,7 @@ client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message
 client.addMessageReceiver('text/plain', async (message) => {
     var data = await client.sendCommand({  
         id: Lime.Guid(),
+        to: "postmaster@crm.msging.net",
         method: Lime.CommandMethod.GET,
         uri: '/contacts/11121023102013021@messenger.gw.msging.net'
     });
@@ -535,6 +546,7 @@ Authorization: Key {YOUR_TOKEN}
 
 {  
   "id": "{{$guid}}",
+  "to": "postmaster@crm.msging.net",
   "method": "get",
   "uri": "/contacts/11121023102013021@messenger.gw.msging.net"
 }
@@ -609,7 +621,8 @@ async def message_receiver_async(message: Message) -> None:
         Command(
             CommandMethod.GET,
             '/contacts?$skip=0&$take=3',
-            id='{{$guid}}'
+            id='{{$guid}}',
+            to='postmaster@crm.msging.net'
         )
     )
 
@@ -620,6 +633,7 @@ client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message
 client.addMessageReceiver('text/plain', async (message) => {
     var data = await client.sendCommand({  
         id: Lime.Guid(),
+        to: "postmaster@crm.msging.net",
         method: Lime.CommandMethod.GET,
         uri: '/contacts?$skip=0&$take=3'
     });
@@ -636,6 +650,7 @@ Authorization: Key {YOUR_TOKEN}
 
 {  
   "id": "{{$guid}}",
+  "to": "postmaster@crm.msging.net",
   "method": "get",
   "uri": "/contacts?$skip=0&$take=3"
 }

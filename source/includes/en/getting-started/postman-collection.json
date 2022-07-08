@@ -2921,7 +2921,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/contacts\",\r\n  \"type\": \"application/vnd.lime.contact+json\",\r\n  \"resource\": {\r\n    \"identity\": \"{{contact_identity}}\",\r\n    \"name\": \"John Doe\",\r\n    \"gender\":\"male\",\r\n    \"group\":\"friends\",    \r\n    \"extras\": {\r\n      \"plan\":\"Gold\",\r\n      \"code\":\"1111\"      \r\n    }\r\n  }\r\n}",
+                  "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@crm.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/contacts\",\r\n  \"type\": \"application/vnd.lime.contact+json\",\r\n  \"resource\": {\r\n    \"identity\": \"{{contact_identity}}\",\r\n    \"name\": \"John Doe\",\r\n    \"gender\":\"male\",\r\n    \"group\":\"friends\",\r\n    \"extras\": {\r\n      \"plan\":\"Gold\",\r\n      \"code\":\"1111\"\r\n    }\r\n  }\r\n}",
                   "options": {}
                 },
                 "url": "https://msging.net/commands",
@@ -2961,37 +2961,6 @@
               "response": []
             },
             {
-              "name": "Check a link between contacts",
-              "_postman_id": "31e785b7-6211-4b5d-923b-8085b1ff4720",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "{{Authorization}}",
-                    "type": "text"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{  \n  \"id\": \"{{$guid}}\",\n   \"to\": \"postmaster@msging.net\",\n  \"method\": \"get\",\n  \"uri\": \"/contacts/{{contact_identity}}/linked/{{linked_contact_identity}}\"\n}",
-                  "options": {}
-                },
-                "url": "https://msging.net/commands",
-                "description": "Check if a contact_identity is linked with linked_contact_identity.\r\n\r\n Note: Returns The linked contact was not found if the contacts are not linked and a contact if they are.\r\n \r\n For more information, see https://docs.blip.ai/#check-a-link-between-contacts"
-              },
-              "response": []
-            },
-            {
               "name": "Delete a comment",
               "_postman_id": "dbae1e3e-cbb2-4ff7-aac9-1bb984ecd491",
               "protocolProfileBehavior": {
@@ -3019,37 +2988,6 @@
                 },
                 "url": "https://msging.net/commands",
                 "description": "Delete a specific comment for a contact.\r\n\r\nReplace comment_id with the comment Id.\r\n\r\nFor more information, see https://docs.blip.ai/#delete-a-comment"
-              },
-              "response": []
-            },
-            {
-              "name": "Delete a link",
-              "_postman_id": "be199aa5-5a4f-40d2-a3e0-b81daaf9ee04",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "{{Authorization}}",
-                    "type": "text"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/contacts/{{contact_identity}}/linked/{{linked_contact_identity}}\"\r\n}",
-                  "options": {}
-                },
-                "url": "https://msging.net/commands",
-                "description": "Delete a link between two contacts, contact_identity and linked_contact_identity.\n\nFor more information, see https://docs.blip.ai/#delete-a-link"
               },
               "response": []
             },
@@ -3107,7 +3045,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/contacts/{{contact_identity}}\"\r\n}",
+                  "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@crm.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/contacts/{{contact_identity}}\"\r\n}",
                   "options": {}
                 },
                 "url": "https://msging.net/commands",
@@ -3138,73 +3076,11 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/contacts?$skip=0&$take=3\"\r\n}",
+                  "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@crm.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/contacts?$skip=0&$take=3\"\r\n}",
                   "options": {}
                 },
                 "url": "https://msging.net/commands",
                 "description": "If you need to get more than one chatbot's contact, you can use a query pagination. This sample shows how to take the three first roaster's contacts.\r\n\r\n Note: You can also filter your query with one of the properties of the contact resource, using the filter property:\r\n\r\nfilter=(substringof('{value}',{propertyName}))\r\n\r\nExample: /contacts?$skip=0&$take=20&$filter=(substringof('John Doe',name))\r\n\r\nFor more information, see https://docs.blip.ai/#get-contacts-with-paging"
-              },
-              "response": []
-            },
-            {
-              "name": "Get linked contacts",
-              "_postman_id": "3b091e6f-84d1-4adf-8a50-f0ce8baaf8a9",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "type": "text",
-                    "value": "{{Authorization}}"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "type": "text",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/contacts/{{contact_identity}}/linked\"\r\n}",
-                  "options": {}
-                },
-                "url": "https://msging.net/commands",
-                "description": "Get all contacts linked with a specific contact.\n\nFor more information, see https://docs.blip.ai/#get-linked-contacts"
-              },
-              "response": []
-            },
-            {
-              "name": "Link contacts",
-              "_postman_id": "49d73742-0c0c-42c9-9046-79d236bb4482",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "{{Authorization}}",
-                    "type": "text"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/contacts/{{contact_identity}}/linked\",\r\n  \"type\": \"application/vnd.lime.contact+json\",\r\n  \"resource\": {\r\n    \"Identity\": \"{{contact_identity_to_be_linked}}\"\r\n  }\r\n}",
-                  "options": {}
-                },
-                "url": "https://msging.net/commands",
-                "description": "Set a contact linked with other, using a Contact document.\r\n\r\nReplace the <contactIdentity> with the Identity of the contact you want to link with other. Replace the <contactToBeLinkedWithIdentity> with the Identity of the contact you want to be linked with the first one.\r\n\r\nFor more information, see https://docs.blip.ai/#link-contacts"
               },
               "response": []
             },
