@@ -21,7 +21,7 @@ You can optionally inform an instance, as /delegations/{target}/{instance}.
 </aside>
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -84,7 +84,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 Get a collection of all account keys
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -153,7 +153,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 ### Give permissions
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -242,7 +242,7 @@ You can optionally inform an instance, as /delegations/{target}/{instance}. This
 ### Revoke permissions
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -323,7 +323,7 @@ Crete a new account key to your account.
 You must send an [AccountKeyRequest](/#accountkeyrequest) document as a resource.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -406,7 +406,7 @@ Delete a bot's account key.
 Replace `{accountId}` with the account key you want to delete.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

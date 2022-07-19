@@ -86,7 +86,7 @@ client.send_message(
 ```
 
 ```http
-POST https://http.msging.net/messages HTTP/1.1
+POST https://{{contract.id}}.http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -248,7 +248,7 @@ client.send_message(
 ```
 
 ```http
-POST https://http.msging.net/messages HTTP/1.1
+POST https://{{contract.id}}.http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -638,7 +638,7 @@ client.send_message(
 ```
 
 ```http
-POST https://http.msging.net/messages HTTP/1.1
+POST https://{{contract.id}}.http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

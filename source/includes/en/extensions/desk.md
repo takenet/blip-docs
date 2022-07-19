@@ -39,7 +39,7 @@ result = await client.process_command_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
@@ -58,7 +58,7 @@ Authorization: Key {YOUR_TOKEN}
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
@@ -161,7 +161,7 @@ result = await client.process_command_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -267,7 +267,7 @@ result = await client.process_command_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -346,7 +346,7 @@ The `Tags` used to close a [ticket](/#ticket) that can be defined on Tag Manager
 To get all the active tags setted on Desk send a command with `GET` method to `postmaster@desk.msging.net` and URI `/tags/active`.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -441,7 +441,7 @@ result = await client.process_command_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -526,7 +526,7 @@ result = await client.process_command_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -608,7 +608,7 @@ result = await client.process_command_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -707,7 +707,7 @@ result = await client.process_command_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -789,7 +789,7 @@ To open a ticket send a command with `SET` method to `postmaster@desk.msging.net
 Use the `resource` property to delivery a context for the ticket.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -942,7 +942,7 @@ result = await client.process_command_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1045,7 +1045,7 @@ result = await client.process_command_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1129,7 +1129,7 @@ You must send a [rule](/#rule) document with your conditions.
 <aside class="notice">For example, if you want to forward a customer to a Team according to their city (using <a href="/#contact">contact</a> extras), you should do the following:</aside>
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1267,7 +1267,7 @@ You must send a [priority-rule](/#priorityRule) document with your conditions.
 <aside class="notice">For example, if you want to scale the priority for tickets to a Team according to their parametres, do the following:</aside>
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1426,7 +1426,7 @@ result = await client.process_command_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1488,7 +1488,7 @@ result = await client.process_command_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1550,7 +1550,7 @@ result = await client.process_command_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1617,7 +1617,7 @@ result = await client.process_command_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1687,7 +1687,7 @@ result = await client.process_command_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1750,7 +1750,7 @@ Notes: 1) The `tags` property can be hidden if you didn't set the Tags configura
 First, the bot receives a message as below:
 
 ```http
-POST https://http.msging.net/messages HTTP/1.1
+POST https://{{contract.id}}.http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
@@ -1830,7 +1830,7 @@ public async Task ReceiveAsync(Message message, CancellationToken cancellationTo
 At first, the bot receives a message and decides if it must route the user to a human agent. Imagine for instance that the message **"Hello, I would like to talk to an attendant."** is enough to send the user to an agent.
 
 ```http
-POST https://http.msging.net/messages HTTP/1.1
+POST https://{{contract.id}}.http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1933,7 +1933,7 @@ Get a category of [custom replies](/#customreply).
 Replace `{categoryId}` with the category id you want to get.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2017,7 +2017,7 @@ The following filters are **required**:
 | endDate     | Limit date to retrieve the report.  |
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2113,7 +2113,7 @@ The following filters are **required**:
 | endDate     | Limit date to retrieve the report.  |
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2190,7 +2190,7 @@ Note: By default the <i>beginDate</i> and <i>endDate</i> values are the current 
 </aside>
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2282,7 +2282,7 @@ The following filters are **required**:
 | endDate     | Limit date to retrieve the report.  |
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2384,7 +2384,7 @@ The following filters are **required**:
 | endDate     | Limit date to retrieve the report.  |
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2467,7 +2467,7 @@ The following filters are **required**:
 | endDate     | Limit date to retrieve the report.  |
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2565,7 +2565,7 @@ Get a specific [attendance queue](/#attendance-queues).
 Replace `{queueId}`with the queue id you want to get.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2654,7 +2654,7 @@ Get a specific [attendance rule](/#rule).
 Replace `{ruleId}`with the rule id you want to get.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2743,7 +2743,7 @@ Get a specific [attendance priority rule](/#priorityRule).
 Replace `{priorityRuleId}`with the priority rule id you want to get.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2827,7 +2827,7 @@ Get a specific [ticket](/#ticket).
 Replace the variable `{ticketId}` with the ticket id you want to get.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2907,7 +2907,7 @@ Get [agents](/#attendantticketssummary) metrics and informations.
 The endpoint returns only data related to the current day.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2999,7 +2999,7 @@ The following filters are **required**:
 | endDate     | Limit date to retrieve the report.  |
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3082,7 +3082,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 Returns all the active [tickets](/#ticket).
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3163,7 +3163,7 @@ In order to get all attendants of some bot send a command with `GET` method to `
 | **$ascending** | Sets ascending alphabetical order.      | true    |
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3275,7 +3275,7 @@ Replace `{customerIdentity}` with the customer id you want to get.
 The maximum value of `take` parameter is 100.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {
@@ -3359,7 +3359,7 @@ Note: After the ticket is created, it <b>expires in a month</b>. In this situati
 </aside>
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3450,7 +3450,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 In order to get all agents [teams](/#team) of some bot send a command with `GET` method to `postmaster@desk.msging.net` and URI `/teams` .
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3562,7 +3562,7 @@ To filter specific tickets you can use **$filter** parameter on query string wit
 | Assigned        | The ticket is assigned to an agent and is waiting for the consumed notification from them |
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3696,7 +3696,7 @@ The following uri filters are available to get rules:
 | **ascending** | Sets ascending alphabetical order.  | true    |
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3801,7 +3801,7 @@ The following uri filters are available to get priority rules:
 | **ascending** | Sets ascending alphabetical order.  | true    |
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3899,7 +3899,7 @@ Get the [custom replies](/#customreply) from your attendance model.
 | **$ascending** | Sets ascending alphabetical order.      | true    |
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3971,7 +3971,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 Get the number of online [agents](/#attendant) in each team.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -4048,7 +4048,7 @@ Get [open tickets](/#openticketsummary) metrics and informations.
 The endpoint returns only data related to the current day.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -4135,7 +4135,7 @@ Get attendance [teams](/#teamticketssummary) metrics and informations.
 The endpoint returns only data related to the current day.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -4220,7 +4220,7 @@ Get [tickets metrics](/#ticketsmetricssummary) for your monitoring.
 The endpoint returns only data related to the current day.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -4293,7 +4293,7 @@ Get tickets counters by status.
 The endpoint returns only data related to the current day.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -4363,7 +4363,7 @@ var result = await _sender.ProcessCommandAsync(command, cancellationToken);
 Get tickets-per-hour metrics (**for the current day**).
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -4436,7 +4436,7 @@ Returns all waiting [tickets](/#ticket).
 The maximum value of `take` parameter is 100.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -4527,7 +4527,7 @@ Get [waiting tickets](/#openticketsummary) metrics and informations.
 The endpoint returns only data related to the current day.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -4641,7 +4641,7 @@ Note: You can filter by date range, using two <i>requestDateTime</i> objects, us
 <br><br><b>The filter can be sent empty.</b> </aside>
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -4728,7 +4728,7 @@ Replace `{ticketId}` with the ticket id you want to transfer.
 Replace `{teamName}` with the team name you want to transfer to.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -4827,7 +4827,7 @@ Replace `{teamName}` with the team name you want to transfer to.
 Replace `{agentIdentity}` with the agent identity you want to transfer to.  
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

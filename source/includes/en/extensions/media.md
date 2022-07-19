@@ -20,7 +20,7 @@ The **Media** extension allows to manipulate the chatbot's medias.
 | type     | `text/plain`                      |
 
  ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -58,7 +58,7 @@ result = await client.media_extension.refresh_media_async('{{expiredMediaId}}')
 Get token to upload a media.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

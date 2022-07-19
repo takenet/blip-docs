@@ -74,7 +74,7 @@ result = await client.ai_extension.get_analysis_async()
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -235,7 +235,7 @@ result = await client.ai_extension.analyse_async('I want a pepperoni pizza')
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -319,7 +319,7 @@ result = await client.ai_extension.analyse_async('I want a pepperoni pizza', '12
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -450,7 +450,7 @@ result = await client.ai_extension.set_intent_answers_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -567,7 +567,7 @@ result = await client.ai_extension.set_intent_questions_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -712,7 +712,7 @@ namespace Extension
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -827,7 +827,7 @@ result = await client.ai_extension.set_entity_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -960,7 +960,7 @@ result = await client.ai_extension.set_intent_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1081,7 +1081,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 
 ```http
 
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1113,7 +1113,7 @@ Content-Type: application/json
 Deleting all [entities](/#entity) in a model.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1207,7 +1207,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 
 ```http
 
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1259,7 +1259,7 @@ result = await client.ai_extension.delete_intent_async('{intent_id}')
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1374,7 +1374,7 @@ namespace Extension
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1455,7 +1455,7 @@ namespace Extension
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1535,7 +1535,7 @@ namespace Extension
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1588,7 +1588,7 @@ Get a specific [model](/#model).
 Replace the variable `{modelId}` with the model id you want to get.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1679,7 +1679,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 Get an overview about a [model](/#modelsummary) metrics.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1792,7 +1792,7 @@ The following uri filters are available to get a chatbot's entities:
 | **ascending** | Sets ascending alphabetical order.     | true    |
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -1903,7 +1903,7 @@ The following uri filters are available to get a chatbot's intents:
 | **ascending** | Sets ascending alphabetical order.    | true    |
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2022,7 +2022,7 @@ result = await client.ai_extension.get_models_async()
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2128,7 +2128,7 @@ Get a specific [entity](/#entity).
 Replace `{entityId}` with the entity Id you want to get.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2227,7 +2227,7 @@ Get a specific [intent](/#intention).
 Replace `{intentId}` with the intent Id you want to get.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2370,7 +2370,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2466,7 +2466,7 @@ namespace Extension
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2532,7 +2532,7 @@ Content-Type: application/json
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2644,7 +2644,7 @@ namespace Extensions
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2713,7 +2713,7 @@ result = await client.ai_extension.get_analysis_async(take=10)
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -2974,7 +2974,7 @@ result = await client.ai_extension.merge_intent_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3040,7 +3040,7 @@ result = await client.ai_extension.publish_model_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3131,7 +3131,7 @@ result = await client.ai_extension.set_analysis_feedback_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3227,7 +3227,7 @@ result = await client.ai_extension.set_analysis_feedback_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3362,7 +3362,7 @@ namespace Extension
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 {  
@@ -3408,7 +3408,7 @@ result = await client.ai_extension.set_analysis_feedback_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3521,7 +3521,7 @@ result = await client.ai_extension.train_model_async()
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3590,7 +3590,7 @@ The following uri filters are available to get a chatbot's contents:
 | **ascending** | Sets ascending alphabetical order.     | true    |
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3767,7 +3767,7 @@ result = await client.ai_extension.analyse_content_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -3822,7 +3822,7 @@ Content-Type: application/json
 Getting a content by its id.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -4012,7 +4012,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -4172,7 +4172,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -4283,7 +4283,7 @@ client.addMessageReceiver('text/plain', async (message) => {
 
 ```http
 
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -4318,7 +4318,7 @@ Content-Type: application/json
 Deleting all contents associated to a chatbot.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

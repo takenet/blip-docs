@@ -41,7 +41,7 @@ The resource types are:
 Create a payment webpage, it returns a stripe session document with payment webpage and informations of the current payment, the request below is a simple request, all parameters that can be passed to customize the payment can be found here: [Stripe Session](https://stripe.com/docs/api/checkout/sessions/create). Once payment is completed, the stripeCustomerId will be saved on contact extras.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -127,7 +127,7 @@ It is only possible to use this endpoint if the contact has already made a payme
 
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -181,7 +181,7 @@ Confirm a payment intent previously created, this action is necessary when you d
 
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -240,7 +240,7 @@ All these scenarios will return an empty list:
 | **customer**    | Stripe Customer Id. | cus_dsasd22s455sa     |
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -288,7 +288,7 @@ Content-Type: application/json
 Get all payment intents from current contact.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -334,7 +334,7 @@ Get all sessions from current contact.
 
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -391,7 +391,7 @@ The response contains the messageId, and you can recover these messages on [/thr
 | `stripePaymentIntentId`  | Stripe PaymentIntent id      | pi_3K9A2QAPY5jzkF511dKvCQz6 |
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -614,7 +614,7 @@ The response contains the messageId, and you can recover these messages on [/thr
 | `stripeSessionId`  | Stripe session id            | cs_test_b11F5BdMtxmf54seLfeJcRoLIR58ddumq8c2Lt1MWQBTuRlizciHXeGtca |
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

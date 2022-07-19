@@ -13,7 +13,7 @@ Example
 Imagine a chatbot with a **blipmessaginghubapp** identifier. To send a message from this bot to a Blip user, use:
 
 ```
-POST https://http.msging.net/messages HTTP/1.1
+POST https://{{contract.id}}.http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=
 Content-Length: 131
@@ -71,7 +71,7 @@ For each message processed, it is important to send a notification with the `con
 
 For instance, imagine that the received message from the example above (whit id **99cf454e-f25d-4ebd-831f-e48a1c612cd4**) was processed with success. The code below shows a complete notification request including the headers and the body request.
 ```
-POST https://http.msging.net/notifications HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/notifications HTTP/1.1
 Content-Type: application/json
 Authorization: Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=
 Content-Length: 131
@@ -91,7 +91,7 @@ In order to use Blip's [extensions]() (like schedule and directory), it is neces
 For instance, send a command to schedule some message:
 
 ```
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Authorization: Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=
 Content-Type: application/json
 Content-Length: 393

@@ -47,6 +47,9 @@ message = Message(
 
 A **message** allows content exchange between clients and chatbots.
 
+<aside class="warning"> Every message needs to be sent through your unique HTTP endpoint. You can find this information by accessing you Chatbot, going to <strong>Configurations menu</strong> and then <strong>Connection information.</strong><br><br>Remember to replace {{contract_id}} with your id!<br><br><img src="https://www.dropbox.com/s/ris7r8itbofp949/imagem%20docs%203.jpg?dl=1"></aside>
+
+
 Each message has:
 
 - **id**: Message's unique identifier. The *id* is used as reference for notifications, thus **don't reuse the same id**. One way to guarantee its uniqueness is using a new [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) for each message. This value may be omitted by the originator if it's not interested on notifications, even in case of a failure.

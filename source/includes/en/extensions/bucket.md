@@ -26,7 +26,7 @@ The document to be stored must be passed on the `resource` property.
 Delete a specific document identified by the `abcdé 1234` key.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -97,7 +97,7 @@ result = await client.process_command_async(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -163,7 +163,7 @@ Retrieving a JSON document identified by `abcdé 1234` key.
 Retrieving all documents identifieds by ID key.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -261,7 +261,7 @@ client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -403,7 +403,7 @@ client.add_message_receiver(Receiver(lambda m: m.type_n == 'text/plain', message
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

@@ -30,7 +30,7 @@ An user must first consent to receive messages in WhatsApp by opting into them v
 ##### 2. Verify the customer identifier
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -182,7 +182,7 @@ client.send_message(
 ```
 
 ```http
-POST https://http.msging.net/messages HTTP/1.1
+POST https://{{contract.id}}.http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

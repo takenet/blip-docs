@@ -19,7 +19,7 @@ To get information about a customer, send a command with the following propertie
 To create an accessKey for an alternative address, using an [AccountKeyRequest](/#accountkeyrequest) document, send a command to the Uri `lime://<FQDN of the channel>/accounts/<Client identity>/key`.
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -66,7 +66,7 @@ client.add_message_receiver(Receiver(True, message_processor_async))
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -158,7 +158,7 @@ client.add_message_receiver(Receiver(True, message_processor_async))
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 

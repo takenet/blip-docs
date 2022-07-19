@@ -5054,7 +5054,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@tunnel.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/tunnels/{tunnelId}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://http.msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a specific tunnel by id.\r\n\r\nReplace {tunnelId} with the tunnel id you want to get."
               },
               "response": []

@@ -58,7 +58,7 @@ command = Command.from_json(
 ```
 
 ```http
-POST https://http.msging.net/commands HTTP/1.1
+POST https://{{contract_id}}.http.msging.net/commands HTTP/1.1
 Content-Type: application/json
 Authorization: Key bWVzc2FnaW5naHViQHRha2VuZXQuY29tLmJyOjEyMzQ=
 Content-Length: 131
@@ -116,6 +116,8 @@ Content-Type: application/json
 ```
 
 A **command** allows querying and manipulation of server resources and the consumption of **Blip** extensions. It provides a request-response interface similar to HTTP, with verbs and URIs.
+
+<aside class="warning"> Every command needs to be sent through your unique HTTP endpoint. You can find this information by accessing you Chatbot, going to <strong>Configurations menu</strong> and then <strong>Connection information.</strong><br><br>Remember to replace {{contract_id}} with your id!<br><br><img src="https://www.dropbox.com/s/79sqr0p38zpv4yz/imagem%20docs.png?dl=1"></aside>
 
 Each command has:
 

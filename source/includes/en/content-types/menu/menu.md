@@ -134,7 +134,7 @@ client.send_message(
 ```
 
 ```http
-POST https://http.msging.net/messages HTTP/1.1
+POST https://{{contract.id}}.http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -185,7 +185,7 @@ For more details, check the [LIME protocol](http://limeprotocol.org/content-type
 > JSON 1
 
 ```csharp
-POST https://http.msging.net/messages HTTP/1.1
+POST https://{{contract.id}}.http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -222,7 +222,7 @@ client.send_message(
 ```
 
 ```http
-POST https://http.msging.net/messages HTTP/1.1
+POST https://{{contract.id}}.http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -238,7 +238,7 @@ Authorization: Key {YOUR_TOKEN}
 >JSON 2
 
 ```csharp
-POST https://http.msging.net/messages HTTP/1.1
+POST https://{{contract.id}}.http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -275,7 +275,7 @@ client.send_message(
 ```
 
 ```http
-POST https://http.msging.net/messages HTTP/1.1
+POST https://{{contract.id}}.http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -291,7 +291,7 @@ Authorization: Key {YOUR_TOKEN}
 >JSON 3
 
 ```csharp
-POST https://http.msging.net/messages HTTP/1.1
+POST https://{{contract.id}}.http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
@@ -337,7 +337,7 @@ client.send_message(
 ```
 
 ```http
-POST https://http.msging.net/messages HTTP/1.1
+POST https://{{contract.id}}.http.msging.net/messages HTTP/1.1
 Content-Type: application/json
 Authorization: Key {YOUR_TOKEN}
 
