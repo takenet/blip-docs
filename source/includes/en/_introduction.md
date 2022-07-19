@@ -55,9 +55,5 @@ If you need more information about Blip take a look in one of the following link
 - [Help Center](https://help.blip.ai)
 <br/>Use Blip's Help Center to discover all [Blip's Portal](https://portal.blip.ai) features. <b>Help Center isn't focused on technical programming features.</b>
 
-
-- [Blip Ideas](https://ideas.blip.ai)
-<br/>Use Blip Ideas to propose any suggestions for the Blip Platform, any documentation or educational content
-
 - [Postman Collection for Blip APIs](#postman-collection)
 <br/>A full set of requests for communicating with Blip APIs.
