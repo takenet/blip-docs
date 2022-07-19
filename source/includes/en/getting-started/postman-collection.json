@@ -38,7 +38,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"set\",\r\n  \"type\": \"application/vnd.iris.eventTrack+json\",\r\n  \"uri\": \"/event-track\",\r\n  \"resource\": {\r\n    \"category\": \"payments\",\r\n    \"action\": \"success-order\"\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Imagine that your chatbot must track the number of payment orders realized and show this data on a real time report. To make this possible you can register every single success order as an action of the payments category, creating an Event Track.\n\nFor more information, see \n\nhttps://docs.blip.ai/#create-an-event"
               },
               "response": []
@@ -69,7 +69,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n    \"method\": \"set\",\r\n    \"type\": \"application/vnd.iris.eventTrack+json\",\r\n    \"uri\": \"/event-track\",\r\n    \"resource\": {\r\n        \"category\": \"payments\",\r\n        \"action\": \"success-order\",\r\n        \"contact\": { \r\n            \"identity\": \"{{identity}}\"\r\n        }\r\n    }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "It is possible to associate a specific contact in an event. You can use this to ignore events of a tester user for example. If your bot has a 123456@messenger.gw.msging.net contact identity as a tester user, you can ignore all of its tracked events by adding this identity to the event resource object.\n\nFor more information, see \nhttps://docs.blip.ai/#create-event-with-contact"
               },
               "response": []
@@ -100,7 +100,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/event-track\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Retrieves all tracked categories.\n\nFor more information, see https://docs.blip.ai/#get-categories"
               },
               "response": []
@@ -131,7 +131,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/event-track/payments?startDate=2019-06-21&endDate=2019-06-28&$take=10\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "To retrieve all counters of a category, add the category name to the command uri (for instance /event-track/payments). Those counters represent the number of events tracked in a specific pair of action and categories grouped by days. It is also possible to add query strings parameters as request filters.\n\nFor more information, see https://docs.blip.ai/#get-counters"
               },
               "response": []
@@ -162,7 +162,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/event-track/payments/success-order?startDate=2019-06-21&endDate=2019-06-28&$take=10\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Retrieves all events tracked with a specific pair of action and categories. \n\nFor more information, see https://docs.blip.ai/#get-details"
               },
               "response": []
@@ -193,7 +193,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/event-track/{{category_name}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "If you need to delete a specific event category use the following command. Remember to replace {{category_name}} variable for the category name that you want delete.\n\nFor more information, see \nhttps://docs.blip.ai/#delete-an-event-category"
               },
               "response": []
@@ -224,7 +224,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/reports\",\r\n  \"type\": \"application/vnd.iris.report+json\",\r\n  \"resource\": {\r\n    \"id\": \"{{$guid}}\",\r\n    \"name\": \"Testing\",\r\n    \"isPrivate\": true,\r\n    \"ownerUserIdentity\": \"jonh%40email.net@blip.ai\"\r\n  }\r\n}\r\n\r\n",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Create a new report.\r\n\r\nYou must send a report document, informing your data."
               },
               "response": []
@@ -255,7 +255,7 @@
                   "raw": "{\r\n  \"id\": \"afasdd-as9d8a7sd987\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/buckets/blip_portal:builder_working_flow\",\r\n  \"type\": \"application/json\", \r\n  \"resource\":\r\n     \"{\r\n   \"onboarding\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"input\":{ \r\n               \"bypass\":false,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"a5f855b2-7344-44ad-bf8b-75bccd63d288\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Entrada do usuário\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":false,\r\n                  \"position\":\"right\"\r\n               },\r\n               \"$invalid\":false\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:9132\"\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n         { \r\n            \"stateId\":\"646ede55-1579-481d-87a9-c48463d7d190\",\r\n            \"$connId\":\"con_3\",\r\n            \"conditions\":[ \r\n               { \r\n                  \"source\":\"input\",\r\n                  \"comparison\":\"exists\",\r\n                  \"values\":[ \r\n\r\n                  ],\r\n                  \"$$hashKey\":\"object:814\"\r\n               }\r\n            ],\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:795\"\r\n         }\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"fallback\",\r\n         \"$invalid\":false\r\n      },\r\n      \"id\":\"onboarding\",\r\n      \"root\":true,\r\n      \"$position\":{ \r\n         \"top\":\"148px\",\r\n         \"left\":\"1126px\"\r\n      },\r\n      \"$title\":\"Início\",\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   },\r\n   \"fallback\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"input\":{ \r\n               \"bypass\":true,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"95b10ba8-e351-4d16-9b10-ce14961cb1fd\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Entrada do usuário\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":true,\r\n                  \"position\":\"right\"\r\n               },\r\n               \"$invalid\":false\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:8767\"\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n         { \r\n            \"stateId\":\"error\",\r\n            \"conditions\":[ \r\n               { \r\n                  \"source\":\"input\",\r\n                  \"comparison\":\"matches\",\r\n                  \"values\":[ \r\n                     \".*\"\r\n                  ],\r\n                  \"$$hashKey\":\"object:8812\"\r\n               }\r\n            ],\r\n            \"$connId\":\"con_8\",\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:8793\"\r\n         }\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"onboarding\",\r\n         \"$invalid\":false\r\n      },\r\n      \"id\":\"fallback\",\r\n      \"$position\":{ \r\n         \"top\":\"787px\",\r\n         \"left\":\"84px\"\r\n      },\r\n      \"$title\":\"Exceções\",\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   },\r\n   \"error\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"00000000-0000-0000-0000-000000000002\",\r\n                  \"type\":\"application/vnd.lime.chatstate+json\",\r\n                  \"content\":{ \r\n                     \"state\":\"composing\",\r\n                     \"interval\":1000\r\n                  }\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"00000000-0000-0000-0000-000000000002\",\r\n                     \"type\":\"application/vnd.lime.chatstate+json\",\r\n                     \"content\":{ \r\n                        \"state\":\"composing\",\r\n                        \"interval\":1000\r\n                     }\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4369\"\r\n         },\r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"00000000-0000-0000-0000-000000000003\",\r\n                  \"type\":\"text/plain\",\r\n                  \"content\":\"Desculpe, não consegui entender!\"\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"00000000-0000-0000-0000-000000000003\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Desculpe, não consegui entender!\"\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4370\"\r\n         },\r\n         { \r\n            \"input\":{ \r\n               \"bypass\":true,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"a1f34699-dd5c-43b6-8345-fde58dc32c0d\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Entrada do usuário\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":true,\r\n                  \"position\":\"right\"\r\n               },\r\n               \"$invalid\":false\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4371\"\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"onboarding\",\r\n         \"$invalid\":false\r\n      },\r\n      \"id\":\"error\",\r\n      \"$position\":{ \r\n         \"top\":\"787px\",\r\n         \"left\":\"432px\"\r\n      },\r\n      \"$title\":\"Erro padrão\",\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   },\r\n   \"646ede55-1579-481d-87a9-c48463d7d190\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"76d7a887-783d-4470-9636-59f4c0732f84\",\r\n                  \"type\":\"application/vnd.lime.chatstate+json\",\r\n                  \"content\":{ \r\n                     \"state\":\"composing\",\r\n                     \"interval\":1000\r\n                  }\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"76d7a887-783d-4470-9636-59f4c0732f84\",\r\n                     \"type\":\"application/vnd.lime.chatstate+json\",\r\n                     \"content\":{ \r\n                        \"state\":\"composing\",\r\n                        \"interval\":1000\r\n                     }\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4839\"\r\n         },\r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"e66d9771-5303-453b-9446-410ee47ac15f\",\r\n                  \"type\":\"text/plain\",\r\n                  \"content\":\"Some text\"\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"e66d9771-5303-453b-9446-410ee47ac15f\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Some text\"\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:4840\"\r\n         },\r\n         { \r\n            \"input\":{ \r\n               \"bypass\":true,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"1cf3aaa9-6293-41a3-916f-c05a1a33ecbd\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"name\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":true,\r\n                  \"position\":\"right\",\r\n                  \"editing\":false\r\n               },\r\n               \"$invalid\":false,\r\n               \"variable\":\"name\"\r\n            },\r\n            \"$$hashKey\":\"object:9806\",\r\n            \"$invalid\":false\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n         { \r\n            \"stateId\":\"1d2f8b2a-051d-43f9-882e-c0f40302126d\",\r\n            \"$connId\":\"con_13\",\r\n            \"conditions\":[ \r\n               { \r\n                  \"source\":\"input\",\r\n                  \"comparison\":\"exists\",\r\n                  \"values\":[ \r\n\r\n                  ],\r\n                  \"$$hashKey\":\"object:26765\"\r\n               }\r\n            ],\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:26746\"\r\n         }\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n         { \r\n            \"type\":\"ExecuteScript\",\r\n            \"$title\":\"Executar script\",\r\n            \"$invalid\":false,\r\n            \"settings\":{ \r\n               \"function\":\"run\",\r\n               \"source\":\"/**\\n            * All input variables needs to be passed as function param;\\n            * Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\\n            * Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\\n            **/\\n      function run(offset) {\\n                 let now = new Date;\\n                 let utc_timestamp = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),\\n                 now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds(), now.getUTCMilliseconds());\\n\\n                 var date = new Date(utc_timestamp + offset * 3600 * 1000);\\n                \\n                return date.getHours();\\n            }\",\r\n               \"inputVariables\":[ \r\n                  \"config.dateTimeOffset\"\r\n               ],\r\n               \"outputVariable\":\"hora\"\r\n            },\r\n            \"conditions\":[ \r\n\r\n            ]\r\n         }\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"fallback\",\r\n         \"$invalid\":false\r\n      },\r\n      \"$tags\":[ \r\n\r\n      ],\r\n      \"id\":\"646ede55-1579-481d-87a9-c48463d7d190\",\r\n      \"root\":false,\r\n      \"$title\":\"Boas vindas\",\r\n      \"$position\":{ \r\n         \"top\":\"299px\",\r\n         \"left\":\"1127px\"\r\n      },\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   },\r\n   \"1d2f8b2a-051d-43f9-882e-c0f40302126d\":{ \r\n      \"$contentActions\":[ \r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"9fb086c0-edb6-4016-a121-a5851656f682\",\r\n                  \"type\":\"application/vnd.lime.chatstate+json\",\r\n                  \"content\":{ \r\n                     \"state\":\"composing\",\r\n                     \"interval\":1000\r\n                  }\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"9fb086c0-edb6-4016-a121-a5851656f682\",\r\n                     \"type\":\"application/vnd.lime.chatstate+json\",\r\n                     \"content\":{ \r\n                        \"state\":\"composing\",\r\n                        \"interval\":1000\r\n                     }\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:26470\"\r\n         },\r\n         { \r\n            \"action\":{ \r\n               \"type\":\"SendMessage\",\r\n               \"settings\":{ \r\n                  \"id\":\"ec227e2d-3892-4425-ae23-3fdfef58528e\",\r\n                  \"type\":\"text/plain\",\r\n                  \"content\":\"{{hora}}\"\r\n               },\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"ec227e2d-3892-4425-ae23-3fdfef58528e\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"{{hora}}\"\r\n                  },\r\n                  \"editable\":true,\r\n                  \"deletable\":true,\r\n                  \"position\":\"left\"\r\n               }\r\n            },\r\n            \"$invalid\":false,\r\n            \"$$hashKey\":\"object:26471\"\r\n         },\r\n         { \r\n            \"input\":{ \r\n               \"bypass\":true,\r\n               \"$cardContent\":{ \r\n                  \"document\":{ \r\n                     \"id\":\"e58dab05-8f3f-4a2e-8386-03a24f0245c1\",\r\n                     \"type\":\"text/plain\",\r\n                     \"content\":\"Entrada do usuário\"\r\n                  },\r\n                  \"editable\":false,\r\n                  \"deletable\":true,\r\n                  \"position\":\"right\",\r\n                  \"editing\":false\r\n               },\r\n               \"$invalid\":false\r\n            },\r\n            \"$$hashKey\":\"object:26151\",\r\n            \"$invalid\":false\r\n         }\r\n      ],\r\n      \"$conditionOutputs\":[ \r\n\r\n      ],\r\n      \"$enteringCustomActions\":[ \r\n\r\n      ],\r\n      \"$leavingCustomActions\":[ \r\n\r\n      ],\r\n      \"$inputSuggestions\":[ \r\n\r\n      ],\r\n      \"$defaultOutput\":{ \r\n         \"stateId\":\"fallback\",\r\n         \"$invalid\":false\r\n      },\r\n      \"$tags\":[ \r\n\r\n      ],\r\n      \"id\":\"1d2f8b2a-051d-43f9-882e-c0f40302126d\",\r\n      \"root\":false,\r\n      \"$title\":\"Novo bloco\",\r\n      \"$position\":{ \r\n         \"top\":\"499px\",\r\n         \"left\":\"1128px\"\r\n      },\r\n      \"$invalidContentActions\":false,\r\n      \"$invalidOutputs\":false,\r\n      \"$invalidCustomActions\":false,\r\n      \"$invalid\":false\r\n   }\r\n}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Add a charts in a specific report.\r\n\r\nReplace {{report_id}} with the report id you want to add a chart into.\r\n\r\nFor more information, see\r\nhttps://docs.blip.ai/#create-a-chart-in-a-report"
               },
               "response": []
@@ -286,7 +286,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/reports\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a collection of reports.\n\nFor more information, see https://docs.blip.ai/#get-all-reports"
               },
               "response": []
@@ -317,7 +317,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/reports/{{report_id}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a specific report by id.\r\n\r\nReplace {report_id} with the report id you want to get.\r\n\r\nFor more information, see https://docs.blip.ai/#get-a-report"
               },
               "response": []
@@ -348,7 +348,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/reports/{{report_id}}/charts\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a collection of charts in a report.\r\n\r\nReplace {report_id} with the report id you want to get the charts in.\r\n\r\nFor more information, see https://docs.blip.ai/#get-charts-in-a-report"
               },
               "response": []
@@ -379,7 +379,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/reports/{{report_id}}/charts/{{chart_id}}\",\r\n  \"type\": \"application/vnd.iris.chart+json\",\r\n  \"resource\": {\r\n        \"id\": \"{{chart_id}}\",\r\n        \"name\": \"My Users Metrics\",\r\n        \"chartType\": \"list\",\r\n        \"dimension\": \"users\",\r\n        \"category\": \"activeUsers\",\r\n        \"order\": 1\r\n   }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "You can update a specific chart in a report.\r\n\r\nReplace {{report_id}} with the report id you want to update the chart into. Replace {{chart_id}} with the chart id you want to update.\r\n\r\nFor more information, see  https://docs.blip.ai/#update-a-chart-in-a-report"
               },
               "response": []
@@ -410,7 +410,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/reports/{{report_id}}/charts/{{chart_id}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Delete a specific chart from a specific report.\r\n\r\nReplace {{report_id}} with the report id you want to delete the chart from. Replace {{chart_id}} with the chart id you want to delete.\r\n\r\nFor more information, see \r\nhttps://docs.blip.ai/#delete-a-chart"
               },
               "response": []
@@ -441,7 +441,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/reports/{{report_id}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "If you need to delete a specific report use the following command.\r\n\r\nRemember to replace {{report_id}} variable for the report id that you want delete.\r\n\r\nFor more information, see \r\nhttps://docs.blip.ai/#delete-a-report"
               },
               "response": []
@@ -472,7 +472,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/metrics/active-messages/{{interval}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get the metrics of active messages by an interval.\r\n\r\nReplace {interval} with the date interval you want to get the metrics.\r\n\r\nFor more information, see \r\nhttps://docs.blip.ai/#get-active-messages"
               },
               "response": []
@@ -503,7 +503,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/metrics/active-messages-per-domain/{{interval}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get the metrics of active messages per domain by an interval.\r\n\r\nReplace {interval} with the date interval you want to get the metrics.\r\n\r\nFor more information, see \r\nhttps://docs.blip.ai/#get-active-messages-per-domain"
               },
               "response": []
@@ -534,7 +534,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/metrics/active-identity/{{interval}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get the metrics of active users by an interval.\r\n\r\nReplace {{interval}} with the date interval you want to get the metrics.\r\n\r\nFor more information, see https://docs.blip.ai/#get-active-users"
               },
               "response": []
@@ -565,7 +565,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/metrics/engaged-identity/{{interval}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get the metrics of engaged users by an interval.\r\n\r\nReplace {interval} with the date interval you want to get the metrics.\r\n\r\nFor more information, see https://docs.blip.ai/#get-engaged-users"
               },
               "response": []
@@ -596,7 +596,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/metrics/received-messages/{{interval}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get the metrics of received messages by an interval.\r\n\r\nReplace {interval} with the date interval you want to get the metrics.\r\n\r\nFor more information, see https://docs.blip.ai/#get-received-messages"
               },
               "response": []
@@ -627,7 +627,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/metrics/sent-messages/{{interval}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get the metrics of sent messages by an interval.\r\n\r\nReplace {interval} with the date interval you want to get the metrics.\r\n\r\nFor more information, see https://docs.blip.ai/#get-sent-messages"
               },
               "response": []
@@ -687,7 +687,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/analysis\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Retrieves the history of performed analysis. It will return an analysis document.\n\nFor more information, see https://docs.blip.ai/#analyze-a-model"
               },
               "response": []
@@ -717,7 +717,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/analysis\",\n    \"type\": \"application/vnd.iris.ai.analysis-request+json\",\n    \"resource\": {\n        \"text\": \"I want a pepperoni pizza\"\n    }\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Analyzes an user sentence using a last published model.\n\nFor more information, see https://docs.blip.ai/#analyze-a-sentence-in-the-last-published-model"
               },
               "response": []
@@ -747,7 +747,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/analysis\",\r\n  \"type\": \"application/vnd.iris.ai.analysis-request+json\",\r\n  \"resource\": {\r\n    \"text\":\"I want a pepperoni pizza\",\r\n    \"modelId\": \"{{model_id}}\"\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "It is possible to analyze a sentence with a specific model, to improve the model.\n\nFor more information, see https://docs.blip.ai/#analyze-a-sentence-with-a-specific-model"
               },
               "response": []
@@ -777,7 +777,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/intentions/{{intent_id}}/answers\",\r\n  \"type\": \"application/vnd.lime.collection+json\",\r\n  \"resource\": {\r\n    \"itemType\": \"application/vnd.iris.ai.answer+json\",\r\n    \"items\":[\r\n      {\r\n        \"type\":\"text/plain\",\r\n        \"value\":\"Which flavor do you want?\"\r\n      }\r\n    ]\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Associating possible answers to send an intent.\r\n\r\nReplace {intent_id} with the intent id you want to associate with.\r\n\r\nFor more information, see \r\nhttps://docs.blip.ai/#associate-answers-to-an-intent"
               },
               "response": []
@@ -807,7 +807,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/intentions/{{intent_id}}/questions\",\r\n  \"type\": \"application/vnd.lime.collection+json\",\r\n  \"resource\": {\r\n    \"itemType\": \"application/vnd.iris.ai.question+json\",\r\n    \"items\":[\r\n      {\r\n        \"text\": \"I want a pizza\"\r\n      },\r\n      {\r\n        \"text\": \"I wanna order a pizza\"\r\n      },\r\n      {\r\n        \"text\": \"Give me a pizza\"\r\n      }\r\n    ]\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Associating examples of questions to an intent. A variety of examples may be added to train the artificial intelligence model.\r\n\r\nReplace {intent_id} with the intent id you want to associate with.\r\n\r\nFor more information, see https://docs.blip.ai/#associate-questions-to-an-intent"
               },
               "response": []
@@ -837,7 +837,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/analytics/confusion-matrix\",\n    \"type\": \"application/vnd.iris.ai.confusion-matrix+json\",\n    \"resource\": {\n        \"version\": \"{{version}}\",\n        \"sampleSize\": \"{{sample_size}}\"\n    }\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Create a confusion matrix into your model.\r\n\r\nReplace version and sample_size with the values you want.\r\n\r\nFor more information, see https://docs.blip.ai/#create-a-confusion-matrix"
               },
               "response": []
@@ -867,7 +867,7 @@
                   "raw": "{\r\n  \"id\":\"{{$guid}}\",\r\n  \"to\":\"postmaster@ai.msging.net\",\r\n  \"method\":\"set\",\r\n  \"uri\":\"/entities\",\r\n  \"type\":\"application/vnd.iris.ai.entity+json\",\r\n  \"resource\":{\r\n    \"name\":\"Flavor\",\r\n    \"values\":[\r\n      {\r\n        \"name\":\"Pepperoni\",\r\n        \"synonymous\":[\r\n          \"Peperoni\",\r\n          \"Pepperonee\",\r\n          \"Pepperouni\",\r\n          \"Peperony\"\r\n        ]\r\n      },\r\n      {\r\n        \"name\":\"Mushrooms\",\r\n        \"synonymous\":[\r\n          \"Mashrooms\",\r\n          \"Mushroom\",\r\n          \"Mshrooms\"\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Defining the entities present in user phrases, using the Entity document.\n\nFor more information, see https://docs.blip.ai/#create-an-entity"
               },
               "response": []
@@ -897,7 +897,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/intentions\",\r\n  \"type\": \"application/vnd.iris.ai.intention+json\",\r\n  \"resource\": {\r\n      \"name\": \"Order pizza\"\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "The set intent command creates a new intent, or set of intents, and cleans the old intents on the knowledge base.\n\nFor more information, see https://docs.blip.ai/#create-an-intent"
               },
               "response": []
@@ -928,7 +928,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"delete\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"uri\": \"/analytics/confusion-matrix/{{confusion_matrix_id}}\",\n    \"from\": \"postmaster@ai.msging.net/#hmg-az-lx-iris1\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Remove a confusion matrix from your model.\r\n\r\nReplace the variable {{confusion_matrix_id}} with the Confusion Matrix Id you want to delete. \r\n\r\nFor more information, see https://docs.blip.ai/#delete-a-confusion-matrix"
               },
               "response": []
@@ -959,7 +959,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/entities\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Deleting all entities in a model.\n\nFor more information, see https://docs.blip.ai/#delete-all-entities"
               },
               "response": []
@@ -990,7 +990,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/intentions\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Deleting all intents in a model.\n\nFor more information, see https://docs.blip.ai/#delete-all-intents"
               },
               "response": []
@@ -1021,7 +1021,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/intentions/{{intent_id}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Deleting an intent, where {intent_id} is the intent identifier of an already created intent.\n\nFor more information, see https://docs.blip.ai/#delete-an-intent"
               },
               "response": []
@@ -1052,7 +1052,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"method\": \"delete\",\n    \"uri\": \"/intentions/{{intent_id}}/answers/{{answer_id}}\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Delete an answer associated to an intent.\r\n\r\nReplace {intent_id} with the intent id you to delete the answer from, and {answer_id} with the answer id you want to delete.\r\n\r\nFor more information, see https://docs.blip.ai/#delete-answer-from-intent"
               },
               "response": []
@@ -1083,7 +1083,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/intentions/{{intent_id}}/questions/{{question_id}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Delete an question associated to an intent.\r\n\r\nReplace {intent_id} with the intent id you to delete the answer from, and {question_id} with the question id you want to delete.\r\n\r\nFor more information, see https://docs.blip.ai/#delete-question-from-intent"
               },
               "response": []
@@ -1114,7 +1114,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/analytics/confusion-matrix/{{confusion_matrix_id}}\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Getting a confusion matrix.\r\n\r\nReplace {confusion_matrix_id} with the id of the Confusion Matrix you want to get.\r\n\r\nFor more information, see https://docs.blip.ai/#get-a-confusion-matrix"
               },
               "response": []
@@ -1144,7 +1144,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/model/{{model_id}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a specific model.\r\n\r\nReplace the variable {model_id} with the model id you want to get.\r\n\r\nFor more information, see https://docs.blip.ai/#get-a-model"
               },
               "response": []
@@ -1174,7 +1174,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/models/summary\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get an overview about a model metrics.\n\nFor more information, see https://docs.blip.ai/#get-a-model-summary-overview"
               },
               "response": []
@@ -1204,7 +1204,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/entities\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Getting all entities from a model.\n\nFor more information, see https://docs.blip.ai/#get-all-entities"
               },
               "response": []
@@ -1234,7 +1234,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/intentions\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands"
+                "url": "https://{{contract_id}}.http.msging.net/commands"
               },
               "response": []
             },
@@ -1263,7 +1263,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/models\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Search in all trained and/or published models.\r\n\r\nFor more information, see https://docs.blip.ai/#get-all-models"
               },
               "response": []
@@ -1293,7 +1293,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/entities/{{entity_id}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a specific entity.\r\n\r\nReplace {entity_id} with the entity Id you want to get.\r\n\r\nFor more information, see https://docs.blip.ai/#get-an-entity"
               },
               "response": []
@@ -1323,7 +1323,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/intentions/{{intent_id}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a specific intent.\r\n\r\nReplace {intent_id} with the intent Id you want to get."
               },
               "response": []
@@ -1353,7 +1353,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"get\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"uri\": \"/intentions/{{intent_id}}/answers\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get all answers associated to an intent.\r\n\r\nReplace {intent_id} for the itent id you want to get the answers.\r\n\r\nFor more information, see https://docs.blip.ai/#get-answers-from-an-intent"
               },
               "response": []
@@ -1383,7 +1383,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/analytics/confusion-matrix\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get all confusion matrices from your model.\n\nFor more information, see https://docs.blip.ai/#get-confusion-matrices"
               },
               "response": []
@@ -1413,7 +1413,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/intentions/{{intent_id}}/questions\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get all questions associated to an intent.\r\n\r\nReplace {intent_id} for the itent id you want to get the questions.\r\n\r\nFor more information, see https://docs.blip.ai/#get-questions-from-an-intent"
               },
               "response": []
@@ -1443,7 +1443,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/analysis?$skip=0&$take=10\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Getting the last 10 analysis given by the artificial intelligence provider for user phrases.\n\nFor more information, see https://docs.blip.ai/#get-the-last-10-analysis"
               },
               "response": []
@@ -1474,7 +1474,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"method\": \"merge\",\n    \"uri\": \"/intentions\",\n    \"type\": \"application/vnd.iris.ai.intention+json\",\n    \"resource\": {\n        \"name\": \"Order pizza\"\n    }\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "The merge intent command creates a new intent, or set of intents, and merges them into the knowledge base without deleting the old intents. Note that there is currently no implementation for this method using the C# SDK.\n\nFor more information, see https://docs.blip.ai/#merge-an-intent-into-a-base"
               },
               "response": []
@@ -1505,7 +1505,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/models\",\r\n  \"type\": \"application/vnd.iris.ai.model-publishing+json\",\r\n  \"resource\": {\r\n    \"id\":\"{{model_id}}\"\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Publishing an existing artificial intelligence model. \n\nFor more information, see https://docs.blip.ai/#publish-a-model"
               },
               "response": []
@@ -1535,7 +1535,7 @@
                   "raw": "{\r\n  \"id\":\"{{$guid}}\",\r\n  \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/analysis/{{analyze_id}}/feedback\",\r\n  \"type\": \"application/vnd.iris.ai.analysis-feedback+json\",\r\n  \"resource\": {\r\n    \"feedback\": \"rejected\",\r\n    \"intentionId\": \"{{other_intent_id}}\"\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "To submit a rejection feedback, it is necessary to enter the id of the correct intent for the case.\r\n\r\n Note: Remember to replace the variable {analyze_id} for the analyze id you want to reject and {other_intent_id} for the intent identifier you really want to use.\r\n \r\n For more information, see https://docs.blip.ai/#send-a-39-rejected-39-feedback"
               },
               "response": []
@@ -1565,7 +1565,7 @@
                   "raw": "{\r\n  \"id\":\"{{$guid}}\",\r\n  \"to\":\"postmaster@ai.msging.net\",\r\n  \"method\":\"set\",\r\n  \"uri\":\"/analysis/{{analyse_id}}/feedback\",\r\n  \"type\":\"application/vnd.iris.ai.analysis-feedback+json\",\r\n  \"resource\":{\r\n    \"feedback\":\"approved\"\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Sending positive feedback about an analysis.\r\n\r\n Note: Remember to replace the variable {analyze_id} for the analyze identifier you want to approve."
               },
               "response": []
@@ -1595,7 +1595,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"set\",\n    \"resource\": {\n        \"email\": \"{{email}}\",\n        \"filter\": \"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'\"\n    },\n    \"to\": \"postmaster@ai.msging.net\",\n    \"type\": \"application/json\",\n    \"uri\": \"/enhancement/send-by-email\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Sending the enhancement analysis by email.\r\n\r\nReplace {email} with the email adress you want to send.\r\n\r\n Note: You can filter by date range, using two requestDateTime objects, using the OData syntax.\r\n\r\nThe filter can be sent empty.\r\n\r\nFor more information, see https://docs.blip.ai/#send-enhancement-analysis-models-by-email"
               },
               "response": []
@@ -1625,7 +1625,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@ai.msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/analysis/feedback\",\n    \"type\": \"application/vnd.iris.ai.analysis-feedback+json\",\n    \"resource\": {\n        \"IntentionId\": \"{{intention_id}}\",\n        \"AnalysisId\": \"{{analysis_id}}\"\n    }\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "To submit one or more feedbacks into analysis, it is necessary to enter the id of the intent for the case and the id of the analysis you want to send a feedback.\r\n\r\nReplace {intention_id} with the intent Id and {analysis_id} with the analysis Id.\r\n\r\nFor more information, see https://docs.blip.ai/#send-feedbacks-into-analysis"
               },
               "response": []
@@ -1655,7 +1655,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@ai.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/models\",\r\n  \"type\": \"application/vnd.iris.ai.model-training+json\",\r\n  \"resource\": {}\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Before you train an artificial intelligence model, you need to configure the artificial intelligence provider that will be associated with chatbot and add user intents to the model.\n\nFor more information, see https://docs.blip.ai/#train-model"
               },
               "response": []
@@ -1715,7 +1715,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@broadcast.msging.net\",\r\n  \"method\": \"set\",\r\n  \"type\": \"application/vnd.iris.distribution-list+json\",\r\n  \"uri\": \"/lists\",\r\n  \"resource\": {  \r\n    \"identity\": \"{{distribution_list_name}}@broadcast.msging.net\"\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Before making a broadcast, it is necessary to create a distribution list and add some members to it. To create a distribution list with your_distributionList identifier you must send command with SET method and a resource document with identity equal to your_distributionList@broadcast.msging.net.\n\nFor more information, see\nhttps://forum.blip.ai/t/consultar-objeto-json/3838"
               },
               "response": []
@@ -1745,7 +1745,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@broadcast.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/lists\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "To get all distribution lists associated with your chatbot, you must send a command with GET method.\n\nFor more information, see https://docs.blip.ai/#get-all-lists"
               },
               "response": []
@@ -1775,7 +1775,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@broadcast.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/lists/{{distribution_list_name}}@broadcast.msging.net/recipients\",\r\n  \"type\": \"application/vnd.lime.identity\",\r\n  \"resource\": \"{{user_identity}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "After creating a distribution list, you must add some members to receive your broadcasts. To add a member with 551100001111@0mn.io identity to a list with your_distributionList identifier, you must send a command with SET method and resource document equal to a member identity (551100001111@0mn.io). Note that the command URI also must contains the list identifier (/lists/your_distributionList@broadcast.msging.net/recipients).\n\nFor more information, see https://docs.blip.ai/#add-a-member-to-list"
               },
               "response": []
@@ -1805,7 +1805,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@broadcast.msging.net\",\n    \"method\": \"delete\",\n    \"uri\": \"/lists/{{distribution_list_name}}@broadcast.msging.net/recipients/{{user_identity}}\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "As the same way you add some members into a distribution list, it is possible to remove its members. To remove a member with 551100001111@0mn.io identity from a list with your_distributionList identifier, you must send a command with DELETE method and command URI with the list and memeber identifier (/lists/your_distributionList@broadcast.msging.net/recipients/551100001111@0mn.io).\n\nFor more information, see https://docs.blip.ai/#remove-members-from-list"
               },
               "response": []
@@ -1835,7 +1835,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n \"to\": \"postmaster@broadcast.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/lists/{{distribution_list_name}}@broadcast.msging.net/recipients?$skip=0&$take=5\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "o get all members of a distribution list, you must send a command with GET method and command URI with the list identifier (/lists/your_distributionList@broadcast.msging.net/recipients).\n\nFor more information, see https://docs.blip.ai/#get-all-members-of-a-list"
               },
               "response": []
@@ -1865,7 +1865,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"{{distribution_list_name}}@broadcast.msging.net\",\r\n  \"type\": \"text/plain\",\r\n  \"content\": \"Hello participants of this list!\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "If you already have a distribution list with some members, you can send messages to this list. Any message sent to a specific list will be received by all of its members. \n\nFor more information, see https://docs.blip.ai/#send-message"
               },
               "response": []
@@ -1896,7 +1896,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"{{distribution_list_name}}@broadcast.msging.net\",\r\n  \"type\": \"text/plain\",\r\n  \"content\": \"Hello ${contact.name}, come to check out our prices!\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Note: To make your broadcast more personal, you can also replace contact variables in messages sent to a distribution list.\r\nFor more information, please check the documentation of the Contacts extension.\r\n\r\nFor more information, see https://docs.blip.ai/#send-message-with-replacement-variable"
               },
               "response": []
@@ -1926,7 +1926,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@broadcast.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/lists/{{distribution_list_name}}@broadcast.msging.net\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Delete a distribution list."
               },
               "response": []
@@ -1986,7 +1986,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/buckets/{{document_key}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Delete a specific document command. Remember to replace {{document_key}} variable for the document Key that you want delete.\n\nFor more information, see https://docs.blip.ai/#delete-a-document"
               },
               "response": []
@@ -2016,7 +2016,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"get\",\n    \"uri\": \"/buckets/{{document_key}}\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Retrieving a JSON document identified by {{document_key}}.\n\nFor more information, see https://docs.blip.ai/#get-a-document"
               },
               "response": []
@@ -2046,7 +2046,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/buckets\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Retrieving all documents identifieds by ID key.\n\nFor more information, see https://docs.blip.ai/#get-a-document-collection"
               },
               "response": []
@@ -2077,7 +2077,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/buckets/{{document_key}}?expiration=30000\",\r\n  \"type\": \"application/x-my-type+json\",\r\n  \"resource\": {  \r\n    \"myTypeKey1\": \"value1\",\r\n    \"myTypeKey2\": 2\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Storing a custom document with type application/x-my-type+json and abcd9876 identifier, setting the expiration to 30000 milisseconds (or 30 seconds):\r\n\r\n Note: If you create a custom document, you must register this type on Startup.cs class. To do that, follow this steps: Create a field private readonly IDocumentTypeResolver _documentTypeResolver, assign it in the class constructor and then, on StartAsync method add this line: _documentTypeResolver.WithBlipDocuments();\r\n \r\n For more information, see https://docs.blip.ai/#store-a-custom-document"
               },
               "response": []
@@ -2107,7 +2107,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"set\",\n    \"uri\": \"/buckets/{{document_key}}\",\n    \"type\": \"application/json\",\n    \"resource\": {\n        \"key1\": \"value1\",\n        \"key2\": 2,\n        \"key3\": [\n            \"3a\",\n            \"3b\",\n            \"3c\"\n        ]\n    }\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Storing a JSON object {\"key1\": \"value1\", \"key2\": 2, \"key3\": [\"3a\", \"3b\", \"3c\"]} identified by xyz1234 key.\n\nFor more information, see https://docs.blip.ai/#store-a-json-document"
               },
               "response": []
@@ -2167,7 +2167,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/contexts/{{identity}}/stateid%400\",\n    \"type\": \"text/plain\",\n    \"resource\": \"{{state_id}}\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "In order to change a user state, send a command with the following properties:\n\n\n| Name | Description |\n|---------------------------------|--------------|\n| id    | Unique identifier of the command.   |\n| method    | **set**  |\n| uri    | **/contexts/{{user-identity}}/stateid%40{{flow-identifier}}**   |\n| to     | **postmaster@msging.net** (not required) |\n| type   | **text/plain** |\n| resource | **{{state-id}}** |\n\n\nFor more information, see https://docs.blip.ai/#change-user-state"
               },
               "response": []
@@ -2197,7 +2197,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/contexts/{{identity}}/{{variable_name}}\",\n    \"type\": \"{{type}}\",\n    \"resource\": \"{{resource}}\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Create a specific context variable for a specific user.\r\n\r\nReplace `{identity}` with the user identity you want to create the context variable for.  \r\nReplace `{variableName}` with the variable name you want to create.  \r\nReplace `{type}` with the variable [Mime Type](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Basico_sobre_HTTP/MIME_types)  \r\nReplace `{resource}` with the value to the variable.\r\n\r\nFor more information, see https://docs.blip.ai/#create-a-context-variable"
               },
               "response": []
@@ -2227,7 +2227,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"delete\",\n    \"uri\": \"/contexts/{{identity}}/{{variable_name}}\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Delete a specific context variable for a specific user.\r\n\r\nReplace `{identity}` with the user identity you want to delete the context variables from.  \r\nReplace `{variableName}` with the variable name you want to delete.\r\n\r\nFor more information, see https://docs.blip.ai/#delete-a-context-variable"
               },
               "response": []
@@ -2257,7 +2257,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/contexts/\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get all bot's context variables (Builder's behaviors). It will return all available variables, represented by users' Identities.\n\nFor more information, see https://docs.blip.ai/#get-all-bot-39-s-context-variables"
               },
               "response": []
@@ -2287,7 +2287,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/contexts/{{identity}}\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get all user's context variables, like flow ids, state ids and other variables.\r\n\r\nReplace `{identity}` with the user identity you want to get the contexts variables.\r\n\r\nFor more information, see https://docs.blip.ai/#get-all-user-39-s-context-variables"
               },
               "response": []
@@ -2317,7 +2317,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/contexts/{{identity}}/{{variableName}}\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a specific user's context variable, retrieving all information about it.\r\n\r\nReplace `{identity}` with the user identity you want to get the variable from.  \r\nReplace `{variableName}` with the variable name you want to get.\r\n\r\nFor more information, see https://docs.blip.ai/#get-a-specific-context-variable"
               },
               "response": []
@@ -2347,7 +2347,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/contexts/{{identity}}/stateid%400\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "In order to get a user state, send a command with the following properties:\r\n\r\n| Name | Description |\r\n|---------------------------------|--------------|\r\n| id    | Unique identifier of the command.   |\r\n| to     | **postmaster@msging.net** (not required) |\r\n| method    | **get**  |\r\n| uri    | **/contexts/{{user-identity}}/stateid%40{{flow-identifier}}**   |\r\n\r\nFor more information, see https://docs.blip.ai/#get-user-state"
               },
               "response": []
@@ -2377,7 +2377,7 @@
                   "raw": "{\n   \"id\": \"{{$guid}}\",\n   \"method\": \"set\",\n  \"uri\": \"/buckets/blip_portal:builder_working_flow\",\n  \"type\": \"application/json\", \n  \"resource\":{{your_json}}\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "In order to publish your flow, send a command with the following properties:\r\n\r\n| Name     | Description                                   |\r\n| -------- | --------------------------------------------- |\r\n| id       | Unique identifier of the command.             |\r\n| method   | **set**                                       |\r\n| uri      | **/buckets/blip_portal:builder_working_flow** |\r\n| type     | **application/json**                          |\r\n| resource | **Your JSON**                                 |\r\n\r\nFor more information, see https://docs.blip.ai/#publish-flow"
               },
               "response": []
@@ -2407,7 +2407,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"delete\",\n    \"uri\": \"/contexts/{{identity}}/stateid%400\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "In order to reset a user state, send a command with the following properties:\r\n\r\n| Name | Description |\r\n|---------------------------------|--------------|\r\n| id    | Unique identifier of the command.   |\r\n| method    | **delete**  |\r\n| uri    | **/contexts/{{user-identity}}/stateid%40{{flow-identifier}}**   |\r\n| to     | **postmaster@msging.net** (not required) |\r\n\r\nFor more information, see https://docs.blip.ai/#reset-user-state"
               },
               "response": []
@@ -2468,7 +2468,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/threads?refreshExpiredMedia=true\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "etting the last chatbot's [threads](/#thread). By default, BLiP returns the last 50 threads.\r\n\r\nThe following uri filters are available to get chatbot's threads:\r\n\r\n| QueryString  | Description                               |\r\n|--------------|-------------------------------------------|\r\n| $take        | Limit of total of items to be returned. The maximum value allowed is 100 |\r\n| messageDate  | Initial date on the threads query         |\r\n\r\nFor more information, see https://docs.blip.ai/#get-last-threads"
               },
               "response": []
@@ -2499,7 +2499,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"get\",\n    \"uri\": \"/threads/{{user_identity}}?refreshExpiredMedia=true\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Getting the last chatbot's [messages](/#messages) in a specific [thread](/#thread). The thread is identified by a client identity (for example: `1180740631991418@messenger.gw.msging.net`). By default, BLiP will return the last 20 thread messages.\r\n\r\nThe following uri filters are available to get a chatbot's thread:\r\n\r\n| QueryString  | Description                               |\r\n|--------------|-------------------------------------------|\r\n| $take        | Limit of total of items to be returned. The maximum value allowed is 100 |\r\n| messageId  | Initial message id for the thread messages query        |\r\n| direction  | Possible values: `asc` and `desc`. Define if will be returned de messages after or before respectively |\r\n\r\nFor more information, see https://docs.blip.ai/#get-last-messages"
               },
               "response": []
@@ -2530,7 +2530,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/messages/\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get all logged messages.\n\nFor more information, see https://docs.blip.ai/#get-logged-messages"
               },
               "response": []
@@ -2561,7 +2561,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/notifications\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get all logged notifications.\n\nFor more information, see https://docs.blip.ai/#get-logged-notifications"
               },
               "response": []
@@ -2592,7 +2592,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n  \"method\": \"get\",\n  \"uri\": \"/notifications?id={{message_id}}\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get all logged notifications of a specific message.\r\n\r\nReplace `{message_id}` with the message id."
               },
               "response": []
@@ -2652,7 +2652,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"delete\",\n    \"uri\": \"/profile/{{property_identifier}}\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Delete a message for a profile property.\r\n\r\nReplace `{property_identifier}` with the property identifier you want to delete.\r\n\r\nFor more information, see https://docs.blip.ai/#delete-a-profile-property"
               },
               "response": []
@@ -2682,7 +2682,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/profile\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get all the active chatbot's profile properties.\n\nFor more information, see https://docs.blip.ai/#get-profile-properties"
               },
               "response": []
@@ -2712,7 +2712,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"get\",\n    \"to\": \"postmaster@msging.net\",\n    \"uri\": \"/profile/{{property_identifier}}\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a message for each profile property.\r\n\r\nReplace `{property_identifier}` with one of the possible properties:  \r\n* get-started  \r\n* get-started-label  \r\n* greeting  \r\n* persistent-menu  \r\n\r\nFor more information, see https://docs.blip.ai/#get-profile-properties-messages"
               },
               "response": []
@@ -2742,7 +2742,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"set\",\n    \"uri\": \"/profile/get-started\",\n    \"type\": \"text/plain\",\n    \"resource\": \"Let's begin\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "In order to set a get started button for your chatbot, use a set command on `/profile/get-started` URI. This sample shows how to add a button that sends the text `Let's begin` to your chatbot during the first client interaction.\r\n\r\nFor more information, see https://docs.blip.ai/#set-a-start-message"
               },
               "response": []
@@ -2773,7 +2773,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/profile/get-started\",\r\n  \"type\": \"text/plain\",\r\n  \"resource\": \"Start now\"\r\n}\r\n",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "In order to set a get started button for your chatbot, use a `set` command on `/profile/get-started-label` URI. This sample shows how to add a button with `Start now` as label.\n\nFor more information, see https://docs.blip.ai/#set-start-button"
               },
               "response": []
@@ -2803,7 +2803,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"set\",\r\n  \"uri\":\"/profile/persistent-menu\",\r\n  \"type\":\"application/vnd.lime.document-select+json\",\r\n    \"resource\":{\r\n      \"options\":[\r\n        {\r\n          \"label\":{\r\n            \"type\":\"application/vnd.lime.document-select+json\",\r\n            \"value\":{\r\n              \"header\":{\r\n                \"type\":\"text/plain\",\r\n                \"value\":\"Option 1\"\r\n              },\r\n              \"options\":[\r\n                {\r\n                  \"label\":{\r\n                    \"type\":\"text/plain\",\r\n                    \"value\":\"Option 1.1\"\r\n                  }\r\n                },\r\n                {\r\n                  \"label\":{\r\n                    \"type\":\"application/vnd.lime.web-link+json\",\r\n                  \"value\":{\r\n                    \"text\":\"Option 1.2\",\r\n                    \"uri\":\"https://address.com/option1.2\"\r\n                  }\r\n                }\r\n              },\r\n              {\r\n                \"label\":{\r\n                  \"type\":\"application/vnd.lime.document-select+json\",\r\n                  \"value\":{\r\n                    \"header\":{\r\n                      \"type\":\"text/plain\",\r\n                      \"value\":\"Option 1.3\"\r\n                    },\r\n                    \"options\":[\r\n                      {\r\n                        \"label\":{\r\n                          \"type\":\"text/plain\",\r\n                          \"value\":\"Option 1.3.1\"\r\n                        }\r\n                      },\r\n                      {\r\n                        \"label\":{\r\n                          \"type\":\"text/plain\",\r\n                          \"value\":\"Option 1.3.2\"\r\n                        }\r\n                      },\r\n                      {\r\n                        \"label\":{\r\n                          \"type\":\"text/plain\",\r\n                          \"value\":\"Option 1.3.3\"\r\n                        }\r\n                      }\r\n                    ]\r\n                  }\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"label\":{\r\n          \"type\":\"text/plain\",\r\n          \"value\":\"Option 2\"\r\n        }\r\n      },\r\n      {\r\n        \"label\":{\r\n          \"type\":\"application/vnd.lime.web-link+json\",\r\n          \"value\":{\r\n            \"text\":\"Option 3\",\r\n            \"uri\":\"https://address.com/option1.3\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Last but not least, you can also add a complex persistent menu (with links and submenus) using a `SET` command on `/profile/persistent-menu` URI. This sample shows how to add a complex persistent menu (only on Facebook Messenger channel) with 3 options `SubMenu 1`, `Option 2` and `Option 3 as a web link`.\n\nFor more information, see https://docs.blip.ai/#set-complex-persistent-menu"
               },
               "response": []
@@ -2833,7 +2833,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/profile/greeting\",\r\n  \"type\": \"text/plain\",\r\n  \"resource\": \"Hello and welcome to our service!\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "In order to set a text greeting message for your chatbot, use a `set` command on `/profile/greeting` URI. This sample shows how to add a greeting message with the content `\"Hello and welcome to our service!\"`.\n\nFor more information, see https://docs.blip.ai/#set-greeting-message."
               },
               "response": []
@@ -2863,7 +2863,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"set\",\r\n  \"uri\":\"/profile/persistent-menu\",\r\n  \"type\":\"application/vnd.lime.document-select+json\",\r\n  \"resource\": {\r\n    \"options\":[\r\n      {\r\n        \"label\":{\r\n          \"type\":\"text/plain\",\r\n          \"value\":\"Option 1\"\r\n        }\r\n      },\r\n      {\r\n        \"label\":{\r\n          \"type\":\"text/plain\",\r\n          \"value\":\"Option 2\"\r\n        }\r\n      },\r\n      {\r\n        \"label\":{\r\n          \"type\":\"text/plain\",\r\n          \"value\":\"Option 3\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}\r\n",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "In order to set a Messenger persistent menu for your chatbot, use a `set` command on `/profile/persistent-menu` URI. This sample shows how to add a simple persistent menu (only on Facebook Messenger channel) with 3 options `Option 1`, `Option 2` and `Option 3`.\r\n\r\nFor more information, see https://docs.blip.ai/#set-simple-persistent-menu"
               },
               "response": []
@@ -2924,7 +2924,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@crm.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/contacts\",\r\n  \"type\": \"application/vnd.lime.contact+json\",\r\n  \"resource\": {\r\n    \"identity\": \"{{contact_identity}}\",\r\n    \"name\": \"John Doe\",\r\n    \"gender\":\"male\",\r\n    \"group\":\"friends\",\r\n    \"extras\": {\r\n      \"plan\":\"Gold\",\r\n      \"code\":\"1111\"\r\n    }\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "In order to store informations about a chatbot's client, it is possible to save and update data using contacts extension. \n\nFor more information, see https://docs.blip.ai/#add-or-update-a-contact"
               },
               "response": []
@@ -2955,7 +2955,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@crm.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/contacts/{{contact_identity}}/comments\",\r\n  \"type\": \"application/vnd.iris.crm.comment+json\",\r\n  \"resource\": {\r\n    \"content\": \"This is a comment example\"\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Add a new comment for a contact {{contact_identity}}, using a Comment document.\n\nFor more information, see https://docs.blip.ai/#add-a-comment"
               },
               "response": []
@@ -2986,7 +2986,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@crm.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/contacts/{{contact_identity}}/comments/{{comment_id}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Delete a specific comment for a contact.\r\n\r\nReplace comment_id with the comment Id.\r\n\r\nFor more information, see https://docs.blip.ai/#delete-a-comment"
               },
               "response": []
@@ -3017,7 +3017,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@crm.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/contacts/{{contact_identity}}/comments\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get all comments for a contact ( contact_identity ).\n\nFor more information, see https://docs.blip.ai/#get-comments"
               },
               "response": []
@@ -3048,7 +3048,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@crm.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/contacts/{{contact_identity}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "For the same contact 11121023102013021@messenger.gw.msging.net, it is possible to get all of its information using a GET contact command.\r\n\r\n Note: You can also filter your query with one of the properties of the contact resource, using the filter property:\r\n\r\nfilter=(substringof('{value}',{propertyName}))\r\n\r\nExample: /contacts?$skip=0&$take=20&$filter=(substringof('John Doe',name))\r\n\r\nFor more information, see https://docs.blip.ai/#get-contact"
               },
               "response": []
@@ -3079,7 +3079,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@crm.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/contacts?$skip=0&$take=3\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "If you need to get more than one chatbot's contact, you can use a query pagination. This sample shows how to take the three first roaster's contacts.\r\n\r\n Note: You can also filter your query with one of the properties of the contact resource, using the filter property:\r\n\r\nfilter=(substringof('{value}',{propertyName}))\r\n\r\nExample: /contacts?$skip=0&$take=20&$filter=(substringof('John Doe',name))\r\n\r\nFor more information, see https://docs.blip.ai/#get-contacts-with-paging"
               },
               "response": []
@@ -3110,7 +3110,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"{{contact_identity}}\",\r\n  \"type\": \"text/plain\",\r\n  \"content\": \"Hello ${contact.name}, welcome to the ${contact.extras.plan} plan!\",\r\n  \"metadata\": \r\n  {\r\n    \"#message.replaceVariables\": \"true\"\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/messages",
+                "url": "https://{{contract_id}}.http.msging.net/messages",
                 "description": "If you have information of some client stored on the chatbot's roster, you can send a customized message using these values as message variables. To do this, add a metadata { \"#message.replaceVariables\": \"true\" } and use any property of the contact resource. This sample shows how to replace a contact name on a welcome message.\n\nFor more information, see https://docs.blip.ai/#send-message-with-contact-name"
               },
               "response": []
@@ -3168,7 +3168,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/attendants\",\n    \"type\": \"application/vnd.iris.desk.attendant+json\",\n    \"resource\": {\n        \"identity\": \"{{identity}}\",\n        \"email\": \"{{email}}\",\n        \"teams\": [\n            \"{{team}}\"\n        ]\n    }\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Add a new agent to your attendance team.\r\n\r\nYou must submit a attendant document, with at least an identity, an email and a team.\r\n\r\nFor more information, see https://docs.blip.ai/?http#add-a-new-agent"
               },
               "response": []
@@ -3196,7 +3196,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/replies/{{category_id}}\",\r\n  \"type\": \"application/vnd.lime.collection+json\",\r\n  \"resource\":{\r\n    \"itemType\": \"application/vnd.iris.desk.custom-reply+json\",\r\n    \"items\": [\r\n        {\r\n            \"category\": \"{{category_name}}\",\r\n            \"document\": \"{{content}}\",\r\n            \"id\": \"{{messageId}}\",\r\n            \"isDynamicContent\": false,\r\n            \"name\": \"{{reply_name}}\",\r\n            \"type\": \"{{reply_type}}\"\r\n        }\r\n    ]\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Add a category with a collection of custom replies.\r\n\r\nYou must send a application/vnd.lime.collection+json document of custom replies objects.\r\n\r\nReplace {category_id} with the category id you want to add custom replies to.\r\n\r\nFor more information, see https://docs.blip.ai/?http#add-custom-replies-to-a-category"
               },
               "response": []
@@ -3224,7 +3224,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/tickets/{{ticket_id}}/change-tags\",\n    \"type\": \"application/vnd.iris.ticket+json\",\n    \"resource\": {\n        \"id\": \"ba11b95c-7564-4685-b835-8cc76fae6fac\",\n        \"tags\": [\n            \"tag1\",\n            \"tag2\",\n            \"tag3\"\n        ]\n    }\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Each ticket has an optional parameter called Tags. A tag is a label to identify important things in a ticket. To add tags in a specifc ticket send a command with SET method to postmaster@desk.msging.net and URI /tickets/{ticket_id}/change-tags, where ticketId is the ticket identifier to be updated. Use the resource property to send tags informations.\n\nFor more information, see https://docs.blip.ai/?http#add-ticket-tags"
               },
               "response": []
@@ -3252,7 +3252,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/tickets/change-status\",\r\n  \"type\": \"application/vnd.iris.ticket+json\",\r\n  \"resource\": {\r\n    \"id\": \"c1775a01-b715-4021-8673-01704545f207\",\r\n    \"status\": \"Open\",\r\n    \"agentIdentity\": \"brunoar@take.net\"\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Closing a ticket as the attendant.\r\n\r\nTo make this possible send a command with SET method to postmaster@desk.msging.net URI /tickets/change-status and resource with ticket id and status with ClosedAttendant.\r\n\r\nFor more information, see https://docs.blip.ai/?http#close-a-ticket-as-attendant"
               },
               "response": []
@@ -3280,7 +3280,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/tickets/change-status\",\r\n  \"type\": \"application/vnd.iris.ticket+json\",\r\n  \"resource\": {\r\n    \"id\": \"{{ticket_id}}\",\r\n    \"status\": \"ClosedClient\"\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Sometimes may be interesting allow the users close the ticket when they want. To make this possible send a command with SET method to postmaster@desk.msging.net URI /tickets/change-status and resource with ticket id and status with ClosedClient.\n\nFor more information, see https://docs.blip.ai/?http#close-a-ticket-as-user"
               },
               "response": []
@@ -3308,7 +3308,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/tickets\",\r\n  \"type\": \"application/vnd.iris.ticket+json\",\r\n  \"resource\": { \r\n    \"customerIdentity\": \"{{customer_identity}}\"\r\n  } \r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "To create a new ticket, you must submit a ticket document, with at least a customerIdentity.\n\nFor more information, see https://docs.blip.ai/?http#create-a-new-ticket"
               },
               "response": []
@@ -3336,7 +3336,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/rules\",\r\n  \"type\": \"application/vnd.iris.desk.rule+json\",\r\n  \"resource\": {\r\n    \"id\": \"rt5aax7a8a9-8as4da\",\r\n    \"isActive\": true,\r\n    \"property\": \"Contact.Extras.City\",\r\n    \"relation\": \"Equals\",\r\n    \"team\": \"Default\",\r\n    \"title\": \"City Rule \",\r\n    \"values\": [\r\n        \"Belo Horizonte\", \r\n        \"BH\", \r\n        \"Minas Gerais\", \r\n        \"MG\"\r\n        ]\r\n    }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Set a new attendance rule.\r\n\r\nYou must send a rule document with your conditions.\r\n\r\nFor more information, see https://docs.blip.ai/?http#create-an-attendance-rule"
               },
               "response": []
@@ -3364,7 +3364,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/attendance-queues\",\r\n  \"type\": \"application/vnd.iris.desk.attendancequeue+json\",\r\n  \"resource\": {\r\n    \"isActive\": true,\r\n    \"name\": \"Queue name\",\r\n    \"ownerIdentity\": \"demobot@msging.net\",\r\n    \"Priority\": \"0\"\r\n    }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Set a new attendance queue.\r\n\r\nYou must send a queue document with your conditions.\r\n\r\nFor more information, see https://docs.blip.ai/?http#create-an-attendance-queue"
               },
               "response": []
@@ -3392,7 +3392,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/tickets/{{customer_identity}}\",\n    \"type\": \"text/plain\",\n    \"resource\": \"I need a human!\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Before start to attendance some user is necessary first open a ticket. To open a ticket send a command with SET method to postmaster@desk.msging.net and URI /tickets/{customerIdentity}, where customerIdentity is the customer identity to be attended. Use the resource property to delivery a context for the ticket.\n\nFor more information, see https://docs.blip.ai/?http#create-a-ticket-for-an-attendance"
               },
               "response": []
@@ -3420,7 +3420,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/replies/{{category_id}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Delete a category of custom replies.\r\n\r\nReplace {category_id} with the category id you want to delete.\r\n \r\nFor more information, see https://docs.blip.ai/?http#delete-a-custom-reply-category"
               },
               "response": []
@@ -3448,7 +3448,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/rules/{{rule_id}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Delete a specific attendance rule.\r\n\r\nReplace {rule_id}with the rule id you want to delete.\r\n\r\nFor more information, see https://docs.blip.ai/?http#delete-a-rule"
               },
               "response": []
@@ -3476,7 +3476,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/attendance-queues/{{queue_id}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Delete a specific attendance queue.\r\n\r\nReplace {queue_id}with the queue id you want to delete.\r\n\r\nFor more information, see https://docs.blip.ai/?http#delete-a-queue"
               },
               "response": []
@@ -3504,7 +3504,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/attendants/{{agent_id}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Delete an specific agent from your attendance team.\r\n\r\nReplace {agent_id} with the agent Id you want to delete\r\n\r\nFor more information, see https://docs.blip.ai/?http#delete-an-agent"
               },
               "response": []
@@ -3532,7 +3532,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/tickets/{{ticket_id}}/close\",\n    \"resource\": {\n        \"customerIdentity\": \"{{customer_identity}}\",\n        \"id\": \"dfd6a0e4-b109-41f1-8513-01673b93a669\",\n        \"ownerIdentity\": \"{{botIdentifier}}@msging.net\",\n        \"status\": \"ClosedClient\",\n        \"tags\": [\n            \"AtendimentoTeste\"\n        ]\n    }\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "The proccess of close a ticket is the last thing to do during an attendance. If a ticket is closed by the customer is possible close permanently to unable any data update. In order to finalize permanently a ticket send a command with SET method to postmaster@desk.msging.net and URI /tickets/{ticketId}/close\n\nFor more information, see https://docs.blip.ai/?http#finishing-a-tickets-previously-closed-by-customer"
               },
               "response": []
@@ -3560,7 +3560,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"from\": \"1654804277843415%40messenger.gw.msging.net@desk.msging.net\",\n    \"to\": \"bot@msging.net/instance\",\n    \"type\": \"text/plain\",\n    \"content\": \"Hello, here is a human being ;)\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/messages",
+                "url": "https://{{contract_id}}.http.msging.net/messages",
                 "description": "To forward a received message to the specific final user, the bot must decode the received message node so it knows where to respond {encoded-user-node}@desk.msging.net:\n\nFor more information, see https://docs.blip.ai/?http#forwarding-received-messages-from-a-human-agent-to-a-final-user"
               },
               "response": []
@@ -3588,7 +3588,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"from\": \"1654804277843415@messenger.gw.msging.net\",\n    \"to\": \"bot@msging.net/instance\",\n    \"type\": \"text/plain\",\n    \"content\": \"Hello, I would like to talk to an attendant.\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/messages",
+                "url": "https://{{contract_id}}.http.msging.net/messages",
                 "description": "At first, the bot receives a message and decides if it must route the user to a human agent. Imagine for instance that the message \"Hello, I would like to talk to an attendant.\" is enough to send the user to an agent.\n\nFor more information, see https://docs.blip.ai/?http#forwarding-received-messages-to-a-human-agent"
               },
               "response": []
@@ -3616,7 +3616,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/replies/{{category_id}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a category of custom replies.\r\n\r\nReplace {category_id} with the category id you want to get.\r\n\r\nFor more information, see https://docs.blip.ai/?http#get-a-custom-reply-category"
               },
               "response": []
@@ -3644,7 +3644,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/analytics/reports/attendants\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a report about agents.\r\n\r\nReturns a Attendant Summary document.\r\n\r\nFor more information, see https://docs.blip.ai/?http#get-a-report-about-agents"
               },
               "response": []
@@ -3672,7 +3672,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/analytics/reports/attendancetime\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a report about attendance time.\r\n\r\nReturns a Attendance Time Summary document.\r\n\r\nFor more information, see https://docs.blip.ai/?http#get-a-report-about-attendance-time"
               },
               "response": []
@@ -3700,7 +3700,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/analytics/reports/tags\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a report about tags.\r\n\r\nReturns a Tag Ticket Summary document.\r\n\r\nFor more information, see https://docs.blip.ai/?http#get-a-report-about-tags"
               },
               "response": []
@@ -3728,7 +3728,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/analytics/reports/teams\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a report about teams.\r\n\r\nReturns a Tag Ticket Summary document.\r\n\r\nFor more information, see https://docs.blip.ai/?http#get-a-report-about-teams"
               },
               "response": []
@@ -3756,7 +3756,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/analytics/reports/timings\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a report about the tickets timing.\r\n\r\nReturns a Tag Ticket Summary document.\r\n\r\nFor more information, see https://docs.blip.ai/?http#get-a-report-about-ticket-timing"
               },
               "response": []
@@ -3784,7 +3784,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/analytics/reports/tickets\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a report about tickets.\r\n\r\nReturns a Tickets Summary document.\r\n\r\nFor more information, see https://docs.blip.ai/?http#get-a-report-about-tickets"
               },
               "response": []
@@ -3812,7 +3812,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/rules/{{rule_id}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a specific attendance rule.\r\n\r\nReplace {rule_id} with the rule id you want to get.\r\n\r\nFor more information, see https://docs.blip.ai/?http#get-a-rule"
               },
               "response": []
@@ -3840,7 +3840,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/ticket/{{ticket_id}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a specific ticket.\r\n\r\nReplace the variable {ticket_id} with the ticket id you want to get.\r\n\r\nFor more information, see https://docs.blip.ai/?http#get-a-ticket"
               },
               "response": []
@@ -3868,7 +3868,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/monitoring/attendants\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get agents metrics and informations.\n\nFor more information, see https://docs.blip.ai/?http#get-agents-metrics"
               },
               "response": []
@@ -3896,7 +3896,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/analytics/reports/attendants/productivity\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands"
+                "url": "https://{{contract_id}}.http.msging.net/commands"
               },
               "response": []
             },
@@ -3923,7 +3923,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/monitoring/tickets\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Returns all the active tickets.\n\nFor more information, see https://docs.blip.ai/?http#get-all-active-tickets"
               },
               "response": []
@@ -3951,7 +3951,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/attendants\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "In order to get all attendants of some bot send a command with GET method to postmaster@desk.msging.net and URI /attendants . This feature is usefull to know if there are any available attendant to answer customers questions.\n\nFor more information, see https://docs.blip.ai/?http#get-all-bot-39-s-agents"
               },
               "response": []
@@ -3979,7 +3979,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/tickets/{{customer_identity}}/closed\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands"
+                "url": "https://{{contract_id}}.http.msging.net/commands"
               },
               "response": []
             },
@@ -4006,7 +4006,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/tickets/{{ticket_id}}/messages\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Return all messages from a specific ticket.\r\n\r\nReplace {ticket_id} with the ticket id you want to get the messages.\r\n\r\nFor more information, see https://docs.blip.ai/?http#get-all-messages-in-a-ticket"
               },
               "response": []
@@ -4034,7 +4034,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/teams\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "In order to get all agents teams of some bot send a command with GET method to postmaster@desk.msging.net and URI /teams .\nFor more information, see https://docs.blip.ai/?http#get-all-teams"
               },
               "response": []
@@ -4062,7 +4062,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/tickets?$take=10\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "In order to get any ticket of some bot send a command with GET method to postmaster@desk.msging.net and URI /tickets \n\nFor more information, see https://docs.blip.ai/?http#get-all-tickets-of-a-bot"
               },
               "response": []
@@ -4090,7 +4090,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/rules\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get all attendance rules.\n\nFor more information, see https://docs.blip.ai/?http#get-attendance-rules"
               },
               "response": []
@@ -4118,7 +4118,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/replies\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get the custom replies from your attendance model.\n\nFor more information, see https://docs.blip.ai/?http#get-custom-replies"
               },
               "response": []
@@ -4146,7 +4146,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/teams/agents-online\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands"
+                "url": "https://{{contract_id}}.http.msging.net/commands"
               },
               "response": []
             },
@@ -4173,7 +4173,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/monitoring/open-tickets\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get open tickets metrics and informations. \nFor more information, see https://docs.blip.ai/?http#get-open-tickets-metrics"
               },
               "response": []
@@ -4201,7 +4201,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/monitoring/teams\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get attendance teams metrics and informations.\n\nFor more information, see https://docs.blip.ai/?http#get-teams-metrics"
               },
               "response": []
@@ -4229,7 +4229,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/monitoring/ticket-metrics\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get tickets metrics for your monitoring.\n\nFor more information, see https://docs.blip.ai/?http#get-tickets-metrics"
               },
               "response": []
@@ -4257,7 +4257,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/monitoring/tickets\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get tickets counters by status.\n\nFor more information, see https://docs.blip.ai/?http#get-tickets-counters"
               },
               "response": []
@@ -4285,7 +4285,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/monitoring/tickets-per-hour\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get tickets-per-hour metrics (for the current day). \n\nFor more information, see https://docs.blip.ai/?http#get-tickets-per-hour"
               },
               "response": []
@@ -4313,7 +4313,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/monitoring/tickets\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Returns the number of waiting tickets.\n\nFor more information, see https://docs.blip.ai/?http#get-waiting-tickets"
               },
               "response": []
@@ -4341,7 +4341,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/monitoring/waiting-tickets\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get waiting tickets metrics and informations.\n\nFor more information, see https://docs.blip.ai/?http#get-waiting-tickets-metrics"
               },
               "response": []
@@ -4369,7 +4369,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/tickets/change-status\",\r\n  \"type\": \"application/vnd.iris.ticket+json\",\r\n  \"resource\": {\r\n    \"id\": \"{{ticket_id}}\",\r\n    \"status\": \"ClosedClient\"\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "After receiving the Redirect message, the bot can change the user state and start to handle next messages automatically.\n\nFor more information, see https://docs.blip.ai/?http#handling-the-end-of-an-attendance"
               },
               "response": []
@@ -4397,7 +4397,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/attendance-history/send-by-email\",\r\n  \"type\": \"application/json\",\r\n  \"resource\": {\r\n    \"email\": \"{{email}}\",\r\n    \"filter\": \"requestDateTime%20ge%20datetimeoffset'2019-04-29T16%3A31%3A00.000Z'%20and%20requestDateTime%20le%20datetimeoffset'2019-05-30T16%3A31%3A00.000Z'\"\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Send attendance history by email as a .zip file.\r\n\r\nReplace {email} with the email adress you want to send.\r\n\r\nFor more information, see https://docs.blip.ai/?http#send-attendance-history-by-email"
               },
               "response": []
@@ -4425,7 +4425,7 @@
                   "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n   \"to\": \"postmaster@desk.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/tickets/{{ticket_id}}/transfer\",\r\n  \"type\": \"application/vnd.iris.ticket+json\",\r\n  \"resource\": {\r\n    \"team\": \"{{team_name}}\"\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Transfer a specfic ticket to another team.\r\n\r\nReplace {ticketId} with the ticket id you want to transfer. Replace {teamName} with the team name you want to transfer to.\r\n\r\nFor more information, see https://docs.blip.ai/?http#transfer-a-ticket-to-another-team"
               },
               "response": []
@@ -4486,7 +4486,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"set\",\n    \"uri\": \"/resources/{{resource_key}}\",\n    \"type\": \"application/vnd.lime.media-link+json\",\n    \"resource\": {\n        \"title\": \"Cat\",\n        \"text\": \"Here is a cat image for you!\",\n        \"type\": \"image/jpeg\",\n        \"uri\": \"http://2.bp.blogspot.com/-pATX0YgNSFs/VP-82AQKcuI/AAAAAAAALSU/Vet9e7Qsjjw/s1600/Cat-hd-wallpapers.jpg\",\n        \"size\": 227791,\n        \"previewUri\": \"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8qkelB28RstsNxLi7gbrwCLsBVmobPjb5IrwKJSuqSnGX4IzX\",\n        \"previewType\": \"image/jpeg\"\n    }\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Storing a media link document with resource_key key.\n\nFor more information, see https://docs.blip.ai/#add-a-media-link-resource"
               },
               "response": []
@@ -4517,7 +4517,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"set\",\n    \"uri\": \"/resources/{{resource_key}}\",\n    \"type\": \"text/plain\",\n    \"resource\": \"To use our services, please send a text message.\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Storing a text plain document with help-message key.\n\nFor more information, see https://docs.blip.ai/#add-a-text-plain-resource"
               },
               "response": []
@@ -4548,7 +4548,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"delete\",\n    \"uri\": \"/resources/{{resource_key}}\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Deleting a specific resource by id.\n\nFor more information, see https://docs.blip.ai/#delete-a-specific-resource"
               },
               "response": []
@@ -4579,7 +4579,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n\"method\": \"get\",\r\n  \"uri\": \"/resources/{{resource_key}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Getting a specific resource by id.\n\nFor more information, see https://docs.blip.ai/#get-a-specific-resource"
               },
               "response": []
@@ -4610,7 +4610,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"get\",\n    \"uri\": \"/resources\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Getting all bot resources.\r\n\r\n| Property     | Description                                                        | Example |\r\n|--------------|--------------------------------------------------------------------|---------|\r\n| **skip** | The number of resources to be skipped.                                   | 0 |\r\n| **take** | The number of resources to be returned.                                  | 100 |\r\n\r\nFor more information, see https://docs.blip.ai/#get-all-resources"
               },
               "response": []
@@ -4641,7 +4641,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"method\": \"set\",\n    \"uri\": \"/resources/welcome-message\",\n    \"type\": \"text/plain\",\n    \"resource\": \"Welcome to our service, ${contact.name}!\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Storing a text plain document with welcome-message key using replacement variables.\r\n\r\nIt is possible to use contact replacement variables in the created resources, just as in this example. For more information, please check the documentation of the Contacts extension.\r\n\r\nFor more information, see https://docs.blip.ai/#store-a-text-plain-resource-with-replacement-variable"
               },
               "response": []
@@ -4702,7 +4702,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@scheduler.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/schedules\",\r\n  \"type\": \"application/vnd.iris.schedule+json\",\r\n  \"resource\": {  \r\n    \"message\": {  \r\n      \"id\":  \"{{$guid}}\",\r\n      \"to\": \"destination@0mn.io\",\r\n      \"type\": \"text/plain\",\r\n      \"content\": \"Scheduling test.\"\r\n    },\r\n    \"when\": \"2016-07-25T17:50:00.000Z\",\r\n    \"name\": \"New Schedule\"\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Scheduling a message text/plain with the content 'Scheduling test' to be sent to the user destination@0mn.io in 2016-07-25T17:50:00.000Z\n\nFor more information, see https://docs.blip.ai/#create-a-scheduling"
               },
               "response": []
@@ -4733,7 +4733,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@scheduler.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/schedules/{{scheduled_message_id}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Getting an existing scheduled message with id ad19adf8-f5ec-4fff-8aeb-2e7ebe9f7a67. Each scheduled message has tree possible status values: scheduled, executed and canceled. This values are returned when you search for a specific scheduled message.\n\nFor more information, see https://docs.blip.ai/#get-a-scheduled-message"
               },
               "response": []
@@ -4808,7 +4808,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/delegations/postmaster@broadcast.msging.net?envelopeTypes=message\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get more informations about a specific delegation (permission).\n\nFor more information, see https://docs.blip.ai/#get-a-permission"
               },
               "response": []
@@ -4839,7 +4839,7 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/account/keys\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Get a collection of all account keys\n\nFor more information, see https://docs.blip.ai/#get-all-account-keys"
               },
               "response": []
@@ -4870,7 +4870,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"set\",\r\n  \"type\": \"application/vnd.lime.delegation+json\",\r\n  \"uri\": \"/delegations\",\r\n  \"resource\": {  \r\n    \"target\": \"postmaster@broadcast.msging.net\",\r\n    \"envelopeTypes\": [  \r\n      \"message\"\r\n    ]\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Giving permission to another identity send message as the caller (the bot).\n\nFor more information, see https://docs.blip.ai/#give-permissions"
               },
               "response": []
@@ -4901,7 +4901,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"method\": \"delete\",\r\n  \"uri\": \"/delegations/postmaster@broadcast.msging.net?envelopeTypes=message\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Revoking granted permission.\n\nFor more information, see https://docs.blip.ai/#revoke-permissions"
               },
               "response": []
@@ -4932,7 +4932,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/account/keys/\",\r\n  \"type\": \"application/vnd.iris.keyRequest+json\",\r\n  \"resource\": {\r\n    \"id\": \"{{id}}\"\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Crete a new account key to your account.\r\n\r\nYou must send an AccountKeyRequest document as a resource.\r\n\r\nFor more information, see https://docs.blip.ai/#set-an-account-key"
               },
               "response": []
@@ -4993,8 +4993,8 @@
                   "raw": "{\n    \"id\": \"{{$guid}}\",\n    \"from\": \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\n    \"to\": \"flow@msging.net/instance\",\n    \"type\": \"text/plain\",\n    \"content\": \"Hi, my name is Andre. How may I help you?\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
-                "description": ">Imagine a scenario where there are two bots: **flow** and **operator**, where the first is responsible for presenting an automatic navigation and the second receiving the handover of an eventual manual attendance. Only the **flow** bot is published in *Messenger* and it needs, at a certain point in its flow, to forward the messages to the **operator** bot that controls the manual attendance.\r\n\r\nThe complete path of a message from this external channel to the service bot is:\r\n\r\n>The main bot receives a message from a Messenger user.\r\n\r\n```\r\n{\r\n    \"id\": \"1\",\r\n    \"from\": \"1654804277843415@messenger.gw.msging.net\",\r\n    \"to\": \"flow@msging.net/instance\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hello, I would like to talk to an attendant.\"\r\n}\r\n```\r\n\r\n>According to its internal rules, the flow bot decides to forward this message to the operator bot. To do this, it changes the recipient of the message and sends it as below:\r\n\r\n```http\r\nPOST https://msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"1\",\r\n    \"to\": \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hello, I would like to talk to an attendant.\"\r\n}\r\n```\r\n\r\n```javascript\r\nclient.sendMessage({\r\n        id: Lime.Guid(),\r\n        to: \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n        type: \"text/plain\",\r\n        content: \"Hello, I would like to talk to an attendant\"\r\n      })\r\n```\r\n\r\n>Internally, the server creates an **id** for the tunnel and forwards the message to the **operator** bot, which receives it as follows:\r\n\r\n```http\r\nPOST https://msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"1\",\r\n    \"from\": \"ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net\",\r\n    \"to\": \"operator@msging.net\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hello, I would like to talk to an attendant.\"\r\n}\r\n```\r\n\r\n```javascript\r\n    {\r\n        id: 1,\r\n        from: \"ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net\",\r\n        to: \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n        type: \"text/plain\",\r\n        content: \"Hello, I would like to talk to an attendant\"\r\n    }\r\n\r\n```\r\n\r\n\r\n>The operator bot generates a reply to the message and forwards it to the source address, **without differentiating a message received directly from a channel** (the same goes for received/consumed notifications):\r\n\r\n```http\r\nPOST https://msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"2\",\r\n    \"to\": \"ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hi, my name is Andre. How may I help you?\"\r\n}\r\n```\r\n\r\n```javascript\r\nclient.senMessage({\r\n        id: Lime.Guid(),\r\n        to: \"ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net\",\r\n        type: \"text/plain\",\r\n        content: \"Hi, my name is Andre. How may I help you?\"\r\n      })\r\n```\r\n\r\n>The server uses the tunnel **id** to change the address of the response message and forwards it to the **flow** bot:\r\n\r\n```http\r\nPOST https://msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"2\",\r\n    \"from\": \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n    \"to\": \"flow@msging.net/instance\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hi, my name is Andre. How may I help you?\"\r\n}\r\n```\r\n\r\n```javascript\r\nclient.sendMessage({\r\n        id: Lime.Guid(),\r\n        from: \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n        to: \"flow@msging.net/instance\",\r\n        type: \"text/plain\",\r\n        content: \"Hi, my name is Andre. How may I help you?\"\r\n      })\r\n```\r\n\r\n>The bot flow identifies the message received from a **receiver**, decodes the original address that is in **instance** and sends the message to the final recipient:\r\n\r\n```http\r\nPOST https://msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"2\",\r\n    \"to\": \"1654804277843415@messenger.gw.msging.net\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hi, my name is Andre. How may I help you?\"\r\n}\r\n```\r\n\r\n```javascript\r\n{\r\n    id: \"2\",\r\n    to: \"1654804277843415@messenger.gw.msging.net\",\r\n    type: \"text/plain\",\r\n    content: \"Hi, my name is Andre. How may I help you?\"\r\n}\r\n```\r\n\r\n### Get a tunnel info\r\n\r\nGet a specific [tunnel](/#tunnels) by id.\r\n\r\nReplace `{tunnelId}` with the tunnel id you want to get.\r\n\r\n```http\r\nPOST https://msging.net/commands HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{  \r\n  \"id\": \"47c7e7e1-5e75-4ca4-a86b-2f8b06829160\",\r\n  \"to\": \"postmaster@tunnel.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/tunnels/{tunnelId}\"\r\n}\r\n```\r\n\r\nFor more information, see https://docs.blip.ai/?http#creating-flow-bot-5-steps"
+                "url": "https://{{contract_id}}.http.msging.net/commands",
+                "description": ">Imagine a scenario where there are two bots: **flow** and **operator**, where the first is responsible for presenting an automatic navigation and the second receiving the handover of an eventual manual attendance. Only the **flow** bot is published in *Messenger* and it needs, at a certain point in its flow, to forward the messages to the **operator** bot that controls the manual attendance.\r\n\r\nThe complete path of a message from this external channel to the service bot is:\r\n\r\n>The main bot receives a message from a Messenger user.\r\n\r\n```\r\n{\r\n    \"id\": \"1\",\r\n    \"from\": \"1654804277843415@messenger.gw.msging.net\",\r\n    \"to\": \"flow@msging.net/instance\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hello, I would like to talk to an attendant.\"\r\n}\r\n```\r\n\r\n>According to its internal rules, the flow bot decides to forward this message to the operator bot. To do this, it changes the recipient of the message and sends it as below:\r\n\r\n```http\r\nPOST https://{{contract_id}}.http.msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"1\",\r\n    \"to\": \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hello, I would like to talk to an attendant.\"\r\n}\r\n```\r\n\r\n```javascript\r\nclient.sendMessage({\r\n        id: Lime.Guid(),\r\n        to: \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n        type: \"text/plain\",\r\n        content: \"Hello, I would like to talk to an attendant\"\r\n      })\r\n```\r\n\r\n>Internally, the server creates an **id** for the tunnel and forwards the message to the **operator** bot, which receives it as follows:\r\n\r\n```http\r\nPOST https://{{contract_id}}.http.msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"1\",\r\n    \"from\": \"ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net\",\r\n    \"to\": \"operator@msging.net\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hello, I would like to talk to an attendant.\"\r\n}\r\n```\r\n\r\n```javascript\r\n    {\r\n        id: 1,\r\n        from: \"ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net\",\r\n        to: \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n        type: \"text/plain\",\r\n        content: \"Hello, I would like to talk to an attendant\"\r\n    }\r\n\r\n```\r\n\r\n\r\n>The operator bot generates a reply to the message and forwards it to the source address, **without differentiating a message received directly from a channel** (the same goes for received/consumed notifications):\r\n\r\n```http\r\nPOST https://{{contract_id}}.http.msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"2\",\r\n    \"to\": \"ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hi, my name is Andre. How may I help you?\"\r\n}\r\n```\r\n\r\n```javascript\r\nclient.senMessage({\r\n        id: Lime.Guid(),\r\n        to: \"ecb99cf5-fb5c-4376-8acd-4b478091de15@tunnel.msging.net\",\r\n        type: \"text/plain\",\r\n        content: \"Hi, my name is Andre. How may I help you?\"\r\n      })\r\n```\r\n\r\n>The server uses the tunnel **id** to change the address of the response message and forwards it to the **flow** bot:\r\n\r\n```http\r\nPOST https://{{contract_id}}.http.msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"2\",\r\n    \"from\": \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n    \"to\": \"flow@msging.net/instance\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hi, my name is Andre. How may I help you?\"\r\n}\r\n```\r\n\r\n```javascript\r\nclient.sendMessage({\r\n        id: Lime.Guid(),\r\n        from: \"operator@tunnel.msging.net/1654804277843415%40messenger.gw.msging.net\",\r\n        to: \"flow@msging.net/instance\",\r\n        type: \"text/plain\",\r\n        content: \"Hi, my name is Andre. How may I help you?\"\r\n      })\r\n```\r\n\r\n>The bot flow identifies the message received from a **receiver**, decodes the original address that is in **instance** and sends the message to the final recipient:\r\n\r\n```http\r\nPOST https://{{contract_id}}.http.msging.net/messages HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"2\",\r\n    \"to\": \"1654804277843415@messenger.gw.msging.net\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Hi, my name is Andre. How may I help you?\"\r\n}\r\n```\r\n\r\n```javascript\r\n{\r\n    id: \"2\",\r\n    to: \"1654804277843415@messenger.gw.msging.net\",\r\n    type: \"text/plain\",\r\n    content: \"Hi, my name is Andre. How may I help you?\"\r\n}\r\n```\r\n\r\n### Get a tunnel info\r\n\r\nGet a specific [tunnel](/#tunnels) by id.\r\n\r\nReplace `{tunnelId}` with the tunnel id you want to get.\r\n\r\n```http\r\nPOST https://{{contract_id}}.http.msging.net/commands HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{  \r\n  \"id\": \"47c7e7e1-5e75-4ca4-a86b-2f8b06829160\",\r\n  \"to\": \"postmaster@tunnel.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"/tunnels/{tunnelId}\"\r\n}\r\n```\r\n\r\nFor more information, see https://docs.blip.ai/?http#creating-flow-bot-5-steps"
               },
               "response": []
             },
@@ -5024,8 +5024,8 @@
                   "raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"from\": \"operator@msging.net/instance\",\r\n    \"to\": \"postmaster@tunnel.msging.net\",\r\n    \"method\":\"get\",\r\n    \"uri\": \"lime://tunnel.msging.net/accounts/ecb99cf5-fb5c-4376-8acd-4b478091de15\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
-                "description": "The **tunnel** extension also allows querying information from the message originator in the **directory**, as long as the information is stored in the contact roster of the **sender** bot. To use this feature, the bot just needs to send a common directory request:\r\n\r\n>Sending a command to the query in the directory using the tunnel **id**:\r\n\r\n```http\r\nPOST https://msging.net/commands HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"3\",\r\n    \"to\": \"postmaster@tunnel.msging.net\",\r\n    \"method\":\"get\",\r\n    \"uri\": \"lime://tunnel.msging.net/accounts/ecb99cf5-fb5c-4376-8acd-4b478091de15\"\r\n}\r\n```\r\n\r\n```javascript\r\nclient.sendCommand({\r\n        id: Lime.Guid(),\r\n        to: \"flow@msging.net/instance\",\r\n        type: \"text/plain\",\r\n        content: \"Hi, my name is Andre. How may I help you?\"\r\n      })\r\n```\r\n\r\n>The server identifies that the query is for a tunnel user and performs the query **on behalf of the sender** directly in its contacts roster and returns the information:\r\n\r\n```http\r\nPOST https://msging.net/commands HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"3\",\r\n    \"to\": \"operator@msging.net/instance\",\r\n    \"method\":\"get\",\r\n    \"status\": \"success\",\r\n    \"type\": \"application/vnd.lime.account+json\",\r\n    \"resource\": {\r\n        \"fullName\": \"John Deere\",\r\n        \"gender\": \"male\"\r\n    }\r\n}\r\n```\r\n\r\n```javascript\r\n{\r\n    id: \"3\",\r\n    to: \"operator@msging.net/instance\",\r\n    method:\"get\",\r\n    status: \"success\",\r\n    type: \"application/vnd.lime.account+json\",\r\n    resource: {\r\n        fullName: \"John Deere\",\r\n        gender: \"male\"\r\n    }\r\n}\r\n```\r\n\r\nFor more information about the contacts extension, please refer to the [extension documentation](https://docs.blip.ai/?http#contacts)."
+                "url": "https://{{contract_id}}.http.msging.net/commands",
+                "description": "The **tunnel** extension also allows querying information from the message originator in the **directory**, as long as the information is stored in the contact roster of the **sender** bot. To use this feature, the bot just needs to send a common directory request:\r\n\r\n>Sending a command to the query in the directory using the tunnel **id**:\r\n\r\n```http\r\nPOST https://{{contract_id}}.http.msging.net/commands HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"3\",\r\n    \"to\": \"postmaster@tunnel.msging.net\",\r\n    \"method\":\"get\",\r\n    \"uri\": \"lime://tunnel.msging.net/accounts/ecb99cf5-fb5c-4376-8acd-4b478091de15\"\r\n}\r\n```\r\n\r\n```javascript\r\nclient.sendCommand({\r\n        id: Lime.Guid(),\r\n        to: \"flow@msging.net/instance\",\r\n        type: \"text/plain\",\r\n        content: \"Hi, my name is Andre. How may I help you?\"\r\n      })\r\n```\r\n\r\n>The server identifies that the query is for a tunnel user and performs the query **on behalf of the sender** directly in its contacts roster and returns the information:\r\n\r\n```http\r\nPOST https://{{contract_id}}.http.msging.net/commands HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Key {YOUR_TOKEN}\r\n\r\n{\r\n    \"id\": \"3\",\r\n    \"to\": \"operator@msging.net/instance\",\r\n    \"method\":\"get\",\r\n    \"status\": \"success\",\r\n    \"type\": \"application/vnd.lime.account+json\",\r\n    \"resource\": {\r\n        \"fullName\": \"John Deere\",\r\n        \"gender\": \"male\"\r\n    }\r\n}\r\n```\r\n\r\n```javascript\r\n{\r\n    id: \"3\",\r\n    to: \"operator@msging.net/instance\",\r\n    method:\"get\",\r\n    status: \"success\",\r\n    type: \"application/vnd.lime.account+json\",\r\n    resource: {\r\n        fullName: \"John Deere\",\r\n        gender: \"male\"\r\n    }\r\n}\r\n```\r\n\r\nFor more information about the contacts extension, please refer to the [extension documentation](https://docs.blip.ai/?http#contacts)."
               },
               "response": []
             },
@@ -5114,7 +5114,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n \"to\": \"postmaster@msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"lime://<FQDN of the channel>/accounts/<Client identity>/key\",\r\n  \"type\": \"application/vnd.iris.keyRequest+json\",\r\n  \"resource\": {\r\n    \"alternativeAddress\": \"<alternative Client Identity>\",\r\n    \"purpose\": \"<Purpose>\",\r\n    \"temporary\": \"<true/false>\"\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "To create an accessKey for an alternative address, using an AccountKeyRequest document, send a command to the Uri lime://<FQDN of the channel>/accounts/<Client identity>/key.\n\nFor more information, see https://docs.blip.ai/?http#create-an-alternative-address"
               },
               "response": []
@@ -5144,7 +5144,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@messenger.gw.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"lime://messenger.gw.msging.net/accounts/{{user-idenitity}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Messenger FQDN: messenger.gw.msging.net\n\nFor more information, see https://docs.blip.ai/?http#get-client-info-messenger"
               },
               "response": []
@@ -5174,7 +5174,7 @@
                   "raw": "{  \n  \"id\": \"{{$guid}}\",\n  \"to\": \"postmaster@messenger.gw.msging.net\",\n  \"method\": \"get\",\n  \"uri\": \"lime://telegram.gw.msging.net/accounts/{{user-identity}}\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Telegram FQDN: telegram.gw.msging.net\n\nFor more information, see https://docs.blip.ai/?http#get-client-info-telegram"
               },
               "response": []
@@ -5234,7 +5234,7 @@
                   "raw": "{  \r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@media.msging.net\",\r\n  \"method\": \"set\",\r\n  \"uri\": \"/refresh-media-uri\",\r\n  \"type\": \"text/plain\",\r\n  \"resource\": \"{{expiredMediaLinkUri}}\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Medias are stored and accessed with expirable links. After the expiration date, the media link becomes unavailable. This resource allows retrieving a new and valid url to see the media."
               },
               "response": []
@@ -5275,7 +5275,7 @@
                       "raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"set\",\r\n    \"type\": \"application/json\",\r\n    \"uri\": \"/payment/{{contactIdentity}}/session\",\r\n    \"resource\": {\r\n        \"paymentMethodTypes\": [\r\n        \"card\",\r\n        \"boleto\"\r\n    ],\r\n    \"lineItems\": [\r\n    {\r\n        \"amount\": 50000,\r\n        \"currency\": \"brl\",\r\n        \"description\": \"Curso do Blip - Fornecido pela Take Blip\",\r\n        \"images\": [           \r\n            \"https://www.take.net/files/themes/blank_theme/assets/img/take-og-image.png\"\r\n        ],\r\n        \"name\": \"Curso do Blip - Módulo de Pagamentos\",\r\n        \"quantity\": 1\r\n    }],\r\n        \"successUrl\": \"https://www.take.net\",\r\n        \"cancelUrl\": \"https://www.take.net\"\r\n    }\r\n}",
                       "options": {}
                     },
-                    "url": "https://msging.net/commands"
+                    "url": "https://{{contract_id}}.http.msging.net/commands"
                   },
                   "response": [
                     {
@@ -5305,7 +5305,7 @@
                             }
                           }
                         },
-                        "url": "https://msging.net/commands"
+                        "url": "https://{{contract_id}}.http.msging.net/commands"
                       },
                       "status": "OK",
                       "code": 200,
@@ -5342,7 +5342,7 @@
                       "raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"set\",\r\n    \"uri\": \"/payment/{{contactIdentity}}/payment-intent\",\r\n    \"type\": \"application/json\",\r\n    \"resource\": {\r\n        \"customer\": \"{{stripeCustomerId}}\",\r\n        \"PaymentMethodTypes\": [\"card\"],\r\n        \"amount\":1000,\r\n        \"currency\":\"BRL\",\r\n        \"confirm\":\"true\",\r\n        \"paymentMethod\":\"{{stripePaymentMethod}}\"\r\n    }\r\n}",
                       "options": {}
                     },
-                    "url": "https://msging.net/commands"
+                    "url": "https://{{contract_id}}.http.msging.net/commands"
                   },
                   "response": [
                     {
@@ -5372,7 +5372,7 @@
                             }
                           }
                         },
-                        "url": "https://msging.net/commands"
+                        "url": "https://{{contract_id}}.http.msging.net/commands"
                       },
                       "status": "OK",
                       "code": 200,
@@ -5409,7 +5409,7 @@
                       "raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"set\",\r\n    \"uri\": \"/payment/{{contactIdentity}}/confirm-payment-intent\",\r\n    \"type\": \"application/json\",\r\n    \"resource\": {\r\n        \"PaymentIntentId\":\"{{stripePaymentIntentId}}\",\r\n        \"options\":{\r\n            \"paymentMethod\": \"{{stripePaymentMethod}}\"\r\n        }\r\n    }\r\n}",
                       "options": {}
                     },
-                    "url": "https://msging.net/commands"
+                    "url": "https://{{contract_id}}.http.msging.net/commands"
                   },
                   "response": [
                     {
@@ -5439,7 +5439,7 @@
                             }
                           }
                         },
-                        "url": "https://msging.net/commands"
+                        "url": "https://{{contract_id}}.http.msging.net/commands"
                       },
                       "status": "OK",
                       "code": 200,
@@ -5476,7 +5476,7 @@
                       "raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"get\",\r\n    \"uri\": \"/payment-methods?customer={{stripeCustomerId}}\"\r\n}",
                       "options": {}
                     },
-                    "url": "https://msging.net/commands"
+                    "url": "https://{{contract_id}}.http.msging.net/commands"
                   },
                   "response": [
                     {
@@ -5506,7 +5506,7 @@
                             }
                           }
                         },
-                        "url": "https://msging.net/commands"
+                        "url": "https://{{contract_id}}.http.msging.net/commands"
                       },
                       "status": "OK",
                       "code": 200,
@@ -5543,7 +5543,7 @@
                       "raw": "{\r\n    \"id\":  \"{{$guid}}\",\r\n    \"to\":  \"postmaster@stripe.msging.net\",\r\n    \"method\":  \"get\",\r\n    \"uri\":  \"/payment/{{contactIdentity}}/payment-intent-history\" \r\n}",
                       "options": {}
                     },
-                    "url": "https://msging.net/commands"
+                    "url": "https://{{contract_id}}.http.msging.net/commands"
                   },
                   "response": [
                     {
@@ -5573,7 +5573,7 @@
                             }
                           }
                         },
-                        "url": "https://msging.net/commands"
+                        "url": "https://{{contract_id}}.http.msging.net/commands"
                       },
                       "status": "OK",
                       "code": 200,
@@ -5610,7 +5610,7 @@
                       "raw": "{\r\n    \"id\":  \"{{$guid}}\",\r\n    \"to\":  \"postmaster@stripe.msging.net\",\r\n    \"method\":  \"get\",\r\n    \"uri\":  \"/payment/{{contactIdentity}}/session-history\" \r\n}",
                       "options": {}
                     },
-                    "url": "https://msging.net/commands"
+                    "url": "https://{{contract_id}}.http.msging.net/commands"
                   },
                   "response": [
                     {
@@ -5640,7 +5640,7 @@
                             }
                           }
                         },
-                        "url": "https://msging.net/commands"
+                        "url": "https://{{contract_id}}.http.msging.net/commands"
                       },
                       "status": "OK",
                       "code": 200,
@@ -5677,7 +5677,7 @@
                       "raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"get\",\r\n    \"uri\": \"/payment-intents/{{stripePaymentIntentId}}/events\"\r\n}",
                       "options": {}
                     },
-                    "url": "https://msging.net/commands"
+                    "url": "https://{{contract_id}}.http.msging.net/commands"
                   },
                   "response": [
                     {
@@ -5707,7 +5707,7 @@
                             }
                           }
                         },
-                        "url": "https://msging.net/commands"
+                        "url": "https://{{contract_id}}.http.msging.net/commands"
                       },
                       "status": "OK",
                       "code": 200,
@@ -5744,7 +5744,7 @@
                       "raw": "{\r\n    \"id\": \"{{$guid}}\",\r\n    \"to\": \"postmaster@stripe.msging.net\",\r\n    \"method\": \"get\",\r\n    \"uri\": \"/sessions/{{stripeSessionId}}/events\"\r\n}",
                       "options": {}
                     },
-                    "url": "https://msging.net/commands"
+                    "url": "https://{{contract_id}}.http.msging.net/commands"
                   },
                   "response": [
                     {
@@ -5774,7 +5774,7 @@
                             }
                           }
                         },
-                        "url": "https://msging.net/commands"
+                        "url": "https://{{contract_id}}.http.msging.net/commands"
                       },
                       "status": "OK",
                       "code": 200,
@@ -5849,7 +5849,7 @@
                   "raw": "{  \r\n  \"id\": \"a456-42665544000-0123e4567-e89b-12d3\",\r\n  \"to\": \"postmaster@wa.gw.msging.net\",\r\n  \"method\": \"get\",\r\n  \"uri\": \"lime://wa.gw.msging.net/accounts/+5531986055572\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Before send a notification to a WhatsApp's customer you should get their identifier. Using the customer MSISDN, make a request to BLiP's API as demostrated aside. For instance, a Brazillian customer should be verified using a MSISDN like `+5531998765432`.\r\n\r\nAfter get the customer identifier you are able to send notifications. Use the `alternativeAccount` property received as response of the last request to send notifications (or messages) to your customer. For this sample `5531998765432@wa.gw.msging.net`.\r\n\r\nFor more information, see https://docs.blip.ai/#sending-a-notification"
               },
               "response": []
@@ -5877,7 +5877,7 @@
                   "raw": "{\r\n  \"id\": \"123e4567-e89b-12d3-a456-426655440002\",\r\n  \"to\": \"553198271039@wa.gw.msging.net\",\r\n  \"type\": \"application/json\",\r\n  \"content\": {\r\n    \"type\": \"hsm\",\r\n    \"hsm\": {\r\n      \"namespace\": \"whatsapp:hsm:messaging:blip\",\r\n      \"element_name\": \"account_created\",\r\n      \"fallback_lg\": \"pt\",\r\n      \"fallback_lc\": \"BR\",\r\n      \"localizable_params\": [\r\n        {\r\n          \"default\": \"BLiPPer\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}\r\n",
                   "options": {}
                 },
-                "url": "https://msging.net/messages",
+                "url": "https://{{contract_id}}.http.msging.net/messages",
                 "description": "In order to send a notification for your customer you will need:\n\n* Customer's identifier (get it in step 2), for instance `5531998765432@wa.gw.msging.net`\n* Element name of message template (get it in step 3), for instance `account_created`\n* Namespace of message template (get it in step 3), for instan\n\nFor more information, see https://docs.blip.ai/#sending-a-notification"
               },
               "response": []
@@ -5905,7 +5905,7 @@
                   "raw": "{\r\n  \"id\": \"21387123987128937123713\",\r\n  \"to\":\"postmaster@wa.gw.msging.net\",\r\n  \"method\": \"set\",\r\n  \"type\": \"application/vnd.lime.group+json\",\r\n  \"uri\":  \"/groups\",\r\n  \"resource\": {\r\n    \"name\": \"{{groupName}}\"\r\n  }\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Besides sending messages between customer and bot you are also able to send and receive messages in a group. \nWhen your bot creates a group you are able to invite people, listen, and reply group messages.\n\nBefore to start sending/receiving messages in a group, you must create the group. \n\nFor more information, see https://docs.blip.ai/#creating-a-group"
               },
               "response": []
@@ -5933,7 +5933,7 @@
                   "raw": "{\n    \"id\": \"ABSLFYWLAASYSIOSSA\",\n    \"to\": \"postmaster@wa.gw.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/groups/{{createdGroupIdentity}}/invite-link\"\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/commands",
+                "url": "https://{{contract_id}}.http.msging.net/commands",
                 "description": "Besides sending messages between customer and bot you are also able to send and receive messages in a group. \nWhen your bot creates a group you are able to invite people, listen, and reply group messages.\n\nBefore to start sending/receiving messages in a group, you must create the group. \n\nFor more information, see https://docs.blip.ai/#creating-a-group"
               },
               "response": []
@@ -5962,7 +5962,7 @@
                     }
                   }
                 },
-                "url": "https://msging.net/commands"
+                "url": "https://{{contract_id}}.http.msging.net/commands"
               },
               "response": []
             }
@@ -6054,7 +6054,7 @@
                   "raw": "{\r\n    \"id\": \"batata\",\r\n    \"to\": \"5531998271039@tangram.com.br\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Do you beleive or not?\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/messages",
+                "url": "https://{{contract_id}}.http.msging.net/messages",
                 "description": "Sends a SMS message to a client"
               },
               "response": []
@@ -6091,7 +6091,7 @@
                   "raw": "{\r\n    \"id\": \"teste1-info\",\r\n    \"to\": \"31998271039@infobip.gw.msging.net\",\r\n    \"type\": \"text/plain\",\r\n    \"content\": \"Do you beleive or not?\"\r\n}",
                   "options": {}
                 },
-                "url": "https://msging.net/messages",
+                "url": "https://{{contract_id}}.http.msging.net/messages",
                 "description": "Sends a SMS message to a client"
               },
               "response": []
@@ -6133,7 +6133,7 @@
                     }
                   }
                 },
-                "url": "https://msging.net/messages",
+                "url": "https://{{contract_id}}.http.msging.net/messages",
                 "description": "Sending an e-mail is a common task for anyone developing a bot. Alerts or confirmation of information are some of the common scenarios for this demand. BLiP abstracts the whole process of sending and receiving e-mails to your bot.\r\n\r\n| Name | Description |\r\n|---------------------------------|--------------|\r\n| id    | Unique identifier of the command.   |\r\n| to     | **{{e-mail}}@mailgun.gw.msging.net**  |\r\n| type   | **text/plain** |\r\n| content | **{{message}}** |\r\n\r\n<aside class=\"notice\">\r\nNote: Remember to replace the variable {{e-mail}} for the email you want to send a message (for instance: <b> xpto%40xpto.com</b>). Since every LIME node has the @ character, it is required to sign @ the email by its corresponding ASCII code (%40). You must also define message you want to send the user, replacing the {{message}} variable according to the LIME protocol (for instance: <b>Welcome to our service! How can I help you?</b>).\r\n</aside>"
               },
               "response": []
@@ -6170,7 +6170,7 @@
           "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"postmaster@analytics.msging.net\",\r\n  \"method\": \"set\",\r\n  \"type\": \"application/vnd.iris.eventTrack+json\",\r\n  \"uri\": \"/event-track\",\r\n  \"resource\": {\r\n    \"category\": \"payments\",\r\n    \"action\": \"success-order\"\r\n  }\r\n}",
           "options": {}
         },
-        "url": "https://msging.net/commands"
+        "url": "https://{{contract_id}}.http.msging.net/commands"
       },
       "response": []
     },
@@ -6197,7 +6197,7 @@
           "raw": "{\r\n  \"id\": \"{{$guid}}\",\r\n  \"to\": \"{{userIdentity}}\",\r\n  \"type\": \"text/plain\",\r\n  \"content\": \"{{content}}\"\r\n}",
           "options": {}
         },
-        "url": "https://msging.net/messages"
+        "url": "https://{{contract_id}}.http.msging.net/messages"
       },
       "response": []
     },
@@ -6224,7 +6224,7 @@
           "raw": "{\r\n  \"id\": \"{{message-id}}\",\r\n  \"to\": \"{{user-identity}}\",\r\n  \"event\": \"received\"\r\n}",
           "options": {}
         },
-        "url": "https://msging.net/notifications"
+        "url": "https://{{contract_id}}.http.msging.net/notifications"
       },
       "response": []
     }
