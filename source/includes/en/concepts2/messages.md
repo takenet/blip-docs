@@ -47,7 +47,7 @@ message = Message(
 
 A **message** allows content exchange between clients and chatbots.
 
-<aside class="warning"> Every message needs to be sent through your unique HTTP endpoint. You can find this information by accessing you Chatbot, going to <strong>Configurations menu</strong> and then <strong>Connection information.</strong><br><br>Remember to replace {{contract_id}} with your id!<br><br><img src="https://www.dropbox.com/s/ris7r8itbofp949/imagem%20docs%203.jpg?dl=1"></aside>
+<aside class="warning"> Every message needs to be sent through your unique HTTP endpoint. You can find this information by accessing you Chatbot, going to <strong>Configurations menu</strong> and then <strong>Connection information.</strong><br><br>Remember to replace {{contract_id}}* with your id!<br><br>*The contract_id value can be identified as being part of your URL, in the following format:  https://{{contract_id}}.http.msging.net/messages<br><br><img src="https://www.dropbox.com/s/ris7r8itbofp949/imagem%20docs%203.jpg?dl=1"></aside>
 
 
 Each message has:
