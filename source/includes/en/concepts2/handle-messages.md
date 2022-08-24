@@ -80,8 +80,8 @@ For more information about messages, check the [messages section](#messages) or 
 | Name    | Description                                     |
 |---------|-------------------------------------------------|
 | id      | Unique identifier of the message                |
-| from    | Originator’s address                            |
-| to      | Recipient’s address                             |
+| from    | Originator's address                            |
+| to      | Recipient's address                             |
 | type    | Statement with content type, in the MIME format |
 | content | Message content                                 |
 

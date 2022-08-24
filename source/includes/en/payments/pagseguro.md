@@ -5,7 +5,7 @@
 
 **PagSeguro** channel is [UOL's](https://pagseguro.uol.com.br/) payment channel to receive and send payments with flexibility and security. 
 
-The order recipient’s address shall be the recipient’s identifier.
+The order recipient's address shall be the recipient's identifier.
 
 #### Delegation
 
@@ -64,7 +64,7 @@ Sending a payment request to a Facebook Messenger user with [PagSeguro](./#/docs
 }
 ```
 
-PagSeguro will generate a transaction which will be automatically sent to user `1042221589186385@messenger.gw.msging.net` as a [web link](./#/docs/content-types/web-link). The message identifier will be the same as the payment request’s. 
+PagSeguro will generate a transaction which will be automatically sent to user `1042221589186385@messenger.gw.msging.net` as a [web link](./#/docs/content-types/web-link). The message identifier will be the same as the payment request's. 
 
 ```http
 {
@@ -79,7 +79,7 @@ PagSeguro will generate a transaction which will be automatically sent to user `
 }
 ```
 
-When there is payment status change (for example: user has payed), a [payment status](./#/docs/content-types/invoice-status) message will be sent to the chatbot, the message identifier will be the same as the original payment request’s.
+When there is payment status change (for example: user has payed), a [payment status](./#/docs/content-types/invoice-status) message will be sent to the chatbot, the message identifier will be the same as the original payment request's.
 
 ```http
 {

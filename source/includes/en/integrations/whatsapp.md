@@ -4,7 +4,7 @@
 |-------------------|-------------------------------------------------------|
 | @wa.gw.msging.net | WhatsApp identifier (it's not necessarily the MSISDN) |
 
-**WhatsApp** is the world’s most popular business messaging channel, with more than 2 billion global users and end-to-end encryption. The **WhatsApp Business API** is a fast, simple, secure, and reliable way for businesses to reach their customers all over the world. This guide will help businesses onboard and build their first official WhatsApp messaging experience using Blip and WhatsApp Business API.
+**WhatsApp** is the world's most popular business messaging channel, with more than 2 billion global users and end-to-end encryption. The **WhatsApp Business API** is a fast, simple, secure, and reliable way for businesses to reach their customers all over the world. This guide will help businesses onboard and build their first official WhatsApp messaging experience using Blip and WhatsApp Business API.
 
 Before start using WhatsApp channel you should understand some basic concepts.
 
@@ -22,7 +22,7 @@ You can use Take Blip's API to send messages and notifications for your customer
 An user must first consent to receive messages in WhatsApp by opting into them via a third-party channel. This can be any channel your business uses to communicate with people today — your website, app, email, SMS, retail location, etc.
 
 * Businesses must clearly state that a person is opting in to receive messages from the business over WhatsApp
-* Businesses must clearly state the business’ name that a person is opting in to receive messages from
+* Businesses must clearly state the business' name that a person is opting in to receive messages from
 * Businesses must comply with applicable law
 
 [Click here to see more about how to get opt-in for WhatsApp](https://developers.facebook.com/docs/whatsapp/guides/opt-in).
@@ -98,7 +98,7 @@ Currently, **Message Templates** are created directly on the Take Blip Portal. I
 * All translations desired
 * Optionally your message may has variables identified by the pattern {{X}}, where X is the index of the variable.
 
-Here’s some example:
+Here's some example:
 
 * en-us:
 `"Welcome {{1}}. We look forward to serving you on WhatsApp."`

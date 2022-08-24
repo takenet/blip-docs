@@ -8,7 +8,7 @@ Represents a billing transaction.
 
 | Name               | Description                                  | Type                                    |
 |--------------------|----------------------------------------------|-----------------------------------------|
-| ownerIdentity      | the Identity of the account’s transaction    | Identity                                |
+| ownerIdentity      | the Identity of the account's transaction    | Identity                                |
 | id                 | the transaction id                           | string                                  |
 | walletId           | the wallet id                                | string                                  |
 | date               | the transaction date                         | DateTimeOffset                          |

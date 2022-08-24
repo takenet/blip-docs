@@ -8,7 +8,7 @@ Represents an agent attendant profile.
 
 | Name                     | Description                                     | Type                       |
 |--------------------------|-------------------------------------------------|----------------------------|
-| identity                 | the identity of the team’s owner                | Identity                   |
+| identity                 | the identity of the team's owner                | Identity                   |
 | fullName                 | the name of the agent                           | string                     |
 | email                    | the email of the agent                          | string                     |
 | teams                    | the list of teams the agent is in               | string array               |
