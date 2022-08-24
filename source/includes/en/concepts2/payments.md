@@ -6,7 +6,7 @@ To use it properly is necessary to understand some important concepts:
 
 - **Stripe**:
   - **Session**: Payment through a webpage where the customer can pay by credit card, boleto.
-  - **CardOnFile**: A transaction where the customer has authorized Stripe to store the customer’s payment details, in this scenario it's a credit card. The customer then authorizes that same merchant to charge the customer's stored card.
+  - **CardOnFile**: A transaction where the customer has authorized Stripe to store the customer's payment details, in this scenario it's a credit card. The customer then authorizes that same merchant to charge the customer's stored card.
   - **Payment Intent**: As the name implies, it is the payment intention, there are all the information regarding the current transaction, such as amounts, payment method etc.
   - **Customer**:  It is the Stripe identity to store all information of the current buyer, it contains his information like name, email, payment methods. It can be found on [Stripe Dashboard](https://dashboard.stripe.com/customers).
   - **Events**: Both Session and PaymentIntent has attached events, each event represents what happened to payment it can be creation, failure , success and etc, more information about [Stripe events](https://stripe.com/docs/api/events).

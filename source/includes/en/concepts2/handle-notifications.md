@@ -97,8 +97,8 @@ REQUEST
 | Name   | Description                                                            |
 |--------|------------------------------------------------------------------------|
 | id     | Identifier of the related message                                      |
-| from   | Notification originator’s address                                      |
-| to     | Notification recipient’s address                                       |
+| from   | Notification originator's address                                      |
+| to     | Notification recipient's address                                       |
 | event  | Event related to the message                                           |
 | reason | In case of failed events, represents the reason of the message failure |
 

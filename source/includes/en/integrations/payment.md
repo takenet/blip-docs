@@ -28,7 +28,7 @@ search: true
 
 Payment channels are integrations with payment suppliers connected to Blip Messaging Hub, in which the contacts may receive/send payment from/to customers. Each channel has one identifier that is utilized in the addressing, located before the @ of the address.
 
-In order to receive or send payments to a channel, the contact must be configured on it. Configuration is made through the portal, where some specific channel information, such as the APIs’ tokens for example, will be requested. It is necessary to fullfill a previous registration form on each channel, normally through the supplier’s site.
+In order to receive or send payments to a channel, the contact must be configured on it. Configuration is made through the portal, where some specific channel information, such as the APIs' tokens for example, will be requested. It is necessary to fullfill a previous registration form on each channel, normally through the supplier's site.
 
 ### Payment Request
 
@@ -97,4 +97,4 @@ client.send_message(
 )
 ```
 
-When there is payment status change (for example: user has payed), a [payment status](./#/docs/content-types/invoice-status) message will be sent to the chatbot, the message identifier will be the same as the original payment request’s.
+When there is payment status change (for example: user has payed), a [payment status](./#/docs/content-types/invoice-status) message will be sent to the chatbot, the message identifier will be the same as the original payment request's.
