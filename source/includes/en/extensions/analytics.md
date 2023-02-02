@@ -10,7 +10,7 @@ To use any feature of **analytics** extension, send a command with the following
 | id       | Unique identifier of the command.                               |
 | method   | The command verb.                                               |
 | resource | The analytics document.                                         |
-| uris     | **/event-track**, **/reports**, **/metrics** or **/statistics** |
+| uris     | **/event-track**, **/reports**, **/metrics** |
 | to       | **postmaster@analytics.msging.net**                             |
 
 ### Create an event
