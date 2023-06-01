@@ -34,8 +34,7 @@ extends:
     rubyCmds:
       - gem install bundler:1.16.0
       - bundle _1.16.0_ install
-      - bundle install
-      - bundle exec middleman build --clean --verbose
+      - bundle _1.16.0_ exec middleman build --clean --verbose
     skipSonarBranch: false
     octopuspackagename: "Projects-27"
     BuildCounter: $(BuildCounter)
