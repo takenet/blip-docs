@@ -32,7 +32,6 @@ extends:
     to: octopus
     rubyVersion: 2.7.x
     rubyCmds:
-      - bundle config build.nokogiri --use-system-libraries
       - bundle install
       - bundle exec middleman build --clean --verbose
     skipSonarBranch: false
