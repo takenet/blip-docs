@@ -20,13 +20,17 @@ variables:
   sonarQubeName: BlipDocs
   framework: ruby
 
+pool:
+  name: 'Azure Pipelines'
+  vmImage: ubuntu-20.04
+
 extends:
   template: "template-pipeline.yml@templates"
   parameters:
     packagename: "Blip-Docs"
     type: ruby
     to: octopus
-    rubyVersion: 3.1.x
+    rubyVersion: 2.7.x
     rubyCmds:
       - bundle config build.nokogiri --use-system-libraries
       - bundle install
