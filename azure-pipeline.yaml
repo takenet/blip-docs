@@ -32,6 +32,7 @@ extends:
     to: octopus
     rubyVersion: 2.7.x
     rubyCmds:
+      - gem install bundler:1.16.0
       - bundle install
       - bundle exec middleman build --clean --verbose
     skipSonarBranch: false
