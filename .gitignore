@@ -24,5 +24,4 @@ doc/
 .idea/
 
 .dockerignore
-Dockerfile
 docker-compose.yml
