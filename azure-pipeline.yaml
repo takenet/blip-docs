@@ -1,0 +1,46 @@
+trigger:
+  branches:
+   include:
+     - master
+  paths:
+    include:
+      - "source"
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: Operações/template-take-blip
+      ref: refs/tags/v1.4.32
+
+variables:
+  BuildCounter: $[counter('buildCounter',1)]
+  sonarQubeTags: BlipDocs
+  sonarQubeKey: Blip_Docs
+  sonarQubeName: BlipDocs
+  framework: ruby
+
+pool:
+  name: 'Azure Pipelines'
+  vmImage: ubuntu-latest
+
+extends:
+  template: "template-pipeline.yml@templates"
+  parameters:
+    packagename: "Blip-Docs"
+    type: ruby
+    to: octopus
+    rubyVersion: 3.1.x
+    rubyCmds:
+      - bundle install
+      - bundle exec middleman build --clean --verbose
+    skipSonarBranch: false
+    octopuspackagename: "Projects-27"
+    BuildCounter: $(BuildCounter)
+    octopusArtifactName: "Blip.Docs.AzDO"
+    buildArtifactsDir: "Releases/Blip.Docs"
+    createZipPackage: true
+    dockerBuildPush: false
+    octopusReleaseChannel:
+      - Default
+    dockerAgentPool: "ubuntu-latest"
