@@ -22,7 +22,7 @@ variables:
 
 pool:
   name: 'Azure Pipelines'
-  vmImage: ubuntu-20.04
+  vmImage: ubuntu-latest
 
 extends:
   template: "template-pipeline.yml@templates"
@@ -30,7 +30,7 @@ extends:
     packagename: "Blip-Docs"
     type: ruby
     to: octopus
-    rubyVersion: 2.7.x
+    rubyVersion: 3.1.x
     rubyCmds:
       - bundle install
       - bundle exec middleman build --clean --verbose
