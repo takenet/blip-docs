@@ -33,7 +33,7 @@ extends:
     rubyVersion: 3.1.x
     rubyCmds:
       - docker build . -t slatedocs/slate
-      - docker run --rm --name slate -v $(pwd)/build:/srv/slate/build -v $(pwd)/source:/srv/slate/source slatedocs/slate build
+      - docker run --rm --name slate -v "$(pwd)/build:/srv/slate/build" -v "$(pwd)/source:/srv/slate/source" slatedocs/slate build
     skipSonarBranch: false
     octopuspackagename: "Projects-27"
     BuildCounter: $(BuildCounter)
