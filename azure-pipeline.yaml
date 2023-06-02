@@ -22,7 +22,7 @@ variables:
 
 pool:
   name: 'Azure Pipelines'
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
 
 extends:
   template: "template-pipeline.yml@templates"
