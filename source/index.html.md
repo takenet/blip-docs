@@ -31,7 +31,7 @@ includes:
   
   - en/authentication
 
-  - en/getting-started
+  - en/gettingstarted
   - en/getting-started/builder/getting-started-builder
   - en/getting-started/csharp/getting-started-csharp
   - en/getting-started/js/getting-started-js
@@ -70,7 +70,7 @@ includes:
 
 # Add documents 
 
-  - en/documents
+  - en/document
   - en/documents/accessKey
   - en/documents/account
   - en/documents/accountContact
@@ -151,7 +151,7 @@ includes:
 
 # Add an extension keeping the order
 
-  - en/extensions
+  - en/extension
   - en/extensions/analytics
   - en/extensions/artificial-intelligence
   - en/extensions/broadcast
@@ -173,7 +173,7 @@ includes:
 
 # Add an integration keeping the order
 
-  - en/integrations
+  - en/integration
   - en/integrations/blip-chat
   - en/integrations/mailgun
   - en/integrations/messenger
