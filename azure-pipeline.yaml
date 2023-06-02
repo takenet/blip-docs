@@ -38,7 +38,7 @@ extends:
     octopuspackagename: "Projects-27"
     BuildCounter: $(BuildCounter)
     octopusArtifactName: "Blip.Docs.AzDO"
-    buildArtifactsDir: "Releases/Blip.Docs"
+    buildArtifactsDir: "build"
     createZipPackage: true
     dockerBuildPush: false
     octopusReleaseChannel:
