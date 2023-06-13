@@ -5,7 +5,3 @@ Extensions are **Blip** connected services that provide developers with differen
 As the other platform nodes, each extension has a unique address with `postmaster@[identifier].msging.net` format. The `identifier` value is the extension sub domain. Thus, to send *commands* and *messages*, use this address. If you don't know what is a command or how you can use this on Blip, please go to [Concepts > Commands](#commands) section.
 
 Some extensions can require permission to send messages in name of the chatbot. The command `delegation` is used to grant this permission and must be sent to server with `postmaster@msging.net` address. To learn more details, check the [**delegation** documentation](./#/docs/extensions/delegation).
-
-<aside class="notice">
-From <b>April 2020</b>, the Blip HTTP endpoint will change from <b>https://msging.net</b> to <b>https://http.msging.net</b>. <br><br>We strongly advise users to start using the new endpoint as soon as possible.
-</aside>
